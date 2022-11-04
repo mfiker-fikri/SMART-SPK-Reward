@@ -1,0 +1,55 @@
+/* Input Username */
+input[type=text]:focus {
+    box-shadow: 0 1px 5px 1px #1100ff,
+        0 1px 5px 1px #1100ff;
+    outline: solid 1px #1100ff;
+    outline-offset: 0;
+}
+
+input[type=text]:required {
+    border-color: #800000;
+    border-width: 3px;
+}
+
+input[type=text]:valid {
+    box-shadow: 0 0px 0px 0px rgb(0, 255, 0),
+        0 0px 0px 0px rgb(0, 255, 0);
+    outline: solid 0px rgb(0, 255, 0);
+    outline-offset: 0;
+}
+
+input[type=text]:invalid {
+    border-color: #ff0000;
+    box-shadow: 0 0px 0px 0px #ff0000,
+        0 0px 0px 0px #ff0000;
+    outline: solid 0px #ff0000;
+    outline-offset: 0;
+}
+
+/* Input Password */
+input[type=password]:focus {
+    box-shadow: 0 1px 5px 1px #1100ff,
+        0 1px 5px 1px #1100ff;
+    outline: solid 1px #1100ff;
+    outline-offset: 0;
+}
+
+input[type="password"]:required {
+    border-color: #800000;
+    border-width: 3px;
+}
+
+input[type=password]:valid {
+    box-shadow: 0 0px 0px 0px rgb(0, 255, 0),
+        0 0px 0px 0px rgb(0, 255, 0);
+    outline: solid 0px rgb(0, 255, 0);
+    outline-offset: 0;
+}
+
+input[type=password]:invalid {
+    border-color: #ff0000;
+    box-shadow: 0 0px 0px 0px #ff0000,
+        0 0px 0px 0px #ff0000;
+    outline: solid 0px #ff0000;
+    outline-offset: 0;
+}
