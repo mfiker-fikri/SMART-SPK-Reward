@@ -15,6 +15,7 @@
                 {data: 'full_name', name: 'full_name'},
                 {data: 'username', name: 'username'},
                 {data: 'status', name: 'status'},
+                {data: 'last_seen', name: 'last_seen'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -210,6 +211,7 @@
                                     <th scope="col">Nama Panjang</th>
                                     <th scope="col">Username</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Last Seen</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>

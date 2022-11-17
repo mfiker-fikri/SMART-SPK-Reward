@@ -90,9 +90,21 @@ class DashboardController extends Controller
                     if (Cache::has('admin-is-online-' . $row->id)) {
                         $status = '<span class="text-success">Online</span>';
                         return $status;
+                    } else {
+                        $status = '<span class="text-secondary">Offline</span>';
+                        return $status;
                     }
                 })
-                ->rawColumns(['status'])
+                ->addColumn('lastSeen', function ($row) {
+                    if (Cache::has('admin-is-online-' . $row->id)) {
+                        $status = '<span class="text-success">Online</span>';
+                        return $status;
+                    } else {
+                        $status = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
+                        return $status;
+                    }
+                })
+                ->rawColumns(['status','lastSeen'])
                 // ->orderColumn('status')
                 // ->orderColumn('status', '-status $1')
                 ->make(true);

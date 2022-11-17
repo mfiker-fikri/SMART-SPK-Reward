@@ -118,7 +118,7 @@ class PegawaiController extends Controller
             if ($pegawai) {
                 $validate = null;
                 if ($request['email'] === Auth::guard('employees')->user()->email || $request['username'] === Auth::guard('employees')->user()->username) {
-                    // Validasi Login
+                    // Validasi Update
                     // Validator::extend('valid_username', function ($attr, $value) {
                     //     return preg_match('/^\S*$/u', $value);
                     // });
@@ -133,14 +133,14 @@ class PegawaiController extends Controller
                             'date_birth'                    =>      'required|date',
                             // date_format:d/m/y
                             //
-                            'nip'                           =>      'required|regex:/[0-9]+$/',
+                            'nip'                           =>      'required|regex:/^(?![._-])(?!.*[._-]$)(?!.*\d_-)(?!.*_-d)[0-9]+$/',
                             'pendidikan_terakhir'           =>      'required',
                             // |regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
                             'pangkat'                       =>      'required|regex:/[a-zA-Z0-9]+$/',
                             'golongan_ruang'                =>      'required|regex:/[a-zA-Z0-9-]+$/',
                             'sk_cpns'                       =>      'required|regex:/[a-zA-Z0-9.\s-]+$/',
-                            'jabatan_terakhir'              =>      'required|regex:/[a-zA-Z.\s]+$/',
-                            'unit_kerja'                    =>      'required|regex:/[a-zA-Z.\s]+$/',
+                            'jabatan_terakhir'              =>      'required|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
+                            'unit_kerja'                    =>      'required|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
                         ],
                         [
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
@@ -164,7 +164,7 @@ class PegawaiController extends Controller
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
                             //
-                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta.com/.co.id/dll)',
                             //
                             // 'place_birth'                   =>      'Tempat Lahir Wajib Diisi!',
                             'date_birth.date'               =>      'Tanggal Lahir Wajib Diisi!',
@@ -174,15 +174,15 @@ class PegawaiController extends Controller
                             //
                             'nip.regex'                     =>      'NIP Hanya Menggunakan Angka!',
                             // 'pendidikan_terakhir.regex'     =>      'Pendidikan Terakhir Wajib Diisi!',
-                            'pangkat.regex'                 =>      'Pangkat Wajib Diisi!',
-                            'golongan_ruang.regex'          =>      'Golongan Ruang Wajib Diisi!',
-                            'sk_cpns.regex'                 =>      'SK CPNS Wajib Diisi!',
-                            'jabatan_terakhir.regex'        =>      'Jabatan Wajib Diisi!',
-                            'unit_kerja.regex'              =>      'Unit Kerja Wajib Diisi!',
+                            'pangkat.regex'                 =>      'Pangkat Tidak Sesuai!',
+                            'golongan_ruang.regex'          =>      'Golongan Ruang Tidak Sesuai!',
+                            'sk_cpns.regex'                 =>      'SK CPNS Tidak Sesuai!',
+                            'jabatan_terakhir.regex'        =>      'Jabatan Tidak Sesuai!',
+                            'unit_kerja.regex'              =>      'Unit Kerja Tidak Sesuai!',
                         ]
                     );
                 } else {
-                    // Validasi Login
+                    // Validasi Update
                     $validate = Validator::make(
                         $request->all(),
                         [
@@ -193,19 +193,30 @@ class PegawaiController extends Controller
                             'place_birth'                   =>      'required',
                             'date_birth'                    =>      'required|date',
                             //
-                            'nip'                           =>      'required|regex:/[0-9]+$/',
+                            'nip'                           =>      'required|regex:/^(?![._-])(?!.*[._-]$)(?!.*\d_-)(?!.*_-d)[0-9]+$/',
                             'pendidikan_terakhir'           =>      'required',
                             // |regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
                             'pangkat'                       =>      'required|regex:/[a-zA-Z0-9]+$/',
                             'golongan_ruang'                =>      'required|regex:/[a-zA-Z0-9-]+$/',
                             'sk_cpns'                       =>      'required|regex:/[a-zA-Z0-9.\s-]+$/',
-                            'jabatan_terakhir'              =>      'required|regex:/[a-zA-Z.\s]+$/',
-                            'unit_kerja'                    =>      'required|regex:/[a-zA-Z.\s]+$/',
+                            'jabatan_terakhir'              =>      'required|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d))[a-zA-Z.\s]+$/',
+                            'unit_kerja'                    =>      'required|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
                         ],
                         [
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
                             'username.required'             =>      'Username Wajib Diisi!',
                             'email.required'                =>      'Email Wajib Diisi!',
+                            //
+                            'place_birth.required'          =>      'Tempat Lahir Wajib Diisi!',
+                            'date_birth.required'           =>      'Tanggal Lahir Wajib Diisi!',
+                            //
+                            'nip.required'                  =>      'NIP Wajib Diisi!',
+                            'pendidikan_terakhir.required'  =>      'Pendidikan Terakhir Wajib Diisi!',
+                            'pangkat.required'              =>      'Pangkat Wajib Diisi!',
+                            'golongan_ruang.required'       =>      'Golongan Ruang Wajib Diisi!',
+                            'sk_cpns.required'              =>      'SK CPNS Wajib Diisi!',
+                            'jabatan_terakhir.required'     =>      'Jabatan Wajib Diisi!',
+                            'unit_kerja.required'           =>      'Unit Kerja Wajib Diisi!',
                             //
                             'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
                             'username.min'                  =>      'Username Minimal 3 Karakter!',
@@ -213,7 +224,7 @@ class PegawaiController extends Controller
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
                             //
-                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
                             //
                             'username.unique'               =>      'Username Sudah Ada',
                             'email.unique'                  =>      'Alamat Email Sudah Ada',
@@ -234,7 +245,7 @@ class PegawaiController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
                 $pegawai->full_name                 = $request['full_name'];
@@ -255,7 +266,7 @@ class PegawaiController extends Controller
                 $pegawai->save();
 
                 alert()->success('Berhasil Update Profile')->autoclose(25000);
-                return redirect()->back()->with('message-profile-success', 'Berhasil Update Profile');
+                return redirect()->back()->with('message-update-profile-success', 'Berhasil Update Profile');
             } else {
                 alert()->error('Gagal Update Profile!')->autoclose(25000);
             }
@@ -447,7 +458,7 @@ class PegawaiController extends Controller
 
         if ($validate->fails()) {
             alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
+            return redirect()->back()->with('message-update-password-error', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
         }
 
         $currentPassword        =       Auth::guard('employees')->user()->password;
@@ -458,7 +469,7 @@ class PegawaiController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
+            return redirect()->back()->with('message-update-password-success', 'Berhasil Update Password');
         }
     }
 

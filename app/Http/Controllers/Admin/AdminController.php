@@ -135,7 +135,10 @@ class AdminController extends Controller
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
                             //
-                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
+                            //
+                            'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                             //
                         ]
                     );
@@ -159,7 +162,7 @@ class AdminController extends Controller
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
                             //
-                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
                             //
                             'username.unique'               =>      'Username Sudah Ada',
                             'email.unique'                  =>      'Alamat Email Sudah Ada',
@@ -173,7 +176,7 @@ class AdminController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
                 $admin->full_name   = $request['full_name'];
@@ -184,7 +187,7 @@ class AdminController extends Controller
 
                 alert()->success('Berhasil Update Profile')->autoclose(25000);
                 // $request->session()->flash('success', 'Update Sukses');
-                return redirect()->back()->with('message-profile-success', 'Berhasil Update Profile');
+                return redirect()->back()->with('message-update-profile-success', 'Berhasil Update Profile');
             } else {
                 alert()->error('Gagal Update Profile!')->autoclose(25000);
             }

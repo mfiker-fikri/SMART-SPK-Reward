@@ -139,10 +139,15 @@ class ManageAdminController extends Controller
             })
             ->addColumn('last_seen', function ($row) {
                 $last_seen = '';
-                if ($row->last_seen != null) {
-                    $last_seen = '<span class="text-success">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . ' </span>';
+                // if ($row->last_seen != null) {
+                //     $last_seen = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . ' </span>';
+                // } else {
+                //     $last_seen = '<span class="text-success">Online</span>';
+                // }
+                if (Cache::has('admin-is-online-' . $row->id)) {
+                    $last_seen = '<span class="text-success">Online</span>';
                 } else {
-                    $last_seen = '<span class="text-secondary">No Data</span>';
+                    $last_seen = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
                 }
                 return $last_seen;
             })

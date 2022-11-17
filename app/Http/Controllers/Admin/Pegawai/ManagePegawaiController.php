@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-// 
+//
 use App\Models\Pegawai;
 
 class ManagePegawaiController extends Controller
@@ -78,21 +78,21 @@ class ManagePegawaiController extends Controller
                     $actionBtn =
                         // data-bs-toggle="modal" data-bs-target="#deleteEmployeesId
                         '
-                        <a href="' . route('admin.getManageEmployeesId.View.Admin', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black"> 
-                            <i class="fa-solid fa-eye mx-auto me-1"></i> View 
-                        </a> 
+                        <a href="' . route('admin.getManageEmployeesId.View.Admin', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
+                            <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                        </a>
                         <a href="' . route('admin.getManageEmployeesId.Update.Admin', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                         </a>
                         <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteEmployeesId" data-id="' . $row->id . '" data-username="' . $row->username . '">
-                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete 
+                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                         </a>
                         ';
                     // <button type="button" class="delete btn btn-danger mx-1 mx-1 mx-1" id="deleteEmployeesId" " > onclick="deleteEmployeesId()"
                     //     <i class="fa-solid fa-trash-can mx-auto me-1"></i>Delete
                     // </button>
                     // <a href="' . route('admin.getManageEmployeesId.Update.Admin', $row->id) . '" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteEmployeesId" >
-                    //     <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete 
+                    //     <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                     // </a>
                 }
                 return $actionBtn;
@@ -106,7 +106,16 @@ class ManagePegawaiController extends Controller
                 }
                 return $status;
             })
-            ->rawColumns(['action','status'])
+            ->addColumn('last_seen', function ($row) {
+                $last_seen = '';
+                if (Cache::has('pegawai-is-online-' . $row->id)) {
+                    $last_seen = '<span class="text-success">Online</span>';
+                } else {
+                    $last_seen = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
+                }
+                return $last_seen;
+            })
+            ->rawColumns(['action','status','last_seen'])
             ->make(true);
     }
 
@@ -172,26 +181,26 @@ class ManagePegawaiController extends Controller
                     'email.required'                    =>      'Email Wajib Diisi!',
                     'password.required'                 =>      'Password Wajib Diisi!',
                     'password_confirmation.required'    =>      'Konfirmasi Password Baru Wajib Diisi!',
-                    // 
+                    //
                     'full_name.min'                     =>      'Nama Lengkap Minimal 3 Karakter!',
                     'username.min'                      =>      'Username Minimal 3 Karakter!',
                     'password.min'                      =>      'Password Minimal 6 Karakter!',
                     'password_confirmation.min'         =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
-                    // 
+                    //
                     'full_name.max'                     =>      'Nama Lengkap Maksimal 255 Karakter!',
                     'username.max'                      =>      'Username Maksimal 255 Karakter!',
                     'password.max'                      =>      'Password Maksimal 100 Karakter!',
                     'password_confirmation.max'         =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                    // 
+                    //
                     'email.email'                       =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                    // 
+                    //
                     'username.unique'                   =>      'Username Sudah Ada',
                     'email.unique'                      =>      'Alamat Email Sudah Ada',
-                    // 
+                    //
                     'password.confirmed'                =>      'Password Tidak Sama Dengan Password Konfirmasi!',
-                    // 
+                    //
                     'password_confirmation.same'        =>      'Konfirmasi Password Harus Sama Dengan Password!',
-                    // 
+                    //
                     'full_name.regex'                   =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                     'username.regex'                    =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                     'password.regex'                    =>      'Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
@@ -222,7 +231,7 @@ class ManagePegawaiController extends Controller
                 return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Pegawai')->withErrors($validate)->withInput($request->all());
             }
 
-            // 
+            //
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -317,15 +326,15 @@ class ManagePegawaiController extends Controller
                         'full_name.required'                    =>      'Nama Lengkap Wajib Diisi!',
                         'username.required'                     =>      'Username Wajib Diisi!',
                         'email.required'                        =>      'Email Wajib Diisi!',
-                        // 
+                        //
                         'full_name.min'                         =>      'Nama Lengkap Minimal 3 Karakter!',
                         'username.min'                          =>      'Username Minimal 3 Karakter!',
-                        // 
+                        //
                         'full_name.max'                         =>      'Nama Lengkap Maksimal 255 Karakter!',
                         'username.max'                          =>      'Username Maksimal 255 Karakter!',
-                        // 
+                        //
                         'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                        // 
+                        //
                         'full_name.regex'                       =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                         'username.regex'                        =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                     ]
@@ -343,18 +352,18 @@ class ManagePegawaiController extends Controller
                         'full_name.required'                    =>      'Nama Lengkap Wajib Diisi!',
                         'username.required'                     =>      'Username Wajib Diisi!',
                         'email.required'                        =>      'Email Wajib Diisi!',
-                        // 
+                        //
                         'full_name.min'                         =>      'Nama Lengkap Minimal 3 Karakter!',
                         'username.min'                          =>      'Username Minimal 3 Karakter!',
-                        // 
+                        //
                         'full_name.max'                         =>      'Nama Lengkap Maksimal 255 Karakter!',
                         'username.max'                          =>      'Username Maksimal 255 Karakter!',
-                        // 
+                        //
                         'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                        // 
+                        //
                         'username.unique'                       =>      'Username Sudah Ada',
                         'email.unique'                          =>      'Alamat Email Sudah Ada',
-                        // 
+                        //
                         'full_name.regex'                       =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                         'username.regex'                        =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                     ]
@@ -374,7 +383,7 @@ class ManagePegawaiController extends Controller
 
             alert()->success('Berhasil Update Data Pegawai!')->autoclose(25000);
             return redirect()->back()->with('message-update-success', 'Berhasil Update Data Pegawai!');
-            // 
+            //
         } else {
             alert()->error('Gagal Update Data Pegawai!', 'Validasi Gagal')->autoclose(25000);
         }
@@ -402,17 +411,17 @@ class ManagePegawaiController extends Controller
                 [
                     'password.required'                     => 'Password Wajib Diisi!',
                     'password_confirmation.required'        => 'Konfirmasi Password Baru Wajib Diisi!',
-                    // 
+                    //
                     'password.min'                          => 'Password Minimal 6 Karakter!',
                     'password_confirmation.min'             => 'Konfirmasi Password Baru Minimal 6 Karakter!',
-                    // 
+                    //
                     'password.max'                          => 'Password Maksimal 100 Karakter!',
                     'password_confirmation.max'             => 'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                    // 
+                    //
                     'password.confirmed'                    => 'Password Tidak Sama Dengan Password Konfirmasi!',
-                    // 
+                    //
                     'password_confirmation.same'            => 'Konfirmasi Password Harus Sama Dengan Password!',
-                    // 
+                    //
                     'password.regex'                        => 'Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                     'password_confirmation.regex'           => 'Konfirmasi Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 ]
@@ -422,12 +431,12 @@ class ManagePegawaiController extends Controller
                 alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
                 return redirect()->back()->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
             }
-            // 
+            //
             // DB::table('employees')->where('id', '=', $employee)
             $employee->update(['password' => Hash::make($request['password'])]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
             return redirect()->back()->with('message-update-success', 'Berhasil Update Password!');
-            // 
+            //
         }
     }
 

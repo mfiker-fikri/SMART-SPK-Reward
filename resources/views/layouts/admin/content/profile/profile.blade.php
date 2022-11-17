@@ -333,7 +333,7 @@
                                             </span>
                                             <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('full_name') ? 'is-invalid' : '' }}" id="full_name"
                                                 name="full_name" placeholder="*Nama Lengkap"
-                                                autofocus autocomplete required value="{{ Auth::guard('admins')->user()->full_name }}" />
+                                                autofocus autocomplete required value="{{ old('full_name', Auth::guard('admins')->user()->full_name) }}" />
                                         </div>
 
                                         <div class="d-flex flex-column">
@@ -364,7 +364,7 @@
                                             </span>
                                             <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('username') ? 'is-invalid' : '' }}" id="username"
                                                 name="username" placeholder="*Username"
-                                                autofocus autocomplete required value="{{ Auth::guard('admins')->user()->username }}"/>
+                                                autofocus autocomplete required value="{{ old('username', Auth::guard('admins')->user()->username) }}"/>
                                         </div>
 
                                         <div class="d-flex flex-column">
@@ -393,12 +393,12 @@
                                             </span>
                                             <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
                                                 name="email" placeholder="*Email"
-                                                autofocus autocomplete required value="{{ Auth::guard('admins')->user()->email }}" />
+                                                autofocus autocomplete required value="{{ old('email', Auth::guard('admins')->user()->email) }}" />
                                             {{-- <span id="email" class="input-group-text">@example.com</span> --}}
                                         </div>
 
                                         <div class="d-flex flex-column">
-                                            <div class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
+                                            <div class="form-text">Email Menggunakan Simbol @ serta .com/.co.id/ dll</div>
 
                                             <!-- Error Email -->
                                             @if ( $errors->has('email') )

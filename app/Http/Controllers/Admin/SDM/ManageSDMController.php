@@ -104,6 +104,15 @@ class ManageSDMController extends Controller
                         }
                         return $status;
                     })
+                    ->addColumn('last_seen', function ($row) {
+                        $last_seen = '';
+                        if (Cache::has('humanResource-is-online-' . $row->id)) {
+                            $last_seen = '<span class="text-success">Online</span>';
+                        } else {
+                            $last_seen = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
+                        }
+                        return $last_seen;
+                    })
                     ->addColumn('role_status', function ($row) {
                         $roleStatus = '';
                         if($row->role == 1) {

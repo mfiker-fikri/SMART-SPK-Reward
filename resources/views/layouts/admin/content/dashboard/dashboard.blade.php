@@ -29,16 +29,23 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            paging: false,
+            // paging: false,
             searching: false,
             ajax: "{{ url('admin/dashboard/statusOnlineOffline') }}",
             columns: [
                 // {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'full_name', name: 'full_name', orderable: false, searchable: false},
                 {data: 'username', name: 'username', orderable: false, searchable: false},
-                {data: 'status', name: 'status', orderable: false, searchable: false},
+                {data: 'status', name: 'status'},
+                {data: 'lastSeen', name: 'lastSeen'},
+                // {data: 'status', name: 'status', orderable: false, searchable: false},
             ],
-            order: [[ 'status' , 'ASC']]
+            pageLength: 5,
+            // lengthChange: false,
+            lengthMenu: [ 5 ],
+            pagingType: "full_numbers",
+            // order: [[ 2 , 'ASC']]
+            order: [[ 2 , 'DESC']]
         });
 
         new $.fn.dataTable.FixedHeader( table );
@@ -95,13 +102,14 @@
                                 <div class="card-header d-flex align-items-center justify-content-between">
                                     <h5 class="mb-0">Status Online Admin</h5>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body mx-3 my-3">
                                     <table class="my-3 my-3 table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Nama Panjang</th>
                                                 <th scope="col">Username</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Last Seen</th>
                                             </tr>
                                         </thead>
                                         <tbody>
