@@ -11,7 +11,7 @@
       <div class="mt-3">
         <img
           src="{{ asset('css/error/ext_css/img/illustrations/page-misc-error-light.png') }}"
-          alt="page-misc-error-light"
+          alt="500"
           width="500"
           class="img-fluid"
           data-app-dark-img="illustrations/page-misc-error-dark.png"

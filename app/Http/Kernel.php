@@ -38,7 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // 
+            //
             // Admin
             \App\Http\Middleware\Admin\LastAdminActivity::class,
             // Pegawai
@@ -70,12 +70,15 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        // 
+        //
         'admin.auth' => \App\Http\Middleware\Admin\RedirectIfAdmin::class,
         'admin.guest' => \App\Http\Middleware\Admin\RedirectIfNotAdmin::class,
 
+        //
+        'human_resources.auth' => \App\Http\Middleware\HumanResources\RedirectIfHumanResources::class,
+        'human_resources.guest' => \App\Http\Middleware\HumanResources\RedirectIfNotHumanResources::class,
 
-        // 
+        //
         'pegawai.auth' => \App\Http\Middleware\Pegawai\RedirectIfPegawai::class,
         'pegawai.guest' => \App\Http\Middleware\Pegawai\RedirectIfNotPegawai::class,
     ];

@@ -52,8 +52,8 @@
             <span class="menu-header-text">Form Inovation</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('form-inovation')) ? 'active' : '' }}">
-            <a href="{{ URL::to('form-inovation') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('form-inovation*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('form-inovation/list') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                 <div data-i18n="Analytics">Form Inovation</div>
             </a>

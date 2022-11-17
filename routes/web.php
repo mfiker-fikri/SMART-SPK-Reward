@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::GET('/reset-password/{token}', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.Admin');
 
     Route::POST('/reset-password', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Admin');
+
     //
     // Dashboard
     Route::GET('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('getDashboard.Admin');
+    Route::GET('dashboard/statusOnlineOffline', [App\Http\Controllers\Admin\DashboardController::class, 'dashboardStatusOnlineOffline'])->name('getDashboard.StatusOnlineOffline.Admin');
 
     // Profile
     Route::GET('profile', [App\Http\Controllers\Admin\AdminController::class, 'getProfile'])->name('getProfile.Admin');
@@ -53,10 +56,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::GET('manage/admins/edit/{id}', [App\Http\Controllers\Admin\Admin\ManageAdminController::class, 'getAdminsIdUpdate'])->name('getManageAdminsId.Update.Admin');
     Route::POST('manage/admins/edit/{id}/post', [App\Http\Controllers\Admin\Admin\ManageAdminController::class, 'postAdminsIdUpdate'])->name('postManageAdminsId.Update.Admin');
     Route::POST('manage/admins/edit/{id}/post/change-password', [App\Http\Controllers\Admin\Admin\ManageAdminController::class, 'postAdminsIdUpdateChangePassword'])->name('postManageAdminsId.UpdateChangePassword.Admin');
-    // Non Active
+    // Non Active / Active
     Route::POST('manage/admins/status_active/{id}', [App\Http\Controllers\Admin\Admin\ManageAdminController::class, 'postAdminsIdStatusActive'])->name('postManageAdminsId.StatusActive.Admin');
     // Delete
     Route::POST('manage/admins/delete/{id}', [App\Http\Controllers\Admin\Admin\ManageAdminController::class, 'postAdminsIdDelete'])->name('postManageAdminsId.Delete.Admin');
+
+
+    // Manage SDM
+    // Create
+    Route::GET('manage/sdm/create', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'getHumanResourcesCreate'])->name('getManageHumanResources.Create.Admin');
+    Route::POST('manage/sdm/create/post', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'postHumanResourcesCreate'])->name('postManageHumanResources.Create.Admin');
+    // Read
+    Route::GET('manage/sdm', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'getHumanResources'])->name('getManageHumanResources.Read.Admin');
+    Route::GET('manage/sdm/list', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'getHumanResourcesList'])->name('getManageHumanResourcesList.Read.Admin');
+    // View
+    Route::GET('manage/sdm/view/{id}', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'getHumanResourcesIdView'])->name('getManageHumanResourcesId.View.Admin');
+    // Update
+    Route::GET('manage/sdm/edit/{id}', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'getHumanResourcesIdUpdate'])->name('getManageHumanResourcesId.Update.Admin');
+    Route::POST('manage/sdm/edit/{id}/post', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'postHumanResourcesIdUpdate'])->name('postManageHumanResourcesId.Update.Admin');
+    Route::POST('manage/sdm/edit/{id}/post/change-password', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'postHumanResourcesIdUpdateChangePassword'])->name('postManageHumanResourcesId.UpdateChangePassword.Admin');
+    // Delete
+    Route::POST('manage/sdm/delete/{id}', [App\Http\Controllers\Admin\SDM\ManageSDMController::class, 'postHumanResourcesIdDelete'])->name('postManageHumanResourcesId.Delete.Admin');
 
 
     // Manage Pegawai
@@ -75,10 +95,59 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     // Delete
     Route::POST('manage/employees/delete/{id}', [App\Http\Controllers\Admin\Pegawai\ManagePegawaiController::class, 'postEmployeesIdDelete'])->name('postManageEmployeesId.Delete.Admin');
 
-    // Manage Profile
 });
 
+// Kepala Biro SDM, Bagian Penghargaan, Disiplin, dan Tata Usaha,
+// Subbagian Penghargaan, Disiplin, dan Pensiun
+Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
+    // Login, Reset Password, dan Logout
+    Route::GET('/', [App\Http\Controllers\SDM\Auth\LoginController::class, 'getLoginForm'])->name('getLogin.SDM');
+    Route::POST('/', [App\Http\Controllers\SDM\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.SDM');
+    Route::GET('/logout', [App\Http\Controllers\SDM\Auth\LoginController::class, 'getLogout'])->name('getLogout.SDM');
 
+    Route::GET('/forgot-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'getForgetPasswordForm'])->name('getForgetPassword.Admin');
+
+    Route::POST('/forgot-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'postForgetPasswordForm'])->name('postForgetPassword.Admin');
+
+    Route::GET('/reset-password/{token}', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.Admin');
+
+    Route::POST('/reset-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Admin');
+
+    // Kepala Biro SDM
+    Route::middleware(['human_resources.auth:1'])->group(function () {
+        // Dashboard
+        Route::GET('/kepala-biro-SDM/dashboard', [App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaBiroSDM'])->name('getDashboard.KepalaBiroSDM.SDM');
+        // Profile
+        Route::GET('/kepala-biro-SDM/profile', [App\Http\Controllers\SDM\SDMController::class, 'getProfileKepalaBiroSDM'])->name('getProfile.KepalaBiroSDM.SDM');
+        Route::POST('/kepala-biro-SDM/profile/update', [App\Http\Controllers\SDM\SDMController::class, 'postProfileKepalaBiroSDM'])->name('postProfile.Update.KepalaBiroSDM.SDM');
+        // Profile Image Upload & delete
+        Route::POST('/kepala-biro-SDM/image/upload', [App\Http\Controllers\SDM\SDMController::class, 'postImageUploadKepalaBiroSDM'])->name('postProfile.postImageUpload.KepalaBiroSDM.SDM');
+        Route::POST('/kepala-biro-SDM/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaBiroSDM'])->name('postProfile.postImageDelete.KepalaBiroSDM.SDM');
+        // Profile Change Password
+        Route::POST('/kepala-biro-SDM/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaBiroSDM'])->name('postProfile.changePasswordUpdate.KepalaBiroSDM.SDM');
+    });
+
+    // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
+    Route::middleware(['human_resources.auth:2'])->group(function () {
+        // Dashboard
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getDashboard.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        // Profile
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile', [App\Http\Controllers\SDM\SDMController::class, 'getProfileKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getProfile.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/update', [App\Http\Controllers\SDM\SDMController::class, 'postProfileKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.Update.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        // Profile Image Upload & delete
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/image/upload', [App\Http\Controllers\SDM\SDMController::class, 'postImageUploadKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.postImageUpload.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.postImageDelete.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        // Profile Change Password
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.changePasswordUpdate.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+    });
+
+
+    // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+    Route::middleware(['human_resources.auth:3'])->group(function () {
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getDashboard.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+    });
+
+});
 
 // HRD
 Route::group(['prefix' => 'hrd', 'as' => 'hrd.'], function () {
@@ -153,6 +222,18 @@ Route::group(['prefix' => 'hrd', 'as' => 'hrd.'], function () {
 });
 
 
+// Team Assesment
+Route::group(['name' => 'tim-penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], function () {
+    // Login, Reset Password, dan Logout
+    Route::GET('/',
+    // [App\Http\Controllers\Pegawai\Auth\LoginController::class, 'getLoginForm']
+    )->name('getLogin.Pegawai');
+    Route::POST('/', [App\Http\Controllers\Pegawai\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.Pegawai');
+    Route::GET('/logout', [App\Http\Controllers\Pegawai\Auth\LoginController::class, 'getLogout'])->name('getLogout.Pegawai');
+
+});
+
+
 
 // User / Pegawai
 Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
@@ -169,9 +250,10 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
 
     Route::POST('/reset-password', [App\Http\Controllers\Pegawai\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Pegawai');
 
-    // 
+    //
     // Dashboard
     Route::GET('dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'dashboard'])->name('getDashboard.Pegawai');
+
     // Profile
     Route::GET('profile', [App\Http\Controllers\Pegawai\PegawaiController::class, 'getProfile'])->name('getProfile.Pegawai');
     Route::POST('profile/update', [App\Http\Controllers\Pegawai\PegawaiController::class, 'postProfile'])->name('postProfile.Update.Pegawai');
@@ -183,12 +265,16 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
 
     // Manage Inovation
     // Create
+    Route::GET('form-inovation/create', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormCreate'])->name('getInovationFormCreate.Create.Pegawai');
     Route::Post('form-inovation/create/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationFormCreate'])->name('postInovationFormCreate.Create.Pegawai');
     // Read
-    Route::GET('form-inovation', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationForm'])->name('getInovationForm.Read.Pegawai');
-    // View
-    // Route::GET('form-inovation/view/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovation']);
+    Route::GET('form-inovation/list', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.Pegawai');
+    Route::GET('form-inovation/list/data', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.Pegawai');
     // Update
+    Route::GET('form-inovation/update/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
+    Route::POST('form-inovation/update/{id}/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');
+    // Delete
+    Route::POST('form-inovation/delete/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdDelete'])->name('postInovationIdDelete.Delete.Pegawai');
 
 
 
@@ -210,8 +296,15 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Route::Get();
 
     // Route::POST();
-    // 
+    //
 });
+
+// Error
+// Route::GET('/error', function () {
+//     return view('errors.503');
+// });
+
+
 
 use App\Models\Admin;
 use Illuminate\Support\Facades\DB;

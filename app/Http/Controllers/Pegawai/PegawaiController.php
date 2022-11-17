@@ -119,29 +119,66 @@ class PegawaiController extends Controller
                 $validate = null;
                 if ($request['email'] === Auth::guard('employees')->user()->email || $request['username'] === Auth::guard('employees')->user()->username) {
                     // Validasi Login
-                    Validator::extend('valid_username', function ($attr, $value) {
-                        return preg_match('/^\S*$/u', $value);
-                    });
+                    // Validator::extend('valid_username', function ($attr, $value) {
+                    //     return preg_match('/^\S*$/u', $value);
+                    // });
                     $validate = Validator::make(
                         $request->all(),
                         [
                             'full_name'                     =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
                             'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/',
                             'email'                         =>      'required|string|email',
+                            //
+                            'place_birth'                   =>      'required',
+                            'date_birth'                    =>      'required|date',
+                            // date_format:d/m/y
+                            //
+                            'nip'                           =>      'required|regex:/[0-9]+$/',
+                            'pendidikan_terakhir'           =>      'required',
+                            // |regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
+                            'pangkat'                       =>      'required|regex:/[a-zA-Z0-9]+$/',
+                            'golongan_ruang'                =>      'required|regex:/[a-zA-Z0-9-]+$/',
+                            'sk_cpns'                       =>      'required|regex:/[a-zA-Z0-9.\s-]+$/',
+                            'jabatan_terakhir'              =>      'required|regex:/[a-zA-Z.\s]+$/',
+                            'unit_kerja'                    =>      'required|regex:/[a-zA-Z.\s]+$/',
                         ],
                         [
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
                             'username.required'             =>      'Username Wajib Diisi!',
                             'email.required'                =>      'Email Wajib Diisi!',
-                            // 
+                            //
+                            'place_birth.required'          =>      'Tempat Lahir Wajib Diisi!',
+                            'date_birth.required'           =>      'Tanggal Lahir Wajib Diisi!',
+                            //
+                            'nip.required'                  =>      'NIP Wajib Diisi!',
+                            'pendidikan_terakhir.required'  =>      'Pendidikan Terakhir Wajib Diisi!',
+                            'pangkat.required'              =>      'Pangkat Wajib Diisi!',
+                            'golongan_ruang.required'       =>      'Golongan Ruang Wajib Diisi!',
+                            'sk_cpns.required'              =>      'SK CPNS Wajib Diisi!',
+                            'jabatan_terakhir.required'     =>      'Jabatan Wajib Diisi!',
+                            'unit_kerja.required'           =>      'Unit Kerja Wajib Diisi!',
+                            //
                             'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
                             'username.min'                  =>      'Username Minimal 3 Karakter!',
-                            // 
+                            //
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
-                            // 
+                            //
                             'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                            // 
+                            //
+                            // 'place_birth'                   =>      'Tempat Lahir Wajib Diisi!',
+                            'date_birth.date'               =>      'Tanggal Lahir Wajib Diisi!',
+                            //
+                            'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
+                            //
+                            'nip.regex'                     =>      'NIP Hanya Menggunakan Angka!',
+                            // 'pendidikan_terakhir.regex'     =>      'Pendidikan Terakhir Wajib Diisi!',
+                            'pangkat.regex'                 =>      'Pangkat Wajib Diisi!',
+                            'golongan_ruang.regex'          =>      'Golongan Ruang Wajib Diisi!',
+                            'sk_cpns.regex'                 =>      'SK CPNS Wajib Diisi!',
+                            'jabatan_terakhir.regex'        =>      'Jabatan Wajib Diisi!',
+                            'unit_kerja.regex'              =>      'Unit Kerja Wajib Diisi!',
                         ]
                     );
                 } else {
@@ -152,26 +189,45 @@ class PegawaiController extends Controller
                             'full_name'                     =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
                             'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:employees,username',
                             'email'                         =>      'required|string|email|unique:employees,email',
+                            //
+                            'place_birth'                   =>      'required',
+                            'date_birth'                    =>      'required|date',
+                            //
+                            'nip'                           =>      'required|regex:/[0-9]+$/',
+                            'pendidikan_terakhir'           =>      'required',
+                            // |regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z.\s]+$/',
+                            'pangkat'                       =>      'required|regex:/[a-zA-Z0-9]+$/',
+                            'golongan_ruang'                =>      'required|regex:/[a-zA-Z0-9-]+$/',
+                            'sk_cpns'                       =>      'required|regex:/[a-zA-Z0-9.\s-]+$/',
+                            'jabatan_terakhir'              =>      'required|regex:/[a-zA-Z.\s]+$/',
+                            'unit_kerja'                    =>      'required|regex:/[a-zA-Z.\s]+$/',
                         ],
                         [
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
                             'username.required'             =>      'Username Wajib Diisi!',
                             'email.required'                =>      'Email Wajib Diisi!',
-                            // 
+                            //
                             'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
                             'username.min'                  =>      'Username Minimal 3 Karakter!',
-                            // 
+                            //
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
-                            // 
+                            //
                             'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                            // 
+                            //
                             'username.unique'               =>      'Username Sudah Ada',
                             'email.unique'                  =>      'Alamat Email Sudah Ada',
-                            // 
+                            //
                             'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                             'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
-                            // 
+                            //
+                            'nip.regex'                     =>      'NIP Hanya Menggunakan Angka!',
+                            // 'pendidikan_terakhir.regex'     =>      'Pendidikan Terakhir Wajib Diisi!',
+                            'pangkat.regex'                 =>      'Pangkat Tidak Sesuai!',
+                            'golongan_ruang.regex'          =>      'Golongan Ruang Tidak Sesuai!',
+                            'sk_cpns.regex'                 =>      'SK CPNS Tidak Sesuai!',
+                            'jabatan_terakhir.regex'        =>      'Jabatan Tidak Sesuai!',
+                            'unit_kerja.regex'              =>      'Unit Kerja Tidak Sesuai!',
                         ]
                     );
                 }
@@ -181,9 +237,20 @@ class PegawaiController extends Controller
                     return redirect()->back()->with('message-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
-                $pegawai->full_name   = $request['full_name'];
-                $pegawai->username    = $request['username'];
-                $pegawai->email       = $request['email'];
+                $pegawai->full_name                 = $request['full_name'];
+                $pegawai->username                  = $request['username'];
+                $pegawai->email                     = $request['email'];
+                //
+                $pegawai->place_birth               = $request['place_birth'];
+                $pegawai->date_birth                = date('Y-m-d', strtotime($request['date_birth']));
+                //
+                $pegawai->nip                       = $request['nip'];
+                $pegawai->pendidikan_terakhir       = $request['pendidikan_terakhir'];
+                $pegawai->pangkat                   = $request['pangkat'];
+                $pegawai->golongan_ruang            = $request['golongan_ruang'];
+                $pegawai->sk_cpns                   = $request['sk_cpns'];
+                $pegawai->jabatan_terakhir          = $request['jabatan_terakhir'];
+                $pegawai->unit_kerja                = $request['unit_kerja'];
 
                 $pegawai->save();
 
@@ -243,13 +310,13 @@ class PegawaiController extends Controller
                     // Photo Name
                     $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
-                    // Save Photo Name in Storage With Resize 100x100 
+                    // Save Photo Name in Storage With Resize 100x100
                     $img = Image::make($photoProfile);
                     $img->resize(100, 100, function ($constraint) {
                         $constraint->aspectRatio();
                     })->stream();
 
-                    $photoProfile->storeAs('images/employees/images/photoProfile/' . $employee, $photoName);
+                    $photoProfile->storeAs('public/employees/photos/photoProfile/' . $employee, $photoName);
 
                     // Find Auth Employee Active storage_path($folder)
                     $id                         =       Auth::guard('employees')->user()->id;
@@ -275,13 +342,13 @@ class PegawaiController extends Controller
                 // Photo Name
                 $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
-                // Save Photo Name in Storage With Resize 100x100 
+                // Save Photo Name in Storage With Resize 100x100
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
                     $constraint->aspectRatio();
                 })->stream();
 
-                $photoProfile->storeAs('images/employees/images/photoProfile/' . $employee, $photoName);
+                $photoProfile->storeAs('public/employees/photos/photoProfile/' . $employee, $photoName);
 
                 // Find Auth Employee Active storage_path($folder)
                 $id                         =       Auth::guard('employees')->user()->id;
@@ -292,12 +359,12 @@ class PegawaiController extends Controller
 
                 alert()->success('Berhasil Tambah Foto')->autoclose(25000);
                 return redirect()->back()->with('message-photo-success', 'Berhasil Tambah Foto Profile');
-                // 
+                //
             }
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
             return redirect()->back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
-            // 
+            //
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -317,14 +384,14 @@ class PegawaiController extends Controller
             $photo          =       Pegawai::find($id);
 
             if ($photo) {
-                // 
+                //
                 $employee       =       Auth::guard('employees')->user()->username;
-                $file           =       storage_path('app/public/images/employees/images/photoProfile/') . $employee . '/' . $photo->photo_profile;
-                // 
+                $file           =       storage_path('app/public/employees/photos/photoProfile/') . $employee . '/' . $photo->photo_profile;
+                //
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
-                // 
+                //
                 $photo->update(['photo_profile' => '']);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
                 return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
@@ -332,7 +399,7 @@ class PegawaiController extends Controller
 
             alert()->error('Gagal Hapus Foto Profile!', 'Validasi Gagal')->autoclose(25000);
             return redirect()->back()->with('message-photo-error', 'Gagal Hapus Foto Profile');
-            // 
+            //
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -358,22 +425,22 @@ class PegawaiController extends Controller
                 'oldPassword.required'                  =>      'Password Lama Wajib Diisi!',
                 'password.required'                     =>      'Password Baru Wajib Diisi!',
                 'password_confirmation.required'        =>      'Konfirmasi Password Baru Wajib Diisi!',
-                // 
+                //
                 'oldPassword.min'                       =>      'Password Lama Minimal 6 Karakter!',
                 'password.min'                          =>      'Password Baru Minimal 6 Karakter!',
                 'password_confirmation.min'             =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
-                // 
+                //
                 'oldPassword.max'                       =>      'Password Lama Maksimal 100 Karakter!',
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                // 
+                //
                 'password.confirmed'                    =>      'Password Konfirmasi Tidak Sama Dengan Password Baru!',
-                // 
+                //
                 'password_confirmation.same'            =>      'Konfirmasi Password Harus Sama Dengan Password!',
-                // 
+                //
                 'oldPassword.regex'                     =>      'Format Password Lama Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
-                // 
+                //
                 'password.different'                    =>      'Password Baru Harus Berbeda Dari Password Lama!',
             ]
         );

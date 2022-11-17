@@ -19,20 +19,20 @@ class CreateEmployeesTable extends Migration
             $table->string('email', 100)->unique()->index();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('username', 100)->unique()->index();
-            $table->string('password');
-            // 
+            $table->string('password', 255);
+            //
             $table->string('photo_profile')->nullable();
             $table->string('place_birth', 255)->nullable();
             $table->date('date_birth')->nullable();
-            // 
+            //
             $table->string('nip', 255)->nullable();
-            $table->string('pendidikan', 255)->nullable();
+            $table->string('pendidikan_terakhir', 255)->nullable();
             $table->string('pangkat', 255)->nullable();
-            $table->string('gol', 255)->nullable();
+            $table->string('golongan_ruang', 255)->nullable();
             $table->string('sk_cpns', 255)->nullable();
-            $table->string('jabatan', 255)->nullable();
+            $table->string('jabatan_terakhir', 255)->nullable();
             $table->string('unit_kerja', 255)->nullable();
-            // 
+            //
             $table->timestamp('last_seen')->nullable();
             $table->rememberToken();
             $table->integer('status_active')->default(1);

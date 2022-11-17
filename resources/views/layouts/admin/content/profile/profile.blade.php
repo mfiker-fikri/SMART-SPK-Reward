@@ -43,7 +43,7 @@
 
         Webcam.attach( '#my_camera' );
 
-        
+
 
         function take_snapshot() {
 
@@ -59,9 +59,9 @@
     </script> --}}
     <!--/ Greeting Morning, Afternoon, etc -->
 
-    <!-- Image Preview -->
+    <!-- Photo Preview -->
     <script type='text/javascript'>
-    function preview_image(event) 
+    function preview_image(event)
     {
         var reader = new FileReader();
         reader.onload = function()
@@ -72,23 +72,79 @@
         reader.readAsDataURL(event.target.files[0]);
     }
     </script>
+    <!--/ Photo Preview -->
 
-    <!-- -->
-    <script>
+    <!-- Reset Photo Preview -->
+    <script type="text/javascript">
         document.getElementById("resetImage").onclick = function() {
-            deletePreview()
+            reset_previewImage()
         };
 
-        function deletePreview()
+        function reset_previewImage()
         {
-            var img = $('#output_image');
-            console.log(img.currentSrc);
-            // img.getAttribute('src') == "";
-            // return img.src(null);
-            // return img.removeAttr("href");
-            // return false;
+            var old = document.getElementById("oldImage").getAttribute("value");
+            var preview = document.getElementById('output_image').getAttribute("src");
+            if (old != preview) {
+                document.getElementById('output_image').setAttribute("src", old);
+            }
         }
     </script>
+    <!--/ Reset Photo Preview -->
+
+    <!-- Delete Photo -->
+    <script type="text/javascript">
+    $(document).on('click', '#deletePhoto', function(e) {
+        Swal.fire({
+            title: 'Apakah kamu ingin menghapus foto ini?',
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    method: 'post',
+                    url: "{{ route('admin.postProfile.postImageDelete.Admin') }}",
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Delete',
+                            icon: 'success',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal ',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        });
+    });
+    </script>
+    <!--/ Delete Photo -->
 @stop
 
 
@@ -97,9 +153,9 @@
 <div class="container-xxl container-p-y">
 
     <div class="row mt-3">
-        
+
         <div class="col-xxl">
-            
+
             <div class="card mx-4">
 
                 <!-- Tabs -->
@@ -119,14 +175,14 @@
 
                 </ul>
                 <!--/ Tabs -->
-                
+
             </div>
 
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Profile Details -->
                 <div class="tab-pane fade show {{ (request()->is('admin/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                
+
                     <!-- Profile Details -->
                     <div class="card my-4">
 
@@ -140,15 +196,15 @@
                         <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
                             <div class="photo-column gap-4 mx-3">
-                                
+
                                 <!-- Photo Profile -->
                                 @if (Auth::guard('admins')->user()->photo_profile)
-                                <img src="{{ asset( 'storage/images/admin/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" 
-                                    alt="admin-photo-profile {{ Auth::guard('admins')->user()->username }}" class="rounded-circle"
+                                <img src="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
+                                    alt="admin-photo-profile-{{ Auth::guard('admins')->user()->username }}" class="rounded-circle"
                                     height="100" width="100" id="adminPhotoProfile" />
                                 @else
-                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                                        alt="admin-photo-profile {{ Auth::guard('admins')->user()->username }}" class="rounded-circle" 
+                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                        alt="admin-photo-profile-{{ Auth::guard('admins')->user()->username }}" class="rounded-circle"
                                         height="100" width="100" id="adminPhotoProfile" />
                                 @endif
                                 <!--/ Photo Profile -->
@@ -184,13 +240,19 @@
 
                                                     <div class="modal-body">
                                                         <div class="d-flex justify-content-center py-sm-3">
+                                                            @if (Auth::guard('admins')->user()->photo_profile)
+                                                            <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}">
+                                                            @else
                                                             <img class="d-block rounded" height="200" width="300" id="output_image">
+                                                            @endif
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             <input type="hidden" name="oldImage" value="{{ Auth::guard('admins')->user()->photo_profile }}" />
+                                                            <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }} " />
+
                                                             <input type="file" class="form-control {{ $errors->has('photo_profile') ? ' has-error' : '' }}" id="photo_profile"
                                                                 name="photo_profile" placeholder="*Nama Lengkap"
-                                                                required accept=".png, .jpg, .jpeg" onchange="preview_image(event)" /> 
+                                                                required accept=".png, .jpg, .jpeg" onchange="preview_image(event)" />
                                                             <label class="input-group-text" for="photo_profile">Upload Photo</label>
                                                         </div>
 
@@ -201,7 +263,7 @@
                                                             </span>
                                                         @endif
                                                         <!--/ Error Photo Profile -->
-                                                        
+
                                                         <p class="text-muted text-md-center mb-0">Allowed JPG, JPEG or PNG. Max size of 2MB (2048 Kb)</p>
 
                                                     </div>
@@ -234,20 +296,20 @@
                                     <!-- Delete Photo -->
                                     @if (Auth::guard('admins')->user()->photo_profile)
                                     <div class="mx-1 mx-1 mx-1">
-                                        <form action="{{ route('admin.postProfile.postImageDelete.Admin') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="oldImage" value="{{ Auth::guard('admins')->user()->photo_profile }}" />
-                                            <button type="submit" class="btn btn-danger" style="color: black">
+                                        {{-- <form action="{{ route('admin.postProfile.postImageDelete.Admin') }}" method="post"> --}}
+                                            {{-- @csrf --}}
+                                            {{-- <input type="hidden" name="oldImage" value="{{ Auth::guard('admins')->user()->photo_profile }}" /> --}}
+                                            <button type="submit" class="btn btn-danger" style="color: black" id="deletePhoto">
                                                 <i class="fa-solid fa-trash mx-auto me-2"></i>Delete Photo
                                             </button>
-                                        </form>
+                                        {{-- </form> --}}
                                     </div>
                                     @endif
                                     <!--/ Delete Photo -->
 
-                                </div> 
-                                
-                                
+                                </div>
+
+
                                 {{-- <div id="my_camera"></div>
 
                                 <br/>
@@ -269,8 +331,8 @@
                                             <span id="full_name" class="input-group-text">
                                                 <i class="fa-solid fa-user"></i>
                                             </span>
-                                            <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('full_name') ? 'is-invalid' : '' }}" id="full_name" 
-                                                name="full_name" placeholder="*Nama Lengkap" 
+                                            <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('full_name') ? 'is-invalid' : '' }}" id="full_name"
+                                                name="full_name" placeholder="*Nama Lengkap"
                                                 autofocus autocomplete required value="{{ Auth::guard('admins')->user()->full_name }}" />
                                         </div>
 
@@ -300,14 +362,14 @@
                                             <span id="username" class="input-group-text">
                                                 <i class="fa-solid fa-at"></i>
                                             </span>
-                                            <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('username') ? 'is-invalid' : '' }}" id="username" 
-                                                name="username" placeholder="*Username" 
+                                            <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('username') ? 'is-invalid' : '' }}" id="username"
+                                                name="username" placeholder="*Username"
                                                 autofocus autocomplete required value="{{ Auth::guard('admins')->user()->username }}"/>
                                         </div>
 
                                         <div class="d-flex flex-column">
                                             <div class="form-text">Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah</div>
-                                            
+
                                             <!-- Error Username -->
                                             @if ( $errors->has('username') )
                                                 <div class="my-3 ">
@@ -330,14 +392,14 @@
                                                 <i class="fa-solid fa-envelope"></i>
                                             </span>
                                             <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                                name="email" placeholder="*Email" 
+                                                name="email" placeholder="*Email"
                                                 autofocus autocomplete required value="{{ Auth::guard('admins')->user()->email }}" />
                                             {{-- <span id="email" class="input-group-text">@example.com</span> --}}
                                         </div>
 
                                         <div class="d-flex flex-column">
                                             <div class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
-                                            
+
                                             <!-- Error Email -->
                                             @if ( $errors->has('email') )
                                             <div class="my-3 ">
@@ -375,7 +437,7 @@
                     </div>
                     <!--/ Profile Details -->
                 </div>
-                <!--/ Tabs Profile Details -->    
+                <!--/ Tabs Profile Details -->
 
 
                 <!-- Tabs Change Password -->
@@ -403,8 +465,8 @@
                                             <span id="oldPassword" class="input-group-text">
                                                 <i class="fas fa-key"></i>
                                             </span>
-                                            <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('oldPassword') ? 'is-invalid' : '' }}" id="oldPassword" 
-                                                name="oldPassword" placeholder="*Password Sekarang" 
+                                            <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('oldPassword') ? 'is-invalid' : '' }}" id="oldPassword"
+                                                name="oldPassword" placeholder="*Password Sekarang"
                                                 autofocus autocomplete required aria-invalid="true" aria-describedby="old password" data-val="true"
                                                 value=""/>
                                         </div>
@@ -436,8 +498,8 @@
                                             <span id="password" class="input-group-text">
                                                 <i class="fas fa-key"></i>
                                             </span>
-                                            <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password" 
-                                                name="password" placeholder="*Password Baru" 
+                                            <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
+                                                name="password" placeholder="*Password Baru"
                                                 autofocus autocomplete required aria-invalid="true" aria-describedby="new password" data-val="true"
                                                 value=""/>
                                         </div>
@@ -446,7 +508,7 @@
                                             <!-- Text Small -->
                                             <small class="form-text text-muted text-break text-monospace text-sm-left">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
                                             <!--/ Text Small -->
-                                            
+
                                             <!-- Error New Password -->
                                             @if ( $errors->has('password') )
                                                 <span class="help-block">
@@ -467,8 +529,8 @@
                                             <span id="password_confirmation" class="input-group-text">
                                                 <i class="fas fa-key"></i>
                                             </span>
-                                            <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation" 
-                                                name="password_confirmation" placeholder="*Konfirmasi Password Baru" 
+                                            <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
+                                                name="password_confirmation" placeholder="*Konfirmasi Password Baru"
                                                 autofocus autocomplete required aria-invalid="true" aria-describedby="confirmasi new password" data-val="true"
                                                 value=""/>
                                         </div>
@@ -507,7 +569,7 @@
                                 <!--/ Action Button -->
 
                             </form>
-                            
+
                         </div>
                         <!--/ Form Change Password -->
 
@@ -518,13 +580,9 @@
 
 
             </div>
-            
+
         </div>
     </div>
 </div>
-
-
-
-
 
 @endsection

@@ -12,8 +12,8 @@
     <div class="mt-3">
       <img
         src="{{ asset('css/error/int_css/img/illustrations/500.jpg') }}"
-        alt="400"
-        width="400"
+        alt="500"
+        width="380"
         class="img-fluid"
         data-app-dark-img="illustrations/500.jpg"
         data-app-light-img="illustrations/500.jpg"

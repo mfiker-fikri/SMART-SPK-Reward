@@ -68,7 +68,7 @@ class ManageAdminController extends Controller
         // $except = $admins->except(Auth::guard('admins')->user()->id);
         // $except->all();
         // dd($except);
-        // $admins = 
+        // $admins =
         // if (Auth::check()) {
         //     if (Auth::guard('admins')->id == Auth::check()) {
         //         return Admin::get();
@@ -91,6 +91,8 @@ class ManageAdminController extends Controller
                 'status_id'     =>  1,
             ])
             ->get();
+            // ->get()
+            // ->except(Auth::guard('admins')->user()->id);
         // dd($data);
         // return Datatables::of($data)->make(true);
         // $users = $data->select(['id', 'full_name', 'username', 'email']);
@@ -106,21 +108,21 @@ class ManageAdminController extends Controller
                     $actionBtn = '<span class="text-success">Online</span>';
                 } else {
                     // <a href="" class="delete btn btn-danger mx-1 mx-1 mx-1" id="deleteAdminsId" data-id="' . $row->id . '" style="cursor: pointer;">
-                    //     <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete 
+                    //     <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                     // </a>
                     // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteAdminsId">
                     //     <i class="fa-solid fa-trash-can mx-auto me-1"></i>Delete
                     // </button>
                     $actionBtn =
                         '
-                    <a href="' . route('admin.getManageAdminsId.View.Admin', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black"> 
-                        <i class="fa-solid fa-eye mx-auto me-1"></i> View 
-                    </a> 
+                    <a href="' . route('admin.getManageAdminsId.View.Admin', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
+                        <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                    </a>
                     <a href="' . route('admin.getManageAdminsId.Update.Admin', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                         <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                     </a>
                     <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteAdminsId" data-id="' . $row->id . '" data-username="' . $row->username . '">
-                        <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete 
+                        <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                     </a>
                     ';
                 }
@@ -151,12 +153,12 @@ class ManageAdminController extends Controller
                 } else {
                     if ($row->status_active == 1) {
                         $status_active =
-                            '<a href="' . route('admin.postManageAdminsId.StatusActive.Admin', $row->id) . '" class="edit btn btn-success mx-1 mx-1 mx-1"> 
+                            '<a href="#" class="edit btn btn-success mx-1 mx-1 mx-1" style="color: black" id="statusActiveIdAdmin" data-id="' . $row->id . '" data-username="' . $row->username . '">
                                 <i class="fa-solid fa-user-large"></i> Active
                             </a> ';
                     } else {
                         $status_active =
-                            '<a href="' . route('admin.postManageAdminsId.StatusActive.Admin', $row->id) . '" class="edit btn btn-danger mx-1 mx-1 mx-1"> 
+                            '<a href="#" class="edit btn btn-danger mx-1 mx-1 mx-1" style="color: black" id="statusNonActiveIdAdmin" data-id="' . $row->id . '" data-username="' . $row->username . '">
                                 <i class="fa-solid fa-user-large-slash"></i> Non Active
                             </a> ';
                     }
@@ -232,27 +234,27 @@ class ManageAdminController extends Controller
                     'username.required'                 =>      'Username Wajib Diisi!',
                     'email.required'                    =>      'Email Wajib Diisi!',
                     'password.required'                 =>      'Password Wajib Diisi!',
-                    'password_confirmation.required'    =>      'Konfirmasi Password Baru Wajib Diisi!',
-                    // 
+                    'password_confirmation.required'    =>      'Konfirmasi Password Wajib Diisi!',
+                    //
                     'full_name.min'                     =>      'Nama Lengkap Minimal 3 Karakter!',
                     'username.min'                      =>      'Username Minimal 3 Karakter!',
                     'password.min'                      =>      'Password Minimal 6 Karakter!',
-                    'password_confirmation.min'         =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
-                    // 
+                    'password_confirmation.min'         =>      'Konfirmasi Password Minimal 6 Karakter!',
+                    //
                     'full_name.max'                     =>      'Nama Lengkap Maksimal 255 Karakter!',
                     'username.max'                      =>      'Username Maksimal 255 Karakter!',
                     'password.max'                      =>      'Password Maksimal 100 Karakter!',
-                    'password_confirmation.max'         =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                    // 
-                    'email.email'                       =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/ dll)',
-                    // 
+                    'password_confirmation.max'         =>      'Konfirmasi Password Maksimal 100 Karakter!',
+                    //
+                    'email.email'                       =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/ dll)',
+                    //
                     'username.unique'                   =>      'Username Sudah Ada',
                     'email.unique'                      =>      'Alamat Email Sudah Ada',
-                    // 
-                    'password.confirmed'                =>      'Password Tidak Sama Dengan Password Konfirmasi!',
-                    // 
+                    //
+                    'password.confirmed'                =>      'Password Tidak Sama Dengan Konfirmasi Password!',
+                    //
                     'password_confirmation.same'        =>      'Konfirmasi Password Harus Sama Dengan Password!',
-                    // 
+                    //
                     'full_name.regex'                   =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                     'username.regex'                    =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                     'password.regex'                    =>      'Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
@@ -261,8 +263,8 @@ class ManageAdminController extends Controller
             );
 
             if ($validate->fails()) {
-                alert()->error('Gagal Tambah Admin!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin!')->withErrors($validate)->withInput($request->all());
+                alert()->error('Gagal Tambah Admin Baru!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin Baru!, Validasi Gagal')->withErrors($validate)->withInput($request->all());
             }
 
             // Create Admin New
@@ -274,19 +276,19 @@ class ManageAdminController extends Controller
                 'password'      =>      Hash::make($request['password'])
             ]);
 
-            if ($admin->exits()) {
-                alert()->error('Gagal Tambah Data Admin!', 'Data Sudah Terdaftar')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin!');
-            }
+            // if ($admin->exits()) {
+            //     alert()->error('Gagal Tambah Data Admin!', 'Data Sudah Terdaftar')->autoclose(25000);
+            //     return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin Baru! , Data Sudah Terdaftar');
+            // }
 
             if ($admin) {
                 alert()->success('Berhasil Tambah Data Admin!')->autoclose(25000);
-                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Admin!');
+                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Admin Baru!');
             } else {
                 alert()->error('Gagal Tambah Data Admin!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Admin!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Admin Baru!')->withErrors($validate)->withInput($request->all());
             }
-            // 
+            //
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -346,15 +348,15 @@ class ManageAdminController extends Controller
                         'full_name.required'                    =>      'Nama Lengkap Wajib Diisi!',
                         'username.required'                     =>      'Username Wajib Diisi!',
                         'email.required'                        =>      'Email Wajib Diisi!',
-                        // 
+                        //
                         'full_name.min'                         =>      'Nama Lengkap Minimal 3 Karakter!',
                         'username.min'                          =>      'Username Minimal 3 Karakter!',
-                        // 
+                        //
                         'full_name.max'                         =>      'Nama Lengkap Maksimal 255 Karakter!',
                         'username.max'                          =>      'Username Maksimal 255 Karakter!',
-                        // 
+                        //
                         'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                        // 
+                        //
                         'full_name.regex'                       =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                         'username.regex'                        =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                     ]
@@ -372,24 +374,25 @@ class ManageAdminController extends Controller
                         'full_name.required'                    =>      'Nama Lengkap Wajib Diisi!',
                         'username.required'                     =>      'Username Wajib Diisi!',
                         'email.required'                        =>      'Email Wajib Diisi!',
-                        // 
+                        //
                         'full_name.min'                         =>      'Nama Lengkap Minimal 3 Karakter!',
                         'username.min'                          =>      'Username Minimal 3 Karakter!',
-                        // 
+                        //
                         'full_name.max'                         =>      'Nama Lengkap Maksimal 255 Karakter!',
                         'username.max'                          =>      'Username Maksimal 255 Karakter!',
-                        // 
+                        //
                         'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                        // 
+                        //
                         'username.unique'                       =>      'Username Sudah Ada',
                         'email.unique'                          =>      'Alamat Email Sudah Ada',
-                        // 
+                        //
                         'full_name.regex'                       =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                         'username.regex'                        =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
-                        // 
+                        //
                     ]
                 );
             }
+
             if ($validate->fails()) {
                 alert()->error('Gagal Update Data Admin!', 'Validasi Gagal')->autoclose(25000);
                 return redirect()->back()->with('message-update-error', 'Gagal Update Data Admin!')->withErrors($validate)->withInput($request->all());
@@ -403,7 +406,7 @@ class ManageAdminController extends Controller
 
             alert()->success('Berhasil Update Data Admin!')->autoclose(25000);
             return redirect()->back()->with('message-update-success', 'Berhasil Update Data Admin!');
-            // 
+            //
         } else {
             alert()->error('Gagal!')->autoclose(25000);
             return redirect()->back();
@@ -430,21 +433,21 @@ class ManageAdminController extends Controller
                     'password_confirmation'                 => 'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|same:password',
                 ],
                 [
-                    'password.required'                     => 'Password Wajib Diisi!',
+                    'password.required'                     => 'Password Baru Wajib Diisi!',
                     'password_confirmation.required'        => 'Konfirmasi Password Baru Wajib Diisi!',
-                    // 
-                    'password.min'                          => 'Password Minimal 6 Karakter!',
+                    //
+                    'password.min'                          => 'Password Baru Minimal 6 Karakter!',
                     'password_confirmation.min'             => 'Konfirmasi Password Baru Minimal 6 Karakter!',
-                    // 
-                    'password.max'                          => 'Password Maksimal 100 Karakter!',
+                    //
+                    'password.max'                          => 'Password Baru Maksimal 100 Karakter!',
                     'password_confirmation.max'             => 'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                    // 
-                    'password.confirmed'                    => 'Password Tidak Sama Dengan Password Konfirmasi!',
-                    // 
-                    'password_confirmation.same'            => 'Konfirmasi Password Harus Sama Dengan Password!',
-                    // 
-                    'password.regex'                        => 'Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
-                    'password_confirmation.regex'           => 'Konfirmasi Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                    //
+                    'password.confirmed'                    => 'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
+                    //
+                    'password_confirmation.same'            => 'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
+                    //
+                    'password.regex'                        => 'Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                    'password_confirmation.regex'           => 'Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 ]
             );
 
@@ -452,11 +455,11 @@ class ManageAdminController extends Controller
                 alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
                 return redirect()->back()->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
             }
-            // 
+            //
             DB::table('admins')->where('id', $admin)->update(['password' => Hash::make($request['password'])]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
             return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
-            // 
+            //
         }
         alert()->error('Gagal!')->autoclose(25000);
         return redirect()->back();
@@ -470,7 +473,7 @@ class ManageAdminController extends Controller
      */
     public function postAdminsIdStatusActive(Request $request, $id)
     {
-        // 
+        //
         // Find Id Admin
         $admin = Admin::find($id);
 

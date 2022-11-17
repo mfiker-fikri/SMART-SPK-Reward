@@ -13,6 +13,7 @@
                 <li class="breadcrumb-item fw-bold active">
                     Dashboard
                 </li>
+            <!--/ Dashboard -->
 
             <!-- Profile -->
             @elseif ( request()->is('admin/profile') )
@@ -20,6 +21,7 @@
                     <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
+            <!--/ Profile -->
 
             <!-- Manage Admins -->
             @elseif ( request()->is('admin/manage/admins/create') )
@@ -54,6 +56,42 @@
                     <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $admin->full_name }} </li>
+            <!--/ Manage Admins -->
+
+            <!-- Manage Human Resources -->
+            @elseif ( request()->is('admin/manage/sdm/create') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Tambah Data Admin Baru</li>
+
+            @elseif ( request()->is('admin/manage/sdm') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Data Divisi Sumber Daya Manusia</li>
+
+            @elseif ( request()->is('admin/manage/sdm/view*') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active"> {{ $humanResource->full_name }} </li>
+
+            @elseif ( request()->is('admin/manage/sdm/edit*') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active"> {{ $humanResource->full_name }} </li>
+            <!--/ Manage Human Resources -->
 
             <!-- Manage Employees -->
             @elseif ( request()->is('admin/manage/employees/create') )
@@ -102,12 +140,12 @@
                     <div class="avatar {{ Auth::guard('admins')->user()->status_id == 1 && Auth::guard('admins')->user()->status_active == 1 && (Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if (Auth::guard('admins')->user()->photo_profile)
-                            <img src="{{ asset( 'storage/images/admin/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" 
-                            alt="admin-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle" 
+                            <img src="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
+                            alt="admin-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle"
                             style="width: 40px; height: 45px" id="adminAvatar" />
                         @else
-                            <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                                alt="admin-avatar" class="rounded-circle" 
+                            <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                alt="admin-avatar" class="rounded-circle"
                                 style="width: 40px; height: 45px" id="adminAvatar" />
                         @endif
                     </div>
@@ -129,12 +167,12 @@
                                 <div class="avatar {{ Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('admins')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/images/admin/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" 
-                                        alt="admin-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle" 
+                                        <img src="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
+                                        alt="admin-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="adminAvatar" />
                                     @else
-                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                                        alt="admin-avatar" class="rounded-circle" 
+                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                        alt="admin-avatar" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="adminAvatar" />
                                     @endif
                                 </div>
@@ -189,7 +227,7 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
-                    
+
 
                     <!-- My Profile -->
                     <li>

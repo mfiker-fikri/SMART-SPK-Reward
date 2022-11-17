@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Admin;
+use App\Models\HumanResource;
 use App\Models\Pegawai;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
+use Yajra\DataTables\Facades\DataTables;
+// use Yajra\DataTables\DataTables;
 
 class DashboardController extends Controller
 {
@@ -43,11 +48,57 @@ class DashboardController extends Controller
     {
         try {
             $sumAdmin       =   Admin::count();
+            $sumSDM         =   HumanResource::count();
+            $sumSDM1        =   HumanResource::where('role', '=', 1)->count();
+            $sumSDM2        =   HumanResource::where('role', '=', 2)->count();
+            $sumSDM3        =   HumanResource::where('role', '=', 3)->count();
             $sumEmployee    =   Pegawai::count();
+
+
             // dd($admin);
-            return view('layouts.admin.content.dashboard.dashboard', compact('sumAdmin', 'sumEmployee'));
+            return view('layouts.admin.content.dashboard.dashboard', compact('sumAdmin', 'sumSDM', 'sumSDM1', 'sumSDM2', 'sumSDM3' ,'sumEmployee'));
         } catch (\Exception $exception) {
             return $exception;
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboardStatusOnlineOffline(Request $request)
+    {
+
+        try {
+            $date = Carbon::now()->format('Y-m-d');
+            // $date = Carbon::now();
+            $data = Admin::where([
+                    // 'last_seen'     =>  date("Y-m-d"),
+                    'last_status'     =>  $date,
+                    // 'last_seen'     =>  date_format(from_unixtime($date),),
+                    'status_id'     =>  1,
+                ])
+                ->orderBy('last_seen', 'ASC')
+                ->get();
+                // ->first();
+                // ->paginate(3);
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    // $status = '';
+                    if (Cache::has('admin-is-online-' . $row->id)) {
+                        $status = '<span class="text-success">Online</span>';
+                        return $status;
+                    }
+                })
+                ->rawColumns(['status'])
+                // ->orderColumn('status')
+                // ->orderColumn('status', '-status $1')
+                ->make(true);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 }

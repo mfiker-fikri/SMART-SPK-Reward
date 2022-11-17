@@ -26,7 +26,7 @@ class LastAdminActivity
         if (Auth::guard('admins')->check()) {
             $expiresAt = Carbon::now()->addMinutes(1);
             Cache::put('admin-is-online-' . Auth::guard('admins')->user()->id, true, $expiresAt);
-            // 
+            //
             $admin = Admin::find(auth()->guard('admins')->id());
             // dd($admin);
             // DB::table('admins')->
@@ -34,7 +34,11 @@ class LastAdminActivity
             // dd($update);
             // $arrayOfId[] = (string)$parsedArray['id'];
             // Admin::where('id', (string)Auth::guard('admins')->id())->update(array('last_seen' => Carbon::now()));
-            Admin::where('id', (string)Auth::guard('admins')->user()->id)->update(['last_seen' => (new \DateTime())->format("Y-m-d H:i:s")]);
+            Admin::where('id', (string)Auth::guard('admins')->user()->id)->update([
+                'last_seen' => (new \DateTime())->format("Y-m-d H:i:s"),
+                'last_status' => carbon::now()->format('Y-m-d'),
+            ]);
+
         }
         return $next($request);
     }

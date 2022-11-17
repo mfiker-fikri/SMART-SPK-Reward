@@ -9,7 +9,7 @@
     <head>
         <!-- Meta Tag -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, 
+        <meta name="viewport" content="width=device-width,
             initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -134,16 +134,16 @@
 
         <!-- Sweet Alert -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
+
         {{-- <link link rel="stylesheet" href="{{ asset('css/admin/int_css/login.css') }}" /> --}}
-        
+
         <!-- Google Recaptcha-->
         {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
         <script type="text/javascript">
             function callbackThen(response){
                 // read HTTP status
                 console.log(response.status);
-                
+
                 // read Promise object
                 response.json().then(function(data){
                     console.log(data);
@@ -159,8 +159,8 @@
             }
             function callbackCatch(error){
                 console.error('Error:', error)
-            }   
-        </script>  
+            }
+        </script>
         {!! htmlScriptTagJsApi([
             // 'action' => 'homepage',
             // 'callback_then' => 'callbackThen',
@@ -186,6 +186,11 @@
                 transform: translate(-50%,-50%);
                 font: 14px arial;
             }
+
+            input::-ms-reveal,
+            input::-ms-clear {
+                display: none;
+            }
         </style>
 
         <!--/ Add Ext Plugin -->
@@ -198,7 +203,7 @@
                 <p>Harap Tunggu</p>
             </div>
         </div>
-        
+
         <!-- Content -->
         @yield('content')
         @include('sweetalert::alert')
@@ -234,7 +239,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> --}}
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
-        
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
         <!--
@@ -248,7 +253,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/fontawesome.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/regular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/solid.min.js"></script> --}}
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/brands.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/fontawesome.min.js"></script>

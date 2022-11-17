@@ -7,7 +7,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <div class="row mt-3">
-        
+
         <div class="col-xxl">
 
             <!-- Card View Employee -->
@@ -127,7 +127,7 @@
                         <!-- Action Button -->
                         <div class="d-flex justify-content-end">
                             <div class="justify-content-between">
-                                <a class="btn btn-secondary btn-lg" href="{{ URL::to('admin/manage/employees') }}" role="button">
+                                <a class="btn btn-secondary btn-lg" href="{{ URL::to('admin/manage/employees') }}" role="button" style="color: black">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>

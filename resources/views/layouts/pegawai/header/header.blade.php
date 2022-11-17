@@ -8,15 +8,34 @@
     <div class="container px-sm-1 d-flex align-items-center" id="navbar-collapse">
         <!-- Breadcrumb "-->
         <ol class="breadcrumb breadcrumb-style1 my-lg-3 my-3">
+            <!-- Dashboard -->
             @if ( request()->is('dashboard') )
                 <li class="breadcrumb-item fw-bold active">
                     Dashboard
                 </li>
+            <!-- Profile -->
             @elseif ( request()->is('profile') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
+            <!-- Manage Inovation -->
+            @elseif ( request()->is('form-inovation/create') )
+                <!-- Create -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">Form Inovation List</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Create Form Inovation</li>
+            @elseif ( request()->is('form-inovation/list') )
+                <!-- Read -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Form Inovation List</li>
+                <!-- -->
             @endif
         </ol>
         <!--/ Breadcrumb -->
@@ -29,7 +48,7 @@
                     <div class="avatar {{ Auth::guard('employees')->user()->status_id == 1 && Auth::guard('employees')->user()->status_active == 1 ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if ( Auth::guard('employees')->user()->photo_profile )
-                        <img src="{{ asset( 'storage/images/employees/images/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}" 
+                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}" 
                             alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle" 
                             style="width: 40px; height: 45px" id="employeeAvatar" />
                         @else
@@ -56,7 +75,7 @@
                                 <div class="avatar avatar-online">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('employees')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/images/employees/images/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}" 
+                                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}" 
                                         alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle" 
                                         style="width: 40px; height: 45px" id="employeeAvatar" />
                                     @else

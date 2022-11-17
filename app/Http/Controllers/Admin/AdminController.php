@@ -21,7 +21,7 @@ use App\Models\Admin;
 
 class AdminController extends Controller
 {
-    // Admin Auth 
+    // Admin Auth
     public function __construct()
     {
         $this->middleware('admin.auth');
@@ -128,19 +128,19 @@ class AdminController extends Controller
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
                             'username.required'             =>      'Username Wajib Diisi!',
                             'email.required'                =>      'Email Wajib Diisi!',
-                            // 
+                            //
                             'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
                             'username.min'                  =>      'Username Minimal 3 Karakter!',
-                            // 
+                            //
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
-                            // 
+                            //
                             'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                            // 
+                            //
                         ]
                     );
                 } else {
-                    // Validasi Login
+                    // Validasi Update
                     $validate = Validator::make(
                         $request->all(),
                         [
@@ -152,21 +152,21 @@ class AdminController extends Controller
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
                             'username.required'             =>      'Username Wajib Diisi!',
                             'email.required'                =>      'Email Wajib Diisi!',
-                            // 
+                            //
                             'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
                             'username.min'                  =>      'Username Minimal 3 Karakter!',
-                            // 
+                            //
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
-                            // 
+                            //
                             'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                            // 
+                            //
                             'username.unique'               =>      'Username Sudah Ada',
                             'email.unique'                  =>      'Alamat Email Sudah Ada',
-                            // 
+                            //
                             'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                             'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
-                            // 
+                            //
                         ]
                     );
                 }
@@ -196,6 +196,7 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function postImageUpload(Request $request)
@@ -241,7 +242,7 @@ class AdminController extends Controller
                     // getClientOriginalName();
                     // $request->photo_profile->store('public/admin/images/', $request->file->getClientOriginalName());
 
-                    // Save Photo Name in Storage With Resize 100x100 
+                    // Save Photo Name in Storage With Resize 100x100
                     // $folder = $request->file('photo_profile')->store('images/admin/images/photoProfile/' . $admin, $photoName);
 
                     $img = Image::make($photoProfile);
@@ -249,7 +250,7 @@ class AdminController extends Controller
                         $constraint->aspectRatio();
                     })->stream();
 
-                    $photoProfile->storeAs('images/admin/images/photoProfile/' . $admin, $photoName);
+                    $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
 
                     // $request->photo_profile->store('public/admin/images/', $photoName);
                     // Storage::putFileAs('admin/images/' . $photoName, 'public');
@@ -282,7 +283,7 @@ class AdminController extends Controller
                 // getClientOriginalName();
                 // $request->photo_profile->store('public/admin/images/', $request->file->getClientOriginalName());
 
-                // Save Photo Name in Storage With Resize 100x100 
+                // Save Photo Name in Storage With Resize 100x100
                 // $folder = $request->file('photo_profile')->store('images/admin/images/photoProfile/' . $admin, $photoName);
 
                 $img = Image::make($photoProfile);
@@ -290,7 +291,7 @@ class AdminController extends Controller
                     $constraint->aspectRatio();
                 })->stream();
 
-                $photoProfile->storeAs('images/admin/images/photoProfile/' . $admin, $photoName);
+                $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
 
                 // $request->photo_profile->store('public/admin/images/', $photoName);
                 // Storage::putFileAs('admin/images/' . $photoName, 'public');
@@ -308,7 +309,7 @@ class AdminController extends Controller
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
             return redirect()->back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
-            // 
+            //
 
             // $photoProfile = $request['photo_profile'];
 
@@ -328,7 +329,7 @@ class AdminController extends Controller
             // $admin->save();
 
 
-            // } 
+            // }
             // else {
             //     alert()->error('Gagal Update Photo Profile!', 'Validasi Gagal')->autoclose(50000);
             // }
@@ -365,7 +366,7 @@ class AdminController extends Controller
 
             if ($photo) {
                 $admin = Auth::guard('admins')->user()->username;
-                $file = storage_path('app/public/images/admin/images/photoProfile/') . $admin . '/' . $photo->photo_profile;
+                $file = storage_path('app/public/admin/photos/photoProfile/') . $admin . '/' . $photo->photo_profile;
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
@@ -408,7 +409,7 @@ class AdminController extends Controller
 
             alert()->error('Gagal Hapus Foto Profile!', 'Validasi Gagal')->autoclose(25000);
             return redirect()->back()->with('message-photo-error', 'Gagal Hapus Foto Profile');
-            // 
+            //
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -422,6 +423,7 @@ class AdminController extends Controller
      */
     public function changePasswordUpdate(Request $request)
     {
+        // Validasi Change Password
         $validate = Validator::make(
             $request->all(),
             [
@@ -430,26 +432,27 @@ class AdminController extends Controller
                 'password_confirmation'                 =>      'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|same:password',
             ],
             [
-                'oldPassword.required'                  =>      'Password Lama Wajib Diisi!',
+                'oldPassword.required'                  =>      'Password Sekarang Wajib Diisi!',
                 'password.required'                     =>      'Password Baru Wajib Diisi!',
                 'password_confirmation.required'        =>      'Konfirmasi Password Baru Wajib Diisi!',
-                // 
-                'oldPassword.min'                       =>      'Password Lama Minimal 6 Karakter!',
+                //
+                'oldPassword.min'                       =>      'Password Sekarang Minimal 6 Karakter!',
                 'password.min'                          =>      'Password Baru Minimal 6 Karakter!',
                 'password_confirmation.min'             =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
-                // 
-                'oldPassword.max'                       =>      'Password Lama Maksimal 100 Karakter!',
+                //
+                'oldPassword.max'                       =>      'Password Sekarang Maksimal 100 Karakter!',
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                // 
-                'password.confirmed'                    =>      'Password Konfirmasi Tidak Sama Dengan Password Baru!',
-                // 
-                'password_confirmation.same'            =>      'Konfirmasi Password Harus Sama Dengan Password!',
-                // 
+                //
+                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Password Konfirmasi!',
+                //
+                'password_confirmation.same'            =>      'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
+                //
                 'oldPassword.regex'                     =>      'Format Password Lama Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
-                // 
-                'password.different'                    =>      'Password Baru Harus Berbeda Dari Password Lama!',
+                'password_confirmation.regex'           =>      'Format Konfirmasi Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                //
+                'password.different'                    =>      'Password Baru Harus Berbeda Dari Password Sekarang!',
             ]
         );
 

@@ -20,7 +20,7 @@
 
     <!-- Menu -->
     <ul class="menu-inner py-1 mt-2 mt-2 mt-2 mt-2">
-        
+
         <!-- Dashboard -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Dashboard</span>
@@ -59,7 +59,20 @@
             </a>
         </li>
         <!--/ Manage Account Admin -->
-        
+
+        <!-- Manage Account Human Resources -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Kelola Akun Divisi Sumber Daya Manusia</span>
+        </li>
+
+        <li class="menu-item {{ (request()->is('admin/manage/sdm*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/admin/manage/sdm') }}" class="menu-link" style="text-decoration: none !important;">
+                <i class="menu-icon tf-icons fa-solid fa-users"></i>
+                <div data-i18n="Analytics">Akun Data Divisi Sumber Daya Manusia</div>
+            </a>
+        </li>
+        <!--/ Manage Account Human Resources -->
+
         <!-- Manage Account Score Finalis -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Kelola Akun Tim Penilai</span>
@@ -86,6 +99,6 @@
             </a>
         </li>
 
-        
+
     </ul>
 </aside>

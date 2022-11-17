@@ -95,7 +95,7 @@ class LoginController extends Controller
 
         // dd($validator);
         if ($validate->fails()) {
-            alert()->error('Gagal Masuk!')->autoclose(5000);
+            alert()->error('Gagal Masuk!')->autoclose(25000);
             return redirect()->back()->withErrors($validate)->withInput()->with('message-failed', 'Username/Email atau Password Salah');
         }
 
@@ -110,11 +110,11 @@ class LoginController extends Controller
         $attempt = Auth::guard('employees')->attempt([$check => $username, 'password' => $password], $remember_me);
         if ($attempt) {
             session(['berhasil_login' => true]);
-            alert()->success('Berhasil Masuk')->autoclose(5000);
+            alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/dashboard')->with('message', 'Selamat Datang');
         }
 
-        alert()->error('Gagal Masuk!')->autoclose(5000);
+        alert()->error('Gagal Masuk!')->autoclose(25000);
         return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed', 'Username/Email atau Password Salah');
 
         // $role_admin = DB::table('map_roles')
@@ -161,6 +161,6 @@ class LoginController extends Controller
         $request->session()->flush();
         Auth::logout();
         alert()->success('Kamu Telah Keluar Dari Akun Pegawai', 'Terima Kasih')->autoclose(50000);
-        return redirect('/')->withSuccess('Kamu Telah Keluar Dari Akun', 'Terima Kasih');
+        return redirect('/')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Pegawai, Terima Kasih');
     }
 }

@@ -29,7 +29,7 @@
 
                 </ul>
                 <!--/ Tabs -->
-                
+
             </div>
             <!--/ Tabs -->
 
@@ -38,7 +38,7 @@
 
                 <!-- Tabs Edit Profile Details Employee -->
                 <div class="tab-pane fade show {{ (request()->is('admin/manage/employees/edit*')) ? 'active' : '' }}" id="pills-editEmployee" role="tabpanel" aria-labelledby="pills-editEmployee-tab">
-                    
+
                     <!-- Card Edit Profile Details Employee -->
                     <div class="card my-4">
 
@@ -137,14 +137,14 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        <a href="{{ URL::to('admin/manage/employees') }}" class="btn btn-secondary btn-lg" role="button">
+                                        <a href="{{ URL::to('admin/manage/employees') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
-                                        <button type="reset" class="btn btn-warning btn-lg" style="color: white">
+                                        <button type="reset" class="btn btn-warning btn-lg" style="color: black">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Submit
+                                        <button type="submit" class="btn btn-primary btn-lg" style="color: black">
+                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
                                         </button>
                                     </div>
                                 </div>
@@ -219,7 +219,7 @@
                                                 autofocus autocomplete required value="{{ old('password_confirmation') }}"
                                                 aria-invalid="true" aria-describedby="password_confirmation" data-val="true">
                                         </div>
-                                        <div id="password_confirmationHelp" class="form-text">Password Konfirmasi Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
+                                        <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password Confirmation-->
                                         @if ( $errors->has('password_confirmation') )
                                             <span class="help-block">
@@ -240,14 +240,14 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        <a href="{{ URL::to('admin/manage/employees') }}" class="btn btn-secondary btn-lg" role="button">
+                                        <a href="{{ URL::to('admin/manage/employees') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
-                                        <button type="reset" class="btn btn-warning btn-lg" style="color: white">
+                                        <button type="reset" class="btn btn-warning btn-lg" style="color: black">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Submit
+                                        <button type="submit" class="btn btn-primary btn-lg" style="color: black">
+                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
                                         </button>
                                     </div>
                                 </div>
@@ -259,8 +259,8 @@
                     </div>
                 </div>
 
-            </div>   
-            <!--/ Tabs -->         
+            </div>
+            <!--/ Tabs -->
 
         </div>
     </div>

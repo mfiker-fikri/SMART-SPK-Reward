@@ -19,12 +19,13 @@ class CreateAdminsTable extends Migration
             $table->string('email', 100)->unique()->index();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('username', 100)->unique()->index();
-            $table->string('password');
-            // 
+            $table->string('password', 255);
+            //
             // $table->string('slug')->nullable();
             $table->string('photo_profile')->nullable();
-            // 
+            //
             $table->timestamp('last_seen')->nullable();
+            $table->date('last_status')->nullable();
             $table->rememberToken();
             $table->integer('status_active')->default(1);
             $table->integer('status_id')->default(1);

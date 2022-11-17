@@ -45,7 +45,9 @@ class Admin extends Authenticatable
         // 'email_verified_at',
         'username',
         'password',
-        // 
+        //
+        'photo_profile',
+        //
         'last_seen',
         'status_active',
         'status_id'

@@ -70,13 +70,17 @@ class LoginController extends Controller
     // Get Login
     public function getLoginForm(Request $request)
     {
-        // Get View
-        // $key    =   'admin.' . $request->ip();
-        return view('layouts.admin.content.auth.login', [
-            // 'key'       =>  $key,
-            // 'retries'   =>  RateLimiter::retriesLeft($key, 5),
-            // 'second'    =>  RateLimiter::availableIn($key),
-        ]);
+        try {
+            // Get View
+            // $key    =   'admin.' . $request->ip();
+            return view('layouts.admin.content.auth.login', [
+                // 'key'       =>  $key,
+                // 'retries'   =>  RateLimiter::retriesLeft($key, 5),
+                // 'second'    =>  RateLimiter::availableIn($key),
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     // Post Login
@@ -105,9 +109,9 @@ class LoginController extends Controller
                 'username.required'                 =>      'Username Wajib Diisi!',
                 'password.required'                 =>      'Password Wajib Diisi!',
                 // 'g-recaptcha-response.required'     =>  'Recaptcha Wajib Diisi!',
-                // 
+                //
                 'email.email'                       =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                // 
+                //
                 // 'g-recaptcha-response.recaptcha'    =>  'Recaptcha Tidak Valid!',
             ]
         );
@@ -182,6 +186,6 @@ class LoginController extends Controller
         $request->session()->flush();
         Auth::logout();
         alert()->success('Kamu Telah Keluar Dari Akun Admin', 'Terima Kasih')->autoclose(25000);
-        return redirect('admin')->with('message-succes-logout', 'Kamu Telah Keluar Dari Akun Admin');
+        return redirect('admin')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Admin, Terima Kasih');
     }
 }

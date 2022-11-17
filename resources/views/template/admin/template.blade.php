@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en" 
-    class="light-style layout-menu-fixed" 
-    dir="ltr" 
-    data-theme="theme-default" 
+<html lang="en"
+    class="light-style layout-menu-fixed"
+    dir="ltr"
+    data-theme="theme-default"
     data-assets-path="../assets/"
     data-template="vertical-menu-template-free">
     <head>
         <!-- Meta Tag -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, 
+        <meta name="viewport" content="width=device-width,
             initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -17,12 +17,12 @@
             <!-- Dashboard -->
             <meta name="title" content="{{ Auth::guard('admins')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="{{ Auth::guard('admins')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-        
+
         @elseif ( request()->is('admin/profile') )
             <!-- Profile -->
             <meta name="title" content="{{ Auth::guard('admins')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="{{ Auth::guard('admins')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-        
+
         @elseif ( request()->is('admin/manage/admins/create') )
             <!-- Manage Admin -->
             <!-- Create -->
@@ -43,7 +43,30 @@
             <!-- Update -->
             <meta name="title" content="Update Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="Update Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-        
+
+
+        @elseif ( request()->is('admin/manage/sdm/create') )
+            <!-- Manage Human Resources -->
+            <!-- Create -->
+            <meta name="title" content="Tambah Data Divisi Sumber Daya Manusia | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Tambah Data Divisi Sumber Daya Manusia | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/sdm') )
+            <!-- Manage Human Resources -->
+            <!-- Read -->
+            <meta name="title" content="List Data Divisi Sumber Daya Manusia | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="List Data Divisi Sumber Daya Manusia | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/sdm/view*') )
+            <!-- Manage Human Resources -->
+            <!-- View -->
+            <meta name="title" content="Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/sdm/edit*') )
+            <!-- Manage Human Resources -->
+            <!-- Update -->
+            <meta name="title" content="Update Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Update Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+
+
         @elseif ( request()->is('admin/manage/employees/create') )
             <!-- Manage Pegawai -->
             <!-- Create -->
@@ -71,7 +94,7 @@
         @if ( request()->is('admin/dashboard*') )
             <!-- Dashboard -->
             <title> {{ Auth::guard('admins')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
-        
+
         @elseif ( request()->is('admin/profile') )
             <!-- Profile -->
             <title> {{ Auth::guard('admins')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
@@ -95,6 +118,28 @@
             <!-- Manage Admin -->
             <!-- Update -->
             <title> Update Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+
+        @elseif ( request()->is('admin/manage/sdm/create') )
+            <!-- Manage Human Resources -->
+            <!-- Create -->
+            <title> Tambah Data Divisi Sumber Daya Manusia | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+        @elseif ( request()->is('admin/manage/sdm') )
+            <!-- Manage Human Resources -->
+            <!-- Read -->
+            <title> List Data Divisi Sumber Daya Manusia | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+        @elseif ( request()->is('admin/manage/sdm/view*') )
+            <!-- Manage Human Resources -->
+            <!-- View -->
+            <title> Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+        @elseif ( request()->is('admin/manage/sdm/edit*') )
+            <!-- Manage Human Resources -->
+            <!-- Update -->
+            <title> Update Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
 
         @elseif ( request()->is('admin/manage/employees/create') )
             <!-- Manage Pegawai -->
@@ -186,7 +231,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-font-face.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-shims.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v5-font-face.min.css" rel="stylesheet" crossorigin="anonymous">
-        
+
         <!-- Sweet Alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
@@ -238,7 +283,7 @@
         <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.dataTables.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.dataTables.min.js" crossorigin="anonymous" defer></script>
-        
+
         <!-- Ajax Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -246,9 +291,24 @@
         <!-- Password Hide -->
         <script src="{{ asset('js/admin/int_js/password/show-hide-password.js') }}" crossorigin="anonymous" defer></script>
         <script src="{{ asset('js/admin/int_js/password/show-hide-password.min.js') }}" crossorigin="anonymous" defer></script>
-        
+
+        <!-- Select2 -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" integrity="sha512-aD9ophpFQ61nFZP6hXYu4Q/b/USW7rpLCQLX6Bi0WJHXNO7Js/fUENpBQf/+P4NtpzNX0jSgR5zVvPOJp+W2Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js" integrity="sha512-4MvcHwcbqXKUHB6Lx3Zb5CEAVoE9u84qN+ZSMM6s7z8IeJriExrV3ND5zRze9mxNlABJ6k864P/Vl8m0Sd3DtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.full.min.js" integrity="sha512-PZUUFofP00wI366Au6XSNyN4Zg8M8Kma4JKIG7ywt8FEY1+Ur0H+FAlH6o0fKoCrdmM4+ZzMyW30msp8Z2zDaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> --}}
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" /> --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+        <!-- Or for RTL support -->
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" /> --}}
+        <!--/ Select2 -->
+
         {{-- <link link rel="stylesheet" href="{{ asset('css/admin/int_css/login.css') }}" /> --}}
-        
+
         <!-- -->
         @stack('css_header')
         @stack('js_header')
@@ -377,6 +437,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/solid.min.js"></script>
         <!--/ Icon Font Awesome -->
 
+        <!-- Select2 -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" integrity="sha512-aD9ophpFQ61nFZP6hXYu4Q/b/USW7rpLCQLX6Bi0WJHXNO7Js/fUENpBQf/+P4NtpzNX0jSgR5zVvPOJp+W2Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js" integrity="sha512-4MvcHwcbqXKUHB6Lx3Zb5CEAVoE9u84qN+ZSMM6s7z8IeJriExrV3ND5zRze9mxNlABJ6k864P/Vl8m0Sd3DtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.full.min.js" integrity="sha512-PZUUFofP00wI366Au6XSNyN4Zg8M8Kma4JKIG7ywt8FEY1+Ur0H+FAlH6o0fKoCrdmM4+ZzMyW30msp8Z2zDaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script> --}}
+        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+        {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+        <!--/ Select2 -->
+
         <!-- -->
         @stack('js_footer')
         @yield('js_footer')
@@ -395,9 +468,9 @@
             var day = new Date();
             // Get Hour
             var hr = day.getHours();
-            // 
+            //
             let greeting;
-            // 
+            //
             if (hr >= 5 && hr < 11) {
                 greeting = "Good Morning!";
             } else if (hr >= 11 && hr < 18) {

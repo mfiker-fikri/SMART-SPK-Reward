@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'admin',
         ],
+        // Human Resources
+        'human_resources' => [
+            'driver' => 'session',
+            'provider' => 'human_resource'
+        ],
         // Hrds
         'hrds' => [
             'driver' => 'session',
@@ -91,6 +96,12 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
+        // Human Resources
+        'human_resource' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\HumanResource::class,
+        ],
+
         // Hrds
         'hrd' => [
             'driver' => 'eloquent',
@@ -131,6 +142,13 @@ return [
             'provider'  =>  'admins',
             'table' =>  'admins_password_resets',
             'expire'    =>  15,
+            'throttle'  =>  60,
+        ],
+
+        'human_resources' => [
+            'provider' => 'human_resources',
+            'table' => 'human_resources_password_resets',
+            'expire'    =>  60,
             'throttle'  =>  60,
         ],
 
