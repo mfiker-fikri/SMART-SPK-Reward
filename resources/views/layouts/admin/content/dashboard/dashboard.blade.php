@@ -69,14 +69,14 @@
             <div class="row">
                 <div class="col">
 
-                    <div class="card mb-3 visible shadow-lg" style="max-width: 740px;min-height: 340px;">
+                    <div class="card mb-3 visible shadow-lg" style="max-width: 740px;min-height: 240px;">
                         <div class="d-flex flex-row">
                             <div class="d-flex">
                                 <!-- Photo Profile -->
                                 @if (Auth::guard('admins')->user()->photo_profile)
-                                <img src="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                                <img src="{{ asset( 'storage/admin/photos/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 300px;max-height: 300px;min-width: 230px;max-width: 230px;">
                                 @else
-                                <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                                <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 300px;max-height: 300px;min-width: 230px;max-width: 230px;">
                                 @endif
                                 <!--/ Photo Profile -->
                             </div>
@@ -134,7 +134,7 @@
 
                     <div class="card visible shadow-lg" style="min-height: 200px;max-height: 200px;">
                         <div class="card-body">
-                            <div class="d-flex flex-row justify-content-center align-items-xl-center align-self-xl-center" style="margin: 3rem 1rem;">
+                            <div class="d-flex flex-row justify-content-center align-items-xl-center align-self-xl-center" style="margin: 2.5rem 1rem;">
                                 <i class="fa-solid fa-user-tie fa-5x me-3"></i>
                                 <div class="d-flex flex-column align-self-center">
                                     <h3 class="card-title text-center"><strong> {{ $sumAdmin }} </strong></h4>
@@ -150,7 +150,7 @@
 
                     <div class="card visible shadow-lg" style="min-height: 200px;max-height: 200px;">
                         <div class="card-body">
-                            <div class="d-flex flex-row justify-content-center align-items-xl-center align-self-xl-center" style="margin: 3rem 1rem;">
+                            <div class="d-flex flex-row justify-content-center align-items-xl-center align-self-xl-center" style="margin: 2.5rem 1rem;">
                                 <i class="fa-solid fa-user-tie fa-5x me-3"></i>
                                 <div class="d-flex flex-column align-self-center">
                                     <h3 class="card-title text-center"><strong> {{ $sumEmployee }} </strong></h3>
@@ -167,11 +167,11 @@
             <div class="row">
                 <div class="col-12">
 
-                    <div class="card visible shadow-lg" style="min-height: 24rem;max-height: 24rem;">
+                    <div class="card visible shadow-lg" style="min-height: 27rem;max-height: 27rem;">
                         <div class="card-body">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="fa-solid fa-user-tie fa-5x me-3"></i>
-                                <div class="d-flex flex-column align-self-center">
+                            <div class="d-flex justify-content-center align-items-center my-3">
+                                <i class="fa-solid fa-user-tie fa-5x me-3 my-3"></i>
+                                <div class="d-flex flex-column align-self-center my-3">
                                     {{-- <h3 class="card-title text-center"> Divisi Sumber Daya Manusia </h3> --}}
                                     {{-- <h3 class="card-title text-center"><strong> {{ $sumSDM }} </strong></h3> --}}
                                     {{-- <p class="card-text text-wrap"> Divisi Sumber Daya Manusia </p> --}}

@@ -105,13 +105,13 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
     Route::POST('/', [App\Http\Controllers\SDM\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.SDM');
     Route::GET('/logout', [App\Http\Controllers\SDM\Auth\LoginController::class, 'getLogout'])->name('getLogout.SDM');
 
-    Route::GET('/forgot-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'getForgetPasswordForm'])->name('getForgetPassword.Admin');
+    Route::GET('/forgot-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'getForgetPasswordForm'])->name('getForgetPassword.SDM');
 
-    Route::POST('/forgot-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'postForgetPasswordForm'])->name('postForgetPassword.Admin');
+    Route::POST('/forgot-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'postForgetPasswordForm'])->name('postForgetPassword.SDM');
 
-    Route::GET('/reset-password/{token}', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.Admin');
+    Route::GET('/reset-password/{token}', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.SDM');
 
-    Route::POST('/reset-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Admin');
+    Route::POST('/reset-password', [App\Http\Controllers\SDM\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.SDM');
 
     // Kepala Biro SDM
     Route::middleware(['human_resources.auth:1'])->group(function () {

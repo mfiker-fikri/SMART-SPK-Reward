@@ -702,7 +702,6 @@
                 <!-- Tabs Change Password -->
                 <div class="tab-pane fade" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
 
-
                     @if(session('message-update-password-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">

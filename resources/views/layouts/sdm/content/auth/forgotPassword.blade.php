@@ -29,7 +29,7 @@
                     <!--/ Title -->
 
                     <!-- Form Forgot Password -->
-                    <form id="formAdminForgotPassword" class="mb-3 mx-3" method="POST" action="{{ route('admin.postForgetPassword.Admin') }}">
+                    <form id="formAdminForgotPassword" class="mb-3 mx-3" method="POST" action="{{ route('sdm.postForgetPassword.SDM') }}">
                         {{ csrf_field() }}
 
                         <!-- Email -->

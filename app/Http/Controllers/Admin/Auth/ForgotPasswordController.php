@@ -59,9 +59,9 @@ class ForgotPasswordController extends Controller
             ],
             [
                 'email.required'                        =>      'Email Wajib Diisi!',
-                // 
-                'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                // 
+                //
+                'email.email'                           =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
+                //
                 'email.exists'                          =>      'Email belum terdaftar',
             ]
         );
@@ -154,22 +154,22 @@ class ForgotPasswordController extends Controller
                 'email.required'                        =>      'Email Wajib Diisi!',
                 'password.required'                     =>      'Password Baru Wajib Diisi!',
                 'password_confirmation.required'        =>      'Konfirmasi Password Baru Wajib Diisi!',
-                // 
+                //
                 'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                // 
+                //
                 'email.exists'                          =>      'Email belum terdaftar',
-                // 
+                //
                 'password.min'                          =>      'Password Baru Minimal 6 Karakter!',
                 'password_confirmation.min'             =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
-                // 
+                //
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                // 
+                //
                 'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password_confirmation.regex'           =>      'Format Konfirmasi Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
-                // 
+                //
                 'password.confirmed'                    =>      'Password Konfirmasi Tidak Sama Dengan Password Baru!',
-                // 
+                //
                 'password_confirmation.same'            =>      'Konfirmasi Password Harus Sama Dengan Password!',
             ]
         );

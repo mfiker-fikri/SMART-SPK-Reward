@@ -50,7 +50,7 @@ class SDMController extends Controller
 
             if($sdm) {
                 $validate = null;
-                if ($request['email'] === Auth::guard('human_resources')->user()->email || $request['username'] === Auth::guard('human_resources')->user()->username) {
+                if ($request['email'] === Auth::guard('human_resources')->user()->email && $request['username'] === Auth::guard('human_resources')->user()->username) {
                     // Validasi Update
                     $validate = Validator::make(
                         $request->all(),
@@ -70,7 +70,10 @@ class SDMController extends Controller
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
                             //
-                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
+                            //
+                            'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
                             //
                         ]
                     );
@@ -94,7 +97,7 @@ class SDMController extends Controller
                             'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
                             'username.max'                  =>      'Username Maksimal 255 Karakter!',
                             //
-                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
                             //
                             'username.unique'               =>      'Username Sudah Ada',
                             'email.unique'                  =>      'Alamat Email Sudah Ada',
@@ -108,7 +111,7 @@ class SDMController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
                 $sdm->full_name   = $request['full_name'];
@@ -118,7 +121,7 @@ class SDMController extends Controller
                 $sdm->save();
 
                 alert()->success('Berhasil Update Profile')->autoclose(25000);
-                return redirect()->back()->with('message-profile-success', 'Berhasil Update Profile');
+                return redirect()->back()->with('message-update-profile-success', 'Berhasil Update Profile');
             } else {
                 alert()->error('Gagal Update Profile!')->autoclose(25000);
             }
@@ -152,7 +155,7 @@ class SDMController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-update-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
             }
 
             if ($request->hasFile('photo_profile')) {
@@ -198,7 +201,7 @@ class SDMController extends Controller
                     $sdm->save();
 
                     alert()->success('Berhasil Update Foto')->autoclose(25000);
-                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                    return redirect()->back()->with('message-update-photo-success', 'Berhasil Update Foto Profile');
                 }
 
                 // Get File Image
@@ -234,7 +237,7 @@ class SDMController extends Controller
                 $sdm->save();
 
                 alert()->success('Berhasil Update Foto')->autoclose(25000);
-                return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                return redirect()->back()->with('message-update-photo-success', 'Berhasil Update Foto Profile');
             }
 
         } catch (\Throwable $th) {
@@ -262,7 +265,7 @@ class SDMController extends Controller
                 }
                 DB::table('human_resources')->where('id', $id)->update(['photo_profile' => '']);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
-                return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
+                return redirect()->back()->with('message-update-photo-success', 'Berhasil Hapus Foto Profile');
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -298,11 +301,11 @@ class SDMController extends Controller
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
                 //
-                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Password Konfirmasi!',
+                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
                 //
                 'password_confirmation.same'            =>      'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
                 //
-                'oldPassword.regex'                     =>      'Format Password Lama Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                'oldPassword.regex'                     =>      'Format Password Sekarang Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password_confirmation.regex'           =>      'Format Konfirmasi Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 //
@@ -312,7 +315,7 @@ class SDMController extends Controller
 
         if ($validate->fails()) {
             alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
+            return redirect()->back()->with('message-update-password-error', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
         }
 
         $currentPassword        =       Auth::guard('human_resources')->user()->password;
@@ -323,7 +326,7 @@ class SDMController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
+            return redirect()->back()->with('message-update-password-success', 'Berhasil Update Password');
         }
     }
 
@@ -658,11 +661,11 @@ class SDMController extends Controller
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
                 //
-                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Password Konfirmasi!',
+                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
                 //
                 'password_confirmation.same'            =>      'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
                 //
-                'oldPassword.regex'                     =>      'Format Password Lama Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                'oldPassword.regex'                     =>      'Format Password Sekarang Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password_confirmation.regex'           =>      'Format Konfirmasi Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 //

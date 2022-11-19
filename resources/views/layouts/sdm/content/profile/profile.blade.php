@@ -58,9 +58,9 @@
     </script>
     <!--/ Reset Photo Preview -->
 
-    <!-- Delete Photo -->
+    <!-- Delete Photo SDM 1 -->
     <script type="text/javascript">
-    $(document).on('click', '#deletePhoto', function(e) {
+    $(document).on('click', '#deletePhoto1', function(e) {
         Swal.fire({
             title: 'Apakah kamu ingin menghapus foto ini?',
             icon: 'warning',
@@ -94,9 +94,14 @@
                             icon: 'success',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
-                        }).then((result) => {
+                        })
+                        // .then((result) => {
+                        //     $('#message-update-photo-success').show();
+                        // })
+                        .then((result) => {
                             if (result.isConfirmed) {
                                 location.reload();
+                                $('#message-update-photo-success').show();
                             }
                         })
                     },
@@ -119,7 +124,75 @@
         });
     });
     </script>
-    <!--/ Delete Photo -->
+    <!--/ Delete Photo SDM 1 -->
+
+    <!-- Delete Photo SDM 2 -->
+    <script type="text/javascript">
+        $(document).on('click', '#deletePhoto2', function(e) {
+            Swal.fire({
+                title: 'Apakah kamu ingin menghapus foto ini?',
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ route('sdm.postProfile.changePasswordUpdate.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM') }}",
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Delete',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            })
+                            // .then((result) => {
+                            //     $('#message-update-photo-success').show();
+                            // })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    $('#message-update-photo-success').show();
+                                }
+                            })
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            Swal.fire({
+                                title: 'Gagal/Error',
+                                text: thrownError,
+                                icon: 'error',
+                                confirmButtonText: 'Ok',
+                            })
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+        </script>
+        <!--/ Delete Photo SDM 2 -->
 
     <!-- Update Change Password -->
     <script type="text/javascript">
@@ -233,33 +306,59 @@
                 <div class="tab-pane fade show {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 @endif
 
-                @if(session('message-update-profile-success'))
-                <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                    </svg>
-                    <div class="d-flex flex-md-row">
-                        <p>
-                            <strong><b>   {{ session('message-update-profile-success') }} </b></strong>
-                        </p>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    </button>
-                </div>
-                @elseif(session('message-update-profile-error'))
-                <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>
-                    <div class="d-flex flex-md-row">
-                        <p>
-                            <strong><b>   {{ session('message-update-profile-error') }}  </b></strong>
-                        </p>
+                    @if(session('message-update-profile-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-profile-success') }} </b></strong>
+                            </p>
+                        </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                </div>
-                @endif
+                    @elseif(session('message-update-photo-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-update-photo-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-photo-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-update-profile-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-profile-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-update-photo-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-photo-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
 
 
                     <!-- Profile Details -->
@@ -400,7 +499,6 @@
                                     <!-- Delete Photo -->
                                     @if (Auth::guard('human_resources')->user()->photo_profile)
                                     <div class="mx-1 mx-1 mx-1">
-                                        {{-- <form action="{{ route('admin.postProfile.postImageDelete.Admin') }}" method="post"> --}}
                                             {{-- @csrf --}}
                                             @if (Auth::guard('human_resources')->user()->role == 1)
                                             <!-- Role 1 -->
@@ -447,7 +545,7 @@
                                             </span>
                                             <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('full_name') ? 'is-invalid' : '' }}" id="full_name"
                                                 name="full_name" placeholder="*Nama Lengkap"
-                                                autofocus autocomplete required value="{{ Auth::guard('human_resources')->user()->full_name }}" />
+                                                autofocus autocomplete required value="{{ old('full_name', Auth::guard('human_resources')->user()->full_name) }}" />
                                         </div>
 
                                         <div class="d-flex flex-column">
@@ -478,7 +576,7 @@
                                             </span>
                                             <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('username') ? 'is-invalid' : '' }}" id="username"
                                                 name="username" placeholder="*Username"
-                                                autofocus autocomplete required value="{{ Auth::guard('human_resources')->user()->username }}"/>
+                                                autofocus autocomplete required value="{{ old('username', Auth::guard('human_resources')->user()->username) }}"/>
                                         </div>
 
                                         <div class="d-flex flex-column">
@@ -507,12 +605,12 @@
                                             </span>
                                             <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
                                                 name="email" placeholder="*Email"
-                                                autofocus autocomplete required value="{{ Auth::guard('human_resources')->user()->email }}" />
+                                                autofocus autocomplete required value="{{ old('email', Auth::guard('human_resources')->user()->email) }}" />
                                             {{-- <span id="email" class="input-group-text">@example.com</span> --}}
                                         </div>
 
                                         <div class="d-flex flex-column">
-                                            <div class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
+                                            <div class="form-text">Email Menggunakan Simbol @ serta .com/.co.id/ dll</div>
 
                                             <!-- Error Email -->
                                             @if ( $errors->has('email') )
@@ -556,6 +654,34 @@
 
                 <!-- Tabs Change Password -->
                 <div class="tab-pane fade" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
+
+                    @if(session('message-update-password-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-password-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-update-password-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-password-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
 
                     <div class="card my-4">
 

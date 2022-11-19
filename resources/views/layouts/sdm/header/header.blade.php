@@ -55,19 +55,19 @@
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
-            <!-- Admin -->
+            <!-- Head Of Human Resources -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar {{ Auth::guard('human_resources')->user()->status_id == 1 && Auth::guard('human_resources')->user()->status_active == 1 && (Cache::has('admin-is-online-' . Auth::guard('human_resources')->user()->id)) ? 'avatar-online' : '' }}">
+                    <div class="avatar {{ Auth::guard('human_resources')->user()->status_id == 1 && Auth::guard('human_resources')->user()->status_active == 1 && (Cache::has('humanResource-is-online-' . Auth::guard('human_resources')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if (Auth::guard('human_resources')->user()->photo_profile)
                             <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
-                            alt="admin-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
-                            style="width: 40px; height: 45px" id="adminAvatar" />
+                            alt="headOfHumanResources-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
+                            style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
                         @else
                             <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
-                                alt="admin-avatar" class="rounded-circle"
-                                style="width: 40px; height: 45px" id="adminAvatar" />
+                                alt="headOfHumanResources-avatar" class="rounded-circle"
+                                style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
                         @endif
                     </div>
                 </a>
@@ -85,16 +85,16 @@
                     <li>
                         <div class="mx-sm-1 px-sm-3 d-flex">
                             <div class="flex-shrink-0 me-3">
-                                <div class="avatar {{ Cache::has('admin-is-online-' . Auth::guard('human_resources')->user()->id ) ? 'avatar-online' : '' }}">
+                                <div class="avatar {{ Cache::has('humanResource-is-online-' . Auth::guard('human_resources')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('human_resources')->user()->photo_profile)
                                         <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
-                                        alt="admin-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
-                                        style="width: 40px; height: 45px" id="adminAvatar" />
+                                        alt="headOfHumanResources-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
+                                        style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
                                     @else
                                     <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
-                                        alt="admin-avatar" class="rounded-circle"
-                                        style="width: 40px; height: 45px" id="adminAvatar" />
+                                        alt="headOfHumanResources-avatar" class="rounded-circle"
+                                        style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
                                     @endif
                                 </div>
                             </div>

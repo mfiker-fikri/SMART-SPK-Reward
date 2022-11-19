@@ -124,7 +124,7 @@ class ManageSDMController extends Controller
                         }
                         return $roleStatus;
                     })
-                    ->rawColumns(['action','status','role_status'])
+                    ->rawColumns(['action','status', 'last_seen' ,'role_status'])
                     ->make(true);
         } catch (\Throwable $th) {
             throw $th;

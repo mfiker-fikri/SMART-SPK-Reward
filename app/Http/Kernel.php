@@ -41,6 +41,8 @@ class Kernel extends HttpKernel
             //
             // Admin
             \App\Http\Middleware\Admin\LastAdminActivity::class,
+            // Human Resources
+            \App\Http\Middleware\Admin\LastHumanResourcesActivity::class,
             // Pegawai
             \App\Http\Middleware\Admin\LastPegawaiActivity::class,
         ],
