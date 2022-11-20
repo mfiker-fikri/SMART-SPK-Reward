@@ -41,8 +41,7 @@
                                                     Otherwise,<b> please click the button </b> below to change your password: </p>
 
                                                 <div class="my-5 my-3 my-3 d-flex flex-row justify-content-center" style="margin: 2em 0;">
-                                                    <a class="button-primary" target="_blank" href="{{ URL::to('admin/reset-password/'.$token) }}">Reset My Password</a>
-                                                    {{-- <a href="{{ URL::to('admin/reset-password/'.$token) }}" class="btn btn-primary btn-lg" role="button">Reset My Password</a> --}}
+                                                    <a class="button-primary" target="_blank" href="{{ URL::to('sdm/reset-password/'.$token) }}">Reset My Password</a>
                                                 </div>
 
                                                 <p style="font-size: 14px;">

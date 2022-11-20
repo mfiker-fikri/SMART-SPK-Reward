@@ -144,7 +144,7 @@
                                                 autofocus autocomplete required value="{{ old('email', $admin->email) }}"
                                                 aria-invalid="true" aria-describedby="email" data-val="true" >
                                         </div>
-                                        <div id="emailHelp" class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
+                                        <div id="emailHelp" class="form-text">Email Menggunakan Simbol @ serta .com/.co.id/ dll</div>
                                         <!-- Error Email -->
                                         @if ( $errors->has('email') )
                                             <span class="help-block">
@@ -238,18 +238,18 @@
 
                                 <!-- Password -->
                                 <div class="mb-3 row {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                    <label for="password" class="col-sm-3 col-form-label">Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span id="password" class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                                 <i class="fa-solid fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
-                                                name="password" placeholder="*Password"
+                                                name="password" placeholder="*Password Baru"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password" data-val="true" >
                                         </div>
-                                        <div id="passwordHelp" class="form-text">Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
+                                        <div id="passwordHelp" class="form-text">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password -->
                                         @if ( $errors->has('password') )
                                             <span class="help-block">
@@ -263,18 +263,18 @@
 
                                 <!-- Password Confirmation -->
                                 <div class="mb-3 row {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                                    <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password</label>
+                                    <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span id="password_confirmation" class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
-                                                name="password_confirmation" placeholder="*Konfirmasi Password"
+                                                name="password_confirmation" placeholder="*Konfirmasi Password Baru"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password_confirmation" data-val="true">
                                         </div>
-                                        <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
+                                        <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password Confirmation-->
                                         @if ( $errors->has('password_confirmation') )
                                             <span class="help-block">

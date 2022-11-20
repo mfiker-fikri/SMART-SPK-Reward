@@ -13,6 +13,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Cache;
 
 use App\Models\HumanResource;
+use Illuminate\Support\Facades\DB;
 
 class ManageSDMController extends Controller
 {
@@ -378,22 +379,79 @@ class ManageSDMController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Data Admin!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-update-error', 'Gagal Update Data Akun Divisi Sumber Daya Manusia Baru!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-update-error', 'Gagal Update Data Akun Divisi Sumber Daya Manusia!')->withErrors($validate)->withInput($request->all());
                 }
 
                 $sdm->full_name   =   $request['full_name'];
                 $sdm->username    =   $request['username'];
                 $sdm->email       =   $request['email'];
+                $sdm->role        =   $request['role'];
 
                 $sdm->save();
 
                 alert()->success('Berhasil Update Data Admin!')->autoclose(25000);
-                return redirect()->back()->with('message-update-success', 'Berhasil Update Data Akun Divisi Sumber Daya Manusia Baru!');
+                return redirect()->back()->with('message-update-success', 'Berhasil Update Data Akun Divisi Sumber Daya Manusia!');
 
             } else {
                 alert()->error('Gagal!')->autoclose(25000);
                 return redirect()->back();
             }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postHumanResourcesIdUpdateChangePassword(Request $request, $id)
+    {
+        try {
+            // Find id
+            $sdm = HumanResource::find($id);
+
+            if($sdm) {
+                $validate = Validator::make(
+                    $request->all(),
+                    [
+                        'password'                              => 'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|confirmed',
+                        'password_confirmation'                 => 'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|same:password',
+                    ],
+                    [
+                        'password.required'                     => 'Password Baru Wajib Diisi!',
+                        'password_confirmation.required'        => 'Konfirmasi Password Baru Wajib Diisi!',
+                        //
+                        'password.min'                          => 'Password Baru Minimal 6 Karakter!',
+                        'password_confirmation.min'             => 'Konfirmasi Password Baru Minimal 6 Karakter!',
+                        //
+                        'password.max'                          => 'Password Baru Maksimal 100 Karakter!',
+                        'password_confirmation.max'             => 'Konfirmasi Password Baru Maksimal 100 Karakter!',
+                        //
+                        'password.confirmed'                    => 'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
+                        //
+                        'password_confirmation.same'            => 'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
+                        //
+                        'password.regex'                        => 'Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                        'password_confirmation.regex'           => 'Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                    ]
+                );
+
+                if ($validate->fails()) {
+                    alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
+                }
+                //
+                DB::table('human_resources')->where('id', $sdm)->update(['password' => Hash::make($request['password'])]);
+                alert()->success('Berhasil Update Password!')->autoclose(25000);
+                return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
+                //
+            }
+            alert()->error('Gagal!')->autoclose(25000);
+            return redirect()->back();
 
         } catch (\Throwable $th) {
             throw $th;

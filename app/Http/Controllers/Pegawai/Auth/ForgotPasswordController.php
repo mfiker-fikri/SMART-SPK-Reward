@@ -52,9 +52,9 @@ class ForgotPasswordController extends Controller
             ],
             [
                 'email.required'                        =>      'Email Wajib Diisi!',
-                // 
+                //
                 'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                // 
+                //
                 'email.exists'                          =>      'Email belum terdaftar',
             ]
         );
@@ -139,22 +139,22 @@ class ForgotPasswordController extends Controller
                 'email.required'                        =>      'Email Wajib Diisi!',
                 'password.required'                     =>      'Password Baru Wajib Diisi!',
                 'password_confirmation.required'        =>      'Konfirmasi Password Baru Wajib Diisi!',
-                // 
+                //
                 'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
-                // 
+                //
                 'email.exists'                          =>      'Email belum terdaftar',
-                // 
+                //
                 'password.min'                          =>      'Password Baru Minimal 6 Karakter!',
                 'password_confirmation.min'             =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
-                // 
+                //
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
-                // 
+                //
                 'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
                 'password_confirmation.regex'           =>      'Format Konfirmasi Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
-                // 
+                //
                 'password.confirmed'                    =>      'Password Konfirmasi Tidak Sama Dengan Password Baru!',
-                // 
+                //
                 'password_confirmation.same'            =>      'Konfirmasi Password Harus Sama Dengan Password!',
             ]
         );
@@ -196,7 +196,7 @@ class ForgotPasswordController extends Controller
                 DB::table('employees_password_resets')->where('email', $request->email)->delete();
 
                 alert()->success('Berhasil Update Password!')->autoclose(25000);
-                return redirect('/')->with('message', 'Password Sudah di Update');
+                return redirect('/')->with('message-succes-login', 'Password Sudah di Update');
             }
         } else {
             alert()->error('Gagal Reset Password!', 'Waktu Reset Sudah Habis, Silahkan Kirim Ulang')->autoclose(25000);

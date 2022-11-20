@@ -200,7 +200,7 @@ class ForgotPasswordController extends Controller
             // Check New Password Same Old Password
             if (Hash::check($request->password, $admin->password)) {
 
-                alert()->error('Gagal Update Password!', 'Gagal Update Password')->autoclose(25000);
+                alert()->error('Gagal Update Password!', 'Password Lama Tidak Bisa Dipakai Kembali')->autoclose(25000);
                 return redirect()->back()->with('message-failed-reset', 'Password Lama Tidak Bisa Dipakai Kembali');
             } else {
 
@@ -211,7 +211,7 @@ class ForgotPasswordController extends Controller
                 DB::table('admins_password_resets')->where('email', $request->email)->delete();
 
                 alert()->success('Berhasil Update Password!')->autoclose(25000);
-                return redirect('/admin')->with('message', 'Password Sudah di Update');
+                return redirect('/admin')->with('message-succes-login', 'Password Sudah di Update');
             }
         } else {
             alert()->error('Gagal Reset Password!', 'Waktu Reset Sudah Habis, Silahkan Kirim Ulang')->autoclose(25000);

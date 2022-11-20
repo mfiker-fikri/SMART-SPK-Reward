@@ -39,6 +39,34 @@
                 <!-- Tabs Edit Profile Details Employee -->
                 <div class="tab-pane fade show {{ (request()->is('admin/manage/employees/edit*')) ? 'active' : '' }}" id="pills-editEmployee" role="tabpanel" aria-labelledby="pills-editEmployee-tab">
 
+                    @if(session('message-update-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-update-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
+
                     <!-- Card Edit Profile Details Employee -->
                     <div class="card my-4">
 
@@ -116,7 +144,7 @@
                                                 autofocus autocomplete required value="{{ old('email', $employee->email) }}"
                                                 aria-invalid="true" aria-describedby="email" data-val="true" >
                                         </div>
-                                        <div id="emailHelp" class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
+                                        <div id="emailHelp" class="form-text">Email Menggunakan Simbol @ serta .com/.co.id/ dll</div>
                                         <!-- Error Email -->
                                         @if ( $errors->has('email') )
                                             <span class="help-block">
@@ -167,6 +195,34 @@
                 <!-- Tabs Change Password -->
                 <div class="tab-pane fade" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
 
+                    @if(session('message-success-password'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-success-password') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-error-password'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-error-password') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="card my-4">
 
                         <!-- Form Change Password Title -->
@@ -183,18 +239,18 @@
 
                                 <!-- Password -->
                                 <div class="mb-3 row {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                    <label for="password" class="col-sm-3 col-form-label">Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span id="password" class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
-                                                name="password" placeholder="*Password"
-                                                autofocus autocomplete required value=""
+                                                name="password" placeholder="*Password Baru"
+                                                autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password" data-val="true" >
                                         </div>
-                                        <div id="passwordHelp" class="form-text">Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
+                                        <div id="passwordHelp" class="form-text">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password -->
                                         @if ( $errors->has('password') )
                                             <span class="help-block">
@@ -208,18 +264,18 @@
 
                                 <!-- Password Confirmation -->
                                 <div class="mb-3 row {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                                    <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password</label>
+                                    <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span id="password_confirmation" class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
-                                                name="password_confirmation" placeholder="*Konfirmasi Password"
-                                                autofocus autocomplete required value="{{ old('password_confirmation') }}"
+                                                name="password_confirmation" placeholder="*Konfirmasi Password Baru"
+                                                autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password_confirmation" data-val="true">
                                         </div>
-                                        <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
+                                        <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password Confirmation-->
                                         @if ( $errors->has('password_confirmation') )
                                             <span class="help-block">
