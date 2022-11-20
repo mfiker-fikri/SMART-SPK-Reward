@@ -690,4 +690,26 @@ class SDMController extends Controller
         }
     }
 
+
+    /**
+     * Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+     * Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+     * Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+     *
+    */
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getProfileKepalaSubbagianPenghargaanDisiplindanPensiun()
+    {
+        try {
+            return view('layouts.sdm.content.profile.profile');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 }

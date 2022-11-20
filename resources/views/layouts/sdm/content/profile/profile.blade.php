@@ -191,8 +191,8 @@
                 }
             });
         });
-        </script>
-        <!--/ Delete Photo SDM 2 -->
+    </script>
+    <!--/ Delete Photo SDM 2 -->
 
     <!-- Update Change Password -->
     <script type="text/javascript">
@@ -280,6 +280,9 @@
                         @elseif (Auth::guard('human_resources')->user()->role == 2)
                         <!-- Role 2 -->
                         <button class="nav-link {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        @elseif (Auth::guard('human_resources')->user()->role == 3)
+                        <!-- Role 3 -->
+                        <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'true' : 'false' }}">Detail Profile</button>
                         @endif
                     </li>
                     <!--/ Tabs Profile Details -->
@@ -304,6 +307,9 @@
                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                 <!-- Role 2 -->
                 <div class="tab-pane fade show {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                <!-- Role 3 -->
+                <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 @endif
 
                     @if(session('message-update-profile-success'))
@@ -387,6 +393,11 @@
                                     <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
                                         alt="headOfHumanResource-photo-profile-{{ Auth::guard('human_resources')->user()->username }}" class="rounded-circle"
                                         height="100" width="100" id="headOfHumanResourcePhotoProfile" />
+                                    @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                    <!-- Role 3 -->
+                                    <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                                        alt="headOfHumanResource-photo-profile-{{ Auth::guard('human_resources')->user()->username }}" class="rounded-circle"
+                                        height="100" width="100" id="headOfHumanResourcePhotoProfile" />
                                     @endif
                                 @else
                                     <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
@@ -420,6 +431,9 @@
                                                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                                                 <!-- Role 2 -->
                                                 <form id="formPhotoUpdate" class="mb-3" method="POST" action="{{ URL::to('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/image/upload') }}" enctype="multipart/form-data">
+                                                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                                <!-- Role 3 -->
+                                                <form id="formPhotoUpdate" class="mb-3" method="POST" action="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/image/upload') }}" enctype="multipart/form-data">
                                                 @endif
                                                     @csrf
                                                     <div class="modal-header">
@@ -433,7 +447,16 @@
                                                     <div class="modal-body">
                                                         <div class="d-flex justify-content-center py-sm-3">
                                                             @if (Auth::guard('human_resources')->user()->photo_profile)
-                                                            <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
+                                                                @if (Auth::guard('human_resources')->user()->role == 1)
+                                                                <!-- Role 1 -->
+                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 2)
+                                                                <!-- Role 2 -->
+                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                                                <!-- Role 3 -->
+                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
+                                                                @endif
                                                             @else
                                                             <img class="d-block rounded" height="200" width="300" id="output_image">
                                                             @endif
@@ -447,6 +470,9 @@
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                                                                 <!-- Role 2 -->
                                                                 {{-- <input type="text" name="oldImage" value="{{ Auth::guard('human_resources')->user()->photo_profile }}" /> --}}
+                                                                <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }} " />
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                                                <!-- Role 3 -->
                                                                 <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }} " />
                                                                 @endif
                                                             @elseif (Auth::guard('human_resources')->user()->photo_profile == null)
@@ -506,6 +532,9 @@
                                             @elseif (Auth::guard('human_resources')->user()->role == 2)
                                             <!-- Role 2 -->
                                             <button type="submit" class="btn btn-danger" style="color: black" id="deletePhoto2">
+                                            @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                            <!-- Role 3 -->
+                                            <button type="submit" class="btn btn-danger" style="color: black" id="deletePhoto3">
                                             @endif
                                                 <i class="fa-solid fa-trash mx-auto me-2"></i>Delete Photo
                                             </button>
@@ -533,6 +562,9 @@
                             @elseif (Auth::guard('human_resources')->user()->role == 2)
                             <!-- Role 2 -->
                             <form id="formProfileUpdate" class="mx-3 my-3" method="POST" action="{{ URL::to('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/update') }}">
+                            @elseif (Auth::guard('human_resources')->user()->role == 3)
+                            <!-- Role 3 -->
+                            <form id="formProfileUpdate" class="mx-3 my-3" method="POST" action="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/update') }}">
                             @endif
                                 @csrf
                                 <!-- Full Name -->
@@ -700,6 +732,9 @@
                             @elseif (Auth::guard('human_resources')->user()->role == 2)
                             <!-- Role 2 -->
                             <form id="formChangePassword" class="mx-3 my-3" method="POST" action="{{ URL::to('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/change-password') }}">
+                            @elseif (Auth::guard('human_resources')->user()->role == 3)
+                            <!-- Role 3 -->
+                            <form id="formChangePassword" class="mx-3 my-3" method="POST" action="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/change-password') }}">
                             @endif
                                 @csrf
 

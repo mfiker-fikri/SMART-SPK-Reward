@@ -144,7 +144,68 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
     // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
     Route::middleware(['human_resources.auth:3'])->group(function () {
+        // Dashboard
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getDashboard.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        // Profile
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile', [App\Http\Controllers\SDM\SDMController::class, 'getProfileKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getProfile.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/update', [App\Http\Controllers\SDM\SDMController::class, 'postProfileKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.Update.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        // Profile Image Upload & delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/image/upload', [App\Http\Controllers\SDM\SDMController::class, 'postImageUploadKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.postImageUpload.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.postImageDelete.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        // Profile Change Password
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.changePasswordUpdate.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+
+
+        // Manage Kategori
+        // Create
+        Route::GET('manage/categories/create', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesCreate'])->name('getManageCategories.Create.HRD');
+        Route::POST('manage/categories/create/post', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesCreate'])->name('postManageCategories.Create.HRD');
+        // Read
+        Route::GET('manage/categories', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategories'])->name('getManageCategories.Read.HRD');
+        Route::GET('manage/categories/list', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesList'])->name('getManageCategoriesList.Read.HRD');
+        // View
+        Route::GET('manage/categories/view/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesIdView'])->name('getManageCategoriesId.View.HRD');
+        // Update
+        Route::GET('manage/categories/edit/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesIdUpdate'])->name('getManageCategoriesId.Update.HRD');
+        Route::POST('manage/categories/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesIdUpdate'])->name('postManageCategoriesId.Update.HRD');
+        // Delete
+
+
+        // Manage Kriteria
+        // Create
+        Route::GET('manage/criterias/create', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasCreate'])->name('getManageCriterias.Create.HRD');
+        Route::POST('manage/criterias/create/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasCreate'])->name('postManageCriterias.Create.HRD');
+        // Read
+        Route::GET('manage/criterias', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriterias'])->name('getManageCriterias.Read.HRD');
+        Route::GET('manage/criterias/list', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasList'])->name('getManageCriteriasList.Read.HRD');
+        // View
+        Route::GET('manage/criterias/view/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdView'])->name('getManageCriteriasId.View.HRD');
+        // Update
+        Route::GET('manage/criterias/edit/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdUpdate'])->name('getManageCriteriasId.Update.HRD');
+        Route::POST('manage/criterias/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasIdUpdate'])->name('postManageCriteriasId.Update.HRD');
+        // Delete
+
+
+        // Manage Parameter
+        // Select Categories
+        Route::GET('select/categories/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCategories'])->name('getSelectCategories.Parameters.HRD');
+        // Select Criterias
+        Route::GET('select/criterias/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCriterias'])->name('getSelectCriterias.Parameters.HRD');
+        // Select Value Quality
+        Route::GET('select/value-quality/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.HRD');
+        // Create
+        Route::GET('manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.HRD');
+        Route::POST('manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.HRD');
+        // Read
+        Route::GET('manage/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParameters'])->name('getManageParameters.Read.HRD');
+        Route::GET('manage/parameters/list', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersList'])->name('getManageParametersList.Read.HRD');
+        // View
+        Route::GET('manage/parameters/view/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdView'])->name('getManageParametersId.View.HRD');
+        // Update
+        Route::GET('manage/parameters/edit/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdUpdate'])->name('getManageParametersId.Update.HRD');
+        Route::POST('manage/parameters/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.HRD');
+        // Delete
+
     });
 
 });
@@ -162,55 +223,7 @@ Route::group(['prefix' => 'hrd', 'as' => 'hrd.'], function () {
     // Dashboard
     Route::GET('dashboard', [App\Http\Controllers\Hrd\DashboardController::class, 'dashboard'])->name('getDashboard.HRD');
 
-    // Manage Kategori
-    // Create
-    Route::GET('manage/categories/create', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'getCategoriesCreate'])->name('getManageCategories.Create.HRD');
-    Route::POST('manage/categories/create/post', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'postCategoriesCreate'])->name('postManageCategories.Create.HRD');
-    // Read
-    Route::GET('manage/categories', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'getCategories'])->name('getManageCategories.Read.HRD');
-    Route::GET('manage/categories/list', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'getCategoriesList'])->name('getManageCategoriesList.Read.HRD');
-    // View
-    Route::GET('manage/categories/view/{id}', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'getCategoriesIdView'])->name('getManageCategoriesId.View.HRD');
-    // Update
-    Route::GET('manage/categories/edit/{id}', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'getCategoriesIdUpdate'])->name('getManageCategoriesId.Update.HRD');
-    Route::POST('manage/categories/edit/{id}/post', [App\Http\Controllers\Hrd\Kategori\KategoriController::class, 'postCategoriesIdUpdate'])->name('postManageCategoriesId.Update.HRD');
-    // Delete
 
-
-    // Manage Kriteria
-    // Create
-    Route::GET('manage/criterias/create', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'getCriteriasCreate'])->name('getManageCriterias.Create.HRD');
-    Route::POST('manage/criterias/create/post', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'postCriteriasCreate'])->name('postManageCriterias.Create.HRD');
-    // Read
-    Route::GET('manage/criterias', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'getCriterias'])->name('getManageCriterias.Read.HRD');
-    Route::GET('manage/criterias/list', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'getCriteriasList'])->name('getManageCriteriasList.Read.HRD');
-    // View
-    Route::GET('manage/criterias/view/{id}', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'getCriteriasIdView'])->name('getManageCriteriasId.View.HRD');
-    // Update
-    Route::GET('manage/criterias/edit/{id}', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'getCriteriasIdUpdate'])->name('getManageCriteriasId.Update.HRD');
-    Route::POST('manage/criterias/edit/{id}/post', [App\Http\Controllers\Hrd\Kriteria\KriteriaController::class, 'postCriteriasIdUpdate'])->name('postManageCriteriasId.Update.HRD');
-    // Delete
-
-
-    // Manage Parameter
-    // Select Categories
-    Route::GET('select/categories/parameters', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getSelectCategories'])->name('getSelectCategories.Parameters.HRD');
-    // Select Criterias
-    Route::GET('select/criterias/parameters', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getSelectCriterias'])->name('getSelectCriterias.Parameters.HRD');
-    // Select Value Quality
-    Route::GET('select/value-quality/parameters', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.HRD');
-    // Create
-    Route::GET('manage/parameters/create', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.HRD');
-    Route::POST('manage/parameters/create/post', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.HRD');
-    // Read
-    Route::GET('manage/parameters', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getParameters'])->name('getManageParameters.Read.HRD');
-    Route::GET('manage/parameters/list', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getParametersList'])->name('getManageParametersList.Read.HRD');
-    // View
-    Route::GET('manage/parameters/view/{id}', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getParametersIdView'])->name('getManageParametersId.View.HRD');
-    // Update
-    Route::GET('manage/parameters/edit/{id}', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'getParametersIdUpdate'])->name('getManageParametersId.Update.HRD');
-    Route::POST('manage/parameters/edit/{id}/post', [App\Http\Controllers\Hrd\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.HRD');
-    // Delete
 
 
     // Manage Penghargaan

@@ -153,7 +153,7 @@
                         @elseif (Auth::guard('human_resources')->user()->role == 2)
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'active' : '' }}" href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}">
                         @elseif (Auth::guard('human_resources')->user()->role == 3)
-                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('sdm/kepala-biro-SDM/profile')) ? 'active' : '' }}" href="{{ URL::to('/sdm/kepala-biro-SDM/profile') }}">
+                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'active' : '' }}" href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') }}">
                         @endif
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
                             <span class="align-middle">My Profile</span>

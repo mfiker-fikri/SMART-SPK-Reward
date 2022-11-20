@@ -84,6 +84,83 @@
             <!--/ My Profile -->
 
         @elseif (Auth::guard('human_resources')->user()->role == 3)
+            <!-- Dashboard -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Dashboard</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+            <!--/ Dashboard -->
+
+            <!-- My Profile -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">My Profile</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    <div data-i18n="Analytics">My Profile</div>
+                </a>
+            </li>
+            <!--/ My Profile -->
+
+            <!-- Manage Categories -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Kelola Kategori</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    <div data-i18n="Analytics">Kelola Kategori</div>
+                </a>
+            </li>
+            <!--/ Manage Categories -->
+
+            <!-- Manage Criterias -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Kelola Kriteria</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    <div data-i18n="Analytics">Kelola Kriteria</div>
+                </a>
+            </li>
+            <!--/ Manage Criterias -->
+
+            <!-- Manage Parameters -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Kelola Parameter</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    <div data-i18n="Analytics">Kelola Parameter</div>
+                </a>
+            </li>
+            <!--/ Manage Parameters -->
+
+            <!-- Countdown Timer Form -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Countdown Timer Open Form</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    <div data-i18n="Analytics">Countdown Timer Open Form</div>
+                </a>
+            </li>
+            <!--/ Countdown Timer Form -->
         @endif
 
     </ul>
