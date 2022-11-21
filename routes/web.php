@@ -158,52 +158,53 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Manage Kategori
         // Create
-        Route::GET('manage/categories/create', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesCreate'])->name('getManageCategories.Create.HRD');
-        Route::POST('manage/categories/create/post', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesCreate'])->name('postManageCategories.Create.HRD');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesCreate'])->name('getManageCategories.KepalaSubbagianPenghargaanDisiplindanPensiun.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create/post', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesCreate'])->name('postManageCategories.KepalaSubbagianPenghargaanDisiplindanPensiun.Create.SDM');
         // Read
-        Route::GET('manage/categories', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategories'])->name('getManageCategories.Read.HRD');
-        Route::GET('manage/categories/list', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesList'])->name('getManageCategoriesList.Read.HRD');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategories'])->name('getManageCategories.KepalaSubbagianPenghargaanDisiplindanPensiun.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/list', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesList'])->name('getManageCategoriesList.KepalaSubbagianPenghargaanDisiplindanPensiun.Read.SDM');
         // View
-        Route::GET('manage/categories/view/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesIdView'])->name('getManageCategoriesId.View.HRD');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesIdView'])->name('getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM');
         // Update
-        Route::GET('manage/categories/edit/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesIdUpdate'])->name('getManageCategoriesId.Update.HRD');
-        Route::POST('manage/categories/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesIdUpdate'])->name('postManageCategoriesId.Update.HRD');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'getCategoriesIdUpdate'])->name('getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesIdUpdate'])->name('postManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM');
         // Delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/delete/{id}', [App\Http\Controllers\SDM\Role3\Kategori\KategoriController::class, 'postCategoriesIdDelete'])->name('postManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Delete.SDM');
 
 
         // Manage Kriteria
         // Create
-        Route::GET('manage/criterias/create', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasCreate'])->name('getManageCriterias.Create.HRD');
-        Route::POST('manage/criterias/create/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasCreate'])->name('postManageCriterias.Create.HRD');
+        Route::GET('manage/criterias/create', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasCreate'])->name('getManageCriterias.Create.SDM');
+        Route::POST('manage/criterias/create/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasCreate'])->name('postManageCriterias.Create.SDM');
         // Read
-        Route::GET('manage/criterias', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriterias'])->name('getManageCriterias.Read.HRD');
-        Route::GET('manage/criterias/list', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasList'])->name('getManageCriteriasList.Read.HRD');
+        Route::GET('manage/criterias', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriterias'])->name('getManageCriterias.Read.SDM');
+        Route::GET('manage/criterias/list', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasList'])->name('getManageCriteriasList.Read.SDM');
         // View
-        Route::GET('manage/criterias/view/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdView'])->name('getManageCriteriasId.View.HRD');
+        Route::GET('manage/criterias/view/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdView'])->name('getManageCriteriasId.View.SDM');
         // Update
-        Route::GET('manage/criterias/edit/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdUpdate'])->name('getManageCriteriasId.Update.HRD');
-        Route::POST('manage/criterias/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasIdUpdate'])->name('postManageCriteriasId.Update.HRD');
+        Route::GET('manage/criterias/edit/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdUpdate'])->name('getManageCriteriasId.Update.SDM');
+        Route::POST('manage/criterias/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasIdUpdate'])->name('postManageCriteriasId.Update.SDM');
         // Delete
 
 
         // Manage Parameter
         // Select Categories
-        Route::GET('select/categories/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCategories'])->name('getSelectCategories.Parameters.HRD');
+        Route::GET('select/categories/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCategories'])->name('getSelectCategories.Parameters.SDM');
         // Select Criterias
-        Route::GET('select/criterias/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCriterias'])->name('getSelectCriterias.Parameters.HRD');
+        Route::GET('select/criterias/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCriterias'])->name('getSelectCriterias.Parameters.SDM');
         // Select Value Quality
-        Route::GET('select/value-quality/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.HRD');
+        Route::GET('select/value-quality/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.SDM');
         // Create
-        Route::GET('manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.HRD');
-        Route::POST('manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.HRD');
+        Route::GET('manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.SDM');
+        Route::POST('manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.SDM');
         // Read
-        Route::GET('manage/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParameters'])->name('getManageParameters.Read.HRD');
-        Route::GET('manage/parameters/list', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersList'])->name('getManageParametersList.Read.HRD');
+        Route::GET('manage/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParameters'])->name('getManageParameters.Read.SDM');
+        Route::GET('manage/parameters/list', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersList'])->name('getManageParametersList.Read.SDM');
         // View
-        Route::GET('manage/parameters/view/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdView'])->name('getManageParametersId.View.HRD');
+        Route::GET('manage/parameters/view/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdView'])->name('getManageParametersId.View.SDM');
         // Update
-        Route::GET('manage/parameters/edit/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdUpdate'])->name('getManageParametersId.Update.HRD');
-        Route::POST('manage/parameters/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.HRD');
+        Route::GET('manage/parameters/edit/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdUpdate'])->name('getManageParametersId.Update.SDM');
+        Route::POST('manage/parameters/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.SDM');
         // Delete
 
     });

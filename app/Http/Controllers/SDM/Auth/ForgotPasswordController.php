@@ -171,7 +171,20 @@ class ForgotPasswordController extends Controller
     public function getResetPasswordForm(Request $request, $token)
     {
         try {
-            return view('layouts.sdm.content.auth.resetPassword')->with(['token' => $token, 'email' => $request->email]);
+            // Check Token
+            $updatePassword     =       DB::table('human_resources_password_resets')
+            ->where([
+                'email' =>  $request->email,
+                'token' =>  $request->token
+            ])
+            ->first();
+
+            if($updatePassword) {
+                return view('layouts.sdm.content.auth.resetPassword')->with(['token' => $token, 'email' => $request->email]);
+            } else {
+                abort(403);
+            }
+
         } catch (\Throwable $th) {
             throw $th;
         }

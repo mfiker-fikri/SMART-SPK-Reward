@@ -21,7 +21,7 @@ class HumanResourceFactory extends Factory
             'email'     =>  'viker1299@gmail.com',
             'username'  =>  'muhammad',
             'password'  =>  Hash::make('Admin12'),
-            'role'      =>  1,
+            'role'      =>  3,
         ];
     }
 }

@@ -712,4 +712,99 @@ class SDMController extends Controller
         }
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postProfileKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request)
+    {
+        try {
+            // Get Id SDM
+            $id = Auth::guard('human_resources')->user()->id;
+            $sdm = HumanResource::find($id);
+
+            if($sdm) {
+                $validate = null;
+                if ($request['email'] === Auth::guard('human_resources')->user()->email && $request['username'] === Auth::guard('human_resources')->user()->username) {
+                    // Validasi Update
+                    $validate = Validator::make(
+                        $request->all(),
+                        [
+                            'full_name'                     =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
+                            'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/',
+                            'email'                         =>      'required|string|email',
+                        ],
+                        [
+                            'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
+                            'username.required'             =>      'Username Wajib Diisi!',
+                            'email.required'                =>      'Email Wajib Diisi!',
+                            //
+                            'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
+                            'username.min'                  =>      'Username Minimal 3 Karakter!',
+                            //
+                            'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
+                            'username.max'                  =>      'Username Maksimal 255 Karakter!',
+                            //
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
+                            //
+                            'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
+                            //
+                        ]
+                    );
+                } else {
+                    // Validasi Update
+                    $validate = Validator::make(
+                        $request->all(),
+                        [
+                            'full_name'                     =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
+                            'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:admins,username',
+                            'email'                         =>      'required|string|email|unique:admins,email',
+                        ],
+                        [
+                            'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
+                            'username.required'             =>      'Username Wajib Diisi!',
+                            'email.required'                =>      'Email Wajib Diisi!',
+                            //
+                            'full_name.min'                 =>      'Nama Lengkap Minimal 3 Karakter!',
+                            'username.min'                  =>      'Username Minimal 3 Karakter!',
+                            //
+                            'full_name.max'                 =>      'Nama Lengkap Maksimal 255 Karakter!',
+                            'username.max'                  =>      'Username Maksimal 255 Karakter!',
+                            //
+                            'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
+                            //
+                            'username.unique'               =>      'Username Sudah Ada',
+                            'email.unique'                  =>      'Alamat Email Sudah Ada',
+                            //
+                            'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
+                            //
+                        ]
+                    );
+                }
+
+                if ($validate->fails()) {
+                    alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                }
+
+                $sdm->full_name   = $request['full_name'];
+                $sdm->username    = $request['username'];
+                $sdm->email       = $request['email'];
+
+                $sdm->save();
+
+                alert()->success('Berhasil Update Profile')->autoclose(25000);
+                return redirect()->back()->with('message-update-profile-success', 'Berhasil Update Profile');
+            } else {
+                alert()->error('Gagal Update Profile!')->autoclose(25000);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 }
