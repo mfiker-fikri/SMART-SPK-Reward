@@ -18,7 +18,8 @@ class KategoriController extends Controller
     public function getCategories()
     {
         try {
-            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.kategori.kategori_index');
+            $category = Category::count();
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.kategori.kategori_index', compact('category'));
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -37,7 +38,8 @@ class KategoriController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
-                    if($row->category === 'inovasi' || $row->category === 'teladan') {
+                    if($row->count() <= 2 ) {
+                    // if($row->category === 'inovasi' && $row->category === 'teladan') {
                         $actionBtn =
                             '
                         <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
@@ -47,22 +49,23 @@ class KategoriController extends Controller
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                         </a>
                         ';
-                    } elseif(!$row->category === 'inovasi' || !$row->category === 'teladan') {
+                    } else {
                         $actionBtn =
-                            '
-                        <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
-                            <i class="fa-solid fa-eye mx-auto me-1"></i> View
-                        </a>
-                        <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-lg btn-warning mx-1 mx-1 mx-1" style="color: black">
-                            <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
-                        </a>
-                        <a href"' . route('sdm.postManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Delete.SDM', $row->id) . '" class="delete btn btn-lg btn-danger mx-1 mx-1 mx-1" style="color: black;" id="deleteCategoriesId" >
-                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
-                        </a>
-                        ';
+                                '
+                            <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                            </a>
+                            <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-lg btn-warning mx-1 mx-1 mx-1" style="color: black">
+                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                            </a>
+                            <a href"' . route('sdm.postManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Delete.SDM', $row->id) . '" class="delete btn btn-lg btn-danger mx-1 mx-1 mx-1" style="color: black;" id="deleteCategoriesId" data-id="'.$row->id.'" data-category="'.$row->category.'" >
+                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                            </a>
+                            ';
                     }
                     return $actionBtn;
                 })
+                ->rawColumns(['action'])
                 ->make(true);
         } catch (\Exception $exception) {
             return $exception;
@@ -154,7 +157,7 @@ class KategoriController extends Controller
     {
         try {
             $category   =   Category::where('id', '=', $id)->first();
-            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.kategori.kategori_view', compact('category'));
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.kategori.kategori_edit', compact('category'));
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -182,7 +185,7 @@ class KategoriController extends Controller
                     ],
                     [
                         'categories.required'                    =>      'Kategori Harus Diisi!',
-                        'categories.regex'                       =>      'Kategori Tidak Boleh Diisi Dengan Angka!',
+                        'categories.regex'                       =>      'Kategori Tidak Boleh Diisi Dengan Angka dan Simbol!',
                     ]
                 );
 
@@ -199,6 +202,29 @@ class KategoriController extends Controller
             }
         } catch (\Exception $exception) {
             return $exception;
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postCategoriesIdDelete($id)
+    {
+        try {
+            // find id
+            $category = Category::find($id);
+
+            if($category) {
+                $category->delete();
+                alert()->success('Berhasil Hapus Admin!', $category->category)->autoclose(25000);
+                return redirect()->back()->with('message-delete-success', 'Berhasil Hapus Admin!');
+            }
+            return redirect()->back()->with('message-delete-error', 'Tidak Berhasil Hapus Admin!');
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 

@@ -24,13 +24,13 @@
 
     <!-- Delete Category -->
     <script type="text/javascript">
-        $(document).on('click', '#deleteHumanResourceId', function(e) {
+        $(document).on('click', '#deleteCategoriesId', function(e) {
             e.preventDefault();
             let id = $(this).attr('data-id');
-            let username = $(this).attr('data-username');
-            console.log(id,username);
+            let category = $(this).attr('data-category');
+            // console.log(id,category);
             Swal.fire({
-                title: 'Apakah kamu ingin menghapus data akun' + ' ' + username + '?',
+                title: 'Apakah kamu ingin menghapus data' + ' ' + category + '?',
                 icon: 'warning',
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -52,7 +52,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('admin/manage/sdm/delete') }}" + '/' + id,
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/delete') }}" + '/' + id,
                         data: {
                             id: id,
                             _token: '{{ csrf_token() }}'
@@ -104,11 +104,13 @@
 
                     <!-- Button Create Kategori -->
                     <div class="py-3 d-flex flex-row justify-content-start">
+                        @if(\App\Models\Category::count() >= 2)
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') }}" role="button">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Create Category
+                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Kategori Baru
                             </a>
                         </div>
+                        @endif
                     </div>
                     <!--/ Button Create Kategori -->
 

@@ -284,30 +284,46 @@
 
         <!-- Login Admin -->
         <script>
-            document.getElementById("logout").onclick = function() {
-                logoutAdmin()
-            };
+            // document.getElementById("logout").onclick = function() {
+            //     logoutAdmin()
+            // };
 
-            function logoutAdmin() {
-                swal({
-                    title: "Apakah kamu ingin keluar?",
-                    icon: "warning",
-                    buttons: {
-                        cancel: "Tidak",
-                        logout: {
-                            text: "Ya",
-                            value: "logout",
-                        }
-                    },
-                    dangerMode: true,
-                }).then((logout) => {
-                    if (logout) {
-                        window.location = "/admin/logout";
-                    }
-                })
-            }
+            // function logoutAdmin() {
+            //     swal({
+            //         title: "Apakah kamu ingin keluar?",
+            //         icon: "warning",
+            //         buttons: {
+            //             cancel: "Tidak",
+            //             logout: {
+            //                 text: "Ya",
+            //                 value: "logout",
+            //             }
+            //         },
+            //         dangerMode: true,
+            //     }).then((logout) => {
+            //         if (logout) {
+            //             window.location = "/admin/logout";
+            //         }
+            //     })
+            // }
         </script>
         <!--/ Login Admin -->
+
+        <!-- -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Disable cut copy paste
+                $(document).bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+
+                //Disable mouse right click
+                // $(document).on("contextmenu",function(e){
+                //     return false;
+                // });
+            });
+        </script>
+        <!--/ -->
 
     </body>
 </html>

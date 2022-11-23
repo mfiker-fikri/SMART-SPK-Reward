@@ -167,7 +167,7 @@ class PegawaiController extends Controller
                             'email.email'                   =>      'Email Tidak Valid! (Gunakan @ serta.com/.co.id/dll)',
                             //
                             // 'place_birth'                   =>      'Tempat Lahir Wajib Diisi!',
-                            'date_birth.date'               =>      'Tanggal Lahir Wajib Diisi!',
+                            'date_birth.date'               =>      'Tidak Sesuai Tanggal!',
                             //
                             'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                             'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
@@ -231,6 +231,8 @@ class PegawaiController extends Controller
                             //
                             'full_name.regex'               =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
                             'username.regex'                =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
+                            //
+                            'date_birth.date'               =>      'Tidak Sesuai Tanggal!',
                             //
                             'nip.regex'                     =>      'NIP Hanya Menggunakan Angka!',
                             // 'pendidikan_terakhir.regex'     =>      'Pendidikan Terakhir Wajib Diisi!',

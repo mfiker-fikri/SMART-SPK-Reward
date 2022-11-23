@@ -14,7 +14,7 @@
         <img
           src="{{ asset('css/error/int_css/img/illustrations/419.jpg') }}"
           alt="419"
-          width="400"
+          width="360"
           class="img-fluid"
           data-app-dark-img="illustrations/page-misc-error-dark.png"
           data-app-light-img="illustrations/page-misc-error-light.png"

@@ -56,7 +56,7 @@
                             <div class="col-sm-9">
                                 <div class="input-group input-group-merge">
                                     <span id="categories" class="input-group-text">
-                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-list"></i>
                                     </span>
                                     <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" id="full_name"
                                         name="categories" placeholder="*Kategori"
@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="d-flex flex-column">
-                                    <div id="categoriesHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                    {{-- <div id="categoriesHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                     <!-- Error categories -->
                                     @if ( $errors->has('categories') )
                                         <span class="help-block">

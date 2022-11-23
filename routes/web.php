@@ -174,16 +174,16 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Manage Kriteria
         // Create
-        Route::GET('manage/criterias/create', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasCreate'])->name('getManageCriterias.Create.SDM');
-        Route::POST('manage/criterias/create/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasCreate'])->name('postManageCriterias.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasCreate'])->name('getManageCriterias.KepalaSubbagianPenghargaanDisiplindanPensiun.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasCreate'])->name('postManageCriterias.KepalaSubbagianPenghargaanDisiplindanPensiun.Create.SDM');
         // Read
-        Route::GET('manage/criterias', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriterias'])->name('getManageCriterias.Read.SDM');
-        Route::GET('manage/criterias/list', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasList'])->name('getManageCriteriasList.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriterias'])->name('getManageCriterias.KepalaSubbagianPenghargaanDisiplindanPensiun.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/list', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasList'])->name('getManageCriteriasList.KepalaSubbagianPenghargaanDisiplindanPensiun.Read.SDM');
         // View
-        Route::GET('manage/criterias/view/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdView'])->name('getManageCriteriasId.View.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdView'])->name('getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM');
         // Update
-        Route::GET('manage/criterias/edit/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdUpdate'])->name('getManageCriteriasId.Update.SDM');
-        Route::POST('manage/criterias/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasIdUpdate'])->name('postManageCriteriasId.Update.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit/{id}', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'getCriteriasIdUpdate'])->name('getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Kriteria\KriteriaController::class, 'postCriteriasIdUpdate'])->name('postManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM');
         // Delete
 
 

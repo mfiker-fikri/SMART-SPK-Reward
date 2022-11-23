@@ -130,8 +130,18 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 location.reload();
+                                $('#message-update-photo-success').show();
                             }
                         })
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        Swal.fire({
+                            title: 'Gagal/Error',
+                            text: thrownError,
+                            icon: 'error',
+                            confirmButtonText: 'Ok',
+                        });
+                        $('#message-update-photo-error').show();
                     }
                 });
             } else {
@@ -146,6 +156,7 @@
     </script>
     <!--/ Delete Photo -->
 
+    <!-- Show Hide Password -->
     <script type="text/javascript">
         $(document).on('click', '#oldPasswordEye', function(e) {
             event.preventDefault();
@@ -202,6 +213,7 @@
             }
         });
     </script>
+    <!--/ Show Hide Password -->
 @stop
 
 

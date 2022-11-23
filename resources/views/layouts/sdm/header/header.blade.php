@@ -44,6 +44,40 @@
 
                 @endif
 
+            @elseif (Auth::guard('human_resources')->user()->role == 3)
+                <!-- Dashboard -->
+                @if ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') )
+                <li class="breadcrumb-item fw-bold active">
+                    Dashboard
+                </li>
+                <!--/ Dashboard -->
+
+                <!-- Profile -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Profile</li>
+                <!--/ Profile -->
+
+                <!-- Manage Categories -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Kategori</li>
+                <!--/ Manage Categories -->
+
+                <!-- Manage Criterias -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Kriteria</li>
+                <!--/ Manage Criterias -->
+
+                @endif
+
             @endif
 
 

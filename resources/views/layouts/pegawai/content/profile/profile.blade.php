@@ -23,24 +23,207 @@
                 justify-content: center;
             }
         }
+
+
+        /* .datepicker {
+        background-color: #fff;
+        border-radius: 0 !important;
+        padding: 15px 20px !important;
+        align-content: center !important;
+        }
+
+        .datepicker-dropdown {
+        top: 0;
+        left: calc(50% - 161px) !important;
+        }
+
+        .datepicker-dropdown.datepicker-orient-left:before {
+        left: calc(50% - 6px) !important;
+        }
+
+        .datepicker-dropdown.datepicker-orient-left:after {
+        left: calc(50% - 5px) !important;
+        }
+
+        .datepicker table tr td.today, span.focused {
+        border-radius: 50% !important;
+        background-image: linear-gradient(#FFF3E0, #FFE0B2);
+        }
+
+        .datepicker table tr td.today.range {
+        background-image: linear-gradient(#eeeeee, #eeeeee) !important;
+        border-radius: 0 !important;
+        }
+
+        /*Weekday title*/
+        /* thead tr:nth-child(3) th {
+        font-weight: bold !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+
+        .old, .day, .new {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 0px !important;
+        border: 1px solid lightgrey !important;
+        }
+
+        .day.old, .day.new {
+        background-color: #F5F5F5 !important;
+        color: #E0E0E0 !important;
+        }
+
+        .day.old:hover, .day.new:hover {
+        border-radius: 0px !important;
+        }
+
+        .old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+        border-radius: 50% !important;
+        background-color: #eee;
+        }
+
+        .active {
+        border-radius: 50% !important;
+        background-image: linear-gradient(#90CAF9, #64B5F6) !important;
+        color: #fff !important;
+        }
+
+        .range-start, .range-end {
+        border-radius: 50% !important;
+        background-image: linear-gradient(#4CAF50, #4CAF50) !important;
+        }
+
+        .range {
+        color: #4CAF50 !important;
+        }
+
+        .prev, .next, .datepicker-switch {
+        border-radius: 0 !important;
+        padding: 10px 10px 10px 10px !important;
+        font-size: 18px;
+        opacity: 0.7;
+        color: #4CAF50;
+        }
+
+        .prev:hover, .next:hover, .datepicker-switch:hover {
+        background-color: inherit !important;
+        opacity: 1;
+        }
+
+        @media screen and (max-width: 500px) {
+        .datepicker-dropdown.datepicker-orient-right:before {
+            right: calc(50% - 6px) !important;
+        }
+
+        .datepicker-dropdown.datepicker-orient-right:after {
+            right: calc(50% - 5px) !important;
+        } */
+        /* } */
     </style>
 @endprepend
 
 @section('css_header')
     {{-- <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" /> --}}
+
+    <!-- DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css" integrity="sha256-SMGbWcp5wJOVXYlZJyAXqoVWaE/vgFA5xfrH3i/jVw0=" crossorigin="anonymous" /> --}}
+
+@stop
+
+@section('js_header')
+    <!-- DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- IMask -->
+    {{-- <script src="https://unpkg.com/imask"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js" integrity="sha512-yJ3vm1HmQtcgeMtbUYCp7PuTLyjU+ffCnVNTuE1Uccv1BmkoaJIXt1EjBVGnscjCILc62hTJJJ2rJJBTcw8RjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.js" integrity="sha512-V+AKBUHBq48VlMTmp/zPr4JzARPydw7GGVoQlSAvbuMon9GLwGxn13s8sd82mCU2giZwffg4HXObQdcsUCjWOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script> --}}
 @stop
 
 
 <!-- Footer Js -->
 @section('js_footer')
+    <!-- DatePicker -->
     <script type='text/javascript'>
-    $(function() {
-        const elem = document.querySelector('input[id="date_birth"]');
-        const datePicker = new DatePicker(elem, {
-            // options here
-            clearBtn: true,
+    // $(function() {
+    //     const elem = document.querySelector('input[id="date_birth"]');
+    //     const datePicker = new DatePicker(elem, {
+    //         // options here
+    //         clearBtn: true,
+    //     });
+    // });
+    //
+    // $(document).ready(function(){
+    //     $('.datePickerDateBirth').datepicker({
+    //         // format: 'mm/dd/yyyy',
+    //         format: 'd/m/yy',
+    //         clearBtn: true,
+    //     });
+    // });
+    </script>
+
+    <!-- IMask -->
+    <script type='text/javascript'>
+    var dateMask = IMask(
+        document.getElementById('date_birth'),
+        {
+            mask: Date,  // enable date mask
+
+            // other options are optional
+            pattern: 'd-`m-`Y',  // Pattern mask with defined blocks, default is 'd{.}`m{.}`Y'
+            // you can provide your own blocks definitions, default blocks for date mask are:
+            blocks: {
+                d: {
+                mask: IMask.MaskedRange,
+                from: 1,
+                to: 31,
+                maxLength: 2,
+                },
+                m: {
+                mask: IMask.MaskedRange,
+                from: 1,
+                to: 12,
+                maxLength: 2,
+                },
+                Y: {
+                mask: IMask.MaskedRange,
+                from: 1900,
+                to: 9999,
+                }
+            },
+            // define date -> str convertion
+            format: function (date) {
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+
+                if (day < 10) day = "0" + day;
+                if (month < 10) month = "0" + month;
+
+                return [year, month, day].join('-');
+            },
+            // define str -> date convertion
+            parse: function (str) {
+                var yearMonthDay = str.split('-');
+                return new Date(yearMonthDay[0], yearMonthDay[1] - 1, yearMonthDay[2]);
+            },
+
+            // optional interval options
+            min: new Date(2000, 0, 1),  // defaults to `1900-01-01`
+            max: new Date(2020, 0, 1),  // defaults to `9999-01-01`
+
+            autofix: true,  // defaults to `false`, see details
+
+            // also Pattern options can be set
+            lazy: false,
+
+            // and other common options
+            overwrite: true  // defaults to `false`
         });
-    });
     </script>
 
     <!-- Image Preview -->
@@ -101,9 +284,76 @@
         //     });
         // });
     </script> --}}
+
+    <!-- Show Hide Password -->
+    <script type="text/javascript">
+        $(document).on('click', '#oldPasswordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("oldPassword").getAttribute("type");
+            // console.log(show);
+            if(show == "password"){
+                // console.log('sukses1');
+                document.getElementById("oldPassword").setAttribute("type", "text");
+                document.getElementById("eyeOldPassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyeOldPassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                // console.log('sukses2');
+                document.getElementById("oldPassword").setAttribute("type", "password");
+                document.getElementById("eyeOldPassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyeOldPassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password").getAttribute("type");
+            // console.log(show);
+            if(show == "password"){
+                // console.log('sukses1');
+                document.getElementById("password").setAttribute("type", "text");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                // console.log('sukses2');
+                document.getElementById("password").setAttribute("type", "password");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordConfirmationEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password_confirmation").getAttribute("type");
+            // console.log(show);
+            if(show == "password"){
+                // console.log('sukses1');
+                document.getElementById("password_confirmation").setAttribute("type", "text");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                // console.log('sukses2');
+                document.getElementById("password_confirmation").setAttribute("type", "password");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+    <!--/ Show Hide Password -->
 @stop
 
 @push('js_footer')
+    <!-- Datepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- IMask -->
+    {{-- <script src="https://unpkg.com/imask"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js" integrity="sha512-yJ3vm1HmQtcgeMtbUYCp7PuTLyjU+ffCnVNTuE1Uccv1BmkoaJIXt1EjBVGnscjCILc62hTJJJ2rJJBTcw8RjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.js" integrity="sha512-V+AKBUHBq48VlMTmp/zPr4JzARPydw7GGVoQlSAvbuMon9GLwGxn13s8sd82mCU2giZwffg4HXObQdcsUCjWOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script>
         // Get a reference to the file input element
@@ -401,7 +651,7 @@
                                         </div>
 
                                         <div class="d-flex flex-column">
-                                            <div class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
+                                            <div class="form-text">Email Menggunakan Simbol @ serta .com/.co.id/ dll</div>
 
                                             <!-- Error Email -->
                                             @if ( $errors->has('email') )
@@ -438,7 +688,7 @@
                                                     <span id="tempat_tanggalLahir" class="input-group-text">
                                                         <i class="fa-solid fa-calendar-days"></i>
                                                     </span>
-                                                    <input type="date" class="form-control px-lg-1 px-2 {{ $errors->has('date_birth') ? 'is-invalid' : '' }}" id="date_birth"
+                                                    <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('date_birth') ? 'is-invalid' : '' }} datePickerDateBirth" id="date_birth"
                                                         name="date_birth" placeholder="*Tanggal Lahir" aria-label="Tanggal Lahir"
                                                         autofocus autocomplete required value="{{ old('date_birth', Auth::guard('employees')->user()->date_birth) }}" />
                                                 </div>
@@ -751,13 +1001,16 @@
                                     <label for="oldPassword" class="text-wrap col-sm-3 col-form-label">Password Sekarang</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge {{ $errors->has('oldPassword') ? 'is-invalid' : '' }}">
-                                            <span id="oldPassword" class="input-group-text">
+                                            <span class="input-group-text">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('oldPassword') ? 'is-invalid' : '' }}" id="oldPassword"
                                                 name="oldPassword" placeholder="*Password Sekarang"
                                                 autofocus autocomplete required aria-invalid="true" aria-describedby="old password" data-val="true"
-                                                value="" />
+                                                value=""/>
+                                            <span class="input-group-text" id="oldPasswordEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyeOldPassword"></i>
+                                            </span>
                                         </div>
 
                                         <div class="d-flex flex-column">
@@ -784,13 +1037,16 @@
                                     <label for="password" class="col-sm-3 col-form-label">Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }} ">
-                                            <span id="password" class="input-group-text">
+                                            <span class="input-group-text">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
                                                 name="password" placeholder="*Password Baru"
                                                 autofocus autocomplete required aria-invalid="true" aria-describedby="new password" data-val="true"
                                                 value=""/>
+                                            <span class="input-group-text" id="passwordEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyePassword"></i>
+                                            </span>
                                         </div>
 
                                         <div class="d-flex flex-column">
@@ -817,13 +1073,16 @@
                                     <label for="password_confirmation" class="text-wrap col-sm-3 col-form-label">Konfirmasi Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                                            <span id="password_confirmation" class="input-group-text">
+                                            <span class="input-group-text">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
                                                 name="password_confirmation" placeholder="*Konfirmasi Password Baru"
                                                 autofocus autocomplete required aria-invalid="true" aria-describedby="confirmasi new password" data-val="true"
                                                 value=""/>
+                                            <span class="input-group-text" id="passwordConfirmationEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyePasswordConfirmation"></i>
+                                            </span>
                                         </div>
 
                                         <div class="d-flex flex-column">
