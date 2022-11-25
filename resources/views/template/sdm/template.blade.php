@@ -156,6 +156,29 @@
 
         <!--/ Date Picker -->
 
+        <script>
+            function onLoad() {
+                new InputMask().Initialize(document.querySelectorAll("#sample-ssnmask"),
+                {
+                    mask: InputMaskDefaultMask.Ssn,
+                    placeHolder: "SSN: 999-99-9999"
+                });
+
+                new InputMask().Initialize(document.querySelectorAll("#date_birth"),
+                // new InputMask().Initialize(document.getElementById('date_birth'),
+                {
+                    mask: InputMaskDefaultMask.Date,
+                    placeHolder: "Date: 01/01/2015"
+                });
+
+                new InputMask().Initialize(document.querySelectorAll("#sample-phone"),
+                {
+                    mask: InputMaskDefaultMask.Phone,
+                    placeHolder: "Phone: (999) 999-9999"
+                });
+            }
+        </script>
+
         <!--  -->
         @stack('css_header')
         @stack('js_header')
@@ -185,7 +208,8 @@
         <!--/ Add Ext Plugin -->
     </head>
 
-    <body onload="startTime()">
+    <body onload="startTime();onLoad();">
+    {{-- <body onload="start()"> --}}
         <div class="preloader">
             <div class="loading">
                 <img src="{{ asset('css/pegawai/ext_css/GIF/Hourglass.gif') }}" width="80">
@@ -353,6 +377,34 @@
                 };  // add zero in front of numbers < 10
                 return i;
             }
+
+            // function onLoad() {
+            //     new InputMask().Initialize(document.querySelectorAll("#sample-ssnmask"),
+            //     {
+            //         mask: InputMaskDefaultMask.Ssn,
+            //         placeHolder: "SSN: 999-99-9999"
+            //     });
+
+            //     new InputMask().Initialize(document.querySelectorAll("#date_birth"),
+            //     // new InputMask().Initialize(document.getElementById('date_birth'),
+            //     {
+            //         mask: InputMaskDefaultMask.Date,
+            //         placeHolder: "Date: 01/01/2015"
+            //     });
+
+            //     new InputMask().Initialize(document.querySelectorAll("#sample-phone"),
+            //     {
+            //         mask: InputMaskDefaultMask.Phone,
+            //         placeHolder: "Phone: (999) 999-9999"
+            //     });
+            // }
+
+            function start() {
+                startTime();
+                onLoad();
+            }
+
+
         </script>
         <!--/ Clock & Date -->
 

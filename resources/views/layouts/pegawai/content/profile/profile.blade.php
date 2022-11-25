@@ -142,6 +142,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.min.js" integrity="sha512-yJ3vm1HmQtcgeMtbUYCp7PuTLyjU+ffCnVNTuE1Uccv1BmkoaJIXt1EjBVGnscjCILc62hTJJJ2rJJBTcw8RjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.js" integrity="sha512-V+AKBUHBq48VlMTmp/zPr4JzARPydw7GGVoQlSAvbuMon9GLwGxn13s8sd82mCU2giZwffg4HXObQdcsUCjWOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script> --}}
+
+    <script type="text/javascript" src="{{ asset('js/pegawai/ext_js/IMask/input-mask.js') }}" ></script>
+    {{-- <script>
+		function onLoad() {
+            new InputMask().Initialize(document.querySelectorAll("#sample-ssnmask"),
+			{
+				mask: InputMaskDefaultMask.Ssn,
+				placeHolder: "SSN: 999-99-9999"
+			});
+
+			new InputMask().Initialize(document.querySelectorAll("#date_birth"),
+            // new InputMask().Initialize(document.getElementById('date_birth'),
+			{
+				mask: InputMaskDefaultMask.Date,
+				placeHolder: "Date: 01/01/2015"
+			});
+
+            new InputMask().Initialize(document.querySelectorAll("#sample-phone"),
+			{
+				mask: InputMaskDefaultMask.Phone,
+				placeHolder: "Phone: (999) 999-9999"
+			});
+		}
+	</script> --}}
 @stop
 
 
@@ -157,73 +181,96 @@
     //     });
     // });
     //
-    // $(document).ready(function(){
-    //     $('.datePickerDateBirth').datepicker({
-    //         // format: 'mm/dd/yyyy',
-    //         format: 'd/m/yy',
-    //         clearBtn: true,
-    //     });
-    // });
+    $(document).ready(function(){
+        $('.datePickerDateBirth').datepicker({
+            // format: 'mm/dd/yyyy',
+            format: 'dd/mm/yyyy',
+            clearBtn: true,
+        });
+    });
     </script>
+
+    {{-- <script>
+        function onLoad() {
+            new InputMask().Initialize(document.querySelectorAll("#sample-ssnmask"),
+            {
+                mask: InputMaskDefaultMask.Ssn,
+                placeHolder: "SSN: 999-99-9999"
+            });
+
+            new InputMask().Initialize(document.querySelectorAll("#date_birth"),
+            // new InputMask().Initialize(document.getElementById('date_birth'),
+            {
+                mask: InputMaskDefaultMask.Date,
+                placeHolder: "Date: 01/01/2015"
+            });
+
+            new InputMask().Initialize(document.querySelectorAll("#sample-phone"),
+            {
+                mask: InputMaskDefaultMask.Phone,
+                placeHolder: "Phone: (999) 999-9999"
+            });
+        }
+    </script> --}}
 
     <!-- IMask -->
     <script type='text/javascript'>
-    var dateMask = IMask(
-        document.getElementById('date_birth'),
-        {
-            mask: Date,  // enable date mask
+    // var dateMask = IMask(
+    //     document.getElementById('date_birth'),
+    //     {
+    //         mask: Date,  // enable date mask
 
-            // other options are optional
-            pattern: 'd-`m-`Y',  // Pattern mask with defined blocks, default is 'd{.}`m{.}`Y'
-            // you can provide your own blocks definitions, default blocks for date mask are:
-            blocks: {
-                d: {
-                mask: IMask.MaskedRange,
-                from: 1,
-                to: 31,
-                maxLength: 2,
-                },
-                m: {
-                mask: IMask.MaskedRange,
-                from: 1,
-                to: 12,
-                maxLength: 2,
-                },
-                Y: {
-                mask: IMask.MaskedRange,
-                from: 1900,
-                to: 9999,
-                }
-            },
-            // define date -> str convertion
-            format: function (date) {
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var year = date.getFullYear();
+    //         // other options are optional
+    //         pattern: 'd-`m-`Y',  // Pattern mask with defined blocks, default is 'd{.}`m{.}`Y'
+    //         // you can provide your own blocks definitions, default blocks for date mask are:
+    //         blocks: {
+    //             d: {
+    //             mask: IMask.MaskedRange,
+    //             from: 1,
+    //             to: 31,
+    //             maxLength: 2,
+    //             },
+    //             m: {
+    //             mask: IMask.MaskedRange,
+    //             from: 1,
+    //             to: 12,
+    //             maxLength: 2,
+    //             },
+    //             Y: {
+    //             mask: IMask.MaskedRange,
+    //             from: 1900,
+    //             to: 9999,
+    //             }
+    //         },
+    //         // define date -> str convertion
+    //         format: function (date) {
+    //             var day = date.getDate();
+    //             var month = date.getMonth() + 1;
+    //             var year = date.getFullYear();
 
-                if (day < 10) day = "0" + day;
-                if (month < 10) month = "0" + month;
+    //             if (day < 10) day = "0" + day;
+    //             if (month < 10) month = "0" + month;
 
-                return [year, month, day].join('-');
-            },
-            // define str -> date convertion
-            parse: function (str) {
-                var yearMonthDay = str.split('-');
-                return new Date(yearMonthDay[0], yearMonthDay[1] - 1, yearMonthDay[2]);
-            },
+    //             return [year, month, day].join('-');
+    //         },
+    //         // define str -> date convertion
+    //         parse: function (str) {
+    //             var yearMonthDay = str.split('-');
+    //             return new Date(yearMonthDay[0], yearMonthDay[1] - 1, yearMonthDay[2]);
+    //         },
 
-            // optional interval options
-            min: new Date(2000, 0, 1),  // defaults to `1900-01-01`
-            max: new Date(2020, 0, 1),  // defaults to `9999-01-01`
+    //         // optional interval options
+    //         min: new Date(2000, 0, 1),  // defaults to `1900-01-01`
+    //         max: new Date(2020, 0, 1),  // defaults to `9999-01-01`
 
-            autofix: true,  // defaults to `false`, see details
+    //         autofix: true,  // defaults to `false`, see details
 
-            // also Pattern options can be set
-            lazy: false,
+    //         // also Pattern options can be set
+    //         lazy: false,
 
-            // and other common options
-            overwrite: true  // defaults to `false`
-        });
+    //         // and other common options
+    //         overwrite: true  // defaults to `false`
+    //     });
     </script>
 
     <!-- Image Preview -->
