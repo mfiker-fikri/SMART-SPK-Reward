@@ -5,19 +5,8 @@ namespace App\Http\Controllers\TeamAssessment\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class ForgotPasswordController extends Controller
 {
-
-    // Get Login
-    public function getLoginForm()
-    {
-        try {
-            return view('layouts.pegawai.content.auth.login');
-        } catch (\Exception $exception) {
-            return $exception;
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *

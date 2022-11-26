@@ -151,7 +151,7 @@ class LoginController extends Controller
                     'username.required'                 =>      'Username Wajib Diisi!',
                     'password.required'                 =>      'Password Wajib Diisi!',
                     //
-                    'email.email'                       =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                    'email.email'                       =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
                 ]
             );
 

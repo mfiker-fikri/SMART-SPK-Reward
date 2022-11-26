@@ -89,7 +89,7 @@ class LoginController extends Controller
             [
                 'username.required'         => 'Username Wajib Diisi!',
                 'password.required'         => 'Password Wajib Diisi!',
-                'email.email'               => 'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                'email.email'               => 'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
             ]
         );
 
@@ -118,7 +118,7 @@ class LoginController extends Controller
         return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed', 'Username/Email atau Password Salah');
 
         // $role_admin = DB::table('map_roles')
-        //     // 
+        //     //
         //     ->join('admins', 'admins.email', '=', 'map_roles.user_email')
         //     // ->join('pegawai', 'pegawai.email', '=', 'map_roles.user_email')
         //     ->join('roles', 'map_roles.roles_id', '=', 'roles.id')
@@ -127,7 +127,7 @@ class LoginController extends Controller
         //     ->orWhere('password', 'LIKE', '&' . $password . '%')
         //     ->get();
         // $role_pegawai = DB::table('map_roles')
-        //     // 
+        //     //
         //     ->join('pegawai', 'pegawai.email', '=', 'map_roles.user_email')
         //     ->join('roles', 'map_roles.roles_id', '=', 'roles.id')
         //     ->select('roles_id')

@@ -110,7 +110,7 @@ class LoginController extends Controller
                 'password.required'                 =>      'Password Wajib Diisi!',
                 // 'g-recaptcha-response.required'     =>  'Recaptcha Wajib Diisi!',
                 //
-                'email.email'                       =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                'email.email'                       =>      'Email Tidak Valid! (Gunakan @ serta .com/.co.id/dll)',
                 //
                 // 'g-recaptcha-response.recaptcha'    =>  'Recaptcha Tidak Valid!',
             ]
