@@ -203,6 +203,11 @@
                 transform: translate(-50%,-50%);
                 font: 14px arial;
             }
+
+            input::-ms-reveal,
+            input::-ms-clear {
+                display: none;
+            }
         </style>
 
         <!--/ Add Ext Plugin -->

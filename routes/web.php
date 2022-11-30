@@ -194,6 +194,7 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::GET('select/criterias/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCriterias'])->name('getSelectCriterias.Parameters.SDM');
         // Select Value Quality
         Route::GET('select/value-quality/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.SDM');
+
         // Create
         Route::GET('manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.SDM');
         Route::POST('manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.SDM');
@@ -207,6 +208,19 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('manage/parameters/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.SDM');
         // Delete
 
+        // Manage Team Assessment
+        // Create
+        Route::GET('manage/team-assessment/create', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentCreate'])->name('getManageTeamAssessment.Create.SDM');
+        Route::POST('manage/team-assessment/create/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class,'postTeamAssessmentCreate'])->name('postManageTeamAssessment.Create.SDM');
+        // Read
+        Route::GET('manage/team-assessment', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessment'])->name('getManageTeamAssessment.Read.SDM');
+        Route::GET('manage/team-assessment/list', [\App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentList'])->name('getManageTeamAssessmentList.Read.SDM');
+        // View
+        Route::GET()->name('');
+        // Update
+        Route::GET()->name();
+        Route::POST()->name();
+        // Delete
     });
 
 });
@@ -226,6 +240,16 @@ Route::group(['name' => 'tim-penilai', 'prefix' => 'penilai', 'as' => 'penilai.'
     Route::GET('/reset-password/{token}', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.Penilai');
 
     Route::POST('/reset-password', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Penilai');
+
+    // Dashboard
+    // Penilaian Inovasi
+    // Read
+    Route::GET('/appraisment', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'get'])->name('getManageAppraisment.Read.Penilai');
+    Route::GET('/appraisment/list')->name('getManageAppraisment.Read.Penilai');
+    // Update
+    Route::GET('/appraisment/update/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'get'])->name('getManageAppraisment.Update.Penilai');
+    Route::POST('/appraisment/update/{id}/post')->name('postManageAppraisment.Update.Penilai');
+
 });
 
 

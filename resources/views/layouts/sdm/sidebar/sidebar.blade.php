@@ -149,6 +149,19 @@
             </li>
             <!--/ Manage Parameters -->
 
+            <!-- Manage Team Assessment -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Kelola Tim Penilai</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    <div data-i18n="Analytics">Kelola Tim Penilai</div>
+                </a>
+            </li>
+            <!--/ Manage Team Assessment -->
+
             <!-- Countdown Timer Form -->
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Countdown Timer Open Form</span>
