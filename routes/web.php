@@ -196,17 +196,18 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::GET('select/value-quality/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.SDM');
 
         // Create
-        Route::GET('manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.SDM');
-        Route::POST('manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.SDM');
         // Read
-        Route::GET('manage/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParameters'])->name('getManageParameters.Read.SDM');
-        Route::GET('manage/parameters/list', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersList'])->name('getManageParametersList.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParameters'])->name('getManageParameters.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/list', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersList'])->name('getManageParametersList.Read.SDM');
         // View
-        Route::GET('manage/parameters/view/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdView'])->name('getManageParametersId.View.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdView'])->name('getManageParametersId.View.SDM');
         // Update
-        Route::GET('manage/parameters/edit/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdUpdate'])->name('getManageParametersId.Update.SDM');
-        Route::POST('manage/parameters/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit/{id}', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersIdUpdate'])->name('getManageParametersId.Update.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit/{id}/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersIdUpdate'])->name('postManageParametersId.Update.SDM');
         // Delete
+
 
         // Manage Team Assessment
         // Create
@@ -214,12 +215,12 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('manage/team-assessment/create/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class,'postTeamAssessmentCreate'])->name('postManageTeamAssessment.Create.SDM');
         // Read
         Route::GET('manage/team-assessment', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessment'])->name('getManageTeamAssessment.Read.SDM');
-        Route::GET('manage/team-assessment/list', [\App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentList'])->name('getManageTeamAssessmentList.Read.SDM');
+        Route::GET('manage/team-assessment/list', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentList'])->name('getManageTeamAssessmentList.Read.SDM');
         // View
-        Route::GET()->name('');
+        Route::GET('manage/team-assessment/view/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentIdView'])->name('getManageTeamAssessmentId.View.SDM');
         // Update
-        Route::GET()->name();
-        Route::POST()->name();
+        Route::GET('manage/team-assessment/edit/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class], 'getTeamAssessmentIdUpdate')->name('getManageTeamAssessmentId.Update.SDM');
+        Route::POST('manage/team-assessment/edit/{id}/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'postTeamAssessmentIdUpdate'])->name('postManageTeamAssessmentId.Update.SDM');
         // Delete
     });
 

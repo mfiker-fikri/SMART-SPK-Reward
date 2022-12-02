@@ -141,8 +141,8 @@
                 <span class="menu-header-text">Kelola Parameter</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
-                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                     <div data-i18n="Analytics">Kelola Parameter</div>
                 </a>
