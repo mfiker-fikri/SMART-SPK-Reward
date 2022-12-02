@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\SDM\Role3\TeamAssessment;
+namespace App\Http\Controllers\SDM\Role3\TimerCountDown;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ManageTeamAssessment extends Controller
+class ManageTimerCountDownController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getTimerCountDownFormInovation()
     {
         try {
-            return view();
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_index-create');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -28,11 +28,7 @@ class ManageTeamAssessment extends Controller
      */
     public function create()
     {
-        try {
-
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        //
     }
 
     /**
@@ -43,11 +39,7 @@ class ManageTeamAssessment extends Controller
      */
     public function store(Request $request)
     {
-        try {
-
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        //
     }
 
     /**
@@ -81,11 +73,7 @@ class ManageTeamAssessment extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        //
     }
 
     /**

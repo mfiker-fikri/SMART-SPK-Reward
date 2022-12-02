@@ -211,17 +211,23 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Manage Team Assessment
         // Create
-        Route::GET('manage/team-assessment/create', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentCreate'])->name('getManageTeamAssessment.Create.SDM');
-        Route::POST('manage/team-assessment/create/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class,'postTeamAssessmentCreate'])->name('postManageTeamAssessment.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'getTeamAssessmentCreate'])->name('getManageTeamAssessment.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class,'postTeamAssessmentCreate'])->name('postManageTeamAssessment.Create.SDM');
         // Read
-        Route::GET('manage/team-assessment', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessment'])->name('getManageTeamAssessment.Read.SDM');
-        Route::GET('manage/team-assessment/list', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentList'])->name('getManageTeamAssessmentList.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'getTeamAssessment'])->name('getManageTeamAssessment.Read.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/list', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'getTeamAssessmentList'])->name('getManageTeamAssessmentList.Read.SDM');
         // View
-        Route::GET('manage/team-assessment/view/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'getTeamAssessmentIdView'])->name('getManageTeamAssessmentId.View.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'getTeamAssessmentIdView'])->name('getManageTeamAssessmentId.View.SDM');
         // Update
-        Route::GET('manage/team-assessment/edit/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class], 'getTeamAssessmentIdUpdate')->name('getManageTeamAssessmentId.Update.SDM');
-        Route::POST('manage/team-assessment/edit/{id}/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessment::class, 'postTeamAssessmentIdUpdate'])->name('postManageTeamAssessmentId.Update.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class], 'getTeamAssessmentIdUpdate')->name('getManageTeamAssessmentId.Update.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit/{id}/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'postTeamAssessmentIdUpdate'])->name('postManageTeamAssessmentId.Update.SDM');
         // Delete
+
+
+        // Manage Time CountDown
+        // Form Inovation
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormInovation'])->name('getTimerCountDownFormInovation.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormInovation'])->name('postTimerCountDownFormInovation.Index.Create.SDM');
     });
 
 });
