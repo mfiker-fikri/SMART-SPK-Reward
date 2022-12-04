@@ -6,7 +6,7 @@
 
 <div id="container-xxl container-p-y">
     <div class="misc-wrapper">
-        <h2 class="mb-2 mx-2">419 - Page Expired</h1>
+        <h2 class="mb-2 mx-2" style="margin-top: 30px">419 - Page Expired</h1>
         <p class="mx-2">Sorry! 😖 Your Session Has Expired</p>
         <p class="mb-4 mx-2">Please Refresh and Try Again </p>
         <a href="{{ URL::previous() }}" class="btn btn-primary">Refresh The Page</a>
