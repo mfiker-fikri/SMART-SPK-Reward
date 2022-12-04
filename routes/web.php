@@ -326,9 +326,9 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
 });
 
 // Error
-// Route::GET('/error', function () {
-//     return view('errors.503');
-// });
+Route::GET('/error', function () {
+    return view('errors.419');
+});
 
 
 

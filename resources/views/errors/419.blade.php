@@ -4,24 +4,24 @@
 
 @section('content')
 
-  <div id="container-xxl container-p-y">
-		<div class="misc-wrapper">
-      <h2 class="mb-2 mx-2">419 - Page Expired</h1>
-      <p class="mx-2">Sorry! 😖 Your Session Has Expired</p>
-      <p class="mb-4 mx-2">Please Refresh and Try Again </p>
-			<a href="{{ URL::previous() }}" class="btn btn-primary">Refresh The Page</a>
-      <div class="mt-4">
-        <img
-          src="{{ asset('css/error/int_css/img/illustrations/419.jpg') }}"
-          alt="419"
-          width="360"
-          class="img-fluid"
-          data-app-dark-img="illustrations/page-misc-error-dark.png"
-          data-app-light-img="illustrations/page-misc-error-light.png"
-        />
-      </div>
-		</div>
-	</div>
+<div id="container-xxl container-p-y">
+    <div class="misc-wrapper">
+        <h2 class="mb-2 mx-2">419 - Page Expired</h1>
+        <p class="mx-2">Sorry! 😖 Your Session Has Expired</p>
+        <p class="mb-4 mx-2">Please Refresh and Try Again </p>
+        <a href="{{ URL::previous() }}" class="btn btn-primary">Refresh The Page</a>
+        <div class="mt-3">
+            <img
+            src="{{ asset('css/error/int_css/img/illustrations/419.jpg') }}"
+            alt="419"
+            width="310"
+            class="img-fluid"
+            data-app-dark-img="illustrations/419.png"
+            data-app-light-img="illustrations/419.png"
+            />
+        </div>
+    </div>
+</div>
 
   {{-- <div id="notfound">
 		<div class="notfound">
