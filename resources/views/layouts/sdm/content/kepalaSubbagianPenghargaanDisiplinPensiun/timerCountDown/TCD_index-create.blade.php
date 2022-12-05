@@ -23,7 +23,7 @@
 
                     <!-- Form Timer Countdown -->
                     <div class="card-body py-xl-5 py-sm-5 px-xl-5">
-                        <form id="" role="form" action="#" method="post">
+                        <form id="formCreateTimerFormInovation" class="mx-2" method="POST" action="{{ route('sdm.postTimerCountDownFormInovation.Index.Create.SDM') }}">
                             @csrf
                             <!-- Timer Countdown-->
                             <div class="mb-3 row {{ $errors->has('date_time_countdown_inovation_form') ? 'is-invalid' : '' }}">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\SDM\Role3\TimerCountDown;
 
 use App\Http\Controllers\Controller;
+use App\Models\CountdownTimerFormInovation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ManageTimerCountDownController extends Controller
 {
@@ -37,9 +39,45 @@ class ManageTimerCountDownController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postTimerCountDownFormInovation(Request $request)
     {
-        //
+        try {
+            // validasi
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'date_time_countdown_inovation_form'            =>  'required',
+                    'status'                                        =>  'required',
+                ],
+                [
+                    'date_time_countdown_inovation_form.required'   =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'status.required'                               =>  'Status Wajib Dipilih!',
+
+                    // 'date_time_countdown_inovation_form.date_format'    => ''
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal !', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-create-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
+            }
+
+            // Create New Timer
+            $timer = CountdownTimerFormInovation::create([
+                'date_time_form_inovation'      =>  $request['date_time_countdown_inovation_form'],
+                'status'                        =>  $request['status'],
+            ]);
+
+            if($timer) {
+                alert()->success('Berhasil Tambah Data Timer Form Inovation!')->autoclose(25000);
+                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Form Inovation!');
+            } else {
+                alert()->error('Gagal Tambah Data Timer Form Inovation!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
