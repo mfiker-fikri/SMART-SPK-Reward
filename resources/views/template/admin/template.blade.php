@@ -309,6 +309,19 @@
 
         {{-- <link link rel="stylesheet" href="{{ asset('css/admin/int_css/login.css') }}" /> --}}
 
+        <!-- Date Picker -->
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bs5.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bs5.min.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bulma.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bulma.min.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-foundation.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-foundation.min.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker.min.css') }}" crossorigin="anonymous" />
+        {{-- <script src="{{ asset('js/pegawai/ext_js/datepicker/datepicker-full.js') }}"></script> --}}
+
+        <!--/ Date Picker -->
+
         <!-- -->
         @stack('css_header')
         @stack('js_header')

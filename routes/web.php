@@ -227,7 +227,10 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Manage Time CountDown
         // Form Inovation
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormInovation'])->name('getTimerCountDownFormInovation.Index.Create.SDM');
+        // Create or Update
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormInovation'])->name('postTimerCountDownFormInovation.Index.Create.SDM');
+        // Delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete/{id}', [\App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormInovation'])->name('deleteTimerCountDownFormInovation.Index.Create.SDM');
 
         // Form Teladan
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormTeladan'])->name('getTimerCountDownFormTeladan.Index.Create.SDM');

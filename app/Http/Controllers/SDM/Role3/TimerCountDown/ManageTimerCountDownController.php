@@ -17,7 +17,8 @@ class ManageTimerCountDownController extends Controller
     public function getTimerCountDownFormInovation()
     {
         try {
-            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_index-create');
+            $timer  =   CountdownTimerFormInovation::first();
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_index-create', compact('timer'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -62,19 +63,36 @@ class ManageTimerCountDownController extends Controller
                 return redirect()->back()->with('message-create-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
             }
 
-            // Create New Timer
-            $timer = CountdownTimerFormInovation::create([
-                'date_time_form_inovation'      =>  $request['date_time_countdown_inovation_form'],
-                'status'                        =>  $request['status'],
-            ]);
+            if(CountdownTimerFormInovation::whereNotNull('date_time_form_inovation')) {
+                $id  =  CountdownTimerFormInovation::find($request['id']);
 
-            if($timer) {
-                alert()->success('Berhasil Tambah Data Timer Form Inovation!')->autoclose(25000);
-                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Form Inovation!');
+                if($id) {
+                    $id->date_time_form_inovation      =  $request['date_time_countdown_inovation_form'];
+                    $id->status                        =  $request['status'];
+                    $id->save();
+
+                    alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
+                    return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Form Inovation!');
+                } else {
+                    alert()->error('Gagal Update Data Timer Form Inovation!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                }
             } else {
-                alert()->error('Gagal Tambah Data Timer Form Inovation!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                // Create New Timer
+                $timer = CountdownTimerFormInovation::create([
+                    'date_time_form_inovation'      =>  $request['date_time_countdown_inovation_form'],
+                    'status'                        =>  $request['status'],
+                ]);
+                if($timer) {
+                    alert()->success('Berhasil Tambah Data Timer Form Inovation!')->autoclose(25000);
+                    return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Form Inovation!');
+                } else {
+                    alert()->error('Gagal Tambah Data Timer Form Inovation!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                }
             }
+
+
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -124,4 +142,24 @@ class ManageTimerCountDownController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteTimerCountDownFormInovation(Request $request, $id)
+    {
+        try {
+            $timer = CountdownTimerFormInovation::find($id);
+            if($timer) {
+                // $timer->delete();
+                $timer->destroy();
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 }
