@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pegawai\Inovation;
 
 use App\Http\Controllers\Controller;
+use App\Models\CountdownTimerFormInovation;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,8 @@ class InovationController extends Controller
             // ->get();
             // ddd($rewardInovation);
 
-            return view('layouts.pegawai.content.inovation.inovation_index');
+            $timer = CountdownTimerFormInovation::first();
+            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer'));
         } catch (\Exception $exception) {
             return $exception;
         }

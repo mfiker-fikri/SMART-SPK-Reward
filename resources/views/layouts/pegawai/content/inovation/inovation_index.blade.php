@@ -1,5 +1,241 @@
 @extends('template.pegawai.template')
 
+@section('css_header')
+    <style>
+    @media (min-width: 992px) {
+        .mercado-countdown {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 65px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 45vh;
+            max-height: 45vh;
+        }
+
+        .mercado-countdown span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+        .dateCountDown {
+            padding: auto;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            font-size: 55px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 35vh;
+            max-height: 35vh;
+        }
+
+        .dateCountDown span{
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
+        .timeCountDown {
+            padding: auto;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            font-size: 55px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 35vh;
+            max-height: 35vh;
+        }
+
+        .timeCountDown span{
+            padding: auto;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
+        .titleCountDown{
+            padding: 0;
+            margin: 2em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        .titleCountDownNonActive{
+            padding: 0;
+            margin: 2em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            min-height: 8em;
+            max-height: 8em;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        .mercado-countdown {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 65px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 55vh;
+            max-height: 55vh;
+        }
+
+        .mercado-countdown span {
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
+        .dateCountDown {
+            padding: auto;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            font-size: 55px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 35vh;
+            max-height: 35vh;
+        }
+
+        .dateCountDown span{
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
+        .timeCountDown {
+            padding: auto;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            font-size: 55px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 35vh;
+            max-height: 35vh;
+        }
+
+        .timeCountDown span{
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
+        .titleCountDown{
+            padding: 0;
+            margin: 2em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        .titleCountDownNonActive{
+            padding: 0;
+            margin: 2em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            min-height: 8em;
+            max-height: 8em;
+        }
+    }
+
+    </style>
+@stop
+
 <!-- Footer Js -->
 @section('js_footer')
     <!-- Datatables Form Inovation -->
@@ -89,6 +325,37 @@
     </script>
     <!--/ Delete Form Inovation Id -->
 
+    <!-- Timer Countdown -->
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
+    <script>
+    ;(function($) {
+
+        var MERCADO_JS = {
+        init: function(){
+            this.mercado_countdown();
+
+        },
+        mercado_countdown: function() {
+            if($(".mercado-countdown").length > 0){
+                    $(".mercado-countdown").each( function(index, el){
+                    var _this = $(this),
+                    _expire = _this.data('expire');
+                _this.countdown(_expire, function(event) {
+                            $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                        });
+                    });
+            }
+        },
+
+    }
+
+        window.onload = function () {
+            MERCADO_JS.init();
+        }
+
+        })(window.Zepto || window.jQuery, window, document);
+    </script>
+    <!--/ Timer Countdown -->
 @stop
 
 @section('content')
@@ -96,7 +363,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <div class="row mt-3">
-        
+
         <div class="col-xxl">
 
             @if(session('message-success-form-inovation'))
@@ -107,7 +374,7 @@
                     </svg>
                     <div class="d-flex flex-md-row">
                         <p>
-                            <strong><b>   {{ session('message-success-form-inovation') }} </b></strong>     
+                            <strong><b>   {{ session('message-success-form-inovation') }} </b></strong>
                         </p>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
@@ -123,14 +390,14 @@
                     <div class="d-flex flex-md-row">
                         <p>
                             <strong><b>   {{ session('message-failed-form-inovation') }}  </b></strong>
-                        </p> 
+                        </p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
                 </div>
             </div>
             @endif
-                
+
 
 
             <div class="card mx-4">
@@ -140,9 +407,53 @@
                     <h5 class="mb-0">List Form Pendaftaran Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Form Read Inovation List Title -->
-                
+
+                @if ($timer->status == null && $timer->date_time_form_inovation == null)
                 <div class="container-fluid">
-                    
+                    <h1>
+                        <span>Form Inovasi Ditutup</span>
+                    </h1>
+                </div>
+
+                @elseif ($timer->status == 0 && $timer->date_time_form_inovation > \Carbon\Carbon::now())
+                <div class="container-fluid">
+                    <div class="titleCountDownNonActive">
+                        <h1>
+                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form</span>
+                        </h1>
+                    </div>
+                </div>
+
+                @elseif ($timer->status == 1 && $timer->date_time_form_inovation > \Carbon\Carbon::now())
+                <div class="container-fluid">
+                    <div class="titleCountDown">
+                        <h1>Pembukaan Form Inovasi</h1>
+                    </div>
+                    <div class="dateCountDown">
+                        {{-- d-m-Y --}}
+                        {{-- dddd, D MMMM Y --}}
+                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('dddd') }}</b></span>
+                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('D') }}</b></span>
+                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('MMMM') }}</b></span>
+                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('Y') }}</b></span>
+                    </div>
+                    <div class="timeCountDown">
+                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('hh') }}</b></span>
+                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('mm') }}</b></span>
+                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('a') }}</b></span>
+                    </div>
+                    <div class="titleCountDown">
+                        <h1>Coming Soon</h1>
+                    </div>
+                    {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->format('Y/m/d h:i:s') }}"> --}}
+                    <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/m/d h:i:s') }}">
+                    {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
+                    </div>
+                </div>
+
+                @else
+                <div class="container-fluid">
+
                     {{-- @if ($rewardInovation->status_process != 4) --}}
                     <!-- Button Create Form Inovation List -->
                     <div class="py-3 d-flex flex-row justify-content-start">
@@ -169,6 +480,8 @@
                     </table>
 
                 </div>
+                @endif
+
             </div>
         </div>
     </div>

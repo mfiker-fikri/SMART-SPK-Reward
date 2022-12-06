@@ -20,7 +20,7 @@
 
     <!-- Menu -->
     <ul class="menu-inner py-1 mt-2 mt-2 mt-2 mt-2">
-        
+
         <!-- Dashboard -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Dashboard</span>
@@ -54,13 +54,13 @@
 
         <li class="menu-item {{ (request()->is('form-inovation*')) ? 'active' : '' }}">
             <a href="{{ URL::to('form-inovation/list') }}" class="menu-link" style="text-decoration: none !important;">
-                <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                 <div data-i18n="Analytics">Form Inovation</div>
             </a>
         </li>
         <!--/ Form Inovation -->
 
-        
+
     </ul>
 </aside>
 

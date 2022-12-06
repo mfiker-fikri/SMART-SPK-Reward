@@ -338,6 +338,14 @@ Route::GET('/error', function () {
 });
 
 
+// Test
+use App\Models\CountdownTimerFormInovation;
+
+Route::GET('/countdown', function() {
+    $timer = CountdownTimerFormInovation::first();
+    return view('dropdown',compact('timer'));
+});
+
 
 use App\Models\Admin;
 use Illuminate\Support\Facades\DB;
