@@ -65,6 +65,9 @@ class ManageTimerCountDownController extends Controller
                 return redirect()->back()->with('message-create-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
             }
 
+            // $dd = Carbon::parse($request['date_time_countdown_inovation_form'])->translatedFormat('Y/m/d h:i:s');
+            // dd($dd);
+
             // if(CountdownTimerFormInovation::whereNotNull('date_time_form_inovation')) {
             // if(CountdownTimerFormInovation::isNotEmpty('date_time_form_inovation')) {
             // ddd(Carbon::now()->toDateString());

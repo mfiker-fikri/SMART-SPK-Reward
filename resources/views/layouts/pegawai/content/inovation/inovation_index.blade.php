@@ -327,6 +327,17 @@
 
     <!-- Timer Countdown -->
     <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.min.js" integrity="sha512-WRk4AKabqhQo0fyIHRMYDBDTbMPpqiA2VbRxicseHV3LphdImtC7G7wqv8A7v9SO5TIDlcPmlR9gdVSEQhvg9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-utils.min.js" integrity="sha512-2ambGDwV8DfaZMSXtFS5sNCCSS/Fsk7ilNgzr1B5Lvk1IF9ibIS6sVCMlk6/y4fPvNxQAc3RCbMmzK+FIQoHMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.js" integrity="sha512-KpJx5U0e/IORz4nvzND6Qb6M5/4RtcSE6OPCjqUEPoU4bzbnRAqCnoOW+jh/BxzTLyltiyie3fwSehpS6Nvapg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.min.js" integrity="sha512-bfIwEjjeO6MQ1THVCW9xI31Su6qLKC30vzU9WfoR/ZkOQiFcP0neXEVZ2kQdE5NsX8Dcd9A5X4zgzanbHkwxeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.js" integrity="sha512-ROVjvdfspeKM3YiDzo3wCane9Bc0upghpuTsBcvCJLMZeonNQq2Jv7xPSGLu/RJPW3KQy5IqEhIIU6STbYUnZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+    <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> --}}
+
     <script>
     ;(function($) {
 
@@ -338,12 +349,21 @@
         mercado_countdown: function() {
             if($(".mercado-countdown").length > 0){
                     $(".mercado-countdown").each( function(index, el){
-                    var _this = $(this),
-                    _expire = _this.data('expire');
-                _this.countdown(_expire, function(event) {
+                        var _this = $(this),
+                        _expire = _this.data('expire');
+                    // nextYear = moment.tz(_expire, 'Asia/Jakarta').toDate();
+                    // var nextYear = moment.parseZone(_expire).local();
+                    // console.log(nextYear.toDate());
+                    _this.countdown(_expire, function(event) {
+                        // until: expires,
+                        // timezone: 0,
+                        // serverSync: serverTime,
+                        // onTick: serverTime,
+                        // tickInterval: 60,
                             $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                         });
                     });
+                    // return b;
             }
         },
 
@@ -354,8 +374,36 @@
         }
 
         })(window.Zepto || window.jQuery, window, document);
+
+    // $(document).ready(function() {
+    //     if($(".mercado-countdown").length > 0){
+    //         $(".mercado-countdown").each( function(index, el){
+    //             var _this = $(this);
+    //             var _expire = _this.data('expire');
+    //             var nextYear = moment.tz(_expire, 'Asia/Jakarta').toDate();
+    //             // console.log(nextYear);
+    //             _this.countdown(_expire, function(event) {
+    //                 $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+    //             });
+    //         });
+    //     }
+    // });
     </script>
     <!--/ Timer Countdown -->
+@stop
+
+@section('js_header')
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.min.js" integrity="sha512-WRk4AKabqhQo0fyIHRMYDBDTbMPpqiA2VbRxicseHV3LphdImtC7G7wqv8A7v9SO5TIDlcPmlR9gdVSEQhvg9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-utils.min.js" integrity="sha512-2ambGDwV8DfaZMSXtFS5sNCCSS/Fsk7ilNgzr1B5Lvk1IF9ibIS6sVCMlk6/y4fPvNxQAc3RCbMmzK+FIQoHMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.js" integrity="sha512-KpJx5U0e/IORz4nvzND6Qb6M5/4RtcSE6OPCjqUEPoU4bzbnRAqCnoOW+jh/BxzTLyltiyie3fwSehpS6Nvapg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.min.js" integrity="sha512-bfIwEjjeO6MQ1THVCW9xI31Su6qLKC30vzU9WfoR/ZkOQiFcP0neXEVZ2kQdE5NsX8Dcd9A5X4zgzanbHkwxeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.js" integrity="sha512-ROVjvdfspeKM3YiDzo3wCane9Bc0upghpuTsBcvCJLMZeonNQq2Jv7xPSGLu/RJPW3KQy5IqEhIIU6STbYUnZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+    <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+
 @stop
 
 @section('content')
@@ -408,11 +456,22 @@
                 </div>
                 <!--/ Form Read Inovation List Title -->
 
-                @if ($timer->status == null && $timer->date_time_form_inovation == null)
+                @if ($timer == null)
                 <div class="container-fluid">
-                    <h1>
-                        <span>Form Inovasi Ditutup</span>
-                    </h1>
+                    <div class="titleCountDownNonActive">
+                        <h1>
+                            <span>Form Inovasi Ditutup</span>
+                        </h1>
+                    </div>
+                </div>
+
+                @elseif ($timer->status == null && $timer->date_time_form_inovation == null)
+                <div class="container-fluid">
+                    <div class="titleCountDownNonActive">
+                        <h1>
+                            <span>Form Inovasi Ditutup</span>
+                        </h1>
+                    </div>
                 </div>
 
                 @elseif ($timer->status == 0 && $timer->date_time_form_inovation > \Carbon\Carbon::now())
@@ -445,8 +504,8 @@
                     <div class="titleCountDown">
                         <h1>Coming Soon</h1>
                     </div>
-                    {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->format('Y/m/d h:i:s') }}"> --}}
-                    <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/m/d h:i:s') }}">
+                    <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->format('Y/m/d h:i:s') }}">
+                    {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
                     {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
                     </div>
                 </div>
