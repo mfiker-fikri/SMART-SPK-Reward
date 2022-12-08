@@ -4,11 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CountdownTimerFormInovation extends Model
+class CountdownTimerFormTeladan extends Model
 {
-    // use SoftDeletes;
     use HasFactory;
 
     /**
@@ -16,7 +14,7 @@ class CountdownTimerFormInovation extends Model
      *
      * @var string
      */
-    protected $table = 'countdown_timer_form_inovation';
+    protected $table = 'countdown_timer_form_teladan';
 
     /**
      * The primary key associated with the table.
@@ -39,7 +37,7 @@ class CountdownTimerFormInovation extends Model
      */
     protected $fillable = [
         'id',
-        'date_time_form_inovation',
+        'date_time_form_teladan',
         'status'
     ];
 

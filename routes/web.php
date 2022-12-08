@@ -309,7 +309,18 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Delete
     Route::POST('form-inovation/delete/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdDelete'])->name('postInovationIdDelete.Delete.Pegawai');
 
-
+    // Manage Teladan
+    // Create
+    Route::GET('form-teladan/create', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormCreate'])->name('getInovationFormCreate.Create.Pegawai');
+    Route::Post('form-teladan/create/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanFormCreate'])->name('postInovationFormCreate.Create.Pegawai');
+    // Read
+    Route::GET('form-teladan/list', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormList'])->name('getInovationFormList.Read.Pegawai');
+    Route::GET('form-teladan/list/data', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormData'])->name('getInovationFormData.Read.Pegawai');
+    // Update
+    Route::GET('form-teladan/update/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
+    Route::POST('form-teladan/update/{id}/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');
+    // Delete
+    Route::POST('form-teladan/delete/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdDelete'])->name('postInovationIdDelete.Delete.Pegawai');
 
 
 

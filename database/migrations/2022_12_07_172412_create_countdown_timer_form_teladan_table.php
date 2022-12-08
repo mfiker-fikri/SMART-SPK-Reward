@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCountdownTimerFormInovationTable extends Migration
+class CreateCountdownTimerFormTeladanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCountdownTimerFormInovationTable extends Migration
      */
     public function up()
     {
-        Schema::create('countdown_timer_form_inovation', function (Blueprint $table) {
+        Schema::create('countdown_timer_form_teladan', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date_time_form_inovation');
+            $table->dateTime('date_time_form_teladan');
             $table->boolean('status');
-            // $table->softDeletes();
-            // $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateCountdownTimerFormInovationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countdown_timer_form_inovation');
+        Schema::dropIfExists('countdown_timer_form_teladan');
     }
 }
