@@ -53,7 +53,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete') }}" + '/' + id,
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan/delete') }}" + '/' + id,
                         data: {
                             id: id,
                             _token: '{{ csrf_token() }}'
@@ -96,43 +96,43 @@
 
                 <!-- Form Timer Countdown Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Timer Countdown Form Inovation</h5>
+                    <h5 class="mb-0">Timer Countdown Form Teladan</h5>
                 </div>
                 <!--/ Form Timer Countdown Title -->
 
                 <!-- Form Timer Countdown -->
                 <div class="card-body py-xl-5 py-sm-5 px-xl-5">
-                    <form id="formCreateTimerFormInovation" class="mx-2" method="POST" action="{{ route('sdm.postTimerCountDownFormInovation.Index.Create.SDM') }}">
+                    <form id="formCreateTimerFormTeladan" class="mx-2" method="POST" action="{{ route('sdm.postTimerCountDownFormTeladan.Index.Create.SDM') }}">
                         @csrf
                         <!-- Timer Countdown-->
-                        @if ($timer->id == null)
+                        @if ($timer == null)
                         <input type="hidden" name="id" value="">
                         @else
                         <input type="hidden" name="id" value="{{ $timer->id }}">
                         @endif
 
-                        <div class="mb-3 row {{ $errors->has('date_time_countdown_inovation_form') ? 'is-invalid' : '' }}">
-                            <label for="date_time_countdown_inovation_form" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam</label>
+                        <div class="mb-3 row {{ $errors->has('date_time_countdown_teladan_form') ? 'is-invalid' : '' }}">
+                            <label for="date_time_countdown_teladan_form" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam</label>
                             <div class="col-sm-9">
                                 <div class="input-group input-group-merge">
                                     <span id="categories" class="input-group-text">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
-                                    <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_countdown_inovation_form') ? 'is-invalid' : '' }}" id="date_time_countdown_inovation_form"
-                                        name="date_time_countdown_inovation_form" placeholder="*Select Date Time"
-                                        @if ($timer->date_time_form_inovation == null)
-                                        autofocus autocomplete required value="{{ old('date_time_countdown_inovation_form') }}"
+                                    <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_countdown_teladan_form') ? 'is-invalid' : '' }}" id="date_time_countdown_teladan_form"
+                                        name="date_time_countdown_teladan_form" placeholder="*Select Date Time"
+                                        @if ($timer == null)
+                                        autofocus autocomplete required value="{{ old('date_time_countdown_teladan_form') }}"
                                         @else
-                                        autofocus autocomplete required value="{{ old('date_time_countdown_inovation_form', $timer->date_time_form_inovation) }}"
+                                        autofocus autocomplete required value="{{ old('date_time_countdown_teladan_form', $timer->date_time_form_teladan) }}"
                                         @endif
-                                        aria-invalid="true" aria-describedby="date_time_countdown_inovation_form" data-val="true">
+                                        aria-invalid="true" aria-describedby="date_time_countdown_teladan_form" data-val="true">
                                 </div>
-                                <div id="date_time_countdown_inovation_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                <div id="date_time_countdown_teladan_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
                                 <div class="d-flex flex-column">
                                     <!-- Error Timer Countdown -->
-                                    @if ( $errors->has('date_time_countdown_inovation_form') )
+                                    @if ( $errors->has('date_time_countdown_teladan_form') )
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('date_time_countdown_inovation_form') }}</strong>
+                                            <strong>{{ $errors->first('date_time_countdown_teladan_form') }}</strong>
                                         </span>
                                     @endif
                                     <!--/ Error Timer Countdown -->
@@ -149,7 +149,7 @@
                                     <span class="input-group-text {{ $errors->has('status') ? 'is-invalid' : '' }}">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
-                                    @if ($timer->status == null)
+                                    @if ($timer == null)
                                     <input type="hidden" value="{{ old('status') }}" id="oldStatus" />
                                     @else
                                     <input type="hidden" value="{{ old('status', $timer->status) }}" id="oldStatus" />
@@ -159,7 +159,7 @@
                                         autofocus autocomplete required
                                         aria-invalid="true" aria-describedby="status" data-val="true" aria-label="status" data-placeholder="-- Pilih Status --">
                                         <option disabled selected>-- Pilih Status --</option>
-                                        @if ($timer->status == null)
+                                        @if ($timer == null)
                                         <option value="0" @if(old('status' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                         <option value="1" @if(old('status' ) == 1 ) selected="selected" @endif>Aktif</option>
                                         @else

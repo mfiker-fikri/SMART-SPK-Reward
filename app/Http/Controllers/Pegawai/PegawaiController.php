@@ -308,7 +308,7 @@ class PegawaiController extends Controller
                 // Jika Ada Foto Sebelumnya
                 if ($request->oldImage) {
                     // Delete Photo Before Previous
-                    Storage::delete($request->oldImage);
+                    // Storage::delete($request->oldImage);
 
                     // Get File Image
                     $photoProfile               =       $request->file('photo_profile');
@@ -361,7 +361,10 @@ class PegawaiController extends Controller
                     $constraint->aspectRatio();
                 })->stream();
 
-                $photoProfile->storeAs('public/employees/photos/photoProfile/' . $employee, $photoName);
+                // Storage::disk('public')->put('employees/photos/photoProfile/' . $employee . $photoName);
+                // $photoProfile->move(public_path('storage/employees/photos/photoProfile/' . $employee, $photoName));
+                // $photoProfile->storeAs('employees/photos/photoProfile/' . $employee, $photoName);
+                $photoProfile->store('employees/photos/photoProfile/' . $employee, $photoName);
 
                 // Find Auth Employee Active storage_path($folder)
                 $id                         =       Auth::guard('employees')->user()->id;

@@ -332,6 +332,23 @@
         // });
     </script> --}}
 
+    <!-- Reset Photo Preview -->
+    <script type="text/javascript">
+        document.getElementById("resetImage").onclick = function() {
+            reset_previewImage()
+        };
+
+        function reset_previewImage()
+        {
+            var old = document.getElementById("oldImage").getAttribute("value");
+            var preview = document.getElementById('output_image').getAttribute("src");
+            if (old != preview) {
+                document.getElementById('output_image').setAttribute("src", old);
+            }
+        }
+    </script>
+    <!--/ Reset Photo Preview -->
+
     <!-- Show Hide Password -->
     <script type="text/javascript">
         $(document).on('click', '#oldPasswordEye', function(e) {
@@ -552,6 +569,7 @@
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             <input type="hidden" name="oldImage" value="{{ Auth::guard('employees')->user()->photo_profile }}" />
+                                                            <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }} " />
                                                             {{-- <input type="file" class="filepond" id="photo_profile"
                                                                 name="photo_profile"
                                                                 required accept=".png, .jpg, .jpeg" onchange="preview_image(event)"> --}}
@@ -578,7 +596,7 @@
                                                         <button type="button" class="btn btn-secondary" style="color: black" data-bs-dismiss="modal">
                                                             <i class="fa-solid fa-xmark mx-auto me-2"></i>Close
                                                         </button>
-                                                        <button type="reset" class="btn btn-warning">
+                                                        <button type="reset" class="btn btn-warning" id="resetImage">
                                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">

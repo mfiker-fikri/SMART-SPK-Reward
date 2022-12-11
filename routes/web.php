@@ -226,15 +226,18 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Manage Time CountDown
         // Form Inovation
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormInovation'])->name('getTimerCountDownFormInovation.Index.Create.SDM');
         // Create or Update
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormInovation'])->name('getTimerCountDownFormInovation.Index.Create.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormInovation'])->name('postTimerCountDownFormInovation.Index.Create.SDM');
         // Delete
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete/{id}', [\App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormInovation'])->name('deleteTimerCountDownFormInovation.Index.Create.SDM');
 
         // Form Teladan
+        // Create or Update
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormTeladan'])->name('getTimerCountDownFormTeladan.Index.Create.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormTeladan'])->name('postTimerCountDownFormTeladan.Index.Create.SDM');
+        // Delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan/delete/{id}', [\App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormTeladan'])->name('deleteTimerCountDownFormTeladan.Index.Create.SDM');
     });
 
 });
@@ -311,16 +314,16 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
 
     // Manage Teladan
     // Create
-    Route::GET('form-teladan/create', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormCreate'])->name('getInovationFormCreate.Create.Pegawai');
-    Route::Post('form-teladan/create/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanFormCreate'])->name('postInovationFormCreate.Create.Pegawai');
+    Route::GET('form-teladan/create', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormCreate'])->name('getTeladanFormCreate.Create.Pegawai');
+    Route::Post('form-teladan/create/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanFormCreate'])->name('postTeladanFormCreate.Create.Pegawai');
     // Read
-    Route::GET('form-teladan/list', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormList'])->name('getInovationFormList.Read.Pegawai');
-    Route::GET('form-teladan/list/data', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormData'])->name('getInovationFormData.Read.Pegawai');
+    Route::GET('form-teladan/list', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormList'])->name('getTeladanFormList.Read.Pegawai');
+    Route::GET('form-teladan/list/data', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormData'])->name('getTeladanFormData.Read.Pegawai');
     // Update
-    Route::GET('form-teladan/update/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
-    Route::POST('form-teladan/update/{id}/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');
+    Route::GET('form-teladan/update/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanIdUpdate'])->name('getTeladanIdUpdate.Update.Pegawai');
+    Route::POST('form-teladan/update/{id}/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdUpdate'])->name('postTeladanIdUpdate.Update.Pegawai');
     // Delete
-    Route::POST('form-teladan/delete/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdDelete'])->name('postInovationIdDelete.Delete.Pegawai');
+    Route::POST('form-teladan/delete/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdDelete'])->name('postTeladanIdDelete.Delete.Pegawai');
 
 
 

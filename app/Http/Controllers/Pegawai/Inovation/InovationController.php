@@ -163,7 +163,11 @@ class InovationController extends Controller
     public function getInovationFormCreate()
     {
         //
-        return view('layouts.pegawai.content.inovation.inovation_create');
+        try {
+            return view('layouts.pegawai.content.inovation.inovation_create');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -186,15 +190,17 @@ class InovationController extends Controller
     public function postInovationFormCreate(Request $request)
     {
         // Check Data
-        if (Auth::guard('employees')->user()->nip === null || Auth::guard('employees')->user()->pendidikan === null ||
-        Auth::guard('employees')->user()->pangkat === null || Auth::guard('employees')->user()->gol === null ||
-        Auth::guard('employees')->user()->sk_cpns === null || Auth::guard('employees')->user()->jabatan === null ||
-        Auth::guard('employees')->user()->unit_kerja === null
+        if (Auth::guard('employees')->user()->nip === null || Auth::guard('employees')->user()->pendidikan_terakhir === null ||
+            Auth::guard('employees')->user()->pangkat === null || Auth::guard('employees')->user()->golongan_ruang === null ||
+            Auth::guard('employees')->user()->sk_cpns === null || Auth::guard('employees')->user()->jabatan_terakhir === null ||
+            Auth::guard('employees')->user()->unit_kerja === null
         ) {
+            ddd('sukses');
             alert()->error('Gagal Upload Form Inovasi!', 'Lengkapi Data Profil Terlebih Dahulu!')->autoclose(25000);
             return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi. Lengkapi Data Profil Terlebih Dahulu di "My Profile"!');
         }
 
+        // Data Validation
         $validate = Validator::make(
             $request->all(),
             [
@@ -219,7 +225,7 @@ class InovationController extends Controller
             ]
         );
 
-        // dd($validate);
+        // Check Validation Failed
         if ($validate->fails()) {
             alert()->error('Gagal Upload Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
             return redirect()->back()->with('message-form-inovation-error', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());

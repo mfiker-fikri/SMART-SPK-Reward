@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SDM\Role3\TimerCountDown;
 
 use App\Http\Controllers\Controller;
 use App\Models\CountdownTimerFormInovation;
+use App\Models\CountdownTimerFormTeladan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -179,6 +180,132 @@ class ManageTimerCountDownController extends Controller
     {
         try {
             $timer = CountdownTimerFormInovation::find($id);
+            if($timer) {
+                $timer->delete();
+                // $teetime = CountdownTimerFormInovation::where('id', '=', $id)->firstOrFail();
+                // $teetime->destroy();
+                // $timer->destroy();
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getTimerCountDownFormTeladan()
+    {
+        try {
+            $timer  =   CountdownTimerFormTeladan::first();
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_teladan_index-create', compact('timer'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postTimerCountDownFormTeladan(Request $request)
+    {
+        try {
+            // dd($request['status']);
+            // validasi
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'date_time_countdown_teladan_form'              =>  'required',
+                    'status'                                        =>  'required',
+                ],
+                [
+                    'date_time_countdown_teladan_form.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'status.required'                               =>  'Status Wajib Dipilih!',
+
+                    // 'date_time_countdown_inovation_form.date_format'    => ''
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal !', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-create-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
+            }
+
+            // $dd = Carbon::parse($request['date_time_countdown_inovation_form'])->translatedFormat('Y/m/d h:i:s');
+            // dd($dd);
+
+            // if(CountdownTimerFormInovation::whereNotNull('date_time_form_inovation')) {
+            // if(CountdownTimerFormInovation::isNotEmpty('date_time_form_inovation')) {
+            // ddd(Carbon::now()->toDateString());
+            // ddd($request['date_time_countdown_inovation_form']);
+            $dateTime   =   new Carbon($request['date_time_countdown_teladan_form']);
+            $date =   $dateTime->toDateString();
+            // ddd($date);
+
+            // $dateTime = Carbon::createFromFormat('Y-m-d H:i:s', $request['date_time_countdown_inovation_form'])->year();
+
+            // Update
+            if($request['id'] != null) {
+                if($date != Carbon::now()->toDateString() ) {
+                    $id  =  CountdownTimerFormTeladan::find($request['id']);
+
+                    if($id) {
+                        $id->date_time_form_teladan        =  $request['date_time_countdown_teladan_form'];
+                        $id->status                        =  $request['status'];
+                        $id->save();
+
+                        alert()->success('Berhasil Update Data Timer Form Teladan!')->autoclose(25000);
+                        return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Form Teladan!');
+                    } else {
+                        alert()->error('Gagal Update Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    }
+                }
+                alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+            }
+            // Create
+            else {
+                if($date != Carbon::now()->toDateString() ) {
+                    // Create New Timer
+                    $timer = CountdownTimerFormTeladan::create([
+                        'date_time_form_teladan'        =>  $request['date_time_countdown_teladan_form'],
+                        'status'                        =>  $request['status'],
+                    ]);
+                    if($timer) {
+                        alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
+                        return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Form Teladan!');
+                    } else {
+                        alert()->error('Gagal Tambah Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    }
+                }
+                alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+            }
+
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteTimerCountDownFormTeladan(Request $request, $id)
+    {
+        try {
+            $timer = CountdownTimerFormTeladan::find($id);
             if($timer) {
                 $timer->delete();
                 // $teetime = CountdownTimerFormInovation::where('id', '=', $id)->firstOrFail();

@@ -197,7 +197,7 @@
                 <span class="menu-header-text">Countdown Timer Open Form</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation*')) ? 'active' : '' }}">
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class='menu-icon tf-icons bx bxs-hourglass-bottom'></i>
                     <div data-i18n="Timer Countdown">Timer Countdown</div>
