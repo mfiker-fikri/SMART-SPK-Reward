@@ -1,5 +1,6 @@
 @extends('template.pegawai.template')
 
+<!-- Header CSS -->
 @section('css_header')
     <style>
     @media (min-width: 992px) {
@@ -235,6 +236,7 @@
 
     </style>
 @stop
+<!--/ Header CSS -->
 
 <!-- Footer Js -->
 @section('js_footer')
@@ -334,8 +336,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.min.js" integrity="sha512-bfIwEjjeO6MQ1THVCW9xI31Su6qLKC30vzU9WfoR/ZkOQiFcP0neXEVZ2kQdE5NsX8Dcd9A5X4zgzanbHkwxeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.js" integrity="sha512-ROVjvdfspeKM3YiDzo3wCane9Bc0upghpuTsBcvCJLMZeonNQq2Jv7xPSGLu/RJPW3KQy5IqEhIIU6STbYUnZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-    <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
-    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
+    {{-- <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script> --}}
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> --}}
 
     <script>
@@ -373,7 +375,8 @@
             MERCADO_JS.init();
         }
 
-        })(window.Zepto || window.jQuery, window, document);
+        })
+        // (window.Zepto || window.jQuery, window, document);
 
     // $(document).ready(function() {
     //     if($(".mercado-countdown").length > 0){
@@ -391,7 +394,9 @@
     </script>
     <!--/ Timer Countdown -->
 @stop
+<!--/ Footer Js -->
 
+<!-- Header Js -->
 @section('js_header')
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.min.js" integrity="sha512-WRk4AKabqhQo0fyIHRMYDBDTbMPpqiA2VbRxicseHV3LphdImtC7G7wqv8A7v9SO5TIDlcPmlR9gdVSEQhvg9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -400,11 +405,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.min.js" integrity="sha512-bfIwEjjeO6MQ1THVCW9xI31Su6qLKC30vzU9WfoR/ZkOQiFcP0neXEVZ2kQdE5NsX8Dcd9A5X4zgzanbHkwxeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.js" integrity="sha512-ROVjvdfspeKM3YiDzo3wCane9Bc0upghpuTsBcvCJLMZeonNQq2Jv7xPSGLu/RJPW3KQy5IqEhIIU6STbYUnZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-    <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
-    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    {{-- <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script> --}}
+    {{-- <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script> --}}
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> --}}
 
 @stop
+<!--/ Header Js -->
 
 @section('content')
 

@@ -226,8 +226,23 @@ class AdminController extends Controller
 
             // ddd($request);
             if ($request->hasFile('photo_profile')) {
-                if ($request->oldImage) {
-                    Storage::delete($request->oldImage);
+                if ($request->oldImage != null) {
+                    // Delete Photo Before Previous
+
+                    // Storage::delete($request->oldImage);
+                    // Get Admin Username
+                    $admin = Auth::guard('admins')->user()->username;
+
+                    // Link Photo
+                    $link   = 'storage/admin/photos/photoProfile/' . $admin . '/' . $request->oldImage;
+
+                    // if(File::exists($link)) {
+                    //     File::delete($link);
+                    // }
+                    if (file_exists($link)) {
+                        @unlink($link);
+                    }
+
                     // Get File Image
                     $photoProfile = $request->file('photo_profile');
                     // Get Original Name
@@ -253,7 +268,8 @@ class AdminController extends Controller
                         $constraint->aspectRatio();
                     })->stream();
 
-                    $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
+                    $photoProfile->move(public_path('storage/admin/photos/photoProfile/' . $admin), $photoName);
+                    // $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
 
                     // $request->photo_profile->store('public/admin/images/', $photoName);
                     // Storage::putFileAs('admin/images/' . $photoName, 'public');
@@ -294,7 +310,8 @@ class AdminController extends Controller
                     $constraint->aspectRatio();
                 })->stream();
 
-                $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
+                $photoProfile->move(public_path('storage/admin/photos/photoProfile/' . $admin), $photoName);
+                // $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
 
                 // $request->photo_profile->store('public/admin/images/', $photoName);
                 // Storage::putFileAs('admin/images/' . $photoName, 'public');

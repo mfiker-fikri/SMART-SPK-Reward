@@ -98,6 +98,7 @@
     </script>
     <!--/ Reset Video Preview -->
 @stop
+<!--/ Footer Js -->
 
 @section('content')
 
@@ -254,6 +255,9 @@
 
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">
+                            <div class="mx-1 mx-1 mx-1">
+                                <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
+                            </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-inovation/list') }}" role="button">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali

@@ -195,7 +195,7 @@ class InovationController extends Controller
             Auth::guard('employees')->user()->sk_cpns === null || Auth::guard('employees')->user()->jabatan_terakhir === null ||
             Auth::guard('employees')->user()->unit_kerja === null
         ) {
-            ddd('sukses');
+            // ddd('sukses');
             alert()->error('Gagal Upload Form Inovasi!', 'Lengkapi Data Profil Terlebih Dahulu!')->autoclose(25000);
             return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi. Lengkapi Data Profil Terlebih Dahulu di "My Profile"!');
         }
@@ -251,12 +251,26 @@ class InovationController extends Controller
             // Jika Ada File,Foto, dan video Sebelumnya
             if ($request->oldFile && $request->oldPhoto && $request->oldVideo) {
                 // Delete File Before Previous
-                Storage::delete($request->oldFile);
+                // Storage::delete($request->oldFile);
                 // Delete Photo Before Previous
-                Storage::delete($request->oldPhoto);
+                // Storage::delete($request->oldPhoto);
                 // Delete Video Before Previous
-                Storage::delete($request->oldVideo);
+                // Storage::delete($request->oldVideo);
 
+                // Get Employee Username
+                $employee                   =       Auth::guard('employees')->user()->username;
+
+                // $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+
+                $file   =   storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $request->oldFile;
+                $photo  =   storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $request->oldPhoto;
+                $video  =   storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $request->oldVideo;
+
+                if (file_exists($file) && file_exists($photo) && file_exists($video)) {
+                    unlink($file);
+                    unlink($photo);
+                    unlink($video);
+                }
 
 
                 // Get File
@@ -287,9 +301,13 @@ class InovationController extends Controller
                 $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
                 // Save Folder
-                $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-                $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
-                $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
 
 
                 // Find Auth Employee Active storage_path($folder)
@@ -344,9 +362,14 @@ class InovationController extends Controller
             $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
             // Save Folder
-            $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-            $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
-            $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+            // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+            // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+            // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+            $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+            $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+            $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
 
             // Find Auth Employee Active storage_path($folder)
             $id                         =       Auth::guard('employees')->user()->id;
@@ -462,23 +485,25 @@ class InovationController extends Controller
                     [
                         'uploadFile'                                  =>      'mimes:pdf|max:3072',
                         'uploadFileUpdate'                            =>      'required',
-                        // 'uploadPhoto'                                 =>      'required|image|mimes:jpg,jpeg,png|max:5120',
-                        // 'uploadVideo'                           =>      'required|mimes:flv,mp4,3gp,mov,avi,wmv|max:1024000',
+                        'uploadPhoto'                                 =>      'mimes:jpg,jpeg,png|image|max:5120',
+                        'uploadPhotoUpdate'                           =>      'required',
+                        'uploadVideo'                                 =>      'mimes:flv,mp4,3gp,mov,avi,wmv|max:1024000',
+                        'uploadVideoUpdate'                           =>      'required'
                     ],
                     [
                         'uploadFileUpdate.required'                   =>      'File Wajib Diupload!',
-                        // 'uploadPhoto.required'                  =>      'Foto Wajib Diupload!',
-                        // 'uploadVideo.required'                  =>      'Video Wajib Diupload!',
+                        'uploadPhotoUpdate.required'                  =>      'Foto Wajib Diupload!',
+                        'uploadVideoUpdate.required'                  =>      'Video Wajib Diupload!',
                         //
-                        'uploadFile.mimes'                      =>      'Extension File Harus Berupa pdf!',
-                        // 'uploadPhoto.mimes'                     =>      'Extension Foto Harus Berupa jpg / jpeg / png!',
-                        // 'uploadVideo.mimes'                     =>      'Extension Video Harus Berupa flv / jpeg, png!',
+                        'uploadFile.mimes'                            =>      'Extension File Harus Berupa pdf!',
+                        'uploadPhoto.mimes'                           =>      'Extension Foto Harus Berupa jpg / jpeg / png!',
+                        'uploadVideo.mimes'                           =>      'Extension Video Harus Berupa flv / mp4 / 3gp / mov / avi / wmv!',
                         //
-                        // 'uploadPhoto.image'                     =>      'Diupload Harus Berupa Foto!',
+                        'uploadPhoto.image'                           =>      'Diupload Harus Berupa Foto!',
                         //
-                        'uploadFile.max'                        =>      'Maksimal Upload File 3Mb (3072 Kb)!',
-                        // 'uploadPhoto.max'                       =>      'Maksimal Upload Foto 5Mb (5120 Kb)!',
-                        // 'uploadVideo.max'                       =>      'Maksimal Upload Video 1Gb (1024000 Kb)!',
+                        'uploadFile.max'                              =>      'Maksimal Upload File 3Mb (3072 Kb)!',
+                        'uploadPhoto.max'                             =>      'Maksimal Upload Foto 5Mb (5120 Kb)!',
+                        'uploadVideo.max'                             =>      'Maksimal Upload Video 1Gb (1024000 Kb)!',
                     ]
                 );
             } else
@@ -488,7 +513,7 @@ class InovationController extends Controller
                     [
                         'uploadFile'                                  =>      'mimes:pdf|max:3072',
                         'uploadFileUpdate'                            =>      'required',
-                        'uploadPhoto'                                 =>      'image|mimes:jpg,jpeg,png|max:5120',
+                        'uploadPhoto'                                 =>      'mimes:jpg,jpeg,png|image|max:5120',
                         'uploadPhotoUpdate'                           =>      'required',
                         'uploadVideo'                                 =>      'mimes:flv,mp4,3gp,mov,avi,wmv|max:1024000',
                         'uploadVideoUpdate'                           =>      'required'
@@ -496,17 +521,17 @@ class InovationController extends Controller
                     [
                         'uploadFileUpdate.required'                   =>      'File Wajib Diupload!',
                         'uploadPhotoUpdate.required'                  =>      'Foto Wajib Diupload!',
-                        // 'uploadVideo.required'                  =>      'Video Wajib Diupload!',
+                        'uploadVideoUpdate.required'                  =>      'Video Wajib Diupload!',
                         //
                         'uploadFile.mimes'                            =>      'Extension File Harus Berupa pdf!',
                         'uploadPhoto.mimes'                           =>      'Extension Foto Harus Berupa jpg / jpeg / png!',
-                        // 'uploadVideo.mimes'                     =>      'Extension Video Harus Berupa flv / jpeg, png!',
+                        'uploadVideo.mimes'                           =>      'Extension Video Harus Berupa flv / mp4 / 3gp / mov / avi / wmv!',
                         //
                         'uploadPhoto.image'                           =>      'Diupload Harus Berupa Foto!',
                         //
                         'uploadFile.max'                              =>      'Maksimal Upload File 3Mb (3072 Kb)!',
                         'uploadPhoto.max'                             =>      'Maksimal Upload Foto 5Mb (5120 Kb)!',
-                        // 'uploadVideo.max'                       =>      'Maksimal Upload Video 1Gb (1024000 Kb)!',
+                        'uploadVideo.max'                             =>      'Maksimal Upload Video 1Gb (1024000 Kb)!',
                     ]
                 );
             }
@@ -522,7 +547,12 @@ class InovationController extends Controller
                 // Get Employee Username
                 $employee                   =       Auth::guard('employees')->user()->username;
 
-                Storage::delete('public/employees/documents/requirementsEmployeesRewardInovations'. $employee.'/'. $rewardInovation->upload_file_short_description);
+                // Link
+                // Storage::delete('app/public/employees/documents/requirementsEmployeesRewardInovations'. $employee.'/'. $rewardInovation->upload_file_short_description);
+                $link                       =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                if (file_exists($link)) {
+                    unlink($link);
+                }
 
                 // Get File
                 $file                       =       $request->file('uploadFile');
@@ -540,7 +570,8 @@ class InovationController extends Controller
                 $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
 
                 // Save Folder
-                $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                // $file->storeAs('app/public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
 
                 // Update Database File
                 $rewardInovation->upload_file_short_description     =   $fileName;

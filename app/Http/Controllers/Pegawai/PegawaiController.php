@@ -299,6 +299,8 @@ class PegawaiController extends Controller
                 ]
             );
 
+            // ddd($validate);
+
             if ($validate->fails()) {
                 alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
                 return redirect()->back()->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
@@ -306,9 +308,20 @@ class PegawaiController extends Controller
 
             if ($request->hasFile('photo_profile')) {
                 // Jika Ada Foto Sebelumnya
-                if ($request->oldImage) {
+                // ddd($request->oldImage);
+                if ($request->oldImage != null) {
                     // Delete Photo Before Previous
+
                     // Storage::delete($request->oldImage);
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Link Photo
+                    $link                       =       storage_path('app/public/employees/photos/photoProfile/') . $employee . '/' . $request->oldImage;
+
+                    if (file_exists($link)) {
+                        unlink($link);
+                    }
 
                     // Get File Image
                     $photoProfile               =       $request->file('photo_profile');
@@ -355,6 +368,8 @@ class PegawaiController extends Controller
                 // Photo Name
                 $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
+                // ddd($photoName);
+
                 // Save Photo Name in Storage With Resize 100x100
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
@@ -362,9 +377,13 @@ class PegawaiController extends Controller
                 })->stream();
 
                 // Storage::disk('public')->put('employees/photos/photoProfile/' . $employee . $photoName);
-                // $photoProfile->move(public_path('storage/employees/photos/photoProfile/' . $employee, $photoName));
                 // $photoProfile->storeAs('employees/photos/photoProfile/' . $employee, $photoName);
-                $photoProfile->store('employees/photos/photoProfile/' . $employee, $photoName);
+                // $photoProfile->storeAs('employees/photos/photoProfile/' . $employee, $photoName);
+
+                // $icon_path = 'employees/photos/photoProfile/' . $employee. '/'. $photoName;
+                // $photoProfile->move(public_path('employees/photos/photoProfile/' . $employee), $photoName);
+                $photoProfile->move(public_path('storage/employees/photos/photoProfile/' . $employee), $photoName);
+
 
                 // Find Auth Employee Active storage_path($folder)
                 $id                         =       Auth::guard('employees')->user()->id;

@@ -565,7 +565,11 @@
 
                                                     <div class="modal-body">
                                                         <div class="d-flex justify-content-center py-sm-3">
+                                                            @if (Auth::guard('employees')->user()->photo_profile)
+                                                            <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}">
+                                                            @else
                                                             <img class="d-block rounded" height="200" width="300" id="output_image">
+                                                            @endif
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             <input type="hidden" name="oldImage" value="{{ Auth::guard('employees')->user()->photo_profile }}" />
