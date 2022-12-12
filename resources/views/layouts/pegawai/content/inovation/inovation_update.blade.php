@@ -112,7 +112,7 @@
 
                 <!-- Form Inovation Update Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Form Inovation Update</h5>
+                    <h5 class="mb-0">Update Form Inovation</h5>
                 </div>
                 <!--/ Form Inovation Update Title -->
 
@@ -139,10 +139,8 @@
                                         name="uploadFile" accept=".pdf" onchange="preview_pdf(event)">
 
                                     <input type="text" name="uploadFileUpdate" id="uploadFileUpdate"
-                                        {{-- value="" --}}
                                         value="{{ $rewardInovation->upload_file_short_description }}"
-                                        {{-- required  --}}
-                                        />
+                                        required />
                                 </div>
 
                                 <div class="d-flex flex-column">

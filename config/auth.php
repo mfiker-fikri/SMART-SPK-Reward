@@ -50,11 +50,16 @@ return [
             'driver' => 'session',
             'provider' => 'human_resource'
         ],
-        // Hrds
-        'hrds' => [
+        // Team Assessment
+        'team_assessments' => [
             'driver' => 'session',
-            'provider' => 'hrd',
+            'provider' => 'team_assessment'
         ],
+        // Hrds
+        // 'hrds' => [
+        //     'driver' => 'session',
+        //     'provider' => 'hrd',
+        // ],
         // Employees
         'employees' => [
             'driver' => 'session',
@@ -100,6 +105,12 @@ return [
         'human_resource' => [
             'driver' => 'eloquent',
             'model' => App\Models\HumanResource::class,
+        ],
+
+        // Team Assessment
+        'team_assessment' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\TeamAssessment::class,
         ],
 
         // Hrds
@@ -148,6 +159,13 @@ return [
         'human_resources' => [
             'provider' => 'human_resources',
             'table' => 'human_resources_password_resets',
+            'expire'    =>  60,
+            'throttle'  =>  60,
+        ],
+
+        'team_assessment' => [
+            'provider' => 'team_assessments',
+            'table' => 'team_assessments_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,
         ],

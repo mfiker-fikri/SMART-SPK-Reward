@@ -121,21 +121,29 @@
                     <div data-i18n="Kelola SMART">Kelola SMART</div>
                 </a>
                 <ul class="menu-sub">
+                    <!-- Manage Categories -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="Kelola Kategori">Kelola Kategori</div>
                         </a>
                     </li>
+                    <!--/ Manage Categories -->
+
+                    <!-- Manage Criterias -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="Kelola Kriteria">Kelola Kriteria</div>
                         </a>
                     </li>
+                    <!--/ Manage Criterias -->
+
+                    <!-- Manage Parameters -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="Kelola Parameter">Kelola Parameter</div>
                         </a>
                     </li>
+                    <!--/ Manage Parameters -->
                 </ul>
             </li>
             <!--/ Kelola SMART Kategori  -->
@@ -184,8 +192,8 @@
                 <span class="menu-header-text">Kelola Tim Penilai</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
-                <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment*')) ? 'active' : '' }}">
+                <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                     <div data-i18n="Kelola Tim Penilai">Kelola Tim Penilai</div>
                 </a>

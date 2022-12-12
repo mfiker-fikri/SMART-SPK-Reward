@@ -224,7 +224,7 @@ class ManageAdminController extends Controller
     {
         //
         try {
-            // Validasi Login
+            // Validasi
             $validate = Validator::make(
                 $request->all(),
                 [

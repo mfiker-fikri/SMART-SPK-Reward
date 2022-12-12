@@ -13,7 +13,7 @@ class CreateTeamAssessmentPasswordResets extends Migration
      */
     public function up()
     {
-        Schema::create('team_assessment_password_resets', function (Blueprint $table) {
+        Schema::create('team_assessments_password_resets', function (Blueprint $table) {
             $table->string('email', 100)->index();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
@@ -27,6 +27,6 @@ class CreateTeamAssessmentPasswordResets extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('team_assessment_password_resets');
+        Schema::dropIfExists('team_assessments_password_resets');
     }
 }

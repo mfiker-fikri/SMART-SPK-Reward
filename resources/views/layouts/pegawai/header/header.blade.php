@@ -35,7 +35,15 @@
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Form Inovation List</li>
-                <!-- -->
+            @elseif ( request()->is('form-inovation/update*') )
+                <!-- Edit -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">Form Inovation List</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Update Form Inovation</li>
             @endif
         </ol>
         <!--/ Breadcrumb -->
@@ -48,12 +56,12 @@
                     <div class="avatar {{ Auth::guard('employees')->user()->status_id == 1 && Auth::guard('employees')->user()->status_active == 1 ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if ( Auth::guard('employees')->user()->photo_profile )
-                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}" 
-                            alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle" 
+                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}"
+                            alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle"
                             style="width: 40px; height: 45px" id="employeeAvatar" />
                         @else
-                        <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                            alt="employee-avatar" class="rounded-circle" 
+                        <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                            alt="employee-avatar" class="rounded-circle"
                             style="width: 40px; height: 45px" id="employeeAvatar" />
                         @endif
                     </div>
@@ -75,12 +83,12 @@
                                 <div class="avatar avatar-online">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('employees')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}" 
-                                        alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle" 
+                                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}"
+                                        alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="employeeAvatar" />
                                     @else
-                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                                        alt="employee-avatar" class="rounded-circle" 
+                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                        alt="employee-avatar" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="employeeAvatar" />
                                     @endif
                                 </div>

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Middleware\Pegawai;
+namespace App\Http\Middleware\TeamAssessment;
 
-use App\Models\Pegawai;
+use App\Models\TeamAssessment;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
-class LastPegawaiActivity
+class LastTeamAssessmentActivity
 {
     /**
      * Handle an incoming request.
@@ -20,12 +20,13 @@ class LastPegawaiActivity
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('employees')->check()) {
+
+        if (Auth::guard('team_assessments')->check()) {
             $expiresAt = Carbon::now()->addMinutes(1);
-            Cache::put('pegawai-is-online-' . Auth::guard('employees')->user()->id, true, $expiresAt);
+            Cache::put('TA-is-online-' . Auth::guard('team_assessments')->user()->id, true, $expiresAt);
             //
-            $employee = Pegawai::find(auth()->guard('employees')->id());
-            Pegawai::where('id', (string)Auth::guard('employees')->user()->id)->update(['last_seen' => (new \DateTime())->format("Y-m-d H:i:s")]);
+            $ta = TeamAssessment::find(auth()->guard('team_assessments')->id());
+            TeamAssessment::where('id', (string)Auth::guard('team_assessments')->user()->id)->update(['last_seen' => (new \DateTime())->format("Y-m-d H:i:s")]);
         }
         return $next($request);
     }

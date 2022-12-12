@@ -76,6 +76,32 @@
                     <li class="breadcrumb-item fw-bold active">Kelola Kriteria</li>
                 <!--/ Manage Criterias -->
 
+                <!-- Manage Parameters -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Kriteria</li>
+                <!--/ Manage Parameters -->
+
+                <!-- Manage Team Assessment -->
+                <!-- Create -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Tim Penilai</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tambah Data Tim Penilai Baru</li>
+                <!-- Read -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Tim Penilai</li>
+                <!--/ Manage Team Assessment -->
+
                 @endif
 
             @endif

@@ -478,7 +478,7 @@ class InovationController extends Controller
             $validate = null;
 
             // Jika upload sama
-            if($request['uploadFileUpdate'] === $rewardInovation->upload_file_short_description || $request['uploadPhoto'] === $rewardInovation->upload_file_image_support || $request['uploadVideo'] === $rewardInovation->upload_file_video_support)
+            if($request['uploadFileUpdate'] === $rewardInovation->upload_file_short_description || $request['uploadPhotoUpdate'] === $rewardInovation->upload_file_image_support || $request['uploadVideoUpdate'] === $rewardInovation->upload_file_video_support)
             {
                 $validate = Validator::make(
                     $request->all(),
@@ -547,11 +547,16 @@ class InovationController extends Controller
                 // Get Employee Username
                 $employee                   =       Auth::guard('employees')->user()->username;
 
+                // Find Reward Id
+                $rewardInovation            =       RewardInovation::find($id);
+
                 // Link
-                // Storage::delete('app/public/employees/documents/requirementsEmployeesRewardInovations'. $employee.'/'. $rewardInovation->upload_file_short_description);
                 $link                       =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+
+                // Delete File
                 if (file_exists($link)) {
                     unlink($link);
+                    $rewardInovation->update(['upload_file_short_description' => '']);
                 }
 
                 // Get File
@@ -582,7 +587,23 @@ class InovationController extends Controller
 
             // Jika Diganti Image
             if ($request->hasFile('uploadPhoto')) {
-                // Get Photo
+                // Get Employee Username
+                $employee                   =       Auth::guard('employees')->user()->username;
+
+                // Find Reward Id
+                $rewardInovation            =       RewardInovation::find($id);
+
+                // Link
+                $link                       =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+
+                // Delete Image
+                if (file_exists($link)) {
+                    unlink($link);
+                    $rewardInovation->update(['upload_file_image_support' => '']);
+                }
+
+
+                // Get Image
                 $photo                      =       $request->file('uploadPhoto');
 
                 // Get Original Extension
@@ -594,10 +615,11 @@ class InovationController extends Controller
                 // Get Employee Username
                 $employee                   =       Auth::guard('employees')->user()->username;
 
-                // Photo Name
+                // Image Name
                 $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
-                $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
 
                 // Update Database File
                 $rewardInovation->upload_file_image_support         =   $photoName;
