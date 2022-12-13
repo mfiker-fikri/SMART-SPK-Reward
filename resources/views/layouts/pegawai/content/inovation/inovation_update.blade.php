@@ -112,7 +112,7 @@
 
                 <!-- Form Inovation Update Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Update Form Inovation</h5>
+                    <h5 class="mb-0">Update Form Pendaftaran Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Form Inovation Update Title -->
 

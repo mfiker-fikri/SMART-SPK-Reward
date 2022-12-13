@@ -96,7 +96,7 @@
 
                 <!-- Form Kategori Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Data Kategori</h5>
+                    <h5 class="mb-0">Kelola Data Kategori</h5>
                 </div>
                 <!--/ Form Kategori Title -->
 

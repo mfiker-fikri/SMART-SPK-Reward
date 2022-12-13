@@ -92,7 +92,7 @@
             <div class="card my-4">
                 <!-- Create Form Inovation Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Create Form Inovation</h5>
+                    <h5 class="mb-0">Tambah Form Pendaftaran Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Create Form Inovation Title -->
 

@@ -38,7 +38,7 @@
 
                 <!-- Form Kriteria Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Data Kriteria</h5>
+                    <h5 class="mb-0">Kelola Data Kriteria</h5>
                 </div>
                 <!--/ Form Kriteria Title -->
 

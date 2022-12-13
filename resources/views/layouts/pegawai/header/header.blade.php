@@ -26,24 +26,24 @@
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">Form Inovation List</a>
+                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Create Form Inovation</li>
+                <li class="breadcrumb-item fw-bold active">Tambah Form Pendaftaran Penghargaan Inovasi</li>
             @elseif ( request()->is('form-inovation/list') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Form Inovation List</li>
+                <li class="breadcrumb-item fw-bold active">List Form Pendaftaran Penghargaan Inovasi</li>
             @elseif ( request()->is('form-inovation/update*') )
                 <!-- Edit -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">Form Inovation List</a>
+                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Update Form Inovation</li>
+                <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Inovasi</li>
             @endif
         </ol>
         <!--/ Breadcrumb -->

@@ -44,6 +44,7 @@
 
                 @endif
 
+            <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
             @elseif (Auth::guard('human_resources')->user()->role == 3)
                 <!-- Dashboard -->
                 @if ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') )
@@ -61,46 +62,149 @@
                 <!--/ Profile -->
 
                 <!-- Manage Categories -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') )
+                    <!-- Create -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Kelola Kategori</li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" style="text-decoration: none !important;">Kelola Data Kategori</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tambah Data Kategori Baru</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
+                    <!-- Read -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Data Kategori</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view*') )
+                    <!-- View -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" style="text-decoration: none !important;">Kelola Data Kategori</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Lihat Data Kategori</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit*') )
+                    <!-- Edit -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" style="text-decoration: none !important;">Kelola Data Kategori</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Edit Data Kategori</li>
                 <!--/ Manage Categories -->
 
                 <!-- Manage Criterias -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create') )
+                    <!-- Create -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Kelola Kriteria</li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" style="text-decoration: none !important;">Kelola Data Kriteria</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tambah Data Kriteria Baru</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                    <!-- Read -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Data Kriteria</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view*') )
+                    <!-- View -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" style="text-decoration: none !important;">Kelola Data Kriteria</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Lihat Data Kriteria</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit*') )
+                    <!-- Edit -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" style="text-decoration: none !important;">Kelola Data Kriteria</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Edit Data Kriteria</li>
                 <!--/ Manage Criterias -->
 
                 <!-- Manage Parameters -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create') )
+                    <!-- Create -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Kelola Kriteria</li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" style="text-decoration: none !important;">Kelola Data Parameter</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tambah Data Parameter Baru</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') )
+                    <!-- Read -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Data Parameter</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view*') )
+                    <!-- View -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" style="text-decoration: none !important;">Kelola Data Parameter</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Lihat Data Parameter</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit*') )
+                    <!-- Edit -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" style="text-decoration: none !important;">Kelola Data Parameter</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Edit Data Parameter</li>
                 <!--/ Manage Parameters -->
 
                 <!-- Manage Team Assessment -->
-                <!-- Create -->
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
+                    <!-- Create -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Tim Penilai</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Data Tim Penilai</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Tambah Data Tim Penilai Baru</li>
-                <!-- Read -->
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
+                    <!-- Read -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Kelola Tim Penilai</li>
+                    <li class="breadcrumb-item fw-bold active">Kelola Data Tim Penilai</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view*') )
+                    <!-- View -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Data Tim Penilai</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Lihat Data Tim Penilai</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*') )
+                    <!-- Edit -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Data Tim Penilai</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Edit Data Tim Penilai</li>
                 <!--/ Manage Team Assessment -->
+
 
                 @endif
 

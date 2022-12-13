@@ -14,7 +14,7 @@ class TeamAssessment extends Model
      *
      * @var string
      */
-    protected $table = 'team_assessment';
+    protected $table = 'team_assessments';
 
     /**
      * The primary key associated with the table.
@@ -42,11 +42,11 @@ class TeamAssessment extends Model
         // 'email_verified_at',
         'username',
         'password',
-        // 
+        //
         'photo_profile',
         'place_birth',
         'date_birth',
-        // 
+        //
         'nip',
         'pendidikan',
         'pangkat',
@@ -54,7 +54,7 @@ class TeamAssessment extends Model
         'sk_cpns',
         'jabatan',
         'unit_kerja',
-        //  
+        //
         'last_seen',
         'status_active',
         'status_id'
