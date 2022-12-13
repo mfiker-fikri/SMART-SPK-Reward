@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TeamAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
@@ -55,7 +56,7 @@ class ManageTeamAssessmentController extends Controller
                         <a href="' . route('sdm.getManageTeamAssessmentId.Update.SDM', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                         </a>
-                        <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteTAsId" data-id="' . $row->id . '" data-username="' . $row->username . '">
+                        <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteTAId" data-id="' . $row->id . '" data-username="' . $row->username . '">
                             <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                         </a>
                         ';
@@ -87,12 +88,12 @@ class ManageTeamAssessmentController extends Controller
                     } else {
                         if ($row->status_active == 1) {
                             $status_active =
-                                '<a href="#" class="edit btn btn-success mx-1 mx-1 mx-1" style="color: black" id="statusActiveIdAdmin" data-id="' . $row->id . '" data-username="' . $row->username . '">
+                                '<a href="#" class="edit btn btn-success mx-1 mx-1 mx-1" style="color: black" id="statusActiveIdTA" data-id="' . $row->id . '" data-username="' . $row->username . '">
                                     <i class="fa-solid fa-user-large"></i> Active
                                 </a> ';
                         } else {
                             $status_active =
-                                '<a href="#" class="edit btn btn-danger mx-1 mx-1 mx-1" style="color: black" id="statusNonActiveIdAdmin" data-id="' . $row->id . '" data-username="' . $row->username . '">
+                                '<a href="#" class="edit btn btn-danger mx-1 mx-1 mx-1" style="color: black" id="statusNonActiveIdTA" data-id="' . $row->id . '" data-username="' . $row->username . '">
                                     <i class="fa-solid fa-user-large-slash"></i> Non Active
                                 </a> ';
                         }
@@ -238,14 +239,201 @@ class ManageTeamAssessmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function postTeamAssessmentIdUpdate(Request $request, $id)
     {
         try {
+            // Find Id TA
+            $ta = TeamAssessment::find($id);
 
+            if ($ta) {
+                $validate = null;
+                if ($request['email'] === $ta->email || $request['username'] === $ta->username) {
+                    // Validasi Update
+                    $validate = Validator::make(
+                        $request->all(),
+                        [
+                            'full_name'                             =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
+                            'username'                              =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/',
+                            'email'                                 =>      'required|string|email',
+                        ],
+                        [
+                            'full_name.required'                    =>      'Nama Lengkap Wajib Diisi!',
+                            'username.required'                     =>      'Username Wajib Diisi!',
+                            'email.required'                        =>      'Email Wajib Diisi!',
+                            //
+                            'full_name.min'                         =>      'Nama Lengkap Minimal 3 Karakter!',
+                            'username.min'                          =>      'Username Minimal 3 Karakter!',
+                            //
+                            'full_name.max'                         =>      'Nama Lengkap Maksimal 255 Karakter!',
+                            'username.max'                          =>      'Username Maksimal 255 Karakter!',
+                            //
+                            'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            //
+                            'full_name.regex'                       =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                        =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
+                        ]
+                    );
+                } else {
+                    // Validasi Login
+                    $validate = Validator::make(
+                        $request->all(),
+                        [
+                            'full_name'                             =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
+                            'username'                              =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:team_assessments,username',
+                            'email'                                 =>      'required|string|email|unique:team_assessments,email',
+                        ],
+                        [
+                            'full_name.required'                    =>      'Nama Lengkap Wajib Diisi!',
+                            'username.required'                     =>      'Username Wajib Diisi!',
+                            'email.required'                        =>      'Email Wajib Diisi!',
+                            //
+                            'full_name.min'                         =>      'Nama Lengkap Minimal 3 Karakter!',
+                            'username.min'                          =>      'Username Minimal 3 Karakter!',
+                            //
+                            'full_name.max'                         =>      'Nama Lengkap Maksimal 255 Karakter!',
+                            'username.max'                          =>      'Username Maksimal 255 Karakter!',
+                            //
+                            'email.email'                           =>      'Email Tidak Valid! (Gunakan @/.com/.co.id/dll)',
+                            //
+                            'username.unique'                       =>      'Username Sudah Ada',
+                            'email.unique'                          =>      'Alamat Email Sudah Ada',
+                            //
+                            'full_name.regex'                       =>      'Nama Lengkap Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Spasi!',
+                            'username.regex'                        =>      'Username Boleh Menggunakan Huruf Besar, Huruf Kecil, dan Garis Bawah/Garis Tengah!',
+                            //
+                        ]
+                    );
+                }
+
+                if ($validate->fails()) {
+                    alert()->error('Gagal Update Data Tim Penilai!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-update-error', 'Gagal Update Data Tim Penilai!')->withErrors($validate)->withInput($request->all());
+                }
+
+                $ta->full_name   =   $request['full_name'];
+                $ta->username    =   $request['username'];
+                $ta->email       =   $request['email'];
+
+                $ta->save();
+
+                alert()->success('Berhasil Update Data Tim Penilai!')->autoclose(25000);
+                return redirect()->back()->with('message-update-success', 'Berhasil Update Data Tim Penilai!');
+                //
+            } else {
+                alert()->error('Gagal!')->autoclose(25000);
+                return redirect()->back();
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postTeamAssessmentIdUpdateChangePassword(Request $request, $id)
+    {
+        // Find Id TA
+        $ta = TeamAssessment::find($id);
+
+        if ($ta) {
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'password'                              => 'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|confirmed',
+                    'password_confirmation'                 => 'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|same:password',
+                ],
+                [
+                    'password.required'                     => 'Password Baru Wajib Diisi!',
+                    'password_confirmation.required'        => 'Konfirmasi Password Baru Wajib Diisi!',
+                    //
+                    'password.min'                          => 'Password Baru Minimal 6 Karakter!',
+                    'password_confirmation.min'             => 'Konfirmasi Password Baru Minimal 6 Karakter!',
+                    //
+                    'password.max'                          => 'Password Baru Maksimal 100 Karakter!',
+                    'password_confirmation.max'             => 'Konfirmasi Password Baru Maksimal 100 Karakter!',
+                    //
+                    'password.confirmed'                    => 'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
+                    //
+                    'password_confirmation.same'            => 'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
+                    //
+                    'password.regex'                        => 'Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                    'password_confirmation.regex'           => 'Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
+            }
+            //
+            DB::table('team_assessments')->where('id', $ta)->update(['password' => Hash::make($request['password'])]);
+            alert()->success('Berhasil Update Password!')->autoclose(25000);
+            return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
+            //
+        }
+        alert()->error('Gagal!')->autoclose(25000);
+        return redirect()->back();
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postTeamAssessmentIdStatusActive(Request $request, $id)
+    {
+        // Find Id TA
+        $ta = TeamAssessment::find($id);
+
+        if ($ta) {
+            if ($ta->status_active == 1) {
+                $ta->update(['status_active' => 0]);
+                alert()->success('Berhasil Non Aktif Tim Penilai!', $ta->username)->autoclose(25000);
+                return redirect()->back()->with('message-create-success', 'Berhasil Non Aktif Tim Penilai!');
+            } else {
+                $ta->update(['status_active' => 1]);
+                alert()->success('Berhasil Meng-aktifkan Tim Penilai!', $ta->username)->autoclose(25000);
+                return redirect()->back()->with('message-create-success', 'Berhasil Meng-aktifkan Tim Penilai!');
+            }
+        }
+        alert()->error('Gagal!')->autoclose(25000);
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postTeamAssessmentIdDelete($id)
+    {
+        $ta = TeamAssessment::findOrFail($id);
+        // $ta = Admin::find($id);
+
+        if ($ta) {
+            // $ta->update([
+            //     'status_active' =>  0,
+            //     'status_id'     =>  0,
+            // ]);
+            $ta->delete();
+            alert()->success('Berhasil Hapus Admin!', $ta->username)->autoclose(25000);
+            return redirect()->back()->with('message-delete-success', 'Berhasil Hapus Admin!' . $ta->username);
+            // ->with(['success' => 'Post has been deleted successfully']);
+        } else {
+            return redirect()->back()->with('message-delete-error', 'Tidak Berhasil Hapus Admin!' . $ta->username);
+            // ->with(['error' => 'Some problem has occurred, please try again']);
+        }
+        alert()->error('Gagal!')->autoclose(25000);
+        return redirect()->back();
+    }
+
 
     /**
      * Remove the specified resource from storage.

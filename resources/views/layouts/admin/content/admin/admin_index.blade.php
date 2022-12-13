@@ -196,7 +196,6 @@
             e.preventDefault();
             let id = $(this).attr('data-id');
             let username = $(this).attr('data-username');
-            console.log(id,username);
             Swal.fire({
                 title: 'Apakah kamu ingin menghapus data akun' + ' ' + username + '?',
                 icon: 'warning',

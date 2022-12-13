@@ -3,7 +3,7 @@
 
 <!-- Footer Js -->
 @section('js_footer')
-    <!-- Datatables Form Inovation -->
+    <!-- Datatables Team Assessment -->
     <script type="text/javascript">
     $(document).ready(function () {
         var table = $('#data-table').DataTable({
@@ -29,7 +29,184 @@
         new $.fn.dataTable.FixedHeader(table);
     });
     </script>
-    <!--/ Datatables Form Inovation -->
+    <!--/ Datatables Team Assessment -->
+
+    <!-- Status Non Active Team Assessment -->
+    <script type="text/javascript">
+    $(document).on('click', '#statusActiveIdTA', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        let username = $(this).attr('data-username');
+        Swal.fire({
+            title: 'Apakah kamu ingin menonaktifkan data akun' + ' ' + username + '?',
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    method: 'post',
+                    url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/status_active') }}" + '/' + id,
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Non Aktif Admin' + ' ' + username,
+                            icon: 'success',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        });
+    });
+    </script>
+    <!--/ Status Non Active Team Assessment -->
+
+    <!-- Status Active Team Assessment -->
+    <script type="text/javascript">
+    $(document).on('click', '#statusNonActiveIdTA', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        let username = $(this).attr('data-username');
+        Swal.fire({
+            title: 'Apakah kamu ingin mengaktifkan data akun' + ' ' + username + '?',
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    method: 'post',
+                    url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/status_active') }}" + '/' + id,
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Aktif Admin' + ' ' + username,
+                            icon: 'success',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        });
+    });
+    </script>
+    <!--/ Status Active Team Assessment -->
+
+    <!-- Delete Team Assessment -->
+    <script type="text/javascript">
+        $(document).on('click', '#deleteTAId', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            let username = $(this).attr('data-username');
+            Swal.fire({
+                title: 'Apakah kamu ingin menghapus data akun' + ' ' + username + '?',
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/delete') }}" + '/' + id,
+                        data: {
+                            id: id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Delete',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    </script>
+    <!--/ Delete Team Assessment -->
 @endsection
 <!--/ Footer Js -->
 

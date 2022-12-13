@@ -39,11 +39,13 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             //
-            // Admin
+            // Admins
             \App\Http\Middleware\Admin\LastAdminActivity::class,
             // Human Resources
             \App\Http\Middleware\Admin\LastHumanResourcesActivity::class,
-            // Pegawai
+            // Team Assessment
+            \App\Http\Middleware\TeamAssessment\LastTeamAssessmentActivity::class,
+            // Pegawais
             \App\Http\Middleware\Admin\LastPegawaiActivity::class,
         ],
 
@@ -72,15 +74,19 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        //
+        // Admins
         'admin.auth' => \App\Http\Middleware\Admin\RedirectIfAdmin::class,
         'admin.guest' => \App\Http\Middleware\Admin\RedirectIfNotAdmin::class,
 
-        //
+        // Human Resources
         'human_resources.auth' => \App\Http\Middleware\HumanResources\RedirectIfHumanResources::class,
         'human_resources.guest' => \App\Http\Middleware\HumanResources\RedirectIfNotHumanResources::class,
 
-        //
+        // Team Assessments
+        // 'team_assessment.auth'  =>
+        // 'team_assessment.guest' =>
+
+        // Pegawais
         'pegawai.auth' => \App\Http\Middleware\Pegawai\RedirectIfPegawai::class,
         'pegawai.guest' => \App\Http\Middleware\Pegawai\RedirectIfNotPegawai::class,
     ];

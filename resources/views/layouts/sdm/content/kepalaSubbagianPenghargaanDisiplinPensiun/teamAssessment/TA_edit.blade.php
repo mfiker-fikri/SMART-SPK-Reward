@@ -1,5 +1,42 @@
 @extends('template.sdm.template')
 
+@section('js_footer')
+    <!-- Show Hide Password -->
+    <script type="text/javascript">
+        $(document).on('click', '#passwordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password").setAttribute("type", "text");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password").setAttribute("type", "password");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordConfirmationEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password_confirmation").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password_confirmation").setAttribute("type", "text");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password_confirmation").setAttribute("type", "password");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+    <!--/ Show Hide Password -->
+@endsection
+
+
 <!-- Content -->
 @section('content')
 
@@ -17,7 +54,7 @@
 
                     <!-- Tabs Edit Profile Details Team Assessment -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('admin/manage/admins/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/admins/edit*')) ? 'true' : 'false' }}">Edit Data Admin</button>
+                        <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'active' : '' }}" id="pills-editTA-tab" data-bs-toggle="pill" data-bs-target="#pills-editTA" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'true' : 'false' }}">Edit Data Tim Penilai</button>
                     </li>
                     <!--/ Tabs Edit Profile Details Team Assessment -->
 
@@ -36,8 +73,8 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
 
-                <!-- Tabs Edit Profile Details Admin -->
-                <div class="tab-pane fade show {{ (request()->is('admin/manage/admins/edit*')) ? 'active' : '' }}" id="pills-editAdmin" role="tabpanel" aria-labelledby="pills-editAdmin-tab">
+                <!-- Tabs Edit Profile Details Team Assessment -->
+                <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'active' : '' }}" id="pills-editTA" role="tabpanel" aria-labelledby="pills-editTA-tab">
 
                     @if(session('message-update-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
@@ -67,16 +104,16 @@
                     </div>
                     @endif
 
-                    <!-- Card Edit Profile Details Admin -->
+                    <!-- Card Edit Profile Details Team Assessment -->
                     <div class="card my-4">
 
-                        <!-- Form Edit Profile Details Admin Title -->
+                        <!-- Form Edit Profile Details Team Assessment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Edit Data Admin</h5>
+                            <h5 class="mb-0">Edit Data Tim Penilai</h5>
                         </div>
-                        <!--/ Form Edit Profile Details Admin Title -->
+                        <!--/ Form Edit Profile Details Team Assessment Title -->
 
-                        <!-- Form Edit Profile Details Admin -->
+                        <!-- Form Edit Profile Details Team Assessment -->
                         <div class="card-body py-xl-5 py-sm-5 px-xl-5">
 
                             <form id="formEditTA" class="mx-2" method="POST" action="{{ route('sdm.postManageTeamAssessmentId.Update.SDM', $ta->id) }}" enctype="multipart/form-data">
@@ -181,14 +218,14 @@
                             </form>
 
                         </div>
-                        <!--/ Form Edit Profile Details Admin -->
+                        <!--/ Form Edit Profile Details Team Assessment -->
 
                     </div>
-                    <!--/ Card Edit Profile Details Admin -->
+                    <!--/ Card Edit Profile Details Team Assessment -->
 
 
                 </div>
-                <!--/ Tabs Edit Profile Details Admin -->
+                <!--/ Tabs Edit Profile Details Team Assessment -->
 
 
                 <!-- Tabs Change Password -->
@@ -233,7 +270,7 @@
                         <!-- Form Change Password -->
                         <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
-                            <form id="formChangePassword" class="mb-3" method="POST" action="{{ route('admin.postManageAdminsId.UpdateChangePassword.Admin', $admin->id) }}">
+                            <form id="formChangePassword" class="mb-3" method="POST" action="{{ route('sdm.postManageTeamAssessmentId.UpdateChangePassword.SDM', $ta->id) }}">
                                 @csrf
 
                                 <!-- Password -->
@@ -241,13 +278,16 @@
                                     <label for="password" class="col-sm-3 col-form-label">Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <span id="password" class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
+                                            <span class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                                 <i class="fa-solid fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
                                                 name="password" placeholder="*Password Baru"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password" data-val="true" >
+                                            <span class="input-group-text" id="passwordEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyePassword"></i>
+                                            </span>
                                         </div>
                                         <div id="passwordHelp" class="form-text">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password -->
@@ -266,13 +306,16 @@
                                     <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <span id="password_confirmation" class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
+                                            <span class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
                                                 name="password_confirmation" placeholder="*Konfirmasi Password Baru"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password_confirmation" data-val="true">
+                                            <span class="input-group-text" id="passwordConfirmationEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyePasswordConfirmation"></i>
+                                            </span>
                                         </div>
                                         <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password Confirmation-->
@@ -295,7 +338,7 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        <a href="{{ URL::to('admin/manage/admins') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
+                                        <a href="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
                                         <button type="reset" class="btn btn-warning btn-lg" style="color: black">

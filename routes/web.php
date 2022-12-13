@@ -194,7 +194,6 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::GET('select/criterias/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getSelectCriterias'])->name('getSelectCriterias.Parameters.SDM');
         // Select Value Quality
         Route::GET('select/value-quality/parameters', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getInputValueQuality'])->name('getInputValueQuality.Parameters.SDM');
-
         // Create
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'getParametersCreate'])->name('getManageParameters.Create.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create/post', [App\Http\Controllers\SDM\Role3\Parameter\ParameterController::class, 'postParametersCreate'])->name('postManageParameters.Create.SDM');
@@ -219,9 +218,13 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // View
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'getTeamAssessmentIdView'])->name('getManageTeamAssessmentId.View.SDM');
         // Update
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class], 'getTeamAssessmentIdUpdate')->name('getManageTeamAssessmentId.Update.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'getTeamAssessmentIdUpdate'])->name('getManageTeamAssessmentId.Update.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit/{id}/post', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'postTeamAssessmentIdUpdate'])->name('postManageTeamAssessmentId.Update.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit/{id}/post/change-password', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'postTeamAssessmentIdUpdateChangePassword'])->name('postManageTeamAssessmentId.UpdateChangePassword.SDM');
+        // Non Active / Active
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/status_active/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'postTeamAssessmentIdStatusActive'])->name('postManageTeamAssessmentId.StatusActive.SDM');
         // Delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/delete/{id}', [App\Http\Controllers\SDM\Role3\TeamAssessment\ManageTeamAssessmentController::class, 'postTeamAssessmentIdDelete'])->name('postManageTeamAssessmentId.Delete.SDM');
 
 
         // Manage Time CountDown
