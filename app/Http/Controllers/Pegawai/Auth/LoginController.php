@@ -108,6 +108,7 @@ class LoginController extends Controller
         // dd($check, $password, $remember_me);
         // Attempt Login
         $attempt = Auth::guard('employees')->attempt([$check => $username, 'password' => $password], $remember_me);
+        // dd($attempt);
         if ($attempt) {
             session(['berhasil_login' => true]);
             alert()->success('Berhasil Masuk')->autoclose(25000);

@@ -83,8 +83,8 @@ class Kernel extends HttpKernel
         'human_resources.guest' => \App\Http\Middleware\HumanResources\RedirectIfNotHumanResources::class,
 
         // Team Assessments
-        // 'team_assessment.auth'  =>
-        // 'team_assessment.guest' =>
+        'team_assessment.auth'  =>  \App\Http\Middleware\TeamAssessment\RedirectIfTA::class,
+        'team_assessment.guest' =>  \App\Http\Middleware\TeamAssessment\RedirectIfNotTA::class,
 
         // Pegawais
         'pegawai.auth' => \App\Http\Middleware\Pegawai\RedirectIfPegawai::class,

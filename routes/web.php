@@ -262,6 +262,8 @@ Route::group(['name' => 'tim-penilai', 'prefix' => 'penilai', 'as' => 'penilai.'
     Route::POST('/reset-password', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Penilai');
 
     // Dashboard
+    Route::GET('/dashboard', [\App\Http\Controllers\TeamAssessment\DashboardController::class,'dashboard'])->name('getDashboard.Penilai');
+
     // Penilaian Inovasi
     // Read
     Route::GET('/appraisment', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'get'])->name('getManageAppraisment.Read.Penilai');
