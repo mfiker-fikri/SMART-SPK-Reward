@@ -418,7 +418,6 @@
                 var curMonth = months[today.getMonth()];
                 var curYear = today.getFullYear();
                 var date = curWeekDay+","+" "+curDay+" "+curMonth+" "+curYear;
-                console.log(date);
                 document.getElementById("date").innerHTML = date;
             }
 

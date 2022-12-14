@@ -8,42 +8,18 @@
     <div class="container px-sm-1 d-flex align-items-center" id="navbar-collapse">
         <!-- Breadcrumb "-->
         <ol class="breadcrumb breadcrumb-style1 my-lg-3 my-3">
+            @if ( request()->is('/penilai/dashboard') )
             <!-- Dashboard -->
-            @if ( request()->is('dashboard') )
                 <li class="breadcrumb-item fw-bold active">
                     Dashboard
                 </li>
+            @elseif ( request()->is('/penilai/profile') )
             <!-- Profile -->
-            @elseif ( request()->is('profile') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
-            <!-- Manage Inovation -->
-            @elseif ( request()->is('form-inovation/create') )
-                <!-- Create -->
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">Tambah Form Pendaftaran Penghargaan Inovasi</li>
-            @elseif ( request()->is('form-inovation/list') )
-                <!-- Read -->
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">List Form Pendaftaran Penghargaan Inovasi</li>
-            @elseif ( request()->is('form-inovation/update*') )
-                <!-- Edit -->
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Inovasi</li>
+
             @endif
         </ol>
         <!--/ Breadcrumb -->
@@ -53,11 +29,11 @@
             <!-- Employee -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar {{ Auth::guard('employees')->user()->status_id == 1 && Auth::guard('employees')->user()->status_active == 1 ? 'avatar-online' : '' }}">
+                    <div class="avatar {{ Auth::guard('team_assessments')->user()->status_id == 1 && Auth::guard('team_assessments')->user()->status_active == 1 ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
-                        @if ( Auth::guard('employees')->user()->photo_profile )
-                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}"
-                            alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle"
+                        @if ( Auth::guard('team_assessments')->user()->photo_profile )
+                        <img src="{{ asset( 'storage/team_assessments/photos/photoProfile/'. Auth::guard('team_assessments')->user()->username. '/' . Auth::guard('team_assessments')->user()->photo_profile) }}"
+                            alt="employee-avatar {{ Auth::guard('team_assessments')->user()->full_name }}" class="rounded-circle"
                             style="width: 40px; height: 45px" id="employeeAvatar" />
                         @else
                         <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
@@ -82,9 +58,9 @@
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar avatar-online">
                                     <!-- Photo Profile -->
-                                    @if (Auth::guard('employees')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/employees/photos/photoProfile/'. Auth::guard('employees')->user()->username. '/' . Auth::guard('employees')->user()->photo_profile) }}"
-                                        alt="employee-avatar {{ Auth::guard('employees')->user()->full_name }}" class="rounded-circle"
+                                    @if (Auth::guard('team_assessments')->user()->photo_profile)
+                                        <img src="{{ asset( 'storage/team_assessments/photos/photoProfile/'. Auth::guard('team_assessments')->user()->username. '/' . Auth::guard('team_assessments')->user()->photo_profile) }}"
+                                        alt="employee-avatar {{ Auth::guard('team_assessments')->user()->full_name }}" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="employeeAvatar" />
                                     @else
                                     <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
@@ -94,8 +70,8 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">{{ Auth::guard('employees')->user()->full_name }}</span>
-                                <small class="text-muted">Pegawai</small>
+                                <span class="fw-semibold d-block">{{ Auth::guard('team_assessments')->user()->full_name }}</span>
+                                <small class="text-muted">Tim Penilai</small>
                             </div>
                         </div>
                     </li>
@@ -136,7 +112,7 @@
 
                     <!-- My Profile -->
                     <li>
-                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('profile')) ? 'active' : '' }}" href="{{ URL::to('/profile') }}">
+                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('penilai/profile')) ? 'active' : '' }}" href="{{ URL::to('/penilai/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

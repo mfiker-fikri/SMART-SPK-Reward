@@ -266,11 +266,11 @@ Route::group(['name' => 'tim-penilai', 'prefix' => 'penilai', 'as' => 'penilai.'
 
     // Penilaian Inovasi
     // Read
-    Route::GET('/appraisment', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'get'])->name('getManageAppraisment.Read.Penilai');
-    Route::GET('/appraisment/list')->name('getManageAppraisment.Read.Penilai');
+    Route::GET('/appraisment', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraisment'])->name('getManageAppraisment.Read.Penilai');
+    Route::GET('/appraisment/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentList'])->name('getManageAppraismentList.Read.Penilai');
     // Update
-    Route::GET('/appraisment/update/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'get'])->name('getManageAppraisment.Update.Penilai');
-    Route::POST('/appraisment/update/{id}/post')->name('postManageAppraisment.Update.Penilai');
+    Route::GET('/appraisment/update/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentIdUpdate'])->name('getManageAppraismentId.Update.Penilai');
+    Route::POST('/appraisment/update/{id}/post', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'postAppraismentIdUpdate'])->name('postManageAppraismentId.Update.Penilai');
 
 });
 

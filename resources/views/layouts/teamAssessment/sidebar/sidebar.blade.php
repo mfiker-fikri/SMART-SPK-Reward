@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <!-- Logo -->
     <div class="app-brand demo" style="max-height: 10rem; min-height: 10rem; margin-bottom: 10px">
-        <a href="{{ URL::to('/dashboard') }}" class="app-brand-link d-flex flex-column justify-content-center" style="text-decoration: none !important;">
+        <a href="{{ URL::to('/penilai/dashboard') }}" class="app-brand-link d-flex flex-column justify-content-center" style="text-decoration: none !important;">
             <span class="app-brand-logo demo text-center">
                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="Icon" width="50" height="50" />
             </span>
@@ -26,8 +26,8 @@
             <span class="menu-header-text">Dashboard</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('penilai/dashboard')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/penilai/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
@@ -39,8 +39,8 @@
             <span class="menu-header-text">My Profile</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('profile')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/profile') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('penilai/profile')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/penilai/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                 <div data-i18n="My Profile">My Profile</div>
             </a>
