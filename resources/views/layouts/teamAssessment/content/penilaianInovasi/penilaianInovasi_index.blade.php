@@ -9,18 +9,23 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            // rowReorder: {
-            //     selector: 'td:nth-child(2)'
-            // },
-            // paging: false,
-            ajax: "{{ url('penilaian/appraisment/list') }}",
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            paging: false,
+            ajax: {
+                url: "{{ url('penilai/appraisment/list') }}",
+                // headers: {
+                //     'Authorization':'Basic xxxxxxxxxxxxx',
+                //     'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',
+                //     'Content-Type':'application/json'
+                // },
+                method: "GET",
+            },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 // {data: 'id', name: 'id'},
-                // {data: 'upload_file_short_description', name: 'upload_file_short_description'},
-                // {data: 'status', name: 'status'},
-                // {data: 'last_seen', name: 'last_seen'},
-                // {data: 'status_active', name: 'status_active'},
+                {data: 'fullName', name: 'fullName'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

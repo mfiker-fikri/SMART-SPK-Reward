@@ -37,13 +37,13 @@ class RewardInovation extends Model
      */
     protected $fillable = [
         'id',
-        // 
+        //
         'upload_file_short_description',
         'upload_file_image_support',
         'upload_file_video_support',
-        // 
+        //
         'employee_id',
-        // 
+        //
         'status_process',
         'status_id'
     ];
