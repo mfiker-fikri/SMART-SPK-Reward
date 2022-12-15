@@ -304,10 +304,14 @@ class LoginController extends Controller
      */
     public function getLogout(Request $request)
     {
-        $this->guard('human_resources')->logout();
-        $request->session()->flush();
-        Auth::logout();
-        alert()->success('Kamu Telah Keluar Dari Akun SDM', 'Terima Kasih')->autoclose(25000);
-        return redirect('sdm')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun SDM, Terima Kasih');
+        try {
+            $this->guard('human_resources')->logout();
+            $request->session()->flush();
+            Auth::logout();
+            alert()->success('Kamu Telah Keluar Dari Akun SDM', 'Terima Kasih')->autoclose(25000);
+            return redirect('sdm')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun SDM, Terima Kasih');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

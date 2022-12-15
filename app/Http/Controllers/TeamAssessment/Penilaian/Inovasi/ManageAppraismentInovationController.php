@@ -46,7 +46,7 @@ class ManageAppraismentInovationController extends Controller
         try {
             $data = RewardInovation::
                 // DB::table('reward_inovation')
-                where(['status_process' => 2])
+                where(['status_process' => 3])
                 ->latest()
                 ->get();
             // ddd($data);
@@ -54,7 +54,6 @@ class ManageAppraismentInovationController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    // 2=menunggu
                     $actionBtn =
                         '
                             <a href="' . route('penilai.getManageAppraismentId.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">

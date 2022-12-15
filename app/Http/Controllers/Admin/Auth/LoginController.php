@@ -182,10 +182,14 @@ class LoginController extends Controller
      */
     public function getLogout(Request $request)
     {
-        $this->guard('admins')->logout();
-        $request->session()->flush();
-        Auth::logout();
-        alert()->success('Kamu Telah Keluar Dari Akun Admin', 'Terima Kasih')->autoclose(25000);
-        return redirect('admin')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Admin, Terima Kasih');
+        try {
+            $this->guard('admins')->logout();
+            $request->session()->flush();
+            Auth::logout();
+            alert()->success('Kamu Telah Keluar Dari Akun Admin', 'Terima Kasih')->autoclose(25000);
+            return redirect('admin')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Admin, Terima Kasih');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

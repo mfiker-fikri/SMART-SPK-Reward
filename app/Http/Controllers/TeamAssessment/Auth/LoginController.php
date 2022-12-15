@@ -179,8 +179,16 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function getLogout(Request $request)
     {
-        //
+        try {
+            $this->guard('team_assessments')->logout();
+            $request->session()->flush();
+            Auth::logout();
+            alert()->success('Kamu Telah Keluar Dari Akun Tim Penilai', 'Terima Kasih')->autoclose(25000);
+            return redirect('penilai')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Tim Penilai, Terima Kasih');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
