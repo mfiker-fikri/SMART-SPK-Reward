@@ -38,7 +38,7 @@ class Category extends Model
     protected $fillable = [
         'id',
         'category',
-        // 
+        //
         'status_active',
         'status_id'
     ];

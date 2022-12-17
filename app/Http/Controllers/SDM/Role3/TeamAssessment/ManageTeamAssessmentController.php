@@ -45,7 +45,7 @@ class ManageTeamAssessmentController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
-                    if (Cache::has('admin-is-online-' . $row->id)) {
+                    if (Cache::has('TA-is-online-' . $row->id)) {
                         $actionBtn = '<span class="text-success">Online</span>';
                     } else {
                         $actionBtn =
@@ -65,7 +65,7 @@ class ManageTeamAssessmentController extends Controller
                 })
                 ->addColumn('status', function ($row) {
                     $status = '';
-                    if (Cache::has('admin-is-online-' . $row->id)) {
+                    if (Cache::has('TA-is-online-' . $row->id)) {
                         $status = '<span class="text-success">Online</span>';
                     } else {
                         $status = '<span class="text-secondary">Offline</span>';

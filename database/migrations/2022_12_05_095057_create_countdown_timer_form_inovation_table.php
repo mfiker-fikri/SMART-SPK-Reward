@@ -15,8 +15,10 @@ class CreateCountdownTimerFormInovationTable extends Migration
     {
         Schema::create('countdown_timer_form_inovation', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date_time_form_inovation');
-            $table->boolean('status');
+            $table->dateTime('date_time_open_form_inovation');
+            $table->dateTime('date_time_expired_form_inovation')->nullable();
+            $table->boolean('status_open');
+            $table->boolean('status_expired')->nullable();
             // $table->softDeletes();
             // $table->timestamps();
         });

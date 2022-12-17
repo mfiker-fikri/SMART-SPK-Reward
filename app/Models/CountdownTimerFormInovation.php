@@ -39,8 +39,10 @@ class CountdownTimerFormInovation extends Model
      */
     protected $fillable = [
         'id',
-        'date_time_form_inovation',
-        'status'
+        'date_time_open_form_inovation',
+        'date_time_expired_form_inovation',
+        'status_open',
+        'status_expired',
     ];
 
     public $timestamps = false;

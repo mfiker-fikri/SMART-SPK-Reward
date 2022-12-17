@@ -40,9 +40,9 @@ class Criteria extends Model
         'criteria',
         'value_quality',
         'normalization',
-        // 
+        //
         'categorie_id',
-        // 
+        //
         'status_active',
         'status_id'
     ];

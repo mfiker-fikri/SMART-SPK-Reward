@@ -17,8 +17,10 @@ class TimerCountDownInovasiSeeder extends Seeder
         //
         \App\Models\CountdownTimerFormInovation::insert([
             'id' => 1,
-            'date_time_form_inovation' => Carbon::now(),
-            'status' => 1,
+            'date_time_open_form_inovation' => Carbon::now(),
+            'status_open' => 1,
+            'date_time_expired_form_inovation'  => Carbon::tomorrow(),
+            'status_expired' => 1,
         ]);
     }
 }

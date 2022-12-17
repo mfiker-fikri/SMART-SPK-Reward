@@ -37,8 +37,10 @@ class CountdownTimerFormTeladan extends Model
      */
     protected $fillable = [
         'id',
-        'date_time_form_teladan',
-        'status'
+        'date_time_open_form_teladan',
+        'date_time_expired_form_teladan',
+        'status_open',
+        'status_expired',
     ];
 
     public $timestamps = false;

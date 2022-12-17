@@ -16,7 +16,7 @@
 
                     <!-- Tabs Form Inovation Appraisment From Employees -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('penilai/appraisment/update*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/update*')) ? 'true' : 'false' }}">Form Inovation Pegawai - </button>
+                        <button class="nav-link {{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'true' : 'false' }}">Form Inovation Pegawai - {{ $reward->employees->full_name }}</button>
                     </li>
                     <!--/ Tabs Form Inovation Appraisment From Employees -->
 
@@ -34,7 +34,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
-                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/update*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
+                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
 
                     <div class="card mx-4">
 
@@ -47,44 +47,11 @@
                         <!-- Form Inovation Appraisment Details -->
                         <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
-                            <form id="formInovationAppraisment" class="mx-3 my-3" method="POST" action="{{ route('penilai.postManageAppraismentId.Update.Penilai', $reward->id) }}" enctype="multipart/form-data">
-                                @csrf
+                            <form id="formInovationAppraisment" class="mx-3 my-3" method="POST" action="#" enctype="multipart/form-data">
                                 <!-- Upload Short Description -->
                                 <div class="row my-3 {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
                                     <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Upload Short Description</label>
                                     <div class="col-md-9 col-xl-9">
-                                        {{-- <div class="input-group {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
-                                            <input type="hidden" name="oldFile" value="{{ old('oldFile',$reward->upload_file_short_description) }}" />
-                                            <input type="hidden" name="oldFile" id="oldFile" value="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_short_description) }}" />
-
-                                            <label class="input-group-text {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}" for="uploadFile">
-                                                <i class="fa-solid fa-file"></i>
-                                            </label>
-                                            <input type="file" class="form-control {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate')  ? 'is-invalid' : '' }}" id="uploadFile"
-                                                value="{{ old('uploadFileUpdate', $reward->upload_file_short_description) }}"
-                                                name="uploadFile" accept=".pdf" onchange="preview_pdf(event)" disabled>
-
-                                            <input type="hidden" name="uploadFileUpdate" id="uploadFileUpdate"
-                                                value="{{ $reward->upload_file_short_description }}"
-                                                required />
-                                        </div> --}}
-
-                                        {{-- <div class="d-flex flex-column">
-                                            <!-- Text Small -->
-                                            <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 3Mb (3072 Kb)</small>
-                                            <!--/ Text Small -->
-
-                                            <!-- Error Upload Short Description -->
-                                            @if ( $errors->has('uploadFile') || $errors->has('uploadFileUpdate') )
-                                            <div class="d-flex">
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('uploadFile') ?: $errors->first('uploadFileUpdate') }}</strong>
-                                                </span>
-                                            </div>
-                                            @endif
-                                            <!--/ Error Upload Short Description -->
-                                        </div> --}}
-
                                         <div class="d-flex justify-content-center py-sm-3">
                                             <iframe class="d-block rounded" width="600" height="350" id="output_pdf" src="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_short_description) }}"></iframe>
                                         </div>
@@ -96,38 +63,6 @@
                                 <div class="row my-3 {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
                                     <label for="uploadPhoto" class="col-xl-3 col-form-label">Upload Photo</label>
                                     <div class="col-md-9 col-xl-9">
-                                        {{-- <div class="input-group {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
-                                            <input type="hidden" name="oldPhoto" value="{{ old('oldPhoto',$reward->upload_file_image_support) }}" />
-                                            <input type="hidden" name="oldPhoto" id="oldPhoto" value="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_image_support) }}" />
-
-                                            <label class="input-group-text {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}" for="uploadPhoto">
-                                                <i class="fa-solid fa-file-image"></i>
-                                            </label>
-                                            <input type="file" class="form-control {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}" id="uploadPhoto"
-                                                value="{{ old('uploadPhotoUpdate', $reward->upload_file_image_support) }}"
-                                                name="uploadPhoto" accept=".png, .jpg, .jpeg" onchange="preview_image(event)" disabled>
-
-                                            <input type="hidden" name="uploadPhotoUpdate" id="uploadPhotoUpdate"
-                                                value="{{ $reward->upload_file_image_support }}"
-                                                required />
-                                        </div> --}}
-
-                                        {{-- <div class="d-flex flex-column">
-                                            <!-- Text Small -->
-                                            <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload Foto 5Mb (5120 Kb)</small>
-                                            <!--/ Text Small -->
-
-                                            <!-- Error Upload Photo -->
-                                            @if ( $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate'))
-                                            <div class="d-flex">
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('uploadPhoto') ?: $errors->first('uploadPhotoUpdate') }}</strong>
-                                                </span>
-                                            </div>
-                                            @endif
-                                            <!--/ Error Upload Photo -->
-                                        </div> --}}
-
                                         <div class="d-flex justify-content-center py-sm-3">
                                             <img class="d-block rounded" width="450" height="350" id="output_image" src="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_image_support) }}">
                                         </div>
@@ -139,66 +74,12 @@
                                 <div class="row my-3 {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
                                     <label for="uploadVideo" class="col-xl-3 col-form-label">Upload Video</label>
                                     <div class="col-md-9 col-xl-9">
-                                        {{-- <div class="input-group {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
-                                            <input type="hidden" name="oldVideo" value="{{ old('oldVideo',$reward->upload_file_video_support) }}" />
-                                            <input type="hidden" name="oldVideo" id="oldVideo" value="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_video_support) }}" />
-
-                                            <label class="input-group-text {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}" for="uploadVideo">
-                                                <i class="fa-solid fa-file-video"></i>
-                                            </label>
-                                            <input type="file" class="form-control {{ $errors->has('uploadVideo') ? 'is-invalid' : '' }}" id="uploadVideo"
-                                                name="uploadVideo" accept="video/*" onchange="preview_video(event)" disabled />
-
-                                            <input type="hidden" name="uploadVideoUpdate" id="uploadVideoUpdate"
-                                                value="{{ $reward->upload_file_video_support }}"
-                                                required />
-                                        </div> --}}
-
-                                        {{-- <div class="d-flex flex-column">
-                                            <!-- Text Small -->
-                                            <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 1Gb (1024000 Kb)</small>
-                                            <!--/ Text Small -->
-
-                                            <!-- Error Upload Video -->
-                                            @if ( $errors->has('uploadVideo') )
-                                            <div class="d-flex">
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('uploadVideo') }}</strong>
-                                                </span>
-                                            </div>
-                                            @endif
-                                            <!--/ Error Upload Video -->
-                                        </div> --}}
-
                                         <div class="d-flex justify-content-center py-sm-3">
                                             <video class="d-block rounded" width="650" height="350" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_video_support) }}"></video>
                                         </div>
                                     </div>
                                 </div>
                                 <!--/ Upload Video -->
-
-                                <!-- Action Button -->
-                                <div class="my-md-4 d-flex flex-row justify-content-end">
-                                    <div class="mx-1 mx-1 mx-1">
-                                        <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
-                                    </div>
-                                    <div class="mx-1 mx-1 mx-1">
-                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/penilai/appraisment') }}" role="button">
-                                            <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
-                                        </a>
-                                    </div>
-                                    <div class="mx-1 mx-1 mx-1">
-                                        <button type="reset" class="btn btn-warning btn-lg" onclick="reset_pdf();reset_image();reset_video();">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
-                                        </button>
-                                    </div>
-                                    <div class="mx-1 mx-1 mx-1">
-                                        <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
-                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Nilai
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/ Action Button -->
 
                             </form>
 
@@ -241,6 +122,244 @@
                     </div>
                     @endif
 
+                    <div class="card mx-4">
+
+                        <!-- Form Inovation Appraisment Title -->
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Penilaian Form Pendaftaran Penghargaan Inovasi</h5>
+                        </div>
+                        <!--/ Form Inovation Appraisment Title -->
+
+                        <!-- Form Inovation Appraisment Details -->
+                        <div class="card-body py-md-4 py-4 mx-4 mx-4">
+
+                            <form id="formInovationAppraisment" class="mx-3 my-3" method="POST" action="{{ route('penilai.postManageAppraismentId.Update.Penilai', $reward->id) }}" enctype="multipart/form-data">
+                                @csrf
+
+                                <!-- Kebaruan -->
+                                <div class="my-3 {{ $errors->has('kebaruan') ? 'is-invalid' : '' }}">
+                                    <label for="kebaruan" class="form-label">Kebaruan</label>
+                                    <div class="input-group input-group-merge {{ $errors->has('kebaruan') ? 'is-invalid' : '' }}">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-select" {{ $errors->has('kebaruan') ? 'is-invalid' : '' }}" id="kebaruan"
+                                            name="kebaruan"
+                                            autofocus autocomplete required>
+                                            <option selected disabled>-- Pilih Kebaruan --</option>
+                                            @foreach ( $selectOptionParameter1 as $sop1)
+                                            <option value="{{ $sop1->grade }}" @if( old('kebaruan') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop1->parameter }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <div class="form-text"></div>
+
+                                        <!-- Error Kebaruan -->
+                                        @if ( $errors->has('kebaruan') )
+                                        <div class="my-3">
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('kebaruan') }}</strong>
+                                            </span>
+                                        </div>
+                                        @endif
+                                        <!--/ Error Kebaruan -->
+                                    </div>
+                                </div>
+                                <!--/ Kebaruan -->
+
+                                <!-- Kemanfaatan -->
+                                <div class="my-3 {{ $errors->has('kemanfaatan') ? 'is-invalid' : '' }}">
+                                    <label for="kemanfaatan" class="form-label">Kemanfaatan</label>
+                                    <div class="input-group input-group-merge {{ $errors->has('kemanfaatan') ? 'is-invalid' : '' }}">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-select" {{ $errors->has('kemanfaatan') ? 'is-invalid' : '' }}" id="kemanfaatan"
+                                            name="kemanfaatan"
+                                            autofocus autocomplete required>
+                                            <option selected disabled>-- Pilih Kemanfaatan --</option>
+                                            @foreach ( $selectOptionParameter2 as $sop2)
+                                            <option value="{{ $sop2->grade }}" @if( old('kemanfaatan') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop2->parameter }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <div class="form-text"></div>
+
+                                        <!-- Error Kemanfaatan -->
+                                        @if ( $errors->has('kemanfaatan') )
+                                        <div class="my-3">
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('kemanfaatan') }}</strong>
+                                            </span>
+                                        </div>
+                                        @endif
+                                        <!--/ Error Kemanfaatan -->
+                                    </div>
+                                </div>
+                                <!--/ Kemanfaatan -->
+
+                                <!-- Peran Serta -->
+                                <div class="my-3 {{ $errors->has('peranSerta') ? 'is-invalid' : '' }}">
+                                    <label for="peranSerta" class="form-label">Peran Serta</label>
+                                    <div class="input-group input-group-merge {{ $errors->has('peranSerta') ? 'is-invalid' : '' }}">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-select" {{ $errors->has('peranSerta') ? 'is-invalid' : '' }}" id="peranSerta"
+                                            name="peranSerta"
+                                            autofocus autocomplete required>
+                                            <option selected disabled>-- Pilih Peran Serta --</option>
+                                            @foreach ( $selectOptionParameter3 as $sop3)
+                                            <option value="{{ $sop3->grade }}" @if( old('peranSerta') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop3->parameter }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <div class="form-text"></div>
+
+                                        <!-- Error Peran Serta -->
+                                        @if ( $errors->has('peranSerta') )
+                                        <div class="my-3">
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('peranSerta') }}</strong>
+                                            </span>
+                                        </div>
+                                        @endif
+                                        <!--/ Error Peran Serta -->
+                                    </div>
+                                </div>
+                                <!--/ Peran Serta -->
+
+                                <!-- Dapat Ditransfer / Replikasi -->
+                                <div class="my-3 {{ $errors->has('transferReplikasi') ? 'is-invalid' : '' }}">
+                                    <label for="transferReplikasi" class="form-label">Dapat Ditransfer / Replikasi</label>
+                                    <div class="input-group input-group-merge {{ $errors->has('transferReplikasi') ? 'is-invalid' : '' }}">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-select" {{ $errors->has('transferReplikasi') ? 'is-invalid' : '' }}" id="transferReplikasi"
+                                            name="transferReplikasi"
+                                            autofocus autocomplete required>
+                                            <option selected disabled>-- Pilih Dapat Ditransfer / Replikasi --</option>
+                                            @foreach ( $selectOptionParameter4 as $sop4)
+                                            <option value="{{ $sop4->grade }}" @if( old('transferReplikasi') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop4->parameter }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <div class="form-text"></div>
+
+                                        <!-- Error Dapat Ditransfer / Replikasi -->
+                                        @if ( $errors->has('transferReplikasi') )
+                                        <div class="my-3">
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('transferReplikasi') }}</strong>
+                                            </span>
+                                        </div>
+                                        @endif
+                                        <!--/ Error Dapat Ditransfer / Replikasi -->
+                                    </div>
+                                </div>
+                                <!--/ Dapat Ditransfer / Replikasi -->
+
+                                <!-- Karya Nyata dan Penciptaan Nilai Tambah -->
+                                <div class="my-3 {{ $errors->has('nyataNilaiTambah') ? 'is-invalid' : '' }}">
+                                    <label for="nyataNilaiTambah" class="form-label">Karya Nyata dan Penciptaan Nilai Tambah</label>
+                                    <div class="input-group input-group-merge {{ $errors->has('nyataNilaiTambah') ? 'is-invalid' : '' }}">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-select" {{ $errors->has('nyataNilaiTambah') ? 'is-invalid' : '' }}" id="nyataNilaiTambah"
+                                            name="nyataNilaiTambah"
+                                            autofocus autocomplete required>
+                                            <option selected disabled>-- Pilih Karya Nyata dan Penciptaan Nilai Tambah --</option>
+                                            @foreach ( $selectOptionParameter5 as $sop5)
+                                            <option value="{{ $sop5->grade }}" @if( old('nyataNilaiTambah') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop5->parameter }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <div class="form-text"></div>
+
+                                        <!-- Error Karya Nyata dan Penciptaan Nilai Tambah -->
+                                        @if ( $errors->has('nyataNilaiTambah') )
+                                        <div class="my-3">
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('nyataNilaiTambah') }}</strong>
+                                            </span>
+                                        </div>
+                                        @endif
+                                        <!--/ Error Karya Nyata dan Penciptaan Nilai Tambah -->
+                                    </div>
+                                </div>
+                                <!--/ Karya Nyata dan Penciptaan Nilai Tambah -->
+
+                                <!-- Kesinambungan dan Konsistensi Prestasi Kerja -->
+                                <div class="my-3 {{ $errors->has('kesinambunganKonsistensiKerja') ? 'is-invalid' : '' }}">
+                                    <label for="kesinambunganKonsistensiKerja" class="form-label">Kesinambungan dan Konsistensi Prestasi Kerja</label>
+                                    <div class="input-group input-group-merge {{ $errors->has('kesinambunganKonsistensiKerja') ? 'is-invalid' : '' }}">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-user-tie"></i>
+                                        </span>
+                                        <select class="form-select" {{ $errors->has('kesinambunganKonsistensiKerja') ? 'is-invalid' : '' }}" id="kesinambunganKonsistensiKerja"
+                                            name="kesinambunganKonsistensiKerja"
+                                            autofocus autocomplete required>
+                                            <option selected disabled>-- Pilih Kesinambungan dan Konsistensi Prestasi Kerja --</option>
+                                            @foreach ( $selectOptionParameter6 as $sop6)
+                                            <option value="{{ $sop6->grade }}" @if( old('kesinambunganKonsistensiKerja') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop6->parameter }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <div class="form-text"></div>
+
+                                        <!-- Error Kesinambungan dan Konsistensi Prestasi Kerja -->
+                                        @if ( $errors->has('kesinambunganKonsistensiKerja') )
+                                        <div class="my-3">
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('kesinambunganKonsistensiKerja') }}</strong>
+                                            </span>
+                                        </div>
+                                        @endif
+                                        <!--/ Error Kesinambungan dan Konsistensi Prestasi Kerja -->
+                                    </div>
+                                </div>
+                                <!--/ Kesinambungan dan Konsistensi Prestasi Kerja -->
+
+                                <!-- Action Button -->
+                                <div class="my-md-4 d-flex flex-row justify-content-end">
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
+                                    </div>
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/appraisment/inovation') }}" role="button">
+                                            <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
+                                        </a>
+                                    </div>
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <button type="reset" class="btn btn-warning btn-lg">
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
+                                        </button>
+                                    </div>
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
+                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Nilai
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--/ Action Button -->
+                            </form>
+
+                        </div>
+                    </div>
 
 
                 </div>

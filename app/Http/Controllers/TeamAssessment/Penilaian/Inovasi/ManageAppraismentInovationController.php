@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\TeamAssessment\Penilaian\Inovasi;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Criteria;
+use App\Models\Parameter;
 use App\Models\Pegawai;
 use App\Models\RewardInovation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
 
 class ManageAppraismentInovationController extends Controller
@@ -57,7 +61,7 @@ class ManageAppraismentInovationController extends Controller
                     $actionBtn =
                         '
                             <a href="' . route('penilai.getManageAppraismentId.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
-                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
                             </a>
                         ';
 
@@ -107,7 +111,25 @@ class ManageAppraismentInovationController extends Controller
         try {
             // Find id Reward Inovation
             $reward     =   RewardInovation::find($id)->first();
-            return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_update', compact('reward'));
+
+            // Option Select Inovation
+            $selectOptionCategory = Category::where('id', '=', 1)->get();
+            $selectOptionCriteria = Criteria::where('categorie_id', '=', 1)->get();
+            $selectOptionParameter1 = Parameter::where('criteria_id', '=', 1)->get();
+            $selectOptionParameter2 = Parameter::where('criteria_id', '=', 2)->get();
+            $selectOptionParameter3 = Parameter::where('criteria_id', '=', 3)->get();
+            $selectOptionParameter4 = Parameter::where('criteria_id', '=', 4)->get();
+            $selectOptionParameter5 = Parameter::where('criteria_id', '=', 5)->get();
+            $selectOptionParameter6 = Parameter::where('criteria_id', '=', 6)->get();
+            // $selectOptionCategory   =   DB::table('categories')
+            //                             ->join('criterias', 'categories.id', '=', 'criterias.categorie_id')
+            //                             ->join('parameters', 'criterias.id', '=', 'parameters.criteria_id')
+            //                             ->select()
+
+            // return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_update', compact('reward', 'selectOptionCategory', 'selectOptionCriteria'));
+            return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_update',
+                compact('reward', 'selectOptionCategory', 'selectOptionCriteria', 'selectOptionParameter1', 'selectOptionParameter2', 'selectOptionParameter3',
+                'selectOptionParameter4', 'selectOptionParameter5', 'selectOptionParameter6'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -120,9 +142,41 @@ class ManageAppraismentInovationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function postAppraismentIdUpdate(Request $request, $id)
     {
-        //
+        try {
+            // Find id Reward Inovation
+            $reward     =   RewardInovation::find($id);
+
+            // Validasi
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'kebaruan'                             =>      'required|integer',
+                    'kemanfaatan'                          =>      'required|integer',
+                    'peranSerta'                           =>      'required|integer',
+                    'transferReplikasi'                    =>      'required|integer',
+                    'nyataNilaiTambah'                     =>      'required|integer',
+                    'kesinambunganKonsistensiKerja'        =>      'required|integer',
+                ],
+                [
+                    'kebaruan.required'                        =>      'Kebaruan Wajib Diisi!',
+                    'kemanfaatan.required'                     =>      'Kemanfaatan Wajib Diisi!',
+                    'peranSerta.required'                      =>      'Peran Serta Wajib Diisi!',
+                    'transferReplikasi.required'               =>      'Dapat Ditransfer / Replikasi Wajib Diisi!',
+                    'nyataNilaiTambah.required'                =>      'Karya Nyata dan Penciptaan Nilai Tambah Wajib Diisi!',
+                    'kesinambunganKonsistensiKerja.required'   =>      'Kesinambungan dan Konsistensi Prestasi Kerja Wajib Diisi!',
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal Penilaian Data Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-update-error', 'Gagal Penilaian Data Form Inovasi!')->withErrors($validate)->withInput($request->all());
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

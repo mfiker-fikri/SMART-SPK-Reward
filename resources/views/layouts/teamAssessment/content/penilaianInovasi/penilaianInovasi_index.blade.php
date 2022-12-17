@@ -14,7 +14,7 @@
             },
             paging: false,
             ajax: {
-                url: "{{ url('penilai/appraisment/list') }}",
+                url: "{{ url('penilai/appraisment/inovation/list') }}",
                 // headers: {
                 //     'Authorization':'Basic xxxxxxxxxxxxx',
                 //     'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',

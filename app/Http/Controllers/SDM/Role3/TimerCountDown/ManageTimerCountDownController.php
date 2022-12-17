@@ -50,14 +50,18 @@ class ManageTimerCountDownController extends Controller
             $validate = Validator::make(
                 $request->all(),
                 [
-                    'date_time_countdown_inovation_form'            =>  'required',
-                    'status'                                        =>  'required',
+                    'date_time_open_countdown_inovation_form'            =>  'required',
+                    'status_open'                                        =>  'required',
+                    'date_time_expired_countdown_inovation_form'         =>  'required',
+                    'status_expired'                                     =>  'required',
                 ],
                 [
-                    'date_time_countdown_inovation_form.required'   =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
-                    'status.required'                               =>  'Status Wajib Dipilih!',
+                    'date_time_open_form_inovation.required'                      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Form Inovasi Wajib Diisi!',
+                    'status_open.required'                                        =>  'Status Pembukaan Wajib Dipilih!',
+                    'date_time_expired_countdown_inovation_form.required'         =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Form Inovasi Wajib Diisi!',
+                    'status_expired.required'                                     =>  'Status Penutupan Wajib Dipilih!',
 
-                    // 'date_time_countdown_inovation_form.date_format'    => ''
+                    // 'date_time_open_form_inovation.date_format'    => ''
                 ]
             );
 
@@ -73,20 +77,25 @@ class ManageTimerCountDownController extends Controller
             // if(CountdownTimerFormInovation::isNotEmpty('date_time_form_inovation')) {
             // ddd(Carbon::now()->toDateString());
             // ddd($request['date_time_countdown_inovation_form']);
-            $dateTime   =   new Carbon($request['date_time_countdown_inovation_form']);
-            $date =   $dateTime->toDateString();
+            $dateTimeOpen       =   new Carbon($request['date_time_open_form_inovation']);
+            $dateOpen           =   $dateTimeOpen->toDateString();
+
+            $dateTimeExpired       =   new Carbon($request['date_time_expired_countdown_inovation_form']);
+            $dateExpired           =   $dateTimeExpired->toDateString();
             // ddd($date);
 
             // $dateTime = Carbon::createFromFormat('Y-m-d H:i:s', $request['date_time_countdown_inovation_form'])->year();
 
             // Update
             if($request['id'] != null) {
-                if($date != Carbon::now()->toDateString() ) {
+                if($dateOpen != Carbon::now()->toDateString() && ($dateExpired != Carbon::now()->toDateString() && $dateOpen != $dateOpen)) {
                     $id  =  CountdownTimerFormInovation::find($request['id']);
 
                     if($id) {
-                        $id->date_time_form_inovation      =  $request['date_time_countdown_inovation_form'];
-                        $id->status                        =  $request['status'];
+                        $id->date_time_open_form_inovation                  =  $request['date_time_open_form_inovation'];
+                        $id->status_open                                    =  $request['status_open'];
+                        $id->date_time_expired_countdown_inovation_form     =  $request['date_time_expired_countdown_inovation_form'];
+                        $id->status_expired                                 =  $request['status_expired'];
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
@@ -101,11 +110,13 @@ class ManageTimerCountDownController extends Controller
             }
             // Create
             else {
-                if($date != Carbon::now()->toDateString() ) {
+                if($dateOpen != Carbon::now()->toDateString() && ($dateExpired != Carbon::now()->toDateString() && $dateOpen != $dateOpen)) {
                     // Create New Timer
                     $timer = CountdownTimerFormInovation::create([
-                        'date_time_form_inovation'      =>  $request['date_time_countdown_inovation_form'],
-                        'status'                        =>  $request['status'],
+                        'date_time_open_form_inovation'                 =>  $request['date_time_open_form_inovation'],
+                        'status_open'                                   =>  $request['status_open'],
+                        'date_time_expired_countdown_inovation_form'    =>  $request['date_time_expired_countdown_inovation_form'],
+                        'status_expired'                                =>  $request['status_expired'],
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Form Inovation!')->autoclose(25000);

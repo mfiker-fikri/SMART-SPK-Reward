@@ -47,28 +47,28 @@
         </li>
         <!--/ My Profile -->
 
-        <!-- Form Inovation -->
+        <!-- Appraisment Form Inovation and  -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Form Penghargaan Berprestasi</span>
+            <span class="menu-header-text">Penilaian Form Penghargaan Berprestasi</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('form-inovation*')) || (request()->is('form-teladan*')) ? 'active' : '' }}">
+        <li class="menu-item {{ (request()->is('penilai/appraisment/inovation*')) || (request()->is('form-teladan*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                <div data-i18n="Timer Countdown">Form Penghargaan Berprestasi</div>
+                <div data-i18n="Timer Countdown">Penilaian Form Penghargaan Berprestasi</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item {{ (request()->is('form-inovation*')) ? 'active' : '' }}">
-                    <a href="{{ URL::to('form-inovation/list') }}" class="menu-link" style="text-decoration: none !important;">
+                <li class="menu-item {{ (request()->is('penilai/appraisment/inovation*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('penilai/appraisment/inovation') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                        <div data-i18n="Form Inovation">Form Inovation</div>
+                        <div data-i18n="Form Inovation">Penilaian Form Inovation</div>
                     </a>
                 </li>
                 <li class="menu-item {{ (request()->is('form-teladan*')) ? 'active' : '' }}">
                     <a href="{{ URL::to('form-teladan/list') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                        <div data-i18n="Form Teladan">Form Teladan</div>
+                        <div data-i18n="Form Teladan">Penilaian Form Teladan</div>
                     </a>
                 </li>
             </ul>
