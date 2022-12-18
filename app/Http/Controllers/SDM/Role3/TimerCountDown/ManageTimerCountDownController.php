@@ -77,24 +77,40 @@ class ManageTimerCountDownController extends Controller
             // if(CountdownTimerFormInovation::isNotEmpty('date_time_form_inovation')) {
             // ddd(Carbon::now()->toDateString());
             // ddd($request['date_time_countdown_inovation_form']);
-            $dateTimeOpen       =   new Carbon($request['date_time_open_form_inovation']);
+            $dateTimeOpen       =   new Carbon($request['date_time_open_countdown_inovation_form']);
             $dateOpen           =   $dateTimeOpen->toDateString();
+            $dateOpenTime       =   $dateTimeOpen->toDateTimeString();
 
             $dateTimeExpired       =   new Carbon($request['date_time_expired_countdown_inovation_form']);
             $dateExpired           =   $dateTimeExpired->toDateString();
+            $dateExpiredTime       =   $dateTimeExpired->toDateTimeString();
             // ddd($date);
 
             // $dateTime = Carbon::createFromFormat('Y-m-d H:i:s', $request['date_time_countdown_inovation_form'])->year();
 
-            // Update
+            // Update toDateTimeString()
             if($request['id'] != null) {
-                if($dateOpen != Carbon::now()->toDateString() && ($dateExpired != Carbon::now()->toDateString() && $dateOpen != $dateOpen)) {
+                $id  =  CountdownTimerFormInovation::find($request['id']);
+                // dd($dateOpenTime);
+
+                // dd($dateOpenTime === $id->date_time_open_form_inovation && $dateExpiredTime === $id->date_time_expired_form_inovation);
+                // if ($dateOpen == $id->date_time_open_form_inovation || $dateExpired == $id->date_time_expired_form_inovation) {
+                if ($dateOpenTime === $id->date_time_open_form_inovation && $dateExpiredTime === $id->date_time_expired_form_inovation) {
+                    $id->status_open                                    =  $request['status_open'];
+                    $id->status_expired                                 =  $request['status_expired'];
+                    $id->save();
+
+                    alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
+                    return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Form Inovation!');
+                }
+
+                if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     $id  =  CountdownTimerFormInovation::find($request['id']);
 
                     if($id) {
-                        $id->date_time_open_form_inovation                  =  $request['date_time_open_form_inovation'];
+                        $id->date_time_open_form_inovation                  =  $request['date_time_open_countdown_inovation_form'];
                         $id->status_open                                    =  $request['status_open'];
-                        $id->date_time_expired_countdown_inovation_form     =  $request['date_time_expired_countdown_inovation_form'];
+                        $id->date_time_expired_form_inovation               =  $request['date_time_expired_countdown_inovation_form'];
                         $id->status_expired                                 =  $request['status_expired'];
                         $id->save();
 
@@ -110,12 +126,12 @@ class ManageTimerCountDownController extends Controller
             }
             // Create
             else {
-                if($dateOpen != Carbon::now()->toDateString() && ($dateExpired != Carbon::now()->toDateString() && $dateOpen != $dateOpen)) {
+                if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     // Create New Timer
                     $timer = CountdownTimerFormInovation::create([
-                        'date_time_open_form_inovation'                 =>  $request['date_time_open_form_inovation'],
+                        'date_time_open_form_inovation'                 =>  $request['date_time_open_countdown_inovation_form'],
                         'status_open'                                   =>  $request['status_open'],
-                        'date_time_expired_countdown_inovation_form'    =>  $request['date_time_expired_countdown_inovation_form'],
+                        'date_time_expired_form_inovation'              =>  $request['date_time_expired_countdown_inovation_form'],
                         'status_expired'                                =>  $request['status_expired'],
                     ]);
                     if($timer) {

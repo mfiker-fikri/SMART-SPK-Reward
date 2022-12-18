@@ -4,10 +4,12 @@ namespace App\Http\Controllers\TeamAssessment\Penilaian\Inovasi;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\CountdownTimerFormInovation;
 use App\Models\Criteria;
 use App\Models\Parameter;
 use App\Models\Pegawai;
 use App\Models\RewardInovation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -48,9 +50,16 @@ class ManageAppraismentInovationController extends Controller
     public function getAppraismentList(Request $request)
     {
         try {
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
+
             $data = RewardInovation::
                 // DB::table('reward_inovation')
                 where(['status_process' => 3])
+                ->orWhere(['created_at', '>=', $timer->date_time_open_form_inovation])
+                ->orWhere(['created_at', '<=', $timer->date_time_expired_form_inovation])
+                ->orWhere(['updated_at', '>=', $timer->date_time_open_form_inovation])
+                ->orWhere(['updated_at', '<=', $timer->date_time_expired_form_inovation])
                 ->latest()
                 ->get();
             // ddd($data);
@@ -148,31 +157,49 @@ class ManageAppraismentInovationController extends Controller
             // Find id Reward Inovation
             $reward     =   RewardInovation::find($id);
 
-            // Validasi
-            $validate = Validator::make(
-                $request->all(),
-                [
-                    'kebaruan'                             =>      'required|integer',
-                    'kemanfaatan'                          =>      'required|integer',
-                    'peranSerta'                           =>      'required|integer',
-                    'transferReplikasi'                    =>      'required|integer',
-                    'nyataNilaiTambah'                     =>      'required|integer',
-                    'kesinambunganKonsistensiKerja'        =>      'required|integer',
-                ],
-                [
-                    'kebaruan.required'                        =>      'Kebaruan Wajib Diisi!',
-                    'kemanfaatan.required'                     =>      'Kemanfaatan Wajib Diisi!',
-                    'peranSerta.required'                      =>      'Peran Serta Wajib Diisi!',
-                    'transferReplikasi.required'               =>      'Dapat Ditransfer / Replikasi Wajib Diisi!',
-                    'nyataNilaiTambah.required'                =>      'Karya Nyata dan Penciptaan Nilai Tambah Wajib Diisi!',
-                    'kesinambunganKonsistensiKerja.required'   =>      'Kesinambungan dan Konsistensi Prestasi Kerja Wajib Diisi!',
-                ]
-            );
+            if ($reward) {
+                // Validasi
+                $validate = Validator::make(
+                    $request->all(),
+                    [
+                        'kebaruan'                             =>      'required|integer',
+                        'kemanfaatan'                          =>      'required|integer',
+                        'peranSerta'                           =>      'required|integer',
+                        'transferReplikasi'                    =>      'required|integer',
+                        'nyataNilaiTambah'                     =>      'required|integer',
+                        'kesinambunganKonsistensiKerja'        =>      'required|integer',
+                    ],
+                    [
+                        'kebaruan.required'                        =>      'Kebaruan Wajib Diisi!',
+                        'kemanfaatan.required'                     =>      'Kemanfaatan Wajib Diisi!',
+                        'peranSerta.required'                      =>      'Peran Serta Wajib Diisi!',
+                        'transferReplikasi.required'               =>      'Dapat Ditransfer / Replikasi Wajib Diisi!',
+                        'nyataNilaiTambah.required'                =>      'Karya Nyata dan Penciptaan Nilai Tambah Wajib Diisi!',
+                        'kesinambunganKonsistensiKerja.required'   =>      'Kesinambungan dan Konsistensi Prestasi Kerja Wajib Diisi!',
+                    ]
+                );
 
-            if ($validate->fails()) {
-                alert()->error('Gagal Penilaian Data Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-update-error', 'Gagal Penilaian Data Form Inovasi!')->withErrors($validate)->withInput($request->all());
+                if ($validate->fails()) {
+                    alert()->error('Gagal Penilaian Data Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-update-error', 'Gagal Penilaian Data Form Inovasi!')->withErrors($validate)->withInput($request->all());
+                }
+
+                //
+                $timer                  =   CountdownTimerFormInovation::first();
+
+                $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+                $dateOpen               =   $dateTimeOpen->toDateString();
+
+                $dateTimeExpired        =   new Carbon($timer->date_time_expired_countdown_inovation_form);
+                $dateExpired            =   $dateTimeExpired->toDateString();
+                // ddd($reward_id);
+
+                if ($dateOpen >= Carbon::now() && Carbon::now() <= $dateExpired) {
+
+                }
             }
+
+
 
         } catch (\Throwable $th) {
             throw $th;

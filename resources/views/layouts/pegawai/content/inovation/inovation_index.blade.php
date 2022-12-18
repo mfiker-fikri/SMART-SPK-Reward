@@ -33,6 +33,37 @@
             line-height: 100%;
             text-align: center;
         }
+
+        .mercadoCountdown1 {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 36px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 5vh;
+            max-height: 5vh;
+        }
+
+        .mercadoCountdown1 span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
         .dateCountDown {
             padding: auto;
             margin: auto;
@@ -341,58 +372,73 @@
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> --}}
 
     <script>
-    ;(function($) {
+        $(".mercado-countdown").each( function(index, el){
+            var _this = $(this),
+            _expire = _this.data('expire');
+            _this.countdown(_expire, function(event) {
+                $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            });
+        });
+    // ;(function($) {
 
-        var MERCADO_JS = {
-        init: function(){
-            this.mercado_countdown();
+    //     var MERCADO_JS = {
+    //         init: function(){
+    //             this.mercado_countdown();
+    //         },
+    //         mercado_countdown: function() {
+    //             if($(".mercado-countdown").length > 0){
+    //                     $(".mercado-countdown").each( function(index, el){
+    //                         var _this = $(this),
+    //                         _expire = _this.data('expire');
+    //                     // nextYear = moment.tz(_expire, 'Asia/Jakarta').toDate();
+    //                     // var nextYear = moment.parseZone(_expire).local();
+    //                     // console.log(nextYear.toDate());
+    //                     _this.countdown(_expire, function(event) {
+    //                         // until: expires,
+    //                         // timezone: 0,
+    //                         // serverSync: serverTime,
+    //                         // onTick: serverTime,
+    //                         // tickInterval: 60,
+    //                             $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+    //                         });
+    //                     });
+    //                     // return b;
+    //             }
+    //         },
+    //         // mercado_countdown1: function() {
+    //         //     if($(".mercadoCountdown1").length > 0){
+    //         //             $(".mercadoCountdown1").each( function(index, el){
+    //         //                 var _this = $(this),
+    //         //                 _expire = _this.data('expire');
+    //         //             _this.countdown(_expire, function(event) {
+    //         //                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+    //         //                 });
+    //         //             });
+    //         //     }
+    //         // },
 
-        },
-        mercado_countdown: function() {
-            if($(".mercado-countdown").length > 0){
-                    $(".mercado-countdown").each( function(index, el){
-                        var _this = $(this),
-                        _expire = _this.data('expire');
-                    // nextYear = moment.tz(_expire, 'Asia/Jakarta').toDate();
-                    // var nextYear = moment.parseZone(_expire).local();
-                    // console.log(nextYear.toDate());
-                    _this.countdown(_expire, function(event) {
-                        // until: expires,
-                        // timezone: 0,
-                        // serverSync: serverTime,
-                        // onTick: serverTime,
-                        // tickInterval: 60,
-                            $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
-                        });
-                    });
-                    // return b;
-            }
-        },
+    //     };
 
-    }
-
-        window.onload = function () {
-            MERCADO_JS.init();
-        }
-
-        })
-        // (window.Zepto || window.jQuery, window, document);
-
-    // $(document).ready(function() {
-    //     if($(".mercado-countdown").length > 0){
-    //         $(".mercado-countdown").each( function(index, el){
-    //             var _this = $(this);
-    //             var _expire = _this.data('expire');
-    //             var nextYear = moment.tz(_expire, 'Asia/Jakarta').toDate();
-    //             // console.log(nextYear);
-    //             _this.countdown(_expire, function(event) {
-    //                 $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
-    //             });
-    //         });
+    //     window.onload = function () {
+    //         MERCADO_JS.init();
     //     }
-    // });
+
+    //     })
+        // (window.Zepto || window.jQuery, window, document);
+        // (window.jQuery);
+        // (window);
     </script>
     <!--/ Timer Countdown -->
+
+    <script>
+        $(".mercadoCountdown1").each( function(index, el){
+            var _this = $(this),
+            _expire = _this.data('expire');
+            _this.countdown(_expire, function(event) {
+                $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            });
+        });
+    </script>
 @stop
 <!--/ Footer Js -->
 
@@ -462,7 +508,17 @@
                 </div>
                 <!--/ Form Read Inovation List Title -->
 
-                @if ($timer == null)
+                {{-- @if ($timer == null)
+                <div class="container-fluid">
+                    <div class="titleCountDownNonActive">
+                        <h1>
+                            <span>Form Inovasi Ditutup</span>
+                        </h1>
+                    </div>
+                </div> --}}
+
+                @if ( ($timer->status_open == null && $timer->date_time_open_form_inovation == null) && ($timer->status_expired == null && $timer->date_time_expired_form_inovation == null) )
+                {{-- @elseif ($timer->status_open == null && $timer->date_time_open_form_inovation == null) --}}
                 <div class="container-fluid">
                     <div class="titleCountDownNonActive">
                         <h1>
@@ -471,16 +527,7 @@
                     </div>
                 </div>
 
-                @elseif ($timer->status == null && $timer->date_time_form_inovation == null)
-                <div class="container-fluid">
-                    <div class="titleCountDownNonActive">
-                        <h1>
-                            <span>Form Inovasi Ditutup</span>
-                        </h1>
-                    </div>
-                </div>
-
-                @elseif ($timer->status == 0 && $timer->date_time_form_inovation > \Carbon\Carbon::now())
+                @elseif ( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
                 <div class="container-fluid">
                     <div class="titleCountDownNonActive">
                         <h1>
@@ -489,7 +536,7 @@
                     </div>
                 </div>
 
-                @elseif ($timer->status == 1 && $timer->date_time_form_inovation > \Carbon\Carbon::now())
+                @elseif ( ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
                 <div class="container-fluid">
                     <div class="titleCountDown">
                         <h1>Pembukaan Form Inovasi</h1>
@@ -497,28 +544,34 @@
                     <div class="dateCountDown">
                         {{-- d-m-Y --}}
                         {{-- dddd, D MMMM Y --}}
-                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('dddd') }}</b></span>
-                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('D') }}</b></span>
-                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('MMMM') }}</b></span>
-                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('Y') }}</b></span>
+                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
+                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
+                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
+                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
                     </div>
                     <div class="timeCountDown">
-                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('hh') }}</b></span>
-                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('mm') }}</b></span>
-                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_form_inovation)->isoFormat('a') }}</b></span>
+                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
+                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
+                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
                     </div>
                     <div class="titleCountDown">
                         <h1>Coming Soon</h1>
                     </div>
-                    <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->format('Y/m/d h:i:s') }}">
+                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->format('Y/m/d h:i:s') }}">
                     {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
                     {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
                     </div>
                 </div>
 
-                @else
+                @elseif ($timer->status_expired == 1 && \Carbon\Carbon::now() <= $timer->date_time_expired_form_inovation)
+
                 <div class="container-fluid">
 
+                    <div class="py-3 d-flex flex-row justify-content-start">
+                        <div class="mx-1 mx-1 mx-1">
+                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
+                        </div>
+                    </div>
                     {{-- @if ($rewardInovation->status_process != 4) --}}
                     <!-- Button Create Form Inovation List -->
                     <div class="py-3 d-flex flex-row justify-content-start">
@@ -545,6 +598,17 @@
                     </table>
 
                 </div>
+
+                @else
+
+                <div class="container-fluid">
+                    <div class="titleCountDownNonActive">
+                        <h1>
+                            <span>Form Inovasi Ditutup</span>
+                        </h1>
+                    </div>
+                </div>
+
                 @endif
 
             </div>
