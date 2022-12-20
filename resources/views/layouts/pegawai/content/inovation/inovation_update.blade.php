@@ -138,7 +138,7 @@
                                         value="{{ old('uploadFileUpdate', $rewardInovation->upload_file_short_description) }}"
                                         name="uploadFile" accept=".pdf" onchange="preview_pdf(event)">
 
-                                    <input type="text" name="uploadFileUpdate" id="uploadFileUpdate"
+                                    <input type="hidden" name="uploadFileUpdate" id="uploadFileUpdate"
                                         value="{{ $rewardInovation->upload_file_short_description }}"
                                         required />
                                 </div>
@@ -181,7 +181,7 @@
                                         value="{{ old('uploadPhotoUpdate', $rewardInovation->upload_file_image_support) }}"
                                         name="uploadPhoto" accept=".png, .jpg, .jpeg" onchange="preview_image(event)">
 
-                                    <input type="text" name="uploadPhotoUpdate" id="uploadPhotoUpdate"
+                                    <input type="hidden" name="uploadPhotoUpdate" id="uploadPhotoUpdate"
                                         value="{{ $rewardInovation->upload_file_image_support }}"
                                         required />
                                 </div>
@@ -223,7 +223,7 @@
                                     <input type="file" class="form-control {{ $errors->has('uploadVideo') ? 'is-invalid' : '' }}" id="uploadVideo"
                                         name="uploadVideo" accept="video/*" onchange="preview_video(event)" />
 
-                                    <input type="text" name="uploadVideoUpdate" id="uploadVideoUpdate"
+                                    <input type="hidden" name="uploadVideoUpdate" id="uploadVideoUpdate"
                                         value="{{ $rewardInovation->upload_file_video_support }}"
                                         required />
                                 </div>
@@ -254,7 +254,9 @@
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                    <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                </a>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-inovation/list') }}" role="button">

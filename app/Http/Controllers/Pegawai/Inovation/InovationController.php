@@ -63,14 +63,200 @@ class InovationController extends Controller
             // ->get();
             // ddd($rewardInovation);
 
-            $timer = CountdownTimerFormInovation::first();
-            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer'));
+            // Get Timer Countdown
+            $timer                  =   CountdownTimerFormInovation::first();
+            // ddd($timer->date_time_open_form_inovation);
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            // ddd($dateTimeOpen);
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+            // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            // ddd($dateTimeExpired);
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            $rewardInovation = RewardInovation::where([
+                        'employee_id' => $id,
+                    ])
+                    ->where(['status_process' => 2])
+                    ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                    ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+                    ->latest();
+
+            // 0=Reject
+            $rewardInovationReject = RewardInovation::where([
+                        'employee_id' => $id,
+                    ])
+                    ->where(['status_process' => 0])
+                    ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                    ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+                    ->latest();
+
+            // 1=Back
+            $rewardInovationBack = RewardInovation::where([
+                        'employee_id' => $id,
+                    ])
+                    ->where(['status_process' => 1])
+                    ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                    ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+                    ->latest();
+
+            // 3=Process
+            $rewardInovationProcess = RewardInovation::where([
+                        'employee_id' => $id,
+                    ])
+                    ->where(['status_process' => 3])
+                    ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                    ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+                    ->latest();
+
+            // Create
+            // $rewardInovationCreate = RewardInovation::where([
+            //             'employee_id' => $id,
+            //         ])
+            //         ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+            //         ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+            //         ->latest()
+            //         ->get();
+
+            $rewardInovationCreate = RewardInovation::latest();
+
+            // ddd( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) );
+            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreate'));
         } catch (\Exception $exception) {
             return $exception;
         }
         // } catch (\Throwable $th) {
         //     throw $th;
         // }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * Reject
+     */
+    public function getInovationFormDataReject()
+    {
+        // Get id Employee
+        $id                         =       Auth::guard('employees')->user()->id;
+
+        //
+        $timer                  =   CountdownTimerFormInovation::first();
+        // ddd($timer->date_time_open_form_inovation);
+
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        // ddd($dateTimeOpen);
+        $dateOpen               =   $dateTimeOpen->toDateString();
+        $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+        // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        // ddd($dateTimeExpired);
+        $dateExpired            =   $dateTimeExpired->toDateString();
+        $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+        $data = RewardInovation::where([
+                'employee_id' => $id,
+            ])
+            ->where(['status_process' => 0])
+            ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+            ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+            ->latest()
+            ->get();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('status', function ($row) {
+                $status = '';
+                // 0=ditolak
+                if($row->status_process == 0) {
+                    $status = '<span>Ditolak</span>';
+                }
+                return $status;
+            })
+            ->addColumn('action', function ($row) {
+                $actionBtn = '';
+                // 0=ditolak
+                if ($row->status_process == 0) {
+                    $actionBtn =
+                    '
+                        <span>Ditolak</span>
+                    ';
+                }
+
+                return $actionBtn;
+            })
+            ->rawColumns(['action','status'])
+            ->make(true);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * Back
+     */
+    public function getInovationFormDataBack()
+    {
+        // Get id Employee
+        $id                         =       Auth::guard('employees')->user()->id;
+
+        //
+        $timer                  =   CountdownTimerFormInovation::first();
+        // ddd($timer->date_time_open_form_inovation);
+
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        // ddd($dateTimeOpen);
+        $dateOpen               =   $dateTimeOpen->toDateString();
+        $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+        // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        // ddd($dateTimeExpired);
+        $dateExpired            =   $dateTimeExpired->toDateString();
+        $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+        $data = RewardInovation::where([
+                'employee_id' => $id,
+            ])
+            ->where(['status_process' => 1])
+            ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+            ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+            ->latest()
+            ->get();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('status', function ($row) {
+                $status = '';
+                // 0=dikembalikan
+                if($row->status_process == 1) {
+                    $status = '<span>Dikembalikan</span>';
+                }
+                return $status;
+            })
+            ->addColumn('action', function ($row) {
+                $actionBtn = '';
+                // 0=dikembalikan
+                if ($row->status_process == 1) {
+                    $actionBtn =
+                    '
+                        <a href="' . route('pegawai.getInovationIdUpdate.Update.Pegawai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                            <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                        </a>
+                        <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteFormInovationId" data-id="' . $row->id . '">
+                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                        </a>
+                    ';
+                }
+
+                return $actionBtn;
+            })
+            ->rawColumns(['action','status'])
+            ->make(true);
     }
 
     /**
@@ -87,13 +273,35 @@ class InovationController extends Controller
         // $rewardInovation            =       RewardInovation::where('employee_id', '=', $id)->first();
         // ddd($rewardInovation);
         //
+        //
+        $timer                  =   CountdownTimerFormInovation::first();
+        // ddd($timer->date_time_open_form_inovation);
+
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        // ddd($dateTimeOpen);
+        $dateOpen               =   $dateTimeOpen->toDateString();
+        $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+        // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        // ddd($dateTimeExpired);
+        $dateExpired            =   $dateTimeExpired->toDateString();
+        $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
         $data = RewardInovation::where([
                 'employee_id' => $id,
             ])
-            ->where(['status_process' => 0])
-            ->orWhere(['status_process' => 1])
-            ->orWhere(['status_process' => 2])
-            ->orWhere(['status_process' => 3])
+            ->where(['status_process' => 2])
+            // ->where(['status_process' => 0])
+            // ->orWhere(['status_process' => 1])
+            // ->orWhere(['status_process' => 2])
+            // ->orWhere(['status_process' => 3])
+            ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+            ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+            // ->orWhere(['created_at', '>=', $dateOpenTime])
+            // ->orWhere(['created_at', '<=', $dateExpiredTime])
+            // ->orWhere(['updated_at', '>=', $dateOpenTime])
+            // ->orWhere(['updated_at', '<=', $dateExpiredTime])
             ->latest()
             ->get();
         return Datatables::of($data)
@@ -104,24 +312,12 @@ class InovationController extends Controller
                 if($row->status_process == 2) {
                     $status = '<span>Sedang Tahap Menunggu</span>';
                 }
-                // 3=diproses
-                elseif ($row->status_process == 3) {
-                    $status = '<span>Sedang Tahap Di Proses</span>';
-                }
-                // 1=dikembalikan
-                elseif ($row->status_process == 1) {
-                    $status = '<span>Dikembalikan</span>';
-                }
-                // 0=ditolak
-                else {
-                    $status = '<span>Ditolak</span>';
-                }
                 return $status;
             })
             ->addColumn('action', function ($row) {
                 $actionBtn = '';
-                // 2=menunggu || 1=dikembalikan || 0=ditolak
-                if($row->status_process == 2 || $row->status_process == 1 || $row->status_process == 0) {
+                // 2=menunggu
+                if($row->status_process == 2) {
                     $actionBtn =
                     '
                         <a href="' . route('pegawai.getInovationIdUpdate.Update.Pegawai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
@@ -183,7 +379,8 @@ class InovationController extends Controller
 
             // ddd($timer->date_time_open_form_inovation >= Carbon::now() && Carbon::now() <= $timer->date_time_expired_form_inovation);
 
-            if ($dateOpenTime >= Carbon::now() && Carbon::now() <= $dateExpiredTime) {
+            // return view('layouts.pegawai.content.inovation.inovation_create');
+            if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
                 return view('layouts.pegawai.content.inovation.inovation_create');
             }
             return back();
@@ -223,7 +420,7 @@ class InovationController extends Controller
             return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi. Lengkapi Data Profil Terlebih Dahulu di "My Profile"!');
         }
 
-        //
+        // Get Timer
         $timer                  =   CountdownTimerFormInovation::first();
         // ddd($timer->date_time_open_form_inovation);
 
@@ -239,9 +436,9 @@ class InovationController extends Controller
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
         // ddd(Carbon::now()->toDateTimeString() <= $dateExpiredTime);
 
-        // ddd($timer->date_time_open_form_inovation >= Carbon::now() && Carbon::now() <= $timer->date_time_expired_form_inovation);
+        // ddd(Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime);
 
-        if ($dateOpenTime >= Carbon::now() && Carbon::now() <= $dateExpiredTime) {
+        if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
             // Data Validation
             $validate = Validator::make(
                 $request->all(),
@@ -440,6 +637,8 @@ class InovationController extends Controller
             }
         }
 
+        alert()->error('Gagal Upload Form Inovasi!', 'Formulir Inovasi Sudah Ditutup')->autoclose(25000);
+        return redirect()->back()->with('message-form-inovation-error', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
         // Jika Ada Upload Foto
         // if ($request->hasFile('uploadPhoto')) {
         // }
@@ -530,7 +729,7 @@ class InovationController extends Controller
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
         // ddd(Carbon::now()->toDateTimeString() <= $dateExpiredTime);
 
-        if ($dateOpenTime >= Carbon::now() && Carbon::now() <= $dateExpiredTime) {
+        if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
 
             // Find id Reward
             $rewardInovation            =       RewardInovation::find($id);
@@ -603,7 +802,7 @@ class InovationController extends Controller
                     return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi')->withErrors($validate)->withInput($request->all());
                 }
 
-                // Jika Diganti File
+                // 1. Jika Diganti File
                 if ($request->hasFile('uploadFile')) {
                     // Get Employee Username
                     $employee                   =       Auth::guard('employees')->user()->username;
@@ -646,7 +845,7 @@ class InovationController extends Controller
                     return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
-                // Jika Diganti Image
+                // 2. Jika Diganti Image
                 if ($request->hasFile('uploadPhoto')) {
                     // Get Employee Username
                     $employee                   =       Auth::guard('employees')->user()->username;
@@ -663,7 +862,6 @@ class InovationController extends Controller
                         $rewardInovation->update(['upload_file_image_support' => '']);
                     }
 
-
                     // Get Image
                     $photo                      =       $request->file('uploadPhoto');
 
@@ -679,18 +877,34 @@ class InovationController extends Controller
                     // Image Name
                     $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
+                    // Save Folder
                     // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
                     $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
 
-                    // Update Database File
+                    // Update Database Image
                     $rewardInovation->upload_file_image_support         =   $photoName;
                     $rewardInovation->save();
                     alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                     return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
-                // Jika Diganti Video
+                // 3. Jika Diganti Video
                 if ($request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardInovation            =       RewardInovation::find($id);
+
+                    // Link
+                    $link                       =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                    // Delete Video
+                    if (file_exists($link)) {
+                        unlink($link);
+                        $rewardInovation->update(['upload_file_video_support' => '']);
+                    }
+
                     // Get Video
                     $video                      =       $request->file('uploadVideo');
 
@@ -706,12 +920,38 @@ class InovationController extends Controller
                     // Video Name
                     $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
-                    $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                    // Save Folder
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                    // Update Database Video
+                    $rewardInovation->upload_file_video_support     =   $videoName;
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
 
-                // Jika Diganti File dan Image
+                // 4. Jika Diganti File dan Image
                 if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardInovation            =       RewardInovation::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                    $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+
+                    // Delete File dan Image
+                    if (file_exists($link1) && file_exists($link2)) {
+                        unlink($link1);
+                        unlink($link2);
+                        $rewardInovation->update(['upload_file_short_description' => '']);
+                        $rewardInovation->update(['upload_file_image_support' => '']);
+                    }
+
                     // Get File
                     $file                       =       $request->file('uploadFile');
                     // Get Photo
@@ -734,12 +974,40 @@ class InovationController extends Controller
                     $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
                     // Save Folder
-                    $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-                    $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                    // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+
+                    // Update Database File dan Image
+                    $rewardInovation->upload_file_short_description     =   $fileName;
+                    $rewardInovation->upload_file_image_support         =   $photoName;
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
-                // Jika Diganti File dan Video
+                // 5. Jika Diganti File dan Video
                 if ($request->hasFile('uploadFile') && $request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardInovation            =       RewardInovation::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                    $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                    // Delete File dan Video
+                    if (file_exists($link1) && file_exists($link2)) {
+                        unlink($link1);
+                        unlink($link2);
+                        $rewardInovation->update(['upload_file_short_description' => '']);
+                        $rewardInovation->update(['upload_file_video_support' => '']);
+                    }
+
                     // Get File
                     $file                       =       $request->file('uploadFile');
                     // Get Video
@@ -762,12 +1030,40 @@ class InovationController extends Controller
                     $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
                     // Save Folder
-                    $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-                    $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                    // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                    // Update Database File dan Video
+                    $rewardInovation->upload_file_short_description     =   $fileName;
+                    $rewardInovation->upload_file_video_support         =   $videoName;
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
-                // Jika Diganti Image dan Video
+                // 6. Jika Diganti Image dan Video
                 if ($request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardInovation            =       RewardInovation::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                    $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                    // Delete Image dan Video
+                    if (file_exists($link1) && file_exists($link2)) {
+                        unlink($link1);
+                        unlink($link2);
+                        $rewardInovation->update(['upload_file_image_support' => '']);
+                        $rewardInovation->update(['upload_file_video_support' => '']);
+                    }
+
                     // Get Photo
                     $photo                      =       $request->file('uploadPhoto');
                     // Get Video
@@ -790,14 +1086,86 @@ class InovationController extends Controller
                     $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
                     // Save Folder
-                    $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
-                    $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                    // Update Database Image dan Video
+                    $rewardInovation->upload_file_image_support         =   $photoName;
+                    $rewardInovation->upload_file_video_support         =   $videoName;
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
-                // Jika Diganti File, Image, dan Video
-                // if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto')) {
+                // 7. Jika Diganti File, Image, dan Video
+                if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
 
-                // }
+                    // Find Reward Id
+                    $rewardInovation            =       RewardInovation::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                    $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                    $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                    // Delete Image dan Video
+                    if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
+                        unlink($link1);
+                        unlink($link2);
+                        unlink($link3);
+                        $rewardInovation->update(['upload_file_short_description' => '']);
+                        $rewardInovation->update(['upload_file_image_support' => '']);
+                        $rewardInovation->update(['upload_file_video_support' => '']);
+                    }
+
+                    // Get File
+                    $file                       =       $request->file('uploadFile');
+                    // Get Photo
+                    $photo                      =       $request->file('uploadPhoto');
+                    // Get Video
+                    $video                      =       $request->file('uploadVideo');
+
+                    // Get Original Extension
+                    $fileExtension              =       $file->getClientOriginalExtension();
+                    // Get Original Extension
+                    $photoExtension             =       $photo->getClientOriginalExtension();
+                    // Get Original Extension
+                    $videoExtension             =       $video->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // File Name
+                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                    // Photo Name
+                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                    // Video Name
+                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                    // Save Folder
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                    // Update Database File, Image dan Video
+                    $rewardInovation->upload_file_short_description     =   $fileName;
+                    $rewardInovation->upload_file_image_support         =   $photoName;
+                    $rewardInovation->upload_file_video_support         =   $videoName;
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
 
                 // $rewardInovation->upload_file_image_support         =   $request['uploadPhoto'];
                 // $rewardInovation->upload_file_video_support         =   $request['uploadVideo'];
@@ -807,7 +1175,8 @@ class InovationController extends Controller
                 // 'upload_file_video_support'     =>  $videoName,
 
                 // alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                return redirect('form-inovation/list');
+                return redirect()->back();
+                // return redirect('form-inovation/list');
                 // ->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
             }
 
@@ -844,15 +1213,33 @@ class InovationController extends Controller
         if($rewardInovation) {
             // Get Employee Username
             $employee                   =       Auth::guard('employees')->user()->username;
-            if (Storage::exists('public/employees/documents/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_short_description) && Storage::exists('public/employees/images/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_image_support) && Storage::exists('public/employees/videos/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_video_support))
-            {
-                Storage::delete('public/employees/documents/requirementsEmployeesRewardInovations'. $employee.'/'. $rewardInovation->upload_file_short_description);
-                Storage::delete('public/employees/images/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_image_support);
-                Storage::delete('public/employees/videos/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_video_support);
+
+            // Find Reward Id
+            $rewardInovation            =       RewardInovation::find($id);
+
+            // Link
+            $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+            $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+            $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+            // Delete Image dan Video
+            if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
+                unlink($link1);
+                unlink($link2);
+                unlink($link3);
+                // $rewardInovation->update(['upload_file_short_description' => '']);
+                // $rewardInovation->update(['upload_file_image_support' => '']);
+                // $rewardInovation->update(['upload_file_video_support' => '']);
+            }
+            // if (Storage::exists('public/employees/documents/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_short_description) && Storage::exists('public/employees/images/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_image_support) && Storage::exists('public/employees/videos/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_video_support))
+            // {
+                // Storage::delete('public/employees/documents/requirementsEmployeesRewardInovations'. $employee.'/'. $rewardInovation->upload_file_short_description);
+                // Storage::delete('public/employees/images/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_image_support);
+                // Storage::delete('public/employees/videos/requirementsEmployeesRewardInovations/'. $employee.'/'. $rewardInovation->upload_file_video_support);
                 // unlink(storage_path('app/public/requirementsEmployeesRewardInovations/employees/documents/' . $employee, $rewardInovation->upload_file_short_description));
                 // unlink(storage_path('app/public/requirementsEmployeesRewardInovations/employees/photos/' . $employee, $rewardInovation->upload_file_image_support));
                 // unlink(storage_path('app/public/requirementsEmployeesRewardInovations/employees/videos/' . $employee, $rewardInovation->upload_file_video_support));
-            }
+            // }
 
             $rewardInovation->delete();
             alert()->success('Berhasil Hapus Form Inovation')->autoclose(25000);

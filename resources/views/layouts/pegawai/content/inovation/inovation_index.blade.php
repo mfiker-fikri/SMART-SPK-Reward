@@ -39,16 +39,16 @@
             margin: 0;
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: space-evenly;
             align-items: center;
             align-content: center;
             color: #333;
-            font-size: 36px;
+            font-size: 24px;
             line-height: 100%;
             text-align: center;
-            min-height: 5vh;
-            max-height: 5vh;
+            min-height: 7vh;
+            max-height: 7vh;
         }
 
         .mercadoCountdown1 span {
@@ -180,6 +180,36 @@
             text-align: center;
         }
 
+        .mercadoCountdown1 {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 30px;
+            line-height: 100%;
+            text-align: center;
+            /* min-height: 5vh;
+            max-height: 5vh; */
+        }
+
+        .mercadoCountdown1 span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+
         .dateCountDown {
             padding: auto;
             margin: 10px auto;
@@ -298,6 +328,54 @@
     });
     </script>
     <!--/ Datatables Form Inovation -->
+
+    <!-- Datatables Form Inovation Reject -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var table = $('#data-table0').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            paging: false,
+            ajax: "{{ url('form-inovation/list/data/reject') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'status', name: 'status', orderable: false, searchable: false},
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ]
+        });
+
+        new $.fn.dataTable.FixedHeader(table);
+    });
+    </script>
+    <!--/ Datatables Form Inovation Reject -->
+
+    <!-- Datatables Form Inovation Back -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#data-table1').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                paging: false,
+                ajax: "{{ url('form-inovation/list/data/back') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'status', name: 'status', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+            new $.fn.dataTable.FixedHeader(table);
+        });
+        </script>
+        <!--/ Datatables Form Inovation Back -->
 
     <!-- Delete Form Inovation Id -->
     <script type="text/javascript">
@@ -527,7 +605,7 @@
                     </div>
                 </div>
 
-                @elseif ( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                @elseif ( ( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) || ( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) )
                 <div class="container-fluid">
                     <div class="titleCountDownNonActive">
                         <h1>
@@ -536,7 +614,7 @@
                     </div>
                 </div>
 
-                @elseif ( ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                @elseif ( ( ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) || ( ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) )
                 <div class="container-fluid">
                     <div class="titleCountDown">
                         <h1>Pembukaan Form Inovasi</h1>
@@ -563,48 +641,136 @@
                     </div>
                 </div>
 
-                @elseif ($timer->status_expired == 1 && \Carbon\Carbon::now() <= $timer->date_time_expired_form_inovation)
+                @elseif (
+                    ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                )
+
+                {{-- <div class="py-3 d-flex flex-row justify-content-start">
+                    <div class="mx-1 mx-1 mx-1">
+                        <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
+                    </div>
+                </div> --}}
+
+                <!-- Button Create Form Inovation List -->
+                <div class="py-3 d-flex flex-row justify-content-start">
+                    @if ($rewardInovationCreate->status_id === 0)
+                    <div class="mx-1 mx-1 mx-1">
+                        <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
+                            <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
+                        </a>
+                    </div>
+                    @endif
+                    <div class="mx-1 mx-1 mx-1">
+                        <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
+                    </div>
+                </div>
+                <!-- Button Create Form Inovation List -->
+
+                <!-- Tabs -->
+                <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+
+                    <!-- Tabs Form Inovation Waiting -->
+                    <li class="nav-item" role="presentation">
+                        <!-- 2=menunggu -->
+                        <button class="nav-link {{ (request()->is('form-inovation/list')) ? 'active' : '' }} text-center" id="pills-wait-tab" data-bs-toggle="pill" data-bs-target="#pills-wait" type="button" role="tab" aria-controls="pills-wait" aria-selected="{{ (request()->is('form-inovation/list')) ? 'true' : 'false' }}">Menunggu</button>
+                    </li>
+                    <!--/ Tabs Form Inovation Waiting -->
+
+                    <!-- Tabs Form Inovation Back -->
+                    <li class="nav-item" role="presentation">
+                        <!-- 1=dikembalikan -->
+                        <button class="nav-link text-center" id="pills-back-tab" data-bs-toggle="pill" data-bs-target="#pills-back" type="button" role="tab" aria-controls="pills-back" aria-selected="false">Dikembalikan</button>
+                    </li>
+                    <!--/ Tabs Form Inovation Back -->
+
+                    <!-- Tabs Form Inovation Reject -->
+                    <li class="nav-item" role="presentation">
+                        <!-- 0=ditolak -->
+                        <button class="nav-link text-center" id="pills-reject-tab" data-bs-toggle="pill" data-bs-target="#pills-reject" type="button" role="tab" aria-controls="pills-reject" aria-selected="false">Ditolak</button>
+                    </li>
+                    <!--/ Tabs Form Inovation Reject -->
+
+                </ul>
+                <!--/ Tabs -->
 
                 <div class="container-fluid">
 
-                    <div class="py-3 d-flex flex-row justify-content-start">
-                        <div class="mx-1 mx-1 mx-1">
-                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
+
+                    <!-- Tabs -->
+                    <div class="tab-content" id="pills-tabContent">
+                        <!-- Tabs Form Inovation Waiting -->
+                        <div class="tab-pane fade show {{ (request()->is('form-inovation/list')) ? 'active' : '' }}" id="pills-wait" role="tabpanel" aria-labelledby="pills-wait-tab">
+
+                            @if ($rewardInovation != null)
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Status Process</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            @endif
+
                         </div>
-                    </div>
-                    {{-- @if ($rewardInovation->status_process != 4) --}}
-                    <!-- Button Create Form Inovation List -->
-                    <div class="py-3 d-flex flex-row justify-content-start">
-                        <div class="mx-1 mx-1 mx-1">
-                            <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
-                            </a>
+                        <!--/ Tabs Form Inovation Waiting -->
+
+                        <!-- Tabs Form Inovation Back -->
+                        <div class="tab-pane fade" id="pills-back" role="tabpanel" aria-labelledby="pills-back-tab">
+
+                            @if ($rewardInovationBack != null)
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table1">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Status Process</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            @endif
+
                         </div>
+                        <!--/ Tabs Form Inovation Back -->
+
+                        <!-- Tabs Form Inovation Reject -->
+                        <div class="tab-pane fade" id="pills-reject" role="tabpanel" aria-labelledby="pills-reject-tab">
+
+                            @if ($rewardInovationReject != null)
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Status Process</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            @endif
+
+                        </div>
+                        <!--/ Tabs Form Inovation Reject -->
+
                     </div>
-                    <!-- Button Create Form Inovation List -->
-                    {{-- @endif --}}
-
-
-                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Status Process</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-
+                    <!--/ Tabs -->
                 </div>
 
-                @else
+                @elseif ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation)
 
                 <div class="container-fluid">
                     <div class="titleCountDownNonActive">
                         <h1>
-                            <span>Form Inovasi Ditutup</span>
+                            <span>Form Inovasi Telah Ditutup</span>
                         </h1>
                     </div>
                 </div>

@@ -310,7 +310,14 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     Route::Post('form-inovation/create/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationFormCreate'])->name('postInovationFormCreate.Create.Pegawai');
     // Read
     Route::GET('form-inovation/list', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.Pegawai');
+    // 0=ditolak
+    Route::GET('form-inovation/list/data/reject', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataReject'])->name('getInovationFormData.Read.Reject.Pegawai');
+    // 1=dikembalikan
+    Route::GET('form-inovation/list/data/back', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataBack'])->name('getInovationFormData.Read.Back.Pegawai');
+    // 2=menunggu
     Route::GET('form-inovation/list/data', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.Pegawai');
+    // 3=diproses
+    Route::GET('form-inovation/list/data/process', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataProcess'])->name('getInovationFormData.Read.Process.Pegawai');
     // Update
     Route::GET('form-inovation/update/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
     Route::POST('form-inovation/update/{id}/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');

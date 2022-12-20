@@ -52,14 +52,28 @@ class ManageAppraismentInovationController extends Controller
         try {
             //
             $timer                  =   CountdownTimerFormInovation::first();
+            // ddd($timer->date_time_open_form_inovation);
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            // ddd($dateTimeOpen);
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+            // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            // ddd($dateTimeExpired);
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $data = RewardInovation::
                 // DB::table('reward_inovation')
                 where(['status_process' => 3])
-                ->orWhere(['created_at', '>=', $timer->date_time_open_form_inovation])
-                ->orWhere(['created_at', '<=', $timer->date_time_expired_form_inovation])
-                ->orWhere(['updated_at', '>=', $timer->date_time_open_form_inovation])
-                ->orWhere(['updated_at', '<=', $timer->date_time_expired_form_inovation])
+                ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+                // ->orWhere(['created_at', '>=', $timer->date_time_open_form_inovation])
+                // ->orWhere(['created_at', '<=', $timer->date_time_expired_form_inovation])
+                // ->orWhere(['updated_at', '>=', $timer->date_time_open_form_inovation])
+                // ->orWhere(['updated_at', '<=', $timer->date_time_expired_form_inovation])
                 ->latest()
                 ->get();
             // ddd($data);
