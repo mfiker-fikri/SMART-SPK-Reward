@@ -9,16 +9,27 @@
         placeholder: $( this ).data( 'placeholder' ),
     } );
     </script>
+
+    <script type="text/javascript">
+        $( '#status_expired' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
     <!-- Select2 Status -->
 
     <!-- Reset Select2 Status -->
     <script type="text/javascript">
     $(document).on('click', '#resetStatus', function(e) {
-        var old = document.getElementById("oldStatusOpen").getAttribute("value");
-        if (old) {
-            $('#status_open').val(old).trigger('change');
+        var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
+        var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
+        if (oldOpen && oldExpired) {
+            $('#status_open').val(oldOpen).trigger('change');
+            $('#status_expired').val(oldExpired).trigger('change');
         } else {
             $('#status_open').val(null).trigger('change');
+            $('#status_expired').val(null).trigger('change');
         }
     });
     </script>
@@ -150,7 +161,7 @@
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
                                     @if ($timer->status_open == null)
-                                    <input type="hidden" value="{{ old('status_open') }}" id="oldStatus" />
+                                    <input type="hidden" value="{{ old('status_open') }}" id="oldOpenStatus" />
                                     @else
                                     <input type="hidden" value="{{ old('status_open', $timer->status_open) }}" id="oldStatusOpen" />
                                     @endif
@@ -227,9 +238,9 @@
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
                                     @if ($timer->status_expired == null)
-                                    <input type="hidden" value="{{ old('status_expired') }}" id="oldStatus" />
+                                    <input type="hidden" value="{{ old('status_expired') }}" id="oldExpiredStatus" />
                                     @else
-                                    <input type="hidden" value="{{ old('status_expired', $timer->status_expired) }}" id="oldStatusOpen" />
+                                    <input type="hidden" value="{{ old('status_expired', $timer->status_expired) }}" id="oldStatusExpired" />
                                     @endif
                                     <select class="form-select {{ $errors->has('status_expired') ? 'is-invalid' : '' }}" id="status_expired"
                                         name="status_expired" placeholder="--Pilih Status Close --"

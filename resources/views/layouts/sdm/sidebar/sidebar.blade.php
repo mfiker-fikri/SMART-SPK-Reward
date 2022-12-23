@@ -205,7 +205,7 @@
                 <span class="menu-header-text">Countdown Timer Open Form</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan*')) ? 'active' : '' }}">
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class='menu-icon tf-icons bx bxs-hourglass-bottom'></i>
                     <div data-i18n="Timer Countdown">Timer Countdown</div>
@@ -217,8 +217,8 @@
                             <div data-i18n="Form Inovation">Form Inovation</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan*')) ? 'active' : '' }}">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-teladan') }}" class="menu-link" style="text-decoration: none !important;">
+                    <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="Form Inovation">Form Teladan</div>
                         </a>
                     </li>

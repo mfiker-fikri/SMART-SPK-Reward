@@ -36,7 +36,7 @@
 
         .mercadoCountdown1 {
             padding: 0;
-            margin: 0;
+            margin: 1em 0;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -147,6 +147,22 @@
             min-height: 8em;
             max-height: 8em;
         }
+
+        .titleCountDownExpiredNonActive{
+            margin: 0;
+            padding: 5px 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            font-size: 24px;
+            line-height: 100%;
+            min-height: 6.5vh;
+            max-height: 6.5vh;
+        }
     }
 
     @media (max-width: 991.98px) {
@@ -182,7 +198,7 @@
 
         .mercadoCountdown1 {
             padding: 0;
-            margin: 0;
+            margin: 0.5em 0;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
@@ -605,7 +621,15 @@
                     </div>
                 </div>
 
-                @elseif ( ( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) || ( ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) )
+                @elseif (
+                    (
+                        ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                    )
+                    ||
+                    (
+                        ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                    )
+                )
                 <div class="container-fluid">
                     <div class="titleCountDownNonActive">
                         <h1>
@@ -614,7 +638,15 @@
                     </div>
                 </div>
 
-                @elseif ( ( ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) || ( ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) ) )
+                @elseif (
+                    (
+                        ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                    )
+                    ||
+                    (
+                        ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                    )
+                )
                 <div class="container-fluid">
                     <div class="titleCountDown">
                         <h1>Pembukaan Form Inovasi</h1>
@@ -642,10 +674,15 @@
                 </div>
 
                 @elseif (
-                    ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                    (
+                            ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                        ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                    )
+                    ||
+                    (
+                            ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                        || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                    )
                 )
 
                 {{-- <div class="py-3 d-flex flex-row justify-content-start">
@@ -655,17 +692,30 @@
                 </div> --}}
 
                 <!-- Button Create Form Inovation List -->
-                <div class="py-3 d-flex flex-row justify-content-start">
-                    @if ($rewardInovationCreate->status_id === 0)
+                <div class="py-3 d-flex flex-column justify-content-start">
+                    @if (
+                        (
+                            ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                        ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                    )
+                        <div class="mx-1 mx-1 mx-1">
+                            <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
+                        </div>
+                    @else
+                        <div class="mx-1 mx-1 mx-1">
+                            <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
+                        </div>
+                        <div class="mx-1 mx-1 mx-1">
+                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
+                        </div>
+                    @endif
+                    {{-- @if ($rewardInovationCreate->status_id === 0) --}}
                     <div class="mx-1 mx-1 mx-1">
                         <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
                             <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
                         </a>
                     </div>
-                    @endif
-                    <div class="mx-1 mx-1 mx-1">
-                        <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
-                    </div>
+                    {{-- @endif --}}
                 </div>
                 <!-- Button Create Form Inovation List -->
 
@@ -765,7 +815,17 @@
                     <!--/ Tabs -->
                 </div>
 
-                @elseif ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation)
+                @elseif (
+                    (
+                            ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                        ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                    )
+                    ||
+                    (
+                            ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                        || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                    )
+                )
 
                 <div class="container-fluid">
                     <div class="titleCountDownNonActive">
