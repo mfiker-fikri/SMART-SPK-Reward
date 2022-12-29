@@ -49,9 +49,7 @@ class InovationController extends Controller
     {
         //
         try {
-            // Get id Employee
-            $id                         =       Auth::guard('employees')->user()->id;
-            // ddd($id);
+
             // Search id
             // $rewardInovation            =       RewardInovation::
             // where([
@@ -77,6 +75,10 @@ class InovationController extends Controller
             // ddd($dateTimeExpired);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            // Get id Employee
+            $id                         =       Auth::guard('employees')->user()->id;
+            // ddd($id);
 
             $rewardInovation = RewardInovation::where([
                         'employee_id' => $id,
@@ -122,18 +124,115 @@ class InovationController extends Controller
             //         ->latest()
             //         ->get();
 
-            $rewardInovationCreate = RewardInovation::latest();
+            // Button Create
+            $rewardInovationCreate = RewardInovation::
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=', Auth::guard('employees')->user()->id],
+                    // ['id', '=', null],
+                    ['status_process', '!=', 0],
+                    ['status_process', '=', 1],
+                    ['status_process', '=', 2],
+                    ['status_process', '=', 3],
+                    // ['status_process', '!=', 4],
+                ])
+                // ->orWhere(['status_process' => 1])
+                // ->orWhere(['status_process' => 2])
+                ->latest()
+                ->first();
 
-        //     ddd( (
-        //         ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-        //     &&  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-        // )
-        // ||
-        // (
-        //         ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-        //     && ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-        // ) );
-            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreate'));
+
+            // Button Create Reject
+            $rewardInovationCreateReject = RewardInovation::
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=', Auth::guard('employees')->user()->id],
+                    ['status_process', '=', 0],
+                    ['status_process', '!=', 1],
+                    ['status_process', '!=', 2],
+                    ['status_process', '!=', 3],
+                    // ['status_id', '=', null],
+                ])
+                // ->orWhere(['status_process', '=', 0])
+                ->latest()
+                ->first();
+                // ->get();
+
+
+            // ddd(!$rewardInovationCreate);
+            // ddd($rewardInovationCreateReject);
+            // ddd(!$rewardInovationCreate || $rewardInovationCreateReject);
+
+            $data = RewardInovation::
+                // first()
+                // ->where(function($query) use ($dateOpenTime, $dateExpiredTime){
+                //     $query->whereBetween('created_at', [$dateOpenTime,$dateExpiredTime])
+                //           ->orWhereBetween('updated_at', [$dateOpenTime,$dateExpiredTime]);
+                //   })
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                    ['status_process', '=', 2],
+                ])
+                ->latest()
+                ->get();
+                // ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                // ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime]);
+                // ->get();
+                // ddd($data);
+
+            // ddd(
+            //     (
+            //             ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
+            //             || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
+            //             ))
+            //         &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+            //     )
+            //     ||
+            //     (
+            //             ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
+            //             || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
+            //             ))
+            //         &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+            //     )
+            // );
+
+            // ddd(\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation);
+
+            // ddd(
+            //     (
+            //             (
+            //                     ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation) )
+            //                 &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+            //             )
+            //         ||  (
+            //                     ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+            //                 &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+            //             )
+            //     )
+            //     ||
+            //     (
+            //             (
+            //                     ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+            //                 &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+            //             )
+            //         || (
+            //                     ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+            //                 &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+            //             )
+            //     )
+            // );
+
+            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreateReject', 'rewardInovationCreate'));
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -169,11 +268,13 @@ class InovationController extends Controller
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
         $data = RewardInovation::where([
-                'employee_id' => $id,
+                ['created_at', '>=', $dateOpenTime],
+                ['created_at', '<=', $dateExpiredTime],
+                ['updated_at', '>=', $dateOpenTime],
+                ['updated_at', '<=', $dateExpiredTime],
+                ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                ['status_process', '=', 0],
             ])
-            ->where(['status_process' => 0])
-            ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
-            ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
             ->latest()
             ->get();
         return Datatables::of($data)
@@ -229,11 +330,13 @@ class InovationController extends Controller
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
         $data = RewardInovation::where([
-                'employee_id' => $id,
+                ['created_at', '>=', $dateOpenTime],
+                ['created_at', '<=', $dateExpiredTime],
+                ['updated_at', '>=', $dateOpenTime],
+                ['updated_at', '<=', $dateExpiredTime],
+                ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                ['status_process', '=', 1],
             ])
-            ->where(['status_process' => 1])
-            ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
-            ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
             ->latest()
             ->get();
         return Datatables::of($data)
@@ -296,22 +399,35 @@ class InovationController extends Controller
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
-        $data = RewardInovation::where([
-                'employee_id' => $id,
+        // $data = RewardInovation::where([
+        //         'employee_id' => $id
+        //     ])
+        //     ->where(['status_process' => 2])
+        //     // ->where(['status_process' => 0])
+        //     // ->orWhere(['status_process' => 1])
+        //     // ->orWhere(['status_process' => 2])
+        //     // ->orWhere(['status_process' => 3])
+        //     ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+        //     ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+        //     // ->orWhere(['created_at', '>=', $dateOpenTime])
+        //     // ->orWhere(['created_at', '<=', $dateExpiredTime])
+        //     // ->orWhere(['updated_at', '>=', $dateOpenTime])
+        //     // ->orWhere(['updated_at', '<=', $dateExpiredTime])
+        //     ->first();
+        //     // ->get();
+
+        $data = RewardInovation::
+            where([
+                ['created_at', '>=', $dateOpenTime],
+                ['created_at', '<=', $dateExpiredTime],
+                ['updated_at', '>=', $dateOpenTime],
+                ['updated_at', '<=', $dateExpiredTime],
+                ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                ['status_process', '=', 2],
             ])
-            ->where(['status_process' => 2])
-            // ->where(['status_process' => 0])
-            // ->orWhere(['status_process' => 1])
-            // ->orWhere(['status_process' => 2])
-            // ->orWhere(['status_process' => 3])
-            ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
-            ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
-            // ->orWhere(['created_at', '>=', $dateOpenTime])
-            // ->orWhere(['created_at', '<=', $dateExpiredTime])
-            // ->orWhere(['updated_at', '>=', $dateOpenTime])
-            // ->orWhere(['updated_at', '<=', $dateExpiredTime])
             ->latest()
             ->get();
+
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('status', function ($row) {
@@ -687,14 +803,33 @@ class InovationController extends Controller
     public function getInovationIdUpdate($id)
     {
         try {
-            // Find id Reward
-            $id_employee        =    Auth::guard('employees')->user()->id;
-            $rewardInovation    =    RewardInovation::where([
-                'id' => $id,
-                'employee_id' => $id_employee
-                ])->first();
-            // ddd($rewardInovation);
-            return view('layouts.pegawai.content.inovation.inovation_update',compact('rewardInovation'));
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
+            // ddd($timer->date_time_open_form_inovation);
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            // ddd($dateTimeOpen);
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+            // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            // ddd($dateTimeExpired);
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+            // ddd(Carbon::now()->toDateTimeString() <= $dateExpiredTime);
+
+            if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
+                // Find id Reward
+                $id_employee        =    Auth::guard('employees')->user()->id;
+                $rewardInovation    =    RewardInovation::where([
+                    'id' => $id,
+                    'employee_id' => $id_employee
+                    ])->first();
+                // ddd($rewardInovation);
+                return view('layouts.pegawai.content.inovation.inovation_update',compact('rewardInovation'));
+            }
+            return back();
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -1182,8 +1317,8 @@ class InovationController extends Controller
                 // 'upload_file_image_support'     =>  $photoName,
                 // 'upload_file_video_support'     =>  $videoName,
 
-                // alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                return redirect()->back();
+                alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                return redirect()->back()->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 // return redirect('form-inovation/list');
                 // ->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
             }

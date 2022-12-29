@@ -398,7 +398,7 @@
     $(document).on('click', '#deleteFormInovationId', function(e) {
         e.preventDefault();
         let id = $(this).attr('data-id');
-        console.log(id);
+        // console.log(id);
         Swal.fire({
             title: 'Apakah kamu ingin menghapus data form ini?',
             icon: 'warning',
@@ -453,26 +453,254 @@
     <!--/ Delete Form Inovation Id -->
 
     <!-- Timer Countdown -->
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
     <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.min.js" integrity="sha512-WRk4AKabqhQo0fyIHRMYDBDTbMPpqiA2VbRxicseHV3LphdImtC7G7wqv8A7v9SO5TIDlcPmlR9gdVSEQhvg9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-utils.min.js" integrity="sha512-2ambGDwV8DfaZMSXtFS5sNCCSS/Fsk7ilNgzr1B5Lvk1IF9ibIS6sVCMlk6/y4fPvNxQAc3RCbMmzK+FIQoHMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.js" integrity="sha512-KpJx5U0e/IORz4nvzND6Qb6M5/4RtcSE6OPCjqUEPoU4bzbnRAqCnoOW+jh/BxzTLyltiyie3fwSehpS6Nvapg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.js" integrity="sha512-aWlTsIGUhEq2+LQNA7Wq+OsLaouCcGGaHBWzoU9duKy26ImHe12gRtQnj4688p7QUHG+J4CMb+XwgZ8LYqQ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.min.js" integrity="sha512-WRk4AKabqhQo0fyIHRMYDBDTbMPpqiA2VbRxicseHV3LphdImtC7G7wqv8A7v9SO5TIDlcPmlR9gdVSEQhvg9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-utils.min.js" integrity="sha512-2ambGDwV8DfaZMSXtFS5sNCCSS/Fsk7ilNgzr1B5Lvk1IF9ibIS6sVCMlk6/y4fPvNxQAc3RCbMmzK+FIQoHMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.js" integrity="sha512-KpJx5U0e/IORz4nvzND6Qb6M5/4RtcSE6OPCjqUEPoU4bzbnRAqCnoOW+jh/BxzTLyltiyie3fwSehpS6Nvapg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone-with-data.min.js" integrity="sha512-bfIwEjjeO6MQ1THVCW9xI31Su6qLKC30vzU9WfoR/ZkOQiFcP0neXEVZ2kQdE5NsX8Dcd9A5X4zgzanbHkwxeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.39/moment-timezone.js" integrity="sha512-ROVjvdfspeKM3YiDzo3wCane9Bc0upghpuTsBcvCJLMZeonNQq2Jv7xPSGLu/RJPW3KQy5IqEhIIU6STbYUnZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-    {{-- <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
-    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script> --}}
+    <script src="https://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script>
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+
+    {{-- <script>
+        ;(function($) {
+            var MERCADO_JS = {
+                init: function(){
+                    this.mercado_countdown();
+                },
+                mercado_countdown: function() {
+                    if($(".mercado-countdown").length > 0){
+                        $(".mercado-countdown").each( function(index, el){
+                            var _this = $(this),
+                            _expire = _this.data('expire');
+                            _this.countdown(_expire, function(event) {
+                                $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                            })
+                            .on('finish.countdown',function(e){
+                                // location.reload();
+                                Swal.fire({
+                                    title: 'Form Sudah Dibuka',
+                                    icon: 'success',
+                                    html: 'I will close in <b></b> milliseconds.',
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    allowEnterKey: false,
+                                    showClass: {
+                                        popup: 'animate__animated animate__fadeInDown'
+                                    },
+                                    hideClass: {
+                                        popup: 'animate__animated animate__fadeOutUp'
+                                    },
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        const b = Swal.getHtmlContainer().querySelector('b')
+                                        timerInterval = setInterval(() => {
+                                            b.textContent = Swal.getTimerLeft()
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
+                                .then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                        // window.location = "{{ url('form-inovation/list') }}";
+                                    }
+                                });
+                            });
+                        });
+                    }
+                },
+            };
+
+            window.onload = function () {
+                MERCADO_JS.init();
+                startTime();
+            }
+        })(window.Zepto || window.jQuery, window, document);
+    </script> --}}
+
 
     <script>
-        $(".mercado-countdown").each( function(index, el){
-            var _this = $(this),
-            _expire = _this.data('expire');
-            _this.countdown(_expire, function(event) {
-                $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+        // Goood
+        // $(".mercado-countdown").each( function(){
+        //     var _this = $(this),
+        //     _expire = _this.data('expire');
+        //     _this.countdown(_expire, function(event) {
+        //         $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+        //     });
+        // });
+
+
+        $(document).ready(function () {
+
+            $(".mercado-countdown").each( function(){
+                // e.preventDefault();
+                // console.log(e);
+                var _this = $(this),
+                _expire = _this.data('expire');
+                // console.log(_expire);
+                // _this.countdown(_expire, {
+                //     elapse: true
+                // })
+                _this.countdown(_expire, function(e) {
+                    $(this).html( e.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                // .then('finish.countdown',function(e){
+                //     e.preventDefault();
+                //     // $(".openTimerCountDown").hide();
+                //     // $(".closeTimerCountDown").show();
+                //     // window.location = "{{ url('form-inovation/list') }}";
+                //     Swal.fire({
+                //         title: 'Form Sudah Dibuka',
+                //         icon: 'success',
+                //         allowOutsideClick: false,
+                //         allowEscapeKey: false,
+                //         allowEnterKey: false,
+                //         showClass: {
+                //             popup: 'animate__animated animate__fadeInDown'
+                //         },
+                //         hideClass: {
+                //             popup: 'animate__animated animate__fadeOutUp'
+                //         },
+                //         timer: 2000,
+                //         timerProgressBar: true,
+                //         didOpen: () => {
+                //             Swal.showLoading()
+                //             const b = Swal.getHtmlContainer().querySelector('b')
+                //             timerInterval = setInterval(() => {
+                //             b.textContent = Swal.getTimerLeft()
+                //             }, 100)
+                //         },
+                //         willClose: () => {
+                //             clearInterval(timerInterval)
+                //         }
+                //     }).then((result) => {
+                //         if (result.isConfirmed) {
+                //             window.location = "{{ url('form-inovation/list') }}";
+                //         }
+                //     });
+                //     // setTimeout(function () {
+                //     //     location.reload();
+                //     // }, 60 * 1000);
+                // });
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Form Inovasi Sudah Dibuka',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+
             });
+
+            // $(".mercado-countdown").each( function(){
+            //     var _this = $(this),
+            //     _expire = _this.data('expire');
+            //     // console.log(_expire);
+            //     // var nextYear = moment.tz(_expire).toDate();
+            //     // _this.countdown(nextYear, function(event) {
+            //     // _this.countdown(_expire)
+            //     _this.countdown(_expire, function(event) {
+            //         $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            //     });
+            //     // .on('update.countdown', function(event) {
+            //         // console.log(location.reload());
+            //         // var $this = $(this);
+            //         // $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            //         // if (event.elapsed) {
+            //         //     // var timer = function() {
+            //         //     //     window.location.reload(true);
+            //         //     //     };
+            //         //     // var timeout = setTimeout(timer, 5000);
+            //         //     // clearTimeout(timeout);
+            //         //     setTimeout(function () {
+            //         //         location.reload();
+            //         //     }, 60 * 1000);
+            //         //     // location.reload();
+            //         //     // window.location.reload(true);
+            //         //     // window.stop();
+            //         // } else {
+            //         //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            //         // }
+            //     // });
+            //     .on('finish.countdown', function(){
+            //         // window.location.reload(true);
+            //         // setTimeout(function () {
+            //         //     location.reload();
+            //         // }, 60 * 1000);
+            //         Swal.fire({
+            //             title: 'Form Sudah Dibuka',
+            //             icon: 'success',
+            //             html: 'I will close in <b></b> milliseconds.',
+            //             allowOutsideClick: false,
+            //             allowEscapeKey: false,
+            //             allowEnterKey: false,
+            //             showClass: {
+            //                 popup: 'animate__animated animate__fadeInDown'
+            //             },
+            //             hideClass: {
+            //                 popup: 'animate__animated animate__fadeOutUp'
+            //             },
+            //             timer: 2000,
+            //             timerProgressBar: true,
+            //             didOpen: () => {
+            //                 Swal.showLoading()
+            //                 const b = Swal.getHtmlContainer().querySelector('b')
+            //                 timerInterval = setInterval(() => {
+            //                     b.textContent = Swal.getTimerLeft()
+            //                 }, 100)
+            //             },
+            //             willClose: () => {
+            //                 clearInterval(timerInterval)
+            //             },
+            //             didClose: () => {
+            //                 window.location.reload(true);
+            //             },
+            //         });
+            //     });
+            // });
+
         });
+
+
+
+
     // ;(function($) {
 
     //     var MERCADO_JS = {
@@ -525,11 +753,64 @@
     <!--/ Timer Countdown -->
 
     <script>
-        $(".mercadoCountdown1").each( function(index, el){
-            var _this = $(this),
-            _expire = _this.data('expire');
+        // $(".mercadoCountdown1").each( function(){
+        //     var _this = $(this);
+        //     var _expire = _this.data('expire');
+        //     _this.countdown(_expire)
+        //     .on('finish.countdown', function(event) {
+        //         if (event.elapsed) {
+        //             location.reload()
+        //         } else {
+        //             $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+        //         }
+        //     });
+        // });
+
+        $(".mercadoCountdown1").each( function(){
+            var _this = $(this);
+            var _expire = _this.data('expire');
+            // console.log(_expire);
+            // var nextYear = moment.utc(_expire).tz("Asia/Jakarta").utc().toDate();
+            // var nextYear = moment.utc(_expire).local();
+            // console.log(nextYear);
+            // .toDate();
+            // var nextYear = moment.utc(_expire).toDate();
+            // console.log(nextYear.utc().toDate());
+            // _this.countdown(nextYear, function(event) {
             _this.countdown(_expire, function(event) {
+            // _this.countdown(_expire)
                 $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            })
+            .on('finish.countdown', function(){
+                Swal.fire({
+                    title: 'Form Inovasi Ditutup',
+                    icon: 'success',
+                    html: 'Pop up will close in <b></b> milliseconds.',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    },
+                    timer: 8000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 300)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    },
+                    didClose: () => {
+                        window.location.reload(true);
+                    },
+                });
             });
         });
     </script>
@@ -549,6 +830,9 @@
     {{-- <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js" type="text/javascript"></script> --}}
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> --}}
 
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.40/moment-timezone.min.js" integrity="sha512-NJfMpP34NDFAS8lJqH4FzsaD1fqoIJATgBpPjNUck9hC8kGvFhrcR8KIPnTtSinNyx8b1QPBE6NM4iux/0dHXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.40/moment-timezone-with-data.min.js" integrity="sha512-dPDHjz++pU63luykSOhkUQw82AZdbQHk7LQNKrU7kuRGmdR9mbPFu/vYAmCgZ+TXk8vHygzCkV6Ixck+NIOeDA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 @stop
 <!--/ Header Js -->
 
@@ -640,179 +924,209 @@
 
                 @elseif (
                     (
-                        ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                            ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
+                            // || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
+                            ))
+                        &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
                     )
                     ||
                     (
-                        ($timer->status_open == 1 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                            ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
+                            // || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
+                            ))
+                        &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
                     )
                 )
-                <div class="container-fluid">
-                    <div class="titleCountDown">
-                        <h1>Pembukaan Form Inovasi</h1>
-                    </div>
-                    <div class="dateCountDown">
-                        {{-- d-m-Y --}}
-                        {{-- dddd, D MMMM Y --}}
-                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
-                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
-                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
-                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
-                    </div>
-                    <div class="timeCountDown">
-                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
-                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
-                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
-                    </div>
-                    <div class="titleCountDown">
-                        <h1>Coming Soon</h1>
-                    </div>
-                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->format('Y/m/d h:i:s') }}">
-                    {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
-                    {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
+                <div class="container-fluid ">
+                    <div class="openTimerCountDown">
+                        <div class="titleCountDown">
+                            <h1>Pembukaan Form Inovasi</h1>
+                        </div>
+                        <div class="dateCountDown">
+                            {{-- d-m-Y --}}
+                            {{-- dddd, D MMMM Y --}}
+                            <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
+                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
+                            <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
+                            <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
+                        </div>
+                        <div class="timeCountDown">
+                            <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
+                            <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
+                            <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
+                        </div>
+                        <div class="titleCountDown">
+                            <h1>Coming Soon</h1>
+                        </div>
+                        <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString() }}">
+                        {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
+                        {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
+                        </div>
                     </div>
                 </div>
 
                 @elseif (
                     (
-                            ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                        ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                            (
+                                    ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation) )
+                                &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                            )
+                        ||  (
+                                    ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+                                &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                            )
                     )
                     ||
                     (
-                            ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                        || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                            (
+                                    ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+                                &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                            )
+                        || (
+                                    ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+                                &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                            )
                     )
                 )
 
-                {{-- <div class="py-3 d-flex flex-row justify-content-start">
-                    <div class="mx-1 mx-1 mx-1">
-                        <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
+                <div class="closeTimerCountDown">
+
+                    <!-- Button Create Form Inovation List -->
+                    <div class="py-3 d-flex flex-column justify-content-start">
+                        @if (
+                            (
+                                ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                            ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                        )
+                            <div class="mx-1 mx-1 mx-1">
+                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
+                            </div>
+                        @else
+                            <div class="mx-1 mx-1 mx-1">
+                                <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
+                            </div>
+                            <div class="mx-1 mx-1 mx-1">
+                                {{-- <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div> --}}
+                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString()  }}"></div>
+                                {{-- 2022-12-27 23:59:00"></div> --}}
+                            </div>
+                        @endif
+
+                        {{-- @if ($rewardInovationCreateReject) --}}
+                        {{-- @if ($rewardInovationCreateReject) --}}
+                        @if ($rewardInovationCreateReject)
+                        <div class="mx-1 mx-1 mx-1">
+                            <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
+                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
+                            </a>
+                        </div>
+                        @elseif ($rewardInovationCreate)
+                        <div class="no-Button"></div>
+                        {{-- <div class="mx-1 mx-1 mx-1">
+                            <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
+                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
+                            </a>
+                        </div> --}}
+                        @endif
                     </div>
-                </div> --}}
-
-                <!-- Button Create Form Inovation List -->
-                <div class="py-3 d-flex flex-column justify-content-start">
-                    @if (
-                        (
-                            ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                        ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                    )
-                        <div class="mx-1 mx-1 mx-1">
-                            <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
-                        </div>
-                    @else
-                        <div class="mx-1 mx-1 mx-1">
-                            <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
-                        </div>
-                        <div class="mx-1 mx-1 mx-1">
-                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div>
-                        </div>
-                    @endif
-                    {{-- @if ($rewardInovationCreate->status_id === 0) --}}
-                    <div class="mx-1 mx-1 mx-1">
-                        <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
-                            <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
-                        </a>
-                    </div>
-                    {{-- @endif --}}
-                </div>
-                <!-- Button Create Form Inovation List -->
-
-                <!-- Tabs -->
-                <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-
-                    <!-- Tabs Form Inovation Waiting -->
-                    <li class="nav-item" role="presentation">
-                        <!-- 2=menunggu -->
-                        <button class="nav-link {{ (request()->is('form-inovation/list')) ? 'active' : '' }} text-center" id="pills-wait-tab" data-bs-toggle="pill" data-bs-target="#pills-wait" type="button" role="tab" aria-controls="pills-wait" aria-selected="{{ (request()->is('form-inovation/list')) ? 'true' : 'false' }}">Menunggu</button>
-                    </li>
-                    <!--/ Tabs Form Inovation Waiting -->
-
-                    <!-- Tabs Form Inovation Back -->
-                    <li class="nav-item" role="presentation">
-                        <!-- 1=dikembalikan -->
-                        <button class="nav-link text-center" id="pills-back-tab" data-bs-toggle="pill" data-bs-target="#pills-back" type="button" role="tab" aria-controls="pills-back" aria-selected="false">Dikembalikan</button>
-                    </li>
-                    <!--/ Tabs Form Inovation Back -->
-
-                    <!-- Tabs Form Inovation Reject -->
-                    <li class="nav-item" role="presentation">
-                        <!-- 0=ditolak -->
-                        <button class="nav-link text-center" id="pills-reject-tab" data-bs-toggle="pill" data-bs-target="#pills-reject" type="button" role="tab" aria-controls="pills-reject" aria-selected="false">Ditolak</button>
-                    </li>
-                    <!--/ Tabs Form Inovation Reject -->
-
-                </ul>
-                <!--/ Tabs -->
-
-                <div class="container-fluid">
-
+                    <!--/ Button Create Form Inovation List -->
 
                     <!-- Tabs -->
-                    <div class="tab-content" id="pills-tabContent">
+                    <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+
                         <!-- Tabs Form Inovation Waiting -->
-                        <div class="tab-pane fade show {{ (request()->is('form-inovation/list')) ? 'active' : '' }}" id="pills-wait" role="tabpanel" aria-labelledby="pills-wait-tab">
-
-                            @if ($rewardInovation != null)
-                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Status Process</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            @endif
-
-                        </div>
+                        <li class="nav-item" role="presentation">
+                            <!-- 2=menunggu -->
+                            <button class="nav-link {{ (request()->is('form-inovation/list')) ? 'active' : '' }} text-center" id="pills-wait-tab" data-bs-toggle="pill" data-bs-target="#pills-wait" type="button" role="tab" aria-controls="pills-wait" aria-selected="{{ (request()->is('form-inovation/list')) ? 'true' : 'false' }}">Menunggu</button>
+                        </li>
                         <!--/ Tabs Form Inovation Waiting -->
 
                         <!-- Tabs Form Inovation Back -->
-                        <div class="tab-pane fade" id="pills-back" role="tabpanel" aria-labelledby="pills-back-tab">
-
-                            @if ($rewardInovationBack != null)
-                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table1">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Status Process</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            @endif
-
-                        </div>
+                        <li class="nav-item" role="presentation">
+                            <!-- 1=dikembalikan -->
+                            <button class="nav-link text-center" id="pills-back-tab" data-bs-toggle="pill" data-bs-target="#pills-back" type="button" role="tab" aria-controls="pills-back" aria-selected="false">Dikembalikan</button>
+                        </li>
                         <!--/ Tabs Form Inovation Back -->
 
                         <!-- Tabs Form Inovation Reject -->
-                        <div class="tab-pane fade" id="pills-reject" role="tabpanel" aria-labelledby="pills-reject-tab">
-
-                            @if ($rewardInovationReject != null)
-                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table0">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Status Process</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            @endif
-
-                        </div>
+                        <li class="nav-item" role="presentation">
+                            <!-- 0=ditolak -->
+                            <button class="nav-link text-center" id="pills-reject-tab" data-bs-toggle="pill" data-bs-target="#pills-reject" type="button" role="tab" aria-controls="pills-reject" aria-selected="false">Ditolak</button>
+                        </li>
                         <!--/ Tabs Form Inovation Reject -->
 
-                    </div>
+                    </ul>
                     <!--/ Tabs -->
+
+
+                    <div class="container-fluid">
+
+                        <!-- Tabs -->
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- Tabs Form Inovation Waiting -->
+                            <div class="tab-pane fade show {{ (request()->is('form-inovation/list')) ? 'active' : '' }}" id="pills-wait" role="tabpanel" aria-labelledby="pills-wait-tab">
+
+                                @if ($rewardInovation != null)
+                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Status Process</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                @endif
+
+                            </div>
+                            <!--/ Tabs Form Inovation Waiting -->
+
+                            <!-- Tabs Form Inovation Back -->
+                            <div class="tab-pane fade" id="pills-back" role="tabpanel" aria-labelledby="pills-back-tab">
+
+                                @if ($rewardInovationBack != null)
+                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table1">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Status Process</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                @endif
+
+                            </div>
+                            <!--/ Tabs Form Inovation Back -->
+
+                            <!-- Tabs Form Inovation Reject -->
+                            <div class="tab-pane fade" id="pills-reject" role="tabpanel" aria-labelledby="pills-reject-tab">
+
+                                @if ($rewardInovationReject != null)
+                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Status Process</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                @endif
+
+                            </div>
+                            <!--/ Tabs Form Inovation Reject -->
+
+                        </div>
+                        <!--/ Tabs -->
+                    </div>
+
                 </div>
 
                 @elseif (

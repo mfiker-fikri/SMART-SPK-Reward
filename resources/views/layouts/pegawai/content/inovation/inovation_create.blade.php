@@ -99,6 +99,25 @@
                 <!-- Create Form Inovation Details -->
                 <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
+                    <div class="py-3 d-flex flex-column justify-content-start">
+                        @if (
+                            (
+                                ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                            ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                        )
+                            <div class="mx-1 mx-1 mx-1">
+                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
+                            </div>
+                        @else
+                            <div class="mx-1 mx-1 mx-1">
+                                <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
+                            </div>
+                            <div class="mx-1 mx-1 mx-1">
+                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString()  }}"></div>
+                            </div>
+                        @endif
+                    </div>
+
                     <form id="formInovationCreate" class="mx-3 my-3" method="POST" action="{{ route('pegawai.postInovationFormCreate.Create.Pegawai') }}" enctype="multipart/form-data">
                         @csrf
                         <!-- Upload Short Description -->
