@@ -1014,7 +1014,7 @@
 
                         {{-- @if ($rewardInovationCreateReject) --}}
                         {{-- @if ($rewardInovationCreateReject) --}}
-                        @if ($rewardInovationCreateReject)
+                        @if ($rewardInovationCreateReject || ($rewardInovationCreateNull == null))
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
                                 <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi

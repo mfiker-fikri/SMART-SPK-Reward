@@ -164,10 +164,27 @@ class InovationController extends Controller
                 ->first();
                 // ->get();
 
+            // Button Create Null
+            $rewardInovationCreateNull = RewardInovation::
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=', Auth::guard('employees')->user()->id],
+                    ['status_process', '=', null],
+                    // ['status_process', '!=', 1],
+                    // ['status_process', '!=', 2],
+                    // ['status_process', '!=', 3],
+                ])
+                // ->whereNull('status_process')
+                ->latest()
+                ->first();
 
             // ddd(!$rewardInovationCreate);
             // ddd($rewardInovationCreateReject);
             // ddd(!$rewardInovationCreate || $rewardInovationCreateReject);
+            // ddd($rewardInovationCreateNull);
 
             $data = RewardInovation::
                 // first()
@@ -232,7 +249,7 @@ class InovationController extends Controller
             //     )
             // );
 
-            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreateReject', 'rewardInovationCreate'));
+            return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreateReject', 'rewardInovationCreate', 'rewardInovationCreateNull'));
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -505,7 +522,7 @@ class InovationController extends Controller
 
             // return view('layouts.pegawai.content.inovation.inovation_create');
             if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
-                return view('layouts.pegawai.content.inovation.inovation_create');
+                return view('layouts.pegawai.content.inovation.inovation_create', compact('timer'));
             }
             return back();
 
