@@ -1012,21 +1012,77 @@
                             </div>
                         @endif
 
-                        {{-- @if ($rewardInovationCreateReject) --}}
-                        {{-- @if ($rewardInovationCreateReject) --}}
-                        @if ($rewardInovationCreateReject || ($rewardInovationCreateNull == null))
+                        @if ($rewardInovationCreateReject != true)
+                        {{-- @if (
+                            (
+                                    ($rewardInovationCreateReject->created_at >= $timer->date_time_open_form_inovation)
+                                &&  ($rewardInovationCreateReject->created_at <= $timer->date_time_expired_form_inovation)
+                            )
+                            &&
+                            (
+                                    ($rewardInovationCreateReject->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                &&  ($rewardInovationCreateReject->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                            )
+                            &&
+                            (
+                                ($rewardInovationCreateReject->employee_id == Auth::guard('employees')->user()->id)
+                            )
+                            &&
+                            (
+                                ($rewardInovationCreateReject->status_process == 0)
+                            )
+                        ) --}}
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
                                 <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
                             </a>
                         </div>
-                        @elseif ($rewardInovationCreate)
-                        <div class="no-Button"></div>
-                        {{-- <div class="mx-1 mx-1 mx-1">
+                        @elseif ($rewardInovationCreateNull == true)
+                        {{-- @elseif (
+                            (
+                                    ($rewardInovationCreateNull->created_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                &&  ($rewardInovationCreateNull->created_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                            )
+                            &&
+                            (
+                                    ($rewardInovationCreateNull->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                &&  ($rewardInovationCreateNull->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                            )
+                            &&
+                            (
+                                ($rewardInovationCreateNull->employee_id == Auth::guard('employees')->user()->id)
+                            )
+                            &&
+                            (
+                                ($rewardInovationCreateNull->status_process == 0)
+                            )
+                        ) --}}
+                        <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
                                 <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
                             </a>
-                        </div> --}}
+                        </div>
+                        @elseif ($rewardInovationCreate == true)
+                        {{-- @elseif (
+                            (
+                                    ($rewardInovationCreate->created_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                &&  ($rewardInovationCreate->created_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                            )
+                            &&
+                            (
+                                    ($rewardInovationCreate->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                &&  ($rewardInovationCreate->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                            )
+                            &&
+                            (
+                                ($rewardInovationCreate->employee_id == Auth::guard('employees')->user()->id)
+                            )
+                            &&
+                            (
+                                ($rewardInovationCreate->status_process == 1 || $rewardInovationCreate->status_process == 2)
+                            )
+                        ) --}}
+                        <div class="no-Button"></div>
                         @endif
                     </div>
                     <!--/ Button Create Form Inovation List -->

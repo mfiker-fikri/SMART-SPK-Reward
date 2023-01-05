@@ -253,13 +253,13 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
     Route::POST('/', [App\Http\Controllers\TeamAssessment\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.Penilai');
     Route::GET('/logout', [App\Http\Controllers\TeamAssessment\Auth\LoginController::class, 'getLogout'])->name('getLogout.Penilai');
 
-    // Route::GET('/forgot-password', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'getForgetPasswordForm'])->name('getForgetPassword.Penilai');
+    Route::GET('/forgot-password', [App\Http\Controllers\TeamAssessment\Auth\ForgotPasswordController::class, 'getForgetPasswordForm'])->name('getForgetPassword.Penilai');
 
-    // Route::POST('/forgot-password', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'postForgetPasswordForm'])->name('postForgetPassword.Penilai');
+    Route::POST('/forgot-password', [App\Http\Controllers\TeamAssessment\Auth\ForgotPasswordController::class, 'postForgetPasswordForm'])->name('postForgetPassword.Penilai');
 
-    // Route::GET('/reset-password/{token}', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.Penilai');
+    Route::GET('/reset-password/{token}', [App\Http\Controllers\TeamAssessment\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.Penilai');
 
-    // Route::POST('/reset-password', [App\Http\Controllers\TeamAsessment\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Penilai');
+    Route::POST('/reset-password', [App\Http\Controllers\TeamAssessment\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Penilai');
 
     // Dashboard
     Route::GET('/dashboard', [\App\Http\Controllers\TeamAssessment\DashboardController::class,'dashboard'])->name('getDashboard.Penilai');

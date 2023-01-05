@@ -1,4 +1,40 @@
 @extends('template.auth.template')
+
+@section('js_footer')
+    <script type="text/javascript">
+        $(document).on('click', '#passwordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password").setAttribute("type", "text");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password").setAttribute("type", "password");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordConfirmationEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password_confirmation").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password_confirmation").setAttribute("type", "text");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password_confirmation").setAttribute("type", "password");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+    <!--/ Show Hide Password -->
+@stop
+
 @section('content')
 
 <div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/KLN.png') }}); background-blend-mode: darken; background-repeat: space; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; filter: blur(2px);"></div>
@@ -9,7 +45,7 @@
             <!-- Reset Password -->
             <div class="card">
                 <div class="card-body">
-                    
+
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="{{ URL::to('forget-password*') }}" class="app-brand-link gap-2">
@@ -21,7 +57,7 @@
                     <!--/ Logo -->
 
                     <!-- Title -->
-                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>                    
+                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>
                     <span class="mb-4 text-center">
                         <h5>Reset Password</h5>
                     </span>
@@ -41,7 +77,7 @@
                                 <span id="email" class="input-group-text">
                                     <i class="fa-regular fa-envelope fa-lg"></i>
                                 </span>
-                                <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }} " id="email" 
+                                <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }} " id="email"
                                     name="email" placeholder="Enter Your Email" value="{{ old('email') }}"
                                     autofocus autocomplete required  />
                             </div>
@@ -61,19 +97,22 @@
                         <div class="mb-3 {{ $errors->has('password') ? 'is-invalid' : '' }} ">
                             <label for="password" class="form-label">New Password</label>
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }} ">
-                                <span id="password" class="input-group-text">
+                                <span class="input-group-text">
                                     <i class="fas fa-key"></i>
                                 </span>
-                                <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password" 
-                                    name="password" placeholder="Enter Your New Password" 
+                                <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
+                                    name="password" placeholder="Enter Your New Password"
                                     autofocus autocomplete required />
+                                <span class="input-group-text" id="passwordEye" style="cursor: pointer;">
+                                    <i class="fa-solid fa-eye-slash" id="eyePassword"></i>
+                                </span>
                             </div>
 
                             <div class="d-flex flex-column">
                                 <!-- Text Small -->
-                                {{-- <small class="form-text text-muted text-break text-monospace text-sm-left">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small> --}}
+                                <small class="form-text text-muted text-break text-monospace text-sm-left">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
                                 <!--/ Text Small -->
-                                
+
                                 <!-- Error New Password -->
                                 @if ( $errors->has('password') )
                                     <span class="help-block">
@@ -89,17 +128,20 @@
                         <div class="mb-3 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                             <label for="password_confirmation" class="form-label">Confirmation New Password</label>
                             <div class="input-group input-group-merge {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                                <span id="password_confirmation" class="input-group-text">
+                                <span class="input-group-text">
                                     <i class="fas fa-key"></i>
                                 </span>
-                                <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation" 
-                                    name="password_confirmation" placeholder="Enter Your Confirmation New Password" 
+                                <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
+                                    name="password_confirmation" placeholder="Enter Your Confirmation New Password"
                                     autofocus autocomplete required aria-invalid="true" aria-describedby="confirmasi new password" data-val="true"
                                     value=""/>
+                                <span class="input-group-text" id="passwordConfirmationEye" style="cursor: pointer;">
+                                    <i class="fa-solid fa-eye-slash" id="eyePasswordConfirmation"></i>
+                                </span>
                             </div>
                             <div class="d-flex flex-column">
                                 <!-- Text Small -->
-                                {{-- <small class="form-text text-muted text-break text-monospace text-sm-left">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small> --}}
+                                <small class="form-text text-muted text-break text-monospace text-sm-left">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
                                 <!--/ Text Small -->
 
                                 <!-- Error Password Confirm -->
@@ -113,7 +155,7 @@
                         </div>
                         <!--/ End Password Confirm -->
 
-                        <!-- Error and Success Send Email -->
+                        <!-- Error and Success Reset Password -->
                         @if(session('message-success-reset'))
                         <div class="d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
@@ -121,7 +163,7 @@
                             </svg>
                             <div class="d-flex flex-md-row">
                                 <p>
-                                    <strong><b>   {{ session('message-success-reset') }} </b></strong>     
+                                    <strong><b>   {{ session('message-success-reset') }} </b></strong>
                                 </p>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
@@ -135,15 +177,15 @@
                             <div class="d-flex flex-md-row">
                                 <p>
                                     <strong><b>   {{ session('message-failed-reset') }}  </b></strong>
-                                </p> 
+                                </p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 </button>
                             </div>
                         </div>
                         @endif
-                        <!--/ Error Send Email -->
+                        <!--/ Error and Success Reset Password -->
 
-                        <!-- Confirm New Password -->
+                        <!-- Button Confirm -->
                         <div class="mt-4 d-flex flex-row justify-content-center">
                             <div class="mx-1">
                                 <button type="reset" class="btn btn-warning btn-lg">
@@ -156,7 +198,7 @@
                                 </button>
                             </div>
                         </div>
-                        <!--/ Confirm New Password -->
+                        <!--/ Button Confirm -->
 
                     </form>
                     <!--/ Reset Password -->

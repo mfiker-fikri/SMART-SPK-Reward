@@ -14,8 +14,33 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Meta Tag -->
+        <!-- Kepala Biro SDM -->
+        @if ( request()->is('sdm/kepala-biro-SDM/dashboard*') )
+            <!-- Dashboard -->
+            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
+        @elseif ( request()->is('sdm/kepala-biro-SDM/profile*') )
+            <!-- Profile -->
+            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+        <!--/ Kepala Biro SDM -->
+
+        <!-- Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*') )
+            <!-- Dashboard -->
+            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
+        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*') )
+            <!-- Profile -->
+            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
+        <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+
         <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
-        @if ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
             <!-- Dashboard -->
             <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
@@ -102,18 +127,39 @@
 
         <!--/ Manage Team Assessment -->
 
-
         @endif
+        <!--/ Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
         <!--/ Meta Tag -->
 
 
         <!-- Title -->
-        <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
-        @if ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
+        <!-- Kepala Biro SDM -->
+        @if ( request()->is('sdm/kepala-biro-SDM/dashboard*') )
             <!-- Dashboard -->
             <title> {{ Auth::guard('human_resources')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') )
+        @elseif ( request()->is('sdm/kepala-biro-SDM/profile*') )
+            <!-- Profile -->
+            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+        <!--/ Kepala Biro SDM -->
+
+        <!-- Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*') )
+            <!-- Dashboard -->
+            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+
+        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*') )
+            <!-- Profile -->
+            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+
+        <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+
+        <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
+            <!-- Dashboard -->
+            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile*') )
             <!-- Profile -->
             <title> {{ Auth::guard('human_resources')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 

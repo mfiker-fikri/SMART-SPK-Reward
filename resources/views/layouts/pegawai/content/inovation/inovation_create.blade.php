@@ -1,5 +1,76 @@
 @extends('template.pegawai.template')
 
+<!-- Header CSS -->
+@section('css_header')
+    <style>
+    @media (min-width: 992px) {
+        .mercadoCountdown1 {
+            padding: 0;
+            margin: 1em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 24px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 7vh;
+            max-height: 7vh;
+        }
+
+        .mercadoCountdown1 span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        .mercadoCountdown1 {
+            padding: 0;
+            margin: 0.5em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 30px;
+            line-height: 100%;
+            text-align: center;
+            /* min-height: 5vh;
+            max-height: 5vh; */
+        }
+
+        .mercadoCountdown1 span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+    }
+
+    </style>
+@stop
+<!--/ Header CSS -->
+
 <!-- Footer Js -->
 @section('js_footer')
     <!-- Pdf/Word Preview -->
@@ -78,6 +149,188 @@
     }
     </script>
     <!--/ Reset Video Preview -->
+
+    <!-- Timer Countdown -->
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
+
+    <script>
+        $(".mercadoCountdown1").each( function(){
+            var _this = $(this);
+            var _expire = _this.data('expire');
+            flag2 = true;
+            _this.countdown(_expire,{
+                elapse:     false,
+                precision:  1000,
+                // defer:      '{bool} Deferred initialization mode'
+            })
+            .on('update.countdown', function(event) {
+                // console.log(event.offset.minutes == 12);
+                if(event.offset.totalDays == 1 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                if(event.offset.totalDays == 0 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup Besok',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                if(event.offset.totalHours == 0 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                if(event.offset.totalMinutes == 0 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            })
+            .on('finish.countdown', function(){
+                Swal.fire({
+                    title: 'Form Inovasi Ditutup',
+                    icon: 'success',
+                    html: 'Pop up will close in <b></b> milliseconds.',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    },
+                    timer: 8000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 300)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    },
+                    didClose: () => {
+                        // window.location.reload(true);
+                        window.location = "{{ url('form-inovation/list') }}";
+                    },
+                });
+            });
+        });
+    </script>
+    <!--/ Timer Countdown -->
 
 @stop
 

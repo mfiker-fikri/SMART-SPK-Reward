@@ -131,13 +131,10 @@ class InovationController extends Controller
                     ['created_at', '<=', $dateExpiredTime],
                     ['updated_at', '>=', $dateOpenTime],
                     ['updated_at', '<=', $dateExpiredTime],
-                    ['employee_id', '=', Auth::guard('employees')->user()->id],
-                    // ['id', '=', null],
-                    ['status_process', '!=', 0],
-                    ['status_process', '=', 1],
-                    ['status_process', '=', 2],
-                    ['status_process', '=', 3],
-                    // ['status_process', '!=', 4],
+                    ['employee_id', '==', Auth::guard('employees')->user()->id],
+                    // ['status_process', '!=', 0],
+                    ['status_process', '==', 1],
+                    ['status_process', '==', 2],
                 ])
                 // ->orWhere(['status_process' => 1])
                 // ->orWhere(['status_process' => 2])
@@ -150,16 +147,13 @@ class InovationController extends Controller
                 where([
                     ['created_at', '>=', $dateOpenTime],
                     ['created_at', '<=', $dateExpiredTime],
-                    ['updated_at', '>=', $dateOpenTime],
-                    ['updated_at', '<=', $dateExpiredTime],
-                    ['employee_id', '=', Auth::guard('employees')->user()->id],
-                    ['status_process', '=', 0],
-                    ['status_process', '!=', 1],
-                    ['status_process', '!=', 2],
-                    ['status_process', '!=', 3],
-                    // ['status_id', '=', null],
+                    // ['updated_at', '>=', $dateOpenTime],
+                    // ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '==', Auth::guard('employees')->user()->id],
+                    ['status_process', '==', 0],
+                    // ['status_process', '!=', 1],
+                    // ['status_process', '!=', 2],
                 ])
-                // ->orWhere(['status_process', '=', 0])
                 ->latest()
                 ->first();
                 // ->get();
@@ -171,14 +165,14 @@ class InovationController extends Controller
                     ['created_at', '<=', $dateExpiredTime],
                     ['updated_at', '>=', $dateOpenTime],
                     ['updated_at', '<=', $dateExpiredTime],
-                    ['employee_id', '=', Auth::guard('employees')->user()->id],
-                    ['status_process', '=', null],
+                    ['employee_id', '==', Auth::guard('employees')->user()->id],
+                    ['status_process', '==', null],
                     // ['status_process', '!=', 1],
                     // ['status_process', '!=', 2],
                     // ['status_process', '!=', 3],
                 ])
                 // ->whereNull('status_process')
-                ->latest()
+                // ->latest()
                 ->first();
 
             // ddd(!$rewardInovationCreate);
@@ -197,8 +191,8 @@ class InovationController extends Controller
                     ['created_at', '<=', $dateExpiredTime],
                     ['updated_at', '>=', $dateOpenTime],
                     ['updated_at', '<=', $dateExpiredTime],
-                    ['employee_id', '=' ,Auth::guard('employees')->user()->id],
-                    ['status_process', '=', 2],
+                    ['employee_id', '==' ,Auth::guard('employees')->user()->id],
+                    ['status_process', '==', 2],
                 ])
                 ->latest()
                 ->get();
@@ -207,45 +201,30 @@ class InovationController extends Controller
                 // ->get();
                 // ddd($data);
 
-            // ddd(
-            //     (
-            //             ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
-            //             || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
-            //             ))
-            //         &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-            //     )
-            //     ||
-            //     (
-            //             ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
-            //             || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
-            //             ))
-            //         &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-            //     )
-            // );
-
-            // ddd(\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation);
+            // ddd($rewardInovationCreateReject);
+            // ddd($rewardInovationCreateNull == false);
+            // ddd($rewardInovationCreate);
+            // if ($rewardInovationCreateReject) {
+            //     ddd('sukses');
+            // }
 
             // ddd(
             //     (
-            //             (
-            //                     ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation) )
-            //                 &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-            //             )
-            //         ||  (
-            //                     ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
-            //                 &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-            //             )
+            //             ($rewardInovationCreateReject->created_at >= $timer->date_time_open_form_inovation)
+            //         &&  ($rewardInovationCreateReject->created_at <= $timer->date_time_expired_form_inovation)
             //     )
-            //     ||
+            //     &&
             //     (
-            //             (
-            //                     ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
-            //                 &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-            //             )
-            //         || (
-            //                     ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
-            //                 &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-            //             )
+            //             ($rewardInovationCreateReject->updated_at >= $timer->date_time_open_form_inovation)
+            //         &&  ($rewardInovationCreateReject->updated_at <= $timer->date_time_expired_form_inovation)
+            //     )
+            //     &&
+            //     (
+            //         ($rewardInovationCreateReject->employee_id == Auth::guard('employees')->user()->id)
+            //     )
+            //     &&
+            //     (
+            //         ($rewardInovationCreateReject->status_process == 0)
             //     )
             // );
 
@@ -844,7 +823,7 @@ class InovationController extends Controller
                     'employee_id' => $id_employee
                     ])->first();
                 // ddd($rewardInovation);
-                return view('layouts.pegawai.content.inovation.inovation_update',compact('rewardInovation'));
+                return view('layouts.pegawai.content.inovation.inovation_update',compact('rewardInovation', 'timer'));
             }
             return back();
         } catch (\Throwable $th) {

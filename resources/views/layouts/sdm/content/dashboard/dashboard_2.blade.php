@@ -1,5 +1,22 @@
 @extends('template.sdm.template')
 
+@section('css_header')
+    <style>
+        @media (min-width: 992px) {
+            .dashboardSDM1Info {
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 991.98px) {
+            .dashboardSDM1Info {
+                display: flex;
+                margin: 0 100px;
+            }
+        }
+    </style>
+@stop
+
 @section('content')
 
 <div class="container-xxl container-p-y">
@@ -19,10 +36,10 @@
                         @endif
                         <!--/ Photo Profile -->
                     </div>
-                    <div class="dashboardAdminInfo">
+                    <div class="dashboardSDM1Info">
                         <div class="card-body d-flex flex-column justify-content-center align-self-center">
                             <h3 class="card-title text-center"><strong> {{ Auth::guard('human_resources')->user()->full_name }} </strong></h3>
-                            <p class="card-text text-center"> Admin </p>
+                            <p class="card-text text-center"> Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha </p>
                             @if (Cache::has('admin-is-online-' . Auth::guard('human_resources')->user()->id))
                             <p class="card-text text-success text-center"><small class="text-muted">Online</small></p>
                             @endif

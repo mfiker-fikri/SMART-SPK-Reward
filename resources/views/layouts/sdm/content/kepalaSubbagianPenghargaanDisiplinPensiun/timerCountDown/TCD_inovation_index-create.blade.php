@@ -115,7 +115,7 @@
                 <div class="card-body py-xl-5 py-sm-5 px-xl-5">
                     <form id="formCreateTimerFormInovation" class="mx-2" method="POST" action="{{ route('sdm.postTimerCountDownFormInovation.Index.Create.SDM') }}">
                         @csrf
-                        @if ($timer->id == null)
+                        @if ($timer == null)
                         <input type="hidden" name="id" value="">
                         @else
                         <input type="hidden" name="id" value="{{ $timer->id }}">
@@ -131,7 +131,7 @@
                                     </span>
                                     <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_countdown_inovation_form') ? 'is-invalid' : '' }}" id="date_time_open_countdown_inovation_form"
                                         name="date_time_open_countdown_inovation_form" placeholder="*Select Date Time"
-                                        @if ($timer->date_time_open_form_inovation == null)
+                                        @if ($timer == null)
                                         autofocus autocomplete required value="{{ old('date_time_open_countdown_inovation_form') }}"
                                         @else
                                         autofocus autocomplete required value="{{ old('date_time_open_countdown_inovation_form', $timer->date_time_open_form_inovation) }}"
@@ -160,7 +160,7 @@
                                     <span class="input-group-text {{ $errors->has('status_open') ? 'is-invalid' : '' }}">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
-                                    @if ($timer->status_open == null)
+                                    @if ($timer == null)
                                     <input type="hidden" value="{{ old('status_open') }}" id="oldOpenStatus" />
                                     @else
                                     <input type="hidden" value="{{ old('status_open', $timer->status_open) }}" id="oldStatusOpen" />
@@ -170,7 +170,7 @@
                                         autofocus autocomplete required
                                         aria-invalid="true" aria-describedby="status_open" data-val="true" aria-label="status_open" data-placeholder="-- Pilih Status Open --">
                                         <option disabled selected>-- Pilih Status Open --</option>
-                                        @if ($timer->status_open == null)
+                                        @if ($timer == null)
                                         <option value="0" @if(old('status_open' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                         <option value="1" @if(old('status_open' ) == 1 ) selected="selected" @endif>Aktif</option>
                                         @else
@@ -208,7 +208,7 @@
                                     </span>
                                     <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_countdown_inovation_form') ? 'is-invalid' : '' }}" id="date_time_expired_countdown_inovation_form"
                                         name="date_time_expired_countdown_inovation_form" placeholder="*Select Date Time"
-                                        @if ($timer->date_time_expired_form_inovation == null)
+                                        @if ($timer == null)
                                         autofocus autocomplete required value="{{ old('date_time_expired_countdown_inovation_form') }}"
                                         @else
                                         autofocus autocomplete required value="{{ old('date_time_expired_countdown_inovation_form', $timer->date_time_expired_form_inovation) }}"
@@ -237,7 +237,7 @@
                                     <span class="input-group-text {{ $errors->has('status_expired') ? 'is-invalid' : '' }}">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
-                                    @if ($timer->status_expired == null)
+                                    @if ($timer == null)
                                     <input type="hidden" value="{{ old('status_expired') }}" id="oldExpiredStatus" />
                                     @else
                                     <input type="hidden" value="{{ old('status_expired', $timer->status_expired) }}" id="oldStatusExpired" />
@@ -247,7 +247,7 @@
                                         autofocus autocomplete required
                                         aria-invalid="true" aria-describedby="status_expired" data-val="true" aria-label="status_expired" data-placeholder="-- Pilih Status Close --">
                                         <option disabled selected>-- Pilih Status Close --</option>
-                                        @if ($timer->status_expired == null)
+                                        @if ($timer == null)
                                         <option value="0" @if(old('status_expired' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                         <option value="1" @if(old('status_expired' ) == 1 ) selected="selected" @endif>Aktif</option>
                                         @else

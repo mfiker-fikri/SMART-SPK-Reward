@@ -169,18 +169,18 @@ class SDMController extends Controller
                     }
 
                     // Get File Image
-                    $photoProfile = $request->file('photo_profile');
+                    $photoProfile       =   $request->file('photo_profile');
                     // Get Original Name
                     // $photoName      =   $photoProfile->getClientOriginalName();
                     // Get Original Extension
-                    $photoExtension =   $photoProfile->getClientOriginalExtension();
+                    $photoExtension     =   $photoProfile->getClientOriginalExtension();
 
                     // Get Id Auth SDM
-                    $id = Auth::guard('human_resources')->user()->id;
+                    $id                 =   Auth::guard('human_resources')->user()->id;
                     // Get SDM Username
-                    $sdm = Auth::guard('human_resources')->user()->username;
+                    $sdm                =   Auth::guard('human_resources')->user()->username;
                     // Photo Name
-                    $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                    $photoName          =   $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
 
                     $img = Image::make($photoProfile);
                     $img->resize(100, 100, function ($constraint) {
@@ -189,12 +189,13 @@ class SDMController extends Controller
 
                     // Kepala Biro SDM
                     if (Auth::guard('human_resources')->user()->role == 1) {
-                        $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                        // $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                        $photoProfile->move(public_path('storage/sdm/headOfHumanResources/photos/photoProfile/' . $sdm), $photoName);
                     }
 
                     // Find Auth SDM Active storage_path($folder)
-                    $id = Auth::guard('human_resources')->user()->id;
-                    $sdm = HumanResource::find($id);
+                    $id         =   Auth::guard('human_resources')->user()->id;
+                    $sdm        =   HumanResource::find($id);
 
                     // Save Photo To Database
                     $sdm->photo_profile = $photoName;
@@ -205,18 +206,18 @@ class SDMController extends Controller
                 }
 
                 // Get File Image
-                $photoProfile = $request->file('photo_profile');
+                $photoProfile       =   $request->file('photo_profile');
                 // Get Original Name
                 // $photoName      =   $photoProfile->getClientOriginalName();
                 // Get Original Extension
-                $photoExtension =   $photoProfile->getClientOriginalExtension();
+                $photoExtension     =   $photoProfile->getClientOriginalExtension();
 
                 // Get Id Auth SDM
-                $id = Auth::guard('human_resources')->user()->id;
+                $id                 =   Auth::guard('human_resources')->user()->id;
                 // Get SDM Username
-                $sdm = Auth::guard('human_resources')->user()->username;
+                $sdm                =   Auth::guard('human_resources')->user()->username;
                 // Photo Name
-                $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                $photoName          =   $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
 
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
@@ -225,7 +226,8 @@ class SDMController extends Controller
 
                 // Kepala Biro SDM
                 if (Auth::guard('human_resources')->user()->role == 1) {
-                    $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                    // $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                    $photoProfile->move(public_path('storage/sdm/headOfHumanResources/photos/photoProfile/' . $sdm), $photoName);
                 }
 
                 // Find Auth SDM Active storage_path($folder)
@@ -260,10 +262,12 @@ class SDMController extends Controller
             if($photo) {
                 $sdm = Auth::guard('human_resources')->user()->username;
                 $file = storage_path('app/public/sdm/headOfHumanResources/photos/photoProfile/') . $sdm . '/' . $photo->photo_profile;
+
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
-                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => '']);
+
+                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => null]);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
                 return redirect()->back()->with('message-update-photo-success', 'Berhasil Hapus Foto Profile');
             }

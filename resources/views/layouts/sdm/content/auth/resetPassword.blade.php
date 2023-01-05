@@ -1,4 +1,40 @@
 @extends('template.auth.template')
+
+@section('js_footer')
+    <script type="text/javascript">
+        $(document).on('click', '#passwordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password").setAttribute("type", "text");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password").setAttribute("type", "password");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordConfirmationEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password_confirmation").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password_confirmation").setAttribute("type", "text");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password_confirmation").setAttribute("type", "password");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+    <!--/ Show Hide Password -->
+@stop
+
 @section('content')
 
 <div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/KLN.png') }}); background-blend-mode: darken; background-repeat: space; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; filter: blur(2px);"></div>
@@ -95,12 +131,15 @@
                         <div class="mb-3 {{ $errors->has('password') ? 'is-invalid' : '' }} ">
                             <label for="password" class="form-label">Password Baru</label>
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }} ">
-                                <span id="password" class="input-group-text">
+                                <span class="input-group-text">
                                     <i class="fas fa-key"></i>
                                 </span>
                                 <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
                                     name="password" placeholder="Enter Your New Password"
                                     autofocus autocomplete required />
+                                <span class="input-group-text" id="passwordEye" style="cursor: pointer;">
+                                    <i class="fa-solid fa-eye-slash" id="eyePassword"></i>
+                                </span>
                             </div>
 
                             <div class="d-flex flex-column">
@@ -147,7 +186,37 @@
                         </div>
                         <!--/ End Password Confirm -->
 
-                        <!-- Confirm New Password -->
+                        <!-- Error and Success Reset Password -->
+                        @if(session('message-success-reset'))
+                        <div class="d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                            </svg>
+                            <div class="d-flex flex-md-row">
+                                <p>
+                                    <strong><b>   {{ session('message-success-reset') }} </b></strong>
+                                </p>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                        @elseif(session('message-failed-reset'))
+                        <div class="d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                            <div class="d-flex flex-md-row">
+                                <p>
+                                    <strong><b>   {{ session('message-failed-reset') }}  </b></strong>
+                                </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                </button>
+                            </div>
+                        </div>
+                        @endif
+                        <!--/ Error and Success Reset Password -->
+
+                        <!-- Button Confirm -->
                         <div class="mt-4 d-flex flex-row justify-content-center">
                             <div class="mx-1">
                                 <button type="reset" class="btn btn-warning btn-lg">
@@ -160,7 +229,7 @@
                                 </button>
                             </div>
                         </div>
-                        <!--/ Confirm New Password -->
+                        <!--/ Button Confirm -->
 
                     </form>
                     <!--/ Reset Password -->
