@@ -31,7 +31,7 @@ class TeladanController extends Controller
     {
         try {
             // Get id Employee
-            $id     =   Auth::guard('employees')->user()->id;
+            // $id     =   Auth::guard('employees')->user()->id;
             // Get Timer Countdown
             $timer  =  CountdownTimerFormTeladan::first();
             return view('layouts.pegawai.content.teladan.teladan_index', compact('timer'));
