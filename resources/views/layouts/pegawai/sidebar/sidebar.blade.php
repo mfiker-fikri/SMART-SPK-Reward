@@ -47,12 +47,12 @@
         </li>
         <!--/ My Profile -->
 
-        <!-- Form Inovation -->
+        <!-- Form Inovation dan teladan -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Form Penghargaan Berprestasi</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('form-inovation*')) || (request()->is('form-teladan*')) ? 'active' : '' }}">
+        <li class="menu-item {{ (request()->is('form-inovation*')) || (request()->is('form-representative*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                 <div data-i18n="Timer Countdown">Form Penghargaan Berprestasi</div>
@@ -65,15 +65,43 @@
                         <div data-i18n="Form Inovation">Form Inovation</div>
                     </a>
                 </li>
-                <li class="menu-item {{ (request()->is('form-teladan*')) ? 'active' : '' }}">
-                    <a href="{{ URL::to('form-teladan/list') }}" class="menu-link" style="text-decoration: none !important;">
+                <li class="menu-item {{ (request()->is('form-representative*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('form-representative/list') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                         <div data-i18n="Form Teladan">Form Teladan</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <!--/ Form Inovation -->
+        <!--/ Form Inovation dan teladan -->
+
+        <!-- Hasil Penghargaan Inovation dan Teladan -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Hasil Penerimaan Penghargaan</span>
+        </li>
+
+        <li class="menu-item {{ (request()->is('result-reward-inovation*')) || (request()->is('result-reward-representative*')) ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
+                <div data-i18n="Timer Countdown">Hasil Penerimaan Penghargaan</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ (request()->is('result-reward-inovation*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('result-reward-inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                        <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
+                        <div data-i18n="Form Inovation">Reward Inovation</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ (request()->is('result-reward-representative*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('result-reward-representative') }}" class="menu-link" style="text-decoration: none !important;">
+                        <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
+                        <div data-i18n="Form Teladan">Reward Teladan</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--/ Hasil Penghargaan Inovation dan Teladan -->
 
 
     </ul>

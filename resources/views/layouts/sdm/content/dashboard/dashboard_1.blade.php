@@ -3,13 +3,13 @@
 @section('css_header')
     <style>
         @media (min-width: 992px) {
-            .dashboardAdminInfo {
+            .dashboardSDM1Info {
                 display: flex;
                 margin: 0 auto;
             }
         }
         @media (max-width: 991.98px) {
-            .dashboardAdminInfo {
+            .dashboardSDM1Info {
                 display: flex;
                 margin: 0 100px;
             }
@@ -30,13 +30,13 @@
                     <div class="d-flex">
                         <!-- Photo Profile -->
                         @if (Auth::guard('human_resources')->user()->photo_profile)
-                        <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                        <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="human_resources-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
                         @else
                         <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
                         @endif
                         <!--/ Photo Profile -->
                     </div>
-                    <div class="dashboardAdminInfo">
+                    <div class="dashboardSDM1Info">
                         <div class="card-body d-flex flex-column justify-content-center align-self-center">
                             <h3 class="card-title text-center"><strong> {{ Auth::guard('human_resources')->user()->full_name }} </strong></h3>
                             <p class="card-text text-center"> Kepala-Biro SDM </p>

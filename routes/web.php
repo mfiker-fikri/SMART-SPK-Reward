@@ -97,8 +97,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 });
 
-// Kepala Biro SDM, Bagian Penghargaan, Disiplin, dan Tata Usaha,
-// Subbagian Penghargaan, Disiplin, dan Pensiun
+// Kepala Biro SDM,
+// Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha,
+// Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
 Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
     // Login, Reset Password, dan Logout
     Route::GET('/', [App\Http\Controllers\SDM\Auth\LoginController::class, 'getLoginForm'])->name('getLogin.SDM');
@@ -274,6 +275,7 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
 
 });
 
+// Kepala
 
 
 // User / Pegawai
@@ -304,6 +306,7 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Profile Change Password
     Route::POST('profile/change-password', [App\Http\Controllers\Pegawai\PegawaiController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.Pegawai');
 
+    // Manage Form Inovation and Teladan
     // Manage Inovation
     // Create
     Route::GET('form-inovation/create', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormCreate'])->name('getInovationFormCreate.Create.Pegawai');
@@ -337,7 +340,16 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Delete
     Route::POST('form-representative/delete/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdDelete'])->name('postTeladanIdDelete.Delete.Pegawai');
 
+    // Result Reward
+    // Reward Inovation
+    // Read
+    Route::GET('result-reward-inovation', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationRead'])->name('getResultRewardInovation.Read.Pegawai');
+    Route::GET('result-reward-inovation/data', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationReadData'])->name('getResultRewardInovationData.Read.Pegawai');
 
+    // Reward Teladan
+    // Read
+    Route::GET('result-reward-representative', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativeRead'])->name('getResultRewardRepresentative.Read.Pegawai');
+    Route::GET('result-reward-representative/data', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativeReadData'])->name('getResultRewardRepresentativeData.Read.Pegawai');
 
 
 

@@ -194,7 +194,8 @@
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" class="menu-link" style="text-decoration: none !important;">
-                    <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                    {{-- <i class="menu-icon tf-icons fa-solid fa-user-large"></i> --}}
+                    <i class="menu-icon tf-icons fa-solid fa-users"></i>
                     <div data-i18n="Kelola Tim Penilai">Kelola Tim Penilai</div>
                 </a>
             </li>

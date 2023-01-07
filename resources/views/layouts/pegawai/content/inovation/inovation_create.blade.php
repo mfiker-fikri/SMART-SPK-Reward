@@ -298,7 +298,7 @@
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Form Inovasi Ditutup',
+                    title: 'Form Inovasi Sudah Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,

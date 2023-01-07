@@ -550,12 +550,150 @@
                 // console.log(e);
                 var _this = $(this),
                 _expire = _this.data('expire');
+                flag2 = true;
                 // console.log(_expire);
                 // _this.countdown(_expire, {
                 //     elapse: true
                 // })
-                _this.countdown(_expire, function(e) {
-                    $(this).html( e.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                // _this.countdown(_expire, function(e) {
+                //     $(this).html( e.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                // })
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                    // defer:      '{bool} Deferred initialization mode'
+                })
+                .on('update.countdown', function(event) {
+                    // console.log(event.offset.minutes == 12);
+                    if(event.offset.totalDays == 1 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Form Inovasi Dibuka dalam' + ' ' + 2 + 'Hari',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalDays == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Form Inovasi Dibuka Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalHours == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Form Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalMinutes == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Form Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 // .then('finish.countdown',function(e){
                 //     e.preventDefault();
@@ -777,13 +915,151 @@
             // var nextYear = moment.utc(_expire).toDate();
             // console.log(nextYear.utc().toDate());
             // _this.countdown(nextYear, function(event) {
-            _this.countdown(_expire, function(event) {
-            // _this.countdown(_expire)
+            flag2 = true;
+            _this.countdown(_expire,{
+                elapse:     false,
+                precision:  1000,
+                // defer:      '{bool} Deferred initialization mode'
+            })
+            // _this.countdown(_expire, function(event) {
+            // // _this.countdown(_expire)
+            //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+            // })
+            .on('update.countdown', function(event) {
+                // console.log(event.offset.minutes == 12);
+                if(event.offset.totalDays == 1 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                if(event.offset.totalDays == 0 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup Besok',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                if(event.offset.totalHours == 0 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
+                if(event.offset.totalMinutes == 0 && flag2) {
+                    flag2 = false;
+                    Swal.fire({
+                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                }
                 $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Form Inovasi Ditutup',
+                    title: 'Form Inovasi Sudah Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,
@@ -845,38 +1121,32 @@
         <div class="col-xxl">
 
             @if(session('message-success-form-inovation'))
-            {{-- <div class=""> --}}
-                <div class="card mx-4 d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                    </svg>
-                    <div class="d-flex flex-md-row">
-                        <p>
-                            <strong><b>   {{ session('message-success-form-inovation') }} </b></strong>
-                        </p>
-                    </div>
+            <div class="card mx-4 d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <div class="d-flex flex-md-row">
+                    <p>
+                        <strong><b>   {{ session('message-success-form-inovation') }} </b></strong>
+                    </p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+            @elseif(session('message-failed-form-inovation'))
+            <div class="card mx-4 d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                <div class="d-flex flex-md-row">
+                    <p>
+                        <strong><b>   {{ session('message-failed-form-inovation') }}  </b></strong>
+                    </p>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>
                 </div>
-            {{-- </div> --}}
-            @elseif(session('message-failed-form-inovation'))
-            {{-- <div class="card mx-4"> --}}
-                <div class="card mx-4 d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>
-                    <div class="d-flex flex-md-row">
-                        <p>
-                            <strong><b>   {{ session('message-failed-form-inovation') }}  </b></strong>
-                        </p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
-                </div>
-            {{-- </div> --}}
+            </div>
             @endif
-
-
 
             <div class="card mx-4">
 
@@ -886,324 +1156,327 @@
                 </div>
                 <!--/ Form Read Inovation List Title -->
 
-                {{-- @if ($timer == null)
-                <div class="container-fluid">
-                    <div class="titleCountDownNonActive">
-                        <h1>
-                            <span>Form Inovasi Ditutup</span>
-                        </h1>
-                    </div>
-                </div> --}}
-
-                @if ( ($timer->status_open == null && $timer->date_time_open_form_inovation == null) && ($timer->status_expired == null && $timer->date_time_expired_form_inovation == null) )
-                {{-- @elseif ($timer->status_open == null && $timer->date_time_open_form_inovation == null) --}}
-                <div class="container-fluid">
-                    <div class="titleCountDownNonActive">
-                        <h1>
-                            <span>Form Inovasi Ditutup</span>
-                        </h1>
-                    </div>
-                </div>
-
-                @elseif (
-                    (
-                        ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                    )
-                    ||
-                    (
-                        ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                    )
-                )
-                <div class="container-fluid">
-                    <div class="titleCountDownNonActive">
-                        <h1>
-                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form</span>
-                        </h1>
-                    </div>
-                </div>
-
-                @elseif (
-                    (
-                            ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
-                            // || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
-                            ))
-                        &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                    )
-                    ||
-                    (
-                            ($timer->status_open == 1 && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString()
-                            // || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()
-                            ))
-                        &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                    )
-                )
-                <div class="container-fluid ">
-                    <div class="openTimerCountDown">
-                        <div class="titleCountDown">
-                            <h1>Pembukaan Form Inovasi</h1>
-                        </div>
-                        <div class="dateCountDown">
-                            {{-- d-m-Y --}}
-                            {{-- dddd, D MMMM Y --}}
-                            <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
-                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
-                            <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
-                            <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
-                        </div>
-                        <div class="timeCountDown">
-                            <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
-                            <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
-                            <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
-                        </div>
-                        <div class="titleCountDown">
-                            <h1>Coming Soon</h1>
-                        </div>
-                        <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString() }}">
-                        {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
-                        {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
-                        </div>
-                    </div>
-                </div>
-
-                @elseif (
-                    (
-                            (
-                                    ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation) )
-                                &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                            )
-                        ||  (
-                                    ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
-                                &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                            )
-                    )
-                    ||
-                    (
-                            (
-                                    ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
-                                &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                            )
-                        || (
-                                    ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
-                                &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
-                            )
-                    )
-                )
-
-                <div class="closeTimerCountDown">
-
-                    <!-- Button Create Form Inovation List -->
-                    <div class="py-3 d-flex flex-column justify-content-start">
-                        @if (
-                            (
-                                ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                            ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                        )
-                            <div class="mx-1 mx-1 mx-1">
-                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
-                            </div>
-                        @else
-                            <div class="mx-1 mx-1 mx-1">
-                                <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
-                            </div>
-                            <div class="mx-1 mx-1 mx-1">
-                                {{-- <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div> --}}
-                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString()  }}"></div>
-                                {{-- 2022-12-27 23:59:00"></div> --}}
-                            </div>
-                        @endif
-
-                        @if ($rewardInovationCreateReject != true)
-                        {{-- @if (
-                            (
-                                    ($rewardInovationCreateReject->created_at >= $timer->date_time_open_form_inovation)
-                                &&  ($rewardInovationCreateReject->created_at <= $timer->date_time_expired_form_inovation)
-                            )
-                            &&
-                            (
-                                    ($rewardInovationCreateReject->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
-                                &&  ($rewardInovationCreateReject->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
-                            )
-                            &&
-                            (
-                                ($rewardInovationCreateReject->employee_id == Auth::guard('employees')->user()->id)
-                            )
-                            &&
-                            (
-                                ($rewardInovationCreateReject->status_process == 0)
-                            )
-                        ) --}}
-                        <div class="mx-1 mx-1 mx-1">
-                            <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
-                            </a>
-                        </div>
-                        @elseif ($rewardInovationCreateNull == true)
-                        {{-- @elseif (
-                            (
-                                    ($rewardInovationCreateNull->created_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
-                                &&  ($rewardInovationCreateNull->created_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
-                            )
-                            &&
-                            (
-                                    ($rewardInovationCreateNull->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
-                                &&  ($rewardInovationCreateNull->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
-                            )
-                            &&
-                            (
-                                ($rewardInovationCreateNull->employee_id == Auth::guard('employees')->user()->id)
-                            )
-                            &&
-                            (
-                                ($rewardInovationCreateNull->status_process == 0)
-                            )
-                        ) --}}
-                        <div class="mx-1 mx-1 mx-1">
-                            <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
-                            </a>
-                        </div>
-                        @elseif ($rewardInovationCreate == true)
-                        {{-- @elseif (
-                            (
-                                    ($rewardInovationCreate->created_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
-                                &&  ($rewardInovationCreate->created_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
-                            )
-                            &&
-                            (
-                                    ($rewardInovationCreate->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
-                                &&  ($rewardInovationCreate->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
-                            )
-                            &&
-                            (
-                                ($rewardInovationCreate->employee_id == Auth::guard('employees')->user()->id)
-                            )
-                            &&
-                            (
-                                ($rewardInovationCreate->status_process == 1 || $rewardInovationCreate->status_process == 2)
-                            )
-                        ) --}}
-                        <div class="no-Button"></div>
-                        @endif
-                    </div>
-                    <!--/ Button Create Form Inovation List -->
-
-                    <!-- Tabs -->
-                    <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-
-                        <!-- Tabs Form Inovation Waiting -->
-                        <li class="nav-item" role="presentation">
-                            <!-- 2=menunggu -->
-                            <button class="nav-link {{ (request()->is('form-inovation/list')) ? 'active' : '' }} text-center" id="pills-wait-tab" data-bs-toggle="pill" data-bs-target="#pills-wait" type="button" role="tab" aria-controls="pills-wait" aria-selected="{{ (request()->is('form-inovation/list')) ? 'true' : 'false' }}">Menunggu</button>
-                        </li>
-                        <!--/ Tabs Form Inovation Waiting -->
-
-                        <!-- Tabs Form Inovation Back -->
-                        <li class="nav-item" role="presentation">
-                            <!-- 1=dikembalikan -->
-                            <button class="nav-link text-center" id="pills-back-tab" data-bs-toggle="pill" data-bs-target="#pills-back" type="button" role="tab" aria-controls="pills-back" aria-selected="false">Dikembalikan</button>
-                        </li>
-                        <!--/ Tabs Form Inovation Back -->
-
-                        <!-- Tabs Form Inovation Reject -->
-                        <li class="nav-item" role="presentation">
-                            <!-- 0=ditolak -->
-                            <button class="nav-link text-center" id="pills-reject-tab" data-bs-toggle="pill" data-bs-target="#pills-reject" type="button" role="tab" aria-controls="pills-reject" aria-selected="false">Ditolak</button>
-                        </li>
-                        <!--/ Tabs Form Inovation Reject -->
-
-                    </ul>
-                    <!--/ Tabs -->
-
+                @if ($timer == null)
 
                     <div class="container-fluid">
+                        <div class="titleCountDownNonActive">
+                            <h1>
+                                <span>Form Inovasi Ditutup</span>
+                            </h1>
+                        </div>
+                    </div>
+
+                @elseif ($timer != null)
+
+                    {{-- @if ( ($timer->status_open == null && $timer->date_time_open_form_inovation == null) && ($timer->status_expired == null && $timer->date_time_expired_form_inovation == null) ) --}}
+                    {{-- @elseif ($timer->status_open == null && $timer->date_time_open_form_inovation == null) --}}
+                    {{-- <div class="container-fluid">
+                        <div class="titleCountDownNonActive">
+                            <h1>
+                                <span>Form Inovasi Ditutup</span>
+                            </h1>
+                        </div>
+                    </div> --}}
+
+                    @if (
+                        (
+                            ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                        )
+                        ||
+                        (
+                            ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                        )
+                    )
+                    <div class="container-fluid">
+                        <div class="titleCountDownNonActive">
+                            <h1>
+                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form</span>
+                            </h1>
+                        </div>
+                    </div>
+
+                    @elseif (
+                        (
+                                    ($timer->status_open == 1
+                                && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString() ?? 'None'))
+                            &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                        )
+                        ||
+                        (
+                                    ($timer->status_open == 1
+                                && ($timer->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timer->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()) ?? 'None')
+                            &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                        )
+                    )
+                    <div class="container-fluid ">
+                        <div class="openTimerCountDown">
+                            <div class="titleCountDown">
+                                <h1>Pembukaan Form Inovasi</h1>
+                            </div>
+                            <div class="dateCountDown">
+                                {{-- d-m-Y --}}
+                                {{-- dddd, D MMMM Y --}}
+                                <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
+                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
+                                <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
+                                <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
+                            </div>
+                            <div class="timeCountDown">
+                                <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
+                                <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
+                                <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
+                            </div>
+                            <div class="titleCountDown">
+                                <h1>Coming Soon</h1>
+                            </div>
+                            <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString() }}">
+                            {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
+                            {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    @elseif (
+                        (
+                                (
+                                        ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation ?? 'None') )
+                                    &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                                )
+                            ||  (
+                                        ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+                                    &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                                )
+                        )
+                        ||
+                        (
+                                (
+                                        ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+                                    &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                                )
+                            || (
+                                        ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_inovation))
+                                    &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
+                                )
+                        )
+                    )
+
+                    <div class="closeTimerCountDown">
+
+                        <!-- Button Create Form Inovation List -->
+                        <div class="py-3 d-flex flex-column justify-content-start">
+                            @if (
+                                (
+                                    ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                                ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                            )
+                                <div class="mx-1 mx-1 mx-1">
+                                    <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
+                                </div>
+                            @else
+                                <div class="mx-1 mx-1 mx-1">
+                                    <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
+                                </div>
+                                <div class="mx-1 mx-1 mx-1">
+                                    {{-- <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->format('Y/m/d h:i:s') }}"></div> --}}
+                                    <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString()  }}"></div>
+                                    {{-- 2022-12-27 23:59:00"></div> --}}
+                                </div>
+                            @endif
+
+                            @if ($rewardInovationCreateReject != true)
+                            {{-- @if (
+                                (
+                                        ($rewardInovationCreateReject->created_at >= $timer->date_time_open_form_inovation)
+                                    &&  ($rewardInovationCreateReject->created_at <= $timer->date_time_expired_form_inovation)
+                                )
+                                &&
+                                (
+                                        ($rewardInovationCreateReject->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                    &&  ($rewardInovationCreateReject->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                                )
+                                &&
+                                (
+                                    ($rewardInovationCreateReject->employee_id == Auth::guard('employees')->user()->id)
+                                )
+                                &&
+                                (
+                                    ($rewardInovationCreateReject->status_process == 0)
+                                )
+                            ) --}}
+                            <div class="mx-1 mx-1 mx-1">
+                                <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
+                                    <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
+                                </a>
+                            </div>
+                            @elseif ($rewardInovationCreateNull == true)
+                            {{-- @elseif (
+                                (
+                                        ($rewardInovationCreateNull->created_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                    &&  ($rewardInovationCreateNull->created_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                                )
+                                &&
+                                (
+                                        ($rewardInovationCreateNull->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                    &&  ($rewardInovationCreateNull->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                                )
+                                &&
+                                (
+                                    ($rewardInovationCreateNull->employee_id == Auth::guard('employees')->user()->id)
+                                )
+                                &&
+                                (
+                                    ($rewardInovationCreateNull->status_process == 0)
+                                )
+                            ) --}}
+                            <div class="mx-1 mx-1 mx-1">
+                                <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
+                                    <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
+                                </a>
+                            </div>
+                            @elseif ($rewardInovationCreate == true)
+                            {{-- @elseif (
+                                (
+                                        ($rewardInovationCreate->created_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                    &&  ($rewardInovationCreate->created_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                                )
+                                &&
+                                (
+                                        ($rewardInovationCreate->updated_at >= \Carbon\Carbon::parse($timer->date_time_open_form_inovation)->toDateTimeString())
+                                    &&  ($rewardInovationCreate->updated_at <= \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString())
+                                )
+                                &&
+                                (
+                                    ($rewardInovationCreate->employee_id == Auth::guard('employees')->user()->id)
+                                )
+                                &&
+                                (
+                                    ($rewardInovationCreate->status_process == 1 || $rewardInovationCreate->status_process == 2)
+                                )
+                            ) --}}
+                            <div class="no-Button"></div>
+                            @endif
+                        </div>
+                        <!--/ Button Create Form Inovation List -->
 
                         <!-- Tabs -->
-                        <div class="tab-content" id="pills-tabContent">
+                        <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+
                             <!-- Tabs Form Inovation Waiting -->
-                            <div class="tab-pane fade show {{ (request()->is('form-inovation/list')) ? 'active' : '' }}" id="pills-wait" role="tabpanel" aria-labelledby="pills-wait-tab">
-
-                                @if ($rewardInovation != null)
-                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Status Process</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                @endif
-
-                            </div>
+                            <li class="nav-item" role="presentation">
+                                <!-- 2=menunggu -->
+                                <button class="nav-link {{ (request()->is('form-inovation/list')) ? 'active' : '' }} text-center" id="pills-wait-tab" data-bs-toggle="pill" data-bs-target="#pills-wait" type="button" role="tab" aria-controls="pills-wait" aria-selected="{{ (request()->is('form-inovation/list')) ? 'true' : 'false' }}">Menunggu</button>
+                            </li>
                             <!--/ Tabs Form Inovation Waiting -->
 
                             <!-- Tabs Form Inovation Back -->
-                            <div class="tab-pane fade" id="pills-back" role="tabpanel" aria-labelledby="pills-back-tab">
-
-                                @if ($rewardInovationBack != null)
-                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table1">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Status Process</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                @endif
-
-                            </div>
+                            <li class="nav-item" role="presentation">
+                                <!-- 1=dikembalikan -->
+                                <button class="nav-link text-center" id="pills-back-tab" data-bs-toggle="pill" data-bs-target="#pills-back" type="button" role="tab" aria-controls="pills-back" aria-selected="false">Dikembalikan</button>
+                            </li>
                             <!--/ Tabs Form Inovation Back -->
 
                             <!-- Tabs Form Inovation Reject -->
-                            <div class="tab-pane fade" id="pills-reject" role="tabpanel" aria-labelledby="pills-reject-tab">
-
-                                @if ($rewardInovationReject != null)
-                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table0">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Status Process</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                @endif
-
-                            </div>
+                            <li class="nav-item" role="presentation">
+                                <!-- 0=ditolak -->
+                                <button class="nav-link text-center" id="pills-reject-tab" data-bs-toggle="pill" data-bs-target="#pills-reject" type="button" role="tab" aria-controls="pills-reject" aria-selected="false">Ditolak</button>
+                            </li>
                             <!--/ Tabs Form Inovation Reject -->
 
-                        </div>
+                        </ul>
                         <!--/ Tabs -->
+
+
+                        <div class="container-fluid">
+
+                            <!-- Tabs -->
+                            <div class="tab-content" id="pills-tabContent">
+                                <!-- Tabs Form Inovation Waiting -->
+                                <div class="tab-pane fade show {{ (request()->is('form-inovation/list')) ? 'active' : '' }}" id="pills-wait" role="tabpanel" aria-labelledby="pills-wait-tab">
+
+                                    @if ($rewardInovation != null)
+                                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                                <th scope="col">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    @endif
+
+                                </div>
+                                <!--/ Tabs Form Inovation Waiting -->
+
+                                <!-- Tabs Form Inovation Back -->
+                                <div class="tab-pane fade" id="pills-back" role="tabpanel" aria-labelledby="pills-back-tab">
+
+                                    @if ($rewardInovationBack != null)
+                                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table1">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                                <th scope="col">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    @endif
+
+                                </div>
+                                <!--/ Tabs Form Inovation Back -->
+
+                                <!-- Tabs Form Inovation Reject -->
+                                <div class="tab-pane fade" id="pills-reject" role="tabpanel" aria-labelledby="pills-reject-tab">
+
+                                    @if ($rewardInovationReject != null)
+                                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                                <th scope="col">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    @endif
+
+                                </div>
+                                <!--/ Tabs Form Inovation Reject -->
+
+                            </div>
+                            <!--/ Tabs -->
+                        </div>
+
                     </div>
 
-                </div>
-
-                @elseif (
-                    (
-                            ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
-                        ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                    @elseif (
+                        (
+                                ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                            ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                        )
+                        ||
+                        (
+                                ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                            || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
+                        )
                     )
-                    ||
-                    (
-                            ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
-                        || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
-                    )
-                )
 
-                <div class="container-fluid">
-                    <div class="titleCountDownNonActive">
-                        <h1>
-                            <span>Form Inovasi Telah Ditutup</span>
-                        </h1>
+                    <div class="container-fluid">
+                        <div class="titleCountDownNonActive">
+                            <h1>
+                                <span>Form Inovasi Telah Ditutup</span>
+                            </h1>
+                        </div>
                     </div>
-                </div>
+
+                    @endif
 
                 @endif
 

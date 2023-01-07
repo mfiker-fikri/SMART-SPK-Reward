@@ -78,13 +78,13 @@ class ManageTimerCountDownController extends Controller
             // if(CountdownTimerFormInovation::isNotEmpty('date_time_form_inovation')) {
             // ddd(Carbon::now()->toDateString());
             // ddd($request['date_time_countdown_inovation_form']);
-            $dateTimeOpen       =   new Carbon($request['date_time_open_countdown_inovation_form']);
-            $dateOpen           =   $dateTimeOpen->toDateString();
-            $dateOpenTime       =   $dateTimeOpen->toDateTimeString();
+            $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_inovation_form']);
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired       =   new Carbon($request['date_time_expired_countdown_inovation_form']);
-            $dateExpired           =   $dateTimeExpired->toDateString();
-            $dateExpiredTime       =   $dateTimeExpired->toDateTimeString();
+            $dateTimeExpired        =   new Carbon($request['date_time_expired_countdown_inovation_form']);
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
             // ddd($date);
 
             // $dateTime = Carbon::createFromFormat('Y-m-d H:i:s', $request['date_time_countdown_inovation_form'])->year();
@@ -228,7 +228,7 @@ class ManageTimerCountDownController extends Controller
     {
         try {
             $timer  =   CountdownTimerFormTeladan::first();
-            ddd($timer->id);
+            // ddd($timer->id);
             return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_teladan_index-create', compact('timer'));
         } catch (\Throwable $th) {
             throw $th;
@@ -250,12 +250,16 @@ class ManageTimerCountDownController extends Controller
             $validate = Validator::make(
                 $request->all(),
                 [
-                    'date_time_countdown_teladan_form'              =>  'required',
-                    'status'                                        =>  'required',
+                    'date_time_open_countdown_teladan_form'                     =>  'required',
+                    'status_open'                                               =>  'required',
+                    'date_time_expired_countdown_teladan_form'                  =>  'required',
+                    'status_expired'                                            =>  'required',
                 ],
                 [
-                    'date_time_countdown_teladan_form.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
-                    'status.required'                               =>  'Status Wajib Dipilih!',
+                    'date_time_open_countdown_teladan_form.required'            =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'status_open.required'                                      =>  'Status Wajib Dipilih!',
+                    'date_time_expired_countdown_teladan_form.required'         =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'status_expired.required'                                   =>  'Status Wajib Dipilih!',
 
                     // 'date_time_countdown_inovation_form.date_format'    => ''
                 ]
@@ -273,20 +277,38 @@ class ManageTimerCountDownController extends Controller
             // if(CountdownTimerFormInovation::isNotEmpty('date_time_form_inovation')) {
             // ddd(Carbon::now()->toDateString());
             // ddd($request['date_time_countdown_inovation_form']);
-            $dateTime   =   new Carbon($request['date_time_countdown_teladan_form']);
-            $date =   $dateTime->toDateString();
+            $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_teladan_form']);
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($request['date_time_expired_countdown_teladan_form']);
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
             // ddd($date);
 
             // $dateTime = Carbon::createFromFormat('Y-m-d H:i:s', $request['date_time_countdown_inovation_form'])->year();
 
             // Update
             if($request['id'] != null) {
-                if($date != Carbon::now()->toDateString() ) {
+                $id  =  CountdownTimerFormInovation::find($request['id']);
+
+                if ($dateOpenTime === $id->date_time_open_form_teladan && $dateExpiredTime === $id->date_time_expired_form_teladan) {
+                    $id->status_open                                    =  $request['status_open'];
+                    $id->status_expired                                 =  $request['status_expired'];
+                    $id->save();
+
+                    alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
+                    return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Form Inovation!');
+                }
+
+                if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     $id  =  CountdownTimerFormTeladan::find($request['id']);
 
                     if($id) {
-                        $id->date_time_form_teladan        =  $request['date_time_countdown_teladan_form'];
-                        $id->status                        =  $request['status'];
+                        $id->date_time_open_form_teladan           =  $request['date_time_open_countdown_teladan_form'];
+                        $id->status_open                           =  $request['status_open'];
+                        $id->date_time_expired_form_teladan        =  $request['date_time_expired_countdown_teladan_form'];
+                        $id->status_expired                        =  $request['status_expired'];
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Form Teladan!')->autoclose(25000);
@@ -301,11 +323,13 @@ class ManageTimerCountDownController extends Controller
             }
             // Create
             else {
-                if($date != Carbon::now()->toDateString() ) {
+                if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     // Create New Timer
                     $timer = CountdownTimerFormTeladan::create([
-                        'date_time_form_teladan'        =>  $request['date_time_countdown_teladan_form'],
-                        'status'                        =>  $request['status'],
+                        'date_time_open_form_teladan'        =>  $request['date_time_open_countdown_teladan_form'],
+                        'status_open'                        =>  $request['status_open'],
+                        'date_time_expired_form_teladan'     =>  $request['date_time_expired_countdown_teladan_form'],
+                        'status_expired'                     =>  $request['status_expired'],
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);

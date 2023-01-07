@@ -67,9 +67,15 @@ class ManageAppraismentInovationController extends Controller
 
             $data = RewardInovation::
                 // DB::table('reward_inovation')
-                where(['status_process' => 3])
-                ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
-                ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['status_process', '==', 3]
+                ])
+                // ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
+                // ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
                 // ->orWhere(['created_at', '>=', $timer->date_time_open_form_inovation])
                 // ->orWhere(['created_at', '<=', $timer->date_time_expired_form_inovation])
                 // ->orWhere(['updated_at', '>=', $timer->date_time_open_form_inovation])
@@ -78,6 +84,7 @@ class ManageAppraismentInovationController extends Controller
                 ->get();
             // ddd($data);
             // return json_encode($data);
+
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {

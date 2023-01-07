@@ -74,7 +74,7 @@
         <!--/ Manage Account Human Resources -->
 
         <!-- Manage Account Score Finalis -->
-        <li class="menu-header small text-uppercase">
+        {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Kelola Akun Tim Penilai</span>
         </li>
 
@@ -83,7 +83,7 @@
                 <i class="menu-icon tf-icons fa-solid fa-users"></i>
                 <div data-i18n="Analytics">Akun Data Tim Penilai</div>
             </a>
-        </li>
+        </li> --}}
         <!--/ Manage Account Score Finalis -->
 
         <!-- Manage Account Employee -->

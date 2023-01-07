@@ -115,13 +115,13 @@
                 <div class="card-body py-xl-5 py-sm-5 px-xl-5">
                     <form id="formCreateTimerFormTeladan" class="mx-2" method="POST" action="{{ route('sdm.postTimerCountDownFormTeladan.Index.Create.SDM') }}">
                         @csrf
-                        @if ($timer->id == null)
+                        @if ($timer == null)
                         <input type="hidden" name="id" value="">
                         @else
                         <input type="hidden" name="id" value="{{ $timer->id }}">
                         @endif
 
-                        <!-- Timer Countdown-->
+                        <!-- Timer Countdown Open Form-->
                         <div class="mb-3 row {{ $errors->has('date_time_open_countdown_teladan_form') ? 'is-invalid' : '' }}">
                             <label for="date_time_open_countdown_teladan_form" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam</label>
                             <div class="col-sm-9">
@@ -131,7 +131,7 @@
                                     </span>
                                     <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_countdown_teladan_form') ? 'is-invalid' : '' }}" id="date_time_open_countdown_teladan_form"
                                         name="date_time_open_countdown_teladan_form" placeholder="*Select Date Time"
-                                        @if ($timer->date_time_open_form_teladan == null)
+                                        @if ($timer == null)
                                         autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_form') }}"
                                         @else
                                         autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_form', $timer->date_time_open_form_teladan) }}"
@@ -140,17 +140,17 @@
                                 </div>
                                 <div id="date_time_open_countdown_teladan_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
                                 <div class="d-flex flex-column">
-                                    <!-- Error Timer Countdown -->
+                                    <!-- Error Timer Countdown Open Form -->
                                     @if ( $errors->has('date_time_open_countdown_teladan_form') )
                                         <span class="help-block">
                                             <strong>{{ $errors->first('date_time_open_countdown_teladan_form') }}</strong>
                                         </span>
                                     @endif
-                                    <!--/ Error Timer Countdown -->
+                                    <!--/ Error Timer Countdown Open Form -->
                                 </div>
                             </div>
                         </div>
-                        <!--/ Timer Countdown-->
+                        <!--/ Timer Countdown Open Form -->
 
                         <!-- Status Open -->
                         <div class="mb-3 row {{ $errors->has('status_open') ? 'is-invalid' : '' }}">
@@ -160,7 +160,7 @@
                                     <span class="input-group-text {{ $errors->has('status_open') ? 'is-invalid' : '' }}">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
-                                    @if ($timer->status_open == null)
+                                    @if ($timer == null)
                                     <input type="hidden" value="{{ old('status_open') }}" id="oldOpenStatus" />
                                     @else
                                     <input type="hidden" value="{{ old('status_open', $timer->status_open) }}" id="oldStatusOpen" />
@@ -201,7 +201,7 @@
                                     </span>
                                     <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_countdown_teladan_form') ? 'is-invalid' : '' }}" id="date_time_expired_countdown_teladan_form"
                                         name="date_time_expired_countdown_teladan_form" placeholder="*Select Date Time"
-                                        @if ($timer->date_time_expired_form_teladan == null)
+                                        @if ($timer == null)
                                         autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_form') }}"
                                         @else
                                         autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_form', $timer->date_time_expired_form_teladan) }}"
@@ -230,7 +230,7 @@
                                     <span class="input-group-text {{ $errors->has('status_expired') ? 'is-invalid' : '' }}">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
-                                    @if ($timer->status_expired == null)
+                                    @if ($timer == null)
                                     <input type="hidden" value="{{ old('status_expired') }}" id="oldExpiredStatus" />
                                     @else
                                     <input type="hidden" value="{{ old('status_expired', $timer->status_expired) }}" id="oldStatusExpired" />
@@ -240,7 +240,7 @@
                                         autofocus autocomplete required
                                         aria-invalid="true" aria-describedby="status_expired" data-val="true" aria-label="status_expired" data-placeholder="-- Pilih Status Close --">
                                         <option disabled selected>-- Pilih Status Close --</option>
-                                        @if ($timer->status_expired == null)
+                                        @if ($timer == null)
                                         <option value="0" @if(old('status_expired' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                         <option value="1" @if(old('status_expired' ) == 1 ) selected="selected" @endif>Aktif</option>
                                         @else
