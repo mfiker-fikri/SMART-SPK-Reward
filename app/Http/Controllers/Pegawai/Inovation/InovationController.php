@@ -618,7 +618,7 @@ class InovationController extends Controller
             // Check Validation Failed
             if ($validate->fails()) {
                 alert()->error('Gagal Upload Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-form-inovation-error', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
             }
 
             // $id                         =       Auth::guard('employees')->user()->id;
@@ -717,10 +717,10 @@ class InovationController extends Controller
 
                     if ($rewardInovation) {
                         alert()->success('Berhasil Upload Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                        return redirect()->back();
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Tambah Persyaratan Penghargaan Inovasi');
                     } else {
                         alert()->error('Gagal Upload Persyaratan Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
-                        return redirect()->back();
+                        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Tambah Persyaratan Penghargaan Inovasi');
                     }
                 }
 
@@ -780,23 +780,17 @@ class InovationController extends Controller
 
                 if ($rewardInovation) {
                     alert()->success('Berhasil Upload Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Upload Persyaratan Penghargaan Inovasi');
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Tambah Persyaratan Penghargaan Inovasi');
                 } else {
                     alert()->error('Gagal Upload Persyaratan Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
-                    return redirect()->back();
+                    return redirect()->back()->with('message-failed-form-inovation', 'Gagal Tambah Persyaratan Penghargaan Inovasi');
                 }
             }
         }
 
         alert()->error('Gagal Upload Form Inovasi!', 'Formulir Inovasi Sudah Ditutup')->autoclose(25000);
-        return redirect()->back()->with('message-form-inovation-error', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
-        // Jika Ada Upload Foto
-        // if ($request->hasFile('uploadPhoto')) {
-        // }
+        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
 
-        // Jika Ada Upload Video
-        // if ($request->hasFile('uploadVideo')) {
-        // }
     }
 
     /**
@@ -1392,7 +1386,7 @@ class InovationController extends Controller
             $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
             $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
 
-            // Delete Image dan Video
+            // Delete Document, Image dan Video
             if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
                 unlink($link1);
                 unlink($link2);

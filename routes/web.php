@@ -333,7 +333,14 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     Route::Post('form-representative/create/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanFormCreate'])->name('postTeladanFormCreate.Create.Pegawai');
     // Read
     Route::GET('form-representative/list', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormList'])->name('getTeladanFormList.Read.Pegawai');
+    // 0=ditolak
+    Route::GET('form-representative/list/data/reject', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormDataReject'])->name('getTeladanFormData.Read.Reject.Pegawai');
+    // 1=dikembalikan
+    Route::GET('form-representative/list/data/back', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormDataBack'])->name('getTeladanFormData.Read.Back.Pegawai');
+    // 2=menunggu
     Route::GET('form-representative/list/data', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormData'])->name('getTeladanFormData.Read.Pegawai');
+    // 3=diproses
+    Route::GET('form-representative/list/data/process', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanFormDataProcess'])->name('getTeladanFormData.Read.Process.Pegawai');
     // Update
     Route::GET('form-representative/update/{id}', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'getTeladanIdUpdate'])->name('getTeladanIdUpdate.Update.Pegawai');
     Route::POST('form-representative/update/{id}/post', [App\Http\Controllers\Pegawai\Teladan\TeladanController::class, 'postTeladanIdUpdate'])->name('postTeladanIdUpdate.Update.Pegawai');

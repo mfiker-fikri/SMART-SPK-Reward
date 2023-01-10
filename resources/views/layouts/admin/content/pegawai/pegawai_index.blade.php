@@ -69,6 +69,30 @@
                                     location.reload();
                                 }
                             })
+                        },
+                        error: function(event,xhr,options,exc){
+                            if (event.status == 401) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Your Authorized Failed!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }else if (event.status == 500) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something Went Wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something went wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }
                         }
                     });
                 } else {

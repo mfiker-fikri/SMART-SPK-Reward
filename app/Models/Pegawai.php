@@ -45,11 +45,11 @@ class Pegawai extends Authenticatable
         // 'email_verified_at',
         'username',
         'password',
-        // 
+        //
         'photo_profile',
         'place_birth',
         'date_birth',
-        // 
+        //
         'nip',
         'pendidikan',
         'pangkat',
@@ -57,7 +57,7 @@ class Pegawai extends Authenticatable
         'sk_cpns',
         'jabatan',
         'unit_kerja',
-        // 
+        //
         'last_seen',
         'status_active',
         'status_id'
@@ -97,6 +97,14 @@ class Pegawai extends Authenticatable
     {
         return $this->hasMany(
             RewardInovation::class
+        );
+    }
+
+// Employees One To Many Reward_teladan
+    public function rewardRepresentatives()
+    {
+        return $this->hasMany(
+            RewardTeladan::class
         );
     }
 }

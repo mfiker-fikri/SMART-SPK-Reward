@@ -29,7 +29,7 @@
             e.preventDefault();
             let id = $(this).attr('data-id');
             let username = $(this).attr('data-username');
-            console.log(id,username);
+            // console.log(id,username);
             Swal.fire({
                 title: 'Apakah kamu ingin menghapus data akun' + ' ' + username + '?',
                 icon: 'warning',
@@ -69,6 +69,30 @@
                                     location.reload();
                                 }
                             })
+                        },
+                        error: function(event,xhr,options,exc){
+                            if (event.status == 401) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Your Authorized Failed!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }else if (event.status == 500) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something Went Wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something went wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }
                         }
                     });
                 } else {
