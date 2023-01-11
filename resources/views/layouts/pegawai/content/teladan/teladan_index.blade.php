@@ -1073,7 +1073,7 @@
                                 <!-- Tabs Form Teladan Waiting -->
                                 <div class="tab-pane fade show {{ (request()->is('form-representative/list')) ? 'active' : '' }}" id="pills-wait" role="tabpanel" aria-labelledby="pills-wait-tab">
 
-                                    @if ($rewardTeladan != null)
+                                    {{-- @if ($rewardTeladan != null) --}}
                                     <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
                                         <thead>
                                             <tr>
@@ -1085,7 +1085,7 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-                                    @endif
+                                    {{-- @endif --}}
 
                                 </div>
                                 <!--/ Tabs Form Teladan Waiting -->

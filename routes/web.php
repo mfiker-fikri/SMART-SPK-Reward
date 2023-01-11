@@ -296,6 +296,8 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     //
     // Dashboard
     Route::GET('dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'dashboard'])->name('getDashboard.Pegawai');
+    Route::GET('dashboard/form-inovation/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.Pegawai');
+    Route::GET('dashboard/form-representative/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getTeladanFormData'])->name('getDashboard.getTeladanFormData.Read.Pegawai');
 
     // Profile
     Route::GET('profile', [App\Http\Controllers\Pegawai\PegawaiController::class, 'getProfile'])->name('getProfile.Pegawai');

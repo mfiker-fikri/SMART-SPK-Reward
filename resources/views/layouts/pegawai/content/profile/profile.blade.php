@@ -442,6 +442,9 @@
             });
         });
     </script> --}}
+
+    <!-- cleave.js -->
+    <script src="{{ URL::asset('assets/libs/cleave.js/cleave.min.js') }}"></script>
 @endpush
 
 

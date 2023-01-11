@@ -1,5 +1,76 @@
 @extends('template.pegawai.template')
 
+<!-- Header CSS -->
+@section('css_header')
+    <style>
+    @media (min-width: 992px) {
+        .mercadoCountdown1 {
+            padding: 0;
+            margin: 1em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 24px;
+            line-height: 100%;
+            text-align: center;
+            min-height: 7vh;
+            max-height: 7vh;
+        }
+
+        .mercadoCountdown1 span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        .mercadoCountdown1 {
+            padding: 0;
+            margin: 0.5em 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            color: #333;
+            font-size: 30px;
+            line-height: 100%;
+            text-align: center;
+            /* min-height: 5vh;
+            max-height: 5vh; */
+        }
+
+        .mercadoCountdown1 span {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            line-height: 100%;
+            text-align: center;
+        }
+    }
+
+    </style>
+@stop
+<!--/ Header CSS -->
+
 <!-- Footer Js -->
 @section('js_footer')
     <!-- Edit/Update -->

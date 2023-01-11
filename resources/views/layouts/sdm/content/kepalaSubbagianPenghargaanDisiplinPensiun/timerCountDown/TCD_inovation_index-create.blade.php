@@ -21,17 +21,49 @@
 
     <!-- Reset Select2 Status -->
     <script type="text/javascript">
-    $(document).on('click', '#resetStatus', function(e) {
+    function resetStatusNull(event){
+        var oldOpenStatus = document.getElementById("oldOpenStatus").getAttribute("value");
+        var oldExpiredStatus = document.getElementById("oldExpiredStatus").getAttribute("value");
+
+        if (oldOpenStatus && oldExpiredStatus) {
+            $('#status_open').val(oldOpenStatus).trigger('change');
+            $('#status_expired').val(oldExpiredStatus).trigger('change');
+        } else if (oldOpenStatus || oldExpiredStatus) {
+            $('#status_open').val(oldOpenStatus).trigger('change');
+            $('#status_expired').val(oldExpiredStatus).trigger('change');
+        } else {
+            $('#status_open').val(null).trigger('change');
+            $('#status_expired').val(null).trigger('change');
+        }
+    }
+    </script>
+
+    <script type="text/javascript">
+    // $(document).on('click', '#resetStatus', function(e) {
+    //     var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
+    //     var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
+    //     if (oldOpen && oldExpired) {
+    //         $('#status_open').val(oldOpen).trigger('change');
+    //         $('#status_expired').val(oldExpired).trigger('change');
+    //     } else {
+    //         $('#status_open').val(null).trigger('change');
+    //         $('#status_expired').val(null).trigger('change');
+    //     }
+    // });
+    function resetStatus(event){
         var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
         var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
         if (oldOpen && oldExpired) {
+            $('#status_open').val(oldOpen).trigger('change');
+            $('#status_expired').val(oldExpired).trigger('change');
+        } else if (oldOpen || oldExpired) {
             $('#status_open').val(oldOpen).trigger('change');
             $('#status_expired').val(oldExpired).trigger('change');
         } else {
             $('#status_open').val(null).trigger('change');
             $('#status_expired').val(null).trigger('change');
         }
-    });
+    }
     </script>
     <!--/ Reset Select2 Status -->
 
@@ -300,9 +332,15 @@
                                     <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                                 </button>
                                 @endif
-                                <button type="reset" class="btn btn-warning btn-lg" id="resetStatus">
+                                @if ($timer == null)
+                                <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNull()">
                                     <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                 </button>
+                                @else
+                                <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatus();">
+                                    <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                </button>
+                                @endif
                                 <button type="submit" class="btn btn-primary btn-lg" style="color: black">
                                     @if ($timer == null)
                                     <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save

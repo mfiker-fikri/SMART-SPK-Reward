@@ -61,7 +61,7 @@ class TeladanController extends Controller
                         ['updated_at', '>=', $dateOpenTime],
                         ['updated_at', '<=', $dateExpiredTime],
                         ['employee_id', '=', Auth::guard('employees')->user()->id],
-                        ['status_process', '=', 2],
+                        ['status_process', '=', 1],
                     ])
                     ->latest()
                     ->get();
@@ -346,7 +346,7 @@ class TeladanController extends Controller
                 ['created_at', '<=', $dateExpiredTime],
                 ['updated_at', '>=', $dateOpenTime],
                 ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                ['employee_id', '=', Auth::guard('employees')->user()->id],
                 ['status_process', '=', 3],
             ])
             ->latest()
@@ -356,7 +356,7 @@ class TeladanController extends Controller
             ->addIndexColumn()
             ->addColumn('status', function ($row) {
                 $status = '';
-                // =menunggu
+                // 2=menunggu
                 if($row->status_process == 2) {
                     $status = '<span>Sedang Tahap Menunggu</span>';
                 }
@@ -640,6 +640,524 @@ class TeladanController extends Controller
     public function show($id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getTeladanIdUpdate($id)
+    {
+        try {
+            // Get Timer Countdown
+            $timer                  =   CountdownTimerFormTeladan::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_teladan);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_teladan);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
+                // Find id Reward
+                $id_employee        =    Auth::guard('employees')->user()->id;
+                $rewardTeladan    =    RewardTeladan::where([
+                    'id' => $id,
+                    'employee_id' => $id_employee
+                    ])->first();
+                // ddd($rewardTeladan);
+                return view('layouts.pegawai.content.teladan.teladan_update', compact('rewardTeladan', 'timer'));
+            }
+            return back();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postTeladanIdUpdate(Request $request, $id)
+    {
+        // Get Timer Countdown
+        $timer                  =   CountdownTimerFormTeladan::first();
+
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_teladan);
+
+        $dateOpen               =   $dateTimeOpen->toDateString();
+        $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_teladan);
+
+        $dateExpired            =   $dateTimeExpired->toDateString();
+        $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+        if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
+
+            // Find id Reward
+            $rewardTeladan            =       RewardTeladan::find($id);
+
+            if($rewardTeladan) {
+                $validate = null;
+
+                // Jika upload sama
+                if($request['uploadFileUpdate'] === $rewardTeladan->upload_file_short_description || $request['uploadPhotoUpdate'] === $rewardTeladan->upload_file_image_support || $request['uploadVideoUpdate'] === $rewardTeladan->upload_file_video_support)
+                {
+                    $validate = Validator::make(
+                        $request->all(),
+                        [
+                            'uploadFile'                                  =>      'mimes:pdf|max:3072',
+                            // 'uploadFileUpdate'                            =>      'required',
+                            'uploadPhoto'                                 =>      'mimes:jpg,jpeg,png|image|max:5120',
+                            // 'uploadPhotoUpdate'                           =>      'required',
+                            'uploadVideo'                                 =>      'mimes:flv,mp4,3gp,mov,avi,wmv|max:1024000',
+                            // 'uploadVideoUpdate'                           =>      'required'
+                        ],
+                        [
+                            // 'uploadFileUpdate.required'                   =>      'File Wajib Diupload!',
+                            // 'uploadPhotoUpdate.required'                  =>      'Foto Wajib Diupload!',
+                            // 'uploadVideoUpdate.required'                  =>      'Video Wajib Diupload!',
+                            //
+                            'uploadFile.mimes'                            =>      'Extension File Harus Berupa pdf!',
+                            'uploadPhoto.mimes'                           =>      'Extension Foto Harus Berupa jpg / jpeg / png!',
+                            'uploadVideo.mimes'                           =>      'Extension Video Harus Berupa flv / mp4 / 3gp / mov / avi / wmv!',
+                            //
+                            'uploadPhoto.image'                           =>      'Diupload Harus Berupa Foto!',
+                            //
+                            'uploadFile.max'                              =>      'Maksimal Upload File 3Mb (3072 Kb)!',
+                            'uploadPhoto.max'                             =>      'Maksimal Upload Foto 5Mb (5120 Kb)!',
+                            'uploadVideo.max'                             =>      'Maksimal Upload Video 1Gb (1024000 Kb)!',
+                        ]
+                    );
+                } else
+                {
+                    $validate = Validator::make(
+                        $request->all(),
+                        [
+                            'uploadFile'                                  =>      'mimes:pdf|max:3072',
+                            'uploadFileUpdate'                            =>      'required',
+                            'uploadPhoto'                                 =>      'mimes:jpg,jpeg,png|image|max:5120',
+                            'uploadPhotoUpdate'                           =>      'required',
+                            'uploadVideo'                                 =>      'mimes:flv,mp4,3gp,mov,avi,wmv|max:1024000',
+                            'uploadVideoUpdate'                           =>      'required'
+                        ],
+                        [
+                            'uploadFileUpdate.required'                   =>      'File Wajib Diupload!',
+                            'uploadPhotoUpdate.required'                  =>      'Foto Wajib Diupload!',
+                            'uploadVideoUpdate.required'                  =>      'Video Wajib Diupload!',
+                            //
+                            'uploadFile.mimes'                            =>      'Extension File Harus Berupa pdf!',
+                            'uploadPhoto.mimes'                           =>      'Extension Foto Harus Berupa jpg / jpeg / png!',
+                            'uploadVideo.mimes'                           =>      'Extension Video Harus Berupa flv / mp4 / 3gp / mov / avi / wmv!',
+                            //
+                            'uploadPhoto.image'                           =>      'Diupload Harus Berupa Foto!',
+                            //
+                            'uploadFile.max'                              =>      'Maksimal Upload File 3Mb (3072 Kb)!',
+                            'uploadPhoto.max'                             =>      'Maksimal Upload Foto 5Mb (5120 Kb)!',
+                            'uploadVideo.max'                             =>      'Maksimal Upload Video 1Gb (1024000 Kb)!',
+                        ]
+                    );
+                }
+
+                //
+                if ($validate->fails()) {
+                    alert()->error('Gagal Update Form Teladan!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi')->withErrors($validate)->withInput($request->all());
+                }
+
+                // 1. Jika Diganti File
+                if ($request->hasFile('uploadFile')) {
+                    // Get Employee Username
+                    $employee                 =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link                       =       storage_path('app/public/employees/documents/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_short_description;
+
+                    // Delete File
+                    if (file_exists($link)) {
+                        unlink($link);
+                        $rewardTeladan->update(['upload_file_short_description' => '']);
+                    }
+
+                    // Get File
+                    $file                       =       $request->file('uploadFile');
+
+                    // Get Original Extension
+                    $fileExtension              =       $file->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // File Name
+                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+
+                    // Save Folder
+                    // $file->storeAs('app/public/employees/documents/requirementsEmployeesRewardTeladans/' . $employee, $fileName);
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardTeladans/' . $employee), $fileName);
+
+                    // Update Database File
+                    $rewardTeladan->upload_file_short_description     =   $fileName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+                // 2. Jika Diganti Image
+                if ($request->hasFile('uploadPhoto')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link                       =       storage_path('app/public/employees/images/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_image_support;
+
+                    // Delete Image
+                    if (file_exists($link)) {
+                        unlink($link);
+                        $rewardTeladan->update(['upload_file_image_support' => '']);
+                    }
+
+                    // Get Image
+                    $photo                      =       $request->file('uploadPhoto');
+
+                    // Get Original Extension
+                    $photoExtension             =       $photo->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Image Name
+                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+
+                    // Save Folder
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardTeladans/' . $employee, $photoName);
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardTeladans/' . $employee), $photoName);
+
+                    // Update Database Image
+                    $rewardTeladan->upload_file_image_support         =   $photoName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+                // 3. Jika Diganti Video
+                if ($request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link                       =       storage_path('app/public/employees/videos/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_video_support;
+
+                    // Delete Video
+                    if (file_exists($link)) {
+                        unlink($link);
+                        $rewardTeladan->update(['upload_file_video_support' => '']);
+                    }
+
+                    // Get Video
+                    $video                      =       $request->file('uploadVideo');
+
+                    // Get Original Extension
+                    $videoExtension             =       $video->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Video Name
+                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                    // Save Folder
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardTeladans/' . $employee, $videoName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardTeladans/' . $employee), $videoName);
+
+                    // Update Database Video
+                    $rewardTeladan->upload_file_video_support     =   $videoName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+
+                // 4. Jika Diganti File dan Image
+                if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_short_description;
+                    $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_image_support;
+
+                    // Delete File dan Image
+                    if (file_exists($link1) && file_exists($link2)) {
+                        unlink($link1);
+                        unlink($link2);
+                        $rewardTeladan->update(['upload_file_short_description' => '']);
+                        $rewardTeladan->update(['upload_file_image_support' => '']);
+                    }
+
+                    // Get File
+                    $file                       =       $request->file('uploadFile');
+                    // Get Photo
+                    $photo                      =       $request->file('uploadPhoto');
+
+                    // Get Original Extension
+                    $fileExtension              =       $file->getClientOriginalExtension();
+                    // Get Original Extension
+                    $photoExtension             =       $photo->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // File Name
+                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                    // Photo Name
+                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+
+                    // Save Folder
+                    // $file->storeAs('public/employees/documents/requirementsEmployeesRewardTeladans/' . $employee, $fileName);
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardTeladans/' . $employee, $photoName);
+
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardTeladans/' . $employee), $fileName);
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardTeladans/' . $employee), $photoName);
+
+                    // Update Database File dan Image
+                    $rewardTeladan->upload_file_short_description     =   $fileName;
+                    $rewardTeladan->upload_file_image_support         =   $photoName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+                // 5. Jika Diganti File dan Video
+                if ($request->hasFile('uploadFile') && $request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_short_description;
+                    $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_video_support;
+
+                    // Delete File dan Video
+                    if (file_exists($link1) && file_exists($link2)) {
+                        unlink($link1);
+                        unlink($link2);
+                        $rewardTeladan->update(['upload_file_short_description' => '']);
+                        $rewardTeladan->update(['upload_file_video_support' => '']);
+                    }
+
+                    // Get File
+                    $file                       =       $request->file('uploadFile');
+                    // Get Video
+                    $video                      =       $request->file('uploadVideo');
+
+                    // Get Original Extension
+                    $fileExtension              =       $file->getClientOriginalExtension();
+                    // Get Original Extension
+                    $videoExtension             =       $video->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // File Name
+                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                    // Video Name
+                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                    // Save Folder
+                    // $file->storeAs('public/employees/documents/requirementsEmployeesRewardTeladans/' . $employee, $fileName);
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardTeladans/' . $employee, $videoName);
+
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardTeladans/' . $employee), $fileName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardTeladans/' . $employee), $videoName);
+
+                    // Update Database File dan Video
+                    $rewardTeladan->upload_file_short_description     =   $fileName;
+                    $rewardTeladan->upload_file_video_support         =   $videoName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+                // 6. Jika Diganti Image dan Video
+                if ($request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_image_support;
+                    $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_video_support;
+
+                    // Delete Image dan Video
+                    if (file_exists($link1) && file_exists($link2)) {
+                        unlink($link1);
+                        unlink($link2);
+                        $rewardTeladan->update(['upload_file_image_support' => '']);
+                        $rewardTeladan->update(['upload_file_video_support' => '']);
+                    }
+
+                    // Get Photo
+                    $photo                      =       $request->file('uploadPhoto');
+                    // Get Video
+                    $video                      =       $request->file('uploadVideo');
+
+                    // Get Original Extension
+                    $photoExtension             =       $photo->getClientOriginalExtension();
+                    // Get Original Extension
+                    $videoExtension             =       $video->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Photo Name
+                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                    // Video Name
+                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                    // Save Folder
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardTeladans/' . $employee, $photoName);
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardTeladans/' . $employee, $videoName);
+
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardTeladans/' . $employee), $photoName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardTeladans/' . $employee), $videoName);
+
+                    // Update Database Image dan Video
+                    $rewardTeladan->upload_file_image_support         =   $photoName;
+                    $rewardTeladan->upload_file_video_support         =   $videoName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+                // 7. Jika Diganti File, Image, dan Video
+                if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // Find Reward Id
+                    $rewardTeladan            =       RewardTeladan::find($id);
+
+                    // Link
+                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_short_description;
+                    $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_image_support;
+                    $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardTeladans/') . $employee . '/' . $rewardTeladan->upload_file_video_support;
+
+                    // Delete Image dan Video
+                    if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
+                        unlink($link1);
+                        unlink($link2);
+                        unlink($link3);
+                        $rewardTeladan->update(['upload_file_short_description' => '']);
+                        $rewardTeladan->update(['upload_file_image_support' => '']);
+                        $rewardTeladan->update(['upload_file_video_support' => '']);
+                    }
+
+                    // Get File
+                    $file                       =       $request->file('uploadFile');
+                    // Get Photo
+                    $photo                      =       $request->file('uploadPhoto');
+                    // Get Video
+                    $video                      =       $request->file('uploadVideo');
+
+                    // Get Original Extension
+                    $fileExtension              =       $file->getClientOriginalExtension();
+                    // Get Original Extension
+                    $photoExtension             =       $photo->getClientOriginalExtension();
+                    // Get Original Extension
+                    $videoExtension             =       $video->getClientOriginalExtension();
+
+                    // Get Id Auth Employee
+                    $id                         =       Auth::guard('employees')->user()->id;
+
+                    // Get Employee Username
+                    $employee                   =       Auth::guard('employees')->user()->username;
+
+                    // File Name
+                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                    // Photo Name
+                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                    // Video Name
+                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                    // Save Folder
+                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardTeladans/' . $employee, $photoName);
+                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardTeladans/' . $employee, $videoName);
+
+                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardTeladans/' . $employee), $fileName);
+                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardTeladans/' . $employee), $photoName);
+                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardTeladans/' . $employee), $videoName);
+
+                    // Update Database File, Image dan Video
+                    $rewardTeladan->upload_file_short_description     =   $fileName;
+                    $rewardTeladan->upload_file_image_support         =   $photoName;
+                    $rewardTeladan->upload_file_video_support         =   $videoName;
+                    $rewardTeladan->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-representative/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+
+                // $rewardTeladan->upload_file_image_support         =   $request['uploadPhoto'];
+                // $rewardTeladan->upload_file_video_support         =   $request['uploadVideo'];
+
+                // 'upload_file_short_description' =>  $fileName,
+                // 'upload_file_image_support'     =>  $photoName,
+                // 'upload_file_video_support'     =>  $videoName,
+
+                alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                return redirect()->back()->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                // return redirect('form-representative/list');
+                // ->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+            }
+
+        }
+
+        alert()->error('Gagal Update Form Inovasi!', 'Form Sudah Ditutup')->autoclose(25000);
+        return redirect()->back()->with('message-form-inovation-error', 'Form Sudah Ditutup')->withInput($request->all());
+
     }
 
     /**

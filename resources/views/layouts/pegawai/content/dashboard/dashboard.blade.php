@@ -17,6 +17,58 @@
     </style>
 @stop
 
+<!-- Footer Js -->
+@section('js_footer')
+    <!-- Datatables Form Inovation -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var table = $('#data-table-inovation').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            paging: false,
+            searching: false,
+            ajax: "{{ url('dashboard/form-inovation/list/data') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                {data: 'status', name: 'status', orderable: false, searchable: false},
+            ]
+        });
+
+        new $.fn.dataTable.FixedHeader(table);
+    });
+    </script>
+    <!--/ Datatables Form Inovation -->
+
+    <!-- Datatables Form Teladan -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var table = $('#data-table-representative').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            paging: false,
+            searching: false,
+            ajax: "{{ url('dashboard/form-representative/list/data') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                {data: 'status', name: 'status', orderable: false, searchable: false},
+            ]
+        });
+
+        new $.fn.dataTable.FixedHeader(table);
+    });
+    </script>
+    <!--/ Datatables Form Teladan -->
+@stop
+
+
 @section('content')
 
 <div class="container-xxl container-p-y">
@@ -52,6 +104,52 @@
         </div>
 
         <div class="col-md-6 col-md-5 order-1">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center" style="max-width: 740px;min-height: 170px;">
+                        <div class="d-flex justify-content-center align-self-center">
+                            @if ($timerInovasi == null)
+                            <div class="d-flex justify-content-center align-self-center">
+                                <span class="text-center"><h1>Form Ditutup</h1></span>
+                            </div>
+                            @else
+                            <!-- Table Form Inovation -->
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Status Process</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--/ Table Form Inovation -->
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center" style="max-width: 740px;min-height: 170px;">
+                        <div class="d-flex justify-content-center align-self-center">
+                            <!-- Table Form Teladan -->
+                            <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
+                            {{-- <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-representative"> --}}
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Status Process</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--/ Table Form Teladan -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 

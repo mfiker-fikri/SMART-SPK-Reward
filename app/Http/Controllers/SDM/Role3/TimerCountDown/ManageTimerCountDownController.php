@@ -290,7 +290,7 @@ class ManageTimerCountDownController extends Controller
 
             // Update
             if($request['id'] != null) {
-                $id  =  CountdownTimerFormInovation::find($request['id']);
+                $id  =  CountdownTimerFormTeladan::find($request['id']);
 
                 if ($dateOpenTime === $id->date_time_open_form_teladan && $dateExpiredTime === $id->date_time_expired_form_teladan) {
                     $id->status_open                                    =  $request['status_open'];
