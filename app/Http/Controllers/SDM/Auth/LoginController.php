@@ -18,7 +18,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo;
+    protected $redirectTo;
     // protected $redirect = 'sdm/dashboard';
     public function redirectTo() {
         $role = Auth::guard('human_resources')->user()->role;

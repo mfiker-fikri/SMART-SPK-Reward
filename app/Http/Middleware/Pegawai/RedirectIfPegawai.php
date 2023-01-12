@@ -26,9 +26,10 @@ class RedirectIfPegawai
             return redirect('/');
         } catch (\Exception $exception) {
             return $exception;
+        } catch (\Error $error) {
+            return $error;
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        // catch (\Throwable $th) {
-        //     throw $th;
-        // }
     }
 }

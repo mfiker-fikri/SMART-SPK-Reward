@@ -99,6 +99,15 @@ class LoginController extends Controller
             return redirect()->back()->withErrors($validate)->withInput()->with('message-failed', 'Username/Email atau Password Salah');
         }
 
+        if (
+            method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)
+        ) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
         // Input Login
         $username           =   $request->get('username');
         $password           =   $request->get('password');
@@ -114,6 +123,8 @@ class LoginController extends Controller
             alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/dashboard')->with('message', 'Selamat Datang');
         }
+
+        $this->incrementLoginAttempts($request);
 
         alert()->error('Gagal Masuk!')->autoclose(25000);
         return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed', 'Username/Email atau Password Salah');

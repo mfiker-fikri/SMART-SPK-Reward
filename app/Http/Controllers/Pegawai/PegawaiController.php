@@ -342,7 +342,8 @@ class PegawaiController extends Controller
                         $constraint->aspectRatio();
                     })->stream();
 
-                    $photoProfile->storeAs('public/employees/photos/photoProfile/' . $employee, $photoName);
+                    // $photoProfile->storeAs('public/employees/photos/photoProfile/' . $employee, $photoName);
+                    $photoProfile->move(public_path('storage/employees/photos/photoProfile/' . $employee), $photoName);
 
                     // Find Auth Employee Active storage_path($folder)
                     $id                         =       Auth::guard('employees')->user()->id;

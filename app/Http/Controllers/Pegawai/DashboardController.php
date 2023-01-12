@@ -103,7 +103,7 @@ class DashboardController extends Controller
                 ->latest()
                 ->get();
 
-            ddd($data);
+            // ddd($data);
             return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
         }
 

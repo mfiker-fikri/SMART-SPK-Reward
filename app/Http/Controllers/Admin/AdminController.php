@@ -234,8 +234,8 @@ class AdminController extends Controller
                     $admin = Auth::guard('admins')->user()->username;
 
                     // Link Photo
-                    $link   = 'storage/admin/photos/photoProfile/' . $admin . '/' . $request->oldImage;
-
+                    // $link   =   'storage/admin/photos/photoProfile/' . $admin . '/' . $request->oldImage;
+                    $link   =   storage_path('app/public/admin/photos/photoProfile/') . $admin . '/' . $request->oldImage;
                     // if(File::exists($link)) {
                     //     File::delete($link);
                     // }
@@ -268,8 +268,8 @@ class AdminController extends Controller
                         $constraint->aspectRatio();
                     })->stream();
 
-                    $photoProfile->move(public_path('storage/admin/photos/photoProfile/' . $admin), $photoName);
                     // $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
+                    $photoProfile->move(public_path('storage/admin/photos/photoProfile/' . $admin), $photoName);
 
                     // $request->photo_profile->store('public/admin/images/', $photoName);
                     // Storage::putFileAs('admin/images/' . $photoName, 'public');

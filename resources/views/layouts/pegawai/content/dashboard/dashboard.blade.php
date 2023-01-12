@@ -111,21 +111,122 @@
                         <div class="d-flex justify-content-center align-self-center">
                             @if ($timerInovasi == null)
                             <div class="d-flex justify-content-center align-self-center">
-                                <span class="text-center"><h1>Form Ditutup</h1></span>
+                                <span class="text-center"><h1>Form Inovasi Ditutup</h1></span>
                             </div>
                             @else
-                            <!-- Table Form Inovation -->
-                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Status Process</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            <!--/ Table Form Inovation -->
+                                @if (
+                                    (
+                                        ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                                    )
+                                    ||
+                                    (
+                                        ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                                    )
+                                )
+                                <div class="container-fluid">
+                                    <div class="titleCountDownNonActive">
+                                        <h1>
+                                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Inovasi</span>
+                                        </h1>
+                                    </div>
+                                </div>
+
+                                @elseif (
+                                    (
+                                                ($timerInovasi->status_open == 1
+                                            && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString() ?? 'None'))
+                                        &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                                    )
+                                    ||
+                                    (
+                                                ($timerInovasi->status_open == 1
+                                            && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()) ?? 'None')
+                                        &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                                    )
+                                )
+                                <div class="container-fluid ">
+                                    <div class="openTimerCountDown">
+                                        <div class="titleCountDown">
+                                            <h1>Pembukaan Form Inovasi</h1>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
+                                        </div>
+                                        <div class="titleCountDown">
+                                            <h1>Coming Soon</h1>
+                                        </div>
+                                        <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_form_inovation)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @elseif (
+                                    (
+                                            (
+                                                    ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation ?? 'None') )
+                                                &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                                            )
+                                        ||  (
+                                                    ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                                &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                            )
+                                    )
+                                    ||
+                                    (
+                                            (
+                                                    ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                                &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                            )
+                                        || (
+                                                    ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                                &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                            )
+                                    )
+                                )
+
+                                <!-- Table Form Inovation -->
+                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Status Process</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <!--/ Table Form Inovation -->
+
+                                @elseif (
+                                    (
+                                            ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                        ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                    )
+                                    ||
+                                    (
+                                            ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                        || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                    )
+                                )
+
+                                <div class="container-fluid">
+                                    <div class="titleCountDownNonActive">
+                                        <h1>
+                                            <span>Form Inovasi Telah Ditutup</span>
+                                        </h1>
+                                    </div>
+                                </div>
+
+                                @endif
+
                             @endif
                         </div>
                     </div>
@@ -133,6 +234,11 @@
                 <div class="col-12">
                     <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center" style="max-width: 740px;min-height: 170px;">
                         <div class="d-flex justify-content-center align-self-center">
+                            @if ($timerTeladan == null)
+                            <div class="d-flex justify-content-center align-self-center">
+                                <span class="text-center"><h1>Form Teladan Ditutup</h1></span>
+                            </div>
+                            @else
                             <!-- Table Form Teladan -->
                             <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
                             {{-- <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-representative"> --}}
@@ -146,6 +252,7 @@
                                 </tbody>
                             </table>
                             <!--/ Table Form Teladan -->
+                            @endif
                         </div>
                     </div>
                 </div>

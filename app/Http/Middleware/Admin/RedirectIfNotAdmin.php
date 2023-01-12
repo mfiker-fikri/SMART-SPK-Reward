@@ -27,6 +27,10 @@ class RedirectIfNotAdmin
             // }
         } catch (\Exception $exception) {
             return $exception;
+        } catch (\Error $error) {
+            return $error;
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 }

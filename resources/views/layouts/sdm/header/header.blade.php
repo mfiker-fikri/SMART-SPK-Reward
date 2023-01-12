@@ -205,6 +205,21 @@
                     <li class="breadcrumb-item fw-bold active">Edit Data Tim Penilai</li>
                 <!--/ Manage Team Assessment -->
 
+                <!-- Manage Timer CountDown -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation') )
+                    <!-- Create Or Update -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Timer Countdown Form Inovation</li>
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative') )
+                    <!-- Create Or Update -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Timer Countdown Form Representative</li>
+                <!--/ Manage Timer CountDown -->
+
 
                 @endif
 

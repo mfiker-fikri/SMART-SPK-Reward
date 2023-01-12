@@ -124,8 +124,18 @@
             <!-- Edit -->
             <meta name="title" content="Edit Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Edit Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-
         <!--/ Manage Team Assessment -->
+
+        <!-- Manage Timer CountDown -->
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation') )
+            <!-- Create Or Update -->
+            <meta name="title" content="Timer Countdown Form Inovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Timer Countdown Form Inovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative') )
+            <!-- Create Or Update -->
+            <meta name="title" content="Timer Countdown Form Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Timer Countdown Form Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+        <!--/ Manage Timer CountDown -->
 
         @endif
         <!--/ Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
@@ -222,6 +232,14 @@
             <!-- Edit -->
             <title> Edit Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
         <!-- Manage Team Assessment -->
+        <!-- Manage Timer CountDown -->
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation') )
+            <!-- Create Or Update -->
+            <title> Timer Countdown Form Inovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative') )
+            <!-- Create Or Update -->
+            <title> Timer Countdown Form Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+        <!--/ Manage Timer CountDown -->
 
         @endif
         <!-- /Title -->

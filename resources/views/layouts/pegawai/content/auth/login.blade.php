@@ -5,11 +5,11 @@
 <div class="container-xxl">
     <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 100vh; max-height: 100vh;">
         <div class="authentication-inner">
-            
+
             <!-- Login -->
             <div class="card">
                 <div class="card-body">
-                    
+
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="{{ URL::to('/') }}" class="app-brand-link gap-2">
@@ -32,8 +32,8 @@
                         <!-- Username -->
                         <div class="mb-3 {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }} ">
                             <label for="username" class="form-label">Username atau Email</label>
-                            <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }}" id="username" 
-                                name="username" placeholder="Enter your username or email" 
+                            <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }}" id="username"
+                                name="username" placeholder="Enter your username or email"
                                 autofocus autocomplete required size="100" />
 
                             <!-- Error Username -->
@@ -46,7 +46,7 @@
 
                         </div>
                         <!--/ Username -->
-                        
+
                         <!-- Password -->
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
@@ -57,14 +57,14 @@
                             </div>
 
                             <div class="input-group input-group-merge {{ $errors->has('password') ? ' has-error' : '' }}">
-                                <input type="password" class="form-control {{ $errors->has('password') ? ' has-error' : '' }}" id="password" 
+                                <input type="password" class="form-control {{ $errors->has('password') ? ' has-error' : '' }}" id="password"
                                     name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                     autofocus autocomplete required aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer">
                                     <i class="bx bx-hide"></i>
                                 </span>
                             </div>
-                            
+
                             <!-- Error Password -->
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -72,7 +72,7 @@
                                 </span>
                             @endif
                             <!--/ Error Password -->
-                            
+
                         </div>
                         <!--/ Password -->
 
@@ -94,13 +94,13 @@
                             @if(session('message-success-login'))
                             <div class="d-flex flex-md-row">
                                 <p>
-                                    <strong><b>   {{ session('message-success-login') }} </b></strong>     
+                                    <strong><b>   {{ session('message-success-login') }} </b></strong>
                                 </p>
                             </div>
                             @elseif(session('message-success-logout'))
                             <div class="d-flex flex-md-row">
                                 <p>
-                                    <strong><b>   {{ session('message-success-logout') }} </b></strong>     
+                                    <strong><b>   {{ session('message-success-logout') }} </b></strong>
                                 </p>
                             </div>
                             @endif
@@ -115,7 +115,7 @@
                             <div class="d-flex flex-md-row">
                                 <p>
                                     <strong><b>   {{ session('message-failed-login') }}  </b></strong>
-                                </p> 
+                                </p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 </button>
                             </div>

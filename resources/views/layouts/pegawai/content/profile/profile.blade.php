@@ -445,6 +445,8 @@
 
     <!-- cleave.js -->
     <script src="{{ URL::asset('assets/libs/cleave.js/cleave.min.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 @endpush
 
 
