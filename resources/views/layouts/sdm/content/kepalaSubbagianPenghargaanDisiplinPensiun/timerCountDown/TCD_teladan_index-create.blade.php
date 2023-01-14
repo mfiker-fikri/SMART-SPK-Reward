@@ -362,7 +362,7 @@
                         </div>
                         <!-- Action Button -->
 
-                        </form>
+                    </form>
                 </div>
                 <!-- Form Timer Countdown -->
 

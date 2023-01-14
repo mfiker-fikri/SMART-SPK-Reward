@@ -329,6 +329,34 @@
             },
             paging: false,
             ajax: "{{ url('form-representative/list/data') }}",
+            dom: 'Bfrtip',
+            buttons: [
+                "pageLength","copy", "csv", "excel", "print", "reload",
+                // Pdf
+                {
+                    // extend: 'pdfHtml5',
+                    extend: 'pdf',
+                    orientation: 'landscape',
+                    // pageSize: 'A4',
+                    // text: 'Data Admin',
+                    title: 'Data Admin | Sistem Penunjang Keputusan (SPK) Penerimaan Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri',
+                    filename: 'Data Admin',
+                    download: 'Open',
+                    customize: function ( doc ) {
+                        // Splice the image in after the header, but before the table
+                        doc.content.splice( 1, 0, {
+                            fillOpacity: 0.15,
+                            fillColor: 'blue',
+                            overlayPattern: ['stripe45d', 'gray'],
+                            overlayOpacity: 0.15,
+                            margin: [5, 2],
+                            alignment: 'center',
+                            image: ,
+                            fit: [50, 100],
+                        } );
+                    }
+                }
+            ],
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'status', name: 'status'},
@@ -944,7 +972,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form</span>
+                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Teladan</span>
                             </h1>
                         </div>
                     </div>

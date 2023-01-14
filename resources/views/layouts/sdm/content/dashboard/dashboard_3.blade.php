@@ -53,7 +53,59 @@
 
         <div class="col-md-6 col-md-5 order-1">
 
+            <div class="row">
 
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+
+                    <div class="card" style="min-height: 200px;max-height: 200px;">
+                        <div class="card-body">
+                            <div class="d-flex flex-row align-items-xl-center align-self-xl-center" style="margin: 3rem 1rem;">
+                                <i class="fa-solid fa-list fa-5x me-3"></i>
+                                <div class="d-flex flex-column align-self-center">
+                                    <h3 class="card-title text-center"><strong> {{ $categories }} </strong></h4>
+                                    <p class="card-text"> Kategori </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+
+                    <div class="card" style="min-height: 200px;max-height: 200px;">
+                        <div class="card-body">
+                            <div class="d-flex flex-row align-items-xl-center align-self-xl-center" style="margin: 3rem 1rem;">
+                                <i class="fa-solid fa-list fa-5x me-3"></i>
+                                <div class="d-flex flex-column align-self-center">
+                                    <h3 class="card-title text-center"><strong> {{ $criterias }} </strong></h3>
+                                    <p class="card-text"> Kriteria  </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <i class="fa-solid fa-list fa-5x me-3"></i>
+                                <div class="d-flex flex-column align-self-center">
+                                    <h3 class="card-title text-center"><strong> {{ $parameters }} </strong></h3>
+                                    <p class="card-text"> Parameter  </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
         </div>
 

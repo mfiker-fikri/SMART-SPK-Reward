@@ -44,7 +44,33 @@
                     <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Inovasi</li>
+            <!-- Manage Teladan -->
+            @elseif ( request()->is('form-representative/create') )
+                <!-- Create -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('form-representative/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Teladan</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Tambah Form Pendaftaran Penghargaan Teladan</li>
+            @elseif ( request()->is('form-representative/list') )
+                <!-- Read -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">List Form Pendaftaran Penghargaan Teladan</li>
+            @elseif ( request()->is('form-representative/update*') )
+                <!-- Edit -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('form-representative/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Teladan</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Teladan</li>
             @endif
+
         </ol>
         <!--/ Breadcrumb -->
 

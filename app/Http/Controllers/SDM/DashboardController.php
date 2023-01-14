@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\SDM;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Criteria;
+use App\Models\Parameter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,7 +88,10 @@ class DashboardController extends Controller
     {
         try {
             // ddd('3');
-            return view('layouts.sdm.content.dashboard.dashboard_3');
+            $categories =   Category::count();
+            $criterias  =   Criteria::count();
+            $parameters =   Parameter::count();
+            return view('layouts.sdm.content.dashboard.dashboard_3', compact('categories', 'criterias', 'parameters'));
         } catch (\Throwable $th) {
             throw $th;
         }

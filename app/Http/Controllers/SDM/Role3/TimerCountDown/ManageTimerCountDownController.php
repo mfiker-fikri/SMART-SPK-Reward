@@ -250,9 +250,9 @@ class ManageTimerCountDownController extends Controller
             $validate = Validator::make(
                 $request->all(),
                 [
-                    'date_time_open_countdown_teladan_form'                     =>  'required',
+                    'date_time_open_countdown_teladan_form'                     =>  'required|date',
                     'status_open'                                               =>  'required',
-                    'date_time_expired_countdown_teladan_form'                  =>  'required',
+                    'date_time_expired_countdown_teladan_form'                  =>  'required|date|after_or_equal:date_time_open_countdown_teladan_form',
                     'status_expired'                                            =>  'required',
                 ],
                 [
@@ -318,8 +318,19 @@ class ManageTimerCountDownController extends Controller
                         return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
-                alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+
+                if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
+                    alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
                 return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                }
+
+                if($dateOpen == $dateExpired) {
+                    alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
+                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                }
+
+                // alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                // return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
             }
             // Create
             else {
@@ -357,7 +368,7 @@ class ManageTimerCountDownController extends Controller
                     }
                 }
 
-                if( Carbon::now()->toDateString() == $dateOpen || Carbon::now()->toDateString() == $dateExpired ) {
+                if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
                     alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
                 return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                 }
