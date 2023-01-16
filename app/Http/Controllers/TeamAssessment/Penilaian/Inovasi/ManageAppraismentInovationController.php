@@ -209,23 +209,24 @@ class ManageAppraismentInovationController extends Controller
                 );
 
                 if ($validate->fails()) {
-                    alert()->error('Gagal Penilaian Data Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-update-error', 'Gagal Penilaian Data Form Inovasi!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Menilai Data Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-update-error', 'Gagal Menilai Data Form Inovasi!')->withErrors($validate)->withInput($request->all());
                 }
 
-                //
-                $timer                  =   CountdownTimerFormInovation::first();
+                // Update DB
+                $reward->update([
+                    'score_valuation_1' => $request['kebaruan'],
+                    'score_valuation_2' => $request['kemanfaatan'],
+                    'score_valuation_3' => $request['peranSerta'],
+                    'score_valuation_4' => $request['transferReplikasi'],
+                    'score_valuation_5' => $request['nyataNilaiTambah'],
+                    'score_valuation_6' => $request['kesinambunganKonsistensiKerja'],
+                ])->save();
 
-                $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
-                $dateOpen               =   $dateTimeOpen->toDateString();
+                alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
+                return redirect()->back()->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
 
-                $dateTimeExpired        =   new Carbon($timer->date_time_expired_countdown_inovation_form);
-                $dateExpired            =   $dateTimeExpired->toDateString();
-                // ddd($reward_id);
 
-                if ($dateOpen >= Carbon::now() && Carbon::now() <= $dateExpired) {
-
-                }
             }
 
 

@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-12 mb-4">
 
-                    <div class="card">
+                    <div class="card" style="min-height: 126px;max-height: 126px;">
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
                                 <i class="fa-solid fa-list fa-5x me-3"></i>

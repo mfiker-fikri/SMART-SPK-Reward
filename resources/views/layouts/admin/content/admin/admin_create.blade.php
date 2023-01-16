@@ -199,7 +199,7 @@
                                         autofocus autocomplete required value="{{ old('email') }}"
                                         aria-invalid="true" aria-describedby="email" data-val="true">
                                 </div>
-                                <div id="emailHelp" class="form-text">Email Menggunakan Simbol @/ .com/.co.id/ dll</div>
+                                <div id="emailHelp" class="form-text">Email Menggunakan Simbol @/ Serta .com/.co.id/ dll</div>
                                 <!-- Error Email -->
                                 @if ( $errors->has('email') )
                                     <span class="help-block">
