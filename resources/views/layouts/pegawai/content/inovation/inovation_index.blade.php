@@ -1214,7 +1214,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form</span>
+                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Inovasi</span>
                             </h1>
                         </div>
                     </div>

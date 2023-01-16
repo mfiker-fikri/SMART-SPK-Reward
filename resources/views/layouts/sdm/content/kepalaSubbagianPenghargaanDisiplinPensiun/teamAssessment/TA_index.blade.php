@@ -14,6 +14,11 @@
                 selector: 'td:nth-child(2)'
             },
             paging: false,
+            lengthMenu: [5, 10, 25, 50, 100, 200, 500],
+            dom: 'Bfrtip',
+            buttons: [
+                "pageLength",
+            ],
             ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/list') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
@@ -26,7 +31,11 @@
             ]
         });
 
-        new $.fn.dataTable.FixedHeader(table);
+        new $.fn.dataTable.FixedHeader( table );
+
+        setInterval( function () {
+            table.ajax.reload(null, false);
+        }, 10000 );
     });
     </script>
     <!--/ Datatables Team Assessment -->

@@ -57,6 +57,23 @@
                 align-content: center;
             }
         }
+        @media (max-width: 275.98px) {
+            .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 100px;
+                min-width: 100px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+        }
+
 
         @media (min-width: 992px) {
             .dashboardEmployeesInfo {
@@ -75,25 +92,25 @@
         @media (min-width: 992px) {
             .cardInovation {
                 max-width: 740px;
-                min-height: 25vh;
-                max-height: 28vh;
+                min-height: 26.5vh;
+                max-height: 25vh;
             }
             .cardRepresentative {
                 max-width: 740px;
-                min-height: 25vh;
-                max-height: 28vh;
+                min-height: 26.5vh;
+                max-height: 25vh;
             }
         }
         @media (max-width: 991.98px) {
             .cardInovation {
                 max-width: 740px;
                 min-height: 35vh;
-                max-height: 35vh;
+                max-height: 85vh;
             }
             .cardRepresentative {
                 max-width: 740px;
                 min-height: 35vh;
-                max-height: 35vh;
+                max-height: 85vh;
             }
         }
         @media (max-width: 575.98px) {
@@ -105,6 +122,18 @@
             .cardRepresentative {
                 max-width: 740px;
                 min-height: 80vh;
+                max-height: 80vh;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .cardInovation {
+                max-width: 740px;
+                min-height: 50vh;
+                max-height: 80vh;
+            }
+            .cardRepresentative {
+                max-width: 740px;
+                min-height: 50vh;
                 max-height: 80vh;
             }
         }
@@ -129,15 +158,15 @@
                 margin: auto;
                 padding: 0.5em 0;
                 max-width: 740px;
-                min-height: 200px;
-                max-height: 200px;
+                /* min-height: 200px; */
+                /* max-height: 200px; */
             }
             .cardFormRepresentative {
                 margin: auto;
                 padding: 0.5em 0;
                 max-width: 740px;
-                min-height: 200px;
-                max-height: 200px;
+                /* min-height: 200px; */
+                /* max-height: 200px; */
             }
         }
         @media (max-width: 575.98px) {
@@ -146,16 +175,34 @@
                 padding: 0.5em 0;
                 min-width: 400px;
                 max-width: 400px;
-                min-height: 200px;
-                max-height: 200px;
+                min-height: 400px;
+                max-height: 400px;
             }
             .cardFormRepresentative {
                 margin: auto;
                 padding: 0.5em 0;
                 min-width: 400px;
                 max-width: 400px;
-                min-height: 200px;
-                max-height: 200px;
+                min-height: 400px;
+                max-height: 400px;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .cardFormInovation {
+                margin: auto;
+                padding: 0.5em 0;
+                min-width: 400px;
+                max-width: 400px;
+                min-height: 400px;
+                max-height: 400px;
+            }
+            .cardFormRepresentative {
+                margin: auto;
+                padding: 0.5em 0;
+                min-width: 400px;
+                max-width: 400px;
+                min-height: 400px;
+                max-height: 400px;
             }
         }
         /* cardForm */
@@ -315,7 +362,7 @@
 
         @media (max-width: 991.98px) {
             .countdown-inovation {
-                padding: 2em 0;
+                padding: 5vh 0;
                 margin: 0.5em auto;
                 display: flex;
                 flex-direction: row;
@@ -342,7 +389,7 @@
             }
 
             .countdown-representative {
-                padding: 2em 0;
+                padding: 5vh 0;
                 margin: 0.5em auto;
                 display: flex;
                 flex-direction: row;
@@ -447,11 +494,27 @@
                 min-height: 8em;
                 max-height: 8em;
             }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
+            }
         }
 
         @media (max-width: 575.98px) {
             .countdown-inovation {
-                padding: 0;
+                padding: 5vh 0;
                 margin: auto;
                 display: flex;
                 flex-direction: row;
@@ -478,7 +541,7 @@
             }
 
             .countdown-representative {
-                padding: 0;
+                padding: 5vh 0;
                 margin: auto;
                 display: flex;
                 flex-direction: row;
@@ -502,6 +565,253 @@
                 align-content: center;
                 line-height: 100%;
                 text-align: center;
+            }
+
+            .dateCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .titleCountDown{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+            }
+
+            .titleCountDownNonActive{
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                min-height: 8em;
+                max-height: 8em;
+            }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .countdown-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-representative {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-representative span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .titleCountDown{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+            }
+
+            .titleCountDownNonActive{
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                min-height: 8em;
+                max-height: 8em;
+            }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
             }
         }
     </style>
@@ -1107,18 +1417,20 @@
                                     )
                                 )
 
-                                <!-- Table Form Inovation -->
-                                <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Status Process</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                <!--/ Table Form Inovation -->
+                                <div class="container-fluid">
+                                    <!-- Table Form Inovation -->
+                                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--/ Table Form Inovation -->
+                                </div>
 
                                 @elseif (
                                     (
@@ -1214,7 +1526,7 @@
                                         </div>
                                     </div>
                                     <!-- If we need pagination -->
-                                    <div class="swiper-pagination"></div>
+                                    {{-- <div class="swiper-pagination"></div> --}}
                                 </div>
 
                                 @elseif (
@@ -1241,18 +1553,20 @@
                                     )
                                 )
 
-                                <!-- Table Form Teladan -->
-                                <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Status Process</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                <!--/ Table Form Teladan -->
+                                <div class="container-fluid">
+                                    <!-- Table Form Teladan -->
+                                    <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--/ Table Form Teladan -->
+                                </div>
 
                                 @elseif (
                                     (

@@ -407,11 +407,34 @@
         });
     </script>
     <!--/ Show Hide Password -->
+
+    <!-- Select2 Pendidikan Terakhir -->
+    <script type="text/javascript">
+    $( '#pendidikan_terakhir' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Pendidikan Terakhir -->
+
+    <!-- Reset Select2 Pendidikan Terakhir -->
+    <script type="text/javascript">
+    $(document).on('click', '#resetPendidikanTerakhir', function(e) {
+        var old = document.getElementById("oldPendidikanTerakhir").getAttribute("value");
+        if (old) {
+            $('#pendidikan_terakhir').val(old).trigger('change');
+        } else {
+            $('#pendidikan_terakhir').val(null).trigger('change');
+        }
+    });
+    </script>
+    <!--/ Reset Select2 Pendidikan Terakhir -->
 @stop
 
 @push('js_footer')
     <!-- Datepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- IMask -->
@@ -447,6 +470,13 @@
     <script src="{{ URL::asset('assets/libs/cleave.js/cleave.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+
+    <script>
+        var cleave = new Cleave('.input-phone', {
+            phone: true,
+            phoneRegionCode: '{country}'
+        });
+    </script>
 @endpush
 
 
@@ -793,18 +823,16 @@
                                     <label for="pendidikan_terakhir" class="col-sm-3 col-form-label">Pendidikan Terakhir</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge {{ $errors->has('pendidikan_terakhir') ? 'is-invalid' : '' }}">
-                                            <span id="pendidikan_terakhir" class="input-group-text">
+                                            <span class="input-group-text">
                                                 <i class="fa-solid fa-user-tie"></i>
                                             </span>
-                                            {{-- <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('pendidikan_terakhir') ? 'is-invalid' : '' }}" id="pendidikan_terakhir"
-                                                name="pendidikan_terakhir" placeholder="*Pendidikan Terakhir"
-                                                autofocus autocomplete required value="{{ old('pendidikan_terakhir', Auth::guard('employees')->user()->pendidikan_terakhir) }}" /> --}}
+                                            <input type="hidden" value="{{ old('pendidikan_terakhir', Auth::guard('employees')->user()->pendidikan_terakhir) }}" id="oldPendidikanTerakhir" />
                                             <select class="form-select" {{ $errors->has('pendidikan_terakhir') ? 'is-invalid' : '' }}" id="pendidikan_terakhir"
                                                 name="pendidikan_terakhir"
                                                 autofocus autocomplete required>
-                                                <option selected disabled>-- Pilih Pendidikan Terakhir --</option>
-                                                <option value="S1" @if(old('pendidikan_terakhir', Auth::guard('employees')->user()->pendidikan_terakhir) == 'S1' ) selected="selected" @endif>S1</option>
-                                                <option value="S2" @if(old('pendidikan_terakhir', Auth::guard('employees')->user()->pendidikan_terakhir) == 'S2' ) selected="selected" @endif>S2</option>
+                                                <option disabled selected>-- Pilih Pendidikan Terakhir --</option>
+                                                <option value="S1" @if( old('pendidikan_terakhir', Auth::guard('employees')->user()->pendidikan_terakhir) == "S1" ) selected @endif>S1</option>
+                                                <option value="S2" @if( old('pendidikan_terakhir', Auth::guard('employees')->user()->pendidikan_terakhir) == "S2" ) selected @endif>S2</option>
                                             </select>
                                         </div>
 
@@ -1001,7 +1029,7 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex flex-row justify-content-end">
                                     <div class="mx-1 mx-1 mx-1">
-                                        <button type="reset" class="btn btn-warning btn-lg">
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetPendidikanTerakhir">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                         </button>
                                     </div>

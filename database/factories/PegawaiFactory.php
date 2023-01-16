@@ -30,8 +30,8 @@ class PegawaiFactory extends Factory
             // 'photo' => $this->faker->image(null, 360, 360, 'animals', true, true, 'cats', true),
             // 'date_birth' => '2022-06-25',
             //
+            'pendidikan_terakhir' => 'S1',
             'nip' => '11170930000005',
-            'pendidikan_terakhir' => 's1',
             'pangkat' => 'eselon1',
             'golongan_ruang'  => 'eselon1',
             'sk_cpns' => '01',

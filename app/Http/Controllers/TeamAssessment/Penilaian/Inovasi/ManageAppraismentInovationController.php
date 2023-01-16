@@ -35,8 +35,18 @@ class ManageAppraismentInovationController extends Controller
     public function getAppraisment()
     {
         try {
-            $reward     =   RewardInovation::latest()->get();
-            return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('reward'));
+            // Get Timer Countdown
+            $timer                      =   CountdownTimerFormInovation::first();
+
+            if ($timer != null) {
+                $timer                  =   CountdownTimerFormInovation::first();
+                return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('timer'));
+            } else {
+                $timer                  =   CountdownTimerFormInovation::first();
+                // $reward     =   RewardInovation::latest()->get();
+                return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('timer'));
+            }
+
         } catch (\Throwable $th) {
             throw $th;
         }

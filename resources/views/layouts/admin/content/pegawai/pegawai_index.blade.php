@@ -8,6 +8,15 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            paging: false,
+            lengthMenu: [5, 10, 25, 50, 100, 200, 500],
+            dom: 'Bfrtip',
+            buttons: [
+                "pageLength",
+            ],
             // ajax: "{{ url('admin/manage/admins/list') }}",
             ajax: "{{ url('admin/manage/employees/list') }}",
             columns: [
@@ -19,6 +28,12 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
+
+        new $.fn.dataTable.FixedHeader( table );
+
+        setInterval( function () {
+            table.ajax.reload(null, false);
+        }, 10000 );
     });
     </script>
     <!--/ Datatables Pegawai -->
