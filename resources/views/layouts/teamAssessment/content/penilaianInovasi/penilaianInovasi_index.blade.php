@@ -388,7 +388,7 @@
 
                 @elseif ($timer != null)
 
-                    @if (
+                    {{-- @if (
                         (
                             ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation )
                         )
@@ -464,7 +464,7 @@
                                     &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation)
                                 )
                         )
-                    )
+                    ) --}}
 
                     <div class="container-fluid">
 
@@ -482,7 +482,7 @@
 
                     </div>
 
-                    @elseif (
+                    {{-- @elseif (
                         (
                                 ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
                             ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_inovation) )
@@ -502,7 +502,7 @@
                         </div>
                     </div>
 
-                    @endif
+                    @endif --}}
 
                 @endif
 
