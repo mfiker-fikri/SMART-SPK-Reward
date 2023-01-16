@@ -340,7 +340,13 @@
             ]
         });
 
-        new $.fn.dataTable.FixedHeader(table);
+        new $.fn.dataTable.FixedHeader( table );
+
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Form Inovation -->
@@ -364,7 +370,13 @@
             ]
         });
 
-        new $.fn.dataTable.FixedHeader(table);
+        new $.fn.dataTable.FixedHeader( table );
+
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Form Inovation Reject -->
@@ -388,7 +400,13 @@
                 ]
             });
 
-            new $.fn.dataTable.FixedHeader(table);
+            new $.fn.dataTable.FixedHeader( table );
+
+            if (table) {
+                setInterval( function () {
+                    table.ajax.reload(null, false);
+                }, 10000 );
+            }
         });
     </script>
     <!--/ Datatables Form Inovation Back -->

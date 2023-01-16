@@ -62,16 +62,14 @@ class ManageAppraismentInovationController extends Controller
         try {
             //
             $timer                  =   CountdownTimerFormInovation::first();
-            // ddd($timer->date_time_open_form_inovation);
 
             $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
-            // ddd($dateTimeOpen);
+
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
-            // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
             $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
-            // ddd($dateTimeExpired);
+
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
@@ -82,7 +80,7 @@ class ManageAppraismentInovationController extends Controller
                     ['created_at', '<=', $dateExpiredTime],
                     ['updated_at', '>=', $dateOpenTime],
                     ['updated_at', '<=', $dateExpiredTime],
-                    ['status_process', '==', 3]
+                    ['status_process', '=', 3],
                 ])
                 // ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
                 // ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])

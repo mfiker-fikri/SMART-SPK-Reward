@@ -23,6 +23,56 @@
     });
     </script>
     <!--/ Reset Select2 Role -->
+
+    <!-- Show Hide Password -->
+    <script type="text/javascript">
+        $(document).on('click', '#oldPasswordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("oldPassword").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("oldPassword").setAttribute("type", "text");
+                document.getElementById("eyeOldPassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyeOldPassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("oldPassword").setAttribute("type", "password");
+                document.getElementById("eyeOldPassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyeOldPassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password").setAttribute("type", "text");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password").setAttribute("type", "password");
+                document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePassword").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '#passwordConfirmationEye', function(e) {
+            event.preventDefault();
+            var show = document.getElementById("password_confirmation").getAttribute("type");
+            if(show == "password"){
+                document.getElementById("password_confirmation").setAttribute("type", "text");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye-slash");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye");
+            } else if(show == "text"){
+                document.getElementById("password_confirmation").setAttribute("type", "password");
+                document.getElementById("eyePasswordConfirmation").removeAttribute("class", "fa-solid fa-eye");
+                document.getElementById("eyePasswordConfirmation").setAttribute("class", "fa-solid fa-eye-slash");
+            }
+        });
+    </script>
+    <!--/ Show Hide Password -->
 @stop
 
 @section('content')
@@ -186,7 +236,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('role') ? 'is-invalid' : '' }}">
-                                                <i class="fa-solid fa-key"></i>
+                                                <i class="fa-solid fa-user-tie"></i>
                                             </span>
                                             <input type="hidden" value="{{ old('role', $humanResource->role) }}" id="oldRole" />
                                             <select class="form-select {{ $errors->has('role') ? 'is-invalid' : '' }}" id="role"
@@ -297,13 +347,16 @@
                                     <label for="password" class="col-sm-3 col-form-label">Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <span id="password" class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
+                                            <span class="input-group-text {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                                 <i class="fa-solid fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
                                                 name="password" placeholder="*Password Baru"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password" data-val="true" >
+                                            <span class="input-group-text" id="passwordEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyePassword"></i>
+                                            </span>
                                         </div>
                                         <div id="passwordHelp" class="form-text">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password -->
@@ -322,13 +375,16 @@
                                     <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password Baru</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <span id="password_confirmation" class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
+                                            <span class="input-group-text {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                                 <i class="fas fa-key"></i>
                                             </span>
                                             <input type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
                                                 name="password_confirmation" placeholder="*Konfirmasi Password Baru"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="password_confirmation" data-val="true">
+                                            <span class="input-group-text" id="passwordConfirmationEye" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye-slash" id="eyePasswordConfirmation"></i>
+                                            </span>
                                         </div>
                                         <div id="password_confirmationHelp" class="form-text">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</div>
                                         <!-- Error Password Confirmation-->

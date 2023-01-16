@@ -283,8 +283,8 @@ class InovationController extends Controller
                 ['created_at', '<=', $dateExpiredTime],
                 ['updated_at', '>=', $dateOpenTime],
                 ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '==' ,Auth::guard('employees')->user()->id],
-                ['status_process', '==', 1],
+                ['employee_id', '=', Auth::guard('employees')->user()->id],
+                ['status_process', '=', 1],
             ])
             ->latest()
             ->get();
@@ -372,8 +372,8 @@ class InovationController extends Controller
                 ['created_at', '<=', $dateExpiredTime],
                 ['updated_at', '>=', $dateOpenTime],
                 ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '==' ,Auth::guard('employees')->user()->id],
-                ['status_process', '==', 2],
+                ['employee_id', '=', Auth::guard('employees')->user()->id],
+                ['status_process', '=', 2],
             ])
             ->latest()
             ->get();
@@ -426,7 +426,7 @@ class InovationController extends Controller
     {
         //
         // Get id Employee
-        $id                     =       Auth::guard('employees')->user()->id;
+        $id                     =   Auth::guard('employees')->user()->id;
 
         //
         $timer                  =   CountdownTimerFormInovation::first();
@@ -449,8 +449,8 @@ class InovationController extends Controller
                 ['created_at', '<=', $dateExpiredTime],
                 ['updated_at', '>=', $dateOpenTime],
                 ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '==' ,Auth::guard('employees')->user()->id],
-                ['status_process', '==', 3],
+                ['employee_id', '=' , Auth::guard('employees')->user()->id],
+                ['status_process', '=', 3],
             ])
             ->latest()
             ->get();

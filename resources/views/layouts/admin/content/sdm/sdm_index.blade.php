@@ -31,9 +31,11 @@
 
         new $.fn.dataTable.FixedHeader( table );
 
-        setInterval( function () {
-            table.ajax.reload(null, false);
-        }, 10000 );
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Human Resources -->

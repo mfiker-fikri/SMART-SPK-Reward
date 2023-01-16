@@ -29,7 +29,7 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            // paging: false,
+            paging: false,
             searching: false,
             ajax: "{{ url('admin/dashboard/statusOnlineOffline') }}",
             columns: [

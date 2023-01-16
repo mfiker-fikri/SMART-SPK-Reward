@@ -333,15 +333,16 @@
             buttons: [
                 "pageLength",
             ],
-            ajax: {
-                url: "{{ url('penilai/appraisment/inovation/list') }}",
-                // headers: {
-                //     'Authorization':'Basic xxxxxxxxxxxxx',
-                //     'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',
-                //     'Content-Type':'application/json'
-                // },
-                method: "GET",
-            },
+            ajax: "{{ url('penilai/appraisment/inovation/list') }}",
+            // {
+            //     url: "{{ url('penilai/appraisment/inovation/list') }}",
+            //     // headers: {
+            //     //     'Authorization':'Basic xxxxxxxxxxxxx',
+            //     //     'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',
+            //     //     'Content-Type':'application/json'
+            //     // },
+            //     method: "GET",
+            // },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 // {data: 'id', name: 'id'},
@@ -352,9 +353,11 @@
 
         new $.fn.dataTable.FixedHeader( table );
 
-        setInterval( function () {
-            table.ajax.reload(null, false);
-        }, 10000 );
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Form Inovasi -->
@@ -466,7 +469,7 @@
                         )
                     ) --}}
 
-                    <div class="container-fluid">
+                    <div class="container-fluid py-3">
 
                         <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table">
                             <thead>
