@@ -23,7 +23,7 @@ class CreateRewardInovationTable extends Migration
             $table->uuid('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
             //
-            // 0 = ditolak, 1=dikembalikan , 2=menunggu, 3=diproses, 4=berhasil
+            // 0 = ditolak, 1=dikembalikan , 2=menunggu, 3=berhasil
             $table->integer('status_process')->default(2);
             //
             $table->integer('score_valuation_1')->nullable();

@@ -40,11 +40,35 @@ class ManageAppraismentInovationController extends Controller
 
             if ($timer != null) {
                 $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('timer'));
+
+                // Option Select Inovation
+                $selectOptionCategory = Category::where('id', '=', 1)->get();
+                $selectOptionCriteria = Criteria::where('categorie_id', '=', 1)->get();
+                $selectOptionParameter1 = Parameter::where('criteria_id', '=', 1)->get();
+                $selectOptionParameter2 = Parameter::where('criteria_id', '=', 2)->get();
+                $selectOptionParameter3 = Parameter::where('criteria_id', '=', 3)->get();
+                $selectOptionParameter4 = Parameter::where('criteria_id', '=', 4)->get();
+                $selectOptionParameter5 = Parameter::where('criteria_id', '=', 5)->get();
+                $selectOptionParameter6 = Parameter::where('criteria_id', '=', 6)->get();
+
+                return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('timer', 'selectOptionParameter1',
+                'selectOptionParameter2', 'selectOptionParameter3', 'selectOptionParameter4', 'selectOptionParameter5', 'selectOptionParameter6'));
             } else {
                 $timer                  =   CountdownTimerFormInovation::first();
+
+                // Option Select Inovation
+                $selectOptionCategory = Category::where('id', '=', 1)->get();
+                $selectOptionCriteria = Criteria::where('categorie_id', '=', 1)->get();
+                $selectOptionParameter1 = Parameter::where('criteria_id', '=', 1)->get();
+                $selectOptionParameter2 = Parameter::where('criteria_id', '=', 2)->get();
+                $selectOptionParameter3 = Parameter::where('criteria_id', '=', 3)->get();
+                $selectOptionParameter4 = Parameter::where('criteria_id', '=', 4)->get();
+                $selectOptionParameter5 = Parameter::where('criteria_id', '=', 5)->get();
+                $selectOptionParameter6 = Parameter::where('criteria_id', '=', 6)->get();
+
                 // $reward     =   RewardInovation::latest()->get();
-                return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('timer'));
+                return view('layouts.teamAssessment.content.penilaianInovasi.penilaianInovasi_index', compact('timer', 'selectOptionParameter1',
+                'selectOptionParameter2', 'selectOptionParameter3', 'selectOptionParameter4', 'selectOptionParameter5', 'selectOptionParameter6'));
             }
 
         } catch (\Throwable $th) {
@@ -110,6 +134,76 @@ class ManageAppraismentInovationController extends Controller
                     return $full_name;
                 })
                 ->rawColumns(['action', 'fullName'])
+                ->make(true);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAppraismentListDSS(Request $request)
+    {
+        try {
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            $data = RewardInovation::
+                // DB::table('reward_inovation')
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['status_process', '=', 3],
+                    ['score_valuation_1', '!=', null],
+                    ['score_valuation_2', '!=', null],
+                    ['score_valuation_3', '!=', null],
+                    ['score_valuation_4', '!=', null],
+                    ['score_valuation_5', '!=', null],
+                    ['score_valuation_6', '!=', null],
+                ])
+                ->latest()
+                ->get();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $actionBtn =
+                        '
+                            <a href="#" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black" id="viewResultInovationId"
+                            data-fullName="'.$row->employees->full_name.'"
+                            data-1="'.$row->score_valuation_1.'"
+                            data-2="'.$row->score_valuation_2.'"
+                            data-3="'.$row->score_valuation_3.'"
+                            data-4="'.$row->score_valuation_4.'"
+                            data-5="'.$row->score_valuation_5.'"
+                            data-6="'.$row->score_valuation_6.'"
+                            >
+                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
+                            </a>
+                        ';
+
+                    return $actionBtn;
+                })
+                ->addColumn('fullName', function (RewardInovation $RewardInovation) {
+                    $full_name  =   '<span>' . $RewardInovation->employees->full_name . '</span>';
+                    return $full_name;
+                })
+                ->rawColumns(['fullName', 'action'])
                 ->make(true);
         } catch (\Throwable $th) {
             throw $th;
@@ -214,14 +308,13 @@ class ManageAppraismentInovationController extends Controller
                 }
 
                 // Update DB
-                $reward->update([
-                    'score_valuation_1' => $request['kebaruan'],
-                    'score_valuation_2' => $request['kemanfaatan'],
-                    'score_valuation_3' => $request['peranSerta'],
-                    'score_valuation_4' => $request['transferReplikasi'],
-                    'score_valuation_5' => $request['nyataNilaiTambah'],
-                    'score_valuation_6' => $request['kesinambunganKonsistensiKerja'],
-                ])->save();
+                $reward->score_valuation_1  =   $request['kebaruan'];
+                $reward->score_valuation_2  =   $request['kemanfaatan'];
+                $reward->score_valuation_3  =   $request['peranSerta'];
+                $reward->score_valuation_4  =   $request['transferReplikasi'];
+                $reward->score_valuation_5  =   $request['nyataNilaiTambah'];
+                $reward->score_valuation_6  =   $request['kesinambunganKonsistensiKerja'];
+                $reward->save();
 
                 alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
                 return redirect()->back()->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');

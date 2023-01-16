@@ -336,11 +336,11 @@
 
                                 <!-- Action Button -->
                                 <div class="my-md-4 d-flex flex-row justify-content-end">
-                                    <div class="mx-1 mx-1 mx-1">
+                                    {{-- <div class="mx-1 mx-1 mx-1">
                                         <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
-                                    </div>
+                                    </div> --}}
                                     <div class="mx-1 mx-1 mx-1">
-                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/appraisment/inovation') }}" role="button">
+                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('penilai/appraisment/inovation') }}" role="button">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
                                     </div>
