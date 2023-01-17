@@ -193,7 +193,7 @@ class ManageAppraismentInovationController extends Controller
                             data-5="'.$row->score_valuation_5.'"
                             data-6="'.$row->score_valuation_6.'"
                             >
-                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
+                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Hasil Penilaian
                             </a>
                         ';
 

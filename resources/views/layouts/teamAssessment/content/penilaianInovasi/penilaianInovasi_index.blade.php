@@ -421,7 +421,6 @@
             let value4 = $(this).attr('data-4');
             let value5 = $(this).attr('data-5');
             let value6 = $(this).attr('data-6');
-            // console.log(value6);
             Swal.fire({
                 title: 'Hasil Penilaian Form Inovation' + ' ' + '-' + ' ' + fullName,
                 // icon: 'warning',
