@@ -15,6 +15,16 @@ use Intervention\Image\Facades\Image;
 class SDMController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware('human_resources.auth');
+    // }
+
+    /**
      * Kepala Biro SDM
      * Kepala Biro SDM
      * Kepala Biro SDM

@@ -23,6 +23,10 @@ class RedirectIfNotTA
                 return $next($request);
             }
             return redirect('/penilai/dashboard');
+        } catch (\Exception $exception) {
+            return $exception;
+        } catch (\Error $error) {
+            return $error;
         } catch (\Throwable $th) {
             throw $th;
         }

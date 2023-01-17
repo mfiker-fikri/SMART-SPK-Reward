@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class ManageAppraismentTeladanController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('team_assessment.auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

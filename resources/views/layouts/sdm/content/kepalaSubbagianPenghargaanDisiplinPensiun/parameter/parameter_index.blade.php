@@ -10,9 +10,9 @@
             processing: true,
             serverSide: true,
             ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/list') }}",
-            scrollX: true,
+            // scrollX: true,
             scrollCollapse: true,
-            // autoWidth: false,
+            autoWidth: false,
             columnDefs: [
                 { width: "5%", targets: 0 },
                 { width: "10%", targets: 1 },

@@ -45,6 +45,10 @@ class RedirectIfNotHumanResources
             }
             // return $next($request);
             // return redirect('/sdm/dashboard');
+        } catch (\Exception $exception) {
+            return $exception;
+        } catch (\Error $error) {
+            return $error;
         } catch (\Throwable $th) {
             throw $th;
         }

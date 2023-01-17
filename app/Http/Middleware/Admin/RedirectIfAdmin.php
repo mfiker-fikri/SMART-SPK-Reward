@@ -31,6 +31,8 @@ class RedirectIfAdmin
             return $exception;
         } catch (\Error $error) {
             return $error;
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 }

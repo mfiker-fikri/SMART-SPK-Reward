@@ -623,7 +623,7 @@
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
                 <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
-                    <div class="card mx-4">
+                    <div class="card">
 
                         <!-- Form Penilaian Inovasi Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
@@ -767,27 +767,39 @@
 
                 <!-- Tabs Form Inovation Appraisment -->
                 <div class="tab-pane fade" id="pills-AppraismentTeamAssessment" role="tabpanel" aria-labelledby="pills-AppraismentTeamAssessment-tab">
-                    <div class="container-fluid py-3">
 
-                        <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table-process-DSS">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama Panjang</th>
-                                    <th scope="col">Hasil Penilaian</th>
-                                    {{-- <th scope="col">Kebaruan</th>
-                                    <th scope="col">Kemanfaatan</th>
-                                    <th scope="col">Peran Serta</th>
-                                    <th scope="col">Dapat Ditransfer/Direplikasi</th>
-                                    <th scope="col">Karya Nyata dan Penciptaan Nilai Tambah</th>
-                                    <th scope="col">Kesinambungan dan Konsistensi Prestasi Kerja</th> --}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                    <div class="card">
+
+                        <!-- Form Hasil Penilaian Inovasi Title -->
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Proses SPK</h5>
+                        </div>
+                        <!--/ Form Hasil Penilaian Inovasi Title -->
+
+                        <div class="container-fluid py-3">
+
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table-process-DSS">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama Panjang</th>
+                                        <th scope="col">Hasil Penilaian</th>
+                                        {{-- <th scope="col">Kebaruan</th>
+                                        <th scope="col">Kemanfaatan</th>
+                                        <th scope="col">Peran Serta</th>
+                                        <th scope="col">Dapat Ditransfer/Direplikasi</th>
+                                        <th scope="col">Karya Nyata dan Penciptaan Nilai Tambah</th>
+                                        <th scope="col">Kesinambungan dan Konsistensi Prestasi Kerja</th> --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
 
                     </div>
+
                 </div>
                 <!--/ Tabs Form Inovation Appraisment -->
             </div>

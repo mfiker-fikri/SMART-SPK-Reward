@@ -263,7 +263,20 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
     Route::POST('/reset-password', [App\Http\Controllers\TeamAssessment\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.Penilai');
 
     // Dashboard
-    Route::GET('/dashboard', [\App\Http\Controllers\TeamAssessment\DashboardController::class,'dashboard'])->name('getDashboard.Penilai');
+    Route::GET('/dashboard', [\App\Http\Controllers\TeamAssessment\DashboardController::class, 'dashboard'])->name('getDashboard.Penilai');
+
+    // SMART
+    // Kategori
+    Route::GET('/categories/list', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'categoriesList'])->name('categoriesList.Penilai');
+    Route::GET('/categories/list/data', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'categoriesListData'])->name('categoriesListData.Penilai');
+    // Kriteria
+    Route::GET('/criterias/list', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'criteriasList'])->name('criteriasList.Penilai');
+    Route::GET('/criterias/list/data/inovasi', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'criteriasListDataInovasi'])->name('criteriasListData.Inovasi.Penilai');
+    Route::GET('/criterias/list/data/teladan', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'criteriasListDataTeladan'])->name('criteriasListData.Teladan.Penilai');
+    // Parameter
+    Route::GET('/parameters/list', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'parametersList'])->name('parametersList.Penilai');
+    Route::GET('/parameters/list/data/inovasi', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'parametersListDataInovasi'])->name('parametersListData.Inovasi.Penilai');
+    Route::GET('/parameters/list/data/teladan', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'parametersListDataTeladan'])->name('parametersListData.Teladan.Penilai');
 
     // Penilaian Inovasi
     // Read

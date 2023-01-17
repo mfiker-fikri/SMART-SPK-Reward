@@ -47,6 +47,44 @@
         </li>
         <!--/ My Profile -->
 
+        <!-- Kelola SMART Kategori  -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Penilaian Metode SMART</span>
+        </li>
+
+        <li class="menu-item {{ (request()->is('penilai/categories/list*')) || (request()->is('penilai/criterias/list*')) || (request()->is('penilai/parameters/list*')) ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                <i class="menu-icon tf-icons fa-solid fa-list"></i>
+                <div data-i18n="Kelola SMART">Penilaian Metode SMART</div>
+            </a>
+            <ul class="menu-sub">
+                <!-- Manage Categories -->
+                <li class="menu-item {{ (request()->is('penilai/categories/list*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('/penilai/categories/list') }}" class="menu-link" style="text-decoration: none !important;">
+                        <div data-i18n="Kelola Kategori">Kategori</div>
+                    </a>
+                </li>
+                <!--/ Manage Categories -->
+
+                <!-- Manage Criterias -->
+                <li class="menu-item {{ (request()->is('penilai/criterias/list*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('/penilai/criterias/list') }}" class="menu-link" style="text-decoration: none !important;">
+                        <div data-i18n="Kelola Kriteria">Kriteria</div>
+                    </a>
+                </li>
+                <!--/ Manage Criterias -->
+
+                <!-- Manage Parameters -->
+                <li class="menu-item {{ (request()->is('penilai/parameters/list*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('/penilai/parameters/list') }}" class="menu-link" style="text-decoration: none !important;">
+                        <div data-i18n="Kelola Parameter">Parameter</div>
+                    </a>
+                </li>
+                <!--/ Manage Parameters -->
+            </ul>
+        </li>
+        <!--/ Kelola SMART Kategori  -->
+
         <!-- Appraisment Form Inovation and  -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Penilaian Form Penghargaan Berprestasi</span>
