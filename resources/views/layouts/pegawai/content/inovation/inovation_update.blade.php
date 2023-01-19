@@ -514,7 +514,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center py-sm-3">
-                                    <video class="d-block rounded" width="650" height="350" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
+                                    <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
                                 </div>
                             </div>
                         </div>

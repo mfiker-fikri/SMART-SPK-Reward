@@ -36,7 +36,7 @@
                 <!-- Tabs Form Inovation Appraisment From Employees -->
                 <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
 
-                    <div class="card mx-4">
+                    <div class="card">
 
                         <!-- Form Inovation Appraisment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
@@ -75,7 +75,7 @@
                                     <label for="uploadVideo" class="col-xl-3 col-form-label">Upload Video</label>
                                     <div class="col-md-9 col-xl-9">
                                         <div class="d-flex justify-content-center py-sm-3">
-                                            <video class="d-block rounded" width="650" height="350" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_video_support) }}"></video>
+                                            <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_video_support) }}"></video>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                     </div>
                     @endif
 
-                    <div class="card mx-4">
+                    <div class="card">
 
                         <!-- Form Inovation Appraisment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">

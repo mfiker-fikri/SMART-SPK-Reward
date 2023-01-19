@@ -190,6 +190,49 @@ class SmartController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function parametersListDataTeladan()
+    {
+        try {
+            $data   =   Parameter::with('criterias')
+                ->where('criteria_id', '=', 7)
+                ->orWhere('criteria_id', '=', 8)
+                ->orWhere('criteria_id', '=', 9)
+                ->orWhere('criteria_id', '=', 10)
+                ->orWhere('criteria_id', '=', 11)
+                ->orWhere('criteria_id', '=', 12)
+                ->orderBy('id', 'asc')->get();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('category_name', function (Parameter $parameter) {
+                    $categories_id  =   $parameter->criterias->categories->category;
+                    return $categories_id;
+                })
+                ->addColumn('criteria_name', function (Parameter $parameter) {
+                    $criterias_id  =   $parameter->criterias->criteria;
+                    return $criterias_id;
+                })
+                ->addColumn('normalization', function ($row, Criteria $criteria) {
+                    $normalization      =   '';
+                    if ($row->criterias->categorie_id == 2) {
+                        $sumValueQuality    =   Criteria::where('categorie_id', '=', 2)->sum('value_quality');
+                        $normalization      =   $row->criterias->value_quality / $sumValueQuality;
+                    }
+
+                    return round($normalization, 3);
+                })
+                ->rawColumns(['category_name', 'criteria_name', 'normalization'])
+                ->make(true);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

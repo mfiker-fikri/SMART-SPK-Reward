@@ -22,8 +22,8 @@
             // autoWidth: false,
             columnDefs: [
                 { width: '5%', targets: 0 },
-                { width: '10%', targets: 1 },
-                { width: '10%', targets: 2 },
+                { width: '5%', targets: 1 },
+                { width: '5%', targets: 2 },
                 { width: '5%', targets: 3 },
                 { width: '95%', targets: 4 },
             ],
@@ -41,8 +41,8 @@
                 // {   data: 'parameter', name: 'parameter', orderable: false, searchable: false, width: '100%'},
 
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: '5%'},
-                {   data: 'category_name', name: 'category_name', orderable: false, searchable: false, width: '10%'},
-                {   data: 'criteria_name', name: 'criteria_name', orderable: false, searchable: false, width: '10%'},
+                {   data: 'category_name', name: 'category_name', orderable: false, searchable: false, width: '5%'},
+                {   data: 'criteria_name', name: 'criteria_name', orderable: false, searchable: false, width: '5%'},
                 {   data: 'normalization', name: 'normalization', orderable: false, searchable: true, width: '5%'},
                 {   data: 'parameter', name: 'parameter', orderable: false, searchable: false, width: '95%'},
             ],
@@ -54,7 +54,37 @@
     </script>
     <!--/ Datatables Parameter -->
 
+    <!-- Datatables Parameter -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var table = $('#data-table1').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: "{{ url('penilai/parameters/list/data/teladan') }}",
+            columnDefs: [
+                { width: '5%', targets: 0 },
+                { width: '5%', targets: 1 },
+                { width: '5%', targets: 2 },
+                { width: '5%', targets: 3 },
+                { width: '95%', targets: 4 },
+            ],
+            columns: [
+                {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: '5%'},
+                {   data: 'category_name', name: 'category_name', orderable: false, searchable: false, width: '5%'},
+                {   data: 'criteria_name', name: 'criteria_name', orderable: false, searchable: false, width: '5%'},
+                {   data: 'normalization', name: 'normalization', orderable: false, searchable: true, width: '5%'},
+                {   data: 'parameter', name: 'parameter', orderable: false, searchable: false, width: '95%'},
+            ],
+        });
 
+        new $.fn.dataTable.FixedHeader( table );
+        new $.fn.dataTable.FixedColumns( table );
+    });
+    </script>
+    <!--/ Datatables Parameter -->
 
 @stop
 
@@ -106,7 +136,7 @@
 
                 <div class="container-fluid my-3">
 
-                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0"  width="100%" id="data-table1">
+                    <table class="table table-striped table-bordered dt-responsive display responsive"  cellspacing="0"  width="100%" id="data-table1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

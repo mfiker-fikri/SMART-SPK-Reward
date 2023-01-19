@@ -976,369 +976,745 @@ class InovationController extends Controller
                     return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi')->withErrors($validate)->withInput($request->all());
                 }
 
-                // 1. Jika Diganti File
-                if ($request->hasFile('uploadFile')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                if ($rewardInovation->status_process == 3) {
+                    //  1. Jika Diganti File
+                    if ($request->hasFile('uploadFile')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Link
-                    $link                       =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        // Link
+                        $link                       =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
 
-                    // Delete File
-                    if (file_exists($link)) {
-                        unlink($link);
-                        $rewardInovation->update(['upload_file_short_description' => '']);
+                        // Delete File
+                        if (file_exists($link)) {
+                            unlink($link);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                        }
+
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+
+                        // Save Folder
+                        // $file->storeAs('app/public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+
+                        // Update Database File
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get File
-                    $file                       =       $request->file('uploadFile');
+                    // 2. Jika Diganti Image
+                    if ($request->hasFile('uploadPhoto')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Original Extension
-                    $fileExtension              =       $file->getClientOriginalExtension();
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Link
+                        $link                       =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Delete Image
+                        if (file_exists($link)) {
+                            unlink($link);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                        }
 
-                    // File Name
-                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Get Image
+                        $photo                      =       $request->file('uploadPhoto');
 
-                    // Save Folder
-                    // $file->storeAs('app/public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
 
-                    // Update Database File
-                    $rewardInovation->upload_file_short_description     =   $fileName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
-                }
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
 
-                // 2. Jika Diganti Image
-                if ($request->hasFile('uploadPhoto')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // Image Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
-                    // Link
-                    $link                       =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                        // Save Folder
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
 
-                    // Delete Image
-                    if (file_exists($link)) {
-                        unlink($link);
-                        $rewardInovation->update(['upload_file_image_support' => '']);
+                        // Update Database Image
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get Image
-                    $photo                      =       $request->file('uploadPhoto');
+                    // 3. Jika Diganti Video
+                    if ($request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Original Extension
-                    $photoExtension             =       $photo->getClientOriginalExtension();
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Link
+                        $link                       =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Delete Video
+                        if (file_exists($link)) {
+                            unlink($link);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
 
-                    // Image Name
-                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
 
-                    // Save Folder
-                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
-                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
 
-                    // Update Database Image
-                    $rewardInovation->upload_file_image_support         =   $photoName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
-                }
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
 
-                // 3. Jika Diganti Video
-                if ($request->hasFile('uploadVideo')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
-                    // Link
-                    $link                       =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+                        // Save Folder
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
 
-                    // Delete Video
-                    if (file_exists($link)) {
-                        unlink($link);
-                        $rewardInovation->update(['upload_file_video_support' => '']);
+                        // Update Database Video
+                        $rewardInovation->upload_file_video_support     =   $videoName;
+                        $rewardInovation->status_process                =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get Video
-                    $video                      =       $request->file('uploadVideo');
 
-                    // Get Original Extension
-                    $videoExtension             =       $video->getClientOriginalExtension();
+                    // 4. Jika Diganti File dan Image
+                    if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
 
-                    // Video Name
-                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+                        // Delete File dan Image
+                        if (file_exists($link1) && file_exists($link2)) {
+                            unlink($link1);
+                            unlink($link2);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                        }
 
-                    // Save Folder
-                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
-                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+                        // Get Photo
+                        $photo                      =       $request->file('uploadPhoto');
 
-                    // Update Database Video
-                    $rewardInovation->upload_file_video_support     =   $videoName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
-                }
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
 
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
 
-                // 4. Jika Diganti File dan Image
-                if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Photo Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
 
-                    // Link
-                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
-                    $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                        // Save Folder
+                        // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
 
-                    // Delete File dan Image
-                    if (file_exists($link1) && file_exists($link2)) {
-                        unlink($link1);
-                        unlink($link2);
-                        $rewardInovation->update(['upload_file_short_description' => '']);
-                        $rewardInovation->update(['upload_file_image_support' => '']);
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+
+                        // Update Database File dan Image
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get File
-                    $file                       =       $request->file('uploadFile');
-                    // Get Photo
-                    $photo                      =       $request->file('uploadPhoto');
+                    // 5. Jika Diganti File dan Video
+                    if ($request->hasFile('uploadFile') && $request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Original Extension
-                    $fileExtension              =       $file->getClientOriginalExtension();
-                    // Get Original Extension
-                    $photoExtension             =       $photo->getClientOriginalExtension();
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Delete File dan Video
+                        if (file_exists($link1) && file_exists($link2)) {
+                            unlink($link1);
+                            unlink($link2);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
 
-                    // File Name
-                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
-                    // Photo Name
-                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
 
-                    // Save Folder
-                    // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
 
-                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
-                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
 
-                    // Update Database File dan Image
-                    $rewardInovation->upload_file_short_description     =   $fileName;
-                    $rewardInovation->upload_file_image_support         =   $photoName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
-                }
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                // 5. Jika Diganti File dan Video
-                if ($request->hasFile('uploadFile') && $request->hasFile('uploadVideo')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // Save Folder
+                        // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
 
-                    // Link
-                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
-                    $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
 
-                    // Delete File dan Video
-                    if (file_exists($link1) && file_exists($link2)) {
-                        unlink($link1);
-                        unlink($link2);
-                        $rewardInovation->update(['upload_file_short_description' => '']);
-                        $rewardInovation->update(['upload_file_video_support' => '']);
+                        // Update Database File dan Video
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->upload_file_video_support         =   $videoName;
+                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get File
-                    $file                       =       $request->file('uploadFile');
-                    // Get Video
-                    $video                      =       $request->file('uploadVideo');
+                    // 6. Jika Diganti Image dan Video
+                    if ($request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Original Extension
-                    $fileExtension              =       $file->getClientOriginalExtension();
-                    // Get Original Extension
-                    $videoExtension             =       $video->getClientOriginalExtension();
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                        $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Delete Image dan Video
+                        if (file_exists($link1) && file_exists($link2)) {
+                            unlink($link1);
+                            unlink($link2);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
 
-                    // File Name
-                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
-                    // Video Name
-                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+                        // Get Photo
+                        $photo                      =       $request->file('uploadPhoto');
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
 
-                    // Save Folder
-                    // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
-                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
 
-                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
-                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
 
-                    // Update Database File dan Video
-                    $rewardInovation->upload_file_short_description     =   $fileName;
-                    $rewardInovation->upload_file_video_support         =   $videoName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
-                }
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                // 6. Jika Diganti Image dan Video
-                if ($request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Photo Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // Save Folder
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
 
-                    // Link
-                    $link1                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
-                    $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
 
-                    // Delete Image dan Video
-                    if (file_exists($link1) && file_exists($link2)) {
-                        unlink($link1);
-                        unlink($link2);
-                        $rewardInovation->update(['upload_file_image_support' => '']);
-                        $rewardInovation->update(['upload_file_video_support' => '']);
+                        // Update Database Image dan Video
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->upload_file_video_support         =   $videoName;
+                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get Photo
-                    $photo                      =       $request->file('uploadPhoto');
-                    // Get Video
-                    $video                      =       $request->file('uploadVideo');
+                    // 7. Jika Diganti File, Image, dan Video
+                    if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Original Extension
-                    $photoExtension             =       $photo->getClientOriginalExtension();
-                    // Get Original Extension
-                    $videoExtension             =       $video->getClientOriginalExtension();
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                        $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Delete Image dan Video
+                        if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
+                            unlink($link1);
+                            unlink($link2);
+                            unlink($link3);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
 
-                    // Photo Name
-                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
-                    // Video Name
-                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+                        // Get Photo
+                        $photo                      =       $request->file('uploadPhoto');
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
 
-                    // Save Folder
-                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
-                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
 
-                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
-                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
 
-                    // Update Database Image dan Video
-                    $rewardInovation->upload_file_image_support         =   $photoName;
-                    $rewardInovation->upload_file_video_support         =   $videoName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
-                }
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                // 7. Jika Diganti File, Image, dan Video
-                if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Photo Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
 
-                    // Find Reward Id
-                    $rewardInovation            =       RewardInovation::find($id);
+                        // Save Folder
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
 
-                    // Link
-                    $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
-                    $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
-                    $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
 
-                    // Delete Image dan Video
-                    if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
-                        unlink($link1);
-                        unlink($link2);
-                        unlink($link3);
-                        $rewardInovation->update(['upload_file_short_description' => '']);
-                        $rewardInovation->update(['upload_file_image_support' => '']);
-                        $rewardInovation->update(['upload_file_video_support' => '']);
+                        // Update Database File, Image dan Video
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->upload_file_video_support         =   $videoName;
+                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                    // Get File
-                    $file                       =       $request->file('uploadFile');
-                    // Get Photo
-                    $photo                      =       $request->file('uploadPhoto');
-                    // Get Video
-                    $video                      =       $request->file('uploadVideo');
+                } elseif ($rewardInovation->status_process == 2) {
 
-                    // Get Original Extension
-                    $fileExtension              =       $file->getClientOriginalExtension();
-                    // Get Original Extension
-                    $photoExtension             =       $photo->getClientOriginalExtension();
-                    // Get Original Extension
-                    $videoExtension             =       $video->getClientOriginalExtension();
+                    //  1. Jika Diganti File
+                    if ($request->hasFile('uploadFile')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
 
-                    // Get Id Auth Employee
-                    $id                         =       Auth::guard('employees')->user()->id;
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
 
-                    // Get Employee Username
-                    $employee                   =       Auth::guard('employees')->user()->username;
+                        // Link
+                        $link                       =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
 
-                    // File Name
-                    $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
-                    // Photo Name
-                    $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
-                    // Video Name
-                    $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+                        // Delete File
+                        if (file_exists($link)) {
+                            unlink($link);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                        }
 
-                    // Save Folder
-                    // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
-                    // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
 
-                    $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
-                    $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
-                    $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
 
-                    // Update Database File, Image dan Video
-                    $rewardInovation->upload_file_short_description     =   $fileName;
-                    $rewardInovation->upload_file_image_support         =   $photoName;
-                    $rewardInovation->upload_file_video_support         =   $videoName;
-                    $rewardInovation->save();
-                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+
+                        // Save Folder
+                        // $file->storeAs('app/public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+
+                        // Update Database File
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
+
+                    // 2. Jika Diganti Image
+                    if ($request->hasFile('uploadPhoto')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
+
+                        // Link
+                        $link                       =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+
+                        // Delete Image
+                        if (file_exists($link)) {
+                            unlink($link);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                        }
+
+                        // Get Image
+                        $photo                      =       $request->file('uploadPhoto');
+
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Image Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+
+                        // Save Folder
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+
+                        // Update Database Image
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
+
+                    // 3. Jika Diganti Video
+                    if ($request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
+
+                        // Link
+                        $link                       =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                        // Delete Video
+                        if (file_exists($link)) {
+                            unlink($link);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
+
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
+
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                        // Save Folder
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                        // Update Database Video
+                        $rewardInovation->upload_file_video_support     =   $videoName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
+
+
+                    // 4. Jika Diganti File dan Image
+                    if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
+
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+
+                        // Delete File dan Image
+                        if (file_exists($link1) && file_exists($link2)) {
+                            unlink($link1);
+                            unlink($link2);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                        }
+
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+                        // Get Photo
+                        $photo                      =       $request->file('uploadPhoto');
+
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Photo Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+
+                        // Save Folder
+                        // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+
+                        // Update Database File dan Image
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
+
+                    // 5. Jika Diganti File dan Video
+                    if ($request->hasFile('uploadFile') && $request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
+
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                        // Delete File dan Video
+                        if (file_exists($link1) && file_exists($link2)) {
+                            unlink($link1);
+                            unlink($link2);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
+
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
+
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                        // Save Folder
+                        // $file->storeAs('public/employees/documents/requirementsEmployeesRewardInovations/' . $employee, $fileName);
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                        // Update Database File dan Video
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->upload_file_video_support         =   $videoName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
+
+                    // 6. Jika Diganti Image dan Video
+                    if ($request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
+
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                        $link2                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                        // Delete Image dan Video
+                        if (file_exists($link1) && file_exists($link2)) {
+                            unlink($link1);
+                            unlink($link2);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
+
+                        // Get Photo
+                        $photo                      =       $request->file('uploadPhoto');
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
+
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Photo Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                        // Save Folder
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                        // Update Database Image dan Video
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->upload_file_video_support         =   $videoName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
+
+                    // 7. Jika Diganti File, Image, dan Video
+                    if ($request->hasFile('uploadFile') && $request->hasFile('uploadPhoto') && $request->hasFile('uploadVideo')) {
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // Find Reward Id
+                        $rewardInovation            =       RewardInovation::find($id);
+
+                        // Link
+                        $link1                      =       storage_path('app/public/employees/documents/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_short_description;
+                        $link2                      =       storage_path('app/public/employees/images/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_image_support;
+                        $link3                      =       storage_path('app/public/employees/videos/requirementsEmployeesRewardInovations/') . $employee . '/' . $rewardInovation->upload_file_video_support;
+
+                        // Delete Image dan Video
+                        if (file_exists($link1) && file_exists($link2) && file_exists($link3)) {
+                            unlink($link1);
+                            unlink($link2);
+                            unlink($link3);
+                            $rewardInovation->update(['upload_file_short_description' => '']);
+                            $rewardInovation->update(['upload_file_image_support' => '']);
+                            $rewardInovation->update(['upload_file_video_support' => '']);
+                        }
+
+                        // Get File
+                        $file                       =       $request->file('uploadFile');
+                        // Get Photo
+                        $photo                      =       $request->file('uploadPhoto');
+                        // Get Video
+                        $video                      =       $request->file('uploadVideo');
+
+                        // Get Original Extension
+                        $fileExtension              =       $file->getClientOriginalExtension();
+                        // Get Original Extension
+                        $photoExtension             =       $photo->getClientOriginalExtension();
+                        // Get Original Extension
+                        $videoExtension             =       $video->getClientOriginalExtension();
+
+                        // Get Id Auth Employee
+                        $id                         =       Auth::guard('employees')->user()->id;
+
+                        // Get Employee Username
+                        $employee                   =       Auth::guard('employees')->user()->username;
+
+                        // File Name
+                        $fileName                   =       $id . '_' . $employee . '_' . date('d-m-Y') . $fileExtension;
+                        // Photo Name
+                        $photoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $photoExtension;
+                        // Video Name
+                        $videoName                  =       $id . '_' . $employee . '_' . date('d-m-Y') . $videoExtension;
+
+                        // Save Folder
+                        // $photo->storeAs('public/employees/images/requirementsEmployeesRewardInovations/' . $employee, $photoName);
+                        // $video->storeAs('public/employees/videos/requirementsEmployeesRewardInovations/' . $employee, $videoName);
+
+                        $file->move(public_path('storage/employees/documents/requirementsEmployeesRewardInovations/' . $employee), $fileName);
+                        $photo->move(public_path('storage/employees/images/requirementsEmployeesRewardInovations/' . $employee), $photoName);
+                        $video->move(public_path('storage/employees/videos/requirementsEmployeesRewardInovations/' . $employee), $videoName);
+
+                        // Update Database File, Image dan Video
+                        $rewardInovation->upload_file_short_description     =   $fileName;
+                        $rewardInovation->upload_file_image_support         =   $photoName;
+                        $rewardInovation->upload_file_video_support         =   $videoName;
+                        $rewardInovation->save();
+                        alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    }
                 }
 
                 // $rewardInovation->upload_file_image_support         =   $request['uploadPhoto'];
