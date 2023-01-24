@@ -276,6 +276,9 @@
                                         <a class="btn btn-secondary btn-lg" href="{{ URL::to('admin/manage/sdm') }}" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
+                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                        </a>
                                         <button type="reset" class="btn btn-warning btn-lg" id="resetRole">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
@@ -407,8 +410,11 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        <a href="{{ URL::to('admin/manage/admins') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
+                                        <a href="{{ URL::to('admin/manage/sdm') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
+                                        </a>
+                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
                                         </a>
                                         <button type="reset" class="btn btn-warning btn-lg">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset

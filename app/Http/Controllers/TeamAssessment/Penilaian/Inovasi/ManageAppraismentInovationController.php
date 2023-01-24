@@ -11,6 +11,7 @@ use App\Models\Pegawai;
 use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
@@ -18,7 +19,7 @@ use Yajra\DataTables\DataTables;
 class ManageAppraismentInovationController extends Controller
 {
     /**
-     * Instantiate a new controller instance.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -35,20 +36,6 @@ class ManageAppraismentInovationController extends Controller
     public function getAppraisment()
     {
         try {
-            // Normalisasi
-            // Jumlahkan Semua Kolom 'Value Quality'
-            $criteriaNormalisasi    =   Criteria::with('categories')->where([
-                                            ['categorie_id', '=', 1],
-                                        ])->orderBy('id', 'asc')->first();
-
-            $normalisasi            =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
-
-            // Pembagian Normalisasi
-            $normalization          =   $criteriaNormalisasi->value_quality / $normalisasi;
-
-            $resultNormalization    =   round($normalization, 3);
-            // ddd($resultNormalization);
-
             //
             $timer                  =   CountdownTimerFormInovation::first();
 
@@ -62,19 +49,255 @@ class ManageAppraismentInovationController extends Controller
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
+
+            // DSS SMART
+            // Normalisasi
+
+            //
+            $criterias = Criteria::with('categories')->where([
+                ['categorie_id', '=', 1],
+                ])->orderBy('id', 'asc')->get();
+
+            // Jumlahkan Semua Kolom 'Value Quality'
+            $sumCriteria            =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+
+            // Pembagian Normalisasi
+            $normalisasi = [];
+            foreach ($criterias as $value) {
+                array_push($normalisasi, round( ($value->value_quality/$sumCriteria), 3));
+            }
+
             // Mencari Nilai Min
-            $min    =   RewardInovation::
-                    where([
+            $arrMin =  [];
+
+            for ($x = 1; $x <= 6; $x++) {
+                $min = RewardInovation::
+                    select("score_valuation_$x")
+                    ->where([
                         ['created_at', '>=', $dateOpenTime],
                         ['created_at', '<=', $dateExpiredTime],
                         ['updated_at', '>=', $dateOpenTime],
                         ['updated_at', '<=', $dateExpiredTime],
                         ['status_process', '=', 4],
                     ])
-                    ->min('score_valuation_1');
-                    // ->latest()
-                    // ->get();
-            // ddd($min);
+                    ->min("score_valuation_$x");
+                array_push($arrMin, $min);
+            }
+
+            // return $arrMin;
+
+            // Mencari Nilai Max
+            $arrMax =  [];
+            for ($x = 1; $x <= 6; $x++) {
+                $max    =   RewardInovation::
+                        select("score_valuation_$x")
+                        ->where([
+                            ['created_at', '>=', $dateOpenTime],
+                            ['created_at', '<=', $dateExpiredTime],
+                            ['updated_at', '>=', $dateOpenTime],
+                            ['updated_at', '<=', $dateExpiredTime],
+                            ['status_process', '=', 4],
+                        ])
+                        ->max("score_valuation_$x");
+                array_push($arrMax, $max);
+            }
+            // return $arrMax;
+
+            $arrResultMinMax = [];
+            foreach($arrMax as $aM => $value) {
+                // echo $value;
+                $arrResultMinMax[$aM] = $value - $arrMin[$aM];
+
+            }
+            // $arrResultMinMax = $arrMax + $arrMin;
+            // return $arrResultMinMax;
+
+            $arrResult =  [];
+            $arrResultNilaiUtility = [];
+            $nilai    =   RewardInovation::
+                            select('score_valuation_1','score_valuation_2','score_valuation_3','score_valuation_4','score_valuation_5','score_valuation_6')
+                            ->where([
+                                ['created_at', '>=', $dateOpenTime],
+                                ['created_at', '<=', $dateExpiredTime],
+                                ['updated_at', '>=', $dateOpenTime],
+                                ['updated_at', '<=', $dateExpiredTime],
+                                ['status_process', '=', 4],
+                            ])
+                            ->get()->toArray();
+            // ddd($nilai);
+            // return $nilai;
+
+            foreach ($nilai as $key => $value) {
+
+                $arrScrVal = [];
+                for ($x = 1; $x <= 6; $x++) {
+                    array_push($arrScrVal, $value["score_valuation_$x"]);
+                }
+                // ddd($arrScrVal);
+
+                $arrUtilityResult = [];
+                foreach ($arrScrVal as $key => $value) {
+                    // ddd($value);
+                    $arrUtilityResult[$key] = $value - $arrMin[$key];
+                    // $arrResultMinMax[$aM] = $value - $arrMin[$aM];
+                }
+
+                // ddd($arrUtilityResult);
+
+                $arrNilaiUtility = [];
+                foreach ($arrUtilityResult as $key => $value) {
+
+                    $arrNilaiUtility[$key] = $arrResultMinMax[$key] == 0 ? 0 : $value / $arrResultMinMax[$key];
+                }
+
+                // ddd($arrNilaiUtility);
+                array_push($arrResultNilaiUtility, $arrNilaiUtility);
+
+            }
+
+
+            $ResultFinalDSS = [];
+            foreach ($arrResultNilaiUtility as $key => $value) {
+                // ddd($value);
+                $Result = [];
+                foreach ($value as $key => $valueEach) {
+                    // ddd($valueEach);
+                    $result[$key] =  $valueEach * $normalisasi[$key];
+                }
+                // ddd($result);
+
+                $resultDSSFinal = 0;
+                foreach ($result as $key => $valueEach) {
+                    $resultDSSFinal += round($valueEach, 3);
+                }
+
+                if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.4) {
+                    // echo 'Tidak Dapat Penghargaan';
+                    array_push($ResultFinalDSS, 'Tidak Dapat Penghargaan');
+                } elseif ($resultDSSFinal > 0.4 && $resultDSSFinal <= 0.8) {
+                    // echo 'Dipertimbangkan';
+                    array_push($ResultFinalDSS, 'Dipertimbangkan');
+                } elseif ($resultDSSFinal > 0.8 && $resultDSSFinal <= 1) {
+                    // echo 'Dapat Penghargaan';
+                    array_push($ResultFinalDSS, 'Dapat Penghargaan');
+                }
+
+
+                // array_push($ResultFinalDSS, $resultDSSFinal);
+                // ddd($resultDSSFinal);
+            }
+
+            ddd($ResultFinalDSS);
+            // if ($ResultFinalDSS >= 0.4) {
+
+            // }
+
+
+
+
+
+            $arrResult =  [];
+            $arrNilaiUtility = [];
+            for ($x = 1; $x <= 6; $x++) {
+                $nilai    =   RewardInovation::
+                                select("score_valuation_$x")
+                                ->where([
+                                    ['created_at', '>=', $dateOpenTime],
+                                    ['created_at', '<=', $dateExpiredTime],
+                                    ['updated_at', '>=', $dateOpenTime],
+                                    ['updated_at', '<=', $dateExpiredTime],
+                                    ['status_process', '=', 4],
+                                ])
+                                ->get()->toArray();
+                // return $nilai;
+                array_push($arrResult, $nilai);
+                foreach ($arrResult as $key => $value) {
+                    // echo $value;
+                    // echo $value[$key]["score_valuation_$x"];
+                    // return $arrResultMinMax[$key];
+                    // echo ($value["score_valuation_1"]-$value["score_valuation_1"]) / ($value["score_valuation_1"]-$value["score_valuation_1"]);
+                    // echo $arrResultMinMax[$key];
+                    // array_push($arrNilaiUtility, ($value["score_valuation_$x"]) / ($arrResultMinMax[$key]) );
+
+                    for ($i = 0; $i <= count($nilai); $i++) {
+                        // ddd($value[$i]["score_valuation_$x"]);
+                        // ddd($arrResultMinMax[$i]);
+                        array_map(function($arrResults, $arrResultMinMax) use ($i) {
+                            ddd($arrResults[$i]["score_valuation_$i"]/($arrResultMinMax[$i]));
+                            // $
+                            // return ;
+                        }, $arrResult);
+                        // array_push($arrNilaiUtility, $arrResultMinMax[$i] == 0 ? 0 : ($value[$i]["score_valuation_$x"]) / ($arrResultMinMax[$i]) );
+                    }
+
+                    // echo $value[$key][''];
+                    // $arrNilaiUtility[$key] =  $value / $arrResultMinMax[$key];
+                    // for ($i=1; $i < ; $i++) {
+                    //     echo
+                    // }
+                    // echo "<br></br>";
+                }
+                // echo $value[$key]["score_valuation_$x"];
+                // return $arrResultMinMax[$key];
+            }
+
+            // ddd($arrResultMinMax);
+            // ddd($value[0]["score_valuation_6"] / $arrResultMinMax[5]);
+            return $arrNilaiUtility;
+
+
+
+
+
+
+
+
+
+
+            $i = 0;
+            foreach ($min as $somekey=>$someval) {
+                echo $somekey;
+                $i++;
+                array_push($arrMin, $someval );
+            }
+            return $arrMin;
+
+            for ($x = 1; $x <= count($min); $x++) {
+                // echo "The number is: $x <br>";
+                // echo "<br> $x </br>";
+                // foreach ($min as $key => $value) {
+                foreach ($min as $value) {
+                    // echo $x;
+                    // echo $value["score_valuation_$x"];
+                    // echo $value;
+                    // array_push($arrMin, $value["score_valuation_$x"]->min() );
+                    // array_push($arrMin, $min->min("score_valuation_$x") );
+                    for($y = 1; $y <= 6; $y++) {
+                        array_push($arrMin, $value["score_valuation_$y"] );
+                    }
+                }
+                return $arrMin;
+
+                // echo $min->score_valuation_1;
+                // echo $min[$x]["score_valuation_$x"];
+                // echo $min    =   RewardInovation::
+                //     select("score_valuation_$x")
+                //     ->where([
+                //         ['created_at', '>=', $dateOpenTime],
+                //         ['created_at', '<=', $dateExpiredTime],
+                //         ['updated_at', '>=', $dateOpenTime],
+                //         ['updated_at', '<=', $dateExpiredTime],
+                //         ['status_process', '=', 4],
+                //     ])
+                //     ->min("score_valuation_$x")
+                //     ->get();
+            }
+            // return $x;
+            return $arrMin;
+
+
+
+
             // Mencari Nilai Max
             $max    =   RewardInovation::
                     where([
@@ -173,7 +396,25 @@ class ManageAppraismentInovationController extends Controller
                     ['updated_at', '>=', $dateOpenTime],
                     ['updated_at', '<=', $dateExpiredTime],
                     ['status_process', '=', 3],
+                    ['score_valuation_1', '=' , null],
+                    ['score_valuation_2', '=' , null],
+                    ['score_valuation_3', '=' , null],
+                    ['score_valuation_4', '=' , null],
+                    ['score_valuation_5', '=' , null],
+                    ['score_valuation_6', '=' , null],
+                    // ['score_valuation_1' => null],
+                    // ['score_valuation_2' => null],
+                    // ['score_valuation_3' => null],
+                    // ['score_valuation_4' => null],
+                    // ['score_valuation_5' => null],
+                    // ['score_valuation_6' => null],
                 ])
+                // ->whereNull('score_valuation_1')
+                // ->orWhereNull('score_valuation_2')
+                // ->orWhereNull('score_valuation_3')
+                // ->orWhereNull('score_valuation_4')
+                // ->orWhereNull('score_valuation_5')
+                // ->orWhereNull('score_valuation_6')
                 // ->whereBetween('created_at', [$dateOpenTime, $dateExpiredTime])
                 // ->orWhereBetween('updated_at', [$dateOpenTime, $dateExpiredTime])
                 // ->orWhere(['created_at', '>=', $timer->date_time_open_form_inovation])
@@ -244,161 +485,377 @@ class ManageAppraismentInovationController extends Controller
                     ['score_valuation_5', '!=', null],
                     ['score_valuation_6', '!=', null],
                 ])
+                // ->whereNotNull('score_valuation_1')
+                // ->orWhereNotNull('score_valuation_2')
+                // ->orWhereNotNull('score_valuation_3')
+                // ->orWhereNotNull('score_valuation_4')
+                // ->orWhereNotNull('score_valuation_5')
+                // ->orWhereNotNull('score_valuation_6')
                 ->latest()
                 ->get();
 
+            $criterias = Criteria::with('categories')->where([
+                ['categorie_id', '=', 1],
+            ])->orderBy('id', 'asc')->get();
+
             return DataTables::of($data)
                 ->addIndexColumn()
+                // ->addColumn('normalisasi', function ($row) use ($criterias){
+                //     $normalisasi = [];
+                //     foreach ($criterias as $key => $value) {
+                //         // return $value;
+                //         $normalisasi    =   $value['value_quality'] / Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+                //     }
+                //     return $normalisasi;
+                //     // $i = 0;
+                //     // for ($i=0; $i < count($criterias); $i++) {
+                //     //     if ($i == 0) {
+                //     //         $normalisasi1 = $criterias[$i]['value_quality'];
+                //     //         return $normalisasi1;
+                //     //     }
+                //     //     elseif ($i == 1) {
+                //     //         $normalisasi2 = $criterias[$i]['value_quality'];
+                //     //         return $normalisasi2;
+                //     //     }
+                //     // }
+                //     // return $normalisasi1.$normalisasi2;
+                //     // foreach ($criterias as $key => $value) {
+                //     //     return $value;
+                //     //     foreach ($value as $key => $v) {
+                //     //         return $v[0]['value_quality'];
+                //     //     }
+                //     //     // $inc = $i++;
+                //     //     // $key++;
+                //     //     // $normalisasi = $value['value_quality'][0];
+                //     //     // return $normalisasi;
+                //     // }
+                //     // return $i;
+                // })
+                ->addColumn('min', function ($row) {
+                    $min1    =   $row->min('score_valuation_1');
+                    $min2    =   $row->min('score_valuation_2');
+                    $min3    =   $row->min('score_valuation_3');
+                    $min4    =   $row->min('score_valuation_4');
+                    $min5    =   $row->min('score_valuation_5');
+                    $min6    =   $row->min('score_valuation_6');
+                    // return $min1.$min2.$min3.$min4.$min5.$min6;
+                })
+                ->addColumn('max', function ($row) {
+                    $max1    =   $row->max('score_valuation_1');
+                    $max2    =   $row->max('score_valuation_2');
+                    $max3    =   $row->max('score_valuation_3');
+                    $max4    =   $row->max('score_valuation_4');
+                    $max5    =   $row->max('score_valuation_5');
+                    $max6    =   $row->max('score_valuation_6');
+                    // return $max1.$max2.$max3.$max4.$max5.$max6;
+                })
                 ->addColumn('result', function ($row, Criteria $criteria) {
                     // Normalisasi
                     // Jumlahkan Semua Kolom 'Value Quality'
-                    $criteria               =   Criteria::with('categories')->where([
-                                                    ['categorie_id', '=', 1],
-                                                ])->orderBy('id', 'asc')->first();
-                                                // ->latest()
-                                                // ->get();
-                    // return $criteria;
-                    $normalisasi            =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+                    // $criteria               =   Criteria::
+                    //                             // select('value_quality')
+                    //                             // ->with('categories')
+                    //                             where([
+                    //                                 ['categorie_id', '=', 1],
+                    //                             ])
+                    //                             // ->orderBy('id', 'asc')
+                    //                             // ->first();
+                    //                             // ->latest()
+                    //                             ->get();
+                    //                             // ->toArray();
 
-                    // Pembagian Normalisasi
-                    $normalization1          =   $criteria->value_quality[0] / $normalisasi;
+                    // // return $criteria;
+                    // $sumCriteria            =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
 
-                    $resultNormalization1    =   round($normalization1, 3);
-                    return $resultNormalization1;
+                    // $bobotKriteria          =   [];
+                    // foreach ($criteria as $k => $value) {
+                    //     return $value;
+                    //     for ($k=0; $k<count($criteria); $k++) {
+                    //         $normalisasi    =   $value[$k]['value_quality'] / Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+                    //         return $normalisasi;
+                    //     }
+                    //     // $bobotKriteria  =   $bobotKriteria;
+                    //     // return $i ;
+                    //     // return $normalisasi;
+                    //     // return round($normalisasi, 3);
+                    // }
+                    // return $bobotKriteria;
+
+                    // $normalisasi            =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+
+                    // // Pembagian Normalisasi1
+                    // $normalization1          =   $criteria[0]['value_quality'] / $normalisasi;
+
+                    // $resultNormalization1    =   round($normalization1, 3);
+
+                    // // Pembagian Normalisasi2
+                    // $normalization2          =   $criteria[1]['value_quality'] / $normalisasi;
+
+                    // $resultNormalization2    =   round($normalization2, 3);
+
+                    // // Pembagian Normalisasi3
+                    // $normalization3          =   $criteria[2]['value_quality'] / $normalisasi;
+
+                    // $resultNormalization3    =   round($normalization3, 3);
+
+                    // // Pembagian Normalisasi4
+                    // $normalization4          =   $criteria[3]['value_quality'] / $normalisasi;
+
+                    // $resultNormalization4    =   round($normalization4, 3);
+
+                    // // Pembagian Normalisasi5
+                    // $normalization5          =   $criteria[4]['value_quality'] / $normalisasi;
+
+                    // $resultNormalization5    =   round($normalization5, 3);
+
+                    // // Pembagian Normalisasi6
+                    // $normalization6          =   $criteria[5]['value_quality'] / $normalisasi;
+
+                    // $resultNormalization6    =   round($normalization6, 3);
 
                     //
-                    $timer                  =   CountdownTimerFormInovation::first();
+                    // $timer                  =   CountdownTimerFormInovation::first();
 
-                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+                    // $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
 
-                    $dateOpen               =   $dateTimeOpen->toDateString();
-                    $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+                    // $dateOpen               =   $dateTimeOpen->toDateString();
+                    // $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+                    // $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
 
-                    $dateExpired            =   $dateTimeExpired->toDateString();
-                    $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+                    // $dateExpired            =   $dateTimeExpired->toDateString();
+                    // $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
-                    // Mencari Nilai Min
-                    $min    =   RewardInovation::
-                            where([
-                                ['created_at', '>=', $dateOpenTime],
-                                ['created_at', '<=', $dateExpiredTime],
-                                ['updated_at', '>=', $dateOpenTime],
-                                ['updated_at', '<=', $dateExpiredTime],
-                                ['status_process', '=', 4],
-                            ])
-                            ->min('score_valuation_1');
-                    // ddd($min);
-                    // return $min;
-                    // Mencari Nilai Max
-                    $max    =   RewardInovation::
-                            where([
-                                ['created_at', '>=', $dateOpenTime],
-                                ['created_at', '<=', $dateExpiredTime],
-                                ['updated_at', '>=', $dateOpenTime],
-                                ['updated_at', '<=', $dateExpiredTime],
-                                ['status_process', '=', 4],
-                            ])
-                            ->min('score_valuation_1');
-                    // ddd($min, $max);
+                    // // Mencari Nilai Min
+                    // $min1    =   RewardInovation::
+                    //             min('score_valuation_1')
+                    //             ->where([
+                    //                 ['created_at', '>=', $dateOpenTime],
+                    //                 ['created_at', '<=', $dateExpiredTime],
+                    //                 ['updated_at', '>=', $dateOpenTime],
+                    //                 ['updated_at', '<=', $dateExpiredTime],
+                    //                 ['status_process', '=', 4],
+                    //             ]);
 
-                    // Nilai Utility
-                    $cDummy1    =   RewardInovation::
-                                    select('score_valuation_1')
-                                    ->where([
-                                        ['created_at', '>=', $dateOpenTime],
-                                        ['created_at', '<=', $dateExpiredTime],
-                                        ['updated_at', '>=', $dateOpenTime],
-                                        ['updated_at', '<=', $dateExpiredTime],
-                                        ['status_process', '=', 4],
-                                    ])
-                                    ->first();
+                    // $min2    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->min('score_valuation_2');
 
-                    $atas   =   $cDummy1->score_valuation_1 - $min;
-                    $bawah  =   $max - $min;
-                    $nilaiUtility1 = $bawah == 0 ? 0 : $atas / $bawah;
-                    // return round($nilaiUtility1, 3);
+                    // $min3    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->min('score_valuation_3');
 
-                    $cDummy2    =   RewardInovation::
-                                    select('score_valuation_2')
-                                    ->where([
-                                        ['created_at', '>=', $dateOpenTime],
-                                        ['created_at', '<=', $dateExpiredTime],
-                                        ['updated_at', '>=', $dateOpenTime],
-                                        ['updated_at', '<=', $dateExpiredTime],
-                                        ['status_process', '=', 4],
-                                    ])
-                                    ->first();
+                    // $min4    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->min('score_valuation_4');
 
-                    $atas   =   $cDummy2->score_valuation_2 - $min;
-                    $bawah  =   $max - $min;
-                    $nilaiUtility2 = $bawah == 0 ? 0 : $atas / $bawah;
-                    // return round($nilaiUtility2, 3);
+                    // $min5    =   RewardInovation::
+                    //             min('score_valuation_5')
+                    //             ->where([
+                    //                 ['created_at', '>=', $dateOpenTime],
+                    //                 ['created_at', '<=', $dateExpiredTime],
+                    //                 ['updated_at', '>=', $dateOpenTime],
+                    //                 ['updated_at', '<=', $dateExpiredTime],
+                    //                 ['status_process', '=', 4],
+                    //             ]);
 
-                    $cDummy3    =   RewardInovation::
-                                    select('score_valuation_3')
-                                    ->where([
-                                        ['created_at', '>=', $dateOpenTime],
-                                        ['created_at', '<=', $dateExpiredTime],
-                                        ['updated_at', '>=', $dateOpenTime],
-                                        ['updated_at', '<=', $dateExpiredTime],
-                                        ['status_process', '=', 4],
-                                    ])
-                                    ->first();
+                    // $min6    =   RewardInovation::
+                    //             min('score_valuation_6')
+                    //             ->where([
+                    //                 ['created_at', '>=', $dateOpenTime],
+                    //                 ['created_at', '<=', $dateExpiredTime],
+                    //                 ['updated_at', '>=', $dateOpenTime],
+                    //                 ['updated_at', '<=', $dateExpiredTime],
+                    //                 ['status_process', '=', 4],
+                    //             ]);
+                    // // ddd($min);
+                    // // return $min6;
 
-                    $atas   =   $cDummy3->score_valuation_3 - $min;
-                    $bawah  =   $max - $min;
-                    $nilaiUtility3 = $bawah == 0 ? 0 : $atas / $bawah;
-                    // return round($nilaiUtility3, 3);
+                    // // Mencari Nilai Max
+                    // $max1    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->max('score_valuation_1');
 
-                    $cDummy4    =   RewardInovation::
-                                    select('score_valuation_4')
-                                    ->where([
-                                        ['created_at', '>=', $dateOpenTime],
-                                        ['created_at', '<=', $dateExpiredTime],
-                                        ['updated_at', '>=', $dateOpenTime],
-                                        ['updated_at', '<=', $dateExpiredTime],
-                                        ['status_process', '=', 4],
-                                    ])
-                                    ->first();
+                    // $max2    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->max('score_valuation_2');
 
-                    $atas   =   $cDummy4->score_valuation_4 - $min;
-                    $bawah  =   $max - $min;
-                    $nilaiUtility4 = $bawah == 0 ? 0 : $atas / $bawah;
-                    // return round($nilaiUtility4, 3);
+                    // $max3    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->max('score_valuation_3');
 
-                    $cDummy5    =   RewardInovation::
-                                    select('score_valuation_5')
-                                    ->where([
-                                        ['created_at', '>=', $dateOpenTime],
-                                        ['created_at', '<=', $dateExpiredTime],
-                                        ['updated_at', '>=', $dateOpenTime],
-                                        ['updated_at', '<=', $dateExpiredTime],
-                                        ['status_process', '=', 4],
-                                    ])
-                                    ->first();
+                    // $max4    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->max('score_valuation_4');
 
-                    $atas   =   $cDummy5->score_valuation_5 - $min;
-                    $bawah  =   $max - $min;
-                    $nilaiUtility5 = $bawah == 0 ? 0 : $atas / $bawah;
-                    // return round($nilaiUtility5, 3);
+                    // $max5    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->max('score_valuation_5');
 
-                    $cDummy6    =   RewardInovation::
-                                    select('score_valuation_6')
-                                    ->where([
-                                        ['created_at', '>=', $dateOpenTime],
-                                        ['created_at', '<=', $dateExpiredTime],
-                                        ['updated_at', '>=', $dateOpenTime],
-                                        ['updated_at', '<=', $dateExpiredTime],
-                                        ['status_process', '=', 4],
-                                    ])
-                                    ->first();
+                    // $max6    =   RewardInovation::
+                    //         where([
+                    //             ['created_at', '>=', $dateOpenTime],
+                    //             ['created_at', '<=', $dateExpiredTime],
+                    //             ['updated_at', '>=', $dateOpenTime],
+                    //             ['updated_at', '<=', $dateExpiredTime],
+                    //             ['status_process', '=', 4],
+                    //         ])
+                    //         ->max('score_valuation_6');
+                    // // return $max5;
 
-                    $atas   =   $cDummy6->score_valuation_6 - $min;
-                    $bawah  =   $max - $min;
-                    $nilaiUtility6 = $bawah == 0 ? 0 : $atas / $bawah;
-                    // return round($nilaiUtility6, 3);
+                    // // Nilai Utility
+                    // $cDummy1    =   RewardInovation::
+                    //                 select('score_valuation_1')
+                    //                 ->where([
+                    //                     ['created_at', '>=', $dateOpenTime],
+                    //                     ['created_at', '<=', $dateExpiredTime],
+                    //                     ['updated_at', '>=', $dateOpenTime],
+                    //                     ['updated_at', '<=', $dateExpiredTime],
+                    //                     ['status_process', '=', 4],
+                    //                 ])
+                    //                 ->first();
+
+                    // $atas   =   $row->score_valuation_1 - $min1;
+                    // $bawah  =   $max1 - $min1;
+                    // $nilaiUtility1 = $bawah == 0 ? 0 : $atas / $bawah;
+                    // // return round($nilaiUtility1, 3);
+
+                    // $cDummy2    =   RewardInovation::
+                    //                 select('score_valuation_2')
+                    //                 ->where([
+                    //                     ['created_at', '>=', $dateOpenTime],
+                    //                     ['created_at', '<=', $dateExpiredTime],
+                    //                     ['updated_at', '>=', $dateOpenTime],
+                    //                     ['updated_at', '<=', $dateExpiredTime],
+                    //                     ['status_process', '=', 4],
+                    //                 ])
+                    //                 ->first();
+
+                    // $atas   =   $row->score_valuation_2 - $min2;
+                    // $bawah  =   $max2 - $min2;
+                    // $nilaiUtility2 = $bawah == 0 ? 0 : $atas / $bawah;
+                    // // return round($nilaiUtility2, 3);
+
+                    // $cDummy3    =   RewardInovation::
+                    //                 select('score_valuation_3')
+                    //                 ->where([
+                    //                     ['created_at', '>=', $dateOpenTime],
+                    //                     ['created_at', '<=', $dateExpiredTime],
+                    //                     ['updated_at', '>=', $dateOpenTime],
+                    //                     ['updated_at', '<=', $dateExpiredTime],
+                    //                     ['status_process', '=', 4],
+                    //                 ])
+                    //                 ->first();
+
+                    // $atas   =   $row->score_valuation_3 - $min3;
+                    // $bawah  =   $max3 - $min3;
+                    // $nilaiUtility3 = $bawah == 0 ? 0 : $atas / $bawah;
+                    // // return round($nilaiUtility3, 3);
+
+                    // $cDummy4    =   RewardInovation::
+                    //                 select('score_valuation_4')
+                    //                 ->where([
+                    //                     ['created_at', '>=', $dateOpenTime],
+                    //                     ['created_at', '<=', $dateExpiredTime],
+                    //                     ['updated_at', '>=', $dateOpenTime],
+                    //                     ['updated_at', '<=', $dateExpiredTime],
+                    //                     ['status_process', '=', 4],
+                    //                 ])
+                    //                 ->first();
+
+                    // $atas   =   $row->score_valuation_4 - $min4;
+                    // $bawah  =   $max4 - $min4;
+                    // $nilaiUtility4 = $bawah == 0 ? 0 : $atas / $bawah;
+                    // // return round($nilaiUtility4, 3);
+
+                    // $cDummy5    =   RewardInovation::
+                    //                 select('score_valuation_5')
+                    //                 ->where([
+                    //                     ['created_at', '>=', $dateOpenTime],
+                    //                     ['created_at', '<=', $dateExpiredTime],
+                    //                     ['updated_at', '>=', $dateOpenTime],
+                    //                     ['updated_at', '<=', $dateExpiredTime],
+                    //                     ['status_process', '=', 4],
+                    //                 ])
+                    //                 ->first();
+
+                    // $atas   =   $row->score_valuation_5 - $min5;
+                    // $bawah  =   $max5 - $min5;
+                    // $nilaiUtility5 = $bawah == 0 ? 0 : $atas / $bawah;
+                    // // return round($nilaiUtility5, 3);
+
+                    // $cDummy6    =   RewardInovation::
+                    //                 select('score_valuation_6')
+                    //                 ->where([
+                    //                     ['created_at', '>=', $dateOpenTime],
+                    //                     ['created_at', '<=', $dateExpiredTime],
+                    //                     ['updated_at', '>=', $dateOpenTime],
+                    //                     ['updated_at', '<=', $dateExpiredTime],
+                    //                     ['status_process', '=', 4],
+                    //                 ])
+                    //                 ->first();
+
+                    // $atas   =   $row->score_valuation_6 - $min6;
+                    // $bawah  =   $max6 - $min6;
+                    // $nilaiUtility6 = $bawah == 0 ? 0 : $atas / $bawah;
+                    // // return round($nilaiUtility6, 3);
+
+                    // $nilaiAkhir     =   ($nilaiUtility1 * $resultNormalization1) +
+                    //                     ($nilaiUtility2 * $resultNormalization2) +
+                    //                     ($nilaiUtility3 * $resultNormalization3) +
+                    //                     ($nilaiUtility4 * $resultNormalization4) +
+                    //                     ($nilaiUtility5 * $resultNormalization5) +
+                    //                     ($nilaiUtility6 * $resultNormalization6);
+                    // return $nilaiAkhir;
+                    // return $row->$nilaiAkhir;
                 })
                 ->addColumn('action', function ($row, Criteria $criteria) {
                     $actionBtn =
@@ -422,7 +879,7 @@ class ManageAppraismentInovationController extends Controller
                     $full_name  =   '<span>' . $RewardInovation->employees->full_name . '</span>';
                     return $full_name;
                 })
-                ->rawColumns(['fullName', 'action', 'result'])
+                ->rawColumns(['normalisasi', 'min', 'max', 'fullName', 'action', 'result'])
                 ->make(true);
         } catch (\Throwable $th) {
             throw $th;
@@ -526,19 +983,22 @@ class ManageAppraismentInovationController extends Controller
                     return redirect()->back()->with('message-update-error', 'Gagal Menilai Data Form Inovasi!')->withErrors($validate)->withInput($request->all());
                 }
 
-                // Update DB
-                $reward->status_process     =   4;
-                $reward->score_valuation_1  =   $request['kebaruan'];
-                $reward->score_valuation_2  =   $request['kemanfaatan'];
-                $reward->score_valuation_3  =   $request['peranSerta'];
-                $reward->score_valuation_4  =   $request['transferReplikasi'];
-                $reward->score_valuation_5  =   $request['nyataNilaiTambah'];
-                $reward->score_valuation_6  =   $request['kesinambunganKonsistensiKerja'];
-                $reward->timestamps = false;
-                $reward->save();
+                if ($reward->status_process == 3) {
+                    // Update DB
+                    $reward->score_valuation_1  =   $request['kebaruan'];
+                    $reward->score_valuation_2  =   $request['kemanfaatan'];
+                    $reward->score_valuation_3  =   $request['peranSerta'];
+                    $reward->score_valuation_4  =   $request['transferReplikasi'];
+                    $reward->score_valuation_5  =   $request['nyataNilaiTambah'];
+                    $reward->score_valuation_6  =   $request['kesinambunganKonsistensiKerja'];
+                    $reward->status_process     =   '4';
+                    $reward->timestamps         =   false;
+                    $reward->save();
 
-                alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
-                return redirect()->back()->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
+                    alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
+                    return redirect('penilai/appraisment/inovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
+                }
+
 
 
             }

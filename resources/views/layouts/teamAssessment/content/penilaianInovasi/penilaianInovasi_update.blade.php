@@ -345,6 +345,11 @@
                                         </a>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                        </a>
+                                    </div>
+                                    <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                         </button>

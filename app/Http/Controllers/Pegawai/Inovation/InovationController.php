@@ -976,7 +976,7 @@ class InovationController extends Controller
                     return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi')->withErrors($validate)->withInput($request->all());
                 }
 
-                if ($rewardInovation->status_process == 3) {
+                if ($request['status_process'] === '1') {
                     //  1. Jika Diganti File
                     if ($request->hasFile('uploadFile')) {
                         // Get Employee Username
@@ -1015,7 +1015,7 @@ class InovationController extends Controller
 
                         // Update Database File
                         $rewardInovation->upload_file_short_description     =   $fileName;
-                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->status_process                    =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1059,7 +1059,7 @@ class InovationController extends Controller
 
                         // Update Database Image
                         $rewardInovation->upload_file_image_support         =   $photoName;
-                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->status_process                    =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1103,7 +1103,7 @@ class InovationController extends Controller
 
                         // Update Database Video
                         $rewardInovation->upload_file_video_support     =   $videoName;
-                        $rewardInovation->status_process                =   2;
+                        $rewardInovation->status_process                =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1161,7 +1161,7 @@ class InovationController extends Controller
                         // Update Database File dan Image
                         $rewardInovation->upload_file_short_description     =   $fileName;
                         $rewardInovation->upload_file_image_support         =   $photoName;
-                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->status_process                    =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1218,7 +1218,7 @@ class InovationController extends Controller
                         // Update Database File dan Video
                         $rewardInovation->upload_file_short_description     =   $fileName;
                         $rewardInovation->upload_file_video_support         =   $videoName;
-                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->status_process                    =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1275,7 +1275,7 @@ class InovationController extends Controller
                         // Update Database Image dan Video
                         $rewardInovation->upload_file_image_support         =   $photoName;
                         $rewardInovation->upload_file_video_support         =   $videoName;
-                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->status_process                    =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1343,13 +1343,21 @@ class InovationController extends Controller
                         $rewardInovation->upload_file_short_description     =   $fileName;
                         $rewardInovation->upload_file_image_support         =   $photoName;
                         $rewardInovation->upload_file_video_support         =   $videoName;
-                        $rewardInovation->status_process                    =   2;
+                        $rewardInovation->status_process                    =   '2';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
 
-                } elseif ($rewardInovation->status_process == 2) {
+                    // $rewardInovation->status_process                    =   '2';
+                    // $rewardInovation->save();
+                    // alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    // return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+
+                    alert()->error('Gagal Update Form Inovasi!', 'File harus diganti')->autoclose(25000);
+                    return redirect()->back()->with('message-form-inovation-error', 'File harus diganti')->withInput($request->all());
+
+                } elseif ($request['status_process'] === '2') {
 
                     //  1. Jika Diganti File
                     if ($request->hasFile('uploadFile')) {
@@ -1715,6 +1723,10 @@ class InovationController extends Controller
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
+
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
 
                 // $rewardInovation->upload_file_image_support         =   $request['uploadPhoto'];
@@ -1726,6 +1738,8 @@ class InovationController extends Controller
 
                 alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                 return redirect()->back()->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+
+
                 // return redirect('form-inovation/list');
                 // ->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
             }

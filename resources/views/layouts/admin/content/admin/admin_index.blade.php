@@ -20,6 +20,13 @@
                 "pageLength",
                 // "copy", "csv", "excel", "print",
                 // "reload",
+                // {
+                //     text: 'Tambah Akun Admin Baru',
+                //     action: function ( e, dt, node, config ) {
+                //         // alert( 'Button activated' );
+                //         window.location = "/admin/manage/admins/create";
+                //     }
+                // }
             ],
             // $.ajax({  'reset', 'reload',
             //     url: "{{url('manage/admins/list')}}",
@@ -49,6 +56,7 @@
             }, 10000 );
         }
 
+        table.buttons().container().appendTo( '#example_wrapper .col-md-6:eq(0)' );
         // $.fn.dataTable.ext.buttons.reload = {
         //     text: 'Reload',
         //     action: function ( e, dt, node, config ) {
@@ -65,7 +73,6 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         let username = $(this).attr('data-username');
-        // console.log(id,username);
         Swal.fire({
             title: 'Apakah kamu ingin menonaktifkan data akun' + ' ' + username + '?',
             icon: 'warning',

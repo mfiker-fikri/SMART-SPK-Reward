@@ -388,7 +388,8 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     // {data: 'fullName', name: 'fullName'},
-                    {data: 'result', name: 'result'},
+                    {data: 'normalisasi', name: 'normalisasi'},
+                    // {data: 'max', name: 'max'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                     // {data: 'score_valuation_1', name: 'score_valuation_1', orderable: false, searchable: false},
                     // {data: 'score_valuation_2', name: 'score_valuation_2', orderable: false, searchable: false},

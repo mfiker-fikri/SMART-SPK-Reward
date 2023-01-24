@@ -516,6 +516,8 @@
                                 <div class="d-flex justify-content-center py-sm-3">
                                     <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
                                 </div>
+
+                                <input type="text" name="status_process" value="{{ $rewardInovation->status_process }}" />
                             </div>
                         </div>
                         <!--/ Upload Video -->
@@ -523,13 +525,13 @@
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
-                                    <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-inovation/list') }}" role="button">
+                                    <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-inovation/list') }}" role="button">
-                                    <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
+                                <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                    <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
                                 </a>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
