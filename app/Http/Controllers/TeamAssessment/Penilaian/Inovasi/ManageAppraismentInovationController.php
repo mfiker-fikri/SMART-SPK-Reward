@@ -67,6 +67,8 @@ class ManageAppraismentInovationController extends Controller
                 array_push($normalisasi, round( ($value->value_quality/$sumCriteria), 3));
             }
 
+            // ddd($normalisasi);
+
             // Mencari Nilai Min
             $arrMin =  [];
 
@@ -84,6 +86,7 @@ class ManageAppraismentInovationController extends Controller
                 array_push($arrMin, $min);
             }
 
+            // ddd($arrMin);
             // return $arrMin;
 
             // Mencari Nilai Max
@@ -111,6 +114,7 @@ class ManageAppraismentInovationController extends Controller
             }
             // $arrResultMinMax = $arrMax + $arrMin;
             // return $arrResultMinMax;
+            // ddd($arrResultMinMax);
 
             $arrResult =  [];
             $arrResultNilaiUtility = [];
@@ -150,10 +154,10 @@ class ManageAppraismentInovationController extends Controller
                     $arrNilaiUtility[$key] = $arrResultMinMax[$key] == 0 ? 0 : $value / $arrResultMinMax[$key];
                 }
 
-                // ddd($arrNilaiUtility);
                 array_push($arrResultNilaiUtility, $arrNilaiUtility);
 
             }
+            // ddd($arrNilaiUtility);
 
 
             $ResultFinalDSS = [];
@@ -188,141 +192,6 @@ class ManageAppraismentInovationController extends Controller
             }
 
             ddd($ResultFinalDSS);
-            // if ($ResultFinalDSS >= 0.4) {
-
-            // }
-
-
-
-
-
-            $arrResult =  [];
-            $arrNilaiUtility = [];
-            for ($x = 1; $x <= 6; $x++) {
-                $nilai    =   RewardInovation::
-                                select("score_valuation_$x")
-                                ->where([
-                                    ['created_at', '>=', $dateOpenTime],
-                                    ['created_at', '<=', $dateExpiredTime],
-                                    ['updated_at', '>=', $dateOpenTime],
-                                    ['updated_at', '<=', $dateExpiredTime],
-                                    ['status_process', '=', 4],
-                                ])
-                                ->get()->toArray();
-                // return $nilai;
-                array_push($arrResult, $nilai);
-                foreach ($arrResult as $key => $value) {
-                    // echo $value;
-                    // echo $value[$key]["score_valuation_$x"];
-                    // return $arrResultMinMax[$key];
-                    // echo ($value["score_valuation_1"]-$value["score_valuation_1"]) / ($value["score_valuation_1"]-$value["score_valuation_1"]);
-                    // echo $arrResultMinMax[$key];
-                    // array_push($arrNilaiUtility, ($value["score_valuation_$x"]) / ($arrResultMinMax[$key]) );
-
-                    for ($i = 0; $i <= count($nilai); $i++) {
-                        // ddd($value[$i]["score_valuation_$x"]);
-                        // ddd($arrResultMinMax[$i]);
-                        array_map(function($arrResults, $arrResultMinMax) use ($i) {
-                            ddd($arrResults[$i]["score_valuation_$i"]/($arrResultMinMax[$i]));
-                            // $
-                            // return ;
-                        }, $arrResult);
-                        // array_push($arrNilaiUtility, $arrResultMinMax[$i] == 0 ? 0 : ($value[$i]["score_valuation_$x"]) / ($arrResultMinMax[$i]) );
-                    }
-
-                    // echo $value[$key][''];
-                    // $arrNilaiUtility[$key] =  $value / $arrResultMinMax[$key];
-                    // for ($i=1; $i < ; $i++) {
-                    //     echo
-                    // }
-                    // echo "<br></br>";
-                }
-                // echo $value[$key]["score_valuation_$x"];
-                // return $arrResultMinMax[$key];
-            }
-
-            // ddd($arrResultMinMax);
-            // ddd($value[0]["score_valuation_6"] / $arrResultMinMax[5]);
-            return $arrNilaiUtility;
-
-
-
-
-
-
-
-
-
-
-            $i = 0;
-            foreach ($min as $somekey=>$someval) {
-                echo $somekey;
-                $i++;
-                array_push($arrMin, $someval );
-            }
-            return $arrMin;
-
-            for ($x = 1; $x <= count($min); $x++) {
-                // echo "The number is: $x <br>";
-                // echo "<br> $x </br>";
-                // foreach ($min as $key => $value) {
-                foreach ($min as $value) {
-                    // echo $x;
-                    // echo $value["score_valuation_$x"];
-                    // echo $value;
-                    // array_push($arrMin, $value["score_valuation_$x"]->min() );
-                    // array_push($arrMin, $min->min("score_valuation_$x") );
-                    for($y = 1; $y <= 6; $y++) {
-                        array_push($arrMin, $value["score_valuation_$y"] );
-                    }
-                }
-                return $arrMin;
-
-                // echo $min->score_valuation_1;
-                // echo $min[$x]["score_valuation_$x"];
-                // echo $min    =   RewardInovation::
-                //     select("score_valuation_$x")
-                //     ->where([
-                //         ['created_at', '>=', $dateOpenTime],
-                //         ['created_at', '<=', $dateExpiredTime],
-                //         ['updated_at', '>=', $dateOpenTime],
-                //         ['updated_at', '<=', $dateExpiredTime],
-                //         ['status_process', '=', 4],
-                //     ])
-                //     ->min("score_valuation_$x")
-                //     ->get();
-            }
-            // return $x;
-            return $arrMin;
-
-
-
-
-            // Mencari Nilai Max
-            $max    =   RewardInovation::
-                    where([
-                        ['created_at', '>=', $dateOpenTime],
-                        ['created_at', '<=', $dateExpiredTime],
-                        ['updated_at', '>=', $dateOpenTime],
-                        ['updated_at', '<=', $dateExpiredTime],
-                        ['status_process', '=', 4],
-                    ])
-                    ->min('score_valuation_1');
-            // ddd($min, $max);
-
-            // Nilai Utility
-            // $cDummy         =   RewardInovation::
-            //                     where([
-            //                         ['created_at', '>=', $dateOpenTime],
-            //                         ['created_at', '<=', $dateExpiredTime],
-            //                         ['updated_at', '>=', $dateOpenTime],
-            //                         ['updated_at', '<=', $dateExpiredTime],
-            //                         ['status_process', '=', 4],
-            //                     ])
-            //                     ->first()->get();
-            //                     // ddd($cDummy);
-            // $nilaiUtility   =   ($cDummy->score_valuation_1 - $min) / ($max - $min);
-            //                     ddd($nilaiUtility);
 
 
 

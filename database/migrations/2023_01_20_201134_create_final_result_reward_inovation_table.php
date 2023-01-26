@@ -17,13 +17,14 @@ class CreateFinalResultRewardInovationTable extends Migration
             $table->uuid('id')->primary();
             //
             $table->uuid('employees_id');
-            $table->foreign('employees_id')->references('id')->on('employees');
+            $table->foreign('employees_id')->references('id')->on('employees')->onDelete('cascade');
             //
             $table->uuid('reward_inovation_id');
-            $table->foreign('reward_inovation_id')->references('id')->on('reward_inovation');
+            $table->foreign('reward_inovation_id')->references('id')->on('reward_inovation')->onDelete('cascade');
             //
             $table->string('score_final_result');
             $table->string('score_final_result_ranking');
+            $table->string('score_final_result_description');
             //
             $table->timestamps();
         });

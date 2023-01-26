@@ -66,7 +66,7 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Tambah Data Admin Baru</li>
+                <li class="breadcrumb-item fw-bold active">Tambah Data Divisi Sumber Daya Manusia Baru</li>
 
             @elseif ( request()->is('admin/manage/sdm') )
                 <li class="breadcrumb-item fw-light">

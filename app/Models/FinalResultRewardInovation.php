@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RewardInovation extends Model
+class FinalResultRewardInovation extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class RewardInovation extends Model
      *
      * @var string
      */
-    protected $table = 'reward_inovation';
+    protected $table = 'final_result_reward_inovation';
 
     /**
      * The primary key associated with the table.
@@ -38,20 +38,13 @@ class RewardInovation extends Model
     protected $fillable = [
         'id',
         //
-        'upload_file_short_description',
-        'upload_file_image_support',
-        'upload_file_video_support',
+        'employees_id',
         //
-        'employee_id',
+        'reward_inovation_id',
         //
-        'status_process',
-        //
-        'score_valuation_1',
-        'score_valuation_2',
-        'score_valuation_3',
-        'score_valuation_4',
-        'score_valuation_5',
-        'score_valuation_6',
+        'score_final_result',
+        'score_final_result_ranking',
+        'score_final_result_description',
         //
         'status_id'
     ];
@@ -67,22 +60,12 @@ class RewardInovation extends Model
         'id' => 'string',
     ];
 
-    public function employees()
-    {
-        return $this->belongsTo(
-            Pegawai::class,
-            'employee_id',
-            'id'
-        );
-    }
-
-    public function finalResultInovations()
-    {
-        return $this->belongsToMany(
-            Pegawai::class,
-            'final_result_reward_inovation',
-            'reward_inovation_id',
-            'employees_id'
-        );
-    }
+    // public function employees()
+    // {
+    //     return $this->belongsTo(
+    //         Pegawai::class,
+    //         'employee_id',
+    //         'id'
+    //     );
+    // }
 }

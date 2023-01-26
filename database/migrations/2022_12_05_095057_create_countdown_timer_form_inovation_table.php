@@ -19,6 +19,11 @@ class CreateCountdownTimerFormInovationTable extends Migration
             $table->dateTime('date_time_expired_form_inovation')->nullable();
             $table->boolean('status_open')->nullable();
             $table->boolean('status_expired')->nullable();
+            //
+            $table->dateTime('date_time_open_appraisment')->nullable();
+            $table->dateTime('date_time_expired_appraisment')->nullable();
+            $table->boolean('status_open_appraisment')->nullable();
+            $table->boolean('status_expired_appraisment')->nullable();
             // $table->softDeletes();
             // $table->timestamps();
         });

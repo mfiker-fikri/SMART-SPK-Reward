@@ -100,11 +100,21 @@ class Pegawai extends Authenticatable
         );
     }
 
-// Employees One To Many Reward_teladan
+    // Employees One To Many Reward_teladan
     public function rewardRepresentatives()
     {
         return $this->hasMany(
             RewardTeladan::class
+        );
+    }
+
+    public function finalResultInovations()
+    {
+        return $this->belongsToMany(
+            RewardInovation::class,
+            'final_result_reward_inovation',
+            'employees_id',
+            'reward_inovation_id'
         );
     }
 }
