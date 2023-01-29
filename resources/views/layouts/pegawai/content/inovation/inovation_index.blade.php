@@ -149,7 +149,7 @@
         }
 
         .titleCountDownExpiredNonActive{
-            margin: 0;
+            margin: 5px 0;
             padding: 5px 0;
             display: flex;
             flex-direction: row;
@@ -160,8 +160,8 @@
             text-align: center;
             font-size: 24px;
             line-height: 100%;
-            min-height: 6.5vh;
-            max-height: 6.5vh;
+            min-height: 5em;
+            max-height: 5em;
         }
     }
 
@@ -1222,11 +1222,11 @@
 
                     @if (
                         (
-                            ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                            ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation )
                         )
                         ||
                         (
-                            ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation ?? 'None')
+                            ($timer->status_open == 0 && $timer->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation )
                         )
                     )
                     <div class="container-fluid">

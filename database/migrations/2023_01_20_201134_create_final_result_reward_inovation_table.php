@@ -26,6 +26,8 @@ class CreateFinalResultRewardInovationTable extends Migration
             $table->string('score_final_result_ranking');
             $table->string('score_final_result_description');
             //
+            $table->integer('status_id')->default(1);
+            //
             $table->timestamps();
         });
     }

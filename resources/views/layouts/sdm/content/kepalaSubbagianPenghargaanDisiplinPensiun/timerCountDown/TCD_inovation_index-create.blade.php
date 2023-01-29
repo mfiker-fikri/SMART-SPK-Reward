@@ -52,39 +52,152 @@
             placeholder: $( this ).data( 'placeholder' ),
         } );
     </script>
+
+    <script type="text/javascript">
+        $( '#status_open_appraisment' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_appraisment' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
     <!-- Select2 Status -->
 
     <script>
         $(document).ready(function() {
-            var dateTimeOpenCountdownInovationForm     =    $("#date_time_open_countdown_inovation_form").attr("value");
-            var datePicker                             =    $("#date_time_open_countdown_inovation_form").attr("value");
-            console.log(datePicker);
+            // $("#date_time_open_countdown_inovation_form").change(function(){
 
-            const date       =    new Date(dateTimeOpenCountdownInovationForm);
+                var dateTimeOpenCountdownInovationForm     =    document.getElementById("date_time_open_countdown_inovation_form").getAttribute("min");
+                var vlueDate                               =    document.getElementById("date_time_open_countdown_inovation_form").getAttribute("value");
+                // $("#date_time_open_countdown_inovation_form").attr("value");
+                // console.log(dateTimeOpenCountdownInovationForm);
+                // console.log(vlueDate);
 
-            var a            =    date.getDate()+1;
+                if (vlueDate == '') {
+                    if (dateTimeOpenCountdownInovationForm) {
+                        const date       =    new Date(dateTimeOpenCountdownInovationForm);
 
-            var b            =    date.setDate(a);
+                        // Expired Open Form
+                        var a1              =    date.getDate()+1;
+                        var b1              =    date.setDate(a1);
+                        const c1            =    new Date(b1);
+                        const dateTime1     =    convert(c1);
+                        // console.log(c);
 
-            var c            =    new Date(b);
+                        // Open Appraisment
+                        var a2              =    date.getDate()+1;
+                        var b2              =    date.setDate(a2);
+                        const c2            =    new Date(b2);
+                        const dateTime2     =    convert(c2);
 
-            const dateTime    =  c.toJSON().slice(0, 10);
+                        // Expired Appraisment
+                        var a3              =    date.getDate()+2;
+                        var b3              =    date.setDate(a3);
+                        const c3            =    new Date(b3);
+                        const dateTime3     =    convert(c3);
 
-            const dates       =   c.getDate();
-            const month       =  c.getMonth()+1;
-            const year        =   c.getFullYear();
+                        //
+                        const dates         =   date.getDate();
+                        const month         =   date.getMonth()+1;
+                        const year          =   date.getFullYear();
 
-            const hour          =   c.getHours();
-            const minutes       =   c.getMinutes();
+                        const hour          =   date.getHours();
+                        const minute        =   date.getMinutes();
+                        const second        =   date.getSeconds();
+                        hours               =   checkTime(hour);
+                        minutes             =   checkTime(minute);
+                        seconds             =   checkTime(second);
 
-            // var result = year + "/" + month + "/" + dates + " " + hour + ":" + minutes;
-            var result = dateTime + " " + hour + ":" + minutes;
 
-            if (dateTimeOpenCountdownInovationForm) {
-                var dateExpired = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result);
-                return dateExpired;
+
+                        // var result = year + "/" + month + "/" + dates + " " + hour + ":" + minutes;
+                        var result1 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
+                        var result2 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
+                        var result3 = dateTime3 + " " + hours + ":" + minutes + ":" + seconds;
+                        // console.log(result);
+
+                        var dateExpired         = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result1);
+                        var dateOpenAppraisment = document.getElementById("date_time_open_countdown_inovation_appraisment").setAttribute("min", result2);
+                        var dateExpiAppraisment = document.getElementById("date_time_expired_countdown_inovation_appraisment").setAttribute("min", result3);
+
+                        return [dateExpired, dateOpenAppraisment, dateExpiAppraisment];
+
+
+                    }
+                }
+
+                if (vlueDate != '') {
+                    const date       =    new Date(vlueDate);
+                    // console.log(date);
+
+                    // Expired Open Form
+                    var a1              =    date.getDate()+1;
+                    var b1              =    date.setDate(a1);
+                    const c1            =    new Date(b1);
+                    const dateTime1     =    convert(c1);
+                    // console.log(c);
+
+                    // Open Appraisment
+                    var a2              =    date.getDate()+1;
+                    var b2              =    date.setDate(a2);
+                    const c2            =    new Date(b2);
+                    const dateTime2     =    convert(c2);
+
+                    // Expired Appraisment
+                    var a3              =    date.getDate()+1;
+                    var b3              =    date.setDate(a3);
+                    const c3            =    new Date(b3);
+                    const dateTime3     =    convert(c3);
+
+                    //
+                    const dates         =   date.getDate();
+                    const month         =   date.getMonth()+1;
+                    const year          =   date.getFullYear();
+
+                    const hour          =   date.getHours();
+                    const minute        =   date.getMinutes();
+                    const second        =   date.getSeconds();
+                    hours               =   checkTime(hour);
+                    minutes             =   checkTime(minute);
+                    seconds             =   checkTime(second);
+
+
+
+                    // var result = year + "/" + month + "/" + dates + " " + hour + ":" + minutes;
+                    var result1 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
+                    var result2 = dateTime2 + " " + hours + ":" + minutes + ":" + seconds;
+                    var result3 = dateTime3 + " " + hours + ":" + minutes + ":" + seconds;
+                    // console.log(result);
+
+                    var dateExpired         = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result1);
+                    var dateOpenAppraisment = document.getElementById("date_time_open_countdown_inovation_appraisment").setAttribute("min", result2);
+                    var dateExpiAppraisment = document.getElementById("date_time_expired_countdown_inovation_appraisment").setAttribute("min", result3);
+
+                    return [dateExpired, dateOpenAppraisment, dateExpiAppraisment];
+
+                }
+            });
+
+            function convert(str) {
+                var date = new Date(str),
+                    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                    day = ("0" + date.getDate()).slice(-2);
+                return [date.getFullYear(), mnth, day].join("-");
             }
-        });
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i
+                };  // add zero in front of numbers < 10
+                return i;
+            }
     </script>
 
 
@@ -107,40 +220,29 @@
     }
     </script>
 
-    <!-- Reset Select2 Status -->
     <script type="text/javascript">
-        function resetStatusNullAppraisment(event){
-            var oldOpenStatus = document.getElementById("oldOpenStatusAppraisment").getAttribute("value");
-            var oldExpiredStatus = document.getElementById("oldExpiredStatusAppraisment").getAttribute("value");
+    function resetStatusNullAppraisment(event){
+        var oldOpenStatus = document.getElementById("oldOpenStatusAppraisment").getAttribute("value");
+        var oldExpiredStatus = document.getElementById("oldExpiredStatusAppraisment").getAttribute("value");
 
-            if (oldOpenStatus && oldExpiredStatus) {
-                $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-                $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
-            } else if (oldOpenStatus || oldExpiredStatus) {
-                $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-                $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
-            } else {
-                $('#status_open_appraisment').val(null).trigger('change');
-                $('#status_expired_appraisment').val(null).trigger('change');
-            }
+        if (oldOpenStatus && oldExpiredStatus) {
+            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+        } else if (oldOpenStatus || oldExpiredStatus) {
+            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+        } else {
+            $('#status_open_appraisment').val(null).trigger('change');
+            $('#status_expired_appraisment').val(null).trigger('change');
         }
-        </script>
+    }
+    </script>
 
     <script type="text/javascript">
-    // $(document).on('click', '#resetStatus', function(e) {
-    //     var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
-    //     var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
-    //     if (oldOpen && oldExpired) {
-    //         $('#status_open').val(oldOpen).trigger('change');
-    //         $('#status_expired').val(oldExpired).trigger('change');
-    //     } else {
-    //         $('#status_open').val(null).trigger('change');
-    //         $('#status_expired').val(null).trigger('change');
-    //     }
-    // });
     function resetStatus(event){
         var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
         var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
+
         if (oldOpen && oldExpired) {
             $('#status_open').val(oldOpen).trigger('change');
             $('#status_expired').val(oldExpired).trigger('change');
@@ -153,7 +255,29 @@
         }
     }
     </script>
+
+    <script type="text/javascript">
+    function resetStatusAppraisment(event) {
+        var oldOpen = document.getElementById("oldStatusOpenAppraisment").getAttribute("value");
+        var oldExpired = document.getElementById("oldStatusExpiredAppraisment").getAttribute("value");
+
+        if (oldOpen && oldExpired) {
+            $('#status_open_appraisment').val(oldOpen).trigger('change');
+            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+        } else if (oldOpen || oldExpired) {
+            $('#status_open_appraisment').val(oldOpen).trigger('change');
+            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+        } else {
+            $('#status_open_appraisment').val(null).trigger('change');
+            $('#status_expired_appraisment').val(null).trigger('change');
+        }
+    }
+    </script>
+
+
     <!--/ Reset Select2 Status -->
+
+
 
     <!-- Delete -->
     <script type="text/javascript">
@@ -185,6 +309,89 @@
                         },
                         method: 'post',
                         url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete') }}" + '/' + id,
+                        data: {
+                            id: id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Delete',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            })
+                        },
+                        error: function(event,xhr,options,exc){
+                            if (event.status == 401) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Your Authorized Failed!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }else if (event.status == 500) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something Went Wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something went wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    </script>
+    <!--/ Delete -->
+
+    <!-- Delete -->
+    <script type="text/javascript">
+        $(document).on('click', '#deleteStatusID', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-val');
+            // console.log(id);
+            Swal.fire({
+                title: 'Apakah kamu ingin menghapus timer ini?',
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment/delete') }}" + '/' + id,
                         data: {
                             id: id,
                             _token: '{{ csrf_token() }}'
@@ -308,8 +515,8 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_countdown_inovation_form', $timer->date_time_open_form_inovation) }}"
                                                 @endif
-                                                aria-invalid="true" aria-describedby="date_time_open_countdown_inovation_form" data-val="true"
-                                                min="{{ \Carbon\Carbon::tomorrow() }}">
+                                                min="{{ \Carbon\Carbon::tomorrow() }}"
+                                                aria-invalid="true" aria-describedby="date_time_open_countdown_inovation_form" data-val="true">
                                         </div>
                                         <div id="date_time_open_countdown_inovation_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
                                         <div class="d-flex flex-column">
@@ -450,7 +657,7 @@
                                         </button>
                                         @endif
                                         @if ($timer == null)
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNull()">
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNull();">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
                                         @else
@@ -513,8 +720,7 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_countdown_inovation_appraisment', $timer->date_time_open_appraisment) }}"
                                                 @endif
-                                                aria-invalid="true" aria-describedby="date_time_open_countdown_inovation_appraisment" data-val="true"
-                                                min="{{ $timer->date_time_open_form_inovation }}">
+                                                aria-invalid="true" aria-describedby="date_time_open_countdown_inovation_appraisment" data-val="true">
                                         </div>
                                         <div id="date_time_open_countdown_inovation_appraismentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
                                         <div class="d-flex flex-column">
@@ -541,7 +747,7 @@
                                             @if ($timer == null)
                                             <input type="hidden" value="{{ old('status_open_appraisment') }}" id="oldOpenStatusAppraisment" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_open_appraisment', $timer->status_open_appraisment) }}" id="oldStatusOpen" />
+                                            <input type="hidden" value="{{ old('status_open_appraisment', $timer->status_open_appraisment) }}" id="oldStatusOpenAppraisment" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_appraisment') ? 'is-invalid' : '' }}" id="status_open_appraisment"
                                                 name="status_open_appraisment" placeholder="--Pilih Status Open --"
@@ -612,7 +818,7 @@
                                             @if ($timer == null)
                                             <input type="hidden" value="{{ old('status_expired_appraisment') }}" id="oldExpiredStatusAppraisment" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_expired_appraisment', $timer->status_expired_appraisment) }}" id="oldStatusExpired" />
+                                            <input type="hidden" value="{{ old('status_expired_appraisment', $timer->status_expired_appraisment) }}" id="oldStatusExpiredAppraisment" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_appraisment') ? 'is-invalid' : '' }}" id="status_expired_appraisment"
                                                 name="status_expired_appraisment" placeholder="--Pilih Status Close --"
@@ -643,12 +849,12 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        @if ($timer->date_time_open_appraisment != null && $timer->date_time_expired_appraisment != null)
-                                        <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatus" data-val="{{ $timer->id }}">
+                                        @if ($timer != null && $timer != null)
+                                        <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusID" data-val="{{ $timer->id }}">
                                             <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                                         </button>
                                         @endif
-                                        @if ($timer->date_time_open_appraisment == null || $timer->date_time_expired_appraisment == null)
+                                        @if ($timer == null || $timer == null)
                                         <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullAppraisment()">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
@@ -658,7 +864,7 @@
                                         </button>
                                         @endif
                                         <button type="submit" class="btn btn-primary btn-lg" style="color: black">
-                                            @if ($timer->date_time_open_appraisment == null && $timer->date_time_expired_appraisment == null)
+                                            @if ($timer == null && $timer == null)
                                             <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
                                             @else
                                             <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
