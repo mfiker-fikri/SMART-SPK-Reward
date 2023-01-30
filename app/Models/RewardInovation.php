@@ -78,11 +78,16 @@ class RewardInovation extends Model
 
     public function finalResultInovations()
     {
-        return $this->belongsToMany(
-            Pegawai::class,
+        return $this->hasMany(
+            FinalResultRewardInovation::class,
             'final_result_reward_inovation',
             'reward_inovation_id',
-            'employees_id'
         );
+        // return $this->belongsToMany(
+        //     Pegawai::class,
+        //     'final_result_reward_inovation',
+        //     'reward_inovation_id',
+        //     'employees_id'
+        // );
     }
 }

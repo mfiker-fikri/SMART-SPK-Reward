@@ -108,13 +108,13 @@ class Pegawai extends Authenticatable
         );
     }
 
-    public function finalResultInovations()
-    {
-        return $this->belongsToMany(
-            RewardInovation::class,
-            'final_result_reward_inovation',
-            'employees_id',
-            'reward_inovation_id'
-        );
-    }
+    // public function finalResultInovations()
+    // {
+    //     return $this->belongsToMany(
+    //         RewardInovation::class,
+    //         'final_result_reward_inovation',
+    //         'employees_id',
+    //         'reward_inovation_id'
+    //     );
+    // }
 }

@@ -43,6 +43,11 @@ class CountdownTimerFormInovation extends Model
         'date_time_expired_form_inovation',
         'status_open',
         'status_expired',
+        //
+        'date_time_open_appraisment',
+        'date_time_expired_appraisment',
+        'status_open_appraisment',
+        'status_expired_appraisment',
     ];
 
     public $timestamps = false;

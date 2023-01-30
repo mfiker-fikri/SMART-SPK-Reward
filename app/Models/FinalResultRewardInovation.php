@@ -38,12 +38,12 @@ class FinalResultRewardInovation extends Model
     protected $fillable = [
         'id',
         //
-        'employees_id',
+        // 'employees_id',
         //
         'reward_inovation_id',
         //
         'score_final_result',
-        'score_final_result_ranking',
+        // 'score_final_result_ranking',
         'score_final_result_description',
         //
         'status_id'
@@ -68,4 +68,14 @@ class FinalResultRewardInovation extends Model
     //         'id'
     //     );
     // }
+
+    public function resultFinalInovations()
+    {
+        return $this->belongsTo(
+            RewardInovation::class,
+            // 'final_result_reward_inovation',
+            // 'employees_id',
+            // 'reward_inovation_id'
+        );
+    }
 }

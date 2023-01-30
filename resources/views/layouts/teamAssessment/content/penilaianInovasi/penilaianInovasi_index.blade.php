@@ -4,7 +4,7 @@
 @section('css_header')
     <style>
     .swal2-container {
-        z-index: 2000;
+        z-index: 1000;
     }
 
 
@@ -387,9 +387,7 @@
                 ajax: "{{ url('penilai/appraisment/inovation/list/DSS') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    // {data: 'fullName', name: 'fullName'},
-                    {data: 'normalisasi', name: 'normalisasi'},
-                    // {data: 'max', name: 'max'},
+                    {data: 'fullName', name: 'fullName'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                     // {data: 'score_valuation_1', name: 'score_valuation_1', orderable: false, searchable: false},
                     // {data: 'score_valuation_2', name: 'score_valuation_2', orderable: false, searchable: false},
@@ -410,6 +408,43 @@
         });
     </script>
     <!--/ Datatables Form Inovasi -->
+
+
+    <!-- Datatables Result Inovasi DSS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#data-table-result-process-DSS').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                paging: false,
+                lengthMenu: [5, 10, 25, 50, 100, 200, 500],
+                dom: 'Bfrtip',
+                buttons: [
+                    "pageLength",
+                ],
+                ajax: "{{ url('penilai/appraisment/inovation/list/DSS/result') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    // {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
+                    {data: 'score_final_result', name: 'score_final_result', orderable: false, searchable: false},
+                    {data: 'score_final_result_description', name: 'score_final_result_description', orderable: false, searchable: false},
+                ]
+            });
+
+            new $.fn.dataTable.FixedHeader( table );
+
+            if (table) {
+                setInterval( function () {
+                    table.ajax.reload(null, false);
+                }, 10000 );
+            }
+        });
+    </script>
+    <!--/ Datatables Result Inovasi DSS -->
 
 
     <!-- View Result Inovation DSS -->
@@ -616,6 +651,12 @@
                     </li>
                     <!--/ Tabs Form Inovation Appraisment -->
 
+                    <!-- Tabs Form Inovation Result Appraisment -->
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-ResultAppraismentTeamAssessment-tab" data-bs-toggle="pill" data-bs-target="#pills-ResultAppraismentTeamAssessment" type="button" role="tab" aria-controls="pills-ResultAppraismentTeamAssessment" aria-selected="false">Hasil Penilaian Inovasi</button>
+                    </li>
+                    <!--/ Tabs Form Inovation Result Appraisment -->
+
                 </ul>
                 <!--/ Tabs -->
 
@@ -624,7 +665,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
-                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
+                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/inovation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
                     <div class="card">
 
                         <!-- Form Penilaian Inovasi Title -->
@@ -785,13 +826,7 @@
                                     <tr>
                                         <th scope="col">No</th>
                                         <th scope="col">Nama Panjang</th>
-                                        <th scope="col">Hasil Penilaian</th>
-                                        {{-- <th scope="col">Kebaruan</th>
-                                        <th scope="col">Kemanfaatan</th>
-                                        <th scope="col">Peran Serta</th>
-                                        <th scope="col">Dapat Ditransfer/Direplikasi</th>
-                                        <th scope="col">Karya Nyata dan Penciptaan Nilai Tambah</th>
-                                        <th scope="col">Kesinambungan dan Konsistensi Prestasi Kerja</th> --}}
+                                        <th scope="col">Hasil Parameter Penilaian</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -804,6 +839,40 @@
 
                 </div>
                 <!--/ Tabs Form Inovation Appraisment -->
+
+                <!-- Tabs Form Inovation Appraisment -->
+                <div class="tab-pane fade" id="pills-ResultAppraismentTeamAssessment" role="tabpanel" aria-labelledby="pills-ResultAppraismentTeamAssessment-tab">
+
+                    <div class="card">
+
+                        <!-- Form Hasil Penilaian Inovasi Title -->
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Hasil Penilaian Inovasi</h5>
+                        </div>
+                        <!--/ Form Hasil Penilaian Inovasi Title -->
+
+                        <div class="container-fluid py-3">
+
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table-result-process-DSS">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama Panjang</th>
+                                        <th scope="col">Hasil Penilaian Inovasi</th>
+                                        <th scope="col">Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
             </div>
             <!--/ Tabs -->
 
