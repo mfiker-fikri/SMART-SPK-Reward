@@ -4,7 +4,7 @@
 @section('css_header')
     <style>
     .swal2-container {
-        z-index: 1000;
+        z-index: 2000;
     }
 
 
@@ -429,7 +429,7 @@
                 ajax: "{{ url('penilai/appraisment/inovation/list/DSS/result') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                    // {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
+                    {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
                     {data: 'score_final_result', name: 'score_final_result', orderable: false, searchable: false},
                     {data: 'score_final_result_description', name: 'score_final_result_description', orderable: false, searchable: false},
                 ]
@@ -437,11 +437,11 @@
 
             new $.fn.dataTable.FixedHeader( table );
 
-            if (table) {
-                setInterval( function () {
-                    table.ajax.reload(null, false);
-                }, 10000 );
-            }
+            // if (table) {
+            //     setInterval( function () {
+            //         table.ajax.reload(null, false);
+            //     }, 10000 );
+            // }
         });
     </script>
     <!--/ Datatables Result Inovasi DSS -->

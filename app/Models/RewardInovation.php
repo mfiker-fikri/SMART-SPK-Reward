@@ -80,8 +80,8 @@ class RewardInovation extends Model
     {
         return $this->hasMany(
             FinalResultRewardInovation::class,
-            'final_result_reward_inovation',
-            'reward_inovation_id',
+            // 'final_result_reward_inovation',
+            // 'reward_inovation_id',
         );
         // return $this->belongsToMany(
         //     Pegawai::class,

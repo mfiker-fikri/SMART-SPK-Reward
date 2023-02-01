@@ -126,12 +126,20 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-biro-SDM/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaBiroSDM'])->name('postProfile.postImageDelete.KepalaBiroSDM.SDM');
         // Profile Change Password
         Route::POST('/kepala-biro-SDM/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaBiroSDM'])->name('postProfile.changePasswordUpdate.KepalaBiroSDM.SDM');
+
+        // Signature Inovation
+        // Read
+        Route::GET('/kepala-biro-SDM/signature/inovation', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaBiroSDM'])->name('getSignatureInovation.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/signature/inovation/list', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaBiroSDM'])->name('getSignatureInovationList.KepalaBiroSDM.SDM');
+        // Update
+        Route::GET('/kepala-biro-SDM/signature/inovation/{id}', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBiroSDM'])->name('getSignatureInovationId.KepalaBiroSDM.SDM');
+        Route::POST('/kepala-biro-SDM/signature/inovation/{id}/post', [\App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBiroSDM'])->name('postSignatureInovationId.KepalaBiroSDM.SDM');
     });
 
     // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
     Route::middleware(['human_resources.auth:2'])->group(function () {
         // Dashboard
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getDashboard.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard', [App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getDashboard.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         // Profile
         Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile', [App\Http\Controllers\SDM\SDMController::class, 'getProfileKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getProfile.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/update', [App\Http\Controllers\SDM\SDMController::class, 'postProfileKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.Update.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
@@ -140,6 +148,14 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.postImageDelete.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         // Profile Change Password
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.changePasswordUpdate.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+
+        // Signature Inovation
+        // Read
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/list', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        // Update
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
     });
 
 

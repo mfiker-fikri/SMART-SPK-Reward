@@ -56,6 +56,37 @@
             </li>
             <!--/ My Profile -->
 
+            <!-- Tanda Tangan -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Tanda Tangan</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/inovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fas fa-file-signature"></i>
+                    <div data-i18n="signature">Tanda Tangan</div>
+                </a>
+                <ul class="menu-sub">
+                    <!-- Signature Inovation -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/inovation*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/signature/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="signatureInovation">Penghargaan Inovasi</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Inovation -->
+
+                    <!-- Signature Representative -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="signatureRepresentative">Penghargaan Teladan</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Representative -->
+
+                </ul>
+            </li>
+            <!--/ Tanda Tangan -->
+
         @elseif (Auth::guard('human_resources')->user()->role == 2)
             <!-- Dashboard -->
             <li class="menu-header small text-uppercase">
@@ -82,6 +113,37 @@
                 </a>
             </li>
             <!--/ My Profile -->
+
+            <!-- Tanda Tangan -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Tanda Tangan</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation*')) || (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fas fa-file-signature"></i>
+                    <div data-i18n="signature">Tanda Tangan</div>
+                </a>
+                <ul class="menu-sub">
+                    <!-- Signature Inovation -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="signatureInovation">Penghargaan Inovasi</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Inovation -->
+
+                    <!-- Signature Representative -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="signatureRepresentative">Penghargaan Teladan</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Representative -->
+
+                </ul>
+            </li>
+            <!--/ Tanda Tangan -->
 
         @elseif (Auth::guard('human_resources')->user()->role == 3)
             <!-- Dashboard -->

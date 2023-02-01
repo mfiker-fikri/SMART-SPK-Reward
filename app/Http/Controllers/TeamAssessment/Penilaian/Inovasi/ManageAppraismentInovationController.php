@@ -144,7 +144,7 @@ class ManageAppraismentInovationController extends Controller
                     $actionBtn =
                         '
                             <a href="' . route('penilai.getManageAppraismentId.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
-                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> Penilaian
                             </a>
                         ';
 
@@ -492,11 +492,11 @@ class ManageAppraismentInovationController extends Controller
 
             return DataTables::of($finalResult)
                     ->addIndexColumn()
-                    // ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
-                    //     $full_name  =   '<span>' . $row->resultFinalInovations->id . '</span>';
-                    //     return $full_name;
-                    // })
-                    // ->rawColumns(['fullName'])
+                    ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
+                        $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                        return $full_name;
+                    })
+                    ->rawColumns(['fullName'])
                     ->make(true);
         } catch (\Throwable $th) {
             throw $th;

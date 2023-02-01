@@ -378,7 +378,7 @@ class ManageSDMController extends Controller
                 }
 
                 if ($validate->fails()) {
-                    alert()->error('Gagal Update Data Admin!', 'Validasi Gagal')->autoclose(25000);
+                    alert()->error('Gagal Update Data Akun Divisi Sumber Daya Manusia!', 'Validasi Gagal')->autoclose(25000);
                     return redirect()->back()->with('message-update-error', 'Gagal Update Data Akun Divisi Sumber Daya Manusia!')->withErrors($validate)->withInput($request->all());
                 }
 
@@ -389,7 +389,7 @@ class ManageSDMController extends Controller
 
                 $sdm->save();
 
-                alert()->success('Berhasil Update Data Admin!')->autoclose(25000);
+                alert()->success('Berhasil Update Data Akun Divisi Sumber Daya Manusia!')->autoclose(25000);
                 return redirect()->back()->with('message-update-success', 'Berhasil Update Data Akun Divisi Sumber Daya Manusia!');
 
             } else {
