@@ -162,10 +162,10 @@ class ForgotPasswordController extends Controller
             ])
             ->first();
 
-            // ddd($updatePassword);
+            // ddd($updatePassword->email);
 
             if($updatePassword) {
-                return view('layouts.teamAssessment.content.auth.resetPassword')->with(['token' => $token, 'email' => $request->email]);
+                return view('layouts.teamAssessment.content.auth.resetPassword', compact('updatePassword'))->with(['token' => $token, 'email' => $request->email]);
             } else {
                 abort(403);
             }
@@ -224,10 +224,10 @@ class ForgotPasswordController extends Controller
 
         if ($updatePassword) {
             // Find Email TA
-            $sdm  =   TeamAssessment::where(['email' =>  $request->email])->first();
+            $TA  =   TeamAssessment::where(['email' =>  $request->email])->first();
             // dd($admin);
             // Check New Password Same Old Password
-            if (Hash::check($request->password, $sdm->password)) {
+            if (Hash::check($request->password, $TA->password)) {
                 alert()->error('Gagal Update Password!', 'Password Lama Tidak Bisa Dipakai Kembali')->autoclose(25000);
                 return redirect()->back()->with('message-failed-reset', 'Password Lama Tidak Bisa Dipakai Kembali')->withInput($request->all());
             } else {
@@ -238,7 +238,7 @@ class ForgotPasswordController extends Controller
                 DB::table('team_assessments_password_resets')->where('email', $request->email)->delete();
 
                 alert()->success('Berhasil Update Password!')->autoclose(25000);
-                return redirect('/sdm')->with('message-succes-login', 'Password Sudah di Update');
+                return redirect('/penilai')->with('message-succes-login', 'Password Sudah di Update');
             }
         } else {
             alert()->error('Gagal Reset Password!', 'Waktu Reset Sudah Habis, Silahkan Kirim Ulang')->autoclose(25000);

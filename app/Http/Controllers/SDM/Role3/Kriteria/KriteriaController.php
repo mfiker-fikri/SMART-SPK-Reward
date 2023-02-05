@@ -65,13 +65,20 @@ class KriteriaController extends Controller
                         <a href="' . route('sdm.getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-eye mx-auto me-1"></i> View
                         </a>
-                        <a href="' . route('sdm.getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
-                            <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
-                        </a>
-                        <a href"' . route('sdm.getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black;" id="deleteCriteriasId" >
-                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
-                        </a>
                     ';
+
+                    // $actionBtn =
+                    //     '
+                    //     <a href="' . route('sdm.getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
+                    //         <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                    //     </a>
+                    //     <a href="' . route('sdm.getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                    //         <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                    //     </a>
+                    //     <a href"' . route('sdm.getManageCriteriasId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black;" id="deleteCriteriasId" >
+                    //         <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                    //     </a>
+                    // ';
 
                     return $actionBtn;
                 })

@@ -1,5 +1,40 @@
 @extends('template.pegawai.template')
 
+@section('js_footer')
+
+    <!-- Datatables Form Inovation Back -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#data-table').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                paging: false,
+                ajax: "{{ url('result-reward-inovation/data') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
+                    {data: 'year', name: 'year', orderable: false, searchable: false},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+            new $.fn.dataTable.FixedHeader( table );
+
+            // if (table) {
+            //     setInterval( function () {
+            //         table.ajax.reload(null, false);
+            //     }, 10000 );
+            // }
+        });
+    </script>
+    <!--/ Datatables Form Inovation Back -->
+
+@endsection
+
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -12,9 +47,25 @@
 
                 <!-- Form Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">List Form Pendaftaran Penghargaan Inovasi</h5>
+                    <h5 class="mb-0">Hasil Penerimaan Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Form Read Inovation List Title -->
+
+                <div class="container-fluid py-3">
+                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Tahun</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
 

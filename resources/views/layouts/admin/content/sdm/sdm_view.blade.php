@@ -94,7 +94,7 @@
                             <div class="col-sm-9">
                                 <div class="input-group">
                                     <span class="input-group-text">
-                                        <i class="fa-solid fa-key"></i>
+                                        <i class="fa-solid fa-user-tie"></i>
                                     </span>
                                     <select class="form-select" id="role"
                                         name="role" placeholder="--Pilih Peran SDM --"

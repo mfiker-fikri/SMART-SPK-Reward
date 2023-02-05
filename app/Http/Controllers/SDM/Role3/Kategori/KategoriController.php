@@ -48,31 +48,38 @@ class KategoriController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $actionBtn = '';
-                    if($row->count() <= 2 ) {
-                    // if($row->category === 'inovasi' && $row->category === 'teladan') {
-                        $actionBtn =
+                    $actionBtn =
                             '
                         <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-eye mx-auto me-1"></i> View
                         </a>
-                        <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-lg btn-warning mx-1 mx-1 mx-1" style="color: black">
-                            <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
-                        </a>
                         ';
-                    } else {
-                        $actionBtn =
-                                '
-                            <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
-                                <i class="fa-solid fa-eye mx-auto me-1"></i> View
-                            </a>
-                            <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-lg btn-warning mx-1 mx-1 mx-1" style="color: black">
-                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
-                            </a>
-                            <a href"' . route('sdm.postManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Delete.SDM', $row->id) . '" class="delete btn btn-lg btn-danger mx-1 mx-1 mx-1" style="color: black;" id="deleteCategoriesId" data-id="'.$row->id.'" data-category="'.$row->category.'" >
-                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
-                            </a>
-                            ';
-                    }
+
+                    // if($row->count() <= 2 ) {
+                    // // if($row->category === 'inovasi' && $row->category === 'teladan') {
+                    //     $actionBtn =
+                    //         '
+                    //     <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
+                    //         <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                    //     </a>
+                    //     <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-lg btn-warning mx-1 mx-1 mx-1" style="color: black">
+                    //         <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                    //     </a>
+                    //     ';
+                    // } else {
+                    //     $actionBtn =
+                    //             '
+                    //         <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.View.SDM', $row->id) . '" class="view btn btn-lg btn-info mx-1 mx-1 mx-1" style="color: black">
+                    //             <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                    //         </a>
+                    //         <a href="' . route('sdm.getManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Update.SDM', $row->id) . '" class="edit btn btn-lg btn-warning mx-1 mx-1 mx-1" style="color: black">
+                    //             <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                    //         </a>
+                    //         <a href"' . route('sdm.postManageCategoriesId.KepalaSubbagianPenghargaanDisiplindanPensiun.Delete.SDM', $row->id) . '" class="delete btn btn-lg btn-danger mx-1 mx-1 mx-1" style="color: black;" id="deleteCategoriesId" data-id="'.$row->id.'" data-category="'.$row->category.'" >
+                    //             <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                    //         </a>
+                    //         ';
+                    // }
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

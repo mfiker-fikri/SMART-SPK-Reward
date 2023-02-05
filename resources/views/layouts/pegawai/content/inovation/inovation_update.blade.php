@@ -517,7 +517,7 @@
                                     <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
                                 </div>
 
-                                <input type="text" name="status_process" value="{{ $rewardInovation->status_process }}" />
+                                <input type="hidden" name="status_process" value="{{ $rewardInovation->status_process }}" />
                             </div>
                         </div>
                         <!--/ Upload Video -->

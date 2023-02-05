@@ -186,7 +186,10 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
 
         // Image
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+
+        // PDF
+        Barryvdh\DomPDF\ServiceProvider::class
     ],
 
     /*
@@ -251,6 +254,10 @@ return [
 
         // Image
         'Image' => Intervention\Image\Facades\Image::class,
+
+        // PDF
+        // 'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class
     ],
 
 ];

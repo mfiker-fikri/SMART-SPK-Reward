@@ -59,11 +59,11 @@
 
                     <!-- Button Create Parameter -->
                     <div class="py-3 d-flex flex-row justify-content-start">
-                        <div class="mx-1 mx-1 mx-1">
+                        {{-- <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('hrd/manage/parameters/create') }}" role="button">
                                 <i class="fa-solid fa-plus mx-auto me-1"></i> Create Parameter
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <!--/ Button Create Parameter -->
 

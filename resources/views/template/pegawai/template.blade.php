@@ -398,7 +398,7 @@
                 $(".preloader").delay(5000).fadeOut();
             })
         </script>
-        <!--/ Loader  -->
+        <!--/ Loader -->
 
         <!-- Greeting Morning, Afternoon, etc -->
         <script type="text/javascript">

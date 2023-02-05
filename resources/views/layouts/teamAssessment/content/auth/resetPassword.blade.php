@@ -5,6 +5,7 @@
         $(document).on('click', '#passwordEye', function(e) {
             event.preventDefault();
             var show = document.getElementById("password").getAttribute("type");
+            // console.log(show);
             if(show == "password"){
                 document.getElementById("password").setAttribute("type", "text");
                 document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
@@ -78,7 +79,7 @@
                                     <i class="fa-regular fa-envelope fa-lg"></i>
                                 </span>
                                 <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }} " id="email"
-                                    name="email" placeholder="Enter Your Email" value="{{ old('email') }}"
+                                    name="email" placeholder="Enter Your Email" value="{{ old('email', $updatePassword->email) }}"
                                     autofocus autocomplete required  />
                             </div>
 

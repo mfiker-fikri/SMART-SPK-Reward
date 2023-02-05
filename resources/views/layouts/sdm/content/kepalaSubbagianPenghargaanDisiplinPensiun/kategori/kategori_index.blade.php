@@ -104,13 +104,13 @@
 
                     <!-- Button Create Kategori -->
                     <div class="py-3 d-flex flex-row justify-content-start">
-                        @if(\App\Models\Category::count() >= 2)
+                        {{-- @if(\App\Models\Category::count() >= 2)
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') }}" role="button">
                                 <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Kategori Baru
                             </a>
                         </div>
-                        @endif
+                        @endif --}}
                     </div>
                     <!--/ Button Create Kategori -->
 

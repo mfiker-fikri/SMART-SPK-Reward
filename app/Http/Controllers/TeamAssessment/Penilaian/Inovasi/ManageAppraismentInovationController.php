@@ -144,7 +144,7 @@ class ManageAppraismentInovationController extends Controller
                     $actionBtn =
                         '
                             <a href="' . route('penilai.getManageAppraismentId.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
-                                <i class="fa-solid fa-eye mx-auto me-1"></i> Penilaian
+                            <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
                             </a>
                         ';
 
@@ -224,7 +224,7 @@ class ManageAppraismentInovationController extends Controller
                             data-5="'.$row->score_valuation_5.'"
                             data-6="'.$row->score_valuation_6.'"
                             >
-                                <i class="fa-solid fa-pencil mx-auto me-1"></i> Hasil Penilaian
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> Hasil Penilaian
                             </a>
                         ';
 
@@ -435,13 +435,21 @@ class ManageAppraismentInovationController extends Controller
                 array_push($ResultFinalDSS, $resultDSSFinal);
                 // ddd($resultDSSFinal);
 
-                if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.4) {
+                // if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.4) {
+                //     // echo 'Tidak Dapat Penghargaan';
+                //     array_push($ket, 'Tidak Dapat Penghargaan');
+                // } elseif ($resultDSSFinal > 0.4 && $resultDSSFinal <= 0.8) {
+                //     // echo 'Dipertimbangkan';
+                //     array_push($ket, 'Dipertimbangkan');
+                // } elseif ($resultDSSFinal > 0.8 && $resultDSSFinal <= 1) {
+                //     // echo 'Dapat Penghargaan';
+                //     array_push($ket, 'Dapat Penghargaan');
+                // }
+
+                if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.75) {
                     // echo 'Tidak Dapat Penghargaan';
                     array_push($ket, 'Tidak Dapat Penghargaan');
-                } elseif ($resultDSSFinal > 0.4 && $resultDSSFinal <= 0.8) {
-                    // echo 'Dipertimbangkan';
-                    array_push($ket, 'Dipertimbangkan');
-                } elseif ($resultDSSFinal > 0.8 && $resultDSSFinal <= 1) {
+                } elseif ($resultDSSFinal > 0.75 && $resultDSSFinal <= 1) {
                     // echo 'Dapat Penghargaan';
                     array_push($ket, 'Dapat Penghargaan');
                 }
@@ -482,12 +490,13 @@ class ManageAppraismentInovationController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
 
-            $finalResult            =   FinalResultRewardInovation::where([
-                                    ['created_at', '>=', $dateOpenTime],
-                                    ['created_at', '<=', $dateExpiredTime],
-                                    ['updated_at', '>=', $dateOpenTime],
-                                    ['updated_at', '<=', $dateExpiredTime],
-                                ])->latest()->get();
+            $finalResult            =   FinalResultRewardInovation::
+                                        where([
+                                            ['created_at', '>=', $dateOpenTime],
+                                            ['created_at', '<=', $dateExpiredTime],
+                                            ['updated_at', '>=', $dateOpenTime],
+                                            ['updated_at', '<=', $dateExpiredTime],
+                                        ])->latest()->get();
 
 
             return DataTables::of($finalResult)
