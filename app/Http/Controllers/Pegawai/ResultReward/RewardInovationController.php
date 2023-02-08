@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Auth;
 // use Barryvdh\DomPDF\Facade as PDF;
 // use Barryvdh\DomPDF\Facade as Pdf;
 // use PDF;
+// Yes
 use Barryvdh\DomPDF\Facade\PDF;
+//
 // use Pdf;
 // use \PDF;
 use Yajra\DataTables\Facades\DataTables;
+// use PDF;
 
 class RewardInovationController extends Controller
 {
@@ -88,8 +91,8 @@ class RewardInovationController extends Controller
                                         // ['final_result_reward_inovation.updated_at', '>=', $dateOpenTime],
                                         // ['final_result_reward_inovation.updated_at', '<=', $dateExpiredTime],
                                     ])
-                                    ->latest('final_result_reward_inovation.created_at')->get();
-                                    // ->get();
+                                    // ->latest('final_result_reward_inovation.created_at')->get();
+                                    ->get();
                                     // ->latest()->get();
 
             // ddd($finalResult);

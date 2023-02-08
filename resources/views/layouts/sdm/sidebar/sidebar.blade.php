@@ -61,7 +61,7 @@
                 <span class="menu-header-text">Tanda Tangan</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/inovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) }}">
+            <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/inovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fas fa-file-signature"></i>
                     <div data-i18n="signature">Tanda Tangan</div>
@@ -119,7 +119,7 @@
                 <span class="menu-header-text">Tanda Tangan</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation*')) || (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) }}">
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation*')) || (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fas fa-file-signature"></i>
                     <div data-i18n="signature">Tanda Tangan</div>

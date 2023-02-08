@@ -287,6 +287,15 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
     // Dashboard
     Route::GET('/dashboard', [\App\Http\Controllers\TeamAssessment\DashboardController::class, 'dashboard'])->name('getDashboard.Penilai');
 
+    // Profile
+    Route::GET('profile', [App\Http\Controllers\TeamAssessment\TAController::class, 'getProfile'])->name('getProfile.Penilai');
+    Route::POST('profile/update', [App\Http\Controllers\TeamAssessment\TAController::class, 'postProfile'])->name('postProfile.Update.Penilai');
+    // Profile Image Upload & delete
+    Route::POST('/image/upload', [App\Http\Controllers\TeamAssessment\TAController::class, 'postImageUpload'])->name('postProfile.postImageUpload.Penilai');
+    Route::POST('/image/delete', [App\Http\Controllers\TeamAssessment\TAController::class, 'postImageDelete'])->name('postProfile.postImageDelete.Penilai');
+    // Profile Change Password
+    Route::POST('/profile/change-password', [App\Http\Controllers\TeamAssessment\TAController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.Penilai');
+
     // SMART
     // Kategori
     Route::GET('/categories/list', [\App\Http\Controllers\TeamAssessment\SMART\SmartController::class, 'categoriesList'])->name('categoriesList.Penilai');

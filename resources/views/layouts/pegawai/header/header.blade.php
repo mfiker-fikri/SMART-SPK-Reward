@@ -69,6 +69,13 @@
                     <a href="{{ URL::to('form-representative/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Teladan</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Teladan</li>
+            <!-- Manage Result Reward Inovation -->
+            @elseif ( request()->is('result-reward-inovation') )
+                <!-- Read -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Inovasi</li>
             @endif
 
         </ol>

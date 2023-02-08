@@ -151,12 +151,12 @@
             <!-- Read -->
             <title> List Data Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/employees/view/{id}') )
+        @elseif ( request()->is('admin/manage/employees/view*') )
             <!-- Manage Pegawai -->
             <!-- View -->
             <title> Lihat Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/employees/edit/{id}') )
+        @elseif ( request()->is('admin/manage/employees/edit*') )
             <!-- Manage Pegawai -->
             <!-- Edit -->
             <title> Edit Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>

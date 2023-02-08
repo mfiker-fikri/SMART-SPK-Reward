@@ -18,11 +18,11 @@ class PegawaiFactory extends Factory
         return [
             //
             'id' => $this->faker->uuid(),
-            'full_name' => 'fikri',
-            'email' => 'fikri@gmail.com',
+            'full_name' => 'muhammad',
+            'email'     =>  'viker1299@gmail.com',
             // 'email_verified_at' => now(),
-            'username' => 'fikri12',
-            'password' => Hash::make('Pegawai12'),
+            'username' => 'muhammad',
+            'password' => Hash::make('Admin12'),
             //
             'place_birth' => $this->faker->city(),
             'date_birth' => Carbon::now()->toDateString(),

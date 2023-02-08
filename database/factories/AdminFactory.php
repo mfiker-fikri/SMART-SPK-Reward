@@ -23,14 +23,14 @@ class AdminFactory extends Factory
             'full_name' => 'muhammad',
             // 'full_name' => 'mahmud',
             // 'email' => $this->faker->freeEmail(),
-            'email' => 'muhammad@gmail.com',
+            'email'     =>  'viker1299@gmail.com',
             // 'email' => 'mahmud@gmail.com',
             // 'email_verified_at' => now(),
             // 'username' => $this->faker->userName(),
             'username' => 'muhammad',
             // 'username' => 'mahmud',
             'password' => Hash::make('Admin12'),
-            // 
+            //
         ];
     }
 }

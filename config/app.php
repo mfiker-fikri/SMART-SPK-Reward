@@ -189,7 +189,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         // PDF
-        Barryvdh\DomPDF\ServiceProvider::class
+        Barryvdh\DomPDF\ServiceProvider::class,
+        //...
+        Elibyy\TCPDF\ServiceProvider::class,
     ],
 
     /*
@@ -257,7 +259,9 @@ return [
 
         // PDF
         // 'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class
+
+        // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
     ],
 
 ];

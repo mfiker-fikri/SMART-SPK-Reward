@@ -46,7 +46,10 @@
             <!-- Edit -->
             <meta name="title" content="Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-
+        @elseif ( request()->is('result-reward-inovation') )
+            <!-- Manage Result Reward Inovation -->
+            <meta name="title" content="Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
         @endif
         <!--/ Meta Tag -->
 
@@ -78,7 +81,9 @@
             <!-- Form Inovation -->
             <!-- Edit -->
             <title>Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
-
+        @elseif ( request()->is('result-reward-inovation') )
+            <!-- Manage Result Reward Inovation -->
+            <title>Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
         @endif
         <!-- /Title -->
 

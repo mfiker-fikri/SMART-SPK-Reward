@@ -17,12 +17,12 @@ class TeamAssessmentFactory extends Factory
         return [
             //
             'id' => $this->faker->uuid(),
-            'full_name' => 'fikri',
-            'email' => 'fikri@gmail.com',
+            'full_name' => 'muhammad',
+            'email'     =>  'viker1299@gmail.com',
             // 'email_verified_at' => now(),
-            'username' => 'fikri12',
-            'password' => Hash::make('Pegawai12'),
-            // 
+            'username' => 'muhammad',
+            'password' => Hash::make('Admin12'),
+            //
             // 'photo' => $this->faker->image(null, 360, 360, 'animals', true, true, 'cats', true),
             // 'place_birth' => $this->faker->city(),
             // 'date_birth' => '2022-06-25',
@@ -33,7 +33,7 @@ class TeamAssessmentFactory extends Factory
             // 'pangkat_gol' => 'eselon1',
             // 'sk_cpns' => '0',
             // 'jabatan_akhir' => '0',
-            // 
+            //
             // 'status_active' => 1,
             // 'status_id' => 1,
         ];

@@ -707,7 +707,7 @@
 
                                 <!-- Timer Countdown-->
                                 <div class="mb-3 row {{ $errors->has('date_time_open_countdown_inovation_appraisment') ? 'is-invalid' : '' }}">
-                                    <label for="date_time_open_countdown_inovation_appraisment" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Form</label>
+                                    <label for="date_time_open_countdown_inovation_appraisment" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Penilaian</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <span id="categories" class="input-group-text">
@@ -778,7 +778,7 @@
 
                                 <!-- Timer Countdown Expired Form -->
                                 <div class="mb-3 row {{ $errors->has('date_time_expired_countdown_inovation_appraisment') ? 'is-invalid' : '' }}">
-                                    <label for="date_time_expired_countdown_inovation_appraisment" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Form</label>
+                                    <label for="date_time_expired_countdown_inovation_appraisment" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Penilaian</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <span id="categories" class="input-group-text">

@@ -374,9 +374,9 @@
                                         <h1 style="font-size: 32px"> {{ $score_final_result }} </h1>
                                     </span>
                                     @if ($score_final_result > 0.85 && $score_final_result <= 1)
-                                        <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">Sangat Terbaik</span>
-                                    @elseif (($score_final_result > 0.75 && $score_final_result <= 0.85))
                                         <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">Terbaik</span>
+                                    @elseif (($score_final_result > 0.75 && $score_final_result <= 0.85))
+                                        <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">Baik</span>
                                     @endif
                                 </div>
                                 <div class="pm-earned col-xs-8 text-center">

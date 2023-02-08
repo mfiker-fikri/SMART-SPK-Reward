@@ -23,7 +23,10 @@ class CreateFinalResultRewardInovationTable extends Migration
             $table->string('score_final_result_description');
             //
             $table->string('signature_head_of_the_human_resources_bureau')->nullable();
-            $table->string('signature_head_of_disciplinary awards_and_administration')->nullable();
+            $table->string('verify_head_of_the_human_resources_bureau')->nullable();
+            //
+            $table->string('signature_head_of_disciplinary_awards_and_administration')->nullable();
+            $table->string('verify_head_of_disciplinary_awards_and_administration')->nullable();
             //
             $table->integer('status_id')->default(1);
             //

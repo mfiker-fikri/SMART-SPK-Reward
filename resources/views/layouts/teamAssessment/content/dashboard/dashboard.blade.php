@@ -1,537 +1,1489 @@
 @extends('template.teamAssessment.template')
+
+@section('js_header')
+
+@stop
+
+@section('css_header')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+    <style>
+        @media (min-width: 992px) {
+            .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 450px;
+                min-width: 450px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 450px;
+                min-width: 450px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 400px;
+                min-width: 400px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 100px;
+                min-width: 100px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+        }
+
+
+        @media (min-width: 992px) {
+            .dashboardEmployeesInfo {
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 991.98px) {
+            .dashboardEmployeesInfo {
+                display: flex;
+                margin: 0 100px;
+            }
+        }
+
+        /* card */
+        @media (min-width: 992px) {
+            .cardInovation {
+                max-width: 740px;
+                min-height: 26.5vh;
+                max-height: 25vh;
+            }
+            .cardRepresentative {
+                max-width: 740px;
+                min-height: 26.5vh;
+                max-height: 25vh;
+            }
+        }
+        @media (max-width: 991.98px) {
+            .cardInovation {
+                max-width: 740px;
+                min-height: 35vh;
+                max-height: 85vh;
+            }
+            .cardRepresentative {
+                max-width: 740px;
+                min-height: 35vh;
+                max-height: 85vh;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .cardInovation {
+                max-width: 740px;
+                min-height: 80vh;
+                max-height: 80vh;
+            }
+            .cardRepresentative {
+                max-width: 740px;
+                min-height: 80vh;
+                max-height: 80vh;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .cardInovation {
+                max-width: 740px;
+                min-height: 50vh;
+                max-height: 80vh;
+            }
+            .cardRepresentative {
+                max-width: 740px;
+                min-height: 50vh;
+                max-height: 80vh;
+            }
+        }
+        /* card */
+
+        /* cardForm */
+        @media (min-width: 992px) {
+            .cardFormInovation {
+                max-width: 740px;
+                min-height: 100%;
+                max-height: 100%;
+            }
+            .cardFormRepresentative {
+                max-width: 740px;
+                min-height: 100%;
+                max-height: 100%;
+            }
+
+        }
+        @media (max-width: 991.98px) {
+            .cardFormInovation {
+                margin: auto;
+                padding: 0.5em 0;
+                max-width: 740px;
+                /* min-height: 200px; */
+                /* max-height: 200px; */
+            }
+            .cardFormRepresentative {
+                margin: auto;
+                padding: 0.5em 0;
+                max-width: 740px;
+                /* min-height: 200px; */
+                /* max-height: 200px; */
+            }
+        }
+        @media (max-width: 575.98px) {
+            .cardFormInovation {
+                margin: auto;
+                padding: 0.5em 0;
+                min-width: 400px;
+                max-width: 400px;
+                min-height: 400px;
+                max-height: 400px;
+            }
+            .cardFormRepresentative {
+                margin: auto;
+                padding: 0.5em 0;
+                min-width: 400px;
+                max-width: 400px;
+                min-height: 400px;
+                max-height: 400px;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .cardFormInovation {
+                margin: auto;
+                padding: 0.5em 0;
+                min-width: 400px;
+                max-width: 400px;
+                min-height: 400px;
+                max-height: 400px;
+            }
+            .cardFormRepresentative {
+                margin: auto;
+                padding: 0.5em 0;
+                min-width: 400px;
+                max-width: 400px;
+                min-height: 400px;
+                max-height: 400px;
+            }
+        }
+        /* cardForm */
+
+
+        @media (min-width: 992px) {
+            .countdown-TA-inovation {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-representative {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-representative span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .titleCountDown{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+            }
+
+            .titleCountDownNonActive{
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                min-height: 8em;
+                max-height: 8em;
+            }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .countdown-TA-inovation {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-representative {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-representative span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .titleCountDown{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+            }
+
+            .titleCountDownNonActive{
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                min-height: 8em;
+                max-height: 8em;
+            }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .countdown-TA-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-representative {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-representative span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .titleCountDown{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+            }
+
+            .titleCountDownNonActive{
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                min-height: 8em;
+                max-height: 8em;
+            }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
+            }
+        }
+        @media (max-width: 275.98px) {
+            .countdown-TA-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-representative {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-representative span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .dateCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                font-size: 25px;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .timeCountDown span{
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .titleCountDown{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+            }
+
+            .titleCountDownNonActive{
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                min-height: 8em;
+                max-height: 8em;
+            }
+
+            .titleCountDownExpiredNonActive{
+                margin: 0;
+                padding: 5px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                font-size: 24px;
+                line-height: 100%;
+                min-height: 6.5vh;
+                max-height: 6.5vh;
+            }
+        }
+    </style>
+@stop
+
+<!-- Footer Js -->
+@section('js_footer')
+    <!-- Timer Countdown -->
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".countdown-TA-inovation").each( function(){
+                var _this = $(this),
+                _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if(event.offset.totalDays == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Dibuka Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalHours == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalMinutes == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Penilaian Inovasi Sudah Dibuka',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".countdown-representative").each( function(){
+                var _this = $(this);
+                var _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if(event.offset.totalDays == 1 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 2 + 'Hari',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalDays == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Teladan Ditutup Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalHours == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalMinutes == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Penilaian Teladan Sudah Ditutup',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+            });
+        });
+    </script>
+    <!--/ Timer Countdown -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.5/swiper.esm.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".swiper1", {
+            cssMode: true,
+            // direction: 'vertical',
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            speed: 100,
+            spaceBetween: 10,
+        });
+      </script>
+@stop
+<!--/ Footer Js -->
+
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                        <div class="card-body">
-                        <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                        <p class="mb-4">
-                            You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                            your profile.
-                        </p>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                        <img
-                            src="../assets/img/illustrations/man-with-laptop-light.png"
-                            height="140"
-                            alt="View Badge User"
-                            data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                            data-app-light-img="illustrations/man-with-laptop-light.png"
-                        />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 order-1">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                    <img
-                        src="../assets/img/icons/unicons/chart-success.png"
-                        alt="chart success"
-                        class="rounded"
-                    />
-                    </div>
-                    <div class="dropdown">
-                    <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt3"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                    >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                    </div>
-                </div>
-                <span class="fw-semibold d-block mb-1">Profit</span>
-                <h3 class="card-title mb-2">$12,628</h3>
-                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                </div>
-            </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                    <img
-                        src="../assets/img/icons/unicons/wallet-info.png"
-                        alt="Credit Card"
-                        class="rounded"
-                    />
-                    </div>
-                    <div class="dropdown">
-                    <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt6"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                    >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                    </div>
-                </div>
-                <span>Sales</span>
-                <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-        <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-        <div class="card">
-            <div class="row row-bordered g-0">
-            <div class="col-md-8">
-                <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                <div id="totalRevenueChart" class="px-2"></div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-body">
-                <div class="text-center">
-                    <div class="dropdown">
-                    <button
-                        class="btn btn-sm btn-outline-primary dropdown-toggle"
-                        type="button"
-                        id="growthReportId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                    >
-                        2022
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div id="growthChart"></div>
-                <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
 
-                <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                <div class="d-flex">
-                    <div class="me-2">
-                    <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
+    <div class="row mx-1">
+
+        <div class="col-md-6 order-0">
+
+            <div class="card mb-3 visible shadow-lg" style="max-width: 740px;min-height: 340px;">
+                <div class="d-flex flex-row">
+                    <div class="d-flex">
+                        <!-- Photo Profile -->
+                        @if (Auth::guard('team_assessments')->user()->photo_profile)
+                        <img src="{{ asset( 'storage/teamAssesments/photos/photoProfile/'. Auth::guard('team_assessments')->user()->username. '/' . Auth::guard('team_assessments')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="employee-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                        @else
+                        <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="employee-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                        @endif
+                        <!--/ Photo Profile -->
                     </div>
-                    <div class="d-flex flex-column">
-                    <small>2022</small>
-                    <h6 class="mb-0">$32.5k</h6>
+                    <div class="dashboardEmployeesInfo">
+                        <div class="card-body d-flex flex-column justify-content-center align-self-center">
+                            <h3 class="card-title text-center"><strong> {{ Auth::guard('team_assessments')->user()->full_name }} </strong></h3>
+                            <p class="card-text text-center"> Penilai </p>
+                            @if (Cache::has('TA-is-online-' . Auth::guard('team_assessments')->user()->id))
+                            <p class="card-text text-success text-center"><small class="text-muted text-success">Online</small></p>
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex">
-                    <div class="me-2">
-                    <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                    <small>2021</small>
-                    <h6 class="mb-0">$41.2k</h6>
-                    </div>
-                </div>
                 </div>
             </div>
-            </div>
+
+
         </div>
+
+
+        <div class="col-md-6 col-md-5 order-1">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardInovation">
+                        <div class="d-flex justify-content-center align-self-center cardFormInovation">
+                            @if ($timerInovasi == null)
+                            <div class="d-flex justify-content-center align-self-center">
+                                <span class="text-center">
+                                    <h3>Penilaian Inovasi Ditutup</h3>
+                                </span>
+                            </div>
+                            @else
+                                @if (
+                                    (
+                                        ($timerInovasi->status_open_appraisment == 0 && $timerInovasi->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timerInovasi->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment )
+                                    )
+                                    ||
+                                    (
+                                        ($timerInovasi->status_open_appraisment == 0 && $timerInovasi->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timerInovasi->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment )
+                                    )
+                                )
+                                <div class="container-fluid">
+                                    <div class="titleCountDownNonActive">
+                                        <h3>
+                                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Penilaian Inovasi</span>
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                @elseif (
+                                    (
+                                                ($timerInovasi->status_open_appraisment == 1
+                                            && ($timerInovasi->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timerInovasi->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString() ))
+                                        &&  ($timerInovasi->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment )
+                                    )
+                                    ||
+                                    (
+                                                ($timerInovasi->status_open_appraisment == 1
+                                            && ($timerInovasi->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timerInovasi->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString()) )
+                                        &&  ($timerInovasi->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment )
+                                    )
+                                )
+                                <div class="container-fluid swiper1">
+                                    <div class="openTimerCountDown swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Pembukaan Penilaian Inovasi</h3>
+                                            </div>
+                                            <div class="dateCountDown">
+                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('dddd') }}</b></span>
+                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('D') }}</b></span>
+                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('MMMM') }}</b></span>
+                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('Y') }}</b></span>
+                                            </div>
+                                            <div class="timeCountDown">
+                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('hh') }}</b></span>
+                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('mm') }}</b></span>
+                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('a') }}</b></span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Coming Soon</h3>
+                                            </div>
+                                            <div class="wrap-countdown countdown-TA-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_appraisment)->toDateTimeString() }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- If we need pagination -->
+                                    {{-- <div class="swiper-pagination"></div> --}}
+
+                                    <!-- If we need navigation buttons -->
+                                    {{-- <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div> --}}
+
+                                    <!-- If we need scrollbar -->
+                                    {{-- <div class="swiper-scrollbar"></div> --}}
+                                </div>
+
+                                @elseif (
+                                    (
+                                            (
+                                                    ($timerInovasi->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_appraisment  || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_appraisment ) )
+                                                &&  ($timerInovasi->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment )
+                                            )
+                                        ||  (
+                                                    ($timerInovasi->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_appraisment))
+                                                &&  ($timerInovasi->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment)
+                                            )
+                                    )
+                                    ||
+                                    (
+                                            (
+                                                    ($timerInovasi->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_appraisment))
+                                                &&  ($timerInovasi->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment)
+                                            )
+                                        || (
+                                                    ($timerInovasi->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_appraisment))
+                                                &&  ($timerInovasi->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_appraisment)
+                                            )
+                                    )
+                                )
+
+                                <div class="container-fluid">
+                                    <!-- Table Penilaian Inovation -->
+                                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--/ Table Penilaian Inovation -->
+                                </div>
+
+                                @elseif (
+                                    (
+                                            ( ($timerInovasi->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_appraisment) && ($timerInovasi->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_appraisment) )
+                                        ||  ( ($timerInovasi->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_appraisment) && ($timerInovasi->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_appraisment) )
+                                    )
+                                    ||
+                                    (
+                                            ( ($timerInovasi->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_appraisment) && ($timerInovasi->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_appraisment) )
+                                        || ( ($timerInovasi->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_appraisment) && ($timerInovasi->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_appraisment) )
+                                    )
+                                )
+
+                                <div class="container-fluid">
+                                    <div class="titleCountDownNonActive">
+                                        <h3>
+                                            <span>Penilaian Inovasi Telah Ditutup</span>
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                @endif
+
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardRepresentative">
+                        <div class="d-flex justify-content-center align-self-center cardFormRepresentative">
+                            @if ($timerTeladan == null)
+
+                            <div class="d-flex justify-content-center align-self-center">
+                                <span class="text-center"><h3>Penilaian Teladan Ditutup</h3></span>
+                            </div>
+
+                            @else
+                                @if (
+                                    (
+                                        ($timerTeladan->status == 0 && $timerTeladan->date_time_open_form_teladan >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                    )
+                                    ||
+                                    (
+                                        ($timerTeladan->status_open_appraisment == 0 && $timerTeladan->date_time_open_form_teladan >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                    )
+
+                                )
+                                <div class="container-fluid">
+                                    <div class="titleCountDownNonActive">
+                                        <h3>
+                                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Penilaian Teladan</span>
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                @elseif (
+                                    (
+                                                ($timerTeladan->status_open_appraisment == 1
+                                            && ($timerTeladan->date_time_open_form_teladan > \Carbon\Carbon::now()->toDateTimeString() || $timerTeladan->date_time_open_form_teladan == \Carbon\Carbon::now()->toDateTimeString()))
+                                        &&  ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                    )
+                                    ||
+                                    (
+                                                ($timerTeladan->status_open_appraisment == 1
+                                            && ($timerTeladan->date_time_open_form_teladan > \Carbon\Carbon::now()->toDateTimeString() || $timerTeladan->date_time_open_form_teladan == \Carbon\Carbon::now()->toDateTimeString()))
+                                        &&  ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                    )
+                                )
+                                <div class="container-fluid swiper1">
+                                    <div class="openTimerCountDown swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Pembukaan Penilaian Teladan</h3>
+                                            </div>
+                                            <div class="dateCountDown">
+                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('dddd') }}</b></span>
+                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('D') }}</b></span>
+                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('MMMM') }}</b></span>
+                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('Y') }}</b></span>
+                                            </div>
+                                            <div class="timeCountDown">
+                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('hh') }}</b></span>
+                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('mm') }}</b></span>
+                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('A') }}</b></span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Coming Soon</h3>
+                                            </div>
+                                            <div class="wrap-countdown countdown-representative" data-expire="{{ Carbon\Carbon::parse($timerTeladan->date_time_open_form_teladan)->toDateTimeString() }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- If we need pagination -->
+                                    {{-- <div class="swiper-pagination"></div> --}}
+                                </div>
+
+                                @elseif (
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan  || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan ) )
+                                                &&  ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan )
+                                            )
+                                        ||  (
+                                                    ($timerTeladan->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan))
+                                                &&  ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                            )
+                                    )
+                                    ||
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan))
+                                                &&  ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                            )
+                                        || (
+                                                    ($timerTeladan->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan))
+                                                &&  ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
+                                            )
+                                    )
+                                )
+
+                                <div class="container-fluid">
+                                    <!-- Table Penilaian Teladan -->
+                                    <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Status Process</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--/ Table Penilaian Teladan -->
+                                </div>
+
+                                @elseif (
+                                    (
+                                            ( ($timerTeladan->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
+                                        ||  ( ($timerTeladan->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
+                                    )
+                                    ||
+                                    (
+                                            ( ($timerTeladan->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
+                                        || ( ($timerTeladan->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
+                                    )
+                                )
+                                <div class="container-fluid">
+                                    <div class="titleCountDownNonActive">
+                                        <h3>
+                                            <span>Penilaian Teladan Telah Ditutup</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                @endif
+
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
-        <!--/ Total Revenue -->
-        <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-        <div class="row">
-            <div class="col-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                    <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
-                    </div>
-                    <div class="dropdown">
-                    <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt4"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                    >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                    </div>
-                </div>
-                <span class="d-block mb-1">Payments</span>
-                <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                </div>
-            </div>
-            </div>
-            <div class="col-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                    <img src="../assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
-                    </div>
-                    <div class="dropdown">
-                    <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt1"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                    >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                    </div>
-                </div>
-                <span class="fw-semibold d-block mb-1">Transactions</span>
-                <h3 class="card-title mb-2">$14,857</h3>
-                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                </div>
-            </div>
-            </div>
-            <!-- </div>
-<div class="row"> -->
-            <div class="col-12 mb-4">
-            <div class="card">
-                <div class="card-body">
-                <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                    <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                    <div class="card-title">
-                        <h5 class="text-nowrap mb-2">Profile Report</h5>
-                        <span class="badge bg-label-warning rounded-pill">Year 2021</span>
-                    </div>
-                    <div class="mt-sm-auto">
-                        <small class="text-success text-nowrap fw-semibold"
-                        ><i class="bx bx-chevron-up"></i> 68.2%</small
-                        >
-                        <h3 class="mb-0">$84,686k</h3>
-                    </div>
-                    </div>
-                    <div id="profileReportChart"></div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
+
     </div>
-                    <div class="row">
-                        <!-- Order Statistics -->
-                        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                            <div class="card-title mb-0">
-                                <h5 class="m-0 me-2">Order Statistics</h5>
-                                <small class="text-muted">42.82k Total Sales</small>
-                            </div>
-                            <div class="dropdown">
-                                <button
-                                class="btn p-0"
-                                type="button"
-                                id="orederStatistics"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                                <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="d-flex flex-column align-items-center gap-1">
-                                <h2 class="mb-2">8,258</h2>
-                                <span>Total Orders</span>
-                                </div>
-                                <div id="orderStatisticsChart"></div>
-                            </div>
-                            <ul class="p-0 m-0">
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded bg-label-primary"
-                                    ><i class="bx bx-mobile-alt"></i
-                                    ></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <h6 class="mb-0">Electronic</h6>
-                                    <small class="text-muted">Mobile, Earbuds, TV</small>
-                                    </div>
-                                    <div class="user-progress">
-                                    <small class="fw-semibold">82.5k</small>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <h6 class="mb-0">Fashion</h6>
-                                    <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                                    </div>
-                                    <div class="user-progress">
-                                    <small class="fw-semibold">23.8k</small>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <h6 class="mb-0">Decor</h6>
-                                    <small class="text-muted">Fine Art, Dining</small>
-                                    </div>
-                                    <div class="user-progress">
-                                    <small class="fw-semibold">849k</small>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded bg-label-secondary"
-                                    ><i class="bx bx-football"></i
-                                    ></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <h6 class="mb-0">Sports</h6>
-                                    <small class="text-muted">Football, Cricket Kit</small>
-                                    </div>
-                                    <div class="user-progress">
-                                    <small class="fw-semibold">99</small>
-                                    </div>
-                                </div>
-                                </li>
-                            </ul>
-                            </div>
-                        </div>
-                        </div>
-                        <!--/ Order Statistics -->
-
-                        <!-- Expense Overview -->
-                        <div class="col-md-6 col-lg-4 order-1 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header">
-                            <ul class="nav nav-pills" role="tablist">
-                                <li class="nav-item">
-                                <button
-                                    type="button"
-                                    class="nav-link active"
-                                    role="tab"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#navs-tabs-line-card-income"
-                                    aria-controls="navs-tabs-line-card-income"
-                                    aria-selected="true"
-                                >
-                                    Income
-                                </button>
-                                </li>
-                                <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab">Expenses</button>
-                                </li>
-                                <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab">Profit</button>
-                                </li>
-                            </ul>
-                            </div>
-                            <div class="card-body px-0">
-                            <div class="tab-content p-0">
-                                <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-                                <div class="d-flex p-4 pt-3">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
-                                    </div>
-                                    <div>
-                                    <small class="text-muted d-block">Total Balance</small>
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="mb-0 me-1">$459.10</h6>
-                                        <small class="text-success fw-semibold">
-                                        <i class="bx bx-chevron-up"></i>
-                                        42.9%
-                                        </small>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div id="incomeChart"></div>
-                                <div class="d-flex justify-content-center pt-4 gap-2">
-                                    <div class="flex-shrink-0">
-                                    <div id="expensesOfWeek"></div>
-                                    </div>
-                                    <div>
-                                    <p class="mb-n1 mt-1">Expenses This Week</p>
-                                    <small class="text-muted">$39 less than last week</small>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <!--/ Expense Overview -->
-
-                        <!-- Transactions -->
-                        <div class="col-md-6 col-lg-4 order-2 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="card-title m-0 me-2">Transactions</h5>
-                            <div class="dropdown">
-                                <button
-                                class="btn p-0"
-                                type="button"
-                                id="transactionID"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                                <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="card-body">
-                            <ul class="p-0 m-0">
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Paypal</small>
-                                    <h6 class="mb-0">Send money</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+82.6</h6>
-                                    <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Wallet</small>
-                                    <h6 class="mb-0">Mac'D</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+270.69</h6>
-                                    <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Transfer</small>
-                                    <h6 class="mb-0">Refund</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+637.91</h6>
-                                    <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/cc-success.png" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Credit Card</small>
-                                    <h6 class="mb-0">Ordered Food</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-838.71</h6>
-                                    <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Wallet</small>
-                                    <h6 class="mb-0">Starbucks</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+203.33</h6>
-                                    <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                                </li>
-                                <li class="d-flex">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Mastercard</small>
-                                    <h6 class="mb-0">Ordered Food</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-92.45</h6>
-                                    <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                                </li>
-                            </ul>
-                            </div>
-                        </div>
-                        </div>
-                        <!--/ Transactions -->
-                    </div>
-                    </div>
-
+</div>
 @endsection
