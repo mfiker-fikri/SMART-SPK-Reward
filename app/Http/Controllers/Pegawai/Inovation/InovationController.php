@@ -148,15 +148,15 @@ class InovationController extends Controller
                     // ->orWhere(['status_process' => 2])
                     ->latest()
                     ->first();
-
+                // ddd($rewardInovationCreate);
 
                 // Button Create Reject
                 $rewardInovationCreateReject = RewardInovation::
                     where([
                         ['created_at', '>=', $dateOpenTime],
                         ['created_at', '<=', $dateExpiredTime],
-                        // ['updated_at', '>=', $dateOpenTime],
-                        // ['updated_at', '<=', $dateExpiredTime],
+                        ['updated_at', '>=', $dateOpenTime],
+                        ['updated_at', '<=', $dateExpiredTime],
                         ['employee_id', '==', Auth::guard('employees')->user()->id],
                         ['status_process', '==', 0],
                         // ['status_process', '!=', 1],
@@ -165,6 +165,7 @@ class InovationController extends Controller
                     ->latest()
                     ->first();
                     // ->get();
+                // ddd($rewardInovationCreateReject);
 
                 // Button Create Null
                 $rewardInovationCreateNull = RewardInovation::
@@ -182,6 +183,8 @@ class InovationController extends Controller
                     // ->whereNull('status_process')
                     ->latest()
                     ->first();
+
+                    // ddd($rewardInovationCreateNull);
 
                     return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreateReject', 'rewardInovationCreate', 'rewardInovationCreateNull'));
 
@@ -726,11 +729,11 @@ class InovationController extends Controller
                     ]);
 
                     if ($rewardInovation) {
-                        alert()->success('Berhasil Upload Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Tambah Persyaratan Penghargaan Inovasi');
+                        alert()->success('Berhasil Upload Form Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Upload Form Penghargaan Inovasi');
                     } else {
-                        alert()->error('Gagal Upload Persyaratan Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Tambah Persyaratan Penghargaan Inovasi');
+                        alert()->error('Gagal Upload Form Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Penghargaan Inovasi');
                     }
                 }
 
@@ -789,11 +792,11 @@ class InovationController extends Controller
                 // ddd($rewardInovation);
 
                 if ($rewardInovation) {
-                    alert()->success('Berhasil Upload Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Tambah Persyaratan Penghargaan Inovasi');
+                    alert()->success('Berhasil Upload Form Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Upload Form Penghargaan Inovasi');
                 } else {
-                    alert()->error('Gagal Upload Persyaratan Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-failed-form-inovation', 'Gagal Tambah Persyaratan Penghargaan Inovasi');
+                    alert()->error('Gagal Upload Form Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Penghargaan Inovasi');
                 }
             }
         }

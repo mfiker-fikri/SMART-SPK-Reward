@@ -513,16 +513,7 @@ class ManageAppraismentInovationController extends Controller
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -646,5 +637,302 @@ class ManageAppraismentInovationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getResultAppraisment(Request $request)
+    {
+        try{
+            // Get Timer Countdown
+            $timer                      =   CountdownTimerFormInovation::first();
+
+            if ($timer != null) {
+                $timer                  =   CountdownTimerFormInovation::first();
+                return view('layouts.teamAssessment.content.resultInovasi.resultInovasi_index', compact('timer'));
+            } else {
+                $timer                  =   CountdownTimerFormInovation::first();
+                return view('layouts.teamAssessment.content.resultInovasi.resultInovasi_index', compact('timer'));
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    // try{
+
+    // } catch (\Throwable $th) {
+    //     throw $th;
+    // }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getResultAppraismentList(Request $request)
+    {
+        try {
+
+            // Timer
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisment);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisment);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            // Final Reward Inovation
+            $finalResult            =   FinalResultRewardInovation::where([
+                                            ['created_at', '>=', $dateOpenTime],
+                                            ['created_at', '<=', $dateExpiredTime],
+                                            ['updated_at', '>=', $dateOpenTime],
+                                            ['updated_at', '<=', $dateExpiredTime],
+                                        ])->latest()->delete();
+
+            // Timer
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            // DSS SMART
+            $id             = RewardInovation::
+                                select('id')
+                                ->where([
+                                    ['created_at', '>=', $dateOpenTime],
+                                    ['created_at', '<=', $dateExpiredTime],
+                                    ['updated_at', '>=', $dateOpenTime],
+                                    ['updated_at', '<=', $dateExpiredTime],
+                                    ['status_process', '=', 4],
+                                ])->get()->toArray();
+            // ddd($id);
+
+            $arrayId = [];
+            foreach ($id as $key => $value) {
+                // ddd($value);
+                foreach ($value as $keyes => $valueses) {
+                    // ddd($valueses);
+                    array_push($arrayId, $valueses);
+                }
+            }
+            // ddd($arrayId);
+
+            // Normalisasi
+            //
+            $criterias = Criteria::with('categories')->where([
+                    ['categorie_id', '=', 1],
+                ])->orderBy('id', 'asc')->get();
+
+            // Jumlahkan Semua Kolom 'Value Quality'
+            $sumCriteria            =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+
+            // Pembagian Normalisasi
+            $normalisasi = [];
+            foreach ($criterias as $value) {
+                array_push($normalisasi, round( ($value->value_quality/$sumCriteria), 3));
+            }
+
+            // ddd($normalisasi);
+
+            // Mencari Nilai Min
+            $arrMin =  [];
+
+            for ($x = 1; $x <= 6; $x++) {
+                $min = RewardInovation::
+                    select("score_valuation_$x")
+                    ->where([
+                        ['created_at', '>=', $dateOpenTime],
+                        ['created_at', '<=', $dateExpiredTime],
+                        ['updated_at', '>=', $dateOpenTime],
+                        ['updated_at', '<=', $dateExpiredTime],
+                        ['status_process', '=', 4],
+                    ])
+                    ->min("score_valuation_$x");
+                array_push($arrMin, $min);
+            }
+
+            // ddd($arrMin);
+            // return $arrMin;
+
+            // Mencari Nilai Max
+            $arrMax =  [];
+            for ($x = 1; $x <= 6; $x++) {
+                $max    =   RewardInovation::
+                        select("score_valuation_$x")
+                        ->where([
+                            ['created_at', '>=', $dateOpenTime],
+                            ['created_at', '<=', $dateExpiredTime],
+                            ['updated_at', '>=', $dateOpenTime],
+                            ['updated_at', '<=', $dateExpiredTime],
+                            ['status_process', '=', 4],
+                        ])
+                        ->max("score_valuation_$x");
+                array_push($arrMax, $max);
+            }
+            // return $arrMax;
+
+            $arrResultMinMax = [];
+            foreach($arrMax as $aM => $value) {
+                // echo $value;
+                $arrResultMinMax[$aM] = $value - $arrMin[$aM];
+
+            }
+            // $arrResultMinMax = $arrMax + $arrMin;
+            // return $arrResultMinMax;
+            // ddd($arrResultMinMax);
+
+            $arrResult =  [];
+            $arrResultNilaiUtility = [];
+            $nilai    =   RewardInovation::
+                            select('score_valuation_1','score_valuation_2','score_valuation_3','score_valuation_4','score_valuation_5','score_valuation_6')
+                            ->where([
+                                ['created_at', '>=', $dateOpenTime],
+                                ['created_at', '<=', $dateExpiredTime],
+                                ['updated_at', '>=', $dateOpenTime],
+                                ['updated_at', '<=', $dateExpiredTime],
+                                ['status_process', '=', 4],
+                            ])
+                            ->get()->toArray();
+            // ddd($nilai);
+            // return $nilai;
+
+            foreach ($nilai as $key => $value) {
+
+                $arrScrVal = [];
+                for ($x = 1; $x <= 6; $x++) {
+                    array_push($arrScrVal, $value["score_valuation_$x"]);
+                }
+                // ddd($arrScrVal);
+
+                $arrUtilityResult = [];
+                foreach ($arrScrVal as $key => $value) {
+                    // ddd($value);
+                    $arrUtilityResult[$key] = $value - $arrMin[$key];
+                    // $arrResultMinMax[$aM] = $value - $arrMin[$aM];
+                }
+
+                // ddd($arrUtilityResult);
+
+                $arrNilaiUtility = [];
+                foreach ($arrUtilityResult as $key => $value) {
+
+                    $arrNilaiUtility[$key] = $arrResultMinMax[$key] == 0 ? 0 : $value / $arrResultMinMax[$key];
+                }
+
+                array_push($arrResultNilaiUtility, $arrNilaiUtility);
+
+            }
+            // ddd($arrNilaiUtility);
+
+
+            $ResultFinalDSS = [];
+            $ket = [];
+
+            foreach ($arrResultNilaiUtility as $key => $value) {
+                // ddd($value);
+                $Result = [];
+                foreach ($value as $key => $valueEach) {
+                    // ddd($valueEach);
+                    $result[$key] =  $valueEach * $normalisasi[$key];
+                }
+                // ddd($result);
+
+                $resultDSSFinal = 0;
+                foreach ($result as $key => $valueEach) {
+                    $resultDSSFinal += round($valueEach, 3);
+
+                }
+
+                array_push($ResultFinalDSS, $resultDSSFinal);
+                // ddd($resultDSSFinal);
+
+                if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.75) {
+                    // echo 'Tidak Dapat Penghargaan';
+                    array_push($ket, 'Tidak Dapat Penghargaan');
+                } elseif ($resultDSSFinal > 0.75 && $resultDSSFinal <= 1) {
+                    // echo 'Dapat Penghargaan';
+                    array_push($ket, 'Dapat Penghargaan');
+                }
+
+            }
+
+            $count             = RewardInovation::
+                                    where([
+                                        ['created_at', '>=', $dateOpenTime],
+                                        ['created_at', '<=', $dateExpiredTime],
+                                        ['updated_at', '>=', $dateOpenTime],
+                                        ['updated_at', '<=', $dateExpiredTime],
+                                        ['status_process', '=', 4],
+                                    ])->latest()->get()->count();
+
+            for ($x = 0; $x < $count; $x++) {
+
+                FinalResultRewardInovation::create([
+                    'id'                                =>  Str::uuid(),
+                    'reward_inovation_id'               =>  $arrayId[$x],
+                    'score_final_result'                =>  $ResultFinalDSS[$x],
+                    'score_final_result_description'    =>  $ket[$x],
+                ]);
+
+            }
+
+            // Timer
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisment);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisment);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+
+            $finalResult            =   FinalResultRewardInovation::
+                                        where([
+                                            ['created_at', '>=', $dateOpenTime],
+                                            ['created_at', '<=', $dateExpiredTime],
+                                            ['updated_at', '>=', $dateOpenTime],
+                                            ['updated_at', '<=', $dateExpiredTime],
+                                        ])->latest()->get();
+
+
+            return DataTables::of($finalResult)
+                    ->addIndexColumn()
+                    ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
+                        $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                        return $full_name;
+                    })
+                    ->rawColumns(['fullName'])
+                    ->make(true);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

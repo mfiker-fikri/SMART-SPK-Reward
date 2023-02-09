@@ -794,7 +794,7 @@
                                                     </span>
                                                     <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('date_birth') ? 'is-invalid' : '' }} datePickerDateBirth" id="date_birth"
                                                         name="date_birth" placeholder="*Tanggal Lahir" aria-label="Tanggal Lahir"
-                                                        autofocus autocomplete required value="{{ old('date_birth', Auth::guard('employees')->user()->date_birth) }}" />
+                                                        autofocus autocomplete required value="{{ old('date_birth', \Carbon\Carbon::parse(Auth::guard('employees')->user()->date_birth)->format('d/m/Y') ) }}" />
                                                 </div>
                                             </div>
 

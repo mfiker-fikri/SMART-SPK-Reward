@@ -114,6 +114,7 @@ class PegawaiController extends Controller
             $id = Auth::guard('employees')->user()->id;
             $pegawai = Pegawai::find($id);
 
+            // ddd($request['date_birth']);
             // dd($pegawai;
             if ($pegawai) {
                 $validate = null;
@@ -130,7 +131,7 @@ class PegawaiController extends Controller
                             'email'                         =>      'required|string|email',
                             //
                             'place_birth'                   =>      'required',
-                            'date_birth'                    =>      'required|date',
+                            'date_birth'                    =>      'required|date_format:d/m/Y',
                             // date_format:d/m/y
                             //
                             'nip'                           =>      'required|regex:/^(?![._-])(?!.*[._-]$)(?!.*\d_-)(?!.*_-d)[0-9]+$/',
@@ -191,7 +192,7 @@ class PegawaiController extends Controller
                             'email'                         =>      'required|string|email|unique:employees,email',
                             //
                             'place_birth'                   =>      'required',
-                            'date_birth'                    =>      'required|date',
+                            'date_birth'                    =>      'required|date_format:d/m/Y',
                             //
                             'nip'                           =>      'required|regex:/^(?![._-])(?!.*[._-]$)(?!.*\d_-)(?!.*_-d)[0-9]+$/',
                             'pendidikan_terakhir'           =>      'required',
@@ -255,7 +256,7 @@ class PegawaiController extends Controller
                 $pegawai->email                     = $request['email'];
                 //
                 $pegawai->place_birth               = $request['place_birth'];
-                $pegawai->date_birth                = date('Y-m-d', strtotime($request['date_birth']));
+                $pegawai->date_birth                = Carbon::createFromFormat('d/m/Y', $request['date_birth'])->format('Y-m-d');
                 //
                 $pegawai->nip                       = $request['nip'];
                 $pegawai->pendidikan_terakhir       = $request['pendidikan_terakhir'];

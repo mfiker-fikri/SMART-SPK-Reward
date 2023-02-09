@@ -19,21 +19,19 @@
             buttons: [
                 "pageLength",
             ],
-            ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/list') }}",
+            ajax: "{{ url('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/list') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'full_name', name: 'full_name', orderable: false, searchable: false},
+                {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
+                {data: 'year', name: 'year', orderable: false, searchable: false},
+                {data: 'score_final_result', name: 'score_final_result', orderable: false, searchable: false},
+                {data: 'score_final_result_description', name: 'score_final_result_description', orderable: false, searchable: false},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
 
         new $.fn.dataTable.FixedHeader( table );
 
-        if (table) {
-            setInterval( function () {
-                table.ajax.reload(null, false);
-            }, 10000 );
-        }
     });
     </script>
     <!--/ Datatables Team Assessment -->
@@ -65,6 +63,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Panjang</th>
+                                <th scope="col">Tahun</th>
+                                <th scope="col">Nilai</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

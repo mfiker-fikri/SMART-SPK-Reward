@@ -1,30 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\TeamAssessment;
 
 use App\Http\Controllers\Controller;
+use App\Models\TeamAssessment;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-
-use Illuminate\Support\Facades\Hash;
-// use Nette\Utils\Image;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
-use App\Models\Admin;
-
-class AdminController extends Controller
+class TAController extends Controller
 {
-    // Admin Auth
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->middleware('admin.auth');
+        $this->middleware('team_assessment.auth');
     }
 
     /**
@@ -34,7 +30,7 @@ class AdminController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('admins');
+        return Auth::guard('team_assessments');
     }
 
     /**
@@ -45,77 +41,40 @@ class AdminController extends Controller
     public function getProfile()
     {
         try {
-            // Get Admin
-            $admin = Admin::first();
-            return view('layouts.admin.content.profile.profile', compact('admin'));
-        } catch (\Exception $exception) {
-            return $exception;
+            return view('layouts.teamAssessment.content.profile.profile');
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show($id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit($id)
-    // {
-    //     //
-    // }
-
     /**
-     * Update the specified resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function postProfile(Request $request)
     {
         //
         try {
             // Get Id Admin
-            $id = Auth::guard('admins')->user()->id;
-            $admin = Admin::find($id);
+            $id = Auth::guard('team_assessments')->user()->id;
+            $admin = TeamAssessment::find($id);
 
             // dd($admin);
             if ($admin) {
                 $validate = null;
-                if ($request['email'] === Auth::guard('admins')->user()->email || $request['username'] === Auth::guard('admins')->user()->username) {
+                if ($request['email'] === Auth::guard('team_assessments')->user()->email || $request['username'] === Auth::guard('team_assessments')->user()->username) {
                     // Validasi Update
                     $validate = Validator::make(
                         $request->all(),
@@ -148,8 +107,8 @@ class AdminController extends Controller
                         $request->all(),
                         [
                             'full_name'                     =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
-                            'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:admins,username',
-                            'email'                         =>      'required|string|email|unique:admins,email',
+                            'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:team_assessments,username',
+                            'email'                         =>      'required|string|email|unique:team_assessments,email',
                         ],
                         [
                             'full_name.required'            =>      'Nama Lengkap Wajib Diisi!',
@@ -197,9 +156,9 @@ class AdminController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function postImageUpload(Request $request)
@@ -231,11 +190,11 @@ class AdminController extends Controller
 
                     // Storage::delete($request->oldImage);
                     // Get Admin Username
-                    $admin = Auth::guard('admins')->user()->username;
+                    $admin = Auth::guard('team_assessments')->user()->username;
 
                     // Link Photo
-                    // $link   =   'storage/admin/photos/photoProfile/' . $admin . '/' . $request->oldImage;
-                    $link   =   storage_path('app/public/admin/photos/photoProfile/') . $admin . '/' . $request->oldImage;
+                    // $link   =   'storage/teamAssesments/photos/photoProfile/' . $admin . '/' . $request->oldImage;
+                    $link   =   storage_path('app/public/teamAssesments/photos/photoProfile/') . $admin . '/' . $request->oldImage;
                     // if(File::exists($link)) {
                     //     File::delete($link);
                     // }
@@ -251,32 +210,32 @@ class AdminController extends Controller
                     $photoExtension =   $photoProfile->getClientOriginalExtension();
 
                     // Get Id Auth Admin
-                    $id = Auth::guard('admins')->user()->id;
+                    $id = Auth::guard('team_assessments')->user()->id;
                     // Get Admin Username
-                    $admin = Auth::guard('admins')->user()->username;
+                    $admin = Auth::guard('team_assessments')->user()->username;
                     // Photo Name
                     $photoName = $id . '_' . $admin . '_' . date('d-m-Y') . $photoExtension;
                     // dd($photoName);Carbon::now()->toDateString('DD/MM/YY')->isoFormat('DD/MM/YY')
                     // getClientOriginalName();
-                    // $request->photo_profile->store('public/admin/images/', $request->file->getClientOriginalName());
+                    // $request->photo_profile->store('public/teamAssesments/images/', $request->file->getClientOriginalName());
 
                     // Save Photo Name in Storage With Resize 100x100
-                    // $folder = $request->file('photo_profile')->store('images/admin/images/photoProfile/' . $admin, $photoName);
+                    // $folder = $request->file('photo_profile')->store('images/teamAssesments/images/photoProfile/' . $admin, $photoName);
 
                     $img = Image::make($photoProfile);
                     $img->resize(100, 100, function ($constraint) {
                         $constraint->aspectRatio();
                     })->stream();
 
-                    // $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
-                    $photoProfile->move(public_path('storage/admin/photos/photoProfile/' . $admin), $photoName);
+                    // $photoProfile->storeAs('public/teamAssesments/photos/photoProfile/' . $admin, $photoName);
+                    $photoProfile->move(public_path('storage/teamAssesments/photos/photoProfile/' . $admin), $photoName);
 
-                    // $request->photo_profile->store('public/admin/images/', $photoName);
+                    // $request->photo_profile->store('public/teamAssesments/images/', $photoName);
                     // Storage::putFileAs('admin/images/' . $photoName, 'public');
 
                     // Find Auth Admin Active storage_path($folder)
-                    $id = Auth::guard('admins')->user()->id;
-                    $admin = Admin::find($id);
+                    $id = Auth::guard('team_assessments')->user()->id;
+                    $admin = TeamAssessment::find($id);
                     // Save Photo TO Database
                     $admin->photo_profile = $photoName;
                     $admin->save();
@@ -293,32 +252,32 @@ class AdminController extends Controller
                 $photoExtension =   $photoProfile->getClientOriginalExtension();
 
                 // Get Id Auth Admin
-                $id = Auth::guard('admins')->user()->id;
+                $id = Auth::guard('team_assessments')->user()->id;
                 // Get Admin Username
-                $admin = Auth::guard('admins')->user()->username;
+                $admin = Auth::guard('team_assessments')->user()->username;
                 // Photo Name
                 $photoName = $id . '_' . $admin . '_' . date('d-m-Y') . '.' . $photoExtension;
                 // dd($photoName);Carbon::now()->toDateString('DD/MM/YY')->isoFormat('DD/MM/YY')
                 // getClientOriginalName();
-                // $request->photo_profile->store('public/admin/images/', $request->file->getClientOriginalName());
+                // $request->photo_profile->store('public/teamAssesments/images/', $request->file->getClientOriginalName());
 
                 // Save Photo Name in Storage With Resize 100x100
-                // $folder = $request->file('photo_profile')->store('images/admin/images/photoProfile/' . $admin, $photoName);
+                // $folder = $request->file('photo_profile')->store('images/teamAssesments/images/photoProfile/' . $admin, $photoName);
 
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
                     $constraint->aspectRatio();
                 })->stream();
 
-                $photoProfile->move(public_path('storage/admin/photos/photoProfile/' . $admin), $photoName);
-                // $photoProfile->storeAs('public/admin/photos/photoProfile/' . $admin, $photoName);
+                $photoProfile->move(public_path('storage/teamAssesments/photos/photoProfile/' . $admin), $photoName);
+                // $photoProfile->storeAs('public/teamAssesments/photos/photoProfile/' . $admin, $photoName);
 
-                // $request->photo_profile->store('public/admin/images/', $photoName);
+                // $request->photo_profile->store('public/teamAssesments/images/', $photoName);
                 // Storage::putFileAs('admin/images/' . $photoName, 'public');
 
                 // Find Auth Admin Active storage_path($folder)
-                $id = Auth::guard('admins')->user()->id;
-                $admin = Admin::find($id);
+                $id = Auth::guard('team_assessments')->user()->id;
+                $admin = TeamAssessment::find($id);
                 // Save Photo TO Database
                 $admin->photo_profile = $photoName;
                 $admin->save();
@@ -329,102 +288,35 @@ class AdminController extends Controller
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
             return redirect()->back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
-            //
 
-            // $photoProfile = $request['photo_profile'];
-
-            // dd('berhasil');
-
-            // ('admin/images/'. $photoName);
-
-            // $img = Image::make($photoProfile)->resize(100, 100, function ($constraint) {
-            //     $constraint->aspectRation();
-            // });
-
-            // $img->stream();
-            // Storage::putFileAs('admin/images/' . $photoName, $img, 'public');
-            // dd('berhasil');
-            // ->save($location);
-            // $admin->photo_profile = $img;
-            // $admin->save();
-
-
-            // }
-            // else {
-            //     alert()->error('Gagal Update Photo Profile!', 'Validasi Gagal')->autoclose(50000);
-            // }
-
-
-
-
-            // extension();
-            // $request->image->move(public_path('admin/images/photo-profile/'), $imageName);
-
-            /* Store $imageName name in DATABASE from HERE */
-
-
-            // $photoName);
-            // } else {
-            //     alert()->error('Gagal Update Profile!')->autoclose(5000);
-            // }
         } catch (\Exception $exception) {
             return $exception;
         }
     }
 
     /**
-     * Display a listing of the resource.
+     * Show the form for editing the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function postImageDelete(Request $request)
     {
         try {
             // $photo = new Pegawai;
-            $id = Auth::guard('admins')->user()->id;
-            $photo = Admin::find($id);
+            $id = Auth::guard('team_assessments')->user()->id;
+            $photo = TeamAssessment::find($id);
 
             if ($photo) {
-                $admin = Auth::guard('admins')->user()->username;
-                $file = storage_path('app/public/admin/photos/photoProfile/') . $admin . '/' . $photo->photo_profile;
+                $admin = Auth::guard('team_assessments')->user()->username;
+                $file = storage_path('app/public/teamAssesments/photos/photoProfile/') . $admin . '/' . $photo->photo_profile;
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
                 // $photo = Pegawai::find($id)->photo_profile;
-                DB::table('admins')->where('id', $id)->update(['photo_profile' => '']);
+                DB::table('team_assessments')->where('id', $id)->update(['photo_profile' => '']);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
                 return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
-                // $image = Image::find($request->photo_profile);
-                // unlink("'images/admin/images/photoProfile/" . $image->photo_profile);
-                // Image::where("photo_profile", $image->photo_profile)->delete();
-                // Get Id Admin
-                // $id = Auth::guard('admins')->user()->id;
-                // $photo = Admin::find($id);
-                // ddd($admin);
-                // $admin = Auth::guard('admins')->user()->username;
-
-                // $file = public_path('images/admin/images/photoProfile/') . $admin . '/' . $photo->photo_profile;
-                // ddd($file);
-                // if (file_exists($file)) {
-                // Storage::files($file);
-                // @unlink($file);
-                // Storage::deleteDirectory('public/' . $file);
-                // Storage::disk('local')->delete($file);
-                // ->delete('public/images/admin/images/photoProfile/' . $admin . '/' . $photo->photo_profile);
-                // }
-                // return back();
-                // if ($admin) {
-                //     if ($request['oldImage'] == $photo) {
-                //         $admin = Auth::guard('admins')->user()->username;
-                //         $Storage = Storage::disk('public')->delete('images/admin/images/photoProfile/' . $admin, $request['oldImage']);
-                //         ddd($Storage, 'berhasil');
-                //         // $delete = $admin->photo_profile;
-                //         // return delete($delete);
-
-                //         alert()->success('Update Foto Berhasil')->autoclose(50000);
-                //         return back()->with('success', 'You have successfully upload image.');
-                // }
-                // }
             }
 
             alert()->error('Gagal Hapus Foto Profile!', 'Validasi Gagal')->autoclose(25000);
@@ -436,8 +328,9 @@ class AdminController extends Controller
     }
 
     /**
-     * Change Password.
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -481,21 +374,18 @@ class AdminController extends Controller
             return redirect()->back()->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
         }
 
-        $currentPassword        =       Auth::guard('admins')->user()->password;
+        $currentPassword        =       Auth::guard('team_assessments')->user()->password;
         $oldPassword            =       request('oldPassword');
 
         if (Hash::check($oldPassword, $currentPassword)) {
-            Auth::guard('admins')->user()->update([
+            Auth::guard('team_assessments')->user()->update([
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
             return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
         }
 
-        // Auth::guard('useres')->user()->update(['password' => bcrypt(request('password'))]);
-        // return back()->with('message', 'Berhasil Update Password')->with('message-success-password', 'Berhasil Update Password')->with('success', 'Berhasil Update Password');
     }
-
 
     /**
      * Remove the specified resource from storage.

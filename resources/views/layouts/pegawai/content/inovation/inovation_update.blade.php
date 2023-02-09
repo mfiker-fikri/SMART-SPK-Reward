@@ -517,10 +517,24 @@
                                     <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
                                 </div>
 
-                                <input type="hidden" name="status_process" value="{{ $rewardInovation->status_process }}" />
                             </div>
                         </div>
                         <!--/ Upload Video -->
+
+
+                        @if ($rewardInovation->status_process == 1 && $rewardInovation->description_back != null)
+                        <div class="row my-3 {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
+                            <label for="uploadVideo" class="col-xl-3 col-form-label">Keterangan Dikembalikan</label>
+                            <div class="col-md-9 col-xl-9">
+                                <div class="input-group">
+                                    <textarea class="form-control" aria-label="With textarea"
+                                    autocomplete="on" autofocus disabled name="description_back" spellcheck="true" rows="10" cols="50">{{ $rewardInovation->description_back }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
+                        <input type="hidden" name="status_process" value="{{ $rewardInovation->status_process }}" />
 
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">

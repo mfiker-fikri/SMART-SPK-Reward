@@ -43,8 +43,13 @@ class FinalResultRewardInovation extends Model
         'reward_inovation_id',
         //
         'score_final_result',
-        // 'score_final_result_ranking',
         'score_final_result_description',
+        //
+        'signature_head_of_the_human_resources_bureau',
+        'verify_head_of_the_human_resources_bureau',
+        //
+        'signature_head_of_disciplinary_awards_and_administration',
+        'verify_head_of_disciplinary_awards_and_administration',
         //
         'status_id'
     ];

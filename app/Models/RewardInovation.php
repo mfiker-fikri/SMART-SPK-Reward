@@ -45,6 +45,7 @@ class RewardInovation extends Model
         'employee_id',
         //
         'status_process',
+        'description_back',
         //
         'score_valuation_1',
         'score_valuation_2',

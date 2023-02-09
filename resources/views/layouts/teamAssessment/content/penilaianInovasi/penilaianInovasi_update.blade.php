@@ -34,7 +34,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
-                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
+                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
 
                     <div class="card">
 

@@ -956,11 +956,11 @@
                     </li>
                     <!--/ Tabs Form Inovation Appraisment -->
 
-                    <!-- Tabs Form Inovation Result Appraisment -->
+                    {{-- <!-- Tabs Form Inovation Result Appraisment -->
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-ResultAppraismentTeamAssessment-tab" data-bs-toggle="pill" data-bs-target="#pills-ResultAppraismentTeamAssessment" type="button" role="tab" aria-controls="pills-ResultAppraismentTeamAssessment" aria-selected="false">Hasil Penilaian Inovasi</button>
                     </li>
-                    <!--/ Tabs Form Inovation Result Appraisment -->
+                    <!--/ Tabs Form Inovation Result Appraisment --> --}}
 
                 </ul>
                 <!--/ Tabs -->
@@ -1303,7 +1303,7 @@
                 </div>
                 <!--/ Tabs Form Inovation Appraisment -->
 
-                <!-- Tabs Form Inovation Appraisment -->
+                {{-- <!-- Tabs Form Inovation Appraisment -->
                 <div class="tab-pane fade" id="pills-ResultAppraismentTeamAssessment" role="tabpanel" aria-labelledby="pills-ResultAppraismentTeamAssessment-tab">
 
                     <div class="card">
@@ -1469,7 +1469,7 @@
 
                     </div>
 
-                </div>
+                </div> --}}
 
 
             </div>

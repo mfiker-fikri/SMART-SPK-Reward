@@ -44,68 +44,73 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        //
-        $pegawai = Pegawai::first();
+        try{
+            //
+            $pegawai = Pegawai::first();
 
-        //
-        $timerInovasi                  =   CountdownTimerFormInovation::first();
-        //
-        $timerTeladan                  =   CountdownTimerFormTeladan::first();
+            //
+            $timerInovasi                  =   CountdownTimerFormInovation::first();
+            //
+            $timerTeladan                  =   CountdownTimerFormTeladan::first();
 
-        if ($timerInovasi == null && $timerTeladan == null) {
-            return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
+            if ($timerInovasi == null && $timerTeladan == null) {
+                return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
+            }
+            elseif ($timerInovasi != null && $timerTeladan == null) {
+                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
+
+                $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
+                $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
+
+                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
+
+                $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
+                $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
+
+                return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
+            }
+            elseif ($timerInovasi == null && $timerTeladan != null) {
+                $dateTimeOpenTeladan           =   new Carbon($timerTeladan->date_time_open_form_teladan);
+
+                $dateOpenTeladan               =   $dateTimeOpenTeladan->toDateString();
+                $dateOpenTimeTeladan           =   $dateTimeOpenTeladan->toDateTimeString();
+
+                $dateTimeExpiredTeladan        =   new Carbon($timerTeladan->date_time_expired_form_teladan);
+
+                $dateExpiredTeladan            =   $dateTimeExpiredTeladan->toDateString();
+                $dateExpiredTimeTeladan        =   $dateTimeExpiredTeladan->toDateTimeString();
+
+                return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
+            }
+            elseif ($timerInovasi != null && $timerTeladan != null) {
+                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
+
+                $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
+                $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
+
+                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
+
+                $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
+                $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
+
+                $data = RewardInovation::
+                    where([
+                        ['created_at', '>=', $dateOpenTimeInovasi],
+                        ['created_at', '<=', $dateExpiredTimeInovasi],
+                        ['updated_at', '>=', $dateOpenTimeInovasi],
+                        ['updated_at', '<=', $dateExpiredTimeInovasi],
+                        ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                    ])
+                    ->latest()
+                    ->get();
+
+                // ddd($data);
+                return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
+            }
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        elseif ($timerInovasi != null && $timerTeladan == null) {
-            $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
 
-            $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
-            $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
-
-            $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
-
-            $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
-            $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
-
-            return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
-        }
-        elseif ($timerInovasi == null && $timerTeladan != null) {
-            $dateTimeOpenTeladan           =   new Carbon($timerTeladan->date_time_open_form_teladan);
-
-            $dateOpenTeladan               =   $dateTimeOpenTeladan->toDateString();
-            $dateOpenTimeTeladan           =   $dateTimeOpenTeladan->toDateTimeString();
-
-            $dateTimeExpiredTeladan        =   new Carbon($timerTeladan->date_time_expired_form_teladan);
-
-            $dateExpiredTeladan            =   $dateTimeExpiredTeladan->toDateString();
-            $dateExpiredTimeTeladan        =   $dateTimeExpiredTeladan->toDateTimeString();
-
-            return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
-        }
-        elseif ($timerInovasi != null && $timerTeladan != null) {
-            $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
-
-            $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
-            $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
-
-            $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
-
-            $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
-            $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
-
-            $data = RewardInovation::
-                where([
-                    ['created_at', '>=', $dateOpenTimeInovasi],
-                    ['created_at', '<=', $dateExpiredTimeInovasi],
-                    ['updated_at', '>=', $dateOpenTimeInovasi],
-                    ['updated_at', '<=', $dateExpiredTimeInovasi],
-                    ['employee_id', '=' ,Auth::guard('employees')->user()->id],
-                ])
-                ->latest()
-                ->get();
-
-            // ddd($data);
-            return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
-        }
 
     }
 
@@ -116,54 +121,60 @@ class DashboardController extends Controller
      */
     public function getInovationFormData()
     {
-        //
-        // Get id Employee
-        $id                     =   Auth::guard('employees')->user()->id;
+        try{
+            //
+            // Get id Employee
+            $id                     =   Auth::guard('employees')->user()->id;
 
-        //
-        $timer                  =   CountdownTimerFormInovation::first();
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
 
-        $dateOpen               =   $dateTimeOpen->toDateString();
-        $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
 
-        $dateExpired            =   $dateTimeExpired->toDateString();
-        $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
-        $data = RewardInovation::
-            where([
-                ['created_at', '>=', $dateOpenTime],
-                ['created_at', '<=', $dateExpiredTime],
-                ['updated_at', '>=', $dateOpenTime],
-                ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '=' ,Auth::guard('employees')->user()->id],
-            ])
-            ->latest()
-            ->get();
+            $data = RewardInovation::
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                ])
+                ->latest()
+                ->get();
 
-        return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('status', function ($row) {
-                $status = '';
-                // 0=ditolak
-                if($row->status_process == 0) {
-                    $status = '<span>Ditolak</span>';
-                }
-                // 0=dikembalikan
-                if($row->status_process == 1) {
-                    $status = '<span>Dikembalikan</span>';
-                }
-                // 2=menunggu
-                if($row->status_process == 2) {
-                    $status = '<span>Sedang Tahap Menunggu</span>';
-                }
-                return $status;
-            })
-            ->rawColumns(['status'])
-            ->make(true);
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    // 0=ditolak
+                    if($row->status_process == 0) {
+                        $status = '<span>Ditolak</span>';
+                    }
+                    // 0=dikembalikan
+                    if($row->status_process == 1) {
+                        $status = '<span>Dikembalikan</span>';
+                    }
+                    // 2=menunggu
+                    if($row->status_process == 2) {
+                        $status = '<span>Sedang Tahap Menunggu</span>';
+                    }
+                    return $status;
+                })
+                ->rawColumns(['status'])
+                ->make(true);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 
     /**
@@ -174,54 +185,59 @@ class DashboardController extends Controller
      */
     public function getTeladanFormData()
     {
-        // Get id Employee
-        $id                     =   Auth::guard('employees')->user()->id;
+        try {
+            // Get id Employee
+            $id                     =   Auth::guard('employees')->user()->id;
 
-        //
-        $timer                  =   CountdownTimerFormTeladan::first();
+            //
+            $timer                  =   CountdownTimerFormTeladan::first();
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_teladan);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_teladan);
 
-        $dateOpen               =   $dateTimeOpen->toDateString();
-        $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_teladan);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_teladan);
 
-        $dateExpired            =   $dateTimeExpired->toDateString();
-        $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
-
-
-        $data = RewardTeladan::
-            where([
-                ['created_at', '>=', $dateOpenTime],
-                ['created_at', '<=', $dateExpiredTime],
-                ['updated_at', '>=', $dateOpenTime],
-                ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '=', Auth::guard('employees')->user()->id],
-            ])
-            ->latest()
-            ->get();
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
 
-        return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('status', function ($row) {
-                $status = '';
-                // 0=ditolak
-                if($row->status_process == 0) {
-                    $status = '<span>Ditolak</span>';
-                }
-                // 0=dikembalikan
-                if($row->status_process == 1) {
-                    $status = '<span>Dikembalikan</span>';
-                }
-                // 2=menunggu
-                if($row->status_process == 2) {
-                    $status = '<span>Sedang Tahap Menunggu</span>';
-                }
-                return $status;
-            })
-            ->rawColumns(['status'])
-            ->make(true);
+            $data = RewardTeladan::
+                where([
+                    ['created_at', '>=', $dateOpenTime],
+                    ['created_at', '<=', $dateExpiredTime],
+                    ['updated_at', '>=', $dateOpenTime],
+                    ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=', Auth::guard('employees')->user()->id],
+                ])
+                ->latest()
+                ->get();
+
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    // 0=ditolak
+                    if($row->status_process == 0) {
+                        $status = '<span>Ditolak</span>';
+                    }
+                    // 0=dikembalikan
+                    if($row->status_process == 1) {
+                        $status = '<span>Dikembalikan</span>';
+                    }
+                    // 2=menunggu
+                    if($row->status_process == 2) {
+                        $status = '<span>Sedang Tahap Menunggu</span>';
+                    }
+                    return $status;
+                })
+                ->rawColumns(['status'])
+                ->make(true);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

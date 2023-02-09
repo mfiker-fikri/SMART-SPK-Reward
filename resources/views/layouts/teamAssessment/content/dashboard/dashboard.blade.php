@@ -223,7 +223,34 @@
                 text-align: center;
             }
 
+            .countdown-TA-inovation-closed {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -375,7 +402,21 @@
                 text-align: center;
             }
 
-            .countdown-TA-inovation span {
+            .countdown-TA-inovation-closed {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -527,7 +568,34 @@
                 text-align: center;
             }
 
+            .countdown-TA-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -678,7 +746,34 @@
                 text-align: center;
             }
 
+            .countdown-TA-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -970,6 +1065,151 @@
 
     <script>
         $(document).ready(function () {
+            $(".countdown-TA-inovation-closed").each( function(){
+                var _this = $(this),
+                _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if(event.offset.totalDays == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalHours == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalMinutes == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Penilaian Inovasi Sudah Ditutup',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
             $(".countdown-representative").each( function(){
                 var _this = $(this);
                 var _expire = _this.data('expire');
@@ -1160,7 +1400,21 @@
             speed: 100,
             spaceBetween: 10,
         });
-      </script>
+    </script>
+
+    <script>
+        var swiper = new Swiper(".swiper1_1", {
+            cssMode: true,
+            // direction: 'vertical',
+            // loop: true,
+            // autoplay: {
+            //     delay: 5000,
+            //     disableOnInteraction: false,
+            // },
+            speed: 100,
+            spaceBetween: 10,
+        });
+    </script>
 @stop
 <!--/ Footer Js -->
 
@@ -1303,7 +1557,7 @@
                                     )
                                 )
 
-                                <div class="container-fluid">
+                                {{-- <div class="container-fluid">
                                     <!-- Table Penilaian Inovation -->
                                     <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
                                         <thead>
@@ -1316,7 +1570,19 @@
                                         </tbody>
                                     </table>
                                     <!--/ Table Penilaian Inovation -->
+                                </div> --}}
+                                <div class="container-fluid swiper1_1">
+                                    <div class="openTimerCountDown swiper-wrapper" style="min-width: 50vh;max-width: 150vh;">
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Closing Soon</h3>
+                                            </div>
+                                            <div class="wrap-countdown countdown-TA-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_appraisment)->toDateTimeString() }}">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 @elseif (
                                     (
@@ -1439,7 +1705,7 @@
                                     )
                                 )
 
-                                <div class="container-fluid">
+                                {{-- <div class="container-fluid">
                                     <!-- Table Penilaian Teladan -->
                                     <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
                                         <thead>
@@ -1452,7 +1718,7 @@
                                         </tbody>
                                     </table>
                                     <!--/ Table Penilaian Teladan -->
-                                </div>
+                                </div> --}}
 
                                 @elseif (
                                     (
