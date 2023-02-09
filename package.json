@@ -35,6 +35,6 @@
         "sweetalert": "^2.1.2",
         "sweetalert2": "^11.4.20",
         "swiper": "^8.4.5",
-        "tinymce": "^6.1.2"
+        "tinymce": "^6.3.1"
     }
 }
