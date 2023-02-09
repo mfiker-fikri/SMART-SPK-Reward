@@ -49,6 +49,12 @@
         });
 
         new $.fn.dataTable.FixedHeader( table );
+
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Status Admin -->

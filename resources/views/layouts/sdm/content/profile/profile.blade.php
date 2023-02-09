@@ -152,7 +152,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ route('sdm.postProfile.changePasswordUpdate.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM') }}",
+                        url: "{{ route('sdm.postProfile.postImageDelete.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM') }}",
                         data: {
                             _token: '{{ csrf_token() }}'
                         },
@@ -221,7 +221,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ route('sdm.postProfile.changePasswordUpdate.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM') }}",
+                        url: "{{ route('sdm.postProfile.postImageDelete.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM') }}",
                         data: {
                             _token: '{{ csrf_token() }}'
                         },
@@ -521,14 +521,14 @@
                                         height="100" width="100" id="headOfHumanResourcePhotoProfile" />
                                     @elseif (Auth::guard('human_resources')->user()->role == 2)
                                     <!-- Role 2 -->
-                                    <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
-                                        alt="headOfHumanResource-photo-profile-{{ Auth::guard('human_resources')->user()->username }}" class="rounded-circle"
-                                        height="100" width="100" id="headOfHumanResourcePhotoProfile" />
+                                    <img src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                                        alt="headOfDisciplinaryAwardsAndAdministration-photo-profile-{{ Auth::guard('human_resources')->user()->username }}" class="rounded-circle"
+                                        height="100" width="100" id="headOfDisciplinaryAwardsAndAdministrationPhotoProfile" />
                                     @elseif (Auth::guard('human_resources')->user()->role == 3)
                                     <!-- Role 3 -->
-                                    <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
-                                        alt="headOfHumanResource-photo-profile-{{ Auth::guard('human_resources')->user()->username }}" class="rounded-circle"
-                                        height="100" width="100" id="headOfHumanResourcePhotoProfile" />
+                                    <img src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                                        alt="headOfRewardsDisciplineAndPensionSubdivision-photo-profile-{{ Auth::guard('human_resources')->user()->username }}" class="rounded-circle"
+                                        height="100" width="100" id="headOfRewardsDisciplineAndPensionSubdivisionPhotoProfile" />
                                     @endif
                                 @else
                                     <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
@@ -583,10 +583,10 @@
                                                                 <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                                                                 <!-- Role 2 -->
-                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
+                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 3)
                                                                 <!-- Role 3 -->
-                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
+                                                                <img class="d-block rounded" height="200" width="300" id="output_image" src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}">
                                                                 @endif
                                                             @else
                                                             <img class="d-block rounded" height="200" width="300" id="output_image">
@@ -601,10 +601,10 @@
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                                                                 <!-- Role 2 -->
                                                                 {{-- <input type="text" name="oldImage" value="{{ Auth::guard('human_resources')->user()->photo_profile }}" /> --}}
-                                                                <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }} " />
+                                                                <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }} " />
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 3)
                                                                 <!-- Role 3 -->
-                                                                <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }} " />
+                                                                <input type="hidden" name="oldImage" id="oldImage" value="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }} " />
                                                                 @endif
                                                             @elseif (Auth::guard('human_resources')->user()->photo_profile == null)
                                                             {{-- <input type="text" name="oldImage" value="" /> --}}

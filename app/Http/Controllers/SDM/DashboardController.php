@@ -4,10 +4,16 @@ namespace App\Http\Controllers\SDM;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\CountdownTimerFormInovation;
+use App\Models\CountdownTimerFormTeladan;
 use App\Models\Criteria;
 use App\Models\Parameter;
+use App\Models\TeamAssessment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Yajra\DataTables\Facades\DataTables;
 
 class DashboardController extends Controller
 {
@@ -91,10 +97,105 @@ class DashboardController extends Controller
             $categories =   Category::count();
             $criterias  =   Criteria::count();
             $parameters =   Parameter::count();
-            return view('layouts.sdm.content.dashboard.dashboard_3', compact('categories', 'criterias', 'parameters'));
+
+            //
+            $timerInovasi                  =   CountdownTimerFormInovation::first();
+            //
+            $timerTeladan                  =   CountdownTimerFormTeladan::first();
+
+            if ($timerInovasi == null && $timerTeladan == null) {
+                return view('layouts.sdm.content.dashboard.dashboard_3', compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan'));
+            }
+            elseif ($timerInovasi != null && $timerTeladan == null) {
+                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
+
+                $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
+                $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
+
+                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
+
+                $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
+                $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
+
+                return view('layouts.sdm.content.dashboard.dashboard_3', compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan'));
+            }
+            elseif ($timerInovasi == null && $timerTeladan != null) {
+                $dateTimeOpenTeladan           =   new Carbon($timerTeladan->date_time_open_form_teladan);
+
+                $dateOpenTeladan               =   $dateTimeOpenTeladan->toDateString();
+                $dateOpenTimeTeladan           =   $dateTimeOpenTeladan->toDateTimeString();
+
+                $dateTimeExpiredTeladan        =   new Carbon($timerTeladan->date_time_expired_form_teladan);
+
+                $dateExpiredTeladan            =   $dateTimeExpiredTeladan->toDateString();
+                $dateExpiredTimeTeladan        =   $dateTimeExpiredTeladan->toDateTimeString();
+
+                return view('layouts.sdm.content.dashboard.dashboard_3', compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan'));
+            }
+            elseif ($timerInovasi != null && $timerTeladan != null) {
+                $dateTimeOpenInovasi                  =   new Carbon($timerInovasi->date_time_open_form_inovation);
+
+                $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
+                $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
+
+                $dateTimeExpiredInovasi               =   new Carbon($timerInovasi->date_time_expired_form_inovation);
+
+                $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
+                $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
+
+                return view('layouts.sdm.content.dashboard.dashboard_3', compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan'));
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboardKepalaSubbagianPenghargaanDisiplindanPensiunStatusOnlineOfflineTA(Request $request)
+    {
+
+        try {
+            $date = Carbon::now()->format('Y-m-d');
+            $data = TeamAssessment::where([
+                    // 'last_seen'     =>  $date,
+                    // 'last_status'     =>  $date,
+                    // 'last_seen'     =>  date_format(from_unixtime($date),),
+                    'status_id'     =>  1,
+                ])
+                ->orderBy('last_seen', 'ASC')
+                ->get();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    // $status = '';
+                    if (Cache::has('TA-is-online-' . $row->id)) {
+                        $status = '<span class="text-success">Online</span>';
+                        return $status;
+                    } else {
+                        $status = '<span class="text-secondary">Offline</span>';
+                        return $status;
+                    }
+                })
+                ->addColumn('lastSeen', function ($row) {
+                    if (Cache::has('TA-is-online-' . $row->id)) {
+                        $status = '<span class="text-success">Online</span>';
+                        return $status;
+                    } else {
+                        $status = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
+                        return $status;
+                    }
+                })
+                ->rawColumns(['status','lastSeen'])
+                ->make(true);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 
     /**

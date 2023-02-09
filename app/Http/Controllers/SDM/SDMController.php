@@ -203,6 +203,11 @@ class SDMController extends Controller
                         $photoProfile->move(public_path('storage/sdm/headOfHumanResources/photos/photoProfile/' . $sdm), $photoName);
                     }
 
+                    // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
+                    if (Auth::guard('human_resources')->user()->role == 2) {
+                        $photoProfile->move(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/' . $sdm), $photoName);
+                    }
+
                     // Find Auth SDM Active storage_path($folder)
                     $id         =   Auth::guard('human_resources')->user()->id;
                     $sdm        =   HumanResource::find($id);
@@ -537,9 +542,9 @@ class SDMController extends Controller
                     // Get SDM Username
                     $sdm = Auth::guard('human_resources')->user()->username;
 
-                    if (Storage::exists('public/sdm/headOfHumanResources/photos/photoProfile/'. $sdm.'/'. $request->oldImage)) {
-                        // Delete
-                        Storage::delete('public/sdm/headOfHumanResources/photos/photoProfile/'. $sdm.'/'. $request->oldImage);
+                    $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/') . $sdm . '/' . $request->oldImage;
+                    if (file_exists($file)) {
+                        unlink($file);
                     }
 
                     // Get File Image
@@ -561,9 +566,9 @@ class SDMController extends Controller
                         $constraint->aspectRatio();
                     })->stream();
 
-                    // Kepala Biro SDM
-                    if (Auth::guard('human_resources')->user()->role == 1) {
-                        $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                    // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
+                    if (Auth::guard('human_resources')->user()->role == 2) {
+                        $photoProfile->move(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/' . $sdm), $photoName);
                     }
 
                     // Find Auth SDM Active storage_path($folder)
@@ -597,9 +602,9 @@ class SDMController extends Controller
                     $constraint->aspectRatio();
                 })->stream();
 
-                // Kepala Biro SDM
-                if (Auth::guard('human_resources')->user()->role == 1) {
-                    $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
+                if (Auth::guard('human_resources')->user()->role == 2) {
+                    $photoProfile->move(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/' . $sdm), $photoName);
                 }
 
                 // Find Auth SDM Active storage_path($folder)
@@ -633,7 +638,7 @@ class SDMController extends Controller
 
             if($photo) {
                 $sdm = Auth::guard('human_resources')->user()->username;
-                $file = storage_path('app/public/sdm/headOfHumanResources/photos/photoProfile/') . $sdm . '/' . $photo->photo_profile;
+                $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/') . $sdm . '/' . $photo->photo_profile;
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
@@ -818,6 +823,208 @@ class SDMController extends Controller
             }
         } catch (\Throwable $th) {
             throw $th;
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postImageUploadKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request)
+    {
+        try {
+            // Validasi Image
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'photo_profile'                 =>      'required|image|mimes:jpg,jpeg,png|max:2048',
+                ],
+                [
+                    'photo_profile.required'        =>      'Foto Wajib Diisi!',
+                    'photo_profile.image'           =>      'Diupload Harus Berupa Foto!',
+                    'photo_profile.mimes'           =>      'Extension Foto Harus Berupa jpg, jpeg, png',
+                    'photo_profile.max'             =>      'Maksimal Foto Upload 2Mb (2048 Kb). Jika Foto Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Dibawah 2MB',
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
+            }
+
+            if ($request->hasFile('photo_profile')) {
+                if ($request->oldImage) {
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+
+                    $file = storage_path('app/public/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/') . $sdm . '/' . $request->oldImage;
+                    if (file_exists($file)) {
+                        unlink($file);
+                    }
+
+                    // Get File Image
+                    $photoProfile = $request->file('photo_profile');
+                    // Get Original Name
+                    // $photoName      =   $photoProfile->getClientOriginalName();
+                    // Get Original Extension
+                    $photoExtension =   $photoProfile->getClientOriginalExtension();
+
+                    // Get Id Auth SDM
+                    $id = Auth::guard('human_resources')->user()->id;
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+                    // Photo Name
+                    $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                    $img = Image::make($photoProfile);
+                    $img->resize(100, 100, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->stream();
+
+
+                    // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+                    if (Auth::guard('human_resources')->user()->role == 3) {
+                        $photoProfile->move(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/' . $sdm), $photoName);
+                    }
+
+                    // Find Auth SDM Active storage_path($folder)
+                    $id = Auth::guard('human_resources')->user()->id;
+                    $sdm = HumanResource::find($id);
+
+                    // Save Photo To Database
+                    $sdm->photo_profile = $photoName;
+                    $sdm->save();
+
+                    alert()->success('Berhasil Update Foto')->autoclose(25000);
+                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                }
+
+                // Get File Image
+                $photoProfile = $request->file('photo_profile');
+                // Get Original Name
+                // $photoName      =   $photoProfile->getClientOriginalName();
+                // Get Original Extension
+                $photoExtension =   $photoProfile->getClientOriginalExtension();
+
+                // Get Id Auth SDM
+                $id = Auth::guard('human_resources')->user()->id;
+                // Get SDM Username
+                $sdm = Auth::guard('human_resources')->user()->username;
+                // Photo Name
+                $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                $img = Image::make($photoProfile);
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->stream();
+
+
+                // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+                if (Auth::guard('human_resources')->user()->role == 3) {
+                    $photoProfile->move(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/' . $sdm), $photoName);
+                }
+
+                // Find Auth SDM Active storage_path($folder)
+                $id = Auth::guard('human_resources')->user()->id;
+                $sdm = HumanResource::find($id);
+
+                // Save Photo To Database
+                $sdm->photo_profile = $photoName;
+                $sdm->save();
+
+                alert()->success('Berhasil Update Foto')->autoclose(25000);
+                return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postImageDeleteKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request)
+    {
+        try {
+            $id = Auth::guard('human_resources')->user()->id;
+            $photo = HumanResource::find($id);
+
+            if($photo) {
+                $sdm = Auth::guard('human_resources')->user()->username;
+                $file = storage_path('app/public/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/') . $sdm . '/' . $photo->photo_profile;
+                if (file_exists($file) && $photo->photo_profile != null) {
+                    unlink($file);
+                }
+                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => '']);
+                alert()->success('Berhasil Hapus Foto')->autoclose(25000);
+                return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function changePasswordUpdateKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request)
+    {
+        // Validasi Change Password
+        $validate = Validator::make(
+            $request->all(),
+            [
+                'oldPassword'                           =>      'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/',
+                'password'                              =>      'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|confirmed|different:oldPassword',
+                'password_confirmation'                 =>      'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|same:password',
+            ],
+            [
+                'oldPassword.required'                  =>      'Password Sekarang Wajib Diisi!',
+                'password.required'                     =>      'Password Baru Wajib Diisi!',
+                'password_confirmation.required'        =>      'Konfirmasi Password Baru Wajib Diisi!',
+                //
+                'oldPassword.min'                       =>      'Password Sekarang Minimal 6 Karakter!',
+                'password.min'                          =>      'Password Baru Minimal 6 Karakter!',
+                'password_confirmation.min'             =>      'Konfirmasi Password Baru Minimal 6 Karakter!',
+                //
+                'oldPassword.max'                       =>      'Password Sekarang Maksimal 100 Karakter!',
+                'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
+                'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
+                //
+                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
+                //
+                'password_confirmation.same'            =>      'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
+                //
+                'oldPassword.regex'                     =>      'Format Password Sekarang Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                'password.regex'                        =>      'Format Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                'password_confirmation.regex'           =>      'Format Konfirmasi Password Baru Harus Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik!',
+                //
+                'password.different'                    =>      'Password Baru Harus Berbeda Dari Password Sekarang!',
+            ]
+        );
+
+        if ($validate->fails()) {
+            alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
+            return redirect()->back()->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
+        }
+
+        $currentPassword        =       Auth::guard('human_resources')->user()->password;
+        $oldPassword            =       request('oldPassword');
+
+        if (Hash::check($oldPassword, $currentPassword)) {
+            Auth::guard('human_resources')->user()->update([
+                'password' => Hash::make($request['password'])
+            ]);
+            alert()->success('Berhasil Update Password!')->autoclose(25000);
+            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
         }
     }
 

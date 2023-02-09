@@ -240,13 +240,26 @@
                     <div class="avatar {{ Auth::guard('human_resources')->user()->status_id == 1 && Auth::guard('human_resources')->user()->status_active == 1 && (Cache::has('humanResource-is-online-' . Auth::guard('human_resources')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if (Auth::guard('human_resources')->user()->photo_profile)
+                            @if (Auth::guard('human_resources')->user()->role == 1)
+                            <!-- Role 1 -->
                             <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
                             alt="headOfHumanResources-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
                             style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
+                            @elseif (Auth::guard('human_resources')->user()->role == 2)
+                            <!-- Role 2 -->
+                            <img src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                            alt="headOfDisciplinaryAwardsAndAdministration-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
+                            style="width: 40px; height: 45px" id="headOfDisciplinaryAwardsAndAdministrationAvatar" />
+                            @elseif (Auth::guard('human_resources')->user()->role == 3)
+                            <!-- Role 3 -->
+                            <img src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                            alt="headOfRewardsDisciplineAndPensionSubdivision-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
+                            style="width: 40px; height: 45px" id="headOfRewardsDisciplineAndPensionSubdivisionAvatar" />
+                            @endif
                         @else
                             <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
-                                alt="headOfHumanResources-avatar" class="rounded-circle"
-                                style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
+                                alt="humanResources-avatar" class="rounded-circle"
+                                style="width: 40px; height: 45px" id="humanResourcesAvatar" />
                         @endif
                     </div>
                 </a>
@@ -267,13 +280,26 @@
                                 <div class="avatar {{ Cache::has('humanResource-is-online-' . Auth::guard('human_resources')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('human_resources')->user()->photo_profile)
+                                        @if (Auth::guard('human_resources')->user()->role == 1)
+                                        <!-- Role 1 -->
                                         <img src="{{ asset( 'storage/sdm/headOfHumanResources/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
                                         alt="headOfHumanResources-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
+                                        @elseif (Auth::guard('human_resources')->user()->role == 2)
+                                        <!-- Role 2 -->
+                                        <img src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                                        alt="headOfDisciplinaryAwardsAndAdministration-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
+                                        style="width: 40px; height: 45px" id="headOfDisciplinaryAwardsAndAdministrationAvatar" />
+                                        @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                        <!-- Role 3 -->
+                                        <img src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/photos/photoProfile/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->photo_profile) }}"
+                                        alt="headOfRewardsDisciplineAndPensionSubdivision-avatar {{ Auth::guard('human_resources')->user()->full_name }}" class="rounded-circle"
+                                        style="width: 40px; height: 45px" id="headOfRewardsDisciplineAndPensionSubdivisionAvatar" />
+                                        @endif
                                     @else
-                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
-                                        alt="headOfHumanResources-avatar" class="rounded-circle"
-                                        style="width: 40px; height: 45px" id="headOfHumanResourcesAvatar" />
+                                        <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                            alt="humanResources-avatar" class="rounded-circle"
+                                            style="width: 40px; height: 45px" id="humanResourcesAvatar" />
                                     @endif
                                 </div>
                             </div>

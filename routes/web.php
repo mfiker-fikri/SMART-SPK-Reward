@@ -163,6 +163,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
     Route::middleware(['human_resources.auth:3'])->group(function () {
         // Dashboard
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getDashboard.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard/statusOnlineOfflineTA', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiunStatusOnlineOfflineTA'])->name('getDashboard.KepalaSubbagianPenghargaanDisiplindanPensiun.StatusOnlineOfflineTA.SDM');
+
         // Profile
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile', [App\Http\Controllers\SDM\SDMController::class, 'getProfileKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getProfile.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/update', [App\Http\Controllers\SDM\SDMController::class, 'postProfileKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.Update.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');

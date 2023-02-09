@@ -23,10 +23,40 @@
                 align-items: center;
                 align-content: center;
             }
+
+            .swiper1_1 {
+                margin: 0;
+                padding: 0;
+                max-width: 450px;
+                min-width: 450px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
         }
 
         @media (max-width: 991.98px) {
             .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 450px;
+                min-width: 450px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+
+            .swiper1_1 {
                 margin: 0;
                 padding: 0;
                 max-width: 450px;
@@ -56,9 +86,39 @@
                 align-items: center;
                 align-content: center;
             }
+
+            .swiper1_1 {
+                margin: 0;
+                padding: 0;
+                max-width: 400px;
+                min-width: 400px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
         }
         @media (max-width: 275.98px) {
             .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 100px;
+                min-width: 100px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+
+            .swiper1_1 {
                 margin: 0;
                 padding: 0;
                 max-width: 100px;
@@ -413,6 +473,19 @@
                 align-content: center;
                 color: #333;
                 font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-TA-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
                 text-align: center;
             }
 
@@ -1406,11 +1479,11 @@
         var swiper = new Swiper(".swiper1_1", {
             cssMode: true,
             // direction: 'vertical',
-            // loop: true,
-            // autoplay: {
-            //     delay: 5000,
-            //     disableOnInteraction: false,
-            // },
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
             speed: 100,
             spaceBetween: 10,
         });
@@ -1572,7 +1645,23 @@
                                     <!--/ Table Penilaian Inovation -->
                                 </div> --}}
                                 <div class="container-fluid swiper1_1">
-                                    <div class="openTimerCountDown swiper-wrapper" style="min-width: 50vh;max-width: 150vh;">
+                                    <div class="openTimerCountDown swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Penutupan Penilaian Inovasi</h3>
+                                            </div>
+                                            <div class="dateCountDown">
+                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('dddd') }}</b></span>
+                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('D') }}</b></span>
+                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('MMMM') }}</b></span>
+                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('Y') }}</b></span>
+                                            </div>
+                                            <div class="timeCountDown">
+                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('hh') }}</b></span>
+                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('mm') }}</b></span>
+                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('a') }}</b></span>
+                                            </div>
+                                        </div>
                                         <div class="swiper-slide">
                                             <div class="titleCountDown">
                                                 <h3>Closing Soon</h3>

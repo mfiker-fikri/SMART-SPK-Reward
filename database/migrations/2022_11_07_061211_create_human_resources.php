@@ -21,7 +21,7 @@ class CreateHumanResources extends Migration
             $table->string('username', 100)->unique()->index();
             $table->string('password', 255);
             //
-            $table->string('role', 100);
+            $table->integer('role');
             //
             $table->string('photo_profile', 255)->nullable();
             //

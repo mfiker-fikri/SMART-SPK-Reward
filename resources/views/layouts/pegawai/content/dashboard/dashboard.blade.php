@@ -5,11 +5,26 @@
 @stop
 
 @section('css_header')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 
     <style>
         @media (min-width: 992px) {
             .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 450px;
+                min-width: 450px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+
+            .swiper1_1 {
                 margin: 0;
                 padding: 0;
                 max-width: 450px;
@@ -40,6 +55,21 @@
                 align-items: center;
                 align-content: center;
             }
+
+            .swiper1_1 {
+                margin: 0;
+                padding: 0;
+                max-width: 450px;
+                min-width: 450px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
         }
         @media (max-width: 575.98px) {
             .swiper1 {
@@ -56,9 +86,39 @@
                 align-items: center;
                 align-content: center;
             }
+
+            .swiper1_1 {
+                margin: 0;
+                padding: 0;
+                max-width: 400px;
+                min-width: 400px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
         }
         @media (max-width: 275.98px) {
             .swiper1 {
+                margin: 0;
+                padding: 0;
+                max-width: 100px;
+                min-width: 100px;
+                max-height: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+
+            .swiper1_1 {
                 margin: 0;
                 padding: 0;
                 max-width: 100px;
@@ -223,7 +283,34 @@
                 text-align: center;
             }
 
+            .countdown-inovation-closed {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -375,7 +462,21 @@
                 text-align: center;
             }
 
-            .countdown-inovation span {
+            .countdown-inovation-closed {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -527,7 +628,34 @@
                 text-align: center;
             }
 
+            .countdown-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -678,7 +806,34 @@
                 text-align: center;
             }
 
+            .countdown-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -1050,6 +1205,151 @@
 
     <script>
         $(document).ready(function () {
+            $(".countdown-inovation-closed").each( function(){
+                var _this = $(this),
+                _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if(event.offset.totalDays == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalHours == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if(event.offset.totalMinutes == 0 && flag2) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Penilaian Inovasi Sudah Ditutup',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
             $(".countdown-representative").each( function(){
                 var _this = $(this);
                 var _expire = _this.data('expire');
@@ -1273,7 +1573,21 @@
             //     el: ".swiper-pagination",
             // },
         });
-      </script>
+    </script>
+
+    <script>
+        var swiper = new Swiper(".swiper1_1", {
+            cssMode: true,
+            // direction: 'vertical',
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            speed: 100,
+            spaceBetween: 10,
+        });
+    </script>
 @stop
 <!--/ Footer Js -->
 
@@ -1417,19 +1731,46 @@
                                     )
                                 )
 
-                                <div class="container-fluid">
-                                    <!-- Table Form Inovation -->
-                                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Status Process</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                    <!--/ Table Form Inovation -->
+                                <div class="container-fluid swiper1_1">
+                                    <div class="openTimerCountDown swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Penutupan Form Inovasi</h3>
+                                            </div>
+                                            <div class="dateCountDown">
+                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('dddd') }}</b></span>
+                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('D') }}</b></span>
+                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('MMMM') }}</b></span>
+                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('Y') }}</b></span>
+                                            </div>
+                                            <div class="timeCountDown">
+                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('hh') }}</b></span>
+                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('mm') }}</b></span>
+                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('a') }}</b></span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="titleCountDown">
+                                                <h3>Closing Soon</h3>
+                                            </div>
+                                            <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_form_inovation)->toDateTimeString() }}">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <!-- Table Form Inovation -->
+                                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">No</th>
+                                                        <th scope="col">Status Process</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                            <!--/ Table Form Inovation -->
+                                        </div>
+                                    </div>
                                 </div>
 
                                 @elseif (
