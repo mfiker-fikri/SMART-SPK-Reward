@@ -152,12 +152,12 @@
         @media (min-width: 992px) {
             .cardInovation {
                 max-width: 740px;
-                min-height: 26.5vh;
+                min-height: 27.7vh;
                 max-height: 25vh;
             }
             .cardRepresentative {
                 max-width: 740px;
-                min-height: 26.5vh;
+                min-height: 27.7vh;
                 max-height: 25vh;
             }
         }
@@ -365,8 +365,8 @@
             }
 
             .dateCountDown span{
-                padding: 5px;
-                margin: 5px;
+                padding: 1px 5px;
+                margin: 1px 5px;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
@@ -392,8 +392,8 @@
             }
 
             .timeCountDown span{
-                padding: 5px;
-                margin: 5px;
+                padding: 1px 5px;
+                margin: 1px 5px;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;

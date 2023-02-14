@@ -146,7 +146,7 @@
                             <button class="btn btn-primary d-grid w-100 h-100" type="submit">
                                 <div class="d-inline-flex flex-row align-items-center justify-content-center">
                                     <div class="d-flex align-items-center mx-2">
-                                        <i class="fas fa-sign-in fa-lg"></i>
+                                        <i class="fa-solid fa-right-to-bracket fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         Sign in

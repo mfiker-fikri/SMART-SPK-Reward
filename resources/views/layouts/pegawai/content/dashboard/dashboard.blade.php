@@ -365,8 +365,8 @@
             }
 
             .dateCountDown span{
-                padding: 5px;
-                margin: 5px;
+                padding: 1px 5px;
+                margin: 1px 5px;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
@@ -392,8 +392,8 @@
             }
 
             .timeCountDown span{
-                padding: 5px;
-                margin: 5px;
+                padding: 1px 5px;
+                margin: 1px 5px;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;

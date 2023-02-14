@@ -349,11 +349,11 @@
 
             // new $.fn.dataTable.FixedHeader( table );
 
-            // if (table) {
-            //     setInterval( function () {
-            //         table.ajax.reload(null, false);
-            //     }, 10000 );
-            // }
+            if (table) {
+                setInterval( function () {
+                    table.ajax.reload(null, false);
+                }, 10000 );
+            }
         });
     </script>
     <!--/ Datatables Result Inovasi DSS -->
@@ -676,7 +676,7 @@
 
                 <!-- Form Hasil Penilaian Inovasi Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Hasil Penilaian Inovasi</h5>
+                    <h5 class="mb-0">Hasil Penilaian Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Form Hasil Penilaian Inovasi Title -->
 

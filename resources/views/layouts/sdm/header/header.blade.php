@@ -211,14 +211,23 @@
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Timer Countdown Form Inovation</li>
+                    <li class="breadcrumb-item fw-bold active">Timer Countdown Inovation</li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative') )
                     <!-- Create Or Update -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Timer Countdown Form Representative</li>
+                    <li class="breadcrumb-item fw-bold active">Timer Countdown Representative</li>
                 <!--/ Manage Timer CountDown -->
+
+                <!-- Signature Inovation -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation') )
+                    <!-- Read -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
+                <!--/ Signature Inovation -->
 
 
                 @endif

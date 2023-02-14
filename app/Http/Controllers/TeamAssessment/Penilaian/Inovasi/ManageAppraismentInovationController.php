@@ -536,7 +536,7 @@ class ManageAppraismentInovationController extends Controller
     {
         try {
             // Find id Reward Inovation
-            $reward     =   RewardInovation::find($id)->first();
+            $reward     =   RewardInovation::find($id);
 
             // Option Select Inovation
             $selectOptionCategory = Category::where('id', '=', 1)->get();
@@ -573,6 +573,8 @@ class ManageAppraismentInovationController extends Controller
         try {
             // Find id Reward Inovation
             $reward     =   RewardInovation::find($id);
+
+            // ddd($reward->status_process);
 
             if ($reward) {
                 // Validasi
@@ -617,6 +619,8 @@ class ManageAppraismentInovationController extends Controller
                     return redirect('penilai/appraisment/inovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
                 }
 
+                alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
+                return redirect()->back()->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
 
 
             }
@@ -920,7 +924,7 @@ class ManageAppraismentInovationController extends Controller
                                             ['created_at', '<=', $dateExpiredTime],
                                             ['updated_at', '>=', $dateOpenTime],
                                             ['updated_at', '<=', $dateExpiredTime],
-                                        ])->latest()->get();
+                                        ])->latest()->orderBy('score_final_result', 'DESC')->get();
 
 
             return DataTables::of($finalResult)

@@ -265,7 +265,7 @@
 
             <!-- Countdown Timer Form -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Countdown Timer Open Form</span>
+                <span class="menu-header-text">Timer Countdown</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative*')) ? 'active' : '' }}">
@@ -277,17 +277,49 @@
                 <ul class="menu-sub">
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Form Inovation">Form Inovation</div>
+                            <div data-i18n="Form Inovation">Inovation</div>
                         </a>
                     </li>
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Form Inovation">Form Teladan</div>
+                            <div data-i18n="Form Inovation">Representative</div>
                         </a>
                     </li>
                 </ul>
             </li>
             <!--/ Countdown Timer Form -->
+
+            <!-- Tanda Tangan -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Tanda Tangan</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative*')) ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fas fa-file-signature"></i>
+                    <div data-i18n="signature">Tanda Tangan</div>
+                </a>
+                <ul class="menu-sub">
+                    <!-- Signature Inovation -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="signatureInovation">Penghargaan Inovasi</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Inovation -->
+
+                    <!-- Signature Representative -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="signatureRepresentative">Penghargaan Teladan</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Representative -->
+
+                </ul>
+            </li>
+            <!--/ Tanda Tangan -->
+
         @endif
 
     </ul>

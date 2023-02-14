@@ -126,7 +126,7 @@
 
                         <!-- Form Inovation Appraisment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Penilaian Form Pendaftaran Penghargaan Inovasi</h5>
+                            <h5 class="mb-0">Penilaian Penghargaan Inovasi</h5>
                         </div>
                         <!--/ Form Inovation Appraisment Title -->
 

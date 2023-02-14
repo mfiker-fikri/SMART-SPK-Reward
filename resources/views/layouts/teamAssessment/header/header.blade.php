@@ -8,17 +8,62 @@
     <div class="container px-sm-1 d-flex align-items-center" id="navbar-collapse">
         <!-- Breadcrumb "-->
         <ol class="breadcrumb breadcrumb-style1 my-lg-3 my-3">
-            @if ( request()->is('/penilai/dashboard') )
+            @if ( request()->is('penilai/dashboard') )
             <!-- Dashboard -->
                 <li class="breadcrumb-item fw-bold active">
                     Dashboard
                 </li>
-            @elseif ( request()->is('/penilai/profile') )
+            @elseif ( request()->is('penilai/profile') )
             <!-- Profile -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
+
+
+
+            @elseif ( request()->is('penilai/categories/list') )
+            <!-- Kategori -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Kategori</li>
+
+            @elseif ( request()->is('penilai/criterias/list') )
+            <!-- Kriteria -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Kriteria</li>
+
+            @elseif ( request()->is('penilai/parameters/list') )
+            <!-- Parameter -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Parameter</li>
+
+            @elseif ( request()->is('penilai/appraisment/inovation'))
+            <!-- Kelola Data Penilaian Penghargaan Inovasi -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Kelola Data Penilaian Penghargaan Inovasi</li>
+
+            @elseif ( request()->is('penilai/appraisment/inovation/valuation*'))
+            <!-- Penilaian Penghargaan Inovasi -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Penilaian Penghargaan Inovasi</li>
+
+
+            @elseif ( request()->is('penilai/appraisment/result/inovation') )
+            <!-- Hasil Penilaian Inovasi -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Hasil Penilaian Penghargaan Inovasi</li>
 
             @endif
         </ol>

@@ -68,6 +68,54 @@
             placeholder: $( this ).data( 'placeholder' ),
         } );
     </script>
+
+    <script type="text/javascript">
+        $( '#status_open_signature_human_resource_3' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_signature_human_resource_3' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_open_signature_human_resource_2' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_signature_human_resource_2' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_open_signature_human_resource_1' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_signature_human_resource_1' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
     <!-- Select2 Status -->
 
     <script>
@@ -98,10 +146,16 @@
                         const dateTime2     =    convert(c2);
 
                         // Expired Appraisment
-                        var a3              =    date.getDate()+2;
+                        var a3              =    date.getDate()+1;
                         var b3              =    date.setDate(a3);
                         const c3            =    new Date(b3);
                         const dateTime3     =    convert(c3);
+
+                        // Signature
+                        var a4              =    date.getDate()+1;
+                        var b4              =    date.setDate(a4);
+                        const c4            =    new Date(b4);
+                        const dateTime4     =    convert(c4);
 
                         //
                         const dates         =   date.getDate();
@@ -119,15 +173,27 @@
 
                         // var result = year + "/" + month + "/" + dates + " " + hour + ":" + minutes;
                         var result1 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
-                        var result2 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
+                        var result2 = dateTime2 + " " + hours + ":" + minutes + ":" + seconds;
                         var result3 = dateTime3 + " " + hours + ":" + minutes + ":" + seconds;
+
+                        var result4 = dateTime4 + " " + hours + ":" + minutes + ":" + seconds;
                         // console.log(result);
 
                         var dateExpired         = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result1);
                         var dateOpenAppraisment = document.getElementById("date_time_open_countdown_inovation_appraisment").setAttribute("min", result2);
                         var dateExpiAppraisment = document.getElementById("date_time_expired_countdown_inovation_appraisment").setAttribute("min", result3);
 
-                        return [dateExpired, dateOpenAppraisment, dateExpiAppraisment];
+                        //
+                        var dateSignature1       = document.getElementById("date_time_open_signature_human_resource_3").setAttribute("min", result4);
+                        var dateSignature2       = document.getElementById("date_time_expired_signature_human_resource_3").setAttribute("min", result4);
+
+                        var dateSignature3       = document.getElementById("date_time_open_signature_human_resource_2").setAttribute("min", result4);
+                        var dateSignature4       = document.getElementById("date_time_expired_signature_human_resource_2").setAttribute("min", result4);
+
+                        var dateSignature5       = document.getElementById("date_time_open_signature_human_resource_1").setAttribute("min", result4);
+                        var dateSignature6       = document.getElementById("date_time_expired_signature_human_resource_1").setAttribute("min", result4);
+
+                        return [dateExpired, dateOpenAppraisment, dateExpiAppraisment, dateSignature1, dateSignature2, dateSignature3, dateSignature4, dateSignature5, dateSignature6];
 
 
                     }
@@ -156,6 +222,12 @@
                     const c3            =    new Date(b3);
                     const dateTime3     =    convert(c3);
 
+                    // Signature
+                    var a4              =    date.getDate()+1;
+                    var b4              =    date.setDate(a4);
+                    const c4            =    new Date(b4);
+                    const dateTime4     =    convert(c4);
+
                     //
                     const dates         =   date.getDate();
                     const month         =   date.getMonth()+1;
@@ -174,13 +246,25 @@
                     var result1 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
                     var result2 = dateTime2 + " " + hours + ":" + minutes + ":" + seconds;
                     var result3 = dateTime3 + " " + hours + ":" + minutes + ":" + seconds;
+
+                    var result4 = dateTime4 + " " + hours + ":" + minutes + ":" + seconds;
                     // console.log(result);
 
                     var dateExpired         = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result1);
                     var dateOpenAppraisment = document.getElementById("date_time_open_countdown_inovation_appraisment").setAttribute("min", result2);
                     var dateExpiAppraisment = document.getElementById("date_time_expired_countdown_inovation_appraisment").setAttribute("min", result3);
 
-                    return [dateExpired, dateOpenAppraisment, dateExpiAppraisment];
+                    //
+                    var dateSignature1       = document.getElementById("date_time_open_signature_human_resource_3").setAttribute("min", result4);
+                    var dateSignature2       = document.getElementById("date_time_expired_signature_human_resource_3").setAttribute("min", result4);
+
+                    var dateSignature3       = document.getElementById("date_time_open_signature_human_resource_2").setAttribute("min", result4);
+                    var dateSignature4       = document.getElementById("date_time_expired_signature_human_resource_2").setAttribute("min", result4);
+
+                    var dateSignature5       = document.getElementById("date_time_open_signature_human_resource_1").setAttribute("min", result4);
+                    var dateSignature6       = document.getElementById("date_time_expired_signature_human_resource_1").setAttribute("min", result4);
+
+                    return [dateExpired, dateOpenAppraisment, dateExpiAppraisment, dateSignature1, dateSignature2, dateSignature3, dateSignature4, dateSignature5, dateSignature6];
 
                 }
             });
@@ -444,6 +528,89 @@
         });
     </script>
     <!--/ Delete -->
+
+    <!-- Delete -->
+    <script type="text/javascript">
+        $(document).on('click', '#deleteStatusIDSignature', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-val');
+            // console.log(id);
+            Swal.fire({
+                title: 'Apakah kamu ingin menghapus timer ini?',
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/signature/delete') }}" + '/' + id,
+                        data: {
+                            id: id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Delete',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            })
+                        },
+                        error: function(event,xhr,options,exc){
+                            if (event.status == 401) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Your Authorized Failed!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }else if (event.status == 500) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something Went Wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something went wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    </script>
+    <!--/ Delete -->
 @stop
 
 @section('content')
@@ -459,18 +626,31 @@
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}" id="pills-time-tab" data-bs-toggle="pill" data-bs-target="#pills-time" type="button" role="tab" aria-controls="pills-time" aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'true' : 'false' }}">Timer Countdown Form Inovation</button>
+                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}" id="pills-time-tab" data-bs-toggle="pill" data-bs-target="#pills-time" type="button" role="tab" aria-controls="pills-time" aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'true' : 'false' }}">Form Inovation</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link text-center" id="pills-appraisment-tab"
-                        @if ($timer != null)
-                        data-bs-toggle="pill" data-bs-target="#pills-appraisment" type="button" role="tab" aria-controls="pills-appraisment" aria-selected="false"
-                        @endif
-                        @if ($timer == null) disabled data-bs-toggle="tooltip" data-bs-placement="top"
-                        data-bs-custom-class="custom-tooltip"
-                        data-bs-title="This top tooltip is themed via CSS variables."
-                        @endif>Timer Countdown Appraisment Inovation</button>
+                        <button class="nav-link text-center" id="pills-appraisment-tab"
+                            @if ($timer != null)
+                            data-bs-toggle="pill" data-bs-target="#pills-appraisment" type="button" role="tab" aria-controls="pills-appraisment" aria-selected="false"
+                            @endif
+                            @if ($timer == null) disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="This top tooltip is themed via CSS variables."
+                            @endif>Appraisment Inovation
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-center" id="pills-signature_role2-tab"
+                            @if ($timer != null)
+                            data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
+                            @endif
+                            @if ($timer == null) disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="This top tooltip is themed via CSS variables."
+                            @endif>Signature Inovation
+                        </button>
                     </li>
 
                 </ul>
@@ -486,7 +666,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Timer Countdown Form Inovation</h5>
+                            <h5 class="mb-0">Form Inovation</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -656,6 +836,9 @@
                                             <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                                         </button>
                                         @endif
+                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                        </a>
                                         @if ($timer == null)
                                         <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNull();">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
@@ -691,7 +874,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Timer Countdown Form Inovation</h5>
+                            <h5 class="mb-0">Appraisment Inovation</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -854,12 +1037,516 @@
                                             <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
                                         </button>
                                         @endif
+                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                        </a>
                                         @if ($timer == null || $timer == null)
                                         <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullAppraisment()">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
                                         @else
                                         <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusAppraisment();">
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                        </button>
+                                        @endif
+                                        <button type="submit" class="btn btn-primary btn-lg" style="color: black">
+                                            @if ($timer == null && $timer == null)
+                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
+                                            @else
+                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
+                                            @endif
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Action Button -->
+
+                            </form>
+
+                        </div>
+                        <!-- Form Timer Countdown -->
+
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="pills-signature_role2" role="tabpanel" aria-labelledby="pills-signature_role2-tab" tabindex="0">
+
+                    <div class="card my-4">
+
+                        <!-- Form Timer Countdown Title -->
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Signature Inovation</h5>
+                        </div>
+                        <!--/ Form Timer Countdown Title -->
+
+                        <!-- Form Timer Countdown -->
+                        <div class="card-body py-xl-5 py-sm-5 px-xl-5">
+                            <form id="formCreateTimerAppraismentInovation" class="mx-2" method="POST" action="{{ route('sdm.postTimerCountDownSignature.Index.Create.SDM') }}">
+                                @csrf
+                                @if ($timer == null)
+                                <input type="hidden" name="id" value="">
+                                @else
+                                <input type="hidden" name="id" value="{{ $timer->id }}">
+                                @endif
+
+
+                                <div class="divider">
+                                    <div class="divider-text">Kepala Subbagian Penghargaan, Disiplin, dan Pensiun</div>
+                                </div>
+
+
+                                <!-- Timer Countdown-->
+                                <div class="mb-3 row {{ $errors->has('date_time_open_signature_human_resource_3') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_open_signature_human_resource_3" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Tanda Tangan</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="categories" class="input-group-text">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_signature_human_resource_3') ? 'is-invalid' : '' }}" id="date_time_open_signature_human_resource_3"
+                                                name="date_time_open_signature_human_resource_3" placeholder="*Select Date Time"
+                                                @if ($timer == null)
+                                                autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_3') }}"
+                                                @else
+                                                autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_3', $timer->date_time_open_signature_human_resource_3) }}"
+                                                @endif
+                                                aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_3" data-val="true">
+                                        </div>
+                                        <div id="date_time_open_countdown_inovation_appraismentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                        <div class="d-flex flex-column">
+                                            <!-- Error Timer Countdown -->
+                                            @if ( $errors->has('date_time_open_signature_human_resource_3') )
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date_time_open_signature_human_resource_3') }}</strong>
+                                                </span>
+                                            @endif
+                                            <!--/ Error Timer Countdown -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ Timer Countdown-->
+
+                                <!-- Status Open -->
+                                <div class="mb-3 row {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}">
+                                    <label for="status_open_signature_human_resource_3" class="col-sm-3 col-form-label">Status Open</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-text {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            @if ($timer == null)
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_3') }}" id="oldOpenStatusAppraisment" />
+                                            @else
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_3', $timer->status_open_signature_human_resource_3) }}" id="oldStatusOpenAppraisment" />
+                                            @endif
+                                            <select class="form-select {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_3"
+                                                name="status_open_signature_human_resource_3" placeholder="--Pilih Status Open --"
+                                                autofocus autocomplete required
+                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_3" data-val="true" aria-label="status_open_signature_human_resource_3" data-placeholder="-- Pilih Status Open --">
+                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                @if ($timer == null)
+                                                <option value="0" @if(old('status_open_signature_human_resource_3' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_signature_human_resource_3' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @else
+                                                <option value="0" @if(old('status_open_signature_human_resource_3', $timer->status_open_signature_human_resource_3 ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_signature_human_resource_3', $timer->status_open_signature_human_resource_3 ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Open</div>
+                                        <!-- Error Status Open -->
+                                        @if ( $errors->has('status_open_signature_human_resource_3') )
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('status_open_signature_human_resource_3') }}</strong>
+                                            </span>
+                                        @endif
+                                        <!--/ Error Status Open -->
+                                    </div>
+                                </div>
+                                <!--/ Status Open -->
+
+
+                                <!-- Timer Countdown Expired Form -->
+                                <div class="mb-3 row {{ $errors->has('date_time_expired_signature_human_resource_3') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_expired_signature_human_resource_3" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Tanda Tangan </label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="categories" class="input-group-text">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_signature_human_resource_3') ? 'is-invalid' : '' }}" id="date_time_expired_signature_human_resource_3"
+                                                name="date_time_expired_signature_human_resource_3" placeholder="*Select Date Time"
+                                                @if ($timer == null)
+                                                autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_3') }}"
+                                                @else
+                                                autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_3', $timer->date_time_expired_signature_human_resource_3) }}"
+                                                @endif
+                                                aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_3" data-val="true">
+                                        </div>
+                                        <div id="date_time_expired_countdown_inovation_apprasimentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                        <div class="d-flex flex-column">
+                                            <!-- Error Timer Countdown Expired Form -->
+                                            @if ( $errors->has('date_time_expired_signature_human_resource_3') )
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date_time_expired_signature_human_resource_3') }}</strong>
+                                                </span>
+                                            @endif
+                                            <!--/ Error Timer Countdown Expired Form -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ Timer Countdown Expired Form -->
+
+                                <!-- Status Close -->
+                                <div class="mb-3 row {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}">
+                                    <label for="status_expired_signature_human_resource_3" class="col-sm-3 col-form-label">Status Close</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-text {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            @if ($timer == null)
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_3') }}" id="oldExpiredStatusAppraisment" />
+                                            @else
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_3', $timer->status_expired_signature_human_resource_3) }}" id="oldStatusExpiredAppraisment" />
+                                            @endif
+                                            <select class="form-select {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_3"
+                                                name="status_expired_signature_human_resource_3" placeholder="--Pilih Status Close --"
+                                                autofocus autocomplete required
+                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_3" data-val="true" aria-label="status_expired_signature_human_resource_3" data-placeholder="-- Pilih Status Close --">
+                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                @if ($timer == null)
+                                                <option value="0" @if(old('status_expired_signature_human_resource_3' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_signature_human_resource_3' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @else
+                                                <option value="0" @if(old('status_expired_signature_human_resource_3', $timer->status_expired_signature_human_resource_3 ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_signature_human_resource_3', $timer->status_expired_signature_human_resource_3 ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <!-- Error Status Close -->
+                                        @if ( $errors->has('status_expired_signature_human_resource_3') )
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('status_expired_signature_human_resource_3') }}</strong>
+                                            </span>
+                                        @endif
+                                        <!--/ Error Status Close -->
+                                    </div>
+                                </div>
+                                <!--/ Status Close -->
+
+
+                                <div class="divider">
+                                    <div class="divider-text">Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</div>
+                                </div>
+
+
+                                <!-- Timer Countdown-->
+                                <div class="mb-3 row {{ $errors->has('date_time_open_signature_human_resource_2') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_open_signature_human_resource_2" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Tanda Tangan</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="categories" class="input-group-text">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_signature_human_resource_2') ? 'is-invalid' : '' }}" id="date_time_open_signature_human_resource_2"
+                                                name="date_time_open_signature_human_resource_2" placeholder="*Select Date Time"
+                                                @if ($timer == null)
+                                                autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_2') }}"
+                                                @else
+                                                autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_2', $timer->date_time_open_signature_human_resource_2) }}"
+                                                @endif
+                                                aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_2" data-val="true">
+                                        </div>
+                                        <div id="date_time_open_countdown_inovation_appraismentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                        <div class="d-flex flex-column">
+                                            <!-- Error Timer Countdown -->
+                                            @if ( $errors->has('date_time_open_signature_human_resource_2') )
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date_time_open_signature_human_resource_2') }}</strong>
+                                                </span>
+                                            @endif
+                                            <!--/ Error Timer Countdown -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ Timer Countdown-->
+
+                                <!-- Status Open -->
+                                <div class="mb-3 row {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}">
+                                    <label for="status_open_signature_human_resource_2" class="col-sm-3 col-form-label">Status Open</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-text {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            @if ($timer == null)
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_2') }}" id="oldOpenStatusAppraisment" />
+                                            @else
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_2', $timer->status_open_signature_human_resource_2) }}" id="oldStatusOpenAppraisment" />
+                                            @endif
+                                            <select class="form-select {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_2"
+                                                name="status_open_signature_human_resource_2" placeholder="--Pilih Status Open --"
+                                                autofocus autocomplete required
+                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_2" data-val="true" aria-label="status_open_signature_human_resource_2" data-placeholder="-- Pilih Status Open --">
+                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                @if ($timer == null)
+                                                <option value="0" @if(old('status_open_signature_human_resource_2' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_signature_human_resource_2' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @else
+                                                <option value="0" @if(old('status_open_signature_human_resource_2', $timer->status_open_signature_human_resource_2 ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_signature_human_resource_2', $timer->status_open_signature_human_resource_2 ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Open</div>
+                                        <!-- Error Status Open -->
+                                        @if ( $errors->has('status_open_signature_human_resource_2') )
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('status_open_signature_human_resource_2') }}</strong>
+                                            </span>
+                                        @endif
+                                        <!--/ Error Status Open -->
+                                    </div>
+                                </div>
+                                <!--/ Status Open -->
+
+
+                                <!-- Timer Countdown Expired Form -->
+                                <div class="mb-3 row {{ $errors->has('date_time_expired_signature_human_resource_2') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_expired_signature_human_resource_2" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Tanda Tangan Kepala Biro Sumber Daya Manusia</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="categories" class="input-group-text">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_signature_human_resource_2') ? 'is-invalid' : '' }}" id="date_time_expired_signature_human_resource_2"
+                                                name="date_time_expired_signature_human_resource_2" placeholder="*Select Date Time"
+                                                @if ($timer == null)
+                                                autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_2') }}"
+                                                @else
+                                                autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_2', $timer->date_time_expired_signature_human_resource_2) }}"
+                                                @endif
+                                                aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_2" data-val="true">
+                                        </div>
+                                        <div id="date_time_expired_countdown_inovation_apprasimentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                        <div class="d-flex flex-column">
+                                            <!-- Error Timer Countdown Expired Form -->
+                                            @if ( $errors->has('date_time_expired_signature_human_resource_2') )
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date_time_expired_signature_human_resource_2') }}</strong>
+                                                </span>
+                                            @endif
+                                            <!--/ Error Timer Countdown Expired Form -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ Timer Countdown Expired Form -->
+
+                                <!-- Status Close -->
+                                <div class="mb-3 row {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}">
+                                    <label for="status_expired_signature_human_resource_2" class="col-sm-3 col-form-label">Status Close</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-text {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            @if ($timer == null)
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_2') }}" id="oldExpiredStatusAppraisment" />
+                                            @else
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_2', $timer->status_expired_signature_human_resource_2) }}" id="oldStatusExpiredAppraisment" />
+                                            @endif
+                                            <select class="form-select {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_2"
+                                                name="status_expired_signature_human_resource_2" placeholder="--Pilih Status Close --"
+                                                autofocus autocomplete required
+                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_2" data-val="true" aria-label="status_expired_signature_human_resource_2" data-placeholder="-- Pilih Status Close --">
+                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                @if ($timer == null)
+                                                <option value="0" @if(old('status_expired_signature_human_resource_2' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_signature_human_resource_2' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @else
+                                                <option value="0" @if(old('status_expired_signature_human_resource_2', $timer->status_expired_signature_human_resource_2 ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_signature_human_resource_2', $timer->status_expired_signature_human_resource_2 ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <!-- Error Status Close -->
+                                        @if ( $errors->has('status_expired_signature_human_resource_2') )
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('status_expired_signature_human_resource_2') }}</strong>
+                                            </span>
+                                        @endif
+                                        <!--/ Error Status Close -->
+                                    </div>
+                                </div>
+                                <!--/ Status Close -->
+
+
+                                <div class="divider">
+                                    <div class="divider-text">Kepala Biro Sumber Daya Manusia</div>
+                                </div>
+
+                                <!-- Timer Countdown-->
+                                <div class="mb-3 row {{ $errors->has('date_time_open_signature_human_resource_1') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_open_signature_human_resource_1" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Tanda Tangan</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="categories" class="input-group-text">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_signature_human_resource_1') ? 'is-invalid' : '' }}" id="date_time_open_signature_human_resource_1"
+                                                name="date_time_open_signature_human_resource_1" placeholder="*Select Date Time"
+                                                @if ($timer == null)
+                                                autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_1') }}"
+                                                @else
+                                                autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_1', $timer->date_time_open_signature_human_resource_1) }}"
+                                                @endif
+                                                aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_1" data-val="true">
+                                        </div>
+                                        <div id="date_time_open_countdown_inovation_appraismentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                        <div class="d-flex flex-column">
+                                            <!-- Error Timer Countdown -->
+                                            @if ( $errors->has('date_time_open_signature_human_resource_1') )
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date_time_open_signature_human_resource_1') }}</strong>
+                                                </span>
+                                            @endif
+                                            <!--/ Error Timer Countdown -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ Timer Countdown-->
+
+                                <!-- Status Open -->
+                                <div class="mb-3 row {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}">
+                                    <label for="status_open_signature_human_resource_1" class="col-sm-3 col-form-label">Status Open</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-text {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            @if ($timer == null)
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_1') }}" id="oldOpenStatusAppraisment" />
+                                            @else
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_1', $timer->status_open_signature_human_resource_1) }}" id="oldStatusOpenAppraisment" />
+                                            @endif
+                                            <select class="form-select {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_1"
+                                                name="status_open_signature_human_resource_1" placeholder="--Pilih Status Open --"
+                                                autofocus autocomplete required
+                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_1" data-val="true" aria-label="status_open_signature_human_resource_1" data-placeholder="-- Pilih Status Open --">
+                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                @if ($timer == null)
+                                                <option value="0" @if(old('status_open_signature_human_resource_1' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_signature_human_resource_1' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @else
+                                                <option value="0" @if(old('status_open_signature_human_resource_1', $timer->status_open_signature_human_resource_1 ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_signature_human_resource_1', $timer->status_open_signature_human_resource_1 ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Open</div>
+                                        <!-- Error Status Open -->
+                                        @if ( $errors->has('status_open_signature_human_resource_1') )
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('status_open_signature_human_resource_1') }}</strong>
+                                            </span>
+                                        @endif
+                                        <!--/ Error Status Open -->
+                                    </div>
+                                </div>
+                                <!--/ Status Open -->
+
+
+                                <!-- Timer Countdown Expired Form -->
+                                <div class="mb-3 row {{ $errors->has('date_time_expired_signature_human_resource_1') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_expired_signature_human_resource_1" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Tanda Tangan</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-merge">
+                                            <span id="categories" class="input-group-text">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_signature_human_resource_1') ? 'is-invalid' : '' }}" id="date_time_expired_signature_human_resource_1"
+                                                name="date_time_expired_signature_human_resource_1" placeholder="*Select Date Time"
+                                                @if ($timer == null)
+                                                autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_1') }}"
+                                                @else
+                                                autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_1', $timer->date_time_expired_signature_human_resource_1) }}"
+                                                @endif
+                                                aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_1" data-val="true">
+                                        </div>
+                                        <div id="date_time_expired_countdown_inovation_apprasimentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
+                                        <div class="d-flex flex-column">
+                                            <!-- Error Timer Countdown Expired Form -->
+                                            @if ( $errors->has('date_time_expired_signature_human_resource_1') )
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date_time_expired_signature_human_resource_1') }}</strong>
+                                                </span>
+                                            @endif
+                                            <!--/ Error Timer Countdown Expired Form -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ Timer Countdown Expired Form -->
+
+                                <!-- Status Close -->
+                                <div class="mb-3 row {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}">
+                                    <label for="status_expired_signature_human_resource_1" class="col-sm-3 col-form-label">Status Close</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-text {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}">
+                                                <i class="fa-solid fa-calendar"></i>
+                                            </span>
+                                            @if ($timer == null)
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_1') }}" id="oldExpiredStatusAppraisment" />
+                                            @else
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_1', $timer->status_expired_signature_human_resource_1) }}" id="oldStatusExpiredAppraisment" />
+                                            @endif
+                                            <select class="form-select {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_1"
+                                                name="status_expired_signature_human_resource_1" placeholder="--Pilih Status Close --"
+                                                autofocus autocomplete required
+                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_1" data-val="true" aria-label="status_expired_signature_human_resource_1" data-placeholder="-- Pilih Status Close --">
+                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                @if ($timer == null)
+                                                <option value="0" @if(old('status_expired_signature_human_resource_1' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_signature_human_resource_1' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @else
+                                                <option value="0" @if(old('status_expired_signature_human_resource_1', $timer->status_expired_signature_human_resource_1 ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_signature_human_resource_1', $timer->status_expired_signature_human_resource_1 ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <!-- Error Status Close -->
+                                        @if ( $errors->has('status_expired_signature_human_resource_1') )
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('status_expired_signature_human_resource_1') }}</strong>
+                                            </span>
+                                        @endif
+                                        <!--/ Error Status Close -->
+                                    </div>
+                                </div>
+                                <!--/ Status Close -->
+
+
+                                <!-- Action Button -->
+                                <div class="mt-4 d-flex justify-content-end">
+                                    <div class="justify-content-between">
+                                        @if ($timer != null && $timer != null)
+                                        <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusIDSignature" data-val="{{ $timer->id }}">
+                                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                                        </button>
+                                        @endif
+                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                        </a>
+                                        @if ($timer == null || $timer == null)
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullsignature()">
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                        </button>
+                                        @else
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusSignature();">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
                                         @endif

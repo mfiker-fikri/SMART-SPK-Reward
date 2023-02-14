@@ -48,6 +48,21 @@ class CountdownTimerFormInovation extends Model
         'date_time_expired_appraisment',
         'status_open_appraisment',
         'status_expired_appraisment',
+        //
+        'date_time_open_signature_human_resource_1',
+        'date_time_expired_signature_human_resource_1',
+        'status_open_signature_human_resource_1',
+        'status_expired_signature_human_resource_1',
+        //
+        'date_time_open_signature_human_resource_2',
+        'date_time_expired_signature_human_resource_2',
+        'status_open_signature_human_resource_2',
+        'status_expired_signature_human_resource_2',
+        //
+        'date_time_open_signature_human_resource_3',
+        'date_time_expired_signature_human_resource_3',
+        'status_open_signature_human_resource_3',
+        'status_expired_signature_human_resource_3',
     ];
 
     public $timestamps = false;

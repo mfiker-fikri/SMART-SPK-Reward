@@ -102,10 +102,11 @@ class LoginController extends Controller
             session(['berhasil_login' => true]);
             alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/penilai/dashboard')->with('message', 'Selamat Datang');
+        } else {
+            alert()->error('Gagal Masuk!')->autoclose(25000);
+            return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed-login', 'Gagal Login');
         }
 
-        alert()->error('Gagal Masuk!')->autoclose(25000);
-        return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed-login', 'Gagal Login');
     }
 
     /**

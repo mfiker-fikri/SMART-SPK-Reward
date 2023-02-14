@@ -259,6 +259,12 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownAppraisment'])->name('postTimerCountDownAppraisment.Index.Create.SDM');
         // Delete
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownAppraisment'])->name('deleteTimerCountDownAppraisment.Index.Create.SDM');
+        // Signature SDM
+        // Create or Update
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/signature', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownSignature'])->name('getTimerCountDownSignature.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/signature/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownSignature'])->name('postTimerCountDownSignature.Index.Create.SDM');
+        // Delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/signature/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownSignature'])->name('deleteTimerCountDownSignature.Index.Create.SDM');
 
         // Form Teladan
         // Create or Update
@@ -266,6 +272,16 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormTeladan'])->name('postTimerCountDownFormTeladan.Index.Create.SDM');
         // Delete
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormTeladan'])->name('deleteTimerCountDownFormTeladan.Index.Create.SDM');
+
+
+        // Signature
+        // Signature Inovation
+        // Read
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovation.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/list', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationList.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        // Update
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/{id}', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
     });
 
 });

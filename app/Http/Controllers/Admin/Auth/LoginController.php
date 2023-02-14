@@ -152,6 +152,9 @@ class LoginController extends Controller
             session(['berhasil_login' => true]);
             alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/admin/dashboard')->with('message-succes-login', 'Selamat Datang');
+        } else {
+            alert()->error('Gagal Masuk!')->autoclose(25000);
+            return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed-login', 'Gagal Masuk!');
         }
 
 
@@ -159,8 +162,6 @@ class LoginController extends Controller
         // return $this->sendFailedLoginResponse($request);
 
 
-        alert()->error('Gagal Masuk!', 'Username/Email atau Password Salah')->autoclose(25000);
-        return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed-login', 'Username/Email atau Password Salah');
     }
 
     protected function sendFailedLoginResponse(Request $request)

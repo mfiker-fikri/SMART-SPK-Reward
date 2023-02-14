@@ -122,12 +122,13 @@ class LoginController extends Controller
             session(['berhasil_login' => true]);
             alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/dashboard')->with('message', 'Selamat Datang');
+        } else {
+            alert()->error('Gagal Masuk!')->autoclose(25000);
+            return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed', 'Username/Email atau Password Salah');
         }
 
         $this->incrementLoginAttempts($request);
 
-        alert()->error('Gagal Masuk!')->autoclose(25000);
-        return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed', 'Username/Email atau Password Salah');
 
         // $role_admin = DB::table('map_roles')
         //     //
