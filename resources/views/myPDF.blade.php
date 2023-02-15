@@ -304,6 +304,7 @@
                     height: 150px;
                     left: 25%;
                     margin-left: 0.5rem;
+                    margin-top: -40px;
                     position: absolute;
                 }
 
@@ -311,7 +312,17 @@
                     width: 250px;
                     height: 100px;
                     left: 25%;
+                    margin-left: 20.5rem;
+                    margin-top: 2rem;
+                    position: absolute;
+                }
+
+                #child3 {
+                    width: 250px;
+                    height: 100px;
+                    left: 25%;
                     margin-left: 42.5rem;
+                    margin-top: -40px;
                     position: absolute;
                 }
 
@@ -332,7 +343,7 @@
                 <div class="d-flex flex-column justify-content-center mt-5 pm-certificate-header">
                     <div class="d-flex justify-content-center text-center">
                         <span class="text-center">
-                            <img src="{{ public_path('assets/icon/KLN.png') }}" alt="User" width="150" height="150" />
+                            <img src="{{ public_path('assets/icon/KLN.png') }}" alt="logo" width="150" height="150" />
                         </span>
                     </div>
                     <div class="d-flex justify-content-center cursive text-center">
@@ -395,16 +406,28 @@
                     <div class="footer2">
                         <div class="signature">
                             <div class="child text-center" id="child1">
-                                <span class="pm-credits-text flex sans">Date Completed</span>
-                                <span class="pm-empty-space flex underline-signature"></span>
-                                <span class="bold flex">Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</span>
-                                <span class="bold flex pt-3">Jati Heri Winarto</span>
+                                {{-- <span class="pm-credits-text flex sans">Date Completed</span> --}}
+                                <span class="pm-empty-space flex underline-signature">
+                                    <img src="{{ public_path('storage/sdm/headOfHumanResources/signature/'.$signature_head_of_the_human_resources_bureau ) }}" alt="signature" width="150" height="60" />
+                                </span>
+                                <span class="bold flex pt-3">{{ $name_head_of_the_human_resources_bureau }}</span>
+                                <span class="flex">Kepala Subbagian Penghargaan, Disiplin, dan Pensiun </span>
                             </div>
                             <div class="child text-center" id="child2">
-                                <span class="pm-credits-text flex sans">Date Completed</span>
-                                <span class="pm-empty-space flex underline-signature"></span>
-                                <span class="bold flex">Kepala Sumber Daya Manusia </span>
-                                <span class="bold flex pt-3">Winanto Adi</span>
+                                {{-- <span class="pm-credits-text flex sans">Date Completed</span> --}}
+                                <span class="pm-empty-space flex underline-signature">
+                                    <img src="{{ public_path('storage/sdm/headOfHumanResources/signature/'.$signature_head_of_the_human_resources_bureau ) }}" alt="signature" width="150" height="60" />
+                                </span>
+                                <span class="bold flex pt-3">{{ $name_head_of_the_human_resources_bureau }}</span>
+                                <span class="flex">Kepala Sumber Daya Manusia </span>
+                            </div>
+                            <div class="child text-center" id="child3">
+                                {{-- <span class="pm-credits-text flex sans">Date Completed</span> --}}
+                                <span class="pm-empty-space flex underline-signature">
+                                    <img src="{{ public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'.$signature_head_of_disciplinary_awards_and_administration ) }}" alt="signature" width="150" height="60" />
+                                </span>
+                                <span class="bold flex pt-3">{{ $name_head_of_disciplinary_awards_and_administration }}</span>
+                                <span class="flex">Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</span>
                             </div>
                         </div>
                     </div>

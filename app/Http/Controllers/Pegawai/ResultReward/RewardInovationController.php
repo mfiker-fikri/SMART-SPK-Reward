@@ -85,6 +85,15 @@ class RewardInovationController extends Controller
                                     )
                                     ->where([
                                         ['reward_inovation.employee_id', '=', Auth::guard('employees')->user()->id],
+                                        //
+                                        ['signature_head_of_the_human_resources_bureau', '!=', null],
+                                        ['verify_head_of_the_human_resources_bureau', '!=', null],
+                                        //
+                                        ['signature_head_of_disciplinary_awards_and_administration', '!=', null],
+                                        ['verify_head_of_disciplinary_awards_and_administration', '!=', null],
+                                        //
+                                        ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                        ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
                                         // ['final_result_reward_inovation.score_final_result', '>', 0.75],
                                         // ['final_result_reward_inovation.created_at', '>=', $dateOpenTime],
                                         // ['final_result_reward_inovation.created_at', '<=', $dateExpiredTime],
@@ -108,7 +117,7 @@ class RewardInovationController extends Controller
                             $actionBtn =
                                 '
                                     <a href="' . route('pegawai.getResultRewardInovationData.PrintId.Pegawai', $row->id) . '"
-                                    class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black" id="printResultRewardInovationId">
+                                    class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="printResultRewardInovationId">
                                         <i class="fa-solid fa-print mx-auto me-1"></i> Print
                                     </a>
                                 ';
@@ -174,6 +183,16 @@ class RewardInovationController extends Controller
                             'final_result_reward_inovation.updated_at',
                             'final_result_reward_inovation.reward_inovation_id',
                             //
+                            'final_result_reward_inovation.signature_head_of_the_human_resources_bureau',
+                            'final_result_reward_inovation.name_head_of_the_human_resources_bureau',
+                            //
+                            'final_result_reward_inovation.signature_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_inovation.name_head_of_disciplinary_awards_and_administration',
+                            //
+                            'final_result_reward_inovation.signature_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_inovation.name_head_of_rewards_discipline_and_pension_subdivision',
+                            //
+                            //
                             'reward_inovation.upload_file_short_description',
                             'reward_inovation.upload_file_image_support',
                             'reward_inovation.upload_file_video_support',
@@ -186,6 +205,8 @@ class RewardInovationController extends Controller
                                     // 'final_result_reward_inovation.updated_at',
                                     // 'final_result_reward_inovation.reward_inovation_id',
                                 )->first();
+
+
             // where([
             //     'id' => $id,
             // ]);

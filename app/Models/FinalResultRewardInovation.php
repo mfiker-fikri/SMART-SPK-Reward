@@ -46,10 +46,16 @@ class FinalResultRewardInovation extends Model
         'score_final_result_description',
         //
         'signature_head_of_the_human_resources_bureau',
+        'name_head_of_the_human_resources_bureau',
         'verify_head_of_the_human_resources_bureau',
         //
         'signature_head_of_disciplinary_awards_and_administration',
+        'name_head_of_disciplinary_awards_and_administration',
         'verify_head_of_disciplinary_awards_and_administration',
+        //
+        'signature_head_of_rewards_discipline_and_pension_subdivision',
+        'name_head_of_rewards_discipline_and_pension_subdivision',
+        'verify_head_of_rewards_discipline_and_pension_subdivision',
         //
         'status_id'
     ];

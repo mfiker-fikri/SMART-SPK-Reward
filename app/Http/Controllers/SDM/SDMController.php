@@ -173,9 +173,13 @@ class SDMController extends Controller
                     // Get SDM Username
                     $sdm = Auth::guard('human_resources')->user()->username;
 
-                    if (Storage::exists('public/sdm/headOfHumanResources/photos/photoProfile/'. $sdm.'/'. $request->oldImage)) {
-                        // Delete
-                        Storage::delete('public/sdm/headOfHumanResources/photos/photoProfile/'. $sdm.'/'. $request->oldImage);
+                    // if (Storage::exists('public/sdm/headOfHumanResources/photos/photoProfile/'. $sdm.'/'. $request->oldImage)) {
+                    //     // Delete
+                    //     Storage::delete('public/sdm/headOfHumanResources/photos/photoProfile/'. $sdm.'/'. $request->oldImage);
+                    // }
+                    $file = storage_path('app/public/sdm/headOfHumanResources/photos/photoProfile/') . $sdm . '/' . $request->oldImage;
+                    if (file_exists($file)) {
+                        unlink($file);
                     }
 
                     // Get File Image
@@ -261,6 +265,125 @@ class SDMController extends Controller
             throw $th;
         }
     }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postSignatureUploadKepalaBiroSDM(Request $request)
+    {
+        try {
+            // Validasi Image
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'signature'                 =>      'required|image|mimes:jpg,jpeg,png|max:2048',
+                ],
+                [
+                    'signature.required'        =>      'Foto Wajib Diisi!',
+                    'signature.image'           =>      'Diupload Harus Berupa Foto!',
+                    'signature.mimes'           =>      'Extension Foto Harus Berupa jpg, jpeg, png',
+                    'signature.max'             =>      'Maksimal Foto Upload 2Mb (2048 Kb). Jika Foto Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Dibawah 2MB',
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal Update Tanda Tangan!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-update-photo-error', 'Gagal Update Tanda Tangan')->withErrors($validate)->withInput($request->all());
+            }
+
+            if ($request->hasFile('signature')) {
+                if ($request->oldSignature) {
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+
+                    $file = storage_path('app/public/sdm/headOfHumanResources/signature/') . $sdm . '/' . $request->oldSignature;
+                    if (file_exists($file)) {
+                        unlink($file);
+                    }
+
+                    // Get File Image
+                    $photoProfile       =   $request->file('signature');
+                    // Get Original Name
+                    // $photoName      =   $photoProfile->getClientOriginalName();
+                    // Get Original Extension
+                    $photoExtension     =   $photoProfile->getClientOriginalExtension();
+
+                    // Get Id Auth SDM
+                    $id                 =   Auth::guard('human_resources')->user()->id;
+                    // Get SDM Username
+                    $sdm                =   Auth::guard('human_resources')->user()->username;
+                    // Photo Name
+                    $photoName          =   $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                    $img = Image::make($photoProfile);
+                    $img->resize(100, 100, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->stream();
+
+                    // Kepala Biro SDM
+                    if (Auth::guard('human_resources')->user()->role == 1) {
+                        // $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                        $photoProfile->move(public_path('storage/sdm/headOfHumanResources/signature/' . $sdm), $photoName);
+                    }
+
+                    // Find Auth SDM Active storage_path($folder)
+                    $id         =   Auth::guard('human_resources')->user()->id;
+                    $sdm        =   HumanResource::find($id);
+
+                    // Save Photo To Database
+                    $sdm->signature = $photoName;
+                    $sdm->save();
+
+                    alert()->success('Berhasil Update Tanda Tangan')->autoclose(25000);
+                    return redirect()->back()->with('message-update-photo-success', 'Berhasil Update Tanda Tangan');
+                }
+
+                // Get File Image
+                $photoProfile       =   $request->file('signature');
+                // Get Original Name
+                // $photoName      =   $photoProfile->getClientOriginalName();
+                // Get Original Extension
+                $photoExtension     =   $photoProfile->getClientOriginalExtension();
+
+                // Get Id Auth SDM
+                $id                 =   Auth::guard('human_resources')->user()->id;
+                // Get SDM Username
+                $sdm                =   Auth::guard('human_resources')->user()->username;
+                // Photo Name
+                $photoName          =   $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                $img = Image::make($photoProfile);
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->stream();
+
+                // Kepala Biro SDM
+                if (Auth::guard('human_resources')->user()->role == 1) {
+                    // $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
+                    $photoProfile->move(public_path('storage/sdm/headOfHumanResources/signature/' . $sdm), $photoName);
+                }
+
+                // Find Auth SDM Active storage_path($folder)
+                $id = Auth::guard('human_resources')->user()->id;
+                $sdm = HumanResource::find($id);
+
+                // Save Photo To Database
+                $sdm->signature = $photoName;
+                $sdm->save();
+
+                alert()->success('Berhasil Update Tanda Tangan')->autoclose(25000);
+                return redirect()->back()->with('message-update-photo-success', 'Berhasil Update Tanda Tangan');
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -630,6 +753,121 @@ class SDMController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function postSignatureUploadKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request)
+    {
+        try {
+            // Validasi Image
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'signature'                 =>      'required|image|mimes:jpg,jpeg,png|max:2048',
+                ],
+                [
+                    'signature.required'        =>      'Foto Wajib Diisi!',
+                    'signature.image'           =>      'Diupload Harus Berupa Foto!',
+                    'signature.mimes'           =>      'Extension Foto Harus Berupa jpg, jpeg, png',
+                    'signature.max'             =>      'Maksimal Foto Upload 2Mb (2048 Kb). Jika Foto Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Dibawah 2MB',
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal Update Tanda Tangan!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-photo-error', 'Gagal Update Tanda Tangan')->withErrors($validate)->withInput($request->all());
+            }
+
+            if ($request->hasFile('signature')) {
+                if ($request->oldImage) {
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+
+                    $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/signature/') . $sdm . '/' . $request->oldImage;
+                    if (file_exists($file)) {
+                        unlink($file);
+                    }
+
+                    // Get File Image
+                    $photoProfile = $request->file('signature');
+                    // Get Original Name
+                    // $photoName      =   $photoProfile->getClientOriginalName();
+                    // Get Original Extension
+                    $photoExtension =   $photoProfile->getClientOriginalExtension();
+
+                    // Get Id Auth SDM
+                    $id = Auth::guard('human_resources')->user()->id;
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+                    // Photo Name
+                    $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                    $img = Image::make($photoProfile);
+                    $img->resize(100, 100, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->stream();
+
+                    // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
+                    if (Auth::guard('human_resources')->user()->role == 2) {
+                        $photoProfile->move(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/' . $sdm), $photoName);
+                    }
+
+                    // Find Auth SDM Active storage_path($folder)
+                    $id = Auth::guard('human_resources')->user()->id;
+                    $sdm = HumanResource::find($id);
+
+                    // Save Photo To Database
+                    $sdm->signature = $photoName;
+                    $sdm->save();
+
+                    alert()->success('Berhasil Update Tanda Tangan')->autoclose(25000);
+                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Tanda Tangan');
+                }
+
+                // Get File Image
+                $photoProfile = $request->file('signature');
+                // Get Original Name
+                // $photoName      =   $photoProfile->getClientOriginalName();
+                // Get Original Extension
+                $photoExtension =   $photoProfile->getClientOriginalExtension();
+
+                // Get Id Auth SDM
+                $id = Auth::guard('human_resources')->user()->id;
+                // Get SDM Username
+                $sdm = Auth::guard('human_resources')->user()->username;
+                // Photo Name
+                $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                $img = Image::make($photoProfile);
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->stream();
+
+                // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
+                if (Auth::guard('human_resources')->user()->role == 2) {
+                    $photoProfile->move(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/' . $sdm), $photoName);
+                }
+
+                // Find Auth SDM Active storage_path($folder)
+                $id = Auth::guard('human_resources')->user()->id;
+                $sdm = HumanResource::find($id);
+
+                // Save Photo To Database
+                $sdm->signature = $photoName;
+                $sdm->save();
+
+                alert()->success('Berhasil Update Tanda Tangan')->autoclose(25000);
+                return redirect()->back()->with('message-photo-success', 'Berhasil Update Tanda Tangan');
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function postImageDeleteKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request)
     {
         try {
@@ -932,6 +1170,124 @@ class SDMController extends Controller
 
                 // Save Photo To Database
                 $sdm->photo_profile = $photoName;
+                $sdm->save();
+
+                alert()->success('Berhasil Update Foto')->autoclose(25000);
+                return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postSignatureUploadKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request)
+    {
+        try {
+            // Validasi Image
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'signature'                 =>      'required|image|mimes:jpg,jpeg,png|max:2048',
+                ],
+                [
+                    'signature.required'        =>      'Foto Wajib Diisi!',
+                    'signature.image'           =>      'Diupload Harus Berupa Foto!',
+                    'signature.mimes'           =>      'Extension Foto Harus Berupa jpg, jpeg, png',
+                    'signature.max'             =>      'Maksimal Foto Upload 2Mb (2048 Kb). Jika Foto Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Dibawah 2MB',
+                ]
+            );
+
+            if ($validate->fails()) {
+                alert()->error('Gagal Update Tanda Tangan!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-photo-error', 'Gagal Update Tanda Tangan')->withErrors($validate)->withInput($request->all());
+            }
+
+            if ($request->hasFile('signature')) {
+                if ($request->oldSignature) {
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+
+                    $file = storage_path('app/public/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/') . $sdm . '/' . $request->oldSignature;
+                    if (file_exists($file)) {
+                        unlink($file);
+                    }
+
+                    // Get File Image
+                    $photoProfile = $request->file('signature');
+                    // Get Original Name
+                    // $photoName      =   $photoProfile->getClientOriginalName();
+                    // Get Original Extension
+                    $photoExtension =   $photoProfile->getClientOriginalExtension();
+
+                    // Get Id Auth SDM
+                    $id = Auth::guard('human_resources')->user()->id;
+                    // Get SDM Username
+                    $sdm = Auth::guard('human_resources')->user()->username;
+                    // Photo Name
+                    $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                    $img = Image::make($photoProfile);
+                    $img->resize(100, 100, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->stream();
+
+
+                    // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+                    if (Auth::guard('human_resources')->user()->role == 3) {
+                        $photoProfile->move(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $sdm), $photoName);
+                    }
+
+                    // Find Auth SDM Active storage_path($folder)
+                    $id = Auth::guard('human_resources')->user()->id;
+                    $sdm = HumanResource::find($id);
+
+                    // Save Photo To Database
+                    $sdm->signature = $photoName;
+                    $sdm->save();
+
+                    alert()->success('Berhasil Update Tanda Tangan')->autoclose(25000);
+                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Tanda Tangan');
+                }
+
+                // Get File Image
+                $photoProfile = $request->file('signature');
+                // Get Original Name
+                // $photoName      =   $photoProfile->getClientOriginalName();
+                // Get Original Extension
+                $photoExtension =   $photoProfile->getClientOriginalExtension();
+
+                // Get Id Auth SDM
+                $id = Auth::guard('human_resources')->user()->id;
+                // Get SDM Username
+                $sdm = Auth::guard('human_resources')->user()->username;
+                // Photo Name
+                $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+
+                $img = Image::make($photoProfile);
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->stream();
+
+
+                // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
+                if (Auth::guard('human_resources')->user()->role == 3) {
+                    $photoProfile->move(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $sdm), $photoName);
+                }
+
+                // Find Auth SDM Active storage_path($folder)
+                $id = Auth::guard('human_resources')->user()->id;
+                $sdm = HumanResource::find($id);
+
+                // Save Photo To Database
+                $sdm->signature = $photoName;
                 $sdm->save();
 
                 alert()->success('Berhasil Update Foto')->autoclose(25000);

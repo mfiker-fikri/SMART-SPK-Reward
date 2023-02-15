@@ -126,6 +126,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-biro-SDM/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaBiroSDM'])->name('postProfile.postImageDelete.KepalaBiroSDM.SDM');
         // Profile Change Password
         Route::POST('/kepala-biro-SDM/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaBiroSDM'])->name('postProfile.changePasswordUpdate.KepalaBiroSDM.SDM');
+        // Signature Upload
+        Route::POST('/kepala-biro-SDM/signature/upload', [App\Http\Controllers\SDM\SDMController::class, 'postSignatureUploadKepalaBiroSDM'])->name('postProfile.postSignatureUpload.KepalaBiroSDM.SDM');
 
         // Signature Inovation
         // Read
@@ -148,6 +150,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.postImageDelete.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         // Profile Change Password
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.changePasswordUpdate.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        // Signature Upload
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/upload', [App\Http\Controllers\SDM\SDMController::class, 'postSignatureUploadKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postProfile.postSignatureUpload.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
 
         // Signature Inovation
         // Read
@@ -173,6 +177,9 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/image/delete', [App\Http\Controllers\SDM\SDMController::class, 'postImageDeleteKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.postImageDelete.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
         // Profile Change Password
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/change-password', [App\Http\Controllers\SDM\SDMController::class, 'changePasswordUpdateKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.changePasswordUpdate.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        // Signature Upload
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/upload', [App\Http\Controllers\SDM\SDMController::class, 'postSignatureUploadKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.postSignatureUpload.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+
 
 
         // Manage Kategori

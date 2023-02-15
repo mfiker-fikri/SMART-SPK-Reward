@@ -58,6 +58,39 @@
     </script>
     <!--/ Reset Photo Preview -->
 
+
+    <!-- Photo Preview -->
+    <script type='text/javascript'>
+    function preview_signature(event)
+    {
+        var reader = new FileReader();
+        reader.onload = function()
+        {
+            var output = document.getElementById('output_signature');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    </script>
+    <!--/ Photo Preview -->
+
+    <!-- Reset Photo Preview -->
+    <script type="text/javascript">
+        document.getElementById("resetSignature").onclick = function() {
+            reset_previewSignature()
+        };
+
+        function reset_previewSignature()
+        {
+            var old = document.getElementById("oldSignature").getAttribute("value");
+            var preview = document.getElementById('output_signature').getAttribute("src");
+            if (old != preview) {
+                document.getElementById('output_signature').setAttribute("src", old);
+            }
+        }
+    </script>
+    <!--/ Reset Photo Preview -->
+
     <!-- Delete Photo SDM 1 -->
     <script type="text/javascript">
     $(document).on('click', '#deletePhoto1', function(e) {
@@ -537,6 +570,7 @@
                                 @endif
                                 <!--/ Photo Profile -->
 
+
                                 <div class="d-flex flex-row">
 
                                     <!-- Button Trigger Modal Change Photo -->
@@ -550,6 +584,20 @@
                                         </button>
                                     </div>
                                     <!--/ Button Trigger Modal Change Photo -->
+
+
+                                    <!-- Signature -->
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#signaturePhoto">
+                                            @if (Auth::guard('human_resources')->user()->signature)
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Change Signature
+                                            @else
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Upload signature
+                                            @endif
+                                        </button>
+                                    </div>
+                                    <!--/ Signature -->
+
 
                                     <!-- Modal Change Photo -->
                                     <div class="modal fade" id="changePhoto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -652,6 +700,106 @@
                                         </div>
                                     </div>
                                     <!-- Modal Change Photo -->
+
+                                    <!-- Modal Signature -->
+                                    <div class="modal fade" id="signaturePhoto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <!-- Form Signature -->
+                                                @if (Auth::guard('human_resources')->user()->role == 1)
+                                                <!-- Role 1 -->
+                                                <form id="formSignatureUpdate" class="mb-3" method="POST" action="{{ URL::to('sdm/kepala-biro-SDM/signature/upload') }}" enctype="multipart/form-data">
+                                                @elseif (Auth::guard('human_resources')->user()->role == 2)
+                                                <!-- Role 2 -->
+                                                <form id="formSignatureUpdate" class="mb-3" method="POST" action="{{ URL::to('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/upload') }}" enctype="multipart/form-data">
+                                                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                                <!-- Role 3 -->
+                                                <form id="formSignatureUpdate" class="mb-3" method="POST" action="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/upload') }}" enctype="multipart/form-data">
+                                                @endif
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        @if (Auth::guard('human_resources')->user()->signature)
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Change Signature</h5>
+                                                        @else
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Upload Signature</h5>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="d-flex justify-content-center py-sm-3">
+                                                            @if (Auth::guard('human_resources')->user()->signature)
+                                                                @if (Auth::guard('human_resources')->user()->role == 1)
+                                                                <!-- Role 1 -->
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfHumanResources/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }}">
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 2)
+                                                                <!-- Role 2 -->
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }}">
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                                                <!-- Role 3 -->
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }}">
+                                                                @endif
+                                                            @else
+                                                            <img class="d-block rounded" height="200" width="300" id="output_signature">
+                                                            @endif
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            @if (Auth::guard('human_resources')->user()->signature != null)
+                                                                @if (Auth::guard('human_resources')->user()->role == 1)
+                                                                <!-- Role 1 -->
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfHumanResources/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }} " />
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 2)
+                                                                <!-- Role 2 -->
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }} " />
+                                                                @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                                                <!-- Role 3 -->
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }} " />
+                                                                @endif
+                                                            @elseif (Auth::guard('human_resources')->user()->signature == null)
+                                                            {{-- <input type="text" name="oldImage" value="" /> --}}
+                                                            <input type="hidden" name="oldSignature" id="oldSignature" value="" />
+                                                            @endif
+                                                            <input type="file" class="form-control {{ $errors->has('signature') ? ' has-error' : '' }}" id="signature"
+                                                                name="signature" placeholder="*Nama Lengkap"
+                                                                required accept=".png, .jpg, .jpeg" onchange="preview_signature(event)" />
+                                                            <label class="input-group-text" for="signature">Upload Signature</label>
+                                                        </div>
+
+                                                        <!-- Error Photo Profile -->
+                                                        @if ( $errors->has('signature') )
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('signature') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                        <!--/ Error Photo Profile -->
+
+                                                        <p class="text-muted text-md-center mb-0">Allowed JPG, JPEG or PNG. Max size of 2MB (2048 Kb)</p>
+
+                                                    </div>
+
+                                                    <!-- Action Button -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" style="color: black" data-bs-dismiss="modal">
+                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Close
+                                                        </button>
+                                                        <button type="reset" class="btn btn-warning" id="resetSignature">
+                                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary" style="color: black">
+                                                            @if (Auth::guard('human_resources')->user()->signature)
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Change Signature
+                                                            @else
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Upload Signature
+                                                            @endif
+                                                        </button>
+                                                    </div>
+                                                    <!--/ Action Button -->
+
+                                                </form>
+                                                <!--/ Form Signature -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal Signature -->
 
                                     <!-- Delete Photo -->
                                     @if (Auth::guard('human_resources')->user()->photo_profile)

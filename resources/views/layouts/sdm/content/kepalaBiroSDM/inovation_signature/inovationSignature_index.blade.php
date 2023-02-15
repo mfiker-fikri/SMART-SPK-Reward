@@ -16,15 +16,106 @@
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {   data: 'fullName', name: 'fullName', orderable: false, searchable: false},
                 {   data: 'year', name: 'year', orderable: false, searchable: false},
+                {   data: 'score_final_result', name: 'score_final_result', orderable: false, searchable: false},
                 {   data: 'description', name: 'description', orderable: false, searchable: false},
+                {   data: 'score_final_result_description', name: 'score_final_result_description', orderable: false, searchable: false},
                 {   data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
 
         new $.fn.dataTable.FixedHeader( table );
+
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Kategori -->
+
+    <!-- Delete Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).on('click', '#verifySignatureRewardInovationId', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        // console.log(id);
+        Swal.fire({
+            title: 'Apakah kamu ingin memverifikasi penghargaan ini?',
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    method: 'post',
+                    url: "{{ url('sdm/kepala-biro-SDM/signature/inovation') }}" + '/' + id + '/post',
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Verifikasi Tanda Tangan Berhasil!',
+                            icon: 'success',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    },
+                    error: function(event,xhr,options,exc){
+                        if (event.status == 401) {
+                            Swal.fire({
+                                icon: xhr,
+                                title: event.status + ' ' +event.statusText,
+                                text: 'Oops! 😖 Your Authorized Failed!',
+                                confirmButtonText: 'Ok',
+                            })
+                        }else if (event.status == 500) {
+                            Swal.fire({
+                                icon: xhr,
+                                title: event.status + ' ' +event.statusText,
+                                text: 'Oops! 😖 Something Went Wrong!',
+                                confirmButtonText: 'Ok',
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: xhr,
+                                title: event.status + ' ' +event.statusText,
+                                text: 'Oops! 😖 Something went wrong!',
+                                confirmButtonText: 'Ok',
+                            })
+                        }
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal ',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        });
+    });
+    </script>
+    <!--/ Delete Form Inovation Id -->
 @stop
 
 @section('content')
@@ -50,7 +141,9 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Tahun</th>
+                                <th scope="col">Nilai</th>
                                 <th scope="col">Deskripsi</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>

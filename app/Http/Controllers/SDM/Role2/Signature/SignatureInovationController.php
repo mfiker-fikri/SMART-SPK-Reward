@@ -8,6 +8,7 @@ use App\Models\FinalResultRewardInovation;
 use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class SignatureInovationController extends Controller
@@ -57,30 +58,24 @@ class SignatureInovationController extends Controller
                                             //
                                             ['signature_head_of_disciplinary_awards_and_administration', '=', null],
                                             ['verify_head_of_disciplinary_awards_and_administration', '=', null],
-                                        ])->latest()->get();
+                                            //
+                                            ['score_final_result', '>', 0.75],
+                                        ])->latest()->orderBy('score_final_result', 'DESC')->get();
 
 
             return DataTables::of($finalResult)
                     ->addIndexColumn()
-
                     ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
                         $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
                         return $full_name;
-                    })
-                    ->addColumn('year', function ($row) {
-                        $year = '';
-                        $year = '<span>'.\Carbon\Carbon::parse($row->created_at)->format('Y').'</span>';
-
-                        return $year;
                     })
                     ->addColumn('action', function ($row) {
                         $actionBtn = '';
                         if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
                             $actionBtn =
                                 '
-                                    <a href="' . route('sdm.getSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM', $row->id) . '"
-                                    class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="printResultRewardInovationId">
-                                        <i class="fas fa-file-signature"></i> Tanda Tangan
+                                    <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
+                                        <i class="fas fa-file-signature"></i> Verification Signature
                                     </a>
                                 ';
                         } else {
@@ -90,10 +85,25 @@ class SignatureInovationController extends Controller
 
                         return $actionBtn;
                     })
+                    ->addColumn('year', function ($row) {
+                        $year = '';
+                        $year = '<span>'.\Carbon\Carbon::parse($row->created_at)->format('Y').'</span>';
 
-                    ->rawColumns(['fullName', 'action', 'year'])
+                        return $year;
+                    })
+                    ->addColumn('description', function ($row) {
+                        $desc = '';
+                        if ($row->score_final_result > 0.85 && $row->score_final_result <= 1) {
+                            $desc = '<span>Terbaik</span>';
+                        }
+                        if ($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
+                            $desc = '<span>Baik</span>';
+                        }
+
+                        return $desc;
+                    })
+                    ->rawColumns(['fullName', 'action', 'year', 'description'])
                     ->make(true);
-
 
         } catch (\Throwable $th) {
             throw $th;
@@ -121,10 +131,17 @@ class SignatureInovationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request)
+    public function postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request, $id)
     {
         try {
+            $signature = FinalResultRewardInovation::find($id);
 
+            if($signature) {
+                $signature->signature_head_of_disciplinary_awards_and_administration    =   ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
+                $signature->name_head_of_disciplinary_awards_and_administration         =   Auth::guard('human_resources')->user()->full_name;
+                $signature->verify_head_of_disciplinary_awards_and_administration       =   1;
+                $signature->save();
+            }
         } catch (\Throwable $th) {
             throw $th;
         }

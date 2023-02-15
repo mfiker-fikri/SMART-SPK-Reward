@@ -8,6 +8,7 @@ use App\Models\FinalResultRewardInovation;
 use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class SignatureInovationController extends Controller
@@ -53,6 +54,9 @@ class SignatureInovationController extends Controller
                                 ['updated_at', '>=', $dateOpenTime],
                                 ['updated_at', '<=', $dateExpiredTime],
                                 //
+                                ['signature_head_of_rewards_discipline_and_pension_subdivision', '=', null],
+                                ['verify_head_of_rewards_discipline_and_pension_subdivision', '=', null],
+                                //
                                 ['score_final_result', '>', 0.75],
                             ])->latest()->orderBy('score_final_result', 'DESC')->get();
 
@@ -68,8 +72,7 @@ class SignatureInovationController extends Controller
                             if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
                                 $actionBtn =
                                     '
-                                        <a href="' . route('pegawai.getResultRewardInovationData.PrintId.Pegawai', $row->id) . '"
-                                        class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black" id="verifySignatureRewardInovationId">
+                                        <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
                                             <i class="fas fa-file-signature"></i> Verification Signature
                                         </a>
                                     ';
@@ -86,7 +89,18 @@ class SignatureInovationController extends Controller
 
                             return $year;
                         })
-                        ->rawColumns(['fullName', 'action', 'year'])
+                        ->addColumn('description', function ($row) {
+                            $desc = '';
+                            if ($row->score_final_result > 0.85 && $row->score_final_result <= 1) {
+                                $desc = '<span>Terbaik</span>';
+                            }
+                            if ($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
+                                $desc = '<span>Baik</span>';
+                            }
+
+                            return $desc;
+                        })
+                        ->rawColumns(['fullName', 'action', 'year', 'description'])
                         ->make(true);
 
         } catch (\Throwable $th) {
@@ -134,9 +148,21 @@ class SignatureInovationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request, $id)
     {
-        //
+        try {
+            $signature = FinalResultRewardInovation::find($id);
+
+            if($signature) {
+                $signature->signature_head_of_rewards_discipline_and_pension_subdivision    =   ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
+                $signature->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
+                $signature->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
+                $signature->save();
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
