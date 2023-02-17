@@ -137,7 +137,7 @@ class SignatureInovationController extends Controller
             $signature = FinalResultRewardInovation::find($id);
 
             if($signature) {
-                $signature->signature_head_of_disciplinary_awards_and_administration    =   ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
+                $signature->signature_head_of_disciplinary_awards_and_administration    =   Auth::guard('human_resources')->user()->signature;
                 $signature->name_head_of_disciplinary_awards_and_administration         =   Auth::guard('human_resources')->user()->full_name;
                 $signature->verify_head_of_disciplinary_awards_and_administration       =   1;
                 $signature->save();

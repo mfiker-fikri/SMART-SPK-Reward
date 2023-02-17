@@ -4,6 +4,30 @@
 
         <title>Penerimaan Penghargaan Inovasi {{ \Carbon\Carbon::parse($created_at)->format('Y') }} - {{ Auth::guard('employees')->user()->full_name }}</title>
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url('assets/favicon/favicon.ico') }}">
+
+        <link rel="icon" sizes="192x192"  href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" sizes="32x32" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" sizes="96x96" href="{{ url('assets/favicon/favicon.ico') }}">
+        <link rel="icon" sizes="16x16" href="{{ url('assets/favicon/favicon.ico') }}">
+
+        <link rel="manifest" href="{{ url('assets/favicon/manifest.json') }}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{ url('assets/favicon/favicon.ico') }}">
+        <meta name="theme-color" content="#ffffff">
 
         <!-- Add Ext Plugin -->
         <!-- Bootstrap 5 dan 4 -->
@@ -408,15 +432,19 @@
                             <div class="child text-center" id="child1">
                                 {{-- <span class="pm-credits-text flex sans">Date Completed</span> --}}
                                 <span class="pm-empty-space flex underline-signature">
-                                    <img src="{{ public_path('storage/sdm/headOfHumanResources/signature/'.$signature_head_of_the_human_resources_bureau ) }}" alt="signature" width="150" height="60" />
+                                    <img src="{{ public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'.$signature_head_of_rewards_discipline_and_pension_subdivision ) }}" alt="signature" width="150" height="60" />
                                 </span>
-                                <span class="bold flex pt-3">{{ $name_head_of_the_human_resources_bureau }}</span>
+                                <span class="bold flex pt-3">{{ $name_head_of_rewards_discipline_and_pension_subdivision }}</span>
                                 <span class="flex">Kepala Subbagian Penghargaan, Disiplin, dan Pensiun </span>
                             </div>
                             <div class="child text-center" id="child2">
                                 {{-- <span class="pm-credits-text flex sans">Date Completed</span> --}}
                                 <span class="pm-empty-space flex underline-signature">
+                                    @if ( empty($signature_head_of_the_human_resources_bureau) )
+                                    <span>Not Signature</span>
+                                    @else
                                     <img src="{{ public_path('storage/sdm/headOfHumanResources/signature/'.$signature_head_of_the_human_resources_bureau ) }}" alt="signature" width="150" height="60" />
+                                    @endif
                                 </span>
                                 <span class="bold flex pt-3">{{ $name_head_of_the_human_resources_bureau }}</span>
                                 <span class="flex">Kepala Sumber Daya Manusia </span>

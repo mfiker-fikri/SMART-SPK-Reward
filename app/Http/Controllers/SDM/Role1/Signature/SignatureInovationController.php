@@ -166,7 +166,8 @@ class SignatureInovationController extends Controller
             $signature = FinalResultRewardInovation::find($id);
 
             if($signature) {
-                $signature->signature_head_of_the_human_resources_bureau    =   ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
+                $signature->signature_head_of_the_human_resources_bureau    =   Auth::guard('human_resources')->user()->signature;
+                // ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
                 $signature->name_head_of_the_human_resources_bureau         =   Auth::guard('human_resources')->user()->full_name;
                 $signature->verify_head_of_the_human_resources_bureau       =   1;
                 $signature->save();

@@ -283,10 +283,10 @@ class SDMController extends Controller
                     'signature'                 =>      'required|image|mimes:jpg,jpeg,png|max:2048',
                 ],
                 [
-                    'signature.required'        =>      'Foto Wajib Diisi!',
-                    'signature.image'           =>      'Diupload Harus Berupa Foto!',
-                    'signature.mimes'           =>      'Extension Foto Harus Berupa jpg, jpeg, png',
-                    'signature.max'             =>      'Maksimal Foto Upload 2Mb (2048 Kb). Jika Foto Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Dibawah 2MB',
+                    'signature.required'        =>      'Foto Tanda Tangan Wajib Diisi!',
+                    'signature.image'           =>      'Diupload Harus Berupa Foto Tanda Tangan!',
+                    'signature.mimes'           =>      'Extension Foto Tanda Tangan Harus Berupa jpg, jpeg, png',
+                    'signature.max'             =>      'Maksimal Foto Tanda Tangan Upload 2Mb (2048 Kb). Jika Foto Tanda Tangan Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Tanda Tangan Dibawah 2MB',
                 ]
             );
 
@@ -300,7 +300,8 @@ class SDMController extends Controller
                     // Get SDM Username
                     $sdm = Auth::guard('human_resources')->user()->username;
 
-                    $file = storage_path('app/public/sdm/headOfHumanResources/signature/') . $sdm . '/' . $request->oldSignature;
+                    $file = storage_path('app/public/sdm/headOfHumanResources/signature/') . $request->oldSignature;
+
                     if (file_exists($file)) {
                         unlink($file);
                     }
@@ -317,7 +318,7 @@ class SDMController extends Controller
                     // Get SDM Username
                     $sdm                =   Auth::guard('human_resources')->user()->username;
                     // Photo Name
-                    $photoName          =   $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                    $photoName          =   $sdm . '/' . $sdm;
 
                     $img = Image::make($photoProfile);
                     $img->resize(100, 100, function ($constraint) {
@@ -326,7 +327,6 @@ class SDMController extends Controller
 
                     // Kepala Biro SDM
                     if (Auth::guard('human_resources')->user()->role == 1) {
-                        // $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
                         $photoProfile->move(public_path('storage/sdm/headOfHumanResources/signature/' . $sdm), $photoName);
                     }
 
@@ -354,7 +354,7 @@ class SDMController extends Controller
                 // Get SDM Username
                 $sdm                =   Auth::guard('human_resources')->user()->username;
                 // Photo Name
-                $photoName          =   $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                $photoName          =   $sdm . '/' . $sdm;
 
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
@@ -363,7 +363,6 @@ class SDMController extends Controller
 
                 // Kepala Biro SDM
                 if (Auth::guard('human_resources')->user()->role == 1) {
-                    // $photoProfile->storeAs('public/sdm/headOfHumanResources/photos/photoProfile/' . $sdm, $photoName);
                     $photoProfile->move(public_path('storage/sdm/headOfHumanResources/signature/' . $sdm), $photoName);
                 }
 
@@ -408,6 +407,35 @@ class SDMController extends Controller
                 DB::table('human_resources')->where('id', $id)->update(['photo_profile' => null]);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
                 return redirect()->back()->with('message-update-photo-success', 'Berhasil Hapus Foto Profile');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postSignatureUploadDeleteKepalaBiroSDM(Request $request)
+    {
+        try {
+            $id = Auth::guard('human_resources')->user()->id;
+            $photo = HumanResource::find($id);
+
+            if($photo) {
+                $sdm = Auth::guard('human_resources')->user()->username;
+                $file = storage_path('app/public/sdm/headOfHumanResources/signature/') . $photo->signature;
+
+                if (file_exists($file) && $photo->signature != null) {
+                    unlink($file);
+                }
+
+                DB::table('human_resources')->where('id', $id)->update(['signature' => null]);
+                alert()->success('Berhasil Hapus Tanda Tangan')->autoclose(25000);
+                return redirect()->back()->with('message-update-photo-success', 'Berhasil Hapus Tanda Tangan');
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -776,11 +804,12 @@ class SDMController extends Controller
             }
 
             if ($request->hasFile('signature')) {
-                if ($request->oldImage) {
+                if ($request->oldSignature) {
                     // Get SDM Username
                     $sdm = Auth::guard('human_resources')->user()->username;
 
-                    $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/signature/') . $sdm . '/' . $request->oldImage;
+                    $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/signature/') . $request->oldSignature;
+
                     if (file_exists($file)) {
                         unlink($file);
                     }
@@ -793,11 +822,11 @@ class SDMController extends Controller
                     $photoExtension =   $photoProfile->getClientOriginalExtension();
 
                     // Get Id Auth SDM
-                    $id = Auth::guard('human_resources')->user()->id;
+                    $id         =   Auth::guard('human_resources')->user()->id;
                     // Get SDM Username
-                    $sdm = Auth::guard('human_resources')->user()->username;
+                    $sdm        =   Auth::guard('human_resources')->user()->username;
                     // Photo Name
-                    $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                    $photoName  =   $sdm . '/' . $sdm;
 
                     $img = Image::make($photoProfile);
                     $img->resize(100, 100, function ($constraint) {
@@ -829,11 +858,11 @@ class SDMController extends Controller
                 $photoExtension =   $photoProfile->getClientOriginalExtension();
 
                 // Get Id Auth SDM
-                $id = Auth::guard('human_resources')->user()->id;
+                $id         =   Auth::guard('human_resources')->user()->id;
                 // Get SDM Username
-                $sdm = Auth::guard('human_resources')->user()->username;
+                $sdm        =   Auth::guard('human_resources')->user()->username;
                 // Photo Name
-                $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                $photoName  =   $sdm . '/' . $sdm;
 
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
@@ -877,12 +906,44 @@ class SDMController extends Controller
             if($photo) {
                 $sdm = Auth::guard('human_resources')->user()->username;
                 $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/photos/photoProfile/') . $sdm . '/' . $photo->photo_profile;
+
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
-                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => '']);
+
+                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => null]);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
                 return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postSignatureUploadDeleteKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request)
+    {
+        try {
+            $id = Auth::guard('human_resources')->user()->id;
+            $photo = HumanResource::find($id);
+
+            if($photo) {
+                $sdm = Auth::guard('human_resources')->user()->username;
+                $file = storage_path('app/public/sdm/headOfDisciplinaryAwardsAndAdministration/signature/') . $photo->signature;
+
+                if (file_exists($file) && $photo->signature != null) {
+                    unlink($file);
+                }
+
+                DB::table('human_resources')->where('id', $id)->update(['signature' => null]);
+                alert()->success('Berhasil Hapus Tanda Tangan')->autoclose(25000);
+                return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Tanda Tangan');
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -1198,10 +1259,10 @@ class SDMController extends Controller
                     'signature'                 =>      'required|image|mimes:jpg,jpeg,png|max:2048',
                 ],
                 [
-                    'signature.required'        =>      'Foto Wajib Diisi!',
-                    'signature.image'           =>      'Diupload Harus Berupa Foto!',
-                    'signature.mimes'           =>      'Extension Foto Harus Berupa jpg, jpeg, png',
-                    'signature.max'             =>      'Maksimal Foto Upload 2Mb (2048 Kb). Jika Foto Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Dibawah 2MB',
+                    'signature.required'        =>      'Foto Tanda Tangan Wajib Diisi!',
+                    'signature.image'           =>      'Diupload Harus Berupa Foto Tanda Tangan!',
+                    'signature.mimes'           =>      'Extension Foto Tanda Tangan Harus Berupa jpg, jpeg, png',
+                    'signature.max'             =>      'Maksimal Foto Tanda Tangan Upload 2Mb (2048 Kb). Jika Foto Tanda Tangan Tetap Diupload, Cobalah Untuk Memperkecil Resolusi Foto Tanda Tangan Dibawah 2MB',
                 ]
             );
 
@@ -1215,7 +1276,8 @@ class SDMController extends Controller
                     // Get SDM Username
                     $sdm = Auth::guard('human_resources')->user()->username;
 
-                    $file = storage_path('app/public/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/') . $sdm . '/' . $request->oldSignature;
+                    $file = storage_path('app/public/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/') . $request->oldSignature;
+
                     if (file_exists($file)) {
                         unlink($file);
                     }
@@ -1228,17 +1290,16 @@ class SDMController extends Controller
                     $photoExtension =   $photoProfile->getClientOriginalExtension();
 
                     // Get Id Auth SDM
-                    $id = Auth::guard('human_resources')->user()->id;
+                    $id         =   Auth::guard('human_resources')->user()->id;
                     // Get SDM Username
-                    $sdm = Auth::guard('human_resources')->user()->username;
+                    $sdm        =   Auth::guard('human_resources')->user()->username;
                     // Photo Name
-                    $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                    $photoName  =   $sdm . '/' . $sdm;
 
                     $img = Image::make($photoProfile);
                     $img->resize(100, 100, function ($constraint) {
                         $constraint->aspectRatio();
                     })->stream();
-
 
                     // Kepala Subbagian Penghargaan, Disiplin, dan Pensiun
                     if (Auth::guard('human_resources')->user()->role == 3) {
@@ -1258,18 +1319,18 @@ class SDMController extends Controller
                 }
 
                 // Get File Image
-                $photoProfile = $request->file('signature');
+                $photoProfile   =   $request->file('signature');
                 // Get Original Name
                 // $photoName      =   $photoProfile->getClientOriginalName();
                 // Get Original Extension
                 $photoExtension =   $photoProfile->getClientOriginalExtension();
 
                 // Get Id Auth SDM
-                $id = Auth::guard('human_resources')->user()->id;
+                $id             =   Auth::guard('human_resources')->user()->id;
                 // Get SDM Username
-                $sdm = Auth::guard('human_resources')->user()->username;
+                $sdm            =   Auth::guard('human_resources')->user()->username;
                 // Photo Name
-                $photoName = $id . '_' . $sdm . '_' . date('d-m-Y') . $photoExtension;
+                $photoName      =   $sdm . '/' . $sdm;
 
                 $img = Image::make($photoProfile);
                 $img->resize(100, 100, function ($constraint) {
@@ -1317,7 +1378,7 @@ class SDMController extends Controller
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
-                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => '']);
+                DB::table('human_resources')->where('id', $id)->update(['photo_profile' => null]);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
                 return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
             }
@@ -1325,6 +1386,36 @@ class SDMController extends Controller
             throw $th;
         }
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postSignatureUploadDeleteKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request)
+    {
+        try {
+            $id = Auth::guard('human_resources')->user()->id;
+            $photo = HumanResource::find($id);
+
+            if($photo) {
+                $sdm = Auth::guard('human_resources')->user()->username;
+                $file = storage_path('app/public/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/') . $photo->signature;
+
+                if (file_exists($file) && $photo->signature != null) {
+                    unlink($file);
+                }
+
+                DB::table('human_resources')->where('id', $id)->update(['signature' => null]);
+                alert()->success('Berhasil Hapus Tanda tangan')->autoclose(25000);
+                return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Tanda tangan');
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.

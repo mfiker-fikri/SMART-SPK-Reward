@@ -9,6 +9,7 @@ use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
 
 class SignatureInovationController extends Controller
@@ -153,8 +154,15 @@ class SignatureInovationController extends Controller
         try {
             $signature = FinalResultRewardInovation::find($id);
 
+            // Get SDM Username
+            $sdm            =   Auth::guard('human_resources')->user()->username;
+            // Get Signature Auth SDM
+            $signature      =   Auth::guard('human_resources')->user()->signature;
+
+            File::copy(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature), public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature));
+
             if($signature) {
-                $signature->signature_head_of_rewards_discipline_and_pension_subdivision    =   ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
+                $signature->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->signature;
                 $signature->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
                 $signature->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
                 $signature->save();

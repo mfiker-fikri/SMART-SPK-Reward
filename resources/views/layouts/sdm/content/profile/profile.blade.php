@@ -297,6 +297,211 @@
     </script>
     <!--/ Delete Photo SDM 3 -->
 
+
+    <!-- Delete Signature SDM 1 -->
+    <script type="text/javascript">
+    $(document).on('click', '#deleteSignature1', function(e) {
+        Swal.fire({
+            title: 'Apakah kamu ingin menghapus tanda tangan ini?',
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    method: 'post',
+                    url: "{{ route('sdm.postProfile.postSignatureUploadDelete.KepalaBiroSDM.SDM') }}",
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Delete',
+                            icon: 'success',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        })
+                        .then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                                $('#message-update-photo-success').show();
+                            }
+                        })
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        Swal.fire({
+                            title: 'Gagal/Error',
+                            text: thrownError,
+                            icon: 'error',
+                            confirmButtonText: 'Ok',
+                        })
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal ',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        });
+    });
+    </script>
+    <!--/ Delete Signature SDM 1 -->
+
+    <!-- Delete Signature SDM 2 -->
+    <script type="text/javascript">
+        $(document).on('click', '#deleteSignature2', function(e) {
+            Swal.fire({
+                title: 'Apakah kamu ingin menghapus tanda tangan ini?',
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ route('sdm.postProfile.postSignatureUploadDelete.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM') }}",
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Delete',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            })
+                            // .then((result) => {
+                            //     $('#message-update-photo-success').show();
+                            // })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    $('#message-update-photo-success').show();
+                                }
+                            })
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            Swal.fire({
+                                title: 'Gagal/Error',
+                                text: thrownError,
+                                icon: 'error',
+                                confirmButtonText: 'Ok',
+                            });
+                            $('#message-update-photo-error').show();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    </script>
+    <!--/ Delete Signature SDM 2 -->
+
+    <!-- Delete Signature SDM 3 -->
+    <script type="text/javascript">
+        $(document).on('click', '#deleteSignature3', function(e) {
+            Swal.fire({
+                title: 'Apakah kamu ingin menghapus tanda tangan ini?',
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ route('sdm.postProfile.postSignatureUploadDelete.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM') }}",
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Delete',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            })
+                            // .then((result) => {
+                            //     $('#message-update-photo-success').show();
+                            // })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    $('#message-update-photo-success').show();
+                                }
+                            })
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            Swal.fire({
+                                title: 'Gagal/Error',
+                                text: thrownError,
+                                icon: 'error',
+                                confirmButtonText: 'Ok',
+                            });
+                            $('#message-update-photo-error').show();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    </script>
+    <!--/ Delete Signature SDM 3 -->
+
+
     <!-- Update Change Password -->
     <script type="text/javascript">
     // $(document).on('click', '#updateChangePassword', function(e) {
@@ -585,20 +790,6 @@
                                     </div>
                                     <!--/ Button Trigger Modal Change Photo -->
 
-
-                                    <!-- Signature -->
-                                    <div class="mx-1 mx-1 mx-1">
-                                        <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#signaturePhoto">
-                                            @if (Auth::guard('human_resources')->user()->signature)
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Change Signature
-                                            @else
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Upload signature
-                                            @endif
-                                        </button>
-                                    </div>
-                                    <!--/ Signature -->
-
-
                                     <!-- Modal Change Photo -->
                                     <div class="modal fade" id="changePhoto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -701,6 +892,18 @@
                                     </div>
                                     <!-- Modal Change Photo -->
 
+                                    <!-- Signature -->
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#signaturePhoto">
+                                            @if (Auth::guard('human_resources')->user()->signature)
+                                            <i class="fa-solid fa-signature mx-auto me-2"></i>Change Signature
+                                            @else
+                                            <i class="fa-solid fa-signature mx-auto me-2"></i>Upload signature
+                                            @endif
+                                        </button>
+                                    </div>
+                                    <!--/ Signature -->
+
                                     <!-- Modal Signature -->
                                     <div class="modal fade" id="signaturePhoto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -730,33 +933,32 @@
                                                             @if (Auth::guard('human_resources')->user()->signature)
                                                                 @if (Auth::guard('human_resources')->user()->role == 1)
                                                                 <!-- Role 1 -->
-                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfHumanResources/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }}">
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfHumanResources/signature/'. Auth::guard('human_resources')->user()->signature) }}">
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                                                                 <!-- Role 2 -->
-                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }}">
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'. Auth::guard('human_resources')->user()->signature) }}">
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 3)
                                                                 <!-- Role 3 -->
-                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }}">
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature" src="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'. Auth::guard('human_resources')->user()->signature) }}">
                                                                 @endif
                                                             @else
-                                                            <img class="d-block rounded" height="200" width="300" id="output_signature">
+                                                                <img class="d-block rounded" height="200" width="300" id="output_signature">
                                                             @endif
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             @if (Auth::guard('human_resources')->user()->signature != null)
                                                                 @if (Auth::guard('human_resources')->user()->role == 1)
                                                                 <!-- Role 1 -->
-                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfHumanResources/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }} " />
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfHumanResources/signature/'. Auth::guard('human_resources')->user()->signature) }} " />
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 2)
                                                                 <!-- Role 2 -->
-                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }} " />
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/'. Auth::guard('human_resources')->user()->signature) }} " />
                                                                 @elseif (Auth::guard('human_resources')->user()->role == 3)
                                                                 <!-- Role 3 -->
-                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'. Auth::guard('human_resources')->user()->username. '/' . Auth::guard('human_resources')->user()->signature) }} " />
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="{{ asset( 'storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/'. Auth::guard('human_resources')->user()->signature) }} " />
                                                                 @endif
                                                             @elseif (Auth::guard('human_resources')->user()->signature == null)
-                                                            {{-- <input type="text" name="oldImage" value="" /> --}}
-                                                            <input type="hidden" name="oldSignature" id="oldSignature" value="" />
+                                                                <input type="hidden" name="oldSignature" id="oldSignature" value="" />
                                                             @endif
                                                             <input type="file" class="form-control {{ $errors->has('signature') ? ' has-error' : '' }}" id="signature"
                                                                 name="signature" placeholder="*Nama Lengkap"
@@ -821,6 +1023,27 @@
                                     </div>
                                     @endif
                                     <!--/ Delete Photo -->
+
+                                    <!-- Delete Signature -->
+                                    @if (Auth::guard('human_resources')->user()->signature)
+                                    <div class="mx-1 mx-1 mx-1">
+                                            {{-- @csrf --}}
+                                            @if (Auth::guard('human_resources')->user()->role == 1)
+                                            <!-- Role 1 -->
+                                            <button type="submit" class="btn btn-danger" style="color: black" id="deleteSignature1">
+                                            @elseif (Auth::guard('human_resources')->user()->role == 2)
+                                            <!-- Role 2 -->
+                                            <button type="submit" class="btn btn-danger" style="color: black" id="deleteSignature2">
+                                            @elseif (Auth::guard('human_resources')->user()->role == 3)
+                                            <!-- Role 3 -->
+                                            <button type="submit" class="btn btn-danger" style="color: black" id="deleteSignature3">
+                                            @endif
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Delete Signature
+                                            </button>
+                                        {{-- </form> --}}
+                                    </div>
+                                    @endif
+                                    <!--/ Delete Signature -->
 
                                 </div>
 
