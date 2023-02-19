@@ -11,7 +11,7 @@
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
-            paging: false,
+            // paging: false,
             // dom: 'lBfrtip',
             // pageLength: 0,
             lengthMenu: [5, 10, 20, 50, 100, 200, 500],

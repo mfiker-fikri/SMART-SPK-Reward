@@ -87,6 +87,37 @@
             </li>
             <!--/ Tanda Tangan -->
 
+            <!-- Report Reward -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Hasil Rekap Reward</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/inovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-file"></i>
+                    <div data-i18n="rekapReward">Hasil Rekap Reward</div>
+                </a>
+                <ul class="menu-sub">
+                    <!-- Signature Inovation -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/inovation*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/reward/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="rekapRewardInovation">Rekap Reward Inovasi</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Inovation -->
+
+                    <!-- Signature Representative -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="rekapRewardRepresentative">Rekap Reward Teladan</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Representative -->
+
+                </ul>
+            </li>
+            <!--/ Report Reward -->
+
         @elseif (Auth::guard('human_resources')->user()->role == 2)
             <!-- Dashboard -->
             <li class="menu-header small text-uppercase">
@@ -144,6 +175,37 @@
                 </ul>
             </li>
             <!--/ Tanda Tangan -->
+
+            <!-- Report Reward -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Hasil Rekap Reward</span>
+            </li>
+
+            <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/inovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
+                    <i class="menu-icon tf-icons fa-solid fa-file"></i>
+                    <div data-i18n="rekapReward">Hasil Rekap Reward</div>
+                </a>
+                <ul class="menu-sub">
+                    <!-- Signature Inovation -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/inovation*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/reward/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="rekapRewardInovation">Rekap Reward Inovasi</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Inovation -->
+
+                    <!-- Signature Representative -->
+                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                            <div data-i18n="rekapRewardRepresentative">Rekap Reward Teladan</div>
+                        </a>
+                    </li>
+                    <!--/ Signature Representative -->
+
+                </ul>
+            </li>
+            <!--/ Report Reward -->
 
         @elseif (Auth::guard('human_resources')->user()->role == 3)
             <!-- Dashboard -->

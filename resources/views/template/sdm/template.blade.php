@@ -351,6 +351,7 @@
         <script src="https://cdn.datatables.net/autofill/2.4.0/js/dataTables.autoFill.min.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.colVis.min.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js" crossorigin="anonymous" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" defer></script>

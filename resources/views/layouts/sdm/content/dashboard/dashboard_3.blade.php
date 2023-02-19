@@ -306,6 +306,63 @@
                 text-align: center;
             }
 
+            .countdown-assesment-inovation {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed {
+                padding: 1em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-inovation span {
                 padding: 0;
                 margin: auto;
@@ -320,6 +377,59 @@
             }
 
             .countdown-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -485,7 +595,130 @@
                 text-align: center;
             }
 
+            .countdown-assesment-inovation {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
             .countdown-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -651,6 +884,64 @@
                 text-align: center;
             }
 
+
+            .countdown-assesment-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-inovation span {
                 padding: 0;
                 margin: auto;
@@ -665,6 +956,60 @@
             }
 
             .countdown-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+
+            .countdown-assesment-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -829,6 +1174,64 @@
                 text-align: center;
             }
 
+
+            .countdown-assesment-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
             .countdown-inovation span {
                 padding: 0;
                 margin: auto;
@@ -843,6 +1246,60 @@
             }
 
             .countdown-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+
+            .countdown-assesment-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-assesment-inovation-closed span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+
+            .countdown-signature-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature-inovation-closed span {
                 padding: 0;
                 margin: auto;
                 display: flex;

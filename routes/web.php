@@ -139,6 +139,12 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Update
         Route::GET('/kepala-biro-SDM/signature/inovation/{id}', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBiroSDM'])->name('getSignatureInovationId.KepalaBiroSDM.SDM');
         Route::POST('/kepala-biro-SDM/signature/inovation/{id}/post', [\App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBiroSDM'])->name('postSignatureInovationId.KepalaBiroSDM.SDM');
+
+
+        // Final Inovation Reward
+        // Read
+        Route::GET('/kepala-biro-SDM/reward/inovation', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationKepalaBiroSDM'])->name('getSignatureInovation.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/reward/inovation/list', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBiroSDM'])->name('getSignatureInovationList.KepalaBiroSDM.SDM');
     });
 
     // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
@@ -166,6 +172,12 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Update
         Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+
+
+        // Final Inovation Reward
+        // Read
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation/list', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
     });
 
 
