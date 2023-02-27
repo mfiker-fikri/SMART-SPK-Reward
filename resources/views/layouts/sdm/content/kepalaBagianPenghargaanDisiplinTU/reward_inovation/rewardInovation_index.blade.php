@@ -138,7 +138,7 @@
                 targets: -1,
                 visible: false
             } ],
-            ajax: "{{ url('sdm/kepala-biro-SDM/reward/inovation/list') }}",
+            ajax: "{{ url('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation/list') }}",
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: 20 },
                 {   data: 'fullName', name: 'fullName', orderable: false, width: 120},

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\SDM\Role2\Reward;
 
 use App\Http\Controllers\Controller;
+use App\Models\FinalResultRewardInovation;
+use App\Models\RewardInovation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class RewardInovationController extends Controller
 {
@@ -12,9 +16,13 @@ class RewardInovationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha()
     {
-        //
+        try {
+            return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.reward_inovation.rewardInovation_index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -22,9 +30,56 @@ class RewardInovationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha()
     {
-        //
+        try {
+            $data   =   FinalResultRewardInovation::where([
+                                //
+                                ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                //
+                                ['score_final_result', '>', 0.75],
+                            ])
+                            ->latest()
+                            ->orderBy('score_final_result', 'DESC')
+                            ->orderBy(DB::raw("DATE_FORMAT(created_at, '%Y')"), 'DESC')
+                            ->orderBy(DB::raw("DATE_FORMAT(updated_at, '%Y')"), 'DESC')
+                            ->get();
+
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->filter(function ($query) {
+                        if (request()->has('created_at')) {
+                            $query->whereYear('created_at', request('created_at'));
+                        }
+                    }, true)
+                    ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
+                        $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                        return $full_name;
+                    })
+                    ->addColumn('year', function ($row) {
+                        $year = '';
+                        $year = '<span>'.\Carbon\Carbon::parse($row->created_at)->format('Y').'</span>';
+
+                        return $year;
+                    })
+                    ->addColumn('description', function ($row) {
+                        $desc = '';
+                        if ($row->score_final_result > 0.85 && $row->score_final_result <= 1) {
+                            $desc = '<span>Terbaik</span>';
+                        }
+                        if ($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
+                            $desc = '<span>Baik</span>';
+                        }
+
+                        return $desc;
+                    })
+                    ->rawColumns(['fullName', 'year', 'description'])
+                    ->make(true);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

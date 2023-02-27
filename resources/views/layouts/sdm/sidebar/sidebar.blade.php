@@ -181,23 +181,23 @@
                 <span class="menu-header-text">Hasil Rekap Reward</span>
             </li>
 
-            <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/inovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
+            <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation*')) || (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-file"></i>
                     <div data-i18n="rekapReward">Hasil Rekap Reward</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
-                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/inovation*')) ? 'active' : '' }}">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/reward/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                    <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="rekapRewardInovation">Rekap Reward Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
 
                     <!-- Signature Representative -->
-                    <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                    <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) ? 'active' : '' }}">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="rekapRewardRepresentative">Rekap Reward Teladan</div>
                         </a>
                     </li>
