@@ -22,7 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('password', 255);
             //
             // $table->string('slug')->nullable();
-            $table->string('photo_profile')->nullable();
+            $table->string('photo_profile', 255)->nullable();
             //
             $table->timestamp('last_seen')->nullable();
             $table->date('last_status')->nullable();

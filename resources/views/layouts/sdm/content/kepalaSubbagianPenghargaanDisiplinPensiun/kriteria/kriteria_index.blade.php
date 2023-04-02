@@ -14,7 +14,8 @@
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {   data: 'categories.category', name: 'categories.category'},
                 {   data: 'criteria', name: 'criteria'},
-                {   data: 'normalization', name: 'normalization'},
+                {   data: 'value_quality', name: 'value_quality'},
+                // {   data: 'normalization', name: 'normalization'},
                 {   data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -61,7 +62,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Kriteria</th>
-                                <th scope="col">Normalisasi</th>
+                                <th scope="col">Bobot Kriteria</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

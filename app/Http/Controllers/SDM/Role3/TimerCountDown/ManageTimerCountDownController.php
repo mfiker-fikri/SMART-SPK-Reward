@@ -20,7 +20,9 @@ class ManageTimerCountDownController extends Controller
     public function getTimerCountDownFormInovation()
     {
         try {
-            $timer  =   CountdownTimerFormInovation::get()->first();
+            $timer  =   CountdownTimerFormInovation::first();
+            // $timer  =   CountdownTimerFormInovation::get();
+            // ddd($timer);
             // ddd($timer->id);
             return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_inovation_index-create', compact('timer'));
         } catch (\Throwable $th) {

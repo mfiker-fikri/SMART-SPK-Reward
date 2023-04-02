@@ -245,6 +245,11 @@ class ManageTeamAssessmentController extends Controller
             // Find Id TA
             $ta = TeamAssessment::find($id);
 
+            if(Cache::has('TA-is-online-' . $ta->id)) {
+                alert()->error('Gagal!', 'Gagal Update Data Tim Penilai, Akun ini sedang online!')->autoclose(25000);
+                return redirect('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment')->with('message-error', 'Gagal Update Data Tim Penilai, Akun ini sedang online!')->withInput($request->all());
+            }
+
             if ($ta) {
                 $validate = null;
                 if ($request['email'] === $ta->email || $request['username'] === $ta->username) {
@@ -338,6 +343,12 @@ class ManageTeamAssessmentController extends Controller
     {
         // Find Id TA
         $ta = TeamAssessment::find($id);
+        // ddd($ta->id);
+
+        if(Cache::has('TA-is-online-' . $ta->id)) {
+            alert()->error('Gagal Update Password!', 'Gagal Update Password, Akun ini sedang online!')->autoclose(25000);
+            return redirect('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment')->with('message-error', 'Gagal Update Password, Akun ini sedang online!')->withInput($request->all());
+        }
 
         if ($ta) {
             $validate = Validator::make(
@@ -370,7 +381,9 @@ class ManageTeamAssessmentController extends Controller
                 return redirect()->back()->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
             }
             //
-            DB::table('team_assessments')->where('id', $ta)->update(['password' => Hash::make($request['password'])]);
+            // DB::table('team_assessments')->where('id', $ta)->update(['password' => Hash::make($request['password'])]);
+
+            TeamAssessment::find($id)->update(['password' => Hash::make($request['password'])]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
             return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
             //
@@ -390,6 +403,11 @@ class ManageTeamAssessmentController extends Controller
     {
         // Find Id TA
         $ta = TeamAssessment::find($id);
+
+        if(Cache::has('TA-is-online-' . $ta->id)) {
+            alert()->error('Gagal Update!', 'Gagal Update, Akun ini sedang online!')->autoclose(25000);
+            return redirect('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment')->with('message-error', 'Gagal Update, Akun ini sedang online!')->withInput($request->all());
+        }
 
         if ($ta) {
             if ($ta->status_active == 1) {
@@ -417,17 +435,22 @@ class ManageTeamAssessmentController extends Controller
         $ta = TeamAssessment::findOrFail($id);
         // $ta = Admin::find($id);
 
+        if(Cache::has('TA-is-online-' . $ta->id)) {
+            alert()->error('Gagal Hapus!', 'Gagal Update, Akun ini sedang online!')->autoclose(25000);
+            return redirect('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment')->with('message-error', 'Gagal Hapus, Akun ini sedang online!');
+        }
+
         if ($ta) {
             // $ta->update([
             //     'status_active' =>  0,
             //     'status_id'     =>  0,
             // ]);
             $ta->delete();
-            alert()->success('Berhasil Hapus Admin!', $ta->username)->autoclose(25000);
-            return redirect()->back()->with('message-delete-success', 'Berhasil Hapus Admin!' . $ta->username);
+            alert()->success('Berhasil Hapus Penilai!', $ta->username)->autoclose(25000);
+            return redirect()->back()->with('message-delete-success', 'Berhasil Hapus Penilai!' . $ta->username);
             // ->with(['success' => 'Post has been deleted successfully']);
         } else {
-            return redirect()->back()->with('message-delete-error', 'Tidak Berhasil Hapus Admin!' . $ta->username);
+            return redirect()->back()->with('message-delete-error', 'Tidak Berhasil Hapus Penilai!' . $ta->username);
             // ->with(['error' => 'Some problem has occurred, please try again']);
         }
         alert()->error('Gagal!')->autoclose(25000);

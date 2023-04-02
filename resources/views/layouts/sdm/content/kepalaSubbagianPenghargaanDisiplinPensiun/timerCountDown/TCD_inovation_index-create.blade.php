@@ -323,6 +323,51 @@
     </script>
 
     <script type="text/javascript">
+    function resetStatusNullsdm(event){
+
+        var oldOpenStatus1      = document.getElementById("oldOpenStatusAppraisment1").getAttribute("value");
+        var oldOpenStatus2      = document.getElementById("oldOpenStatusAppraisment2").getAttribute("value");
+        var oldOpenStatus3      = document.getElementById("oldOpenStatusAppraisment3").getAttribute("value");
+
+        var oldExpiredStatus1   = document.getElementById("oldExpiredStatusAppraisment1").getAttribute("value");
+        var oldExpiredStatus2   = document.getElementById("oldExpiredStatusAppraisment2").getAttribute("value");
+        var oldExpiredStatus3   = document.getElementById("oldExpiredStatusAppraisment3").getAttribute("value");
+
+        if ( (oldOpenStatus1 && oldExpiredStatus1) || (oldOpenStatus2 && oldExpiredStatus2) || (oldOpenStatus3 && oldExpiredStatus3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpenStatus3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpiredStatus3).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(oldOpenStatus2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpiredStatus2).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(oldOpenStatus1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpiredStatus1).trigger('change');
+
+
+        } else if ( (oldOpenStatus1 || oldExpiredStatus1) && (oldOpenStatus2 || oldExpiredStatus2) && (oldOpenStatus3 || oldExpiredStatus3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpenStatus3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpiredStatus3).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(oldOpenStatus2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpiredStatus2).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(oldOpenStatus1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpiredStatus1).trigger('change');
+
+        } else {
+            $('#status_open_signature_human_resource_3').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(null).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(null).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(null).trigger('change');
+        }
+    }
+    </script>
+
+    <script type="text/javascript">
     function resetStatus(event){
         var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
         var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
@@ -357,6 +402,51 @@
         }
     }
     </script>
+
+
+    <script type="text/javascript">
+        function resetStatussdm(event) {
+            var oldOpen1             = document.getElementById("oldStatusOpenAppraisment1").getAttribute("value");
+            var oldOpen2             = document.getElementById("oldStatusOpenAppraisment2").getAttribute("value");
+            var oldOpen3             = document.getElementById("oldStatusOpenAppraisment3").getAttribute("value");
+            console.log(oldOpen1);
+
+
+            var oldExpired1          = document.getElementById("oldStatusExpiredAppraisment1").getAttribute("value");
+            var oldExpired2          = document.getElementById("oldStatusExpiredAppraisment2").getAttribute("value");
+            var oldExpired3          = document.getElementById("oldStatusExpiredAppraisment3").getAttribute("value");
+
+            if ( (oldOpen1 && oldExpired1) || (oldOpen2 && oldExpired2) || (oldOpen3 && oldExpired3) ) {
+                $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
+                $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
+
+                $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
+                $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
+
+                $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
+                $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
+
+            } else if ( (oldOpen1 || oldExpired1) && (oldOpen2 || oldExpired2) && (oldOpen3 || oldExpired3) ) {
+                $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
+                $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
+
+                $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
+                $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
+
+                $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
+                $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
+            } else {
+                $('#status_open_signature_human_resource_3').val(null).trigger('change');
+                $('#status_expired_signature_human_resource_3').val(null).trigger('change');
+
+                $('#status_open_signature_human_resource_2').val(null).trigger('change');
+                $('#status_expired_signature_human_resource_2').val(null).trigger('change');
+
+                $('#status_open_signature_human_resource_1').val(null).trigger('change');
+                $('#status_expired_signature_human_resource_1').val(null).trigger('change');
+            }
+        }
+        </script>
 
 
     <!--/ Reset Select2 Status -->
@@ -727,12 +817,12 @@
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open') ? 'is-invalid' : '' }}" id="status_open"
                                                 name="status_open" placeholder="--Pilih Status Open --"
-                                                autofocus autocomplete required
+                                                autofocus autocomplete required="required"
                                                 aria-invalid="true" aria-describedby="status_open" data-val="true" aria-label="status_open" data-placeholder="-- Pilih Status Open --">
                                                 <option disabled selected>-- Pilih Status Open --</option>
                                                 @if ($timer == null)
-                                                <option value="0" @if(old('status_open' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_open' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" >Tidak Aktif</option>
+                                                <option value="1" >Aktif</option>
                                                 @else
                                                 <option value="0" @if(old('status_open', $timer->status_open ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open', $timer->status_open ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -1135,9 +1225,9 @@
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_3') }}" id="oldOpenStatusAppraisment" />
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_3') }}" id="oldOpenStatusAppraisment3" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_3', $timer->status_open_signature_human_resource_3) }}" id="oldStatusOpenAppraisment" />
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_3', $timer->status_open_signature_human_resource_3) }}" id="oldStatusOpenAppraisment3" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_3"
                                                 name="status_open_signature_human_resource_3" placeholder="--Pilih Status Open --"
@@ -1206,9 +1296,9 @@
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_3') }}" id="oldExpiredStatusAppraisment" />
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_3') }}" id="oldExpiredStatusAppraisment3" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_3', $timer->status_expired_signature_human_resource_3) }}" id="oldStatusExpiredAppraisment" />
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_3', $timer->status_expired_signature_human_resource_3) }}" id="oldStatusExpiredAppraisment3" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_3"
                                                 name="status_expired_signature_human_resource_3" placeholder="--Pilih Status Close --"
@@ -1282,9 +1372,9 @@
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_2') }}" id="oldOpenStatusAppraisment" />
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_2') }}" id="oldOpenStatusAppraisment2" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_2', $timer->status_open_signature_human_resource_2) }}" id="oldStatusOpenAppraisment" />
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_2', $timer->status_open_signature_human_resource_2) }}" id="oldStatusOpenAppraisment2" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_2"
                                                 name="status_open_signature_human_resource_2" placeholder="--Pilih Status Open --"
@@ -1353,9 +1443,9 @@
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_2') }}" id="oldExpiredStatusAppraisment" />
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_2') }}" id="oldExpiredStatusAppraisment2" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_2', $timer->status_expired_signature_human_resource_2) }}" id="oldStatusExpiredAppraisment" />
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_2', $timer->status_expired_signature_human_resource_2) }}" id="oldStatusExpiredAppraisment2" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_2"
                                                 name="status_expired_signature_human_resource_2" placeholder="--Pilih Status Close --"
@@ -1428,9 +1518,9 @@
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_1') }}" id="oldOpenStatusAppraisment" />
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_1') }}" id="oldOpenStatusAppraisment1" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_1', $timer->status_open_signature_human_resource_1) }}" id="oldStatusOpenAppraisment" />
+                                            <input type="hidden" value="{{ old('status_open_signature_human_resource_1', $timer->status_open_signature_human_resource_1) }}" id="oldStatusOpenAppraisment1" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_1"
                                                 name="status_open_signature_human_resource_1" placeholder="--Pilih Status Open --"
@@ -1499,9 +1589,9 @@
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_1') }}" id="oldExpiredStatusAppraisment" />
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_1') }}" id="oldExpiredStatusAppraisment1" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_1', $timer->status_expired_signature_human_resource_1) }}" id="oldStatusExpiredAppraisment" />
+                                            <input type="hidden" value="{{ old('status_expired_signature_human_resource_1', $timer->status_expired_signature_human_resource_1) }}" id="oldStatusExpiredAppraisment1" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_1"
                                                 name="status_expired_signature_human_resource_1" placeholder="--Pilih Status Close --"
@@ -1542,11 +1632,11 @@
                                             <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
                                         </a>
                                         @if ($timer == null || $timer == null)
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullsignature()">
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullsdm()">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
                                         @else
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusSignature();">
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatussdm();">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                         </button>
                                         @endif

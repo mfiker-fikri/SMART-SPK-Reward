@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('username', 100)->unique()->index();
             $table->string('password', 255);
             //
-            $table->string('photo_profile')->nullable();
+            $table->string('photo_profile', 255)->nullable();
             $table->string('place_birth', 255)->nullable();
             $table->date('date_birth')->nullable();
             //

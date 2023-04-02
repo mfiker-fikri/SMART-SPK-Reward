@@ -213,9 +213,17 @@ class ParameterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getParametersIdView($id)
     {
-        //
+        try {
+            $parameter      =      Parameter::where('id', '=', $id)->first();
+            $criteria       =      Criteria::get();
+            $category       =      Category::get();
+
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.parameter.parameter_view', compact('criteria','category','parameter'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

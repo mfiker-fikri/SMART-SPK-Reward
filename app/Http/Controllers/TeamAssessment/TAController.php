@@ -371,7 +371,7 @@ class TAController extends Controller
 
         if ($validate->fails()) {
             alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
+            return redirect()->back()->with('message-update-password-error', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
         }
 
         $currentPassword        =       Auth::guard('team_assessments')->user()->password;
@@ -382,8 +382,11 @@ class TAController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
+            return redirect()->back()->with('message-update-password-success', 'Berhasil Update Password');
         }
+
+        alert()->error('Gagal Update Password!')->autoclose(25000);
+        return redirect()->back()->with('message-update-password-error', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
 
     }
 

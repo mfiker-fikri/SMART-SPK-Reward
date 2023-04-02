@@ -2,9 +2,9 @@
 
 @section('css_header')
     <!-- Boxicons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"> --}}
     <!-- or -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    {{-- <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> --}}
 
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -17,7 +17,7 @@
 
 @section('js_header')
     <!-- Boxicons -->
-    <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+    {{-- <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script> --}}
 
     <!-- Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -142,7 +142,8 @@
                             <div class="col-sm-9">
                                 <div class="input-group input-group-merge {{ $errors->has('categories') ? 'is-invalid' : '' }}">
                                     <span id="categories" class="input-group-text">
-                                        <box-icon name='list-ul'></box-icon>
+                                        {{-- <box-icon name='list-ul'></box-icon> --}}
+                                        <i class="fa-solid fa-list-ul" style="color: #000000;"></i>
                                     </span>
                                     <select class="form-select px-lg-1 px-2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" id="select-categories"
                                         name="categories" data-placeholder="--Pilih Kategori--"
@@ -153,7 +154,7 @@
                                         <option value="{{ $criteria->categories->id }}" disabled selected>{{ $criteria->categories->category }}</option>
                                     </select>
                                     <div class="d-flex flex-column">
-                                        <div id="categoriesHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                        <div id="categoriesHelp" class="form-text">We'll never share categorie with anyone else.</div>
                                         <!-- Error categories -->
                                         @if ( $errors->has('categories') )
                                             <span class="help-block">
@@ -173,7 +174,8 @@
                             <div class="col-sm-9">
                                 <div class="input-group input-group-merge {{ $errors->has('criterias') ? 'is-invalid' : '' }}">
                                     <span id="criterias" class="input-group-text">
-                                        <box-icon name='slider-alt'></box-icon>
+                                        {{-- <box-icon name='slider-alt'></box-icon> --}}
+                                        <i class="fa-solid fa-sliders" style="color: #000000;"></i>
                                     </span>
                                     <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('criterias') ? 'is-invalid' : '' }}" id="criterias"
                                         name="criterias" placeholder="*Kriteria"
@@ -184,7 +186,7 @@
                                 </div>
 
                                 <div class="d-flex flex-column">
-                                    <div id="criteriasHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                    <div id="criteriasHelp" class="form-text">We'll never share criteria with anyone else.</div>
                                     <!-- Error criterias -->
                                     @if ( $errors->has('criterias') )
                                         <span class="help-block">
@@ -203,19 +205,19 @@
                             <div class="col-sm-9">
                                 <div class="input-group input-group-merge {{ $errors->has('value_quality') ? 'is-invalid' : '' }}">
                                     <span id="value_quality" class="input-group-text">
-                                        <i class="fa-solid fa-arrow-down-1-9"></i>
-                                        <i class="fa-solid fa-arrow-up-9-1"></i>
+                                        <i class="fa-solid fa-arrow-down-1-9" style="color: #000000;"></i>
+                                        <i class="fa-solid fa-arrow-up-9-1" style="color: #000000;"></i>
                                     </span>
                                     <input type="number" class="form-control px-lg-1 px-2 {{ $errors->has('value_quality') ? 'is-invalid' : '' }}" id="value_quality"
                                         name="value_quality" placeholder="*Bobot Nilai"
                                         autofocus autocomplete required
-                                        value="{{ old('value_quality',$criteria->value_quality) }}"
+                                        value="{{ old('value_quality', $criteria->value_quality) }}"
                                         aria-invalid="true" aria-describedby="value_quality"
                                         data-val="true" min="0" max="100" readonly disabled>
                                 </div>
 
                                 <div class="d-flex flex-column">
-                                    <div id="value_qualityHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                    <div id="value_qualityHelp" class="form-text">We'll never share value quality with anyone else.</div>
                                     <!-- Error Value Quality -->
                                     @if ( $errors->has('value_quality') )
                                         <span class="help-block">
@@ -227,6 +229,37 @@
                             </div>
                         </div>
                         <!--/ Value Quality -->
+
+                        <!-- Normalization -->
+                        <div class="mb-3 row {{ $errors->has('normalization') ? 'is-invalid' : '' }}">
+                            <label for="normalization" class="text-wrap col-sm-3 col-form-label">Normalisasi</label>
+                            <div class="col-sm-9">
+                                <div class="input-group input-group-merge {{ $errors->has('normalization') ? 'is-invalid' : '' }}">
+                                    <span id="normalization" class="input-group-text">
+                                        <i class="fa-solid fa-arrow-down-1-9" style="color: #000000;"></i>
+                                        <i class="fa-solid fa-arrow-up-9-1" style="color: #000000;"></i>
+                                    </span>
+                                    <input type="number" class="form-control px-lg-1 px-2 {{ $errors->has('normalization') ? 'is-invalid' : '' }}" id="normalization"
+                                        name="normalization" placeholder="*Bobot Nilai"
+                                        autofocus autocomplete required
+                                        value="{{ old('normalization', $normalization) }}"
+                                        aria-invalid="true" aria-describedby="normalization"
+                                        data-val="true" min="0" max="100" readonly disabled>
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <div id="value_qualityHelp" class="form-text">We'll never share normalization with anyone else.</div>
+                                    <!-- Error Normalization -->
+                                    @if ( $errors->has('normalization') )
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('normalization') }}</strong>
+                                        </span>
+                                    @endif
+                                    <!--/ Error Normalization -->
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ Normalization -->
 
                         <!-- Action Button -->
                         <div class="d-flex justify-content-end">

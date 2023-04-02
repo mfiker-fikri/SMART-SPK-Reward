@@ -68,7 +68,7 @@
                     <!--/ Button Create Parameter -->
 
                     <!-- Table Parameter -->
-                    <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table">
+                    <table class="table table-striped table-bordered dt-responsive display responsive wrap" cellspacing="0" width="100%" id="data-table">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

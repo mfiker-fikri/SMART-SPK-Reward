@@ -33,7 +33,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return 'email';
+        return 'username';
     }
 
     /**
@@ -69,7 +69,7 @@ class LoginController extends Controller
             $request->all(),
             [
                 'username'          =>      'string|required',
-                'email'             =>      'string|email:rfc,dns',
+                'email'             =>      'string|email:rfc,strict,dns,spoof,filter',
                 'password'          =>      'string|required',
             ],
             [
@@ -95,7 +95,7 @@ class LoginController extends Controller
         // dd($f);
         // ddd($check, $password, $remember_me);
         // Attempt Login
-        $attempt = Auth::guard('team_assessments')->attempt([$check => $username, 'password' => $password, 'status_active' => 1, 'status_id' => 1], $remember_me);
+        $attempt = Auth::guard('team_assessments')->attempt([$check => $username, 'password' => $password], $remember_me);
         // ddd($attempt);
         if ($attempt) {
             // dd('sukses');
@@ -103,6 +103,7 @@ class LoginController extends Controller
             alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/penilai/dashboard')->with('message', 'Selamat Datang');
         } else {
+            // ddd('uop');
             alert()->error('Gagal Masuk!')->autoclose(25000);
             return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed-login', 'Gagal Login');
         }

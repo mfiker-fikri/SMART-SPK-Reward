@@ -208,7 +208,35 @@ class KriteriaController extends Controller
         try {
             $criteria        =      Criteria::where('id', '=', $id)->first();
             $category        =      Category::get();
-            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.kriteria.kriteria_view', compact('criteria', 'category'));
+
+            $normalization      =   "";
+            if ($criteria->categorie_id == 1) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+                $normalization      =   round($criteria->value_quality / $sumValueQuality, 3);
+            }
+            if ($criteria->categorie_id == 2) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 2)->sum('value_quality');
+                $normalization      =   round($criteria->value_quality / $sumValueQuality, 3);
+            }
+            if ($criteria->categorie_id == 3) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 3)->sum('value_quality');
+                $normalization      =   round($criteria->value_quality / $sumValueQuality, 3);
+            }
+            if ($criteria->categorie_id == 4) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 4)->sum('value_quality');
+                $normalization      =   round($criteria->value_quality / $sumValueQuality, 3);
+            }
+            if ($criteria->categorie_id == 5) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 5)->sum('value_quality');
+                $normalization      =   round($criteria->value_quality / $sumValueQuality, 3);
+            }
+            if ($criteria->categorie_id == 6) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 6)->sum('value_quality');
+                $normalization      =   round($criteria->value_quality / $sumValueQuality, 3);
+            }
+            // return round($normalization, 3);
+
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.kriteria.kriteria_view', compact('criteria', 'category', 'normalization'));
         } catch (\Exception $exception) {
             return $exception;
         }

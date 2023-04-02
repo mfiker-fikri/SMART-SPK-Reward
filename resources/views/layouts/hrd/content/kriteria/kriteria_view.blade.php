@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <!-- or -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    
+
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <!-- Or for RTL support -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.1.2/skins/content/tinymce-5/content.min.css" integrity="sha512-AQlh8pNI8GdH0sbUsSACzz37sCq68PohXzXYt/YOJt581nIiqnMjF4YM9lp5YVBMLR90GzkJLQNQjcfLn2yhUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @stop
 
@@ -88,7 +88,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.1.2/plugins/emoticons/js/emojiimages.min.js" integrity="sha512-cqo4otyf79ihBk6bytEIA3wH+CrtLtJMWwwFRMoxN9BLcBfqxQP9mQVSxJz4ojPOZryQ0xDwUvEEWJygKo8c7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.1.2/plugins/emoticons/js/emojis.min.js" integrity="sha512-5NJEoT6d7p+dhnqoCaA/ydy0t8k2kBssXSErCkzG4HiuRPWPfiVg+bGP0XPdpxWRv9ooHCrYYLbiBRKoFRbvCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    {{-- <script> 
+    {{-- <script>
         tinymce.init({
             selector: '#criteriasEditor',
             height: 300,
@@ -102,7 +102,7 @@
 @section('js_footer')
     <!-- Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+
     <!-- Select Categories -->
     <script>
     $(document).ready(function() {
@@ -119,7 +119,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <div class="row mt-3">
-        
+
         <div class="col-xxl">
 
             <!-- Card View Criteria -->
@@ -144,10 +144,10 @@
                                     <span id="categories" class="input-group-text">
                                         <box-icon name='list-ul'></box-icon>
                                     </span>
-                                    <select class="form-select px-lg-1 px-2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" id="select-categories" 
-                                        name="categories" data-placeholder="--Pilih Kategori--" 
-                                        autofocus autocomplete required 
-                                        data-width="80%" aria-label="--Pilih Kategori--" 
+                                    <select class="form-select px-lg-1 px-2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" id="select-categories"
+                                        name="categories" data-placeholder="--Pilih Kategori--"
+                                        autofocus autocomplete required
+                                        data-width="80%" aria-label="--Pilih Kategori--"
                                         aria-invalid="true" aria-describedby="categories"
                                         readonly disabled >
                                         <option value="{{ $criteria->categories->id }}" disabled selected>{{ $criteria->categories->category }}</option>
@@ -177,9 +177,9 @@
                                     </span>
                                     <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('criterias') ? 'is-invalid' : '' }}" id="criterias"
                                         name="criterias" placeholder="*Kriteria"
-                                        autofocus autocomplete required 
+                                        autofocus autocomplete required
                                         value="{{ old('criterias',$criteria->criteria) }}"
-                                        aria-invalid="true" aria-describedby="criterias" 
+                                        aria-invalid="true" aria-describedby="criterias"
                                         data-val="true" readonly disabled />
                                 </div>
 
@@ -208,9 +208,9 @@
                                     </span>
                                     <input type="number" class="form-control px-lg-1 px-2 {{ $errors->has('value_quality') ? 'is-invalid' : '' }}" id="value_quality"
                                         name="value_quality" placeholder="*Bobot Nilai"
-                                        autofocus autocomplete required 
+                                        autofocus autocomplete required
                                         value="{{ old('value_quality',$criteria->value_quality) }}"
-                                        aria-invalid="true" aria-describedby="value_quality" 
+                                        aria-invalid="true" aria-describedby="value_quality"
                                         data-val="true" min="0" max="100" readonly disabled>
                                 </div>
 
