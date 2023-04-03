@@ -752,8 +752,9 @@ class ManageTimerCountDownController extends Controller
     {
         try {
             $timer  =   CountdownTimerFormTeladan::first();
+            $timers  =   CountdownTimerFormTeladan::get();
             // ddd($timer->id);
-            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_teladan_index-create', compact('timer'));
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.timerCountDown.TCD_teladan_index-create', compact('timer', 'timers'));
         } catch (\Throwable $th) {
             throw $th;
         }
