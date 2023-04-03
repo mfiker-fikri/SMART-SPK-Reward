@@ -118,7 +118,7 @@
     </script>
     <!-- Select2 Status -->
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             // $("#date_time_open_countdown_inovation_form").change(function(){
 
@@ -279,10 +279,172 @@
             function checkTime(i) {
                 if (i < 10) {
                     i = "0" + i
+                };
+                return i;
+            }
+    </script> --}}
+
+    {{-- <script>
+        $(document).ready(function() {
+
+                var dateTimeOpenCountdownInovationForm     =    document.getElementById("date_time_open_countdown_inovation_form").getAttribute("min");
+                var vlueDate                               =    document.getElementById("date_time_open_countdown_inovation_form").getAttribute("value");
+
+                if (vlueDate == '') {
+                    if (dateTimeOpenCountdownInovationForm) {
+                        const date       =    new Date(dateTimeOpenCountdownInovationForm);
+
+                        // Expired Open Form
+                        var a1              =    date.getDate()+1;
+                        var b1              =    date.setDate(a1);
+                        const c1            =    new Date(b1);
+                        const dateTime1     =    convert(c1);
+                        // console.log(c);
+
+                        // Open Appraisment
+                        var a2              =    date.getDate()+1;
+                        var b2              =    date.setDate(a2);
+                        const c2            =    new Date(b2);
+                        const dateTime2     =    convert(c2);
+
+                        // Expired Appraisment
+                        var a3              =    date.getDate()+1;
+                        var b3              =    date.setDate(a3);
+                        const c3            =    new Date(b3);
+                        const dateTime3     =    convert(c3);
+
+                        // Signature
+                        var a4              =    date.getDate()+1;
+                        var b4              =    date.setDate(a4);
+                        const c4            =    new Date(b4);
+                        const dateTime4     =    convert(c4);
+
+                        //
+                        const dates         =   date.getDate();
+                        const month         =   date.getMonth()+1;
+                        const year          =   date.getFullYear();
+
+                        const hour          =   date.getHours();
+                        const minute        =   date.getMinutes();
+                        const second        =   date.getSeconds();
+                        hours               =   checkTime(hour);
+                        minutes             =   checkTime(minute);
+                        seconds             =   checkTime(second);
+
+
+
+                        // var result = year + "/" + month + "/" + dates + " " + hour + ":" + minutes;
+                        var result1 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
+                        var result2 = dateTime2 + " " + hours + ":" + minutes + ":" + seconds;
+                        var result3 = dateTime3 + " " + hours + ":" + minutes + ":" + seconds;
+
+                        var result4 = dateTime4 + " " + hours + ":" + minutes + ":" + seconds;
+                        // console.log(result);
+
+                        var dateExpired         = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result1);
+                        var dateOpenAppraisment = document.getElementById("date_time_open_countdown_inovation_appraisment").setAttribute("min", result2);
+                        var dateExpiAppraisment = document.getElementById("date_time_expired_countdown_inovation_appraisment").setAttribute("min", result3);
+
+                        //
+                        var dateSignature1       = document.getElementById("date_time_open_signature_human_resource_3").setAttribute("min", result4);
+                        var dateSignature2       = document.getElementById("date_time_expired_signature_human_resource_3").setAttribute("min", result4);
+
+                        var dateSignature3       = document.getElementById("date_time_open_signature_human_resource_2").setAttribute("min", result4);
+                        var dateSignature4       = document.getElementById("date_time_expired_signature_human_resource_2").setAttribute("min", result4);
+
+                        var dateSignature5       = document.getElementById("date_time_open_signature_human_resource_1").setAttribute("min", result4);
+                        var dateSignature6       = document.getElementById("date_time_expired_signature_human_resource_1").setAttribute("min", result4);
+
+                        return [dateExpired, dateOpenAppraisment, dateExpiAppraisment, dateSignature1, dateSignature2, dateSignature3, dateSignature4, dateSignature5, dateSignature6];
+
+
+                    }
+                }
+
+                if (vlueDate != '') {
+                    const date       =    new Date(vlueDate);
+                    // console.log(date);
+
+                    // Expired Open Form
+                    var a1              =    date.getDate()+1;
+                    var b1              =    date.setDate(a1);
+                    const c1            =    new Date(b1);
+                    const dateTime1     =    convert(c1);
+                    // console.log(c);
+
+                    // Open Appraisment
+                    var a2              =    date.getDate()+1;
+                    var b2              =    date.setDate(a2);
+                    const c2            =    new Date(b2);
+                    const dateTime2     =    convert(c2);
+
+                    // Expired Appraisment
+                    var a3              =    date.getDate()+1;
+                    var b3              =    date.setDate(a3);
+                    const c3            =    new Date(b3);
+                    const dateTime3     =    convert(c3);
+
+                    // Signature
+                    var a4              =    date.getDate()+1;
+                    var b4              =    date.setDate(a4);
+                    const c4            =    new Date(b4);
+                    const dateTime4     =    convert(c4);
+
+                    //
+                    const dates         =   date.getDate();
+                    const month         =   date.getMonth()+1;
+                    const year          =   date.getFullYear();
+
+                    const hour          =   date.getHours();
+                    const minute        =   date.getMinutes();
+                    const second        =   date.getSeconds();
+                    hours               =   checkTime(hour);
+                    minutes             =   checkTime(minute);
+                    seconds             =   checkTime(second);
+
+
+
+                    // var result = year + "/" + month + "/" + dates + " " + hour + ":" + minutes;
+                    var result1 = dateTime1 + " " + hours + ":" + minutes + ":" + seconds;
+                    var result2 = dateTime2 + " " + hours + ":" + minutes + ":" + seconds;
+                    var result3 = dateTime3 + " " + hours + ":" + minutes + ":" + seconds;
+
+                    var result4 = dateTime4 + " " + hours + ":" + minutes + ":" + seconds;
+                    // console.log(result);
+
+                    var dateExpired         = document.getElementById("date_time_expired_countdown_inovation_form").setAttribute("min", result1);
+                    var dateOpenAppraisment = document.getElementById("date_time_open_countdown_inovation_appraisment").setAttribute("min", result2);
+                    var dateExpiAppraisment = document.getElementById("date_time_expired_countdown_inovation_appraisment").setAttribute("min", result3);
+
+                    //
+                    var dateSignature1       = document.getElementById("date_time_open_signature_human_resource_3").setAttribute("min", result4);
+                    var dateSignature2       = document.getElementById("date_time_expired_signature_human_resource_3").setAttribute("min", result4);
+
+                    var dateSignature3       = document.getElementById("date_time_open_signature_human_resource_2").setAttribute("min", result4);
+                    var dateSignature4       = document.getElementById("date_time_expired_signature_human_resource_2").setAttribute("min", result4);
+
+                    var dateSignature5       = document.getElementById("date_time_open_signature_human_resource_1").setAttribute("min", result4);
+                    var dateSignature6       = document.getElementById("date_time_expired_signature_human_resource_1").setAttribute("min", result4);
+
+                    return [dateExpired, dateOpenAppraisment, dateExpiAppraisment, dateSignature1, dateSignature2, dateSignature3, dateSignature4, dateSignature5, dateSignature6];
+
+                }
+            });
+
+            function convert(str) {
+                var date = new Date(str),
+                    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                    day = ("0" + date.getDate()).slice(-2);
+                return [date.getFullYear(), mnth, day].join("-");
+            }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i
                 };  // add zero in front of numbers < 10
                 return i;
             }
-    </script>
+    </script> --}}
 
 
     <!-- Reset Select2 Status -->
@@ -496,6 +658,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     location.reload();
+                                    $('#message-delete-form-success').show();
                                 }
                             })
                         },
@@ -579,6 +742,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     location.reload();
+                                    $('#message-delete-appraisment-success').show();
                                 }
                             })
                         },
@@ -720,27 +884,44 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
+                        @if ($timer != null)
                         <button class="nav-link text-center" id="pills-appraisment-tab"
-                            @if ($timer != null)
                             data-bs-toggle="pill" data-bs-target="#pills-appraisment" type="button" role="tab" aria-controls="pills-appraisment" aria-selected="false"
-                            @endif
-                            @if ($timer == null) disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                            >Appraisment Inovation
+                        </button>
+                        @elseif ($timer == null)
+                        <button class="nav-link {{ $timer == null ? 'disabled' : '' }} text-center" id="pills-appraisment-tab"
+                            disabled data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="This top tooltip is themed via CSS variables."
-                            @endif>Appraisment Inovation
+                            >Appraisment Inovation
                         </button>
+                        @endif
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-center" id="pills-signature_role2-tab"
-                            @if ($timer != null)
-                            data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
+                        @if ($timers->isEmpty())
+                            <button class="nav-link {{ $timers->isEmpty() ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
+                                disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="This top tooltip is themed via CSS variables."
+                                >Signature Inovation
+                            </button>
+                        @elseif ($timers->isNotEmpty())
+                            @if ($timers[0]->date_time_open_appraisment != null )
+                            <button class="nav-link text-center" id="pills-signature_role2-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
+                                >Signature Inovation
+                            </button>
+                            @elseif ($timers[0]->date_time_open_appraisment == null)
+                            <button class="nav-link {{ $timers[0]->date_time_open_appraisment == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
+                                disabled data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="This top tooltip is themed via CSS variables."
+                                >Signature Inovation
+                            </button>
                             @endif
-                            @if ($timer == null) disabled data-bs-toggle="tooltip" data-bs-placement="top"
-                            data-bs-custom-class="custom-tooltip"
-                            data-bs-title="This top tooltip is themed via CSS variables."
-                            @endif>Signature Inovation
-                        </button>
+                        @endif
                     </li>
 
                 </ul>
@@ -751,6 +932,86 @@
             <div class="tab-content" id="pills-tabContent">
 
                 <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}" id="pills-time" role="tabpanel" aria-labelledby="pills-time-tab" >
+
+                    @if(session('message-update-form-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-form-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-create-form-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-create-form-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-delete-form-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-form-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-delete-form-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-update-form-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-form-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-create-form-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-create-form-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-delete-form-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-delete-form-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
 
                     <div class="card my-4">
 
@@ -819,10 +1080,10 @@
                                                 name="status_open" placeholder="--Pilih Status Open --"
                                                 autofocus autocomplete required="required"
                                                 aria-invalid="true" aria-describedby="status_open" data-val="true" aria-label="status_open" data-placeholder="-- Pilih Status Open --">
-                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                <option value="" {{ old('status_open') == '' ? 'selected' : '' }} disabled>-- Pilih Status Open --</option>
                                                 @if ($timer == null)
-                                                <option value="0" >Tidak Aktif</option>
-                                                <option value="1" >Aktif</option>
+                                                    <option value="0" {{ old('status_open') == 0 ? 'selected' : '' }}>Tidak Aktif</option>
+                                                    <option value="1" {{ old('status_open') == 1 ? 'selected' : '' }}>Aktif</option>
                                                 @else
                                                 <option value="0" @if(old('status_open', $timer->status_open ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open', $timer->status_open ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -863,6 +1124,11 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_expired_countdown_inovation_form', $timer->date_time_expired_form_inovation) }}"
                                                 @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_open_form_inovation != null )
+                                                        min="{{ $timers[0]->date_time_open_form_inovation }}"
+                                                    @endif
+                                                @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_countdown_inovation_form" data-val="true">
                                         </div>
                                         <div id="date_time_expired_countdown_inovation_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
@@ -896,10 +1162,22 @@
                                                 name="status_expired" placeholder="--Pilih Status Close --"
                                                 autofocus autocomplete required
                                                 aria-invalid="true" aria-describedby="status_expired" data-val="true" aria-label="status_expired" data-placeholder="-- Pilih Status Close --">
-                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                <option disabled selected
+                                                    value=""
+                                                    @if($timer == null )
+                                                    selected="selected"
+                                                    @endif>-- Pilih Status Close --</option>
                                                 @if ($timer == null)
-                                                <option value="0" @if(old('status_expired' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_expired' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0"
+                                                    @if(old('status_expired' ) == 0 )
+                                                    selected="selected"
+                                                    @endif>Tidak Aktif</option>
+                                                <option value="1"
+                                                    @if(old('status_expired' ) == 1 )
+                                                    selected="selected"
+                                                    @endif>Aktif</option>
+                                                {{-- <option value="0">Tidak Aktif</option>
+                                                <option value="1">Aktif</option> --}}
                                                 @else
                                                 <option value="0" @if(old('status_expired', $timer->status_expired ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_expired', $timer->status_expired ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -960,6 +1238,86 @@
 
                 <div class="tab-pane fade" id="pills-appraisment" role="tabpanel" aria-labelledby="pills-appraisment-tab" tabindex="0">
 
+                    @if(session('message-update-appraisment-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-appraisment-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-create-appraisment-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-create-appraisment-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-delete-appraisment-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-appraisment-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-delete-appraisment-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-update-appraisment-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-appraisment-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-create-appraisment-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-create-appraisment-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-delete-appraisment-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-delete-appraisment-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="card my-4">
 
                         <!-- Form Timer Countdown Title -->
@@ -992,6 +1350,11 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_countdown_inovation_appraisment') }}"
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_countdown_inovation_appraisment', $timer->date_time_open_appraisment) }}"
+                                                @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_form_inovation != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_form_inovation)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_countdown_inovation_appraisment" data-val="true">
                                         </div>
@@ -1064,6 +1427,11 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_expired_countdown_inovation_appraisment', $timer->date_time_expired_appraisment) }}"
                                                 @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_form_inovation != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_form_inovation)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
+                                                @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_countdown_inovation_appraisment" data-val="true">
                                         </div>
                                         <div id="date_time_expired_countdown_inovation_apprasimentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
@@ -1122,30 +1490,32 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        @if ($timer != null && $timer != null)
-                                        <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusID" data-val="{{ $timer->id }}">
-                                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
-                                        </button>
-                                        @endif
-                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
-                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
-                                        </a>
-                                        @if ($timer == null || $timer == null)
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullAppraisment()">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
-                                        </button>
-                                        @else
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusAppraisment();">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
-                                        </button>
-                                        @endif
-                                        <button type="submit" class="btn btn-primary btn-lg" style="color: black">
-                                            @if ($timer == null && $timer == null)
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
-                                            @else
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
+                                        @if ($timers->isNotEmpty())
+                                            @if ($timers[0]->date_time_open_appraisment != null)
+                                            <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusID" data-val="{{ $timer->id }}">
+                                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                                            </button>
                                             @endif
-                                        </button>
+                                            <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                                <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                            </a>
+                                            @if ($timers[0]->date_time_open_appraisment == null)
+                                            <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullAppraisment()">
+                                                <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                            </button>
+                                            @else
+                                            <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusAppraisment();">
+                                                <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                            </button>
+                                            @endif
+                                            <button type="submit" class="btn btn-primary btn-lg" style="color: black">
+                                                @if ($timers[0]->date_time_open_appraisment == null)
+                                                <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
+                                                @else
+                                                <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
+                                                @endif
+                                            </button>
+                                        @endif
                                     </div>
                                 </div>
                                 <!-- Action Button -->
@@ -1199,6 +1569,11 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_3') }}"
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_3', $timer->date_time_open_signature_human_resource_3) }}"
+                                                @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_appraisment != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_3" data-val="true">
                                         </div>
@@ -1270,6 +1645,11 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_3') }}"
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_3', $timer->date_time_expired_signature_human_resource_3) }}"
+                                                @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_appraisment != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_3" data-val="true">
                                         </div>
@@ -1347,6 +1727,11 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_2', $timer->date_time_open_signature_human_resource_2) }}"
                                                 @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_appraisment != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
+                                                @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_2" data-val="true">
                                         </div>
                                         <div id="date_time_open_countdown_inovation_appraismentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
@@ -1417,6 +1802,11 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_2') }}"
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_2', $timer->date_time_expired_signature_human_resource_2) }}"
+                                                @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_appraisment != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_2" data-val="true">
                                         </div>
@@ -1493,6 +1883,11 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_1', $timer->date_time_open_signature_human_resource_1) }}"
                                                 @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_appraisment != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
+                                                @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_1" data-val="true">
                                         </div>
                                         <div id="date_time_open_countdown_inovation_appraismentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
@@ -1564,6 +1959,11 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_1', $timer->date_time_expired_signature_human_resource_1) }}"
                                                 @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_expired_appraisment != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @endif
+                                                @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_1" data-val="true">
                                         </div>
                                         <div id="date_time_expired_countdown_inovation_apprasimentHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
@@ -1623,30 +2023,32 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        @if ($timer != null && $timer != null)
-                                        <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusIDSignature" data-val="{{ $timer->id }}">
-                                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
-                                        </button>
-                                        @endif
-                                        <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
-                                            <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
-                                        </a>
-                                        @if ($timer == null || $timer == null)
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullsdm()">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
-                                        </button>
-                                        @else
-                                        <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatussdm();">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
-                                        </button>
-                                        @endif
-                                        <button type="submit" class="btn btn-primary btn-lg" style="color: black">
-                                            @if ($timer == null && $timer == null)
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
-                                            @else
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
+                                        @if ($timers->isNotEmpty())
+                                            @if ($timers[0]->date_time_open_signature_human_resource_3 != null)
+                                            <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusIDSignature" data-val="{{ $timer->id }}">
+                                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                                            </button>
                                             @endif
-                                        </button>
+                                            <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
+                                                <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                            </a>
+                                            @if ($timers[0]->date_time_open_signature_human_resource_3 == null)
+                                            <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatusNullsdm()">
+                                                <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                            </button>
+                                            @else
+                                            <button type="reset" class="btn btn-warning btn-lg" id="resetStatusTCD" onclick="resetStatussdm();">
+                                                <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
+                                            </button>
+                                            @endif
+                                            <button type="submit" class="btn btn-primary btn-lg" style="color: black">
+                                                @if ($timers[0]->date_time_open_signature_human_resource_3 == null)
+                                                <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
+                                                @else
+                                                <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
+                                                @endif
+                                            </button>
+                                        @endif
                                     </div>
                                 </div>
                                 <!-- Action Button -->

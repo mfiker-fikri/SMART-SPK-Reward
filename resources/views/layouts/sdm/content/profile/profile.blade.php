@@ -477,7 +477,7 @@
                                     location.reload();
                                     $('#message-update-photo-success').show();
                                 }
-                            })
+                            });
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             Swal.fire({
@@ -485,8 +485,13 @@
                                 text: thrownError,
                                 icon: 'error',
                                 confirmButtonText: 'Ok',
+                            })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    $('#message-update-photo-error').show();
+                                }
                             });
-                            $('#message-update-photo-error').show();
                         }
                     });
                 } else {

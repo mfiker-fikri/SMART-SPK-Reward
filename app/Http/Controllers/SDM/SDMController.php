@@ -292,7 +292,7 @@ class SDMController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Tanda Tangan!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-update-photo-error', 'Gagal Update Tanda Tangan')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-update-signature-error', 'Gagal Update Tanda Tangan')->withErrors($validate)->withInput($request->all());
             }
 
             if ($request->hasFile('signature')) {
@@ -498,6 +498,10 @@ class SDMController extends Controller
             alert()->success('Berhasil Update Password!')->autoclose(25000);
             return redirect()->back()->with('message-update-password-success', 'Berhasil Update Password');
         }
+
+        alert()->error('Gagal Update Password!', 'Password Tidak Sesuai')->autoclose(25000);
+        return redirect()->back()->with('message-update-password-error', 'Gagal Update Password, Password Tidak Sesuai')->withErrors($validate)->withInput($request->all());
+
     }
 
     /**
@@ -685,7 +689,7 @@ class SDMController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-update-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
             }
 
             if ($request->hasFile('photo_profile')) {
@@ -1004,8 +1008,11 @@ class SDMController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
+            return redirect()->back()->with('message-update-password-success', 'Berhasil Update Password');
         }
+
+        alert()->error('Gagal Update Password!', 'Password Tidak Sesuai')->autoclose(25000);
+        return redirect()->back()->with('message-update-password-error', 'Gagal Update Password, Password Tidak Sesuai')->withErrors($validate)->withInput($request->all());
     }
 
 
@@ -1150,7 +1157,7 @@ class SDMController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-update-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
             }
 
             if ($request->hasFile('photo_profile')) {
@@ -1197,7 +1204,7 @@ class SDMController extends Controller
                     $sdm->save();
 
                     alert()->success('Berhasil Update Foto')->autoclose(25000);
-                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                    return redirect()->back()->with('message-update-photo-success', 'Berhasil Update Foto Profile');
                 }
 
                 // Get File Image
@@ -1234,7 +1241,7 @@ class SDMController extends Controller
                 $sdm->save();
 
                 alert()->success('Berhasil Update Foto')->autoclose(25000);
-                return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                return redirect()->back()->with('message-update-photo-success', 'Berhasil Update Foto Profile');
             }
 
         } catch (\Throwable $th) {
@@ -1471,8 +1478,11 @@ class SDMController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
+            return redirect()->back()->with('message-update-password-success', 'Berhasil Update Password');
         }
+
+        alert()->error('Gagal Update Password!', 'Password Tidak Sesuai')->autoclose(25000);
+        return redirect()->back()->with('message-update-password-error', 'Gagal Update Password, Password Tidak Sesuai')->withErrors($validate)->withInput($request->all());
     }
 
 }
