@@ -2409,7 +2409,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Timer Countdown Form Inovation</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Form Countdown</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)
@@ -2565,21 +2565,149 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Tim Penilai</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Representative Appraisement Countdown </h5>
                     </div>
-                    <div class="card-body mx-3 my-3">
-                        <table class="my-3 my-3 table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Nama Panjang</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Last Seen</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                    <div class="card-body">
+                        @if ($timerInovasi == null)
+                        <div class="d-flex justify-content-center align-self-center">
+                            <span class="text-center">
+                                <h3>Penilaian Teladan Ditutup</h3>
+                            </span>
+                        </div>
+                        @else
+                            @if (
+                                (
+                                    ($timerTeladan->status_open_appraisment == 0 && $timerTeladan->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                )
+                                ||
+                                (
+                                    ($timerTeladan->status_open_appraisment == 0 && $timerTeladan->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                )
+                            )
+                            <div class="container-fluid">
+                                <div class="titleCountDownNonActive">
+                                    <h3>
+                                        <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Penilaian Teladan</span>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            @elseif (
+                                (
+                                            ($timerTeladan->status_open_appraisment == 1
+                                        && ($timerTeladan->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString() || $timerTeladan->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString()))
+                                    &&  ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                )
+                                ||
+                                (
+                                            ($timerTeladan->status_open_appraisment == 1
+                                        && ($timerTeladan->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString() || $timerTeladan->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString()))
+                                    &&  ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                )
+                            )
+                            <div class="container-fluid swiper1">
+                                <div class="openTimerCountDown swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Pembukaan Penilaian Teladan</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_appraisment)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Coming Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-inovation" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_open_appraisment)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @elseif (
+                                (
+                                        (
+                                                ($timerTeladan->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_appraisment) )
+                                            &&  ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                        )
+                                    ||  (
+                                                ($timerTeladan->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_appraisment))
+                                            &&  ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                        )
+                                )
+                                ||
+                                (
+                                        (
+                                                ($timerTeladan->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_appraisment))
+                                            &&  ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                        )
+                                    || (
+                                                ($timerTeladan->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_appraisment))
+                                            &&  ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_appraisment)
+                                        )
+                                )
+                            )
+
+                            <div class="container-fluid swiper1_1">
+                                <div class="openTimerCountDown swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Penutupan Penilaian Teladan</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_appraisment)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Closing Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_expired_appraisment)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @elseif (
+                                (
+                                        ( ($timerTeladan->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_appraisment) && ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_appraisment) )
+                                    ||  ( ($timerTeladan->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_appraisment) && ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_appraisment) )
+                                )
+                                ||
+                                (
+                                        ( ($timerTeladan->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_appraisment) && ($timerTeladan->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_appraisment) )
+                                    || ( ($timerTeladan->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_appraisment) && ($timerTeladan->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_appraisment) )
+                                )
+                            )
+
+                            <div class="container-fluid">
+                                <div class="titleCountDownNonActive">
+                                    <h3>
+                                        <span>Penilaian Teladan Telah Ditutup</span>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            @endif
+
+                        @endif
                     </div>
                 </div>
             </div>
@@ -2596,13 +2724,13 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Timer Countdown Assesment</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Timer Countdown Appraisement Inovation</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)
                         <div class="d-flex justify-content-center align-self-center">
                             <span class="text-center">
-                                <h3>Penilaian Ditutup</h3>
+                                <h3>Penilaian Inovasi Ditutup</h3>
                             </span>
                         </div>
                         @else
@@ -2640,7 +2768,7 @@
                                 <div class="openTimerCountDown swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Penilaian</h3>
+                                            <h3>Pembukaan Penilaian Inovasi</h3>
                                         </div>
                                         <div class="dateCountDown">
                                             <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_appraisment)->isoFormat('dddd') }}</b></span>
@@ -2692,7 +2820,7 @@
                                 <div class="openTimerCountDown swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Penutupan Penilaian</h3>
+                                            <h3>Penutupan Penilaian Inovasi</h3>
                                         </div>
                                         <div class="dateCountDown">
                                             <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_appraisment)->isoFormat('dddd') }}</b></span>
@@ -2731,7 +2859,7 @@
                             <div class="container-fluid">
                                 <div class="titleCountDownNonActive">
                                     <h3>
-                                        <span>Penilaian Telah Ditutup</span>
+                                        <span>Penilaian Inovasi Telah Ditutup</span>
                                     </h3>
                                 </div>
                             </div>
@@ -2750,7 +2878,401 @@
         <div class="col-md-6 col-md-5 order-1">
 
             <div class="card mb-3">
+                <div class="row row-bordered g-0">
+                    <div class="card-header">
+                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Signature Countdown</h5>
+                    </div>
+                    <div class="card-body">
+                        @if ($timerTeladan == null)
+                        <div class="d-flex justify-content-center align-self-center">
+                            <span class="text-center">
+                                <h3>Tanda Tangan Inovasi Ditutup</h3>
+                            </span>
+                        </div>
+                        @else
+                            @if (
+                                (
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_1 == 0 && $timerTeladan->date_time_open_signature_human_resource_1 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        && ($timerTeladan->status_expired_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                    )
+                                    ||
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_1 == 0 && $timerTeladan->date_time_open_signature_human_resource_1 >= \Carbon\Carbon::now()->toDateTimeString())
+                                        && ($timerTeladan->status_expired_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_2 == 0 && $timerTeladan->date_time_open_signature_human_resource_2 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        && ($timerTeladan->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                    )
+                                    ||
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_2 == 0 && $timerTeladan->date_time_open_signature_human_resource_2 >= \Carbon\Carbon::now()->toDateTimeString())
+                                        && ($timerTeladan->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_3 == 0 && $timerTeladan->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        && ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                    )
+                                    ||
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_3 == 0 && $timerTeladan->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString())
+                                        && ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                    )
+                                )
+                            )
+                            <div class="container-fluid">
+                                <div class="titleCountDownNonActive">
+                                    <h3>
+                                        <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Tanda Tangan Inovasi</span>
+                                    </h3>
+                                </div>
+                            </div>
 
+                            @elseif (
+                                (
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_1 == 1 && $timerTeladan->date_time_open_signature_human_resource_1 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        &&  ($timerTeladan->status_expired_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                    )
+                                    ||
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_1 == 1 && $timerTeladan->date_time_open_signature_human_resource_1 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        &&  ($timerTeladan->status_expired_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_2 == 1 && $timerTeladan->date_time_open_signature_human_resource_2 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        &&  ($timerTeladan->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                    )
+                                    ||
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_2 == 1 && $timerTeladan->date_time_open_signature_human_resource_2 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        &&  ($timerTeladan->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_3 == 1 && $timerTeladan->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        &&  ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                    )
+                                    ||
+                                    (
+                                            ($timerTeladan->status_open_signature_human_resource_3 == 1 && $timerTeladan->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                        &&  ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                    )
+                                )
+                            )
+                            <div class="container-fluid swiper1">
+                                <div class="openTimerCountDown swiper-wrapper">
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
+                                        </div>
+                                        <div class="titleCountDown">
+                                            <h3>Kepala Biro Sumber Daya Manusia</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_1)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Coming Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-signature-inovation" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_open_signature_human_resource_1)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
+                                        </div>
+                                        <div class="titleCountDown">
+                                            <h3>Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_2)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Coming Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-signature-inovation" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_open_signature_human_resource_2)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
+                                        </div>
+                                        <div class="titleCountDown">
+                                            <h3>Kepala Subbagian Penghargaan, Disiplin, dan Pensiun</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_signature_human_resource_3)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Coming Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-signature-inovation" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_open_signature_human_resource_3)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @elseif (
+                                (
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                            )
+                                        ||  (
+                                                    ($timerTeladan->status_open_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                            )
+                                    )
+                                    ||
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                            )
+                                        || (
+                                                    ($timerTeladan->status_open_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_1)
+                                            )
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                            )
+                                        ||  (
+                                                    ($timerTeladan->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                            )
+                                    )
+                                    ||
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                            )
+                                        || (
+                                                    ($timerTeladan->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_2)
+                                            )
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                            )
+                                        ||  (
+                                                    ($timerTeladan->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                            )
+                                    )
+                                    ||
+                                    (
+                                            (
+                                                    ($timerTeladan->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                            )
+                                        || (
+                                                    ($timerTeladan->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                &&  ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                            )
+                                    )
+                                )
+                            )
+
+                            <div class="container-fluid swiper1_1">
+                                <div class="openTimerCountDown swiper-wrapper">
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Penutupan Tanda Tangan Kepala Biro SDM</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_1)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Closing Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-signature-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_expired_signature_human_resource_1)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Penutupan Tanda Tangan Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_2)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Closing Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-signature-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_expired_signature_human_resource_2)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Penutupan Tanda Tangan Kepala Subbagian Penghargaan, Disiplin, dan Pensiun</h3>
+                                        </div>
+                                        <div class="dateCountDown">
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('Y') }}</b></span>
+                                        </div>
+                                        <div class="timeCountDown">
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_expired_signature_human_resource_3)->isoFormat('a') }}</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="titleCountDown">
+                                            <h3>Closing Soon</h3>
+                                        </div>
+                                        <div class="wrap-countdown countdown-signature-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_expired_signature_human_resource_3)->toDateTimeString() }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @elseif (
+                                (
+                                    (
+                                                ( ($timerTeladan->status_open_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                            && ($timerTeladan->status_expired_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_1) )
+                                        ||      ( ($timerTeladan->status_open_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                            && ($timerTeladan->status_expired_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_1) )
+                                    )
+                                    ||
+                                    (
+                                                ( ($timerTeladan->status_open_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                            && ($timerTeladan->status_expired_signature_human_resource_1 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_1) )
+                                        ||      ( ($timerTeladan->status_open_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_1)
+                                            && ($timerTeladan->status_expired_signature_human_resource_1 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_1) )
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                                ( ($timerTeladan->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                            && ($timerTeladan->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_2) )
+                                        ||      ( ($timerTeladan->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                            && ($timerTeladan->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_2) )
+                                    )
+                                    ||
+                                    (
+                                                ( ($timerTeladan->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                            && ($timerTeladan->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_2) )
+                                        ||      ( ($timerTeladan->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_2)
+                                            && ($timerTeladan->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_2) )
+                                    )
+                                )
+                                ||
+                                (
+                                    (
+                                                ( ($timerTeladan->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                            && ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_3) )
+                                        ||      ( ($timerTeladan->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                            && ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_3) )
+                                    )
+                                    ||
+                                    (
+                                                ( ($timerTeladan->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                            && ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_3) )
+                                        ||      ( ($timerTeladan->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                            && ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_signature_human_resource_3) )
+                                    )
+                                )
+                            )
+
+                            <div class="container-fluid">
+                                <div class="titleCountDownNonActive">
+                                    <h3>
+                                        <span>Tanda Tangan Inovasi Telah Ditutup</span>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            @endif
+
+                        @endif
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -2767,13 +3289,13 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Timer Countdown Signature</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Signature Countdown </h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)
                         <div class="d-flex justify-content-center align-self-center">
                             <span class="text-center">
-                                <h3>Tanda Tangan Ditutup</h3>
+                                <h3>Tanda Tangan Inovasi Ditutup</h3>
                             </span>
                         </div>
                         @else
@@ -2875,7 +3397,7 @@
                                     ) --}}
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Tanda Tangan</h3>
+                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
                                         </div>
                                         <div class="titleCountDown">
                                             <h3>Kepala Biro Sumber Daya Manusia</h3>
@@ -2913,7 +3435,7 @@
                                     ) --}}
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Tanda Tangan</h3>
+                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
                                         </div>
                                         <div class="titleCountDown">
                                             <h3>Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</h3>
@@ -2951,7 +3473,7 @@
                                     ) --}}
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Tanda Tangan</h3>
+                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
                                         </div>
                                         <div class="titleCountDown">
                                             <h3>Kepala Subbagian Penghargaan, Disiplin, dan Pensiun</h3>
@@ -3259,7 +3781,7 @@
                             <div class="container-fluid">
                                 <div class="titleCountDownNonActive">
                                     <h3>
-                                        <span>Tanda Tangan Telah Ditutup</span>
+                                        <span>Tanda Tangan Inovasi Telah Ditutup</span>
                                     </h3>
                                 </div>
                             </div>
@@ -3277,9 +3799,7 @@
 
         <div class="col-md-6 col-md-5 order-1">
 
-            <div class="card mb-3">
 
-            </div>
 
         </div>
 

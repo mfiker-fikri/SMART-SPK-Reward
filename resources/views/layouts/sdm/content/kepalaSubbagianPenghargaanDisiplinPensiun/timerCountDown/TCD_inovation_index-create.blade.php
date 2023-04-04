@@ -825,7 +825,13 @@
                                 allowOutsideClick: false,
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    location.reload();
+                                    setTimeout(function(){
+                                        window.location.reload();
+                                    }, 2000);
+                                    $('#message-delete-signature-success').text(response.success);
+                                    // .then((response) => {
+                                    //     $('#message-delete-signature-success').text(response.success);
+                                    // });
                                 }
                             })
                         },
@@ -880,21 +886,25 @@
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}" id="pills-time-tab" data-bs-toggle="pill" data-bs-target="#pills-time" type="button" role="tab" aria-controls="pills-time" aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'true' : 'false' }}">Form Inovation</button>
+                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}"
+                        id="pills-time-tab"
+                        data-bs-toggle="pill" data-bs-target="#pills-time" type="button" role="tab"
+                        aria-controls="pills-time"
+                        aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'true' : 'false' }}">Inovation Form Countdown</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
                         @if ($timer != null)
                         <button class="nav-link text-center" id="pills-appraisment-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-appraisment" type="button" role="tab" aria-controls="pills-appraisment" aria-selected="false"
-                            >Appraisment Inovation
+                            >Inovation Appraisment Countdown
                         </button>
                         @elseif ($timer == null)
                         <button class="nav-link {{ $timer == null ? 'disabled' : '' }} text-center" id="pills-appraisment-tab"
                             disabled data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="This top tooltip is themed via CSS variables."
-                            >Appraisment Inovation
+                            >Inovation Appraisment Countdown
                         </button>
                         @endif
                     </li>
@@ -905,20 +915,20 @@
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
-                                >Signature Inovation
+                                >Inovation Signature Countdown
                             </button>
                         @elseif ($timers->isNotEmpty())
                             @if ($timers[0]->date_time_open_appraisment != null )
                             <button class="nav-link text-center" id="pills-signature_role2-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
-                                >Signature Inovation
+                                >Inovation Signature Countdown
                             </button>
                             @elseif ($timers[0]->date_time_open_appraisment == null)
                             <button class="nav-link {{ $timers[0]->date_time_open_appraisment == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
-                                >Signature Inovation
+                                >Inovation Signature Countdown
                             </button>
                             @endif
                         @endif
@@ -1017,7 +1027,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Form Inovation</h5>
+                            <h5 class="mb-0">Inovation Form Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -1128,6 +1138,9 @@
                                                     @if ($timers[0]->date_time_open_form_inovation != null )
                                                         min="{{ $timers[0]->date_time_open_form_inovation }}"
                                                     @endif
+                                                @endif
+                                                @if ($timers->isEmpty())
+                                                    min="{{ \Carbon\Carbon::tomorrow()->addDays(1)->toDateTimeString() }}"
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_countdown_inovation_form" data-val="true">
                                         </div>
@@ -1429,7 +1442,7 @@
                                                 @endif
                                                 @if ($timers->isNotEmpty())
                                                     @if ($timers[0]->date_time_expired_form_inovation != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_form_inovation)->addDays(1)->toDateTimeString() }}"
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_form_inovation)->addDays(2)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_countdown_inovation_appraisment" data-val="true">
@@ -1531,11 +1544,91 @@
 
                 <div class="tab-pane fade" id="pills-signature_role2" role="tabpanel" aria-labelledby="pills-signature_role2-tab" tabindex="0">
 
+                    @if(session('message-update-signature-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-signature-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-create-signature-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-create-signature-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-delete-signature-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-signature-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-delete-signature-success') }} </b></strong>
+                            </p>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    @elseif(session('message-update-signature-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-update-signature-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-create-signature-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-create-signature-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @elseif(session('message-delete-signature-error'))
+                    <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div class="d-flex flex-md-row">
+                            <p>
+                                <strong><b>   {{ session('message-delete-signature-error') }}  </b></strong>
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="card my-4">
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Signature Inovation</h5>
+                            <h5 class="mb-0">Inovation Signature Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -1648,7 +1741,7 @@
                                                 @endif
                                                 @if ($timers->isNotEmpty())
                                                     @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(2)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_3" data-val="true">
@@ -1729,7 +1822,7 @@
                                                 @endif
                                                 @if ($timers->isNotEmpty())
                                                     @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(3)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_2" data-val="true">
@@ -1805,7 +1898,7 @@
                                                 @endif
                                                 @if ($timers->isNotEmpty())
                                                     @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(4)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_2" data-val="true">
@@ -1885,7 +1978,7 @@
                                                 @endif
                                                 @if ($timers->isNotEmpty())
                                                     @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(5)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_1" data-val="true">
@@ -1961,7 +2054,7 @@
                                                 @endif
                                                 @if ($timers->isNotEmpty())
                                                     @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(6)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_1" data-val="true">

@@ -143,8 +143,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Final Inovation Reward
         // Read
-        Route::GET('/kepala-biro-SDM/reward/inovation', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationKepalaBiroSDM'])->name('getSignatureInovation.KepalaBiroSDM.SDM');
-        Route::GET('/kepala-biro-SDM/reward/inovation/list', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBiroSDM'])->name('getSignatureInovationList.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/reward/inovation', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationKepalaBiroSDM'])->name('getRewardInovation.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/reward/inovation/list', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBiroSDM'])->name('getRewardInovationList.KepalaBiroSDM.SDM');
     });
 
     // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha
@@ -176,8 +176,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Final Inovation Reward
         // Read
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation/list', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation/list', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
     });
 
 
@@ -294,13 +294,18 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Delete
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/signature/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownSignature'])->name('deleteTimerCountDownSignature.Index.Create.SDM');
 
-        // Form Teladan
+        // Appraisment Teladan
         // Create or Update
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormTeladan'])->name('getTimerCountDownFormTeladan.Index.Create.SDM');
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormTeladan'])->name('postTimerCountDownFormTeladan.Index.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormTeladan'])->name('getTimerCountDownFormTeladan.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormTeladan'])->name('postTimerCountDownFormTeladan.Index.Create.SDM');
         // Delete
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-representative/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormTeladan'])->name('deleteTimerCountDownFormTeladan.Index.Create.SDM');
-
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormTeladan'])->name('deleteTimerCountDownFormTeladan.Index.Create.SDM');
+        // Signature SDM
+        // Create or Update
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-signature', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownSignatureTeladan'])->name('getTimerCountDownSignatureTeladan.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-signature/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownSignatureTeladan'])->name('postTimerCountDownSignatureTeladan.Index.Create.SDM');
+        // Delete
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-signature/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownSignatureTeladan'])->name('deleteTimerCountDownSignatureTeladan.Index.Create.SDM');
 
         // Signature
         // Signature Inovation

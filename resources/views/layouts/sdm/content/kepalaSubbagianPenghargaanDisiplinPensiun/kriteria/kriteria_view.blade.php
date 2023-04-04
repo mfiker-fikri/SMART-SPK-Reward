@@ -248,7 +248,7 @@
                                 </div>
 
                                 <div class="d-flex flex-column">
-                                    <div id="value_qualityHelp" class="form-text">We'll never share normalization with anyone else.</div>
+                                    <div id="normalizationHelp" class="form-text">We'll never share normalization with anyone else.</div>
                                     <!-- Error Normalization -->
                                     @if ( $errors->has('normalization') )
                                         <span class="help-block">

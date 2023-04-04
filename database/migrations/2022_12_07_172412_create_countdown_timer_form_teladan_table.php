@@ -15,10 +15,30 @@ class CreateCountdownTimerFormTeladanTable extends Migration
     {
         Schema::create('countdown_timer_form_teladan', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date_time_open_form_teladan')->nullable();
-            $table->dateTime('date_time_expired_form_teladan')->nullable();
-            $table->boolean('status_open')->nullable();
-            $table->boolean('status_expired')->nullable();
+            // $table->dateTime('date_time_open_form_teladan')->nullable();
+            // $table->dateTime('date_time_expired_form_teladan')->nullable();
+            // $table->boolean('status_open')->nullable();
+            // $table->boolean('status_expired')->nullable();
+            //
+            $table->dateTime('date_time_open_appraisment')->nullable();
+            $table->dateTime('date_time_expired_appraisment')->nullable();
+            $table->boolean('status_open_appraisment')->nullable();
+            $table->boolean('status_expired_appraisment')->nullable();
+            //
+            $table->dateTime('date_time_open_signature_human_resource_1')->nullable();
+            $table->dateTime('date_time_expired_signature_human_resource_1')->nullable();
+            $table->boolean('status_open_signature_human_resource_1')->nullable();
+            $table->boolean('status_expired_signature_human_resource_1')->nullable();
+            //
+            $table->dateTime('date_time_open_signature_human_resource_2')->nullable();
+            $table->dateTime('date_time_expired_signature_human_resource_2')->nullable();
+            $table->boolean('status_open_signature_human_resource_2')->nullable();
+            $table->boolean('status_expired_signature_human_resource_2')->nullable();
+            //
+            $table->dateTime('date_time_open_signature_human_resource_3')->nullable();
+            $table->dateTime('date_time_expired_signature_human_resource_3')->nullable();
+            $table->boolean('status_open_signature_human_resource_3')->nullable();
+            $table->boolean('status_expired_signature_human_resource_3')->nullable();
         });
     }
 

@@ -13,20 +13,21 @@
             // scrollX: true,
             scrollCollapse: true,
             autoWidth: false,
-            columnDefs: [
-                { width: "5%", targets: 0 },
-                { width: "10%", targets: 1 },
-                { width: "10%", targets: 2 },
-                { width: "10%", targets: 3 },
-                { width: "15%", targets: 4 },
-                { width: "15%", targets: 5 },
-            ],
+            // columnDefs: [
+            //     { width: "5%", targets: 0 },
+            //     { width: "10%", targets: 1 },
+            //     { width: "10%", targets: 2 },
+            //     { width: "10%", targets: 3 },
+            //     { width: "15%", targets: 4 },
+            //     { width: "15%", targets: 5 },
+            // ],
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {   data: 'category_name', name: 'category_name'},
                 {   data: 'criteria_name', name: 'criteria_name'},
                 // {   data: 'criterias.criteria', name: 'criterias.criteria'},
-                {   data: 'normalization', name: 'normalization', orderable: false, searchable: true},
+                // {   data: 'normalization', name: 'normalization', orderable: false, searchable: true},
+                // {   data: 'quality_value', name: 'quality_value', orderable: false, searchable: true},
                 {   data: 'parameter', name: 'parameter' , orderable: false, searchable: false},
                 {   data: 'action', name: 'action', orderable: false, searchable: false},
             ],
@@ -74,7 +75,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Kriteria</th>
-                                <th scope="col">Normalisasi</th>
+                                {{-- <th scope="col">Normalisasi</th> --}}
                                 <th scope="col">Parameter</th>
                                 <th scope="col">Action</th>
                             </tr>

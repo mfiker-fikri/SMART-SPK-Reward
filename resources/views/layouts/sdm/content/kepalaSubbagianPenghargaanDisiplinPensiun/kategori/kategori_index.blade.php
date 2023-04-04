@@ -9,6 +9,8 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            paging: false,
+            searching: false,
             ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/list') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},

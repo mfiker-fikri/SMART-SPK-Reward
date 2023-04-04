@@ -62,6 +62,10 @@ class ParameterController extends Controller
                     $criterias_id  =   $parameter->criterias->criteria;
                     return $criterias_id;
                 })
+                ->addColumn('quality_value', function (Parameter $parameter) {
+                    $criterias_id  =   $parameter->criterias->value_quality;
+                    return $criterias_id;
+                })
                 ->addColumn('normalization', function ($row, Criteria $criteria) {
                     $normalization      =   '';
                     if ($row->criterias->categorie_id == 1) {
@@ -220,7 +224,33 @@ class ParameterController extends Controller
             $criteria       =      Criteria::get();
             $category       =      Category::get();
 
-            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.parameter.parameter_view', compact('criteria','category','parameter'));
+            $normalization      =   "";
+            if ($parameter->criterias->categorie_id == 1) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 1)->sum('value_quality');
+                $normalization      =   round($parameter->criterias->value_quality / $sumValueQuality, 3);
+            }
+            if ($parameter->criterias->categorie_id == 2) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 2)->sum('value_quality');
+                $normalization      =   round($parameter->criterias->value_quality / $sumValueQuality, 3);
+            }
+            if ($parameter->criterias->categorie_id == 3) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 3)->sum('value_quality');
+                $normalization      =   round($parameter->criterias->value_quality / $sumValueQuality, 3);
+            }
+            if ($parameter->criterias->categorie_id == 4) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 4)->sum('value_quality');
+                $normalization      =   round($parameter->criterias->value_quality / $sumValueQuality, 3);
+            }
+            if ($parameter->criterias->categorie_id == 5) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 5)->sum('value_quality');
+                $normalization      =   round($parameter->criterias->value_quality / $sumValueQuality, 3);
+            }
+            if ($parameter->criterias->categorie_id == 6) {
+                $sumValueQuality    =   Criteria::where('categorie_id', '=', 6)->sum('value_quality');
+                $normalization      =   round($parameter->criterias->value_quality / $sumValueQuality, 3);
+            }
+
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.parameter.parameter_view', compact('criteria','category','parameter', 'normalization'));
         } catch (\Throwable $th) {
             throw $th;
         }
