@@ -65,12 +65,12 @@
                         <div data-i18n="Form Inovation">Form Inovation</div>
                     </a>
                 </li>
-                <li class="menu-item {{ (request()->is('form-representative*')) ? 'active' : '' }}">
+                {{-- <li class="menu-item {{ (request()->is('form-representative*')) ? 'active' : '' }}">
                     <a href="{{ URL::to('form-representative/list') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                         <div data-i18n="Form Teladan">Form Teladan</div>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         <!--/ Form Inovation dan teladan -->

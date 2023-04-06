@@ -60,6 +60,11 @@ return [
         //     'driver' => 'session',
         //     'provider' => 'hrd',
         // ],
+        // HWU
+        'hwus'=> [
+            'driver' => 'session',
+            'provider' => 'hwu'
+        ],
         // Employees
         'employees' => [
             'driver' => 'session',
@@ -119,6 +124,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'hwus' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\HeadWorkUnit::class,
+        ],
+
         // Employees
         'employee' => [
             'driver' => 'eloquent',
@@ -166,6 +176,13 @@ return [
         'team_assessment' => [
             'provider' => 'team_assessments',
             'table' => 'team_assessments_password_resets',
+            'expire'    =>  60,
+            'throttle'  =>  60,
+        ],
+
+        'hwu' => [
+            'provider' => 'hwus',
+            'table' => 'head_of_work_unit_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,
         ],

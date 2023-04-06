@@ -43,20 +43,20 @@
             <meta name="description" content="Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
 
-        @elseif ( request()->is('penilai/appraisment/inovation'))
+        @elseif ( request()->is('penilai/appraisement/inovation'))
             <!-- Form Penilaian Inovation -->
             <!-- Read -->
             <meta name="title" content="Kelola Data Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Kelola Data Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('penilai/appraisment/inovation/valuation*'))
+        @elseif ( request()->is('penilai/appraisement/inovation/valuation*'))
             <!-- Form Penilaian Inovation -->
             <!-- Edit -->
             <meta name="title" content="Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
 
-        @elseif ( request()->is('penilai/appraisment/result/inovation') )
+        @elseif ( request()->is('penilai/appraisement/result/inovation') )
             <!-- Hasil Penilaian Inovasi -->
             <!-- Read -->
             <meta name="title" content="Hasil Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
@@ -92,19 +92,19 @@
 
 
 
-        @elseif ( request()->is('penilai/appraisment/inovation'))
+        @elseif ( request()->is('penilai/appraisement/inovation'))
             <!-- Form Penilaian Inovation -->
             <!-- Read -->
             <title>Kelola Data Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
-        @elseif ( request()->is('penilai/appraisment/inovation/valuation*'))
+        @elseif ( request()->is('penilai/appraisement/inovation/valuation*'))
             <!-- Form Penilaian Inovation -->
             <!-- Edit -->
             <title>Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
 
 
-        @elseif ( request()->is('penilai/appraisment/result/inovation') )
+        @elseif ( request()->is('penilai/appraisement/result/inovation') )
             <!-- Hasil Penilaian Inovasi -->
             <!-- Read -->
             <title>Hasil Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>

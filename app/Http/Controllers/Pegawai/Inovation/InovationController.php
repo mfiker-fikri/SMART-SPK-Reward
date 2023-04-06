@@ -134,6 +134,7 @@ class InovationController extends Controller
 
                 // Button Create
                 $rewardInovationCreate = RewardInovation::
+                    
                     where([
                         ['created_at', '>=', $dateOpenTime],
                         ['created_at', '<=', $dateExpiredTime],
@@ -141,13 +142,14 @@ class InovationController extends Controller
                         ['updated_at', '<=', $dateExpiredTime],
                         ['employee_id', '==', Auth::guard('employees')->user()->id],
                         // ['status_process', '!=', 0],
-                        ['status_process', '==', 1],
-                        ['status_process', '==', 2],
+                        // ['status_process', '=', 1],
+                        // ['status_process', '=', 2],
                     ])
-                    // ->orWhere(['status_process' => 1])
-                    // ->orWhere(['status_process' => 2])
+                    ->orWhere(['status_process' => 1])
+                    ->orWhere(['status_process' => 2])
                     ->latest()
-                    ->first();
+                    // ->first();
+                    ->get();
                 // ddd($rewardInovationCreate);
 
                 // Button Create Reject
@@ -158,13 +160,14 @@ class InovationController extends Controller
                         ['updated_at', '>=', $dateOpenTime],
                         ['updated_at', '<=', $dateExpiredTime],
                         ['employee_id', '==', Auth::guard('employees')->user()->id],
-                        ['status_process', '==', 0],
+                        // ['status_process', '=', 0],
                         // ['status_process', '!=', 1],
                         // ['status_process', '!=', 2],
                     ])
+                    ->orWhere(['status_process' => 0])
                     ->latest()
-                    ->first();
-                    // ->get();
+                    // ->first();
+                    ->get();
                 // ddd($rewardInovationCreateReject);
 
                 // Button Create Null
@@ -234,8 +237,8 @@ class InovationController extends Controller
                 ['created_at', '<=', $dateExpiredTime],
                 ['updated_at', '>=', $dateOpenTime],
                 ['updated_at', '<=', $dateExpiredTime],
-                ['employee_id', '==' ,Auth::guard('employees')->user()->id],
-                ['status_process', '==', 0],
+                ['employee_id', '=', Auth::guard('employees')->user()->id],
+                ['status_process', '=', 0],
             ])
             ->latest()
             ->get();

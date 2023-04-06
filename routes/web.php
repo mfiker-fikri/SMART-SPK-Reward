@@ -283,10 +283,10 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormInovation'])->name('deleteTimerCountDownFormInovation.Index.Create.SDM');
         // Appraisment Inovation
         // Create or Update
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownAppraisment'])->name('getTimerCountDownAppraisment.Index.Create.SDM');
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownAppraisment'])->name('postTimerCountDownAppraisment.Index.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisement', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownAppraisment'])->name('getTimerCountDownAppraisment.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisement/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownAppraisment'])->name('postTimerCountDownAppraisment.Index.Create.SDM');
         // Delete
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownAppraisment'])->name('deleteTimerCountDownAppraisment.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisement/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownAppraisment'])->name('deleteTimerCountDownAppraisment.Index.Create.SDM');
         // Signature SDM
         // Create or Update
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/signature', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownSignature'])->name('getTimerCountDownSignature.Index.Create.SDM');
@@ -296,10 +296,10 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Appraisment Teladan
         // Create or Update
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormTeladan'])->name('getTimerCountDownFormTeladan.Index.Create.SDM');
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormTeladan'])->name('postTimerCountDownFormTeladan.Index.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormTeladan'])->name('getTimerCountDownFormTeladan.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormTeladan'])->name('postTimerCountDownFormTeladan.Index.Create.SDM');
         // Delete
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormTeladan'])->name('deleteTimerCountDownFormTeladan.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormTeladan'])->name('deleteTimerCountDownFormTeladan.Index.Create.SDM');
         // Signature SDM
         // Create or Update
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-signature', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownSignatureTeladan'])->name('getTimerCountDownSignatureTeladan.Index.Create.SDM');
@@ -362,22 +362,61 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
 
     // Penilaian Inovasi
     // Read
-    Route::GET('/appraisment/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraisment'])->name('getManageAppraisment.Read.Penilai');
-    Route::GET('/appraisment/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentList'])->name('getManageAppraismentList.Read.Penilai');
-    Route::GET('/appraisment/inovation/list/DSS', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSS'])->name('getManageAppraismentListDSS.Read.Penilai');
-    // Route::GET('/appraisment/inovation/list/DSS/result', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSSResult'])->name('getManageAppraismentListDSSResult.Read.Penilai');
+    Route::GET('/appraisement/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraisment'])->name('getManageAppraisment.Read.Penilai');
+    Route::GET('/appraisement/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentList'])->name('getManageAppraismentList.Read.Penilai');
+    Route::GET('/appraisement/inovation/list/DSS', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSS'])->name('getManageAppraismentListDSS.Read.Penilai');
+    // Route::GET('/appraisement/inovation/list/DSS/result', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSSResult'])->name('getManageAppraismentListDSSResult.Read.Penilai');
     // Update
-    Route::GET('/appraisment/inovation/valuation/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentIdUpdate'])->name('getManageAppraismentId.Update.Penilai');
-    Route::POST('/appraisment/inovation/valuation/{id}/post', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'postAppraismentIdUpdate'])->name('postManageAppraismentId.Update.Penilai');
+    Route::GET('/appraisement/inovation/valuation/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentIdUpdate'])->name('getManageAppraismentId.Update.Penilai');
+    Route::POST('/appraisement/inovation/valuation/{id}/post', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'postAppraismentIdUpdate'])->name('postManageAppraismentId.Update.Penilai');
+
+    // Penilaian Teladan
+    // Read
+    Route::GET('/appraisement/representative', [App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getAppraisment'])->name('getManageAppraisment.Representative.Read.Penilai');
+    Route::GET('/appraisement/representative/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getAppraismentList'])->name('getManageAppraismentList.Representative.Read.Penilai');
+    Route::GET('/appraisement/representative/list/DSS', [\App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getAppraismentListDSS'])->name('getManageAppraismentListDSS.Representative.Read.Penilai');
+    // Route::GET('/appraisement/representative/list/DSS/result', [\App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getAppraismentListDSSResult'])->name('getManageAppraismentListDSSResult.Read.Penilai');
+    // Update
+    Route::GET('/appraisement/representative/valuation/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getAppraismentIdUpdate'])->name('getManageAppraismentId.Representative.Update.Penilai');
+    Route::POST('/appraisement/representative/valuation/{id}/post', [App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'postAppraismentIdUpdate'])->name('postManageAppraismentId.Representative.Update.Penilai');
 
     // Hasil Penilaian Inovasi
     // Read
-    Route::GET('/appraisment/result/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraisment'])->name('getManageAppraismentResult.Read.Penilai');
-    Route::GET('/appraisment/result/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraismentList'])->name('getManageAppraismentResultList.Read.Penilai');
+    Route::GET('/appraisement/result/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraisment'])->name('getManageAppraismentResult.Read.Penilai');
+    Route::GET('/appraisement/result/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraismentList'])->name('getManageAppraismentResultList.Read.Penilai');
 });
 
-// Kepala
+// Kepala Satuan Kerja
+Route::group(['name' => 'headworkunit', 'as' => 'hwu.'], function () {
+    // Login, Reset Password, dan Logout
+    Route::GET('/', [App\Http\Controllers\HWU\Auth\LoginController::class, 'getLoginForm'])->name('getLogin.HWU');
+    Route::POST('/', [App\Http\Controllers\HWU\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.HWU');
+    Route::GET('/logout', [App\Http\Controllers\HWU\Auth\LoginController::class, 'getLogout'])->name('getLogout.HWU');
 
+    Route::GET('/forgot-password', [App\Http\Controllers\HWU\Auth\ForgotPasswordController::class, 'getForgetPasswordForm'])->name('getForgetPassword.HWU');
+
+    Route::POST('/forgot-password', [App\Http\Controllers\HWU\Auth\ForgotPasswordController::class, 'postForgetPasswordForm'])->name('postForgetPassword.HWU');
+
+    Route::GET('/reset-password/{token}', [App\Http\Controllers\HWU\Auth\ForgotPasswordController::class, 'getResetPasswordForm'])->name('getResetPassword.HWU');
+
+    Route::POST('/reset-password', [App\Http\Controllers\HWU\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.HWU');
+
+    //
+    // Dashboard
+    Route::GET('dashboard', [App\Http\Controllers\HWU\DashboardController::class, 'dashboard'])->name('getDashboard.HWU');
+    Route::GET('dashboard/form-inovation/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.HWU');
+    Route::GET('dashboard/form-representative/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getTeladanFormData'])->name('getDashboard.getTeladanFormData.Read.HWU');
+
+    // Profile
+    Route::GET('profile', [App\Http\Controllers\HWU\HWUController::class, 'getProfile'])->name('getProfile.HWU');
+    Route::POST('profile/update', [App\Http\Controllers\HWU\HWUController::class, 'postProfile'])->name('postProfile.Update.HWU');
+    // Profile Image Upload & delete
+    Route::POST('/image/upload', [App\Http\Controllers\HWU\HWUController::class, 'postImageUpload'])->name('postProfile.postImageUpload.HWU');
+    Route::POST('/image/delete', [App\Http\Controllers\HWU\HWUController::class, 'postImageDelete'])->name('postProfile.postImageDelete.HWU');
+    // Profile Change Password
+    Route::POST('profile/change-password', [App\Http\Controllers\HWU\HWUController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.HWU');
+
+});
 
 // User / Pegawai
 Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {

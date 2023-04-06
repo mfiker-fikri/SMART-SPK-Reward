@@ -13,7 +13,7 @@ class CreateCountdownTimerFormInovationTable extends Migration
      */
     public function up()
     {
-        Schema::create('countdown_timer_form_inovation', function (Blueprint $table) {
+        Schema::create('countdown_timer_inovation', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date_time_open_form_inovation')->nullable();
             $table->dateTime('date_time_expired_form_inovation')->nullable();

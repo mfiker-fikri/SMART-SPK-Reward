@@ -2568,7 +2568,7 @@
                         <h5 class="m-0 me-2 pb-3 text-center">Representative Appraisement Countdown </h5>
                     </div>
                     <div class="card-body">
-                        @if ($timerInovasi == null)
+                        @if ($timerTeladan == null)
                         <div class="d-flex justify-content-center align-self-center">
                             <span class="text-center">
                                 <h3>Penilaian Teladan Ditutup</h3>

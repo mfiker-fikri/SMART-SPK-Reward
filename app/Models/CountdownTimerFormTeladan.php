@@ -14,7 +14,7 @@ class CountdownTimerFormTeladan extends Model
      *
      * @var string
      */
-    protected $table = 'countdown_timer_form_teladan';
+    protected $table = 'countdown_timer_teladan';
 
     /**
      * The primary key associated with the table.

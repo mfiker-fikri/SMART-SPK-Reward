@@ -25,7 +25,7 @@
                 { width: '5%', targets: 1 },
                 { width: '5%', targets: 2 },
                 { width: '5%', targets: 3 },
-                { width: '95%', targets: 4 },
+                // { width: '95%', targets: 4 },
             ],
             columns: [
                 // {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
@@ -43,7 +43,7 @@
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: '5%'},
                 {   data: 'category_name', name: 'category_name', orderable: false, searchable: false, width: '5%'},
                 {   data: 'criteria_name', name: 'criteria_name', orderable: false, searchable: false, width: '5%'},
-                {   data: 'normalization', name: 'normalization', orderable: false, searchable: true, width: '5%'},
+                // {   data: 'normalization', name: 'normalization', orderable: false, searchable: true, width: '5%'},
                 {   data: 'parameter', name: 'parameter', orderable: false, searchable: false, width: '95%'},
             ],
         });
@@ -69,13 +69,13 @@
                 { width: '5%', targets: 1 },
                 { width: '5%', targets: 2 },
                 { width: '5%', targets: 3 },
-                { width: '95%', targets: 4 },
+                // { width: '95%', targets: 4 },
             ],
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: '5%'},
                 {   data: 'category_name', name: 'category_name', orderable: false, searchable: false, width: '5%'},
                 {   data: 'criteria_name', name: 'criteria_name', orderable: false, searchable: false, width: '5%'},
-                {   data: 'normalization', name: 'normalization', orderable: false, searchable: true, width: '5%'},
+                // {   data: 'normalization', name: 'normalization', orderable: false, searchable: true, width: '5%'},
                 {   data: 'parameter', name: 'parameter', orderable: false, searchable: false, width: '95%'},
             ],
         });
@@ -106,14 +106,14 @@
                 <div class="container-fluid my-3">
 
                     <!-- Table Parameter -->
-                    <table class="table table-striped table-bordered dt-responsive display responsive" cellspacing="0" width="100%" id="data-table0">
+                    <table class="table table-striped table-bordered dt-responsive display responsive wrap" cellspacing="0" width="100%" id="data-table0">
                     {{-- <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table0"> --}}
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Kriteria</th>
-                                <th scope="col">Normalisasi</th>
+                                {{-- <th scope="col">Normalisasi</th> --}}
                                 <th scope="col">Parameter</th>
                             </tr>
                         </thead>
@@ -136,13 +136,13 @@
 
                 <div class="container-fluid my-3">
 
-                    <table class="table table-striped table-bordered dt-responsive display responsive"  cellspacing="0"  width="100%" id="data-table1">
+                    <table class="table table-striped table-bordered dt-responsive display responsive wrap" cellspacing="0" width="100%" id="data-table1">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Kriteria</th>
-                                <th scope="col">Normalisasi</th>
+                                {{-- <th scope="col">Normalisasi</th> --}}
                                 <th scope="col">Parameter</th>
                             </tr>
                         </thead>

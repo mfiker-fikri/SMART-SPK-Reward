@@ -12,7 +12,7 @@
 
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="{{ URL::to('/hrd') }}" class="app-brand-link gap-2">
+                        <a href="{{ URL::to('/hwu') }}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="logo" width="100" height="100" />
                             </span>
@@ -25,7 +25,7 @@
                     <span class="mb-4 text-center"><h5>Login</h5></span>
                     <!--/ Title -->
 
-                    <form id="formLogin" class="mb-3 mx-3" method="POST" action="{{ URL::to('/hrd') }}" >
+                    <form id="formLogin" class="mb-3 mx-3" method="POST" action="{{ URL::to('/hwu') }}" >
                         {{ csrf_field() }}
 
                         <!-- Username / Email -->
@@ -50,7 +50,7 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Password</label>
-                                <a href="{{ URL::to('/hrd/forgot-password') }}">
+                                <a href="{{ URL::to('/hwu/forgot-password') }}">
                                     <small>Forgot Password?</small>
                                 </a>
                             </div>

@@ -90,21 +90,21 @@
             <span class="menu-header-text">Penilaian Form Penghargaan Berprestasi</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('penilai/appraisment/inovation*')) || (request()->is('penilai/appraisment/representative*')) ? 'active' : '' }}">
+        <li class="menu-item {{ (request()->is('penilai/appraisement/inovation*')) || (request()->is('penilai/appraisement/representative*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                 <div data-i18n="Timer Countdown">Penilaian Form Penghargaan Berprestasi</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item {{ (request()->is('penilai/appraisment/inovation*')) ? 'active' : '' }}">
-                    <a href="{{ URL::to('penilai/appraisment/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                <li class="menu-item {{ (request()->is('penilai/appraisement/inovation*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('penilai/appraisement/inovation') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                         <div data-i18n="Form Inovation">Penilaian Form Inovation</div>
                     </a>
                 </li>
-                <li class="menu-item {{ (request()->is('penilai/appraisment/representative*')) ? 'active' : '' }}">
-                    <a href="{{ URL::to('penilai/appraisment/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                <li class="menu-item {{ (request()->is('penilai/appraisement/representative*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('penilai/appraisement/representative') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                         <div data-i18n="Form Teladan">Penilaian Form Teladan</div>
                     </a>
@@ -118,21 +118,21 @@
             <span class="menu-header-text">Hasil Penilaian Penghargaan Berprestasi</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('penilai/appraisment/result/inovation*')) || (request()->is('penilai/appraisment/result/representative*')) ? 'active' : '' }}">
+        <li class="menu-item {{ (request()->is('penilai/appraisement/result/inovation*')) || (request()->is('penilai/appraisement/result/representative*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                 <div data-i18n="Timer Countdown">Hasil Penilaian Hasil Penghargaan Berprestasi</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item {{ (request()->is('penilai/appraisment/result/inovation*')) ? 'active' : '' }}">
-                    <a href="{{ URL::to('penilai/appraisment/result/inovation') }}" class="menu-link" style="text-decoration: none !important;">
+                <li class="menu-item {{ (request()->is('penilai/appraisement/result/inovation*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('penilai/appraisement/result/inovation') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                         <div data-i18n="Hasil Inovation">Hasil Penilaian Hasil Inovation</div>
                     </a>
                 </li>
-                <li class="menu-item {{ (request()->is('penilai/appraisment/result/representative*')) ? 'active' : '' }}">
-                    <a href="{{ URL::to('penilai/appraisment/result/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                <li class="menu-item {{ (request()->is('penilai/appraisement/result/representative*')) ? 'active' : '' }}">
+                    <a href="{{ URL::to('penilai/appraisement/result/representative') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
                         <div data-i18n="Hasil Teladan">Hasil Penilaian Hasil Teladan</div>
                     </a>

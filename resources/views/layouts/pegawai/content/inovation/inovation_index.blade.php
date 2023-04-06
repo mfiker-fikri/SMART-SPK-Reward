@@ -1327,13 +1327,15 @@
 
 
 
-                            @if (isset($rewardInovationCreate) || isset($rewardInovationCreate) )
+                            {{-- @if (isset($rewardInovationCreate) ) --}}
+                            @if ($rewardInovationCreateReject->isNotEmpty() || $rewardInovationCreate->isEmpty())
                                 <div class="mx-1 mx-1 mx-1">
                                     <a class="btn btn-primary btn-lg" href="{{ URL::to('form-inovation/create') }}" role="button">
                                         <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Form Pendaftaran Penghargaan Inovasi
                                     </a>
                                 </div>
-                            @else (empty($rewardInovationCreate) )
+                            @elseif($rewardInovationCreateReject->isEmpty() || $rewardInovationCreate->isNotEmpty())
+                            {{-- (empty($rewardInovationCreate) ) --}}
                                 <div class="no-Button"></div>
                             @endif
 

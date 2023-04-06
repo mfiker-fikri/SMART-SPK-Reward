@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\TeamAssessment\Penilaian\Teladan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\CountdownTimerFormTeladan;
+use App\Models\Criteria;
+use App\Models\Parameter;
 use Illuminate\Http\Request;
 
 class ManageAppraismentTeladanController extends Controller
@@ -22,9 +26,47 @@ class ManageAppraismentTeladanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getAppraisment()
     {
-        //
+        try {
+            // Get Timer Countdown
+            $timer                      =   CountdownTimerFormTeladan::first();
+
+            if ($timer != null) {
+                $timer                  =   CountdownTimerFormTeladan::first();
+
+                // Option Select Inovation
+                $selectOptionCategory = Category::where('id', '=', 2)->get();
+                $selectOptionCriteria = Criteria::where('categorie_id', '=', 2)->get();
+                $selectOptionParameter1 = Parameter::where('criteria_id', '=', 7)->get();
+                $selectOptionParameter2 = Parameter::where('criteria_id', '=', 8)->get();
+                $selectOptionParameter3 = Parameter::where('criteria_id', '=', 9)->get();
+                $selectOptionParameter4 = Parameter::where('criteria_id', '=', 10)->get();
+                $selectOptionParameter5 = Parameter::where('criteria_id', '=', 11)->get();
+                $selectOptionParameter6 = Parameter::where('criteria_id', '=', 12)->get();
+
+                return view('layouts.teamAssessment.content.penilaianTeladan.penilaianTeladan_index', compact('timer', 'selectOptionParameter1',
+                'selectOptionParameter2', 'selectOptionParameter3', 'selectOptionParameter4', 'selectOptionParameter5', 'selectOptionParameter6'));
+            } else {
+                $timer                  =   CountdownTimerFormTeladan::first();
+
+                // Option Select Inovation
+                $selectOptionCategory = Category::where('id', '=', 2)->get();
+                $selectOptionCriteria = Criteria::where('categorie_id', '=', 2)->get();
+                $selectOptionParameter1 = Parameter::where('criteria_id', '=', 7)->get();
+                $selectOptionParameter2 = Parameter::where('criteria_id', '=', 8)->get();
+                $selectOptionParameter3 = Parameter::where('criteria_id', '=', 9)->get();
+                $selectOptionParameter4 = Parameter::where('criteria_id', '=', 10)->get();
+                $selectOptionParameter5 = Parameter::where('criteria_id', '=', 11)->get();
+                $selectOptionParameter6 = Parameter::where('criteria_id', '=', 12)->get();
+
+                // $reward     =   RewardInovation::latest()->get();
+                return view('layouts.teamAssessment.content.penilaianTeladan.penilaianTeladan_index', compact('timer', 'selectOptionParameter1',
+                'selectOptionParameter2', 'selectOptionParameter3', 'selectOptionParameter4', 'selectOptionParameter5', 'selectOptionParameter6'));
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
