@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 
-<html lang="en" 
-    class="light-style layout-menu-fixed" 
-    dir="ltr" 
-    data-theme="theme-default" 
+<html lang="en"
+    class="light-style layout-menu-fixed"
+    dir="ltr"
+    data-theme="theme-default"
     data-assets-path="../assets/"
     data-template="vertical-menu-template-free">
     <head>
         <!-- Meta Tag -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, 
+        <meta name="viewport" content="width=device-width,
             initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         {{-- <meta name="title" content="{{ Auth::guard('employees')->user()->full_name }}
             @if ( request()->is('dashboard') )
-            - Dashboard 
+            - Dashboard
             @elseif ( request()->is('profile') )
             - Profile
             @endif
             | Sistem Penunjang Keputusan (SPK) Penerimaan Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         <meta name="description" content="{{ Auth::guard('employees')->user()->full_name }}
             @if ( request()->is('dashboard') )
-            - Dashboard 
+            - Dashboard
             @elseif ( request()->is('profile') )
             - Profile
             @endif
@@ -31,7 +31,7 @@
         <!-- Title -->
         {{-- <title>{{ Auth::guard('employees')->user()->full_name }}
             @if ( request()->is('dashboard') )
-            - Dashboard 
+            - Dashboard
             @elseif ( request()->is('profile') )
             - Profile
             @endif
@@ -83,7 +83,7 @@
         <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <script src="{{ asset('js/admin/ext_js/js/config.js') }}"></script>
-        
+
         <!-- Add Ext Plugin -->
         <!-- Bootstrap 5 dan 4 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -106,7 +106,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-font-face.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-shims.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v5-font-face.min.css" rel="stylesheet" crossorigin="anonymous">
-        
+
         <!-- Sweet Alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
@@ -158,7 +158,7 @@
         <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.dataTables.js" crossorigin="anonymous" defer></script>
         <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.dataTables.min.js" crossorigin="anonymous" defer></script>
-        
+
         <!-- Ajax Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -168,7 +168,7 @@
         <script src="{{ asset('js/admin/int_js/password/show-hide-password.min.js') }}" crossorigin="anonymous" defer></script>
 
         {{-- <link link rel="stylesheet" href="{{ asset('css/admin/int_css/login.css') }}" /> --}}
-        
+
         <!--  -->
         @stack('css_header')
         @stack('js_header')
@@ -210,13 +210,13 @@
         <div class="layout-wrapper layout-content-navbar">
             <div class="layout-container">
                 <!-- Menu -->
-                @include('layouts.hrd.sidebar.sidebar') 
+                @include('layouts.hwu.sidebar.sidebar')
                 <!-- / Menu -->
 
                 <!-- Layout container -->
                 <div class="layout-page">
                     <!-- Navbar -->
-                    @include('layouts.hrd.header.header')
+                    @include('layouts.hwu.header.header')
                     <!-- / Navbar -->
 
                     <!-- Content wrapper -->
@@ -227,7 +227,7 @@
                         <!-- / Content -->
 
                         <!-- Footer -->
-                        @include('layouts.hrd.footer.footer')
+                        @include('layouts.hwu.footer.footer')
                         <!-- / Footer -->
 
                         <div class="content-backdrop fade"></div>
@@ -314,9 +314,9 @@
             var day = new Date();
             // Get Hour
             var hr = day.getHours();
-            // 
+            //
             let greeting;
-            // 
+            //
             if (hr >= 5 && hr < 11) {
                 greeting = "Good Morning!";
             } else if (hr >= 11 && hr < 18) {

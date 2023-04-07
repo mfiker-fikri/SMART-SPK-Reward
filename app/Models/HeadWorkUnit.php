@@ -3,20 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+// use Laravel\Sanctum\HasApiTokens;
 
-class HeadWorkUnit extends Model
+class HeadWorkUnit extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'head_of_work_unit';
+    protected $table = 'head_of_work_units';
 
     /**
      * The primary key associated with the table.

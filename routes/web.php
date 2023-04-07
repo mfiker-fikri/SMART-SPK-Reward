@@ -387,7 +387,7 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
 });
 
 // Kepala Satuan Kerja
-Route::group(['name' => 'headworkunit', 'as' => 'hwu.'], function () {
+Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu.'], function () {
     // Login, Reset Password, dan Logout
     Route::GET('/', [App\Http\Controllers\HWU\Auth\LoginController::class, 'getLoginForm'])->name('getLogin.HWU');
     Route::POST('/', [App\Http\Controllers\HWU\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.HWU');
@@ -401,20 +401,22 @@ Route::group(['name' => 'headworkunit', 'as' => 'hwu.'], function () {
 
     Route::POST('/reset-password', [App\Http\Controllers\HWU\Auth\ForgotPasswordController::class, 'postResetPasswordForm'])->name('postResetPassword.HWU');
 
-    //
-    // Dashboard
-    Route::GET('dashboard', [App\Http\Controllers\HWU\DashboardController::class, 'dashboard'])->name('getDashboard.HWU');
-    Route::GET('dashboard/form-inovation/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.HWU');
-    Route::GET('dashboard/form-representative/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getTeladanFormData'])->name('getDashboard.getTeladanFormData.Read.HWU');
+    Route::group(['middleware' => 'hwu.auth'], function () {
+        //
+        // Dashboard
+        Route::GET('dashboard', [App\Http\Controllers\HWU\DashboardController::class, 'dashboard'])->name('getDashboard.HWU');
+        Route::GET('dashboard/form-inovation/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.HWU');
+        Route::GET('dashboard/form-representative/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getTeladanFormData'])->name('getDashboard.getTeladanFormData.Read.HWU');
 
-    // Profile
-    Route::GET('profile', [App\Http\Controllers\HWU\HWUController::class, 'getProfile'])->name('getProfile.HWU');
-    Route::POST('profile/update', [App\Http\Controllers\HWU\HWUController::class, 'postProfile'])->name('postProfile.Update.HWU');
-    // Profile Image Upload & delete
-    Route::POST('/image/upload', [App\Http\Controllers\HWU\HWUController::class, 'postImageUpload'])->name('postProfile.postImageUpload.HWU');
-    Route::POST('/image/delete', [App\Http\Controllers\HWU\HWUController::class, 'postImageDelete'])->name('postProfile.postImageDelete.HWU');
-    // Profile Change Password
-    Route::POST('profile/change-password', [App\Http\Controllers\HWU\HWUController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.HWU');
+        // Profile
+        Route::GET('profile', [App\Http\Controllers\HWU\HWUController::class, 'getProfile'])->name('getProfile.HWU');
+        Route::POST('profile/update', [App\Http\Controllers\HWU\HWUController::class, 'postProfile'])->name('postProfile.Update.HWU');
+        // Profile Image Upload & delete
+        Route::POST('/image/upload', [App\Http\Controllers\HWU\HWUController::class, 'postImageUpload'])->name('postProfile.postImageUpload.HWU');
+        Route::POST('/image/delete', [App\Http\Controllers\HWU\HWUController::class, 'postImageDelete'])->name('postProfile.postImageDelete.HWU');
+        // Profile Change Password
+        Route::POST('profile/change-password', [App\Http\Controllers\HWU\HWUController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.HWU');
+    });
 
 });
 

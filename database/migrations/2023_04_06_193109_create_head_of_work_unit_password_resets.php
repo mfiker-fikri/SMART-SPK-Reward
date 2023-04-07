@@ -13,7 +13,7 @@ class CreateHeadOfWorkUnitPasswordResets extends Migration
      */
     public function up()
     {
-        Schema::create('head_of_work_unit_password_resets', function (Blueprint $table) {
+        Schema::create('head_of_work_units_password_resets', function (Blueprint $table) {
             $table->string('email', 100)->index();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
@@ -27,6 +27,6 @@ class CreateHeadOfWorkUnitPasswordResets extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('head_of_work_unit_password_resets');
+        Schema::dropIfExists('head_of_work_units_password_resets');
     }
 }

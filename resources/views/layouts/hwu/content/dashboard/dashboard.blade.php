@@ -1,12 +1,12 @@
-@extends('template.hrd.template')
+@extends('template.hwu.template')
 
 
 @section('content')
 
 <div class="container-xxl container-p-y">
-    
+
     <div class="row mx-1">
-        
+
         <div class="col-md-6 order-0">
 
             <div class="card mb-3" style="max-width: 740px;min-height: 340px;">
@@ -24,7 +24,7 @@
                         <div class="card-body d-flex flex-column justify-content-center align-self-center">
                             {{-- <h3 class="card-title text-center"><strong> {{ Auth::guard('admins')->user()->full_name }} </strong></h3>
                             <p class="card-text text-center"> Admin </p>
-                            @if (Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id)) 
+                            @if (Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id))
                             <p class="card-text text-success text-center"><small class="text-muted">Online</small></p>
                             @endif --}}
                         </div>
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            
+
         </div>
 
         <div class="col-md-6 col-md-5 order-1">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-            
+
                 </div>
 
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
@@ -67,15 +67,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>  
-            
+                    </div>
+
                 </div>
 
             </div>
 
             <div class="row">
                 <div class="col-12 mb-4">
-    
+
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                 </div>
             </div>
 
@@ -95,7 +95,7 @@
 
     </div>
 
-    
+
     <div class="row mx-1">
 
         <!-- Total Revenue -->

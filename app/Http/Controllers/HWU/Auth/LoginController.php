@@ -2,38 +2,30 @@
 
 namespace App\Http\Controllers\HWU\Auth;
 
-// Service
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Alert;
-use Illuminate\Cache\RateLimiter;
-// Illuminate
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\RateLimiter as FacadesRateLimiter;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
+
     /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
+     * Instantiate a new UserController instance.
      */
     public function __construct()
     {
-        $this->middleware('hwus.guest', ['except' => 'getLogout']);
+        $this->middleware('hwu.guest', ['except' => 'getLogout']);
     }
 
+    // use AuthenticatesUsers;
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirect = 'headworkunit/dashboard';
+    // protected $redirect = 'headworkunit/dashboard';
 
     /**
      * Get the login username to be used by the controller.
@@ -42,7 +34,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return 'email';
+        return 'username';
     }
 
     /**
@@ -52,15 +44,16 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('hwus');
+        return Auth::guard('head_work_units');
     }
 
     public function getLoginForm()
     {
         try {
+            // ddd('sukses');
             return view('layouts.hwu.content.auth.login');
-        } catch (\Throwable $th) {
-            throw $th;
+        } catch (\Exception $exception) {
+            return $exception;
         }
     }
 
@@ -101,12 +94,12 @@ class LoginController extends Controller
 
         // dd($check, $password, $remember_me);
         // Attempt Login
-        $attempt                    =   Auth::guard('hwus')->attempt([$check => $username, 'password' => $password, 'status_active' => 1, 'status_id' => 1], $remember_me);
+        $attempt                    =   Auth::guard('head_work_units')->attempt([$check => $username, 'password' => $password, 'status_active' => 1, 'status_id' => 1], $remember_me);
 
 
 
         if ($attempt) {
-            FacadesRateLimiter::clear('hwu.' . $request->ip());
+            // FacadesRateLimiter::clear('hwu.' . $request->ip());
             session(['berhasil_login' => true]);
             alert()->success('Berhasil Masuk')->autoclose(25000);
             return redirect('/headworkunit/dashboard')->with('message-succes-login', 'Selamat Datang');
@@ -128,11 +121,15 @@ class LoginController extends Controller
      */
     public function getLogout(Request $request)
     {
-        $this->guard('hwus')->logout();
-        $request->session()->flush();
-        Auth::logout();
-        return redirect()->back()->withSuccess('Kamu Telah Keluar Dari Akun', 'Terima Kasih');
-        // alert('<a href="#">Click me</a>')->html()->persistent("Ok")->success('Kamu Telah Keluar Dari Akun', 'Terima Kasih')->autoclose(50000);
-        // return redirect('user/login');
+        try {
+            $this->guard('head_work_units')->logout();
+            $request->session()->flush();
+            Auth::logout();
+            alert()->success('Kamu Telah Keluar Dari Akun Pegawai', 'Terima Kasih')->autoclose(50000);
+            return redirect('/headworkunit')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Pegawai, Terima Kasih');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
+
 }

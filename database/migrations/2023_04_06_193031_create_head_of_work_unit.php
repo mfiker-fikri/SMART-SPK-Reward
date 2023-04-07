@@ -13,7 +13,7 @@ class CreateHeadOfWorkUnit extends Migration
      */
     public function up()
     {
-        Schema::create('head_of_work_unit', function (Blueprint $table) {
+        Schema::create('head_of_work_units', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('full_name', 255);
             $table->string('email', 100)->unique()->index();
@@ -40,6 +40,6 @@ class CreateHeadOfWorkUnit extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('head_of_work_unit');
+        Schema::dropIfExists('head_of_work_units');
     }
 }

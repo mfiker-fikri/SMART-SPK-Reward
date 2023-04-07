@@ -88,11 +88,12 @@ class Kernel extends HttpKernel
         'team_assessment.guest' =>  \App\Http\Middleware\TeamAssessment\RedirectIfNotTA::class,
 
         // Head Work Unit
-        'hwu.auth'  =>   \App\Http\Middleware\HeadWorkUnit\RedirectIfHWU::class,
-        'hwu.guest' =>  \App\Http\Middleware\HeadWorkUnit\RedirectIfNotHWU::class,
+        'hwu.auth'  =>   \App\Http\Middleware\HeadWorkUnit\RedirectIfHeadWorkUnit::class,
+        'hwu.guest' =>  \App\Http\Middleware\HeadWorkUnit\RedirectIfNotHeadWorkUnit::class,
 
         // Pegawais
         'pegawai.auth' => \App\Http\Middleware\Pegawai\RedirectIfPegawai::class,
         'pegawai.guest' => \App\Http\Middleware\Pegawai\RedirectIfNotPegawai::class,
+
     ];
 }

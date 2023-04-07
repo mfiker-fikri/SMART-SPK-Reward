@@ -61,9 +61,9 @@ return [
         //     'provider' => 'hrd',
         // ],
         // HWU
-        'hwus'=> [
+        'head_work_units'=> [
             'driver' => 'session',
-            'provider' => 'hwu'
+            'provider' => 'head_work_unit'
         ],
         // Employees
         'employees' => [
@@ -119,12 +119,12 @@ return [
         ],
 
         // Hrds
-        'hrd' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+        // 'hrd' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
 
-        'hwus' => [
+        'head_work_unit' => [
             'driver' => 'eloquent',
             'model' => App\Models\HeadWorkUnit::class,
         ],
@@ -160,35 +160,35 @@ return [
         ],
 
         'admins' => [
-            'provider'  =>  'admins',
+            'provider'  =>  'admin',
             'table' =>  'admins_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,
         ],
 
         'human_resources' => [
-            'provider' => 'human_resources',
+            'provider' => 'human_resource',
             'table' => 'human_resources_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,
         ],
 
-        'team_assessment' => [
-            'provider' => 'team_assessments',
+        'team_assessments' => [
+            'provider' => 'team_assessment',
             'table' => 'team_assessments_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,
         ],
 
-        'hwu' => [
-            'provider' => 'hwus',
+        'head_work_units' => [
+            'provider' => 'head_work_unit',
             'table' => 'head_of_work_unit_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,
         ],
 
         'employees' => [
-            'provider'  =>  'employees',
+            'provider'  =>  'employee',
             'table' =>  'employees_password_resets',
             'expire'    =>  60,
             'throttle'  =>  60,

@@ -9,83 +9,83 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb breadcrumb-style1 my-lg-3 my-3">
             <!-- Dashboard -->
-            @if ( request()->is('admin/dashboard') )
+            @if ( request()->is('headworkunit/dashboard') )
                 <li class="breadcrumb-item fw-bold active">
                     Dashboard
                 </li>
 
             <!-- Profile -->
-            @elseif ( request()->is('admin/profile') )
+            @elseif ( request()->is('headworkunit/profile') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
 
             <!-- Manage Admins -->
-            @elseif ( request()->is('admin/manage/admins/create') )
+            @elseif ( request()->is('headworkunit/manage/admins/create') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Tambah Data Admin Baru</li>
 
-            @elseif ( request()->is('admin/manage/admins') )
+            @elseif ( request()->is('headworkunit/manage/admins') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Admin</li>
 
-            @elseif ( request()->is('admin/manage/admins/view*') )
+            @elseif ( request()->is('headworkunit/manage/admins/view*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active"> {{ $admin->full_name }} </li>
+                <li class="breadcrumb-item fw-bold active"> {{ $headworkunit->full_name }} </li>
 
-            @elseif ( request()->is('admin/manage/admins/edit*') )
+            @elseif ( request()->is('headworkunit/manage/admins/edit*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active"> {{ $admin->full_name }} </li>
+                <li class="breadcrumb-item fw-bold active"> {{ $headworkunit->full_name }} </li>
 
             <!-- Manage Employees -->
-            @elseif ( request()->is('admin/manage/employees/create') )
+            @elseif ( request()->is('headworkunit/manage/employees/create') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
+                    <a href="{{ URL::to('/headworkunit/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Tambah Data Pegawai Baru</li>
 
-            @elseif ( request()->is('admin/manage/employees') )
+            @elseif ( request()->is('headworkunit/manage/employees') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Pegawai</li>
 
-            @elseif ( request()->is('admin/manage/employees/view*') )
+            @elseif ( request()->is('headworkunit/manage/employees/view*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
+                    <a href="{{ URL::to('/headworkunit/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">{{ $employee->full_name }}</li>
 
-            @elseif ( request()->is('admin/manage/employees/edit*') )
+            @elseif ( request()->is('headworkunit/manage/employees/edit*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
+                    <a href="{{ URL::to('/headworkunit/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">{{ $employee->full_name }}</li>
 
@@ -99,15 +99,15 @@
             <!-- Admin -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar {{ Auth::guard('admins')->user()->status_id == 1 && Auth::guard('admins')->user()->status_active == 1 && (Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id)) ? 'avatar-online' : '' }}">
+                    <div class="avatar {{ Auth::guard('admins')->user()->status_id == 1 && Auth::guard('admins')->user()->status_active == 1 && (Cache::has('headworkunit-is-online-' . Auth::guard('admins')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if (Auth::guard('admins')->user()->photo_profile)
-                            <img src="{{ asset( 'storage/images/admin/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" 
-                            alt="admin-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle" 
+                            <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
+                            alt="headworkunit-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle"
                             style="width: 40px; height: 45px" id="adminAvatar" />
                         @else
-                            <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                                alt="admin-avatar" class="rounded-circle" 
+                            <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                alt="headworkunit-avatar" class="rounded-circle"
                                 style="width: 40px; height: 45px" id="adminAvatar" />
                         @endif
                     </div>
@@ -126,15 +126,15 @@
                     <li>
                         <div class="mx-sm-1 px-sm-3 d-flex">
                             <div class="flex-shrink-0 me-3">
-                                <div class="avatar {{ Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id ) ? 'avatar-online' : '' }}">
+                                <div class="avatar {{ Cache::has('headworkunit-is-online-' . Auth::guard('admins')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('admins')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/images/admin/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" 
-                                        alt="admin-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle" 
+                                        <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
+                                        alt="headworkunit-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="adminAvatar" />
                                     @else
-                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" 
-                                        alt="admin-avatar" class="rounded-circle" 
+                                    <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
+                                        alt="headworkunit-avatar" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="adminAvatar" />
                                     @endif
                                 </div>
@@ -189,11 +189,11 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
-                    
+
 
                     <!-- My Profile -->
                     <li>
-                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('admin/profile*')) ? 'active' : '' }}" href="{{ URL::to('/admin/profile') }}">
+                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('headworkunit/profile*')) ? 'active' : '' }}" href="{{ URL::to('/headworkunit/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
@@ -204,7 +204,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
 
-                    <!-- Logout {{URL::to('/admin/logout')}} -->
+                    <!-- Logout {{URL::to('/headworkunit/logout')}} -->
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item" id="logout" style="cursor: pointer;">
                             <i class="fa-solid fa-person-running" style="margin: 0 0.9rem 0 0;font-size: 1.6em;"></i>

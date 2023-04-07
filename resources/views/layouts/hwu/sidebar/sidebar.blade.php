@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <!-- Logo -->
     <div class="app-brand demo" style="max-height: 10rem; min-height: 10rem; margin-bottom: 10px">
-        <a href="{{ URL::to('/admin/dashboard') }}" class="app-brand-link d-flex flex-column justify-content-center" style="text-decoration: none !important;">
+        <a href="{{ URL::to('/headworkunit/dashboard') }}" class="app-brand-link d-flex flex-column justify-content-center" style="text-decoration: none !important;">
             <span class="app-brand-logo demo text-center">
                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="Icon" width="50" height="50" />
             </span>
@@ -20,7 +20,7 @@
 
     <!-- Menu -->
     <ul class="menu-inner py-1 mt-2 mt-2 mt-2 mt-2">
-        
+
         <!-- Dashboard -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Dashboard</span>
@@ -85,7 +85,7 @@
             </a>
         </li>
         <!--/ My Parameter -->
-        
+
         <!-- Penilaian Penghargaan -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Penilaian Penghargaan Pegawai</span>

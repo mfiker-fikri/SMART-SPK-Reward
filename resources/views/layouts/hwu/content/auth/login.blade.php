@@ -5,14 +5,14 @@
 <div class="container-xxl">
     <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 100vh; max-height: 100vh;">
         <div class="authentication-inner">
-            
+
             <!-- Login -->
             <div class="card">
                 <div class="card-body">
 
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="{{ URL::to('/hwu') }}" class="app-brand-link gap-2">
+                        <a href="{{ URL::to('/headworkunit') }}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="logo" width="100" height="100" />
                             </span>
@@ -25,14 +25,17 @@
                     <span class="mb-4 text-center"><h5>Login</h5></span>
                     <!--/ Title -->
 
-                    <form id="formLogin" class="mb-3 mx-3" method="POST" action="{{ URL::to('/hwu') }}" >
-                        {{ csrf_field() }}
+                    <form id="formLogin" class="mb-3 mx-3" method="POST" action="{{ route('hwu.getLogin.HWU') }}" >
+                        @csrf
+
+                        <!-- Equivalent to... -->
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
                         <!-- Username / Email -->
                         <div class="mb-3 {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }} ">
                             <label for="username" class="form-label">Username atau Email</label>
                             <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}" id="username"
-                                name="username" placeholder="Enter your username or email" 
+                                name="username" placeholder="Enter your username or email"
                                 autofocus autocomplete required size="100" />
 
                             <!-- Error Username / Email -->
@@ -50,20 +53,20 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Password</label>
-                                <a href="{{ URL::to('/hwu/forgot-password') }}">
+                                <a href="{{ URL::to('/headworkunit/forgot-password') }}">
                                     <small>Forgot Password?</small>
                                 </a>
                             </div>
 
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password" 
+                                <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
                                     name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                     autofocus autocomplete required aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer">
                                     <i class="bx bx-hide"></i>
                                 </span>
                             </div>
-                            
+
                             <!-- Error Password -->
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -71,7 +74,7 @@
                                 </span>
                             @endif
                             <!--/ Error Password -->
-                            
+
                         </div>
                         <!--/ Password -->
 
@@ -93,13 +96,13 @@
                             @if(session('message-succes-login'))
                             <div class="d-flex flex-md-row">
                                 <p>
-                                    <strong><b>   {{ session('message-succes-login') }} </b></strong>     
+                                    <strong><b>   {{ session('message-succes-login') }} </b></strong>
                                 </p>
                             </div>
                             @elseif(session('message-succes-logout'))
                             <div class="d-flex flex-md-row">
                                 <p>
-                                    <strong><b>   {{ session('message-succes-logout') }} </b></strong>     
+                                    <strong><b>   {{ session('message-succes-logout') }} </b></strong>
                                 </p>
                             </div>
                             @endif
@@ -114,7 +117,7 @@
                             <div class="d-flex flex-md-row">
                                 <p>
                                     <strong><b>   {{ session('message-failed-login') }}  </b></strong>
-                                </p> 
+                                </p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 </button>
                             </div>
@@ -127,7 +130,7 @@
                             <button class="btn btn-primary d-grid w-100" type="submit">
                                 <div class="d-inline-flex flex-row align-items-center justify-content-center">
                                     <div class="d-flex align-items-center mx-2">
-                                        <i class="fas fa-sign-in fa-lg"></i>
+                                        <i class="fa-solid fa-right-to-bracket fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         Sign in

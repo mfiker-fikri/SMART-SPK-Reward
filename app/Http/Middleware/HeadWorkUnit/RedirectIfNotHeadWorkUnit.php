@@ -5,8 +5,9 @@ namespace App\Http\Middleware\HeadWorkUnit;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfHWU
+class RedirectIfNotHeadWorkUnit
 {
     /**
      * Handle an incoming request.
@@ -15,21 +16,16 @@ class RedirectIfHWU
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $guard = 'hwus')
+    public function handle(Request $request, Closure $next, $guard = 'head_work_units') : Response
     {
         try {
-            if (Auth::guard($guard)->check()) {
-                if (Auth::guard($guard)->user()->status_active == 1 && Auth::guard($guard)->user()->status_id == 1) {
-                    return $next($request);
-                }
+            if (!Auth::guard($guard)->check()) {
+                return $next($request);
             }
-            return redirect('/headworkunit');
-        } catch (\Exception $exception) {
-            return $exception;
-        } catch (\Error $error) {
-            return $error;
+            return redirect('/admin/dashboard');
         } catch (\Throwable $th) {
             throw $th;
         }
+        // return $next($request);
     }
 }
