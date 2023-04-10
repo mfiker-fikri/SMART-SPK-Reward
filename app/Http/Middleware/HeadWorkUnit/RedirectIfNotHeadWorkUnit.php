@@ -22,7 +22,7 @@ class RedirectIfNotHeadWorkUnit
             if (!Auth::guard($guard)->check()) {
                 return $next($request);
             }
-            return redirect('/admin/dashboard');
+            return redirect('/headworkunit/dashboard');
         } catch (\Throwable $th) {
             throw $th;
         }

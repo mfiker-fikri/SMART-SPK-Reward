@@ -26,8 +26,8 @@
             <span class="menu-header-text">Dashboard</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('hrd/dashboard*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('headworkunit/dashboard*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/headworkunit/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -39,77 +39,26 @@
             <span class="menu-header-text">My Profile</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('hrd/profile*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/profile') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('headworkunit/profile*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/headworkunit/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                 <div data-i18n="Analytics">My Profile</div>
             </a>
         </li>
         <!--/ My Profile -->
 
-        <!-- My Category -->
+        <!-- My Profile -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Category</span>
+            <span class="menu-header-text">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('hrd/manage/categories*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/manage/categories') }}" class="menu-link" style="text-decoration: none !important;">
-                <i class="menu-icon tf-icons fa-solid fa-list"></i>
-                <div data-i18n="Analytics">Category</div>
+        <li class="menu-item {{ (request()->is('headworkunit/form-inovation/list*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/headworkunit/form-inovation/list') }}" class="menu-link" style="text-decoration: none !important;">
+                <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
+                <div data-i18n="Analytics">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
             </a>
         </li>
-        <!--/ My Category -->
+        <!--/ My Profile -->
 
-        <!-- My Criteria -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Criteria</span>
-        </li>
-
-        <li class="menu-item {{ (request()->is('hrd/manage/criterias*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/manage/criterias') }}" class="menu-link" style="text-decoration: none !important;">
-                <i class="menu-icon tf-icons fa-solid fa-list-check"></i>
-                <div data-i18n="Analytics">Criteria</div>
-            </a>
-        </li>
-        <!--/ My Criteria -->
-
-        <!-- My Parameter -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Parameter</span>
-        </li>
-
-        <li class="menu-item {{ (request()->is('hrd/manage/parameters*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/manage/parameters') }}" class="menu-link" style="text-decoration: none !important;">
-                <i class="menu-icon tf-icons fa-solid fa-sliders"></i>
-                <div data-i18n="Analytics">Parameter</div>
-            </a>
-        </li>
-        <!--/ My Parameter -->
-
-        <!-- Penilaian Penghargaan -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Penilaian Penghargaan Pegawai</span>
-        </li>
-
-        <li class="menu-item {{ (request()->is('hrd/manage/penilaian*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/manage/penilaian') }}" class="menu-link" style="text-decoration: none !important;">
-                <i class="menu-icon tf-icons fa-solid fa-file-pen"></i>
-                <div data-i18n="Analytics">Penilaian Penghargaan Pegawai</div>
-            </a>
-        </li>
-        <!--/ Penilaian Penghargaan -->
-
-        <!-- Peringkat Penghargaan -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Peringkat Penghargaan Pegawai</span>
-        </li>
-
-        <li class="menu-item {{ (request()->is('hrd/manage/penilaian*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/hrd/manage/penilaian') }}" class="menu-link" style="text-decoration: none !important;">
-                <i class="menu-icon tf-icons fa-solid fa-ranking-star"></i>
-                <div data-i18n="Analytics">Peringkat Penghargaan Pegawai</div>
-            </a>
-        </li>
-        <!--/ Peringkat Penghargaan -->
     </ul>
 </aside>

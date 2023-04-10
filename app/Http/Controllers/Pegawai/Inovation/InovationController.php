@@ -134,7 +134,7 @@ class InovationController extends Controller
 
                 // Button Create
                 $rewardInovationCreate = RewardInovation::
-                    
+
                     where([
                         ['created_at', '>=', $dateOpenTime],
                         ['created_at', '<=', $dateExpiredTime],

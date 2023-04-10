@@ -4,9 +4,47 @@ namespace App\Http\Controllers\HWU;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('hwu.auth');
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('head_work_units');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        try {
+
+            // dd($admin);
+            return view('layouts.hwu.content.dashboard.dashboard');
+        } catch (\Exception $exception) {
+            return $exception;
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *

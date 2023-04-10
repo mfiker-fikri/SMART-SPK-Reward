@@ -12,6 +12,8 @@
         <meta name="viewport" content="width=device-width,
             initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+        <meta name="referrer" content="strict-origin" />
         {{-- <meta name="title" content="{{ Auth::guard('employees')->user()->full_name }}
             @if ( request()->is('dashboard') )
             - Dashboard
@@ -362,12 +364,12 @@
         <!--/ Clock & Date -->
 
         <!-- Logout  -->
-        {{-- <script>
+        <script>
             document.getElementById("logout").onclick = function() {
-                logoutPegawai()
+                logoutHWU()
             };
 
-            function logoutPegawai() {
+            function logoutHWU() {
                 Swal.fire({
                     title: 'Apakah kamu ingin keluar?',
                     // text: "You won't be able to revert this!",
@@ -385,12 +387,28 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location = "/logout";
+                        window.location = "/headworkunit/logout";
                     }
                 })
             }
-        </script> --}}
+        </script>
         <!--/ Logout  -->
+
+        <!-- -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Disable cut copy paste
+                $(document).bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+
+                //Disable mouse right click
+                // $(document).on("contextmenu",function(e){
+                //     return false;
+                // });
+            });
+        </script>
+        <!--/ -->
 
         <!--/ Add Ext Plugin -->
     </body>

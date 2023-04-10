@@ -143,7 +143,7 @@ class ForgotPasswordController extends Controller
         $validate   =   Validator::make(
             $request->all(),
             [
-                'email'                                 =>      'required|string|email|exists:head_work_units',
+                'email'                                 =>      'required|string|email|exists:head_of_work_units',
                 'password'                              =>      'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|confirmed',
                 'password_confirmation'                 =>      'required|string|min:6|max:100|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,100}$/|same:password',
             ],

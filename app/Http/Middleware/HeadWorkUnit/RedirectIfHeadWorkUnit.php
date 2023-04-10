@@ -24,7 +24,7 @@ class RedirectIfHeadWorkUnit
                     return $next($request);
                 }
             }
-            return redirect('/admin');
+            return redirect('/headworkunit');
         } catch (\Throwable $th) {
             throw $th;
         }

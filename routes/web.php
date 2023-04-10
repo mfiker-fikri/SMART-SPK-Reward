@@ -416,6 +416,19 @@ Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu
         Route::POST('/image/delete', [App\Http\Controllers\HWU\HWUController::class, 'postImageDelete'])->name('postProfile.postImageDelete.HWU');
         // Profile Change Password
         Route::POST('profile/change-password', [App\Http\Controllers\HWU\HWUController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.HWU');
+
+        // Read
+        Route::GET('form-inovation/list', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.HWU');
+        // 2=menunggu
+        Route::GET('form-inovation/list/data', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.HWU');
+        // Update
+        Route::GET('form-inovation/list/update/{id}', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.HWU');
+        // 0=ditolak
+        Route::POST('form-inovation/list/update/{id}/reject', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataReject'])->name('postInovationFormData.Read.Reject.HWU');
+        // 1=dikembalikan
+        Route::POST('form-inovation/list/update/{id}/back', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataBack'])->name('postInovationFormData.Read.Back.HWU');
+        // 3=diproses
+        Route::POST('form-inovation/list/update/{id}/process', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataProcess'])->name('postInovationFormData.Read.Process.HWU');
     });
 
 });

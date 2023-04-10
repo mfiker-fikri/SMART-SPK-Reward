@@ -13,18 +13,18 @@
                 <div class="d-flex flex-row">
                     <div class="d-flex">
                         <!-- Photo Profile -->
-                        {{-- @if (Auth::guard('admins')->user()->photo_profile)
-                        <img src="{{ asset( 'storage/images/admin/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                        @if (Auth::guard('head_work_units')->user()->photo_profile)
+                        <img src="{{ asset( 'storage/images/head_work_units/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="head_work_units-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
                         @else
-                        <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="admin-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
-                        @endif --}}
+                        <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="head_work_units-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                        @endif
                         <!--/ Photo Profile -->
                     </div>
                     <div class="dashboardAdminInfo">
                         <div class="card-body d-flex flex-column justify-content-center align-self-center">
-                            {{-- <h3 class="card-title text-center"><strong> {{ Auth::guard('admins')->user()->full_name }} </strong></h3>
+                            {{-- <h3 class="card-title text-center"><strong> {{ Auth::guard('head_work_units')->user()->full_name }} </strong></h3>
                             <p class="card-text text-center"> Admin </p>
-                            @if (Cache::has('admin-is-online-' . Auth::guard('admins')->user()->id))
+                            @if (Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id))
                             <p class="card-text text-success text-center"><small class="text-muted">Online</small></p>
                             @endif --}}
                         </div>
@@ -46,7 +46,7 @@
                             <div class="d-flex flex-row align-items-xl-center align-self-xl-center" style="margin: 3rem 1rem;">
                                 <i class="fa-solid fa-user-tie fa-5x me-3"></i>
                                 <div class="d-flex flex-column align-self-center mx-3">
-                                    <h3 class="card-title text-center"><strong> {{ $sumCategory }} </strong></h4>
+                                    {{-- <h3 class="card-title text-center"><strong> {{ $sumCategory }} </strong></h4> --}}
                                     <p class="card-text"> Kategori </p>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="d-flex flex-row align-items-xl-center align-self-xl-center" style="margin: 3rem 1rem;">
                                 <i class="fa-solid fa-user-tie fa-5x me-3"></i>
                                 <div class="d-flex flex-column align-self-center mx-3">
-                                    <h3 class="card-title text-center"><strong> {{ $sumCriteria }} </strong></h3>
+                                    {{-- <h3 class="card-title text-center"><strong> {{ $sumCriteria }} </strong></h3> --}}
                                     <p class="card-text"> Kriteria  </p>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                             <div class="d-flex justify-content-center">
                                 <i class="fa-solid fa-user-tie fa-5x me-3"></i>
                                 <div class="d-flex flex-column align-self-center mx-3">
-                                    <h3 class="card-title text-center"><strong> {{ $sumParameter }} </strong></h3>
+                                    {{-- <h3 class="card-title text-center"><strong> {{ $sumParameter }} </strong></h3> --}}
                                     <p class="card-text"> Parameter </p>
                                 </div>
                             </div>

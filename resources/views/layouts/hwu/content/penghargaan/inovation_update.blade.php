@@ -1,4 +1,4 @@
-@extends('template.pegawai.template')
+@extends('template.hwu.template')
 
 <!-- Header CSS -->
 @section('css_header')
@@ -68,6 +68,8 @@
     }
 
     </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/skins/content/default/content.min.css" integrity="sha512-AQlh8pNI8GdH0sbUsSACzz37sCq68PohXzXYt/YOJt581nIiqnMjF4YM9lp5YVBMLR90GzkJLQNQjcfLn2yhUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @stop
 <!--/ Header CSS -->
 
@@ -155,19 +157,98 @@
 
     <!-- Reset Video Preview -->
     <script type="text/javascript">
-    function reset_video() {
-        var old = document.getElementById("oldVideo").getAttribute("value");
-        var preview = document.getElementById('video_here').getAttribute("src");
+    function reset_check() {
+        var backBtn                 =   $('#sendback_inovation').hide();
+        var rejectBtn               =   $('#reject_inovation').hide();
+        var submitBtn               =   $('#submit_inovation').show();
+        var textdescription_back    =   $('#description_back').attr("disabled", "disabled");
 
-        if (old != preview) {
-            document.getElementById('video_here').setAttribute("src", old);
-            // console.log(oldReset);
+        if (textdescription_back.is(":disabled") == false) {
+            backBtn.hide();
+            rejectBtn.hide();
+            submitBtn.show();
+            textdescription_back.prop('checked', true);
+            // tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
         }
-        // console.log(preview);
-        // a.removeAttribute('src');
     }
     </script>
     <!--/ Reset Video Preview -->
+
+    <!-- -->
+    <script>
+        $(document).ready(function () {
+            // Btn
+            var backBtn     =   $('#sendback_inovation').hide();
+            var rejectBtn   =   $('#reject_inovation').hide();
+            var submitBtn   =   $('#submit_inovation').show();
+
+            // Text
+            var textdescription_back    = $('#description_back').attr("disabled", "disabled");
+
+            // Switch
+
+            $('input[name="check_description_back"]').change(function(){
+
+                if ($('input[name="check_description_back"]:checked').length > 0 ) {
+                    if ($('input[name="check_reject_back"]').is(":checked") == true) {
+                        $('input[name="check_reject_back"]').prop('checked', false);
+                        textdescription_back.removeAttr("disabled");
+                        textdescription_back.val(null);
+                        backBtn.show();
+                        rejectBtn.hide();
+                        submitBtn.hide();
+                    }
+                    textdescription_back.removeAttr("disabled");
+                    textdescription_back.val(null);
+                    backBtn.show();
+                    rejectBtn.hide();
+                    submitBtn.hide();
+                }
+                // else if($('input[name="check_description_back"]:checked').length > 0 && $('input[name="check_reject_back"]').is(":checked") == true) {
+                //     $('input[name="check_reject_back"]').prop('checked', false);
+                //     textdescription_back.removeAttr("disabled");
+                //     backBtn.show();
+                //     rejectBtn.hide();
+                //     submitBtn.hide();
+                // }
+                else {
+                    textdescription_back.attr("disabled", "disabled");
+                    textdescription_back.val(null);
+                    backBtn.hide();
+                    rejectBtn.hide();
+                    submitBtn.show();
+                }
+            });
+
+            $('input[name="check_reject_back"]').change(function(){
+
+                if ($('input[name="check_reject_back"]:checked').length > 0) {
+                    if ($('input[name="check_description_back"]').is(":checked") == true) {
+                        $('input[name="check_description_back"]').prop('checked', false);
+                        textdescription_back.removeAttr("disabled");
+                        textdescription_back.val(null);
+                        backBtn.hide();
+                        rejectBtn.show();
+                        submitBtn.hide();
+                    }
+                    textdescription_back.removeAttr("disabled");
+                    textdescription_back.val(null);
+                    backBtn.hide();
+                    rejectBtn.show();
+                    submitBtn.hide();
+                } else {
+                    // document.getElementById("description_back").setAttribute("disabled");
+                    // $('input[name="check_description_back"]').removeAttr("checked");
+                    textdescription_back.attr("disabled", "disabled");
+                    textdescription_back.val(null);
+                    backBtn.hide();
+                    rejectBtn.hide();
+                    submitBtn.show();
+                }
+            });
+        });
+    </script>
+    <!--/ -->
 
     <!-- Timer Countdown -->
     <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
@@ -349,6 +430,103 @@
         });
     </script>
     <!--/ Timer Countdown -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/tinymce.min.js" integrity="sha512-in/06qQzsmVw+4UashY2Ta0TE3diKAm8D4aquSWAwVwsmm1wLJZnDRiM6e2lWhX+cSqJXWuodoqUq91LlTo1EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/icons/default/icons.min.js" integrity="sha512-iZEjj5ZEdiNAMLCFKlXVZkE0rKZ9xRGFtr0aMi8gxbEl1RbMCbpPomRiKurc93QVFdaxcnduQq6562xxqbC6wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // tinymce.init({
+        //     selector: 'textarea#description_back', // Replace this CSS selector to match the placeholder element for TinyMCE
+        //     plugins: 'preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker editimage help formatpainter permanentpen pageembed charmap tinycomments mentions quickbars linkchecker emoticons advtable export footnotes mergetags autocorrect',
+        //     menubar: 'file edit view insert format tools tc help',
+        //     toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code',
+        // });
+    </script>
+
+    <!-- Reject Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).on('click', '#reject_inovation', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        console.log(id);
+        Swal.fire({
+            title: 'Apakah kamu menolak form ini?',
+            icon: 'warning',
+            text: 'Data form ini akan ditolak dan dikembalikan ke pegawai',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    method: 'post',
+                    url: "{{ url('form-inovation/list/update') }}" + '/' + id + '/reject',
+                    data: {
+                        id: id,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: '',
+                            icon: 'success',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location = "/headworkunit/form-inovation/list";
+                            }
+                        })
+                    },
+                    error: function(event,xhr,options,exc){
+                        if (event.status == 401) {
+                            Swal.fire({
+                                icon: xhr,
+                                title: event.status + ' ' +event.statusText,
+                                text: 'Oops! 😖 Your Authorized Failed!',
+                                confirmButtonText: 'Ok',
+                            })
+                        }else if (event.status == 500) {
+                            Swal.fire({
+                                icon: xhr,
+                                title: event.status + ' ' +event.statusText,
+                                text: 'Oops! 😖 Something Went Wrong!',
+                                confirmButtonText: 'Ok',
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: xhr,
+                                title: event.status + ' ' +event.statusText,
+                                text: 'Oops! 😖 Something went wrong!',
+                                confirmButtonText: 'Ok',
+                            })
+                        }
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal ',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                })
+            }
+        });
+    });
+    </script>
+    <!--/ Reject Form Inovation Id -->
 @stop
 <!--/ Footer Js -->
 
@@ -364,7 +542,7 @@
 
                 <!-- Form Inovation Update Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Update Form Pendaftaran Penghargaan Inovasi</h5>
+                    <h5 class="mb-0">List Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }}</h5>
                 </div>
                 <!--/ Form Inovation Update Title -->
 
@@ -392,29 +570,60 @@
 
                     <form id="formInovationUpdate" class="mx-3 my-3" method="POST" action="{{ route('pegawai.postInovationIdUpdate.Update.Pegawai', $rewardInovation->id) }}" enctype="multipart/form-data">
                         @csrf
+                        <!-- Full Name -->
+                        <div class="row my-3 {{ $errors->has('full_name') ? 'is-invalid' : '' }}">
+                            <label for="full_name" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                            <div class="col-sm-9">
+                                <div class="input-group input-group-merge {{ $errors->has('full_name') ? 'is-invalid' : '' }}">
+                                    <span id="full_name" class="input-group-text">
+                                        <i class="fa-solid fa-user-tie" style="color: #000000;"></i>
+                                    </span>
+                                    <input type="text" class="form-control px-lg-1 px-2 {{ $errors->has('full_name') ? 'is-invalid' : '' }}" id="full_name"
+                                        name="full_name" placeholder="*Nama Lengkap" disabled
+                                        autofocus autocomplete required value="{{ old('full_name', $rewardInovation->full_name) }}" />
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    {{-- <div class="form-text">Nama Lengkap Harus Berisi Huruf</div> --}}
+
+                                    <!-- Error Full_name -->
+                                    @if ( $errors->has('full_name') )
+                                    <div class="my-3">
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('full_name') }}</strong>
+                                        </span>
+                                    </div>
+                                    @endif
+                                    <!--/ Error Full_name -->
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--/ Full Name -->
+
                         <!-- Upload Short Description -->
                         <div class="row my-3 {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Upload Short Description</label>
+                            <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Short Description</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
-                                    <input type="hidden" name="oldFile" value="{{ old('oldFile',$rewardInovation->upload_file_short_description) }}" />
-                                    <input type="hidden" name="oldFile" id="oldFile" value="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_short_description) }}" />
+                                    {{-- <input disabled type="hidden" name="oldFile" value="{{ old('oldFile', $rewardInovation->upload_file_short_description) }}" />
+                                    <input disabled type="hidden" name="oldFile" id="oldFile" value="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_short_description) }}" />
 
                                     <label class="input-group-text {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}" for="uploadFile">
                                         <i class="fa-solid fa-file"></i>
                                     </label>
-                                    <input type="file" class="form-control {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate')  ? 'is-invalid' : '' }}" id="uploadFile"
+                                    <input disabled type="file" class="form-control {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate')  ? 'is-invalid' : '' }}" id="uploadFile"
                                         value="{{ old('uploadFileUpdate', $rewardInovation->upload_file_short_description) }}"
-                                        name="uploadFile" accept=".pdf" onchange="preview_pdf(event)">
+                                        name="uploadFile" accept=".pdf" onchange="preview_pdf(event)"> --}}
 
-                                    <input type="hidden" name="uploadFileUpdate" id="uploadFileUpdate"
+                                    <input disabled type="hidden" name="uploadFileUpdate" id="uploadFileUpdate"
                                         value="{{ $rewardInovation->upload_file_short_description }}"
                                         required />
                                 </div>
 
                                 <div class="d-flex flex-column">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 3Mb (3072 Kb)</small>
+                                    {{-- <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 3Mb (3072 Kb)</small> --}}
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Short Description -->
@@ -429,7 +638,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center py-sm-3">
-                                    <iframe class="d-block rounded" width="600" height="350" id="output_pdf" src="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_short_description) }}"></iframe>
+                                    <iframe class="d-block rounded" width="600" height="350" id="output_pdf" src="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_short_description) }}"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -437,27 +646,27 @@
 
                         <!-- Upload Photo -->
                         <div class="row my-3 {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadPhoto" class="col-xl-3 col-form-label">Upload Photo</label>
+                            <label for="uploadPhoto" class="col-xl-3 col-form-label">Photo</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
-                                    <input type="hidden" name="oldPhoto" value="{{ old('oldPhoto',$rewardInovation->upload_file_image_support) }}" />
-                                    <input type="hidden" name="oldPhoto" id="oldPhoto" value="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_image_support) }}" />
+                                    {{-- <input disabled type="hidden" name="oldPhoto" value="{{ old('oldPhoto',$rewardInovation->upload_file_image_support) }}" />
+                                    <input disabled type="hidden" name="oldPhoto" id="oldPhoto" value="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_image_support) }}" />
 
                                     <label class="input-group-text {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}" for="uploadPhoto">
                                         <i class="fa-solid fa-file-image"></i>
                                     </label>
-                                    <input type="file" class="form-control {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}" id="uploadPhoto"
+                                    <input disabled type="file" class="form-control {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}" id="uploadPhoto"
                                         value="{{ old('uploadPhotoUpdate', $rewardInovation->upload_file_image_support) }}"
-                                        name="uploadPhoto" accept=".png, .jpg, .jpeg" onchange="preview_image(event)">
+                                        name="uploadPhoto" accept=".png, .jpg, .jpeg" onchange="preview_image(event)"> --}}
 
-                                    <input type="hidden" name="uploadPhotoUpdate" id="uploadPhotoUpdate"
+                                    <input disabled type="hidden" name="uploadPhotoUpdate" id="uploadPhotoUpdate"
                                         value="{{ $rewardInovation->upload_file_image_support }}"
                                         required />
                                 </div>
 
                                 <div class="d-flex flex-column">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload Foto 5Mb (5120 Kb)</small>
+                                    {{-- <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload Foto 5Mb (5120 Kb)</small> --}}
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Photo -->
@@ -472,7 +681,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center py-sm-3">
-                                    <img class="d-block rounded" width="450" height="350" id="output_image" src="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_image_support) }}">
+                                    <img class="d-block rounded" width="450" height="350" id="output_image" src="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_image_support) }}">
                                 </div>
                             </div>
                         </div>
@@ -480,26 +689,26 @@
 
                         <!-- Upload Video -->
                         <div class="row my-3 {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadVideo" class="col-xl-3 col-form-label">Upload Video</label>
+                            <label for="uploadVideo" class="col-xl-3 col-form-label">Video</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
-                                    <input type="hidden" name="oldVideo" value="{{ old('oldVideo',$rewardInovation->upload_file_video_support) }}" />
-                                    <input type="hidden" name="oldVideo" id="oldVideo" value="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}" />
+                                    {{-- <input disabled type="hidden" name="oldVideo" value="{{ old('oldVideo',$rewardInovation->upload_file_video_support) }}" />
+                                    <input disabled type="hidden" name="oldVideo" id="oldVideo" value="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_video_support) }}" />
 
                                     <label class="input-group-text {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}" for="uploadVideo">
                                         <i class="fa-solid fa-file-video"></i>
                                     </label>
-                                    <input type="file" class="form-control {{ $errors->has('uploadVideo') ? 'is-invalid' : '' }}" id="uploadVideo"
-                                        name="uploadVideo" accept="video/*" onchange="preview_video(event)" />
+                                    <input disabled type="file" class="form-control {{ $errors->has('uploadVideo') ? 'is-invalid' : '' }}" id="uploadVideo"
+                                        name="uploadVideo" accept="video/*" onchange="preview_video(event)" /> --}}
 
-                                    <input type="hidden" name="uploadVideoUpdate" id="uploadVideoUpdate"
+                                    <input disabled type="hidden" name="uploadVideoUpdate" id="uploadVideoUpdate"
                                         value="{{ $rewardInovation->upload_file_video_support }}"
                                         required />
                                 </div>
 
                                 <div class="d-flex flex-column">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 1Gb (1024000 Kb)</small>
+                                    {{-- <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 1Gb (1024000 Kb)</small> --}}
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Video -->
@@ -514,7 +723,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center py-sm-3">
-                                    <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. Auth::guard('employees')->user()->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
+                                    <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_video_support) }}"></video>
                                 </div>
 
                             </div>
@@ -522,40 +731,71 @@
                         <!--/ Upload Video -->
 
 
-                        @if ($rewardInovation->status_process == 1 && $rewardInovation->description_back != null)
-                        <div class="row my-3 {{ $errors->has('uploadFile') || $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadVideo" class="col-xl-3 col-form-label">Keterangan Dikembalikan</label>
+                        {{-- @if ($rewardInovation->status_process == 1 && $rewardInovation->description_back != null) --}}
+
+
+                        {{-- <label class="switch">
+                            <input type="checkbox" class="switch-input" />
+                            <span class="switch-toggle-slider">
+                                <span class="switch-on">
+                                    <i class="fa-solid fa-check" style="color: #000000;"></i>
+                                </span>
+                                <span class="switch-off">
+                                    <i class="fa-solid fa-x" style="color: #000000;"></i>
+                                </span>
+                            </span>
+                            <span class="switch-label">With icon</span>
+                        </label> --}}
+
+                        <div class="row my-3 {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
+                            <label for="uploadVideo" class="col-xl-3 col-form-label">Keterangan </label>
                             <div class="col-md-9 col-xl-9">
+                                <div class="form-check form-switch">
+                                    <label class="form-check-label" for="check_description_back">Dikembalikan</label>
+                                    <input class="form-check-input" name="check_description_back" type="checkbox" role="switch" id="check_description_back">
+
+                                </div>
+                                <div class="form-check form-switch">
+                                    <label class="form-check-label" for="check_reject_back">Ditolak</label>
+                                    <input class="form-check-input" name="check_reject_back" type="checkbox" role="switch" id="check_reject_back">
+                                </div>
+
                                 <div class="input-group">
-                                    <textarea class="form-control" aria-label="With textarea"
-                                    autocomplete="on" autofocus disabled name="description_back" spellcheck="true" rows="10" cols="50">{{ $rewardInovation->description_back }}</textarea>
+                                    <textarea class="form-control" aria-label="With textarea" id="description_back" placeholder="Keterangan"
+                                    autocomplete="on" autofocus name="description_back" spellcheck="true" rows="10" cols="50">{{ $rewardInovation->description_back }}</textarea>
                                 </div>
                             </div>
                         </div>
-                        @endif
+                        {{-- @endif --}}
 
                         <input type="hidden" name="status_process" value="{{ $rewardInovation->status_process }}" />
 
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-inovation/list') }}" role="button">
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/headworkunit/form-inovation/list') }}" role="button">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
-                                    <i class="fa-solid fa-rotate mx-auto me-2"></i>Reload
+                                    <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
                                 </a>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <button type="reset" class="btn btn-warning btn-lg" onclick="reset_pdf();reset_image();reset_video();">
-                                    <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
+                                <button type="reset" class="btn btn-warning btn-lg" onclick="reset_check()">
+                                    <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i>Reset
                                 </button>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
-                                    <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Update
+                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="reject_inovation" data-id="{{ $rewardInovation->id }}">
+                                    <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Send Reject File
+                                </button>
+                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
+                                    <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Send Back File
+                                </button>
+                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
+                                    <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Send Approve File
                                 </button>
                             </div>
                         </div>

@@ -22,36 +22,36 @@
                 <li class="breadcrumb-item fw-bold active">Profile</li>
 
             <!-- Manage Admins -->
-            @elseif ( request()->is('headworkunit/manage/admins/create') )
+            @elseif ( request()->is('headworkunit/manage/head_work_units/create') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/manage/head_work_units') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Tambah Data Admin Baru</li>
 
-            @elseif ( request()->is('headworkunit/manage/admins') )
+            @elseif ( request()->is('headworkunit/manage/head_work_units') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Admin</li>
 
-            @elseif ( request()->is('headworkunit/manage/admins/view*') )
+            @elseif ( request()->is('headworkunit/manage/head_work_units/view*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/manage/head_work_units') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $headworkunit->full_name }} </li>
 
-            @elseif ( request()->is('headworkunit/manage/admins/edit*') )
+            @elseif ( request()->is('headworkunit/manage/head_work_units/edit*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/manage/head_work_units') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $headworkunit->full_name }} </li>
 
@@ -99,16 +99,16 @@
             <!-- Admin -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar {{ Auth::guard('admins')->user()->status_id == 1 && Auth::guard('admins')->user()->status_active == 1 && (Cache::has('headworkunit-is-online-' . Auth::guard('admins')->user()->id)) ? 'avatar-online' : '' }}">
+                    <div class="avatar {{ Auth::guard('head_work_units')->user()->status_id == 1 && Auth::guard('head_work_units')->user()->status_active == 1 && (Cache::has('headworkunit-is-online-' . Auth::guard('head_work_units')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
-                        @if (Auth::guard('admins')->user()->photo_profile)
-                            <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
-                            alt="headworkunit-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle"
-                            style="width: 40px; height: 45px" id="adminAvatar" />
+                        @if (Auth::guard('head_work_units')->user()->photo_profile)
+                            <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
+                            alt="headworkunit-avatar {{ Auth::guard('head_work_units')->user()->full_name }}" class="rounded-circle"
+                            style="width: 40px; height: 45px" id="head_work_unitsAvatar" />
                         @else
                             <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
                                 alt="headworkunit-avatar" class="rounded-circle"
-                                style="width: 40px; height: 45px" id="adminAvatar" />
+                                style="width: 40px; height: 45px" id="head_work_unitsAvatar" />
                         @endif
                     </div>
                 </a>
@@ -126,22 +126,22 @@
                     <li>
                         <div class="mx-sm-1 px-sm-3 d-flex">
                             <div class="flex-shrink-0 me-3">
-                                <div class="avatar {{ Cache::has('headworkunit-is-online-' . Auth::guard('admins')->user()->id ) ? 'avatar-online' : '' }}">
+                                <div class="avatar {{ Cache::has('headworkunit-is-online-' . Auth::guard('head_work_units')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
-                                    @if (Auth::guard('admins')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('admins')->user()->username. '/' . Auth::guard('admins')->user()->photo_profile) }}"
-                                        alt="headworkunit-avatar {{ Auth::guard('admins')->user()->full_name }}" class="rounded-circle"
-                                        style="width: 40px; height: 45px" id="adminAvatar" />
+                                    @if (Auth::guard('head_work_units')->user()->photo_profile)
+                                        <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
+                                        alt="headworkunit-avatar {{ Auth::guard('head_work_units')->user()->full_name }}" class="rounded-circle"
+                                        style="width: 40px; height: 45px" id="head_work_unitsAvatar" />
                                     @else
                                     <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1"
                                         alt="headworkunit-avatar" class="rounded-circle"
-                                        style="width: 40px; height: 45px" id="adminAvatar" />
+                                        style="width: 40px; height: 45px" id="head_work_unitsAvatar" />
                                     @endif
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">{{ Auth::guard('admins')->user()->full_name }}</span>
-                                <small class="text-muted">Admin</small>
+                                <span class="fw-semibold d-block">{{ Auth::guard('head_work_units')->user()->full_name }}</span>
+                                <small class="text-muted">Kepala Satuan Kerja</small>
                             </div>
                         </div>
                     </li>
