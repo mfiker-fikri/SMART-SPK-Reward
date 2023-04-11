@@ -184,7 +184,6 @@
                 // defer:      '{bool} Deferred initialization mode'
             })
             .on('update.countdown', function(event) {
-                // console.log(event.offset.minutes == 12);
                 if(event.offset.totalDays == 1 && flag2) {
                     flag2 = false;
                     Swal.fire({

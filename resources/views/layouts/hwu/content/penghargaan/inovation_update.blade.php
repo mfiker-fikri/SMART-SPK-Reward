@@ -155,7 +155,205 @@
     </script>
     <!--/ Reset Image Preview -->
 
-    <!-- Reset Video Preview -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+    <!-- Reject Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#reject_inovation').on('click', function(e) {
+            e.preventDefault();
+            // if ($("#formInovationUpdate").valid()) {
+
+            let id = $(this).attr('data-id');
+            let description_back = $("textarea#description_back").val();
+            // console.log(description_back);
+
+            Swal.fire({
+                title: 'Apakah kamu menolak form ini?',
+                icon: 'warning',
+                text: 'Data form ini akan ditolak dan dikembalikan ke pegawai',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $('#formInovationUpdate').validate({
+                        // errorPlacement: function () { },
+                        errorElement: "strong",
+                        errorClass: 'errorTextArea',
+                        rules: {
+                            description_back: {
+                                required: true
+                            },
+                        },
+                        messages:{
+                            description_back :
+                            {
+                                required: "Wajib Diisi"
+                            },
+                        }
+                    });
+                    if ($("#description_back").valid()) {
+                        $.ajax({
+                            headers: {
+                                Accept: "application/json"
+                            },
+                            method: 'post',
+                            url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/reject',
+                            data: {
+                                id: id,
+                                description_back: description_back,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: '',
+                                    icon: 'success',
+                                    confirmButtonText: 'Ok',
+                                    allowOutsideClick: false,
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location = "/headworkunit/form-inovation/list";
+                                    }
+                                })
+                            },
+                            error: function(event,xhr,options,exc){
+                                if (event.status == 401) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Your Authorized Failed!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }else if (event.status == 500) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something Went Wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something went wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+            // }
+        });
+    });
+    </script>
+    <!--/ Reject Form Inovation Id -->
+
+    <!-- Reject Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#sendback_inovation').on('click', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            // console.log(id);
+            Swal.fire({
+                title: 'Apakah kamu mengembalikan form ini?',
+                icon: 'warning',
+                text: 'Data form ini akan dikembalikan ke pegawai',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        method: 'post',
+                        url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/back',
+                        data: {
+                            id: id,
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: '',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                allowOutsideClick: false,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location = "/headworkunit/form-inovation/list";
+                                }
+                            })
+                        },
+                        error: function(event,xhr,options,exc){
+                            if (event.status == 401) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Your Authorized Failed!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }else if (event.status == 500) {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something Went Wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: xhr,
+                                    title: event.status + ' ' +event.statusText,
+                                    text: 'Oops! 😖 Something went wrong!',
+                                    confirmButtonText: 'Ok',
+                                })
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    });
+    </script>
+    <!--/ Reject Form Inovation Id -->
+
+    <!-- Reset -->
     <script type="text/javascript">
     function reset_check() {
         var backBtn                 =   $('#sendback_inovation').hide();
@@ -172,7 +370,7 @@
         }
     }
     </script>
-    <!--/ Reset Video Preview -->
+    <!--/ Reset -->
 
     <!-- -->
     <script>
@@ -185,24 +383,46 @@
             // Text
             var textdescription_back    = $('#description_back').attr("disabled", "disabled");
 
+            // Form
+            var formId                  =   $('#formInovationUpdate').attr("data-id");
+            var routeForm               =   $('#formInovationUpdate').attr("action");
+
+            // URL
+            var urlReject                   =   "{{ url('headworkunit/form-inovation/list/update') }}"+ '/' + formId + '/reject';
+            var urlBack                     =   "{{ url('headworkunit/form-inovation/list/update') }}"+ '/' + formId + '/back';
+            var urlProcess                  =   "{{ url('headworkunit/form-inovation/list/update') }}"+ '/' + formId + '/process';
+            // console.log(form.attr("action", url));
             // Switch
 
             $('input[name="check_description_back"]').change(function(){
 
                 if ($('input[name="check_description_back"]:checked').length > 0 ) {
+                    if (condition) {
+
+                    }
                     if ($('input[name="check_reject_back"]').is(":checked") == true) {
+                        // check
                         $('input[name="check_reject_back"]').prop('checked', false);
+                        // Text Area
                         textdescription_back.removeAttr("disabled");
                         textdescription_back.val(null);
+                        $('#description_back').attr("required", "required");
+                        // btn
                         backBtn.show();
                         rejectBtn.hide();
                         submitBtn.hide();
+                        // route
+                        $('#formInovationUpdate').attr("action", urlBack);
                     }
                     textdescription_back.removeAttr("disabled");
                     textdescription_back.val(null);
+                    $('#description_back').attr("required", "required");
+                    // btn
                     backBtn.show();
                     rejectBtn.hide();
                     submitBtn.hide();
+                    // Route
+                    $('#formInovationUpdate').attr("action", urlBack);
                 }
                 // else if($('input[name="check_description_back"]:checked').length > 0 && $('input[name="check_reject_back"]').is(":checked") == true) {
                 //     $('input[name="check_reject_back"]').prop('checked', false);
@@ -214,9 +434,13 @@
                 else {
                     textdescription_back.attr("disabled", "disabled");
                     textdescription_back.val(null);
+                    $('#description_back').removeAttr("required");
+                    //
                     backBtn.hide();
                     rejectBtn.hide();
                     submitBtn.show();
+                    //
+                    $('#formInovationUpdate').attr("action", urlProcess);
                 }
             });
 
@@ -224,26 +448,40 @@
 
                 if ($('input[name="check_reject_back"]:checked').length > 0) {
                     if ($('input[name="check_description_back"]').is(":checked") == true) {
+                        // Check
                         $('input[name="check_description_back"]').prop('checked', false);
+                        // Text Area
                         textdescription_back.removeAttr("disabled");
                         textdescription_back.val(null);
+                        $('#description_back').attr("required", "required");
+                        //
                         backBtn.hide();
                         rejectBtn.show();
                         submitBtn.hide();
+                        //
+                        $('#formInovationUpdate').attr("action", urlReject);
                     }
                     textdescription_back.removeAttr("disabled");
                     textdescription_back.val(null);
+                    $('#description_back').attr("required", "required");
+                    //
                     backBtn.hide();
                     rejectBtn.show();
                     submitBtn.hide();
+                    //
+                    $('#formInovationUpdate').attr("action", urlReject);
                 } else {
                     // document.getElementById("description_back").setAttribute("disabled");
                     // $('input[name="check_description_back"]').removeAttr("checked");
                     textdescription_back.attr("disabled", "disabled");
                     textdescription_back.val(null);
+                    $('#description_back').removeAttr("required");
+                    //
                     backBtn.hide();
                     rejectBtn.hide();
                     submitBtn.show();
+                    //
+                    $('#formInovationUpdate').attr("action", urlProcess);
                 }
             });
         });
@@ -435,98 +673,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/tinymce.min.js" integrity="sha512-in/06qQzsmVw+4UashY2Ta0TE3diKAm8D4aquSWAwVwsmm1wLJZnDRiM6e2lWhX+cSqJXWuodoqUq91LlTo1EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/icons/default/icons.min.js" integrity="sha512-iZEjj5ZEdiNAMLCFKlXVZkE0rKZ9xRGFtr0aMi8gxbEl1RbMCbpPomRiKurc93QVFdaxcnduQq6562xxqbC6wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script>
-        // tinymce.init({
-        //     selector: 'textarea#description_back', // Replace this CSS selector to match the placeholder element for TinyMCE
-        //     plugins: 'preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker editimage help formatpainter permanentpen pageembed charmap tinycomments mentions quickbars linkchecker emoticons advtable export footnotes mergetags autocorrect',
-        //     menubar: 'file edit view insert format tools tc help',
-        //     toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code',
-        // });
-    </script>
-
-    <!-- Reject Form Inovation Id -->
-    <script type="text/javascript">
-    $(document).on('click', '#reject_inovation', function(e) {
-        e.preventDefault();
-        let id = $(this).attr('data-id');
-        console.log(id);
-        Swal.fire({
-            title: 'Apakah kamu menolak form ini?',
-            icon: 'warning',
-            text: 'Data form ini akan ditolak dan dikembalikan ke pegawai',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: false,
-            showCancelButton: true,
-            confirmButtonText: 'Ya',
-            cancelButtonText: 'Tidak',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            }
-        })
-        .then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    headers: {
-                        Accept: "application/json"
-                    },
-                    method: 'post',
-                    url: "{{ url('form-inovation/list/update') }}" + '/' + id + '/reject',
-                    data: {
-                        id: id,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        Swal.fire({
-                            title: '',
-                            icon: 'success',
-                            confirmButtonText: 'Ok',
-                            allowOutsideClick: false,
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location = "/headworkunit/form-inovation/list";
-                            }
-                        })
-                    },
-                    error: function(event,xhr,options,exc){
-                        if (event.status == 401) {
-                            Swal.fire({
-                                icon: xhr,
-                                title: event.status + ' ' +event.statusText,
-                                text: 'Oops! 😖 Your Authorized Failed!',
-                                confirmButtonText: 'Ok',
-                            })
-                        }else if (event.status == 500) {
-                            Swal.fire({
-                                icon: xhr,
-                                title: event.status + ' ' +event.statusText,
-                                text: 'Oops! 😖 Something Went Wrong!',
-                                confirmButtonText: 'Ok',
-                            })
-                        } else {
-                            Swal.fire({
-                                icon: xhr,
-                                title: event.status + ' ' +event.statusText,
-                                text: 'Oops! 😖 Something went wrong!',
-                                confirmButtonText: 'Ok',
-                            })
-                        }
-                    }
-                });
-            } else {
-                Swal.fire({
-                    title: 'Gagal ',
-                    icon: 'error',
-                    confirmButtonText: 'Ok',
-                })
-            }
+    {{-- <script>
+        tinymce.init({
+            selector: 'textarea#description_back', // Replace this CSS selector to match the placeholder element for TinyMCE
+            plugins: 'preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker editimage help formatpainter permanentpen pageembed charmap tinycomments mentions quickbars linkchecker emoticons advtable export footnotes mergetags autocorrect',
+            menubar: 'file edit view insert format tools tc help',
+            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code',
         });
-    });
-    </script>
-    <!--/ Reject Form Inovation Id -->
+    </script> --}}
 @stop
 <!--/ Footer Js -->
 
@@ -568,7 +722,7 @@
                         @endif
                     </div>
 
-                    <form id="formInovationUpdate" class="mx-3 my-3" method="POST" action="{{ route('pegawai.postInovationIdUpdate.Update.Pegawai', $rewardInovation->id) }}" enctype="multipart/form-data">
+                    <form id="formInovationUpdate" class="mx-3 my-3" method="POST" action="{{ route('hwu.postInovationFormData.Read.Process.HWU', $rewardInovation->id) }}" enctype="multipart/form-data" data-id="{{ $rewardInovation->id }}">
                         @csrf
                         <!-- Full Name -->
                         <div class="row my-3 {{ $errors->has('full_name') ? 'is-invalid' : '' }}">
@@ -747,8 +901,8 @@
                             <span class="switch-label">With icon</span>
                         </label> --}}
 
-                        <div class="row my-3 {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadVideo" class="col-xl-3 col-form-label">Keterangan </label>
+                        <div class="row my-3 {{ $errors->has('description_back') ? 'is-invalid' : '' }}">
+                            <label for="description_back" class="col-xl-3 col-form-label">Keterangan </label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="form-check form-switch">
                                     <label class="form-check-label" for="check_description_back">Dikembalikan</label>
@@ -761,8 +915,26 @@
                                 </div>
 
                                 <div class="input-group">
-                                    <textarea class="form-control" aria-label="With textarea" id="description_back" placeholder="Keterangan"
-                                    autocomplete="on" autofocus name="description_back" spellcheck="true" rows="10" cols="50">{{ $rewardInovation->description_back }}</textarea>
+                                    <textarea class="form-control" aria-label="With textarea"
+                                    id="description_back" placeholder="Keterangan"
+                                    autocomplete="on" autofocus name="description_back"
+                                    spellcheck="true" rows="10" cols="50">{{ old('description_back',$rewardInovation->description_back) }}</textarea>
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <!-- Text Small -->
+                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Diisi jika dikembalikan atau ditolak</small>
+                                    <!--/ Text Small -->
+
+                                    <!-- Error Upload Video -->
+                                    @if ( $errors->has('description_back') )
+                                    <div class="d-flex">
+                                        <span class="help-block">
+                                            <strong class="errorTextArea">{{ $errors->first('description_back') }}</strong>
+                                        </span>
+                                    </div>
+                                    @endif
+                                    <!--/ Error Upload Video -->
                                 </div>
                             </div>
                         </div>
@@ -791,10 +963,10 @@
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="reject_inovation" data-id="{{ $rewardInovation->id }}">
                                     <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Send Reject File
                                 </button>
-                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
+                                <button type="submit" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
                                     <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Send Back File
                                 </button>
-                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
+                                <button type="submit" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
                                     <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Send Approve File
                                 </button>
                             </div>

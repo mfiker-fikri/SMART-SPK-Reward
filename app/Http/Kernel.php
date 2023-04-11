@@ -46,6 +46,8 @@ class Kernel extends HttpKernel
             // Admin\LastHumanResourcesActivity::class,
             // Team Assessment
             \App\Http\Middleware\TeamAssessment\LastTeamAssessmentActivity::class,
+            // HWU
+            \App\Http\Middleware\HeadWorkUnit\LastHWUActivity::class,
             // Pegawais
             \App\Http\Middleware\Admin\LastPegawaiActivity::class,
         ],

@@ -99,7 +99,7 @@
             <!-- Admin -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar {{ Auth::guard('head_work_units')->user()->status_id == 1 && Auth::guard('head_work_units')->user()->status_active == 1 && (Cache::has('headworkunit-is-online-' . Auth::guard('head_work_units')->user()->id)) ? 'avatar-online' : '' }}">
+                    <div class="avatar {{ Auth::guard('head_work_units')->user()->status_id == 1 && Auth::guard('head_work_units')->user()->status_active == 1 && (Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if (Auth::guard('head_work_units')->user()->photo_profile)
                             <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
@@ -126,7 +126,7 @@
                     <li>
                         <div class="mx-sm-1 px-sm-3 d-flex">
                             <div class="flex-shrink-0 me-3">
-                                <div class="avatar {{ Cache::has('headworkunit-is-online-' . Auth::guard('head_work_units')->user()->id ) ? 'avatar-online' : '' }}">
+                                <div class="avatar {{ Auth::guard('head_work_units')->user()->status_id == 1 && Auth::guard('head_work_units')->user()->status_active == 1 && Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('head_work_units')->user()->photo_profile)
                                         <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
