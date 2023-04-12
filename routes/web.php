@@ -412,8 +412,8 @@ Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu
         Route::GET('profile', [App\Http\Controllers\HWU\HWUController::class, 'getProfile'])->name('getProfile.HWU');
         Route::POST('profile/update', [App\Http\Controllers\HWU\HWUController::class, 'postProfile'])->name('postProfile.Update.HWU');
         // Profile Image Upload & delete
-        Route::POST('/image/upload', [App\Http\Controllers\HWU\HWUController::class, 'postImageUpload'])->name('postProfile.postImageUpload.HWU');
-        Route::POST('/image/delete', [App\Http\Controllers\HWU\HWUController::class, 'postImageDelete'])->name('postProfile.postImageDelete.HWU');
+        Route::POST('image/upload', [App\Http\Controllers\HWU\HWUController::class, 'postImageUpload'])->name('postProfile.postImageUpload.HWU');
+        Route::POST('image/delete', [App\Http\Controllers\HWU\HWUController::class, 'postImageDelete'])->name('postProfile.postImageDelete.HWU');
         // Profile Change Password
         Route::POST('profile/change-password', [App\Http\Controllers\HWU\HWUController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.HWU');
 

@@ -169,7 +169,7 @@
             // console.log(description_back);
 
             Swal.fire({
-                title: 'Apakah kamu menolak form ini?',
+                title: 'Apakah kamu ingin menolak form ini?',
                 icon: 'warning',
                 text: 'Data form ini akan ditolak dan dikembalikan ke pegawai',
                 allowOutsideClick: false,
@@ -188,9 +188,15 @@
             .then((result) => {
                 if (result.isConfirmed) {
                     $('#formInovationUpdate').validate({
-                        // errorPlacement: function () { },
+                        highlight: function(element) {
+                            $(element).addClass("is-invalid").removeClass("is-valid");
+                        },
+                        unhighlight: function(element) {
+                            $(element).addClass("is-valid").removeClass("is-invalid");
+                        },
+                        debug: false,
                         errorElement: "strong",
-                        errorClass: 'errorTextArea',
+                        errorClass: 'text-danger',
                         rules: {
                             description_back: {
                                 required: true
@@ -201,7 +207,14 @@
                             {
                                 required: "Wajib Diisi"
                             },
-                        }
+                        },
+                        errorPlacement: function (error, element) {
+                            if (element.attr("name") == "description_back") {
+                                error.appendTo("#errorTextArea").addClass("strong");
+                            } else {
+                                error.insertAfter(element)
+                            }
+                        },
                     });
                     if ($("#description_back").valid()) {
                         $.ajax({
@@ -217,7 +230,7 @@
                             },
                             success: function(response) {
                                 Swal.fire({
-                                    title: '',
+                                    title: 'Berhasil',
                                     icon: 'success',
                                     confirmButtonText: 'Ok',
                                     allowOutsideClick: false,
@@ -267,17 +280,20 @@
     </script>
     <!--/ Reject Form Inovation Id -->
 
-    <!-- Reject Form Inovation Id -->
+    <!-- Back Form Inovation Id -->
     <script type="text/javascript">
     $(document).ready(function () {
         $('#sendback_inovation').on('click', function(e) {
             e.preventDefault();
+
             let id = $(this).attr('data-id');
+            let description_back = $("textarea#description_back").val();
             // console.log(id);
+
             Swal.fire({
-                title: 'Apakah kamu mengembalikan form ini?',
+                title: 'Apakah kamu ingin mengembalikan form ini?',
                 icon: 'warning',
-                text: 'Data form ini akan dikembalikan ke pegawai',
+                text: 'Data form ini akan dikembalikan ke pegawai dan diubah kembali oleh pegawai',
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 allowEnterKey: false,
@@ -293,19 +309,142 @@
             })
             .then((result) => {
                 if (result.isConfirmed) {
+                    $('#formInovationUpdate').validate({
+                        highlight: function(element) {
+                            $(element).addClass("is-invalid").removeClass("is-valid");
+                        },
+                        unhighlight: function(element) {
+                            $(element).addClass("is-valid").removeClass("is-invalid");
+                        },
+                        debug: false,
+                        errorElement: "strong",
+                        errorClass: 'text-danger',
+                        rules: {
+                            description_back: {
+                                required: true
+                            },
+                        },
+                        messages:{
+                            description_back :
+                            {
+                                required: "Wajib Diisi"
+                            },
+                        },
+                        errorPlacement: function (error, element) {
+                            if (element.attr("name") == "description_back") {
+                                error.appendTo("#errorTextArea").addClass("strong");
+                            } else {
+                                error.insertAfter(element)
+                            }
+                        },
+                    });
+                    if ($("#description_back").valid()) {
+                        $.ajax({
+                            headers: {
+                                Accept: "application/json"
+                            },
+                            method: 'post',
+                            url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/back',
+                            data: {
+                                id: id,
+                                description_back: description_back,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: 'Berhasil',
+                                    icon: 'success',
+                                    confirmButtonText: 'Ok',
+                                    allowOutsideClick: false,
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location = "/headworkunit/form-inovation/list";
+                                    }
+                                })
+                            },
+                            error: function(event,xhr,options,exc){
+                                if (event.status == 401) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Your Authorized Failed!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }else if (event.status == 500) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something Went Wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something went wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+        });
+    });
+    </script>
+    <!--/ Back Form Inovation Id -->
+
+    <!-- Back Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit_inovation').on('click', function(e) {
+            e.preventDefault();
+
+            let id = $(this).attr('data-id');
+            let description_back = $("textarea#description_back").val();
+            // console.log(id);
+
+            Swal.fire({
+                title: 'Apakah kamu ingin menyetujui form ini?',
+                icon: 'warning',
+                text: 'Data form ini akan dikirim ke penilai',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    // if ($("#description_back").valid()) {
                     $.ajax({
                         headers: {
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/back',
+                        url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/process',
                         data: {
                             id: id,
+                            description_back: description_back,
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
                             Swal.fire({
-                                title: '',
+                                title: 'Berhasil',
                                 icon: 'success',
                                 confirmButtonText: 'Ok',
                                 allowOutsideClick: false,
@@ -340,6 +479,7 @@
                             }
                         }
                     });
+                    // }
                 } else {
                     Swal.fire({
                         title: 'Gagal ',
@@ -351,7 +491,7 @@
         });
     });
     </script>
-    <!--/ Reject Form Inovation Id -->
+    <!--/ Back Form Inovation Id -->
 
     <!-- Reset -->
     <script type="text/javascript">
@@ -361,13 +501,21 @@
         var submitBtn               =   $('#submit_inovation').show();
         var textdescription_back    =   $('#description_back').attr("disabled", "disabled");
 
-        if (textdescription_back.is(":disabled") == false) {
-            backBtn.hide();
-            rejectBtn.hide();
-            submitBtn.show();
-            textdescription_back.prop('checked', true);
-            // tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
-        }
+        // if ($('#description_back').is(":disabled") == false) {
+        //     backBtn.hide();
+        //     rejectBtn.hide();
+        //     submitBtn.show();
+        //     textdescription_back.attr("disabled", "disabled");
+        //     $('#description_back').removeClass("is-invalid");
+        //     $('#errorTextArea').children('label').remove();
+        //     // tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+        // }
+        backBtn.hide();
+        rejectBtn.hide();
+        submitBtn.show();
+        textdescription_back.attr("disabled", "disabled");
+        $('#description_back').removeClass("is-invalid");
+        $('#errorTextArea').children('strong').remove();
     }
     </script>
     <!--/ Reset -->
@@ -397,63 +545,146 @@
             $('input[name="check_description_back"]').change(function(){
 
                 if ($('input[name="check_description_back"]:checked').length > 0 ) {
-                    if (condition) {
-
-                    }
-                    if ($('input[name="check_reject_back"]').is(":checked") == true) {
-                        // check
-                        $('input[name="check_reject_back"]').prop('checked', false);
-                        // Text Area
+                    if ($('#description_back').val() == null) {
+                        if ($('input[name="check_reject_back"]').is(":checked") == true) {
+                            // check
+                            $('input[name="check_reject_back"]').prop('checked', false);
+                            // Text Area
+                            textdescription_back.removeAttr("disabled");
+                            textdescription_back.val(null);
+                            $('#description_back').attr("required", "required");
+                            $('textarea#description_back').removeClass("is-invalid");
+                            $('#errorTextArea').children('strong').remove();
+                            // btn
+                            backBtn.show();
+                            rejectBtn.hide();
+                            submitBtn.hide();
+                            // route
+                            $('#formInovationUpdate').attr("action", urlBack);
+                        }
                         textdescription_back.removeAttr("disabled");
                         textdescription_back.val(null);
                         $('#description_back').attr("required", "required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
                         // btn
                         backBtn.show();
                         rejectBtn.hide();
                         submitBtn.hide();
-                        // route
+                        // Route
                         $('#formInovationUpdate').attr("action", urlBack);
                     }
-                    textdescription_back.removeAttr("disabled");
-                    textdescription_back.val(null);
-                    $('#description_back').attr("required", "required");
-                    // btn
-                    backBtn.show();
-                    rejectBtn.hide();
-                    submitBtn.hide();
-                    // Route
-                    $('#formInovationUpdate').attr("action", urlBack);
-                }
-                // else if($('input[name="check_description_back"]:checked').length > 0 && $('input[name="check_reject_back"]').is(":checked") == true) {
-                //     $('input[name="check_reject_back"]').prop('checked', false);
-                //     textdescription_back.removeAttr("disabled");
-                //     backBtn.show();
-                //     rejectBtn.hide();
-                //     submitBtn.hide();
-                // }
-                else {
-                    textdescription_back.attr("disabled", "disabled");
-                    textdescription_back.val(null);
-                    $('#description_back').removeAttr("required");
-                    //
-                    backBtn.hide();
-                    rejectBtn.hide();
-                    submitBtn.show();
-                    //
-                    $('#formInovationUpdate').attr("action", urlProcess);
+                    else if (($('#description_back').val() != null)) {
+                        if ($('input[name="check_reject_back"]').is(":checked") == true) {
+                            // check
+                            $('input[name="check_reject_back"]').prop('checked', false);
+                            // Text Area
+                            textdescription_back.removeAttr("disabled");
+                            // textdescription_back.val(null);
+                            $('#description_back').attr("required", "required");
+                            $('textarea#description_back').removeClass("is-invalid");
+                            $('#errorTextArea').children('strong').remove();
+                            // btn
+                            backBtn.show();
+                            rejectBtn.hide();
+                            submitBtn.hide();
+                            // route
+                            $('#formInovationUpdate').attr("action", urlBack);
+                        }
+                        textdescription_back.removeAttr("disabled");
+                        // textdescription_back.val(null);
+                        $('#description_back').attr("required", "required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
+                        // btn
+                        backBtn.show();
+                        rejectBtn.hide();
+                        submitBtn.hide();
+                        // Route
+                        $('#formInovationUpdate').attr("action", urlBack);
+                    }
+                } else {
+                    if ($('#description_back').val() == null) {
+                        textdescription_back.attr("disabled", "disabled");
+                        textdescription_back.val(null);
+                        $('#description_back').removeAttr("required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
+                        //
+                        backBtn.hide();
+                        rejectBtn.hide();
+                        submitBtn.show();
+                        //
+                        $('#formInovationUpdate').attr("action", urlProcess);
+                    } else {
+                        textdescription_back.attr("disabled", "disabled");
+                        // textdescription_back.val(null);
+                        $('#description_back').removeAttr("required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
+                        //
+                        backBtn.hide();
+                        rejectBtn.hide();
+                        submitBtn.show();
+                        //
+                        $('#formInovationUpdate').attr("action", urlProcess);
+                    }
                 }
             });
 
             $('input[name="check_reject_back"]').change(function(){
 
                 if ($('input[name="check_reject_back"]:checked').length > 0) {
-                    if ($('input[name="check_description_back"]').is(":checked") == true) {
-                        // Check
-                        $('input[name="check_description_back"]').prop('checked', false);
-                        // Text Area
+                    if ($('#description_back').val() == null) {
+                        if ($('input[name="check_description_back"]').is(":checked") == true) {
+                            // Check
+                            $('input[name="check_description_back"]').prop('checked', false);
+                            // Text Area
+                            textdescription_back.removeAttr("disabled");
+                            textdescription_back.val(null);
+                            $('#description_back').attr("required", "required");
+                            $('textarea#description_back').removeClass("is-invalid");
+                            $('#errorTextArea').children('strong').remove();
+                            //
+                            backBtn.hide();
+                            rejectBtn.show();
+                            submitBtn.hide();
+                            //
+                            $('#formInovationUpdate').attr("action", urlReject);
+                        }
                         textdescription_back.removeAttr("disabled");
                         textdescription_back.val(null);
                         $('#description_back').attr("required", "required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
+                        //
+                        backBtn.hide();
+                        rejectBtn.show();
+                        submitBtn.hide();
+                        //
+                        $('#formInovationUpdate').attr("action", urlReject);
+                    } else {
+                        if ($('input[name="check_description_back"]').is(":checked") == true) {
+                            // Check
+                            $('input[name="check_description_back"]').prop('checked', false);
+                            // Text Area
+                            textdescription_back.removeAttr("disabled");
+                            // textdescription_back.val(null);
+                            $('#description_back').attr("required", "required");
+                            $('textarea#description_back').removeClass("is-invalid");
+                            $('#errorTextArea').children('strong').remove();
+                            //
+                            backBtn.hide();
+                            rejectBtn.show();
+                            submitBtn.hide();
+                            //
+                            $('#formInovationUpdate').attr("action", urlReject);
+                        }
+                        textdescription_back.removeAttr("disabled");
+                        // textdescription_back.val(null);
+                        $('#description_back').attr("required", "required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();
                         rejectBtn.show();
@@ -461,27 +692,32 @@
                         //
                         $('#formInovationUpdate').attr("action", urlReject);
                     }
-                    textdescription_back.removeAttr("disabled");
-                    textdescription_back.val(null);
-                    $('#description_back').attr("required", "required");
-                    //
-                    backBtn.hide();
-                    rejectBtn.show();
-                    submitBtn.hide();
-                    //
-                    $('#formInovationUpdate').attr("action", urlReject);
                 } else {
-                    // document.getElementById("description_back").setAttribute("disabled");
-                    // $('input[name="check_description_back"]').removeAttr("checked");
-                    textdescription_back.attr("disabled", "disabled");
-                    textdescription_back.val(null);
-                    $('#description_back').removeAttr("required");
-                    //
-                    backBtn.hide();
-                    rejectBtn.hide();
-                    submitBtn.show();
-                    //
-                    $('#formInovationUpdate').attr("action", urlProcess);
+                    if ($('#description_back').val() == null) {
+                        textdescription_back.attr("disabled", "disabled");
+                        textdescription_back.val(null);
+                        $('#description_back').removeAttr("required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
+                        //
+                        backBtn.hide();
+                        rejectBtn.hide();
+                        submitBtn.show();
+                        //
+                        $('#formInovationUpdate').attr("action", urlProcess);
+                    } else {
+                        textdescription_back.attr("disabled", "disabled");
+                        // textdescription_back.val(null);
+                        $('#description_back').removeAttr("required");
+                        $('textarea#description_back').removeClass("is-invalid");
+                        $('#errorTextArea').children('strong').remove();
+                        //
+                        backBtn.hide();
+                        rejectBtn.hide();
+                        submitBtn.show();
+                        //
+                        $('#formInovationUpdate').attr("action", urlProcess);
+                    }
                 }
             });
         });
@@ -918,12 +1154,12 @@
                                     <textarea class="form-control" aria-label="With textarea"
                                     id="description_back" placeholder="Keterangan"
                                     autocomplete="on" autofocus name="description_back"
-                                    spellcheck="true" rows="10" cols="50">{{ old('description_back',$rewardInovation->description_back) }}</textarea>
+                                    spellcheck="true" rows="10" cols="50">{{ old('description_back', $rewardInovation->description_back) }}</textarea>
                                 </div>
 
-                                <div class="d-flex flex-column">
+                                <div class="d-flex flex-column" id="errorTextArea">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Diisi jika dikembalikan atau ditolak</small>
+                                    <small class="form-text text-muted text-break text-monospace text-sm-left">**Diisi jika dikembalikan atau ditolak</small>
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Video -->
@@ -963,10 +1199,10 @@
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="reject_inovation" data-id="{{ $rewardInovation->id }}">
                                     <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Send Reject File
                                 </button>
-                                <button type="submit" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
+                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
                                     <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Send Back File
                                 </button>
-                                <button type="submit" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
+                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
                                     <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Send Approve File
                                 </button>
                             </div>

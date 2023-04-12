@@ -221,6 +221,95 @@ class InovationController extends Controller
         }
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postInovationFormDataBack(Request $request, $id)
+    {
+        try {
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
+
+                // Find id Reward
+                $rewardInovation            =       RewardInovation::find($id);
+
+                if($rewardInovation) {
+                    // Update Database File
+                    $rewardInovation->description_back                  =   $request['description_back'];
+                    $rewardInovation->status_process                    =   '1';
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+            }
+
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postInovationFormDataProcess(Request $request, $id)
+    {
+        try {
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
+
+                // Find id Reward
+                $rewardInovation            =       RewardInovation::find($id);
+
+                if($rewardInovation) {
+                    // Update Database File
+                    // $rewardInovation->description_back                  =   $request['description_back'];
+                    $rewardInovation->status_process                    =   '3';
+                    $rewardInovation->save();
+                    alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                }
+            }
+
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 
 
     /**

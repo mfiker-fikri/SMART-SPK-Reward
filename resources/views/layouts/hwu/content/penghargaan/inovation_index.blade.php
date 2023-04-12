@@ -790,7 +790,7 @@
 
                 <!-- Form Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">List Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h5>
+                    <h5 class="mb-0">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h5>
                 </div>
                 <!--/ Form Read Inovation List Title -->
 
