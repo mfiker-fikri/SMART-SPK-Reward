@@ -493,6 +493,44 @@
     </script>
     <!--/ Back Form Inovation Id -->
 
+    <script>
+        $(document).ready(function () {
+            $('#formInovationUpdate-form').validate({
+                highlight: function(element) {
+                    $(element).addClass("is-invalid").removeClass("is-valid");
+                },
+                unhighlight: function(element) {
+                    $(element).addClass("is-valid").removeClass("is-invalid");
+                },
+                debug: false,
+                errorElement: "strong",
+                errorClass: 'text-danger',
+                rules: {
+                    description_back: {
+                        required: true
+                    },
+                },
+                messages:{
+                    description_back :
+                    {
+                        required: "Wajib Diisi"
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "description_back") {
+                        error.appendTo("#errorTextArea").addClass("strong");
+                    } else {
+                        error.insertAfter(element)
+                    }
+                },
+                success: function (element) {
+                    element.text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+                }
+            });
+        });
+    </script>
+
     <!-- Reset -->
     <script type="text/javascript">
     function reset_check() {
@@ -515,6 +553,7 @@
         submitBtn.show();
         textdescription_back.attr("disabled", "disabled");
         $('#description_back').removeClass("is-invalid");
+        $('#description_back').removeClass("is-valid");
         $('#errorTextArea').children('strong').remove();
     }
     </script>
@@ -554,6 +593,7 @@
                             textdescription_back.val(null);
                             $('#description_back').attr("required", "required");
                             $('textarea#description_back').removeClass("is-invalid");
+                            $('#description_back').removeClass("is-valid");
                             $('#errorTextArea').children('strong').remove();
                             // btn
                             backBtn.show();
@@ -566,6 +606,7 @@
                         textdescription_back.val(null);
                         $('#description_back').attr("required", "required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         // btn
                         backBtn.show();
@@ -583,6 +624,7 @@
                             // textdescription_back.val(null);
                             $('#description_back').attr("required", "required");
                             $('textarea#description_back').removeClass("is-invalid");
+                            $('#description_back').removeClass("is-valid");
                             $('#errorTextArea').children('strong').remove();
                             // btn
                             backBtn.show();
@@ -595,6 +637,7 @@
                         // textdescription_back.val(null);
                         $('#description_back').attr("required", "required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         // btn
                         backBtn.show();
@@ -609,6 +652,7 @@
                         textdescription_back.val(null);
                         $('#description_back').removeAttr("required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();
@@ -621,6 +665,7 @@
                         // textdescription_back.val(null);
                         $('#description_back').removeAttr("required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();
@@ -644,6 +689,7 @@
                             textdescription_back.val(null);
                             $('#description_back').attr("required", "required");
                             $('textarea#description_back').removeClass("is-invalid");
+                            $('#description_back').removeClass("is-valid");
                             $('#errorTextArea').children('strong').remove();
                             //
                             backBtn.hide();
@@ -656,6 +702,7 @@
                         textdescription_back.val(null);
                         $('#description_back').attr("required", "required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();
@@ -672,6 +719,7 @@
                             // textdescription_back.val(null);
                             $('#description_back').attr("required", "required");
                             $('textarea#description_back').removeClass("is-invalid");
+                            $('#description_back').removeClass("is-valid");
                             $('#errorTextArea').children('strong').remove();
                             //
                             backBtn.hide();
@@ -684,6 +732,7 @@
                         // textdescription_back.val(null);
                         $('#description_back').attr("required", "required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();
@@ -698,6 +747,7 @@
                         textdescription_back.val(null);
                         $('#description_back').removeAttr("required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();
@@ -710,6 +760,7 @@
                         // textdescription_back.val(null);
                         $('#description_back').removeAttr("required");
                         $('textarea#description_back').removeClass("is-invalid");
+                        $('#description_back').removeClass("is-valid");
                         $('#errorTextArea').children('strong').remove();
                         //
                         backBtn.hide();

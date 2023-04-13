@@ -13,11 +13,15 @@ use Intervention\Image\Facades\Image;
 
 class HWUController extends Controller
 {
-    // HeadWorkUnit Auth
-    // public function __construct()
-    // {
-    //     $this->middleware('hwu.auth');
-    // }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('hwu.auth');
+    }
 
     /**
      * Get the guard to be used during authentication.
@@ -38,8 +42,8 @@ class HWUController extends Controller
     {
         try {
             // Get HeadWorkUnit
-            $hwu = HeadWorkUnit::first();
-            return view('layouts.hwu.content.profile.profile', compact('hwu'));
+            // $hwu = HeadWorkUnit::first();
+            return view('layouts.hwu.content.profile.profile');
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -97,7 +101,7 @@ class HWUController extends Controller
                         $request->all(),
                         [
                             'full_name'                     =>      'required|string|min:3|max:255|regex:/^(?![0-9._-])(?!.*[0-9._-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z\s]+$/',
-                            'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:head_work_units,username',
+                            'username'                      =>      'required|string|min:3|max:255|regex:/^(?![_-])(?!.*[_-]$)(?!.*\d_-)(?!.*_-d)[a-zA-Z0-9_-]+$/|unique:head_of_work_units,username',
                             'email'                         =>      'required|string|email|unique:head_of_work_units,email',
                         ],
                         [
@@ -125,7 +129,7 @@ class HWUController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                    return redirect('headworkunit/profile')->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
                 $headworkunit->full_name   = $request['full_name'];
@@ -136,14 +140,16 @@ class HWUController extends Controller
 
                 alert()->success('Berhasil Update Profile')->autoclose(25000);
                 // $request->session()->flash('success', 'Update Sukses');
-                return redirect()->back()->with('message-update-profile-success', 'Berhasil Update Profile');
+                // ddd('sukses');
+                return redirect('headworkunit/profile')->with('message-update-profile-success', 'Berhasil Update Profile');
             } else {
                 alert()->error('Gagal Update Profile!')->autoclose(25000);
-                return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile');
+                return redirect('headworkunit/profile')->with('message-update-profile-error', 'Gagal Update Profile');
             }
-        } catch (\Exception $exception) {
-            return $exception;
+        } catch (\Throwable $th) {
+            throw $th;
         }
+
     }
 
     /**
@@ -171,7 +177,7 @@ class HWUController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
+                return redirect('headworkunit/profile')->with('message-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
             }
 
             // ddd($request);
@@ -232,7 +238,7 @@ class HWUController extends Controller
                     $headworkunit->save();
                     // dd('berhasil');
                     alert()->success('Berhasil Update Foto')->autoclose(25000);
-                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                    return redirect('headworkunit/profile')->with('message-photo-success', 'Berhasil Update Foto Profile');
                 }
 
                 // Get File Image
@@ -274,49 +280,12 @@ class HWUController extends Controller
                 $headworkunit->save();
                 // dd('berhasil');
                 alert()->success('Update Foto Berhasil')->autoclose(50000);
-                return back()->with('success', 'You have successfully upload image.')->with('image');
+                return redirect('headworkunit/profile')->with('success', 'You have successfully upload image.')->with('image');
             }
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
-            //
+            return redirect('headworkunit/profile')->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
 
-            // $photoProfile = $request['photo_profile'];
-
-            // dd('berhasil');
-
-            // ('headworkunit/images/'. $photoName);
-
-            // $img = Image::make($photoProfile)->resize(100, 100, function ($constraint) {
-            //     $constraint->aspectRation();
-            // });
-
-            // $img->stream();
-            // Storage::putFileAs('headworkunit/images/' . $photoName, $img, 'public');
-            // dd('berhasil');
-            // ->save($location);
-            // $headworkunit->photo_profile = $img;
-            // $headworkunit->save();
-
-
-            // }
-            // else {
-            //     alert()->error('Gagal Update Photo Profile!', 'Validasi Gagal')->autoclose(50000);
-            // }
-
-
-
-
-            // extension();
-            // $request->image->move(public_path('headworkunit/images/photo-profile/'), $imageName);
-
-            /* Store $imageName name in DATABASE from HERE */
-
-
-            // $photoName);
-            // } else {
-            //     alert()->error('Gagal Update Profile!')->autoclose(5000);
-            // }
         } catch (\Exception $exception) {
             return $exception;
         }
@@ -340,45 +309,13 @@ class HWUController extends Controller
                 if (file_exists($file) && $photo->photo_profile != null) {
                     unlink($file);
                 }
-                // $photo = Pegawai::find($id)->photo_profile;
-                DB::table('head_work_units')->where('id', $id)->update(['photo_profile' => '']);
+                DB::table('head_of_work_units')->where('id', $id)->update(['photo_profile' => '']);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
-                return redirect()->back()->with('message-photo-success', 'Berhasil Hapus Foto Profile');
-                // $image = Image::find($request->photo_profile);
-                // unlink("'images/headworkunit/images/photoProfile/" . $image->photo_profile);
-                // Image::where("photo_profile", $image->photo_profile)->delete();
-                // Get Id HeadWorkUnit
-                // $id = Auth::guard('head_work_units')->user()->id;
-                // $photo = HeadWorkUnit::find($id);
-                // ddd($headworkunit);
-                // $headworkunit = Auth::guard('head_work_units')->user()->username;
-
-                // $file = public_path('images/headworkunit/images/photoProfile/') . $headworkunit . '/' . $photo->photo_profile;
-                // ddd($file);
-                // if (file_exists($file)) {
-                // Storage::files($file);
-                // @unlink($file);
-                // Storage::deleteDirectory('public/' . $file);
-                // Storage::disk('local')->delete($file);
-                // ->delete('public/images/headworkunit/images/photoProfile/' . $headworkunit . '/' . $photo->photo_profile);
-                // }
-                // return back();
-                // if ($headworkunit) {
-                //     if ($request['oldImage'] == $photo) {
-                //         $headworkunit = Auth::guard('head_work_units')->user()->username;
-                //         $Storage = Storage::disk('public')->delete('images/headworkunit/images/photoProfile/' . $headworkunit, $request['oldImage']);
-                //         ddd($Storage, 'berhasil');
-                //         // $delete = $headworkunit->photo_profile;
-                //         // return delete($delete);
-
-                //         alert()->success('Update Foto Berhasil')->autoclose(50000);
-                //         return back()->with('success', 'You have successfully upload image.');
-                // }
-                // }
+                return redirect('headworkunit/profile')->with('message-photo-success', 'Berhasil Hapus Foto Profile');
             }
 
             alert()->error('Gagal Hapus Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-photo-error', 'Gagal Hapus Foto Profile');
+            return redirect('headworkunit/profile')->with('message-photo-error', 'Gagal Hapus Foto Profile');
             //
         } catch (\Exception $exception) {
             return $exception;
@@ -428,7 +365,7 @@ class HWUController extends Controller
 
         if ($validate->fails()) {
             alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
+            return redirect('headworkunit/profile')->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
         }
 
         $currentPassword        =       Auth::guard('head_work_units')->user()->password;
@@ -439,11 +376,13 @@ class HWUController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password');
+            return redirect('headworkunit/profile')->with('message-update-success', 'Berhasil Update Password');
         }
 
+        alert()->error('Gagal Update Password!', 'Password Tidak Sesuai')->autoclose(25000);
+        return redirect('headworkunit/profile')->with('message-update-profile-error', 'Gagal Update Password, Password Tidak Sesuai');
         // Auth::guard('useres')->user()->update(['password' => bcrypt(request('password'))]);
-        // return back()->with('message', 'Berhasil Update Password')->with('message-success-password', 'Berhasil Update Password')->with('success', 'Berhasil Update Password');
+        // return redirect('headworkunit/profile')->with('message', 'Berhasil Update Password')->with('message-success-password', 'Berhasil Update Password')->with('success', 'Berhasil Update Password');
     }
 
 }

@@ -26,38 +26,7 @@
 @endprepend
 
 @section('js_footer')
-    <!-- Greeting Morning, Afternoon, etc -->
-    {{-- <script language="JavaScript">
 
-        Webcam.set({
-
-            width: 490,
-
-            height: 350,
-
-            image_format: 'jpeg',
-
-            jpeg_quality: 90
-
-        });
-
-        Webcam.attach( '#my_camera' );
-
-
-
-        function take_snapshot() {
-
-            Webcam.snap( function(data_uri) {
-
-                $(".image-tag").val(data_uri);
-
-                document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-
-            } );
-
-        }
-    </script> --}}
-    <!--/ Greeting Morning, Afternoon, etc -->
 
     <!-- Photo Preview -->
     <script type='text/javascript'>
@@ -377,19 +346,11 @@
 
                                 </div>
 
-
-                                {{-- <div id="my_camera"></div>
-
-                                <br/>
-
-                                <input type=button value="Take Snapshot" onClick="take_snapshot()">
-
-                                <input type="text" name="image" class="image-tag"> --}}
                             </div>
 
                             <hr>
 
-                            <form id="formProfileUpdate" class="mx-3 my-3" method="POST" action="{{ route('hwu.postProfile.Update.HWU') }}">
+                            <form id="formProfileUpdate" class="mx-3 my-3" method="POST" action="{{ URL::to('headworkunit/profile/update') }}">
                                 @csrf
                                 <!-- Full Name -->
                                 <div class="row my-3 {{ $errors->has('full_name') ? 'is-invalid' : '' }}">
@@ -527,7 +488,7 @@
                         <!-- Form Change Password -->
                         <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
-                            <form id="formChangePassword" class="mx-3 my-3" method="POST" action="{{ URL::to('headworkunit/profile/change-password') }}">
+                            <form id="formChangePassword" class="mx-3 my-3" method="POST" action="{{ route('hwu.postProfile.changePasswordUpdate.HWU') }}">
                                 @csrf
 
                                 <!-- Old Password -->

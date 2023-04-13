@@ -14,7 +14,7 @@
                     <div class="d-flex">
                         <!-- Photo Profile -->
                         @if (Auth::guard('head_work_units')->user()->photo_profile)
-                        <img src="{{ asset( 'storage/images/head_work_units/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="head_work_units-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
+                        <img src="{{ asset( 'storage/headworkunit/photos/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}" class="img-fluid rounded-start mx-auto d-block" alt="head_work_units-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
                         @else
                         <img src="https://th.bing.com/th/id/OIP.xcp9_uPOg5pOlPQyd63c9wHaKX?pid=ImgDet&rs=1" class="img-fluid rounded-start mx-auto d-block" alt="head_work_units-photo-profile" style="min-height: 350px;max-height: 350px;min-width: 230px;max-width: 230px;">
                         @endif

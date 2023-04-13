@@ -102,7 +102,7 @@
                     <div class="avatar {{ Auth::guard('head_work_units')->user()->status_id == 1 && Auth::guard('head_work_units')->user()->status_active == 1 && (Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id)) ? 'avatar-online' : '' }}">
                         <!-- Photo Profile -->
                         @if (Auth::guard('head_work_units')->user()->photo_profile)
-                            <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
+                            <img src="{{ asset( 'storage/headworkunit/photos/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
                             alt="headworkunit-avatar {{ Auth::guard('head_work_units')->user()->full_name }}" class="rounded-circle"
                             style="width: 40px; height: 45px" id="head_work_unitsAvatar" />
                         @else
@@ -129,7 +129,7 @@
                                 <div class="avatar {{ Auth::guard('head_work_units')->user()->status_id == 1 && Auth::guard('head_work_units')->user()->status_active == 1 && Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id ) ? 'avatar-online' : '' }}">
                                     <!-- Photo Profile -->
                                     @if (Auth::guard('head_work_units')->user()->photo_profile)
-                                        <img src="{{ asset( 'storage/images/headworkunit/images/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
+                                        <img src="{{ asset( 'storage/headworkunit/photos/photoProfile/'. Auth::guard('head_work_units')->user()->username. '/' . Auth::guard('head_work_units')->user()->photo_profile) }}"
                                         alt="headworkunit-avatar {{ Auth::guard('head_work_units')->user()->full_name }}" class="rounded-circle"
                                         style="width: 40px; height: 45px" id="head_work_unitsAvatar" />
                                     @else

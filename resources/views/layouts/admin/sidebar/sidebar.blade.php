@@ -86,6 +86,20 @@
         </li> --}}
         <!--/ Manage Account Score Finalis -->
 
+        <!-- Manage Account Head Work Unit -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Kelola Akun Kepala Satuan Kerja</span>
+        </li>
+
+        <li class="menu-item {{ (request()->is('admin/manage/headworkunit*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/admin/manage/headworkunit') }}" class="menu-link" style="text-decoration: none !important;">
+                {{-- <i class="menu-icon tf-icons bx bx-user"></i> --}}
+                <i class="menu-icon tf-icons fa-solid fa-users"></i>
+                <div data-i18n="Analytics">Akun Data Kepala Satuan Kerja</div>
+            </a>
+        </li>
+        <!--/ Manage Account Head Work Unit -->
+
         <!-- Manage Account Employee -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Kelola Akun Pegawai ASN</span>
@@ -98,6 +112,7 @@
                 <div data-i18n="Analytics">Akun Data Pegawai ASN</div>
             </a>
         </li>
+        <!--/ Manage Account Employee -->
 
 
     </ul>
