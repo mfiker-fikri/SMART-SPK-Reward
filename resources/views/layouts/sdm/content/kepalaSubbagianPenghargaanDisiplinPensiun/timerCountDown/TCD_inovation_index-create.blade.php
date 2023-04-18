@@ -567,48 +567,48 @@
 
 
     <script type="text/javascript">
-        function resetStatussdm(event) {
-            var oldOpen1             = document.getElementById("oldStatusOpenAppraisment1").getAttribute("value");
-            var oldOpen2             = document.getElementById("oldStatusOpenAppraisment2").getAttribute("value");
-            var oldOpen3             = document.getElementById("oldStatusOpenAppraisment3").getAttribute("value");
-            console.log(oldOpen1);
+    function resetStatussdm(event) {
+        var oldOpen1             = document.getElementById("oldStatusOpenAppraisment1").getAttribute("value");
+        var oldOpen2             = document.getElementById("oldStatusOpenAppraisment2").getAttribute("value");
+        var oldOpen3             = document.getElementById("oldStatusOpenAppraisment3").getAttribute("value");
+        console.log(oldOpen1);
 
 
-            var oldExpired1          = document.getElementById("oldStatusExpiredAppraisment1").getAttribute("value");
-            var oldExpired2          = document.getElementById("oldStatusExpiredAppraisment2").getAttribute("value");
-            var oldExpired3          = document.getElementById("oldStatusExpiredAppraisment3").getAttribute("value");
+        var oldExpired1          = document.getElementById("oldStatusExpiredAppraisment1").getAttribute("value");
+        var oldExpired2          = document.getElementById("oldStatusExpiredAppraisment2").getAttribute("value");
+        var oldExpired3          = document.getElementById("oldStatusExpiredAppraisment3").getAttribute("value");
 
-            if ( (oldOpen1 && oldExpired1) || (oldOpen2 && oldExpired2) || (oldOpen3 && oldExpired3) ) {
-                $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
-                $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
+        if ( (oldOpen1 && oldExpired1) || (oldOpen2 && oldExpired2) || (oldOpen3 && oldExpired3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
 
-                $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
-                $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
+            $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
 
-                $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
-                $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
+            $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
 
-            } else if ( (oldOpen1 || oldExpired1) && (oldOpen2 || oldExpired2) && (oldOpen3 || oldExpired3) ) {
-                $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
-                $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
+        } else if ( (oldOpen1 || oldExpired1) && (oldOpen2 || oldExpired2) && (oldOpen3 || oldExpired3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
 
-                $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
-                $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
+            $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
 
-                $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
-                $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
-            } else {
-                $('#status_open_signature_human_resource_3').val(null).trigger('change');
-                $('#status_expired_signature_human_resource_3').val(null).trigger('change');
+            $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
+        } else {
+            $('#status_open_signature_human_resource_3').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(null).trigger('change');
 
-                $('#status_open_signature_human_resource_2').val(null).trigger('change');
-                $('#status_expired_signature_human_resource_2').val(null).trigger('change');
+            $('#status_open_signature_human_resource_2').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(null).trigger('change');
 
-                $('#status_open_signature_human_resource_1').val(null).trigger('change');
-                $('#status_expired_signature_human_resource_1').val(null).trigger('change');
-            }
+            $('#status_open_signature_human_resource_1').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(null).trigger('change');
         }
-        </script>
+    }
+    </script>
 
 
     <!--/ Reset Select2 Status -->

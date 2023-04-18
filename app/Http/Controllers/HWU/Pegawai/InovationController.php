@@ -103,7 +103,7 @@ class InovationController extends Controller
                     $actionBtn =
                     '
                         <a href="' . route('hwu.getInovationIdUpdate.Update.HWU', $row->id) . '" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black">
-                            <i class="fa-solid fa-pencil mx-auto me-1"></i> Lihat
+                            <i class="fa-solid fa-eye" style="color: #000000;"></i> Lihat
                         </a>
                         ';
                 }

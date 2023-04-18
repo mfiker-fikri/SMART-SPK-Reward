@@ -21,73 +21,21 @@
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
 
-            <!-- Manage Admins -->
-            @elseif ( request()->is('headworkunit/manage/head_work_units/create') )
+            <!-- Manage Inovation Employee -->
+            @elseif ( request()->is('headworkunit/form-inovation/list') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/head_work_units') }}" style="text-decoration: none !important;">Data Admin</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">Tambah Data Admin Baru</li>
+                <li class="breadcrumb-item fw-bold active">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</li>
 
-            @elseif ( request()->is('headworkunit/manage/head_work_units') )
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">Data Admin</li>
-
-            @elseif ( request()->is('headworkunit/manage/head_work_units/view*') )
+            @elseif ( request()->is('headworkunit/form-inovation/list/update*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/head_work_units') }}" style="text-decoration: none !important;">Data Admin</a>
+                    <a href="{{ URL::to('/headworkunit/form-inovation/list') }}" style="text-decoration: none !important;">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active"> {{ $headworkunit->full_name }} </li>
-
-            @elseif ( request()->is('headworkunit/manage/head_work_units/edit*') )
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/head_work_units') }}" style="text-decoration: none !important;">Data Admin</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active"> {{ $headworkunit->full_name }} </li>
-
-            <!-- Manage Employees -->
-            @elseif ( request()->is('headworkunit/manage/employees/create') )
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">Tambah Data Pegawai Baru</li>
-
-            @elseif ( request()->is('headworkunit/manage/employees') )
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">Data Pegawai</li>
-
-            @elseif ( request()->is('headworkunit/manage/employees/view*') )
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">{{ $employee->full_name }}</li>
-
-            @elseif ( request()->is('headworkunit/manage/employees/edit*') )
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
-                </li>
-                <li class="breadcrumb-item fw-bold active">{{ $employee->full_name }}</li>
+                <li class="breadcrumb-item fw-bold active"> {{ $rewardInovation->full_name }} </li>
 
             @endif
         </ol>

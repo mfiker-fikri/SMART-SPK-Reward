@@ -432,6 +432,7 @@ Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu
         // Profile Change Password
         Route::POST('/profile/change-password', [App\Http\Controllers\HWU\HWUController::class, 'changePasswordUpdate'])->name('postProfile.changePasswordUpdate.HWU');
 
+        // Manage Inovation Employee
         // Read
         Route::GET('form-inovation/list', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.HWU');
         // 2=menunggu

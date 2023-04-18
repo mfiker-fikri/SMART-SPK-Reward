@@ -17,6 +17,54 @@
             placeholder: $( this ).data( 'placeholder' ),
         } );
     </script>
+
+    <script type="text/javascript">
+        $( '#status_open_signature_human_resource_3' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_signature_human_resource_3' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_open_signature_human_resource_2' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_signature_human_resource_2' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_open_signature_human_resource_1' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
+
+    <script type="text/javascript">
+        $( '#status_expired_signature_human_resource_1' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+        } );
+    </script>
     <!-- Select2 Status -->
 
     <!-- Reset Select2 Status -->
@@ -53,6 +101,69 @@
     </script>
 
     <script type="text/javascript">
+    function resetStatusNullAppraisment(event){
+        var oldOpenStatus = document.getElementById("oldOpenStatusAppraisment").getAttribute("value");
+        var oldExpiredStatus = document.getElementById("oldExpiredStatusAppraisment").getAttribute("value");
+
+        if (oldOpenStatus && oldExpiredStatus) {
+            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+        } else if (oldOpenStatus || oldExpiredStatus) {
+            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+        } else {
+            $('#status_open_appraisment').val(null).trigger('change');
+            $('#status_expired_appraisment').val(null).trigger('change');
+        }
+    }
+    </script>
+
+    <script type="text/javascript">
+    function resetStatusNullsdm(event){
+
+        var oldOpenStatus1      = document.getElementById("oldOpenStatusAppraisment1").getAttribute("value");
+        var oldOpenStatus2      = document.getElementById("oldOpenStatusAppraisment2").getAttribute("value");
+        var oldOpenStatus3      = document.getElementById("oldOpenStatusAppraisment3").getAttribute("value");
+
+        var oldExpiredStatus1   = document.getElementById("oldExpiredStatusAppraisment1").getAttribute("value");
+        var oldExpiredStatus2   = document.getElementById("oldExpiredStatusAppraisment2").getAttribute("value");
+        var oldExpiredStatus3   = document.getElementById("oldExpiredStatusAppraisment3").getAttribute("value");
+
+        if ( (oldOpenStatus1 && oldExpiredStatus1) || (oldOpenStatus2 && oldExpiredStatus2) || (oldOpenStatus3 && oldExpiredStatus3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpenStatus3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpiredStatus3).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(oldOpenStatus2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpiredStatus2).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(oldOpenStatus1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpiredStatus1).trigger('change');
+
+
+        } else if ( (oldOpenStatus1 || oldExpiredStatus1) && (oldOpenStatus2 || oldExpiredStatus2) && (oldOpenStatus3 || oldExpiredStatus3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpenStatus3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpiredStatus3).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(oldOpenStatus2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpiredStatus2).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(oldOpenStatus1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpiredStatus1).trigger('change');
+
+        } else {
+            $('#status_open_signature_human_resource_3').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(null).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(null).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(null).trigger('change');
+        }
+    }
+    </script>
+
+    <script type="text/javascript">
     function resetStatus(event){
         var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
         var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
@@ -81,6 +192,70 @@
     //         $('#status_expired_appraisment').val(null).trigger('change');
     //     }
     // });
+    </script>
+
+
+    <script type="text/javascript">
+    function resetStatusAppraisment(event) {
+        var oldOpen = document.getElementById("oldStatusOpenAppraisment").getAttribute("value");
+        var oldExpired = document.getElementById("oldStatusExpiredAppraisment").getAttribute("value");
+
+        if (oldOpen && oldExpired) {
+            $('#status_open_appraisment').val(oldOpen).trigger('change');
+            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+        } else if (oldOpen || oldExpired) {
+            $('#status_open_appraisment').val(oldOpen).trigger('change');
+            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+        } else {
+            $('#status_open_appraisment').val(null).trigger('change');
+            $('#status_expired_appraisment').val(null).trigger('change');
+        }
+    }
+    </script>
+
+
+    <script type="text/javascript">
+    function resetStatussdm(event) {
+        var oldOpen1             = document.getElementById("oldStatusOpenAppraisment1").getAttribute("value");
+        var oldOpen2             = document.getElementById("oldStatusOpenAppraisment2").getAttribute("value");
+        var oldOpen3             = document.getElementById("oldStatusOpenAppraisment3").getAttribute("value");
+        console.log(oldOpen1);
+
+
+        var oldExpired1          = document.getElementById("oldStatusExpiredAppraisment1").getAttribute("value");
+        var oldExpired2          = document.getElementById("oldStatusExpiredAppraisment2").getAttribute("value");
+        var oldExpired3          = document.getElementById("oldStatusExpiredAppraisment3").getAttribute("value");
+
+        if ( (oldOpen1 && oldExpired1) || (oldOpen2 && oldExpired2) || (oldOpen3 && oldExpired3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
+
+        } else if ( (oldOpen1 || oldExpired1) && (oldOpen2 || oldExpired2) && (oldOpen3 || oldExpired3) ) {
+            $('#status_open_signature_human_resource_3').val(oldOpen3).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(oldExpired3).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(oldOpen2).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(oldExpired2).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(oldOpen1).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(oldExpired1).trigger('change');
+        } else {
+            $('#status_open_signature_human_resource_3').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_3').val(null).trigger('change');
+
+            $('#status_open_signature_human_resource_2').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_2').val(null).trigger('change');
+
+            $('#status_open_signature_human_resource_1').val(null).trigger('change');
+            $('#status_expired_signature_human_resource_1').val(null).trigger('change');
+        }
+    }
     </script>
     <!--/ Reset Select2 Status -->
 
@@ -113,7 +288,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment/delete') }}" + '/' + id,
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement/delete') }}" + '/' + id,
                         data: {
                             id: id,
                             _token: '{{ csrf_token() }}'
@@ -181,12 +356,12 @@
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment')) ? 'active' : '' }}"
-                        id="pills-appraisment-tab"
-                        data-bs-toggle="pill" data-bs-target="#pills-appraisment"
-                        type="button" role="tab" aria-controls="pills-appraisment"
-                        aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment')) ? 'true' : 'false' }}"
-                        >Representative Appraisment Countdown</button>
+                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement')) ? 'active' : '' }}"
+                        id="pills-appraisement-tab"
+                        data-bs-toggle="pill" data-bs-target="#pills-appraisement"
+                        type="button" role="tab" aria-controls="pills-appraisement"
+                        aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement')) ? 'true' : 'false' }}"
+                        >Representative Appraisement Countdown</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
@@ -221,81 +396,81 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
 
-                <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisment')) ? 'active' : '' }}" id="pills-appraisment" role="tabpanel" aria-labelledby="pills-appraisment-tab" >
+                <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement')) ? 'active' : '' }}" id="pills-appraisement" role="tabpanel" aria-labelledby="pills-appraisement-tab" >
 
-                    @if(session('message-update-appraisment-success'))
+                    @if(session('message-update-appraisement-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-update-appraisment-success') }} </b></strong>
+                                <strong><b>   {{ session('message-update-appraisement-success') }} </b></strong>
                             </p>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                    @elseif(session('message-create-appraisment-success'))
+                    @elseif(session('message-create-appraisement-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-create-appraisment-success') }} </b></strong>
+                                <strong><b>   {{ session('message-create-appraisement-success') }} </b></strong>
                             </p>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                    @elseif(session('message-delete-appraisment-success'))
-                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-appraisment-success">
+                    @elseif(session('message-delete-appraisement-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-appraisement-success">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-delete-appraisment-success') }} </b></strong>
+                                <strong><b>   {{ session('message-delete-appraisement-success') }} </b></strong>
                             </p>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                    @elseif(session('message-update-appraisment-error'))
+                    @elseif(session('message-update-appraisement-error'))
                     <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-update-appraisment-error') }}  </b></strong>
+                                <strong><b>   {{ session('message-update-appraisement-error') }}  </b></strong>
                             </p>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
                         </div>
                     </div>
-                    @elseif(session('message-create-appraisment-error'))
+                    @elseif(session('message-create-appraisement-error'))
                     <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-create-appraisment-error') }}  </b></strong>
+                                <strong><b>   {{ session('message-create-appraisement-error') }}  </b></strong>
                             </p>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
                         </div>
                     </div>
-                    @elseif(session('message-delete-appraisment-error'))
+                    @elseif(session('message-delete-appraisement-error'))
                     <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-delete-appraisment-error') }}  </b></strong>
+                                <strong><b>   {{ session('message-delete-appraisement-error') }}  </b></strong>
                             </p>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
@@ -307,7 +482,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Representative Appraisment Countdown</h5>
+                            <h5 class="mb-0">Representative Appraisement Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -336,6 +511,7 @@
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_appraisment', $timer->date_time_open_appraisment) }}"
                                                 @endif
+                                                min="{{ \Carbon\Carbon::tomorrow() }}"
                                                 aria-invalid="true" aria-describedby="date_time_open_countdown_teladan_appraisment" data-val="true">
                                         </div>
                                         <div id="date_time_open_countdown_teladan_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
@@ -405,6 +581,14 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_appraisment') }}"
                                                 @else
                                                 autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_appraisment', $timer->date_time_expired_appraisment) }}"
+                                                @endif
+                                                @if ($timers->isNotEmpty())
+                                                    @if ($timers[0]->date_time_open_appraisment != null )
+                                                        min="{{ $timers[0]->date_time_open_appraisment }}"
+                                                    @endif
+                                                @endif
+                                                @if ($timers->isEmpty())
+                                                    min="{{ \Carbon\Carbon::tomorrow()->addDays(1)->toDateTimeString() }}"
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_countdown_teladan_appraisment" data-val="true">
                                         </div>

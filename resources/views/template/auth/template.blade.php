@@ -52,6 +52,19 @@
             <meta name="title" content="Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
+        @elseif ( (request()->is('headworkunit')) ? 'active' : '' )
+            <!-- HWU -->
+            <meta name="title" content="Kepala Satuan Kerja - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Kepala Satuan Kerja - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+        @elseif ( (request()->is('headworkunit/forgot-password')) ? 'active' : '' )
+            <!-- HWU -->
+            <meta name="title" content="Kepala Satuan Kerja - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Kepala Satuan Kerja - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+        @elseif ( (request()->is('headworkunit/reset-password*')) ? 'active' : '' )
+            <!-- HWU -->
+            <meta name="title" content="Kepala Satuan Kerja - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Kepala Satuan Kerja - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
         @elseif ( (request()->is('/')) ? 'active' : '' )
             <!-- Pegawai -->
             <meta name="title" content="Pegawai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
@@ -98,6 +111,16 @@
         @elseif ( request()->is('penilai/reset-password*') )
             <!-- Team Assessment -->
             <title> Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+
+        @elseif ( request()->is('headworkunit') )
+            <!-- HWU -->
+            <title> Kepala Satuan Kerja - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+        @elseif ( request()->is('headworkunit/forgot-password') )
+            <!-- HWU -->
+            <title> Kepala Satuan Kerja - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+        @elseif ( request()->is('headworkunit/reset-password*') )
+            <!-- HWU -->
+            <title> Kepala Satuan Kerja - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
         @elseif ( (request()->is('/')) ? 'active' : '' )
             <!-- Pegawai -->
