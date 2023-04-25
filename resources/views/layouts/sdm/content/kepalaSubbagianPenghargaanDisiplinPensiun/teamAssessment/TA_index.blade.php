@@ -78,7 +78,7 @@
                     },
                     success: function(response) {
                         Swal.fire({
-                            title: 'Non Aktif Admin' + ' ' + username,
+                            title: 'Non Aktif Penilai' + ' ' + username,
                             icon: 'success',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
@@ -161,7 +161,7 @@
                     },
                     success: function(response) {
                         Swal.fire({
-                            title: 'Aktif Admin' + ' ' + username,
+                            title: 'Aktif Penilai' + ' ' + username,
                             icon: 'success',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,

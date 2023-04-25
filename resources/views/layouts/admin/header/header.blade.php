@@ -93,6 +93,41 @@
                 <li class="breadcrumb-item fw-bold active"> {{ $humanResource->full_name }} </li>
             <!--/ Manage Human Resources -->
 
+            <!-- Manage Kepala Satuan Kerja -->
+            @elseif ( request()->is('admin/manage/headworkunit/create') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Tambah Data Kepala Satuan Kerja Baru</li>
+
+            @elseif ( request()->is('admin/manage/headworkunit') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Data Kepala Satuan Kerja</li>
+
+            @elseif ( request()->is('admin/manage/headworkunit/view*') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active"> {{ $hwu->full_name }} </li>
+
+            @elseif ( request()->is('admin/manage/headworkunit/edit*') )
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active"> {{ $hwu->full_name }} </li>
+            <!--/ Manage Kepala Satuan Kerja -->
+
             <!-- Manage Employees -->
             @elseif ( request()->is('admin/manage/employees/create') )
                 <li class="breadcrumb-item fw-light">

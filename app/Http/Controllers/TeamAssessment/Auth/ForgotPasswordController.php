@@ -155,16 +155,20 @@ class ForgotPasswordController extends Controller
     {
         try {
             // Check Token
-            $updatePassword     =       DB::table('team_assessments_password_resets')
+            $check     =       DB::table('team_assessments_password_resets')
             ->where([
                 // 'email' =>  $request->email,
                 'token' =>  $token
             ])
             ->first();
 
-            // ddd($updatePassword->email);
+            if (is_null($check) == true) {
+                return redirect('admin/forgot-password');
+            }
 
-            if($updatePassword) {
+            // ddd($check->email);
+
+            if($check) {
                 return view('layouts.teamAssessment.content.auth.resetPassword', compact('updatePassword'))->with(['token' => $token, 'email' => $request->email]);
             } else {
                 abort(403);

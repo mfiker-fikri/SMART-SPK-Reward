@@ -67,6 +67,26 @@
             <meta name="title" content="Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
+        @elseif ( request()->is('admin/manage/headworkunit/create') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- Create -->
+            <meta name="title" content="Tambah Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Tambah Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/headworkunit') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- Read -->
+            <meta name="title" content="List Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="List Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/headworkunit/view*') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- View -->
+            <meta name="title" content="Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/headworkunit/edit*') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- Edit -->
+            <meta name="title" content="Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('admin/manage/employees/create') )
             <!-- Manage Pegawai -->
@@ -141,6 +161,25 @@
             <!-- Edit -->
             <title> Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
+        @elseif ( request()->is('admin/manage/headworkunit/create') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- Create -->
+            <title> Tambah Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+        @elseif ( request()->is('admin/manage/headworkunit') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- Read -->
+            <title> List Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+        @elseif ( request()->is('admin/manage/headworkunit/view*') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- View -->
+            <title> Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+
+        @elseif ( request()->is('admin/manage/headworkunit/edit*') )
+            <!-- Manage Kepala Satuan Kerja -->
+            <!-- Edit -->
+            <title> Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('admin/manage/employees/create') )
             <!-- Manage Pegawai -->

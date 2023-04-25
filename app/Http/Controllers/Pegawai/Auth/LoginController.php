@@ -116,7 +116,7 @@ class LoginController extends Controller
 
         // dd($check, $password, $remember_me);
         // Attempt Login
-        $attempt = Auth::guard('employees')->attempt([$check => $username, 'password' => $password], $remember_me);
+        $attempt = Auth::guard('employees')->attempt([$check => $username, 'password' => $password, 'status_active' => 1 , 'status_id' => 1], $remember_me);
         // dd($attempt);
         if ($attempt) {
             session(['berhasil_login' => true]);

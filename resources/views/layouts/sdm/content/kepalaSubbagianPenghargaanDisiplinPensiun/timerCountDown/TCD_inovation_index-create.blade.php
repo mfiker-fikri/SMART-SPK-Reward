@@ -1335,7 +1335,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Inovation Appraisment Countdown</h5>
+                            <h5 class="mb-0">Inovation Appraisement Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 

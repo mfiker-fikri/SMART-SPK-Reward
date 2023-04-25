@@ -545,8 +545,8 @@
                 align-items: center;
                 align-content: center;
                 text-align: center;
-                min-height: 8em;
-                max-height: 8em;
+                min-height: 16em;
+                max-height: 16em;
             }
 
             .titleCountDownExpiredNonActive{
@@ -834,8 +834,8 @@
                 align-items: center;
                 align-content: center;
                 text-align: center;
-                min-height: 8em;
-                max-height: 8em;
+                min-height: 16em;
+                max-height: 16em;
             }
 
             .titleCountDownExpiredNonActive{
@@ -2724,7 +2724,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Timer Countdown Appraisement Inovation</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Appraisment Countdown</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)
@@ -2880,13 +2880,13 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Signature Countdown</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Representative Signature Countdown</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerTeladan == null)
                         <div class="d-flex justify-content-center align-self-center">
                             <span class="text-center">
-                                <h3>Tanda Tangan Inovasi Ditutup</h3>
+                                <h3>Tanda Tangan Teladan Ditutup</h3>
                             </span>
                         </div>
                         @else
@@ -2930,7 +2930,7 @@
                             <div class="container-fluid">
                                 <div class="titleCountDownNonActive">
                                     <h3>
-                                        <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Tanda Tangan Inovasi</span>
+                                        <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Tanda Tangan Teladan</span>
                                     </h3>
                                 </div>
                             </div>
@@ -2977,7 +2977,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
+                                            <h3>Pembukaan Tanda Tangan Teladan</h3>
                                         </div>
                                         <div class="titleCountDown">
                                             <h3>Kepala Biro Sumber Daya Manusia</h3>
@@ -3004,7 +3004,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
+                                            <h3>Pembukaan Tanda Tangan Teladan</h3>
                                         </div>
                                         <div class="titleCountDown">
                                             <h3>Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</h3>
@@ -3031,7 +3031,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Tanda Tangan Inovasi</h3>
+                                            <h3>Pembukaan Tanda Tangan Teladan</h3>
                                         </div>
                                         <div class="titleCountDown">
                                             <h3>Kepala Subbagian Penghargaan, Disiplin, dan Pensiun</h3>
@@ -3263,7 +3263,7 @@
                             <div class="container-fluid">
                                 <div class="titleCountDownNonActive">
                                     <h3>
-                                        <span>Tanda Tangan Inovasi Telah Ditutup</span>
+                                        <span>Tanda Tangan Teladan Telah Ditutup</span>
                                     </h3>
                                 </div>
                             </div>
