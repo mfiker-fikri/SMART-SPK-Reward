@@ -268,7 +268,7 @@ class ManageHWUController extends Controller
             // Find Id Admin
             $hwu = HeadWorkUnit::find($id);
 
-            ddd($hwu->id);
+            // ddd($hwu->id);
             // if (Cache::has('admin-is-online-' . $row->id)) {
             //     ddd('sukses');
             //     $actionBtn = '<span class="text-success">Online</span>';
@@ -336,7 +336,7 @@ class ManageHWUController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Data Kepala Satuan Kerja!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-update-error', 'Gagal Update Data Kepala Satuan Kerja!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->route('admin.getManageHWUId.Update.Admin', [$hwu])->with('message-update-error', 'Gagal Update Data Kepala Satuan Kerja!')->withErrors($validate)->withInput($request->all());
                 }
 
                 $hwu->full_name   =   $request['full_name'];
@@ -346,11 +346,11 @@ class ManageHWUController extends Controller
                 $hwu->save();
 
                 alert()->success('Berhasil Update Data Kepala Satuan Kerja!')->autoclose(25000);
-                return redirect()->back()->with('message-update-success', 'Berhasil Update Data Kepala Satuan Kerja!');
+                return redirect()->route('admin.getManageHWUId.Update.Admin', [$hwu])->with('message-update-success', 'Berhasil Update Data Kepala Satuan Kerja!');
                 //
             } else {
                 alert()->error('Gagal!')->autoclose(25000);
-                return redirect()->back();
+                return redirect()->route('admin.getManageHWUId.Update.Admin', [$hwu]);
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -397,16 +397,16 @@ class ManageHWUController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
+                return redirect()->route('admin.getManageHWUId.Update.Admin', [$hwu])->with('message-error-password', 'Gagal Update Password!')->withErrors($validate)->withInput($request->all());
             }
             //
             DB::table('head_of_work_units')->where('id', $hwu)->update(['password' => Hash::make($request['password'])]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
+            return redirect()->route('admin.getManageHWUId.Update.Admin', [$hwu])->with('message-success-password', 'Berhasil Update Password!');
             //
         }
         alert()->error('Gagal!')->autoclose(25000);
-        return redirect()->back();
+        return redirect()->route('admin.getManageHWUId.Update.Admin', [$hwu]);
     }
 
     /**

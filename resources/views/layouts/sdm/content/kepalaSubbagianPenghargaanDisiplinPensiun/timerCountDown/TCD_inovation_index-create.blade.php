@@ -139,13 +139,13 @@
                         const dateTime1     =    convert(c1);
                         // console.log(c);
 
-                        // Open Appraisment
+                        // Open Appraisement
                         var a2              =    date.getDate()+1;
                         var b2              =    date.setDate(a2);
                         const c2            =    new Date(b2);
                         const dateTime2     =    convert(c2);
 
-                        // Expired Appraisment
+                        // Expired Appraisement
                         var a3              =    date.getDate()+1;
                         var b3              =    date.setDate(a3);
                         const c3            =    new Date(b3);
@@ -210,13 +210,13 @@
                     const dateTime1     =    convert(c1);
                     // console.log(c);
 
-                    // Open Appraisment
+                    // Open Appraisement
                     var a2              =    date.getDate()+1;
                     var b2              =    date.setDate(a2);
                     const c2            =    new Date(b2);
                     const dateTime2     =    convert(c2);
 
-                    // Expired Appraisment
+                    // Expired Appraisement
                     var a3              =    date.getDate()+1;
                     var b3              =    date.setDate(a3);
                     const c3            =    new Date(b3);
@@ -301,13 +301,13 @@
                         const dateTime1     =    convert(c1);
                         // console.log(c);
 
-                        // Open Appraisment
+                        // Open Appraisement
                         var a2              =    date.getDate()+1;
                         var b2              =    date.setDate(a2);
                         const c2            =    new Date(b2);
                         const dateTime2     =    convert(c2);
 
-                        // Expired Appraisment
+                        // Expired Appraisement
                         var a3              =    date.getDate()+1;
                         var b3              =    date.setDate(a3);
                         const c3            =    new Date(b3);
@@ -372,13 +372,13 @@
                     const dateTime1     =    convert(c1);
                     // console.log(c);
 
-                    // Open Appraisment
+                    // Open Appraisement
                     var a2              =    date.getDate()+1;
                     var b2              =    date.setDate(a2);
                     const c2            =    new Date(b2);
                     const dateTime2     =    convert(c2);
 
-                    // Expired Appraisment
+                    // Expired Appraisement
                     var a3              =    date.getDate()+1;
                     var b3              =    date.setDate(a3);
                     const c3            =    new Date(b3);
@@ -728,7 +728,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisment/delete') }}" + '/' + id,
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisement/delete') }}" + '/' + id,
                         data: {
                             id: id,
                             _token: '{{ csrf_token() }}'
@@ -742,7 +742,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     location.reload();
-                                    $('#message-delete-appraisment-success').show();
+                                    $('#message-delete-appraisement-success').show();
                                 }
                             })
                         },
@@ -895,16 +895,16 @@
 
                     <li class="nav-item" role="presentation">
                         @if ($timer != null)
-                        <button class="nav-link text-center" id="pills-appraisment-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-appraisment" type="button" role="tab" aria-controls="pills-appraisment" aria-selected="false"
-                            >Inovation Appraisment Countdown
+                        <button class="nav-link text-center" id="pills-appraisement-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-appraisement" type="button" role="tab" aria-controls="pills-appraisement" aria-selected="false"
+                            >Inovation Appraisement Countdown
                         </button>
                         @elseif ($timer == null)
-                        <button class="nav-link {{ $timer == null ? 'disabled' : '' }} text-center" id="pills-appraisment-tab"
+                        <button class="nav-link {{ $timer == null ? 'disabled' : '' }} text-center" id="pills-appraisement-tab"
                             disabled data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="This top tooltip is themed via CSS variables."
-                            >Inovation Appraisment Countdown
+                            >Inovation Appraisement Countdown
                         </button>
                         @endif
                     </li>
@@ -1249,81 +1249,81 @@
 
                 </div>
 
-                <div class="tab-pane fade" id="pills-appraisment" role="tabpanel" aria-labelledby="pills-appraisment-tab" tabindex="0">
+                <div class="tab-pane fade" id="pills-appraisement" role="tabpanel" aria-labelledby="pills-appraisement-tab" tabindex="0">
 
-                    @if(session('message-update-appraisment-success'))
+                    @if(session('message-update-appraisement-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-update-appraisment-success') }} </b></strong>
+                                <strong><b>   {{ session('message-update-appraisement-success') }} </b></strong>
                             </p>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                    @elseif(session('message-create-appraisment-success'))
+                    @elseif(session('message-create-appraisement-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-create-appraisment-success') }} </b></strong>
+                                <strong><b>   {{ session('message-create-appraisement-success') }} </b></strong>
                             </p>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                    @elseif(session('message-delete-appraisment-success'))
-                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-appraisment-success">
+                    @elseif(session('message-delete-appraisement-success'))
+                    <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert" id="message-delete-appraisement-success">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-delete-appraisment-success') }} </b></strong>
+                                <strong><b>   {{ session('message-delete-appraisement-success') }} </b></strong>
                             </p>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
-                    @elseif(session('message-update-appraisment-error'))
+                    @elseif(session('message-update-appraisement-error'))
                     <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-update-appraisment-error') }}  </b></strong>
+                                <strong><b>   {{ session('message-update-appraisement-error') }}  </b></strong>
                             </p>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
                         </div>
                     </div>
-                    @elseif(session('message-create-appraisment-error'))
+                    @elseif(session('message-create-appraisement-error'))
                     <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-create-appraisment-error') }}  </b></strong>
+                                <strong><b>   {{ session('message-create-appraisement-error') }}  </b></strong>
                             </p>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
                         </div>
                     </div>
-                    @elseif(session('message-delete-appraisment-error'))
+                    @elseif(session('message-delete-appraisement-error'))
                     <div class="card d-flex flex-row alert alert-danger alert-dismissible fade show" role="alert">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
                         <div class="d-flex flex-md-row">
                             <p>
-                                <strong><b>   {{ session('message-delete-appraisment-error') }}  </b></strong>
+                                <strong><b>   {{ session('message-delete-appraisement-error') }}  </b></strong>
                             </p>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>

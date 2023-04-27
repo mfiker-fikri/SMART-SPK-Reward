@@ -177,23 +177,28 @@ class DashboardController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('status', function ($row) {
-                    // $status = '';
+                    $status = '';
                     if (Cache::has('TA-is-online-' . $row->id)) {
                         $status = '<span class="text-success">Online</span>';
-                        return $status;
+                        // return $status;
+                    } elseif ($row->last_seen == null) {
+                        $status = '<span class="text-secondary">Not Login</span>';
                     } else {
                         $status = '<span class="text-secondary">Offline</span>';
-                        return $status;
                     }
+                    return $status;
                 })
                 ->addColumn('lastSeen', function ($row) {
+                    $status = '';
                     if (Cache::has('TA-is-online-' . $row->id)) {
                         $status = '<span class="text-success">Online</span>';
-                        return $status;
+                        // return $status;
+                    } elseif ($row->last_seen == null) {
+                        $status = '<span class="text-secondary">Not Login</span>';
                     } else {
                         $status = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
-                        return $status;
                     }
+                    return $status;
                 })
                 ->rawColumns(['status','lastSeen'])
                 ->make(true);

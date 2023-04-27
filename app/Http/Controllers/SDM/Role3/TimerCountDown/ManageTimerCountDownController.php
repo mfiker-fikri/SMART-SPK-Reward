@@ -345,7 +345,7 @@ class ManageTimerCountDownController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-appraisment-error', 'Validasi Gagal!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-appraisement-error', 'Validasi Gagal!')->withErrors($validate)->withInput($request->all());
             }
 
             $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_inovation_appraisment']);
@@ -366,7 +366,7 @@ class ManageTimerCountDownController extends Controller
                     $id->save();
 
                     alert()->success('Berhasil Update Data Timer Penilaian!')->autoclose(25000);
-                    return redirect()->back()->with('message-update-appraisment-success', 'Berhasil Update Data Timer Penilaian!');
+                    return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Penilaian!');
                 }
 
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
@@ -380,24 +380,24 @@ class ManageTimerCountDownController extends Controller
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Penilaian!')->autoclose(25000);
-                        return redirect()->back()->with('message-update-appraisment-success', 'Berhasil Update Data Timer Penilaian!');
+                        return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Penilaian!');
                     } else {
                         alert()->error('Gagal Update Data Timer Penilaian!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-update-appraisment-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
                 if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
                     alert()->error('Gagal Update Data Timer Penilaian!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                    return redirect()->back()->with('message-update-appraisment-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if($dateOpen == $dateExpired) {
                     alert()->error('Gagal Update Data Timer Penilaian!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-update-appraisment-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
                 }
                 alert()->error('Gagal Update Data Timer Penilaian!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-update-appraisment-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
             }
             // Create
             else {
@@ -411,14 +411,14 @@ class ManageTimerCountDownController extends Controller
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Penilaian!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-appraisment-success', 'Berhasil Tambah Data Timer Penilaian!');
+                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Penilaian!');
                     } else {
                         alert()->error('Gagal Tambah Data Timer Penilaian!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-appraisment-error', 'Gagal Tambah Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
                     }
                 }
                 alert()->error('Gagal Tambah Data Timer Penilaian!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-create-appraisment-error', 'Gagal Tambah Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
             }
 
 
@@ -446,7 +446,7 @@ class ManageTimerCountDownController extends Controller
                 $timer->status_expired_appraisment                  =  null;
                 $timer->save();
 
-                return redirect()->back()->with('message-delete-appraisment-success', 'Berhasil Hapus Data Timer Penilaian!');
+                return redirect()->back()->with('message-delete-appraisement-success', 'Berhasil Hapus Data Timer Penilaian!');
 
                 // $timer->save();
                 // $teetime = CountdownTimerFormInovation::where('id', '=', $id)->firstOrFail();
@@ -793,7 +793,7 @@ class ManageTimerCountDownController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal !', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-appraisement-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
             }
 
             $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_teladan_appraisment']);
@@ -814,7 +814,7 @@ class ManageTimerCountDownController extends Controller
                     $id->save();
 
                     alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
-                    return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Form Inovation!');
+                    return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Form Inovation!');
                 }
 
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
@@ -828,10 +828,10 @@ class ManageTimerCountDownController extends Controller
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Form Teladan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Form Teladan!');
+                        return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Form Teladan!');
                     } else {
                         alert()->error('Gagal Update Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
@@ -841,12 +841,12 @@ class ManageTimerCountDownController extends Controller
 
                 if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
                     alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if($dateOpen == $dateExpired) {
                     alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 // alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
@@ -864,10 +864,10 @@ class ManageTimerCountDownController extends Controller
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Form Teladan!');
+                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Form Teladan!');
                     } else {
                         alert()->error('Gagal Tambah Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
@@ -881,21 +881,21 @@ class ManageTimerCountDownController extends Controller
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Form Teladan!');
+                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Form Teladan!');
                     } else {
                         alert()->error('Gagal Tambah Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
                 if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
                     alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if($dateOpen == $dateExpired) {
                     alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 // alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
