@@ -339,19 +339,10 @@
                 "pageLength",
             ],
             ajax: "{{ url('penilai/appraisement/representative/list') }}",
-            // {
-            //     url: "{{ url('penilai/appraisement/representative/list') }}",
-            //     // headers: {
-            //     //     'Authorization':'Basic xxxxxxxxxxxxx',
-            //     //     'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',
-            //     //     'Content-Type':'application/json'
-            //     // },
-            //     method: "GET",
-            // },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 // {data: 'id', name: 'id'},
-                {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
+                {data: 'full_name', name: 'full_name', orderable: false, searchable: false},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -366,7 +357,6 @@
     });
     </script>
     <!--/ Datatables Form Teladan -->
-
 
     <!-- Datatables Form Teladan -->
     <script type="text/javascript">
@@ -384,17 +374,11 @@
                 buttons: [
                     "pageLength",
                 ],
-                ajax: "{{ url('penilai/appraisement/representative/list/DSS') }}",
+                // ajax: "{{ url('penilai/appraisement/representative/list/DSS') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'fullName', name: 'fullName'},
+                    {data: 'full_name', name: 'full_name'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
-                    // {data: 'score_valuation_1', name: 'score_valuation_1', orderable: false, searchable: false},
-                    // {data: 'score_valuation_2', name: 'score_valuation_2', orderable: false, searchable: false},
-                    // {data: 'score_valuation_3', name: 'score_valuation_3', orderable: false, searchable: false},
-                    // {data: 'score_valuation_4', name: 'score_valuation_4', orderable: false, searchable: false},
-                    // {data: 'score_valuation_5', name: 'score_valuation_5', orderable: false, searchable: false},
-                    // {data: 'score_valuation_6', name: 'score_valuation_6', orderable: false, searchable: false},
                 ]
             });
 
@@ -408,43 +392,6 @@
         });
     </script>
     <!--/ Datatables Form Teladan -->
-
-
-    <!-- Datatables Result Teladan DSS -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // var table = $('#data-table-result-process-DSS').DataTable({
-            //     responsive: true,
-            //     processing: true,
-            //     serverSide: true,
-            //     rowReorder: {
-            //         selector: 'td:nth-child(2)'
-            //     },
-            //     paging: false,
-            //     lengthMenu: [5, 10, 25, 50, 100, 200, 500],
-            //     dom: 'Bfrtip',
-            //     buttons: [
-            //         "pageLength",
-            //     ],
-            //     ajax: "{{ url('penilai/appraisement/representative/list/DSS/result') }}",
-            //     columns: [
-            //         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-            //         {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
-            //         {data: 'score_final_result', name: 'score_final_result', orderable: false, searchable: false},
-            //         {data: 'score_final_result_description', name: 'score_final_result_description', orderable: false, searchable: false},
-            //     ]
-            // });
-
-            // new $.fn.dataTable.FixedHeader( table );
-
-            // if (table) {
-            //     setInterval( function () {
-            //         table.ajax.reload(null, false);
-            //     }, 10000 );
-            // }
-        });
-    </script>
-    <!--/ Datatables Result Teladan DSS -->
 
 
     <!-- View Result Inovation DSS -->

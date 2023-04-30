@@ -240,17 +240,32 @@
         <script src="{{ asset('js/admin/int_js/password/show-hide-password.js') }}" crossorigin="anonymous" defer></script>
         <script src="{{ asset('js/admin/int_js/password/show-hide-password.min.js') }}" crossorigin="anonymous" defer></script>
 
+        <!-- Select2 -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" integrity="sha512-aD9ophpFQ61nFZP6hXYu4Q/b/USW7rpLCQLX6Bi0WJHXNO7Js/fUENpBQf/+P4NtpzNX0jSgR5zVvPOJp+W2Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js" integrity="sha512-4MvcHwcbqXKUHB6Lx3Zb5CEAVoE9u84qN+ZSMM6s7z8IeJriExrV3ND5zRze9mxNlABJ6k864P/Vl8m0Sd3DtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.full.min.js" integrity="sha512-PZUUFofP00wI366Au6XSNyN4Zg8M8Kma4JKIG7ywt8FEY1+Ur0H+FAlH6o0fKoCrdmM4+ZzMyW30msp8Z2zDaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" /> --}}
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" /> --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+        <!-- Or for RTL support -->
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" /> --}}
+        <!--/ Select2 -->
+
         {{-- <link link rel="stylesheet" href="{{ asset('css/admin/int_css/login.css') }}" /> --}}
 
         <!-- Date Picker -->
-        {{-- <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bs5.css') }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bs5.css') }}" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bs5.min.css') }}" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bulma.css') }}" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-bulma.min.css') }}" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-foundation.css') }}" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker-foundation.min.css') }}" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker.css') }}" crossorigin="anonymous" />
-        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker.min.css') }}" crossorigin="anonymous" /> --}}
+        <link rel="stylesheet" href="{{ asset('css/pegawai/ext_css/datepicker/datepicker.min.css') }}" crossorigin="anonymous" />
         {{-- <script src="{{ asset('js/pegawai/ext_js/datepicker/datepicker-full.js') }}"></script> --}}
 
         <!--/ Date Picker -->
@@ -386,6 +401,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/regular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/solid.min.js"></script>
         <!--/ Icon Font Awesome -->
+
+        <!-- Select2 -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" integrity="sha512-aD9ophpFQ61nFZP6hXYu4Q/b/USW7rpLCQLX6Bi0WJHXNO7Js/fUENpBQf/+P4NtpzNX0jSgR5zVvPOJp+W2Kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js" integrity="sha512-4MvcHwcbqXKUHB6Lx3Zb5CEAVoE9u84qN+ZSMM6s7z8IeJriExrV3ND5zRze9mxNlABJ6k864P/Vl8m0Sd3DtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.full.min.js" integrity="sha512-PZUUFofP00wI366Au6XSNyN4Zg8M8Kma4JKIG7ywt8FEY1+Ur0H+FAlH6o0fKoCrdmM4+ZzMyW30msp8Z2zDaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- Date Picker -->
         {{-- <script src="{{ asset('js/pegawai/ext_js/datepicker/datepicker-full.js') }}"></script>

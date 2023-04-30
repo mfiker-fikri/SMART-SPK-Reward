@@ -615,12 +615,12 @@ class ManageAppraismentInovationController extends Controller
                     $reward->timestamps         =   false;
                     $reward->save();
 
-                    alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
+                    alert()->success('Gagal Menilai Data Form Inovasi')->autoclose(25000);
                     return redirect('penilai/appraisment/inovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
                 }
 
-                alert()->success('Berhasil Menilai Data Form Inovasi')->autoclose(25000);
-                return redirect()->back()->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
+                alert()->error('Gagal Menilai Data Form Inovasi')->autoclose(25000);
+                return redirect()->back()->with('message-update-error', 'Gagal Menilai Data Form Inovasi');
 
 
             }

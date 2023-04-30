@@ -73,6 +73,9 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/appraisement/representative') }}" style="text-decoration: none !important;">Kelola Data Penilaian Penghargaan Teladan</a>
+                </li>
                 <li class="breadcrumb-item fw-bold active">Penilaian Penghargaan Teladan</li>
 
 

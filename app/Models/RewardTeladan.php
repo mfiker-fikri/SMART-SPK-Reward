@@ -38,13 +38,21 @@ class RewardTeladan extends Model
     protected $fillable = [
         'id',
         //
-        'upload_file_short_description',
-        'upload_file_image_support',
-        'upload_file_video_support',
+        // 'upload_file_short_description',
+        // 'upload_file_image_support',
+        // 'upload_file_video_support',
         //
         'employee_id',
         //
         'status_process',
+        //
+        'score_valuation_1',
+        'score_valuation_2',
+        'score_valuation_3',
+        'score_valuation_4',
+        'score_valuation_5',
+        'score_valuation_6',
+        //
         'status_id'
     ];
 

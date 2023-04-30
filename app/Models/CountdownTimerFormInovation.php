@@ -44,10 +44,10 @@ class CountdownTimerFormInovation extends Model
         'status_open',
         'status_expired',
         //
-        'date_time_open_appraisment',
-        'date_time_expired_appraisment',
-        'status_open_appraisment',
-        'status_expired_appraisment',
+        'date_time_open_appraisement',
+        'date_time_expired_appraisement',
+        'status_open_appraisement',
+        'status_expired_appraisement',
         //
         'date_time_open_signature_human_resource_1',
         'date_time_expired_signature_human_resource_1',

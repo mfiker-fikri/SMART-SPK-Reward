@@ -1,5 +1,66 @@
 @extends('template.teamAssessment.template')
 
+@section('js_footer')
+    <!-- Select2 Kebaruan -->
+    <script type="text/javascript">
+    $( '#kebaruan' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Kebaruan -->
+
+    <!-- Select2 Kemanfaatan -->
+    <script type="text/javascript">
+    $( '#kemanfaatan' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Kemanfaatan -->
+
+    <!-- Select2 Peran Serta -->
+    <script type="text/javascript">
+    $( '#peranSerta' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Peran Serta -->
+
+    <!-- Select2 Transfer Replikasi -->
+    <script type="text/javascript">
+    $( '#transferReplikasi' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Transfer Replikasi -->
+
+    <!-- Select2 Nyata Nilai Tambah -->
+    <script type="text/javascript">
+    $( '#nyataNilaiTambah' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Nyata Nilai Tambah -->
+
+    <!-- Select2 Kesinambungan Konsistensi Kerja -->
+    <script type="text/javascript">
+    $( '#kesinambunganKonsistensiKerja' ).select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    } );
+    </script>
+    <!-- Select2 Kesinambungan Konsistensi Kerja -->
+@stop
 
 @section('content')
 

@@ -53,7 +53,7 @@ class ManageTimerCountDownController extends Controller
             $timer                   =   CountdownTimerFormInovation::first();
 
             if ($timer != null) {
-                $dateTimeOpen1           =   new Carbon($timer->date_time_open_appraisment);
+                $dateTimeOpen1           =   new Carbon($timer->date_time_open_appraisement);
 
                 $dateOpen1               =   $dateTimeOpen1->toDateString();
                 $dateOpenTime1           =   $dateTimeOpen1->toDateTimeString();
@@ -323,22 +323,22 @@ class ManageTimerCountDownController extends Controller
                 $validate = Validator::make(
                     $request->all(),
                     [
-                        'date_time_open_countdown_inovation_appraisment'                    =>  'required|date|after_or_equal:'.$dateOpenTime1.'|after_or_equal:'.$dateOpenTime2.'|before_or_equal:date_time_expired_countdown_inovation_appraisment',
-                        'status_open_appraisment'                                           =>  'required',
-                        'date_time_expired_countdown_inovation_appraisment'                 =>  'required|date|after_or_equal:'.$dateOpenTime1.'|after_or_equal:'.$dateOpenTime2.'|after_or_equal:date_time_open_countdown_inovation_appraisment',
-                        'status_expired_appraisment'                                        =>  'required',
+                        'date_time_open_countdown_inovation_appraisement'                    =>  'required|date|after_or_equal:'.$dateOpenTime1.'|after_or_equal:'.$dateOpenTime2.'|before_or_equal:date_time_expired_countdown_inovation_appraisement',
+                        'status_open_appraisement'                                           =>  'required',
+                        'date_time_expired_countdown_inovation_appraisement'                 =>  'required|date|after_or_equal:'.$dateOpenTime1.'|after_or_equal:'.$dateOpenTime2.'|after_or_equal:date_time_open_countdown_inovation_appraisement',
+                        'status_expired_appraisement'                                        =>  'required',
                     ],
                     [
-                        'date_time_open_countdown_inovation_appraisment.required'            =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Wajib Diisi!',
-                        'date_time_open_countdown_inovation_appraisment.after_or_equal'      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Setelah Penutupan Form Inovasi!',
-                        'date_time_open_countdown_inovation_appraisment.before_or_equal'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Sebelum Penutupan Penilaian Inovasi!',
+                        'date_time_open_countdown_inovation_appraisement.required'            =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Wajib Diisi!',
+                        'date_time_open_countdown_inovation_appraisement.after_or_equal'      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Setelah Penutupan Form Inovasi!',
+                        'date_time_open_countdown_inovation_appraisement.before_or_equal'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Sebelum Penutupan Penilaian Inovasi!',
                         //
-                        'status_open_appraisment.required'                                   =>  'Status Pembukaan Wajib Dipilih!',
+                        'status_open_appraisement.required'                                   =>  'Status Pembukaan Wajib Dipilih!',
                         //
-                        'date_time_expired_countdown_inovation_appraisment.required'         =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Wajib Diisi!',
-                        'date_time_expired_countdown_inovation_appraisment.after_or_equal'   =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Minimal Harus 1 Hari Setelah Pembukaan Penilaian Inovasi!',
+                        'date_time_expired_countdown_inovation_appraisement.required'         =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Wajib Diisi!',
+                        'date_time_expired_countdown_inovation_appraisement.after_or_equal'   =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Minimal Harus 1 Hari Setelah Pembukaan Penilaian Inovasi!',
                         //
-                        'status_expired_appraisment.required'                                =>  'Status Penutupan Wajib Dipilih!',
+                        'status_expired_appraisement.required'                                =>  'Status Penutupan Wajib Dipilih!',
                     ]
                 );
             }
@@ -348,11 +348,11 @@ class ManageTimerCountDownController extends Controller
                 return redirect()->back()->with('message-create-appraisement-error', 'Validasi Gagal!')->withErrors($validate)->withInput($request->all());
             }
 
-            $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_inovation_appraisment']);
+            $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_inovation_appraisement']);
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($request['date_time_expired_countdown_inovation_appraisment']);
+            $dateTimeExpired        =   new Carbon($request['date_time_expired_countdown_inovation_appraisement']);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
@@ -360,9 +360,9 @@ class ManageTimerCountDownController extends Controller
             if($request['id'] != null) {
                 $id  =  CountdownTimerFormInovation::find($request['id']);
 
-                if ($dateOpenTime === $id->date_time_open_appraisment && $dateExpiredTime === $id->date_time_expired_appraisment) {
-                    $id->status_open_appraisment                                    =  $request['status_open_appraisment'];
-                    $id->status_expired_appraisment                                 =  $request['status_expired_appraisment'];
+                if ($dateOpenTime === $id->date_time_open_appraisement && $dateExpiredTime === $id->date_time_expired_appraisement) {
+                    $id->status_open_appraisement                                    =  $request['status_open_appraisement'];
+                    $id->status_expired_appraisement                                 =  $request['status_expired_appraisement'];
                     $id->save();
 
                     alert()->success('Berhasil Update Data Timer Penilaian!')->autoclose(25000);
@@ -373,10 +373,10 @@ class ManageTimerCountDownController extends Controller
                     $id  =  CountdownTimerFormInovation::find($request['id']);
 
                     if($id) {
-                        $id->date_time_open_appraisment                  =  $request['date_time_open_countdown_inovation_appraisment'];
-                        $id->status_open_appraisment                     =  $request['status_open_appraisment'];
-                        $id->date_time_expired_appraisment               =  $request['date_time_expired_countdown_inovation_appraisment'];
-                        $id->status_expired_appraisment                  =  $request['status_expired_appraisment'];
+                        $id->date_time_open_appraisement                  =  $request['date_time_open_countdown_inovation_appraisement'];
+                        $id->status_open_appraisement                     =  $request['status_open_appraisement'];
+                        $id->date_time_expired_appraisement               =  $request['date_time_expired_countdown_inovation_appraisement'];
+                        $id->status_expired_appraisement                  =  $request['status_expired_appraisement'];
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Penilaian!')->autoclose(25000);
@@ -404,10 +404,10 @@ class ManageTimerCountDownController extends Controller
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     // Create New Timer
                     $timer = CountdownTimerFormInovation::create([
-                        'date_time_open_appraisment'                 =>  $request['date_time_open_countdown_inovation_appraisment'],
-                        'status_open_appraisment'                    =>  $request['status_open_appraisment'],
-                        'date_time_expired_appraisment'              =>  $request['date_time_expired_countdown_inovation_appraisment'],
-                        'status_expired_appraisment'                 =>  $request['status_expired_appraisment'],
+                        'date_time_open_appraisement'                 =>  $request['date_time_open_countdown_inovation_appraisement'],
+                        'status_open_appraisement'                    =>  $request['status_open_appraisement'],
+                        'date_time_expired_appraisement'              =>  $request['date_time_expired_countdown_inovation_appraisement'],
+                        'status_expired_appraisement'                 =>  $request['status_expired_appraisement'],
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Penilaian!')->autoclose(25000);
@@ -440,10 +440,10 @@ class ManageTimerCountDownController extends Controller
 
             // ddd($timer);
             if($timer) {
-                $timer->date_time_open_appraisment                  =  null;
-                $timer->status_open_appraisment                     =  null;
-                $timer->date_time_expired_appraisment               =  null;
-                $timer->status_expired_appraisment                  =  null;
+                $timer->date_time_open_appraisement                  =  null;
+                $timer->status_open_appraisement                     =  null;
+                $timer->date_time_expired_appraisement               =  null;
+                $timer->status_expired_appraisement                  =  null;
                 $timer->save();
 
                 return redirect()->back()->with('message-delete-appraisement-success', 'Berhasil Hapus Data Timer Penilaian!');
@@ -472,12 +472,12 @@ class ManageTimerCountDownController extends Controller
 
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen1           =   new Carbon($timer->date_time_open_appraisment);
+            $dateTimeOpen1           =   new Carbon($timer->date_time_open_appraisement);
 
             $dateOpen1               =   $dateTimeOpen1->toDateString();
             $dateOpenTime1           =   $dateTimeOpen1->toDateTimeString();
 
-            $dateTimeOpen2           =   new Carbon($timer->date_time_expired_appraisment);
+            $dateTimeOpen2           =   new Carbon($timer->date_time_expired_appraisement);
 
             $dateOpen2               =   $dateTimeOpen2->toDateString();
             $dateOpenTime2           =   $dateTimeOpen2->toDateTimeString();
@@ -777,16 +777,16 @@ class ManageTimerCountDownController extends Controller
             $validate = Validator::make(
                 $request->all(),
                 [
-                    'date_time_open_countdown_teladan_appraisment'              =>  'required|date',
-                    'status_open_appraisment'                                   =>  'required',
-                    'date_time_expired_countdown_teladan_appraisment'           =>  'required|date|after_or_equal:date_time_open_countdown_teladan_appraisment',
-                    'status_expired_appraisment'                                =>  'required',
+                    'date_time_open_countdown_teladan_appraisement'              =>  'required|date',
+                    'status_open_appraisement'                                   =>  'required',
+                    'date_time_expired_countdown_teladan_appraisement'           =>  'required|date|after_or_equal:date_time_open_countdown_teladan_appraisement',
+                    'status_expired_appraisement'                                =>  'required',
                 ],
                 [
-                    'date_time_open_countdown_teladan_appraisment.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
-                    'status_open_appraisment.required'                          =>  'Status Wajib Dipilih!',
-                    'date_time_expired_countdown_teladan_appraisment.required'  =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
-                    'status_expired_appraisment.required'                       =>  'Status Wajib Dipilih!',
+                    'date_time_open_countdown_teladan_appraisement.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'status_open_appraisement.required'                          =>  'Status Wajib Dipilih!',
+                    'date_time_expired_countdown_teladan_appraisement.required'  =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'status_expired_appraisement.required'                       =>  'Status Wajib Dipilih!',
 
                 ]
             );
@@ -796,11 +796,11 @@ class ManageTimerCountDownController extends Controller
                 return redirect()->back()->with('message-create-appraisement-error', 'Gagal ')->withErrors($validate)->withInput($request->all());
             }
 
-            $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_teladan_appraisment']);
+            $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_teladan_appraisement']);
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($request['date_time_expired_countdown_teladan_appraisment']);
+            $dateTimeExpired        =   new Carbon($request['date_time_expired_countdown_teladan_appraisement']);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
@@ -808,9 +808,9 @@ class ManageTimerCountDownController extends Controller
             if($request['id'] != null) {
                 $id  =  CountdownTimerFormTeladan::find($request['id']);
 
-                if ($dateOpenTime === $id->date_time_open_appraisment && $dateExpiredTime === $id->date_time_expired_appraisment) {
-                    $id->status_open_appraisment                        =  $request['status_open_appraisment'];
-                    $id->status_expired_appraisment                     =  $request['status_expired_appraisment'];
+                if ($dateOpenTime === $id->date_time_open_appraisement && $dateExpiredTime === $id->date_time_expired_appraisement) {
+                    $id->status_open_appraisement                        =  $request['status_open_appraisement'];
+                    $id->status_expired_appraisement                     =  $request['status_expired_appraisement'];
                     $id->save();
 
                     alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
@@ -821,10 +821,10 @@ class ManageTimerCountDownController extends Controller
                     $id  =  CountdownTimerFormTeladan::find($request['id']);
 
                     if($id) {
-                        $id->date_time_open_appraisment           =  $request['date_time_open_countdown_teladan_appraisment'];
-                        $id->status_open_appraisment               =  $request['status_open_appraisment'];
-                        $id->date_time_expired_appraisment        =  $request['date_time_expired_countdown_teladan_appraisment'];
-                        $id->status_expired_appraisment            =  $request['status_expired_appraisment'];
+                        $id->date_time_open_appraisement           =  $request['date_time_open_countdown_teladan_appraisement'];
+                        $id->status_open_appraisement               =  $request['status_open_appraisement'];
+                        $id->date_time_expired_appraisement        =  $request['date_time_expired_countdown_teladan_appraisement'];
+                        $id->status_expired_appraisement            =  $request['status_expired_appraisement'];
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Form Teladan!')->autoclose(25000);
@@ -857,10 +857,10 @@ class ManageTimerCountDownController extends Controller
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     // Create New Timer
                     $timer = CountdownTimerFormTeladan::create([
-                        'date_time_open_appraisment'        =>  $request['date_time_open_countdown_teladan_appraisment'],
-                        'status_open_appraisment'            =>  $request['status_open_appraisment'],
-                        'date_time_expired_appraisment'     =>  $request['date_time_expired_countdown_teladan_appraisment'],
-                        'status_expired_appraisment'         =>  $request['status_expired_appraisment'],
+                        'date_time_open_appraisement'        =>  $request['date_time_open_countdown_teladan_appraisement'],
+                        'status_open_appraisement'            =>  $request['status_open_appraisement'],
+                        'date_time_expired_appraisement'     =>  $request['date_time_expired_countdown_teladan_appraisement'],
+                        'status_expired_appraisement'         =>  $request['status_expired_appraisement'],
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
@@ -874,10 +874,10 @@ class ManageTimerCountDownController extends Controller
                 if($dateOpen != $dateExpired) {
                     // Create New Timer
                     $timer = CountdownTimerFormTeladan::create([
-                        'date_time_open_appraisment'        =>  $request['date_time_open_countdown_teladan_appraisment'],
-                        'status_open_appraisment'            =>  $request['status_open_appraisment'],
-                        'date_time_expired_appraisment'     =>  $request['date_time_expired_countdown_teladan_appraisment'],
-                        'status_expired_appraisment'         =>  $request['status_expired_appraisment'],
+                        'date_time_open_appraisement'        =>  $request['date_time_open_countdown_teladan_appraisement'],
+                        'status_open_appraisement'            =>  $request['status_open_appraisement'],
+                        'date_time_expired_appraisement'     =>  $request['date_time_expired_countdown_teladan_appraisement'],
+                        'status_expired_appraisement'         =>  $request['status_expired_appraisement'],
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
@@ -941,12 +941,12 @@ class ManageTimerCountDownController extends Controller
 
             $timer                  =   CountdownTimerFormTeladan::first();
 
-            $dateTimeOpen1           =   new Carbon($timer->date_time_open_appraisment);
+            $dateTimeOpen1           =   new Carbon($timer->date_time_open_appraisement);
 
             $dateOpen1               =   $dateTimeOpen1->toDateString();
             $dateOpenTime1           =   $dateTimeOpen1->toDateTimeString();
 
-            $dateTimeOpen2           =   new Carbon($timer->date_time_expired_appraisment);
+            $dateTimeOpen2           =   new Carbon($timer->date_time_expired_appraisement);
 
             $dateOpen2               =   $dateTimeOpen2->toDateString();
             $dateOpenTime2           =   $dateTimeOpen2->toDateTimeString();
