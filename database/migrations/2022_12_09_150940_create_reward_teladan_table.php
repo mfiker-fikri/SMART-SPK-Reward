@@ -24,7 +24,7 @@ class CreateRewardTeladanTable extends Migration
             $table->foreign('employee_id')->references('id')->on('employees');
             //
             // 0 = ditolak, 1=dikembalikan , 2=menunggu, 3=diproses, 4=berhasil
-            // $table->integer('status_process')->default(2);
+            $table->integer('status_process');
             //
             $table->integer('score_valuation_1')->nullable();
             $table->integer('score_valuation_2')->nullable();

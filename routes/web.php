@@ -399,6 +399,11 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
     // Read
     Route::GET('/appraisement/result/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraisment'])->name('getManageAppraismentResult.Read.Penilai');
     Route::GET('/appraisement/result/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraismentList'])->name('getManageAppraismentResultList.Read.Penilai');
+
+    // Hasil Penilaian Teladan
+    // Read
+    Route::GET('/appraisement/result/representative', [App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getResultAppraisment'])->name('getManageAppraismentResult.Representative.Read.Penilai');
+    Route::GET('/appraisement/result/representative/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Teladan\ManageAppraismentTeladanController::class, 'getResultAppraismentList'])->name('getManageAppraismentResultList.Representative.Read.Penilai');
 });
 
 // Kepala Satuan Kerja

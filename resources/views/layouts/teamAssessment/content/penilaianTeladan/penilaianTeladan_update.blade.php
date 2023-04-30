@@ -1,5 +1,17 @@
 @extends('template.teamAssessment.template')
 
+@section('css_header')
+    <style>
+        .select2-container--bootstrap-5 .select2-selection {
+            max-width: 100px !important;
+            min-width: 100% !important;
+        }
+
+    </style>
+
+
+@endsection
+
 @section('js_footer')
     <!-- Select2 Pengetahuan Kerja -->
     <script type="text/javascript">

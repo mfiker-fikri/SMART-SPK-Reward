@@ -101,6 +101,8 @@ class ManagePegawaiController extends Controller
                 $status = '';
                 if (Cache::has('pegawai-is-online-' . $row->id)) {
                     $status = '<span class="text-success">Online</span>';
+                } elseif ($row->status == null) {
+                    $status = '<span class="text-secondary">Not Login</span>';
                 } else {
                     $status = '<span class="text-secondary">Offline</span>';
                 }
@@ -110,6 +112,8 @@ class ManagePegawaiController extends Controller
                 $last_seen = '';
                 if (Cache::has('pegawai-is-online-' . $row->id)) {
                     $last_seen = '<span class="text-success">Online</span>';
+                } elseif ($row->last_seen == null) {
+                    $last_seen = '<span class="text-secondary">Not Login</span>';
                 } else {
                     $last_seen = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
                 }

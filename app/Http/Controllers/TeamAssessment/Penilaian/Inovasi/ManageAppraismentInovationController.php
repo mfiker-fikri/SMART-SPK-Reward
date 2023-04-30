@@ -662,10 +662,10 @@ class ManageAppraismentInovationController extends Controller
 
             if ($timer != null) {
                 $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.teamAssessment.content.resultInovasi.resultInovasi_index', compact('timer'));
+                return view('layouts.teamAssessment.content.resultSMART.resultInovasi_index', compact('timer'));
             } else {
                 $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.teamAssessment.content.resultInovasi.resultInovasi_index', compact('timer'));
+                return view('layouts.teamAssessment.content.resultSMART.resultInovasi_index', compact('timer'));
             }
         } catch (\Throwable $th) {
             throw $th;

@@ -3,7 +3,7 @@
 @section('js_footer')
     <!-- Select2 Status -->
     <script type="text/javascript">
-    $( '#status_open_appraisment' ).select2( {
+    $( '#status_open_appraisement' ).select2( {
         theme: "bootstrap-5",
         width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
         placeholder: $( this ).data( 'placeholder' ),
@@ -11,7 +11,7 @@
     </script>
 
     <script type="text/javascript">
-        $( '#status_expired_appraisment' ).select2( {
+        $( '#status_expired_appraisement' ).select2( {
             theme: "bootstrap-5",
             width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
             placeholder: $( this ).data( 'placeholder' ),
@@ -74,28 +74,28 @@
         var oldExpiredStatus = document.getElementById("oldExpiredStatus").getAttribute("value");
 
         if (oldOpenStatus && oldExpiredStatus) {
-            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+            $('#status_open_appraisement').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisement').val(oldExpiredStatus).trigger('change');
         } else if (oldOpenStatus || oldExpiredStatus) {
-            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+            $('#status_open_appraisement').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisement').val(oldExpiredStatus).trigger('change');
         } else {
-            $('#status_open_appraisment').val(null).trigger('change');
-            $('#status_expired_appraisment').val(null).trigger('change');
+            $('#status_open_appraisement').val(null).trigger('change');
+            $('#status_expired_appraisement').val(null).trigger('change');
         }
     }
     // $(document).on('click', '#resetStatusNull', function(e) {
     //     var oldOpenStatus = document.getElementById("oldOpenStatus").getAttribute("value");
     //     var oldExpiredStatus = document.getElementById("oldExpiredStatus").getAttribute("value");
     //     if (oldOpenStatus && oldExpiredStatus) {
-    //         $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-    //         $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+    //         $('#status_open_appraisement').val(oldOpenStatus).trigger('change');
+    //         $('#status_expired_appraisement').val(oldExpiredStatus).trigger('change');
     //     } else if (oldOpenStatus || oldExpiredStatus) {
-    //         $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-    //         $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+    //         $('#status_open_appraisement').val(oldOpenStatus).trigger('change');
+    //         $('#status_expired_appraisement').val(oldExpiredStatus).trigger('change');
     //     } else {
-    //         $('#status_open_appraisment').val(null).trigger('change');
-    //         $('#status_expired_appraisment').val(null).trigger('change');
+    //         $('#status_open_appraisement').val(null).trigger('change');
+    //         $('#status_expired_appraisement').val(null).trigger('change');
     //     }
     // });
     </script>
@@ -106,14 +106,14 @@
         var oldExpiredStatus = document.getElementById("oldExpiredStatusAppraisment").getAttribute("value");
 
         if (oldOpenStatus && oldExpiredStatus) {
-            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+            $('#status_open_appraisement').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisement').val(oldExpiredStatus).trigger('change');
         } else if (oldOpenStatus || oldExpiredStatus) {
-            $('#status_open_appraisment').val(oldOpenStatus).trigger('change');
-            $('#status_expired_appraisment').val(oldExpiredStatus).trigger('change');
+            $('#status_open_appraisement').val(oldOpenStatus).trigger('change');
+            $('#status_expired_appraisement').val(oldExpiredStatus).trigger('change');
         } else {
-            $('#status_open_appraisment').val(null).trigger('change');
-            $('#status_expired_appraisment').val(null).trigger('change');
+            $('#status_open_appraisement').val(null).trigger('change');
+            $('#status_expired_appraisement').val(null).trigger('change');
         }
     }
     </script>
@@ -168,28 +168,28 @@
         var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
         var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
         if (oldOpen && oldExpired) {
-            $('#status_open_appraisment').val(oldOpen).trigger('change');
-            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+            $('#status_open_appraisement').val(oldOpen).trigger('change');
+            $('#status_expired_appraisement').val(oldExpired).trigger('change');
         } else if (oldOpen || oldExpired) {
-            $('#status_open_appraisment').val(oldOpen).trigger('change');
-            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+            $('#status_open_appraisement').val(oldOpen).trigger('change');
+            $('#status_expired_appraisement').val(oldExpired).trigger('change');
         } else {
-            $('#status_open_appraisment').val(null).trigger('change');
-            $('#status_expired_appraisment').val(null).trigger('change');
+            $('#status_open_appraisement').val(null).trigger('change');
+            $('#status_expired_appraisement').val(null).trigger('change');
         }
     }
     // $(document).on('click', '#resetStatus', function(e) {
     //     var oldOpen = document.getElementById("oldStatusOpen").getAttribute("value");
     //     var oldExpired = document.getElementById("oldStatusExpired").getAttribute("value");
     //     if (oldOpenStatus && oldExpiredStatus) {
-    //         $('#status_open_appraisment').val(oldOpen).trigger('change');
-    //         $('#status_expired_appraisment').val(oldExpired).trigger('change');
+    //         $('#status_open_appraisement').val(oldOpen).trigger('change');
+    //         $('#status_expired_appraisement').val(oldExpired).trigger('change');
     //     } else if ((oldOpen || oldExpired) && (oldOpenStatus || oldExpiredStatus)) {
-    //         $('#status_open_appraisment').val(oldOpen).trigger('change');
-    //         $('#status_expired_appraisment').val(oldExpired).trigger('change');
+    //         $('#status_open_appraisement').val(oldOpen).trigger('change');
+    //         $('#status_expired_appraisement').val(oldExpired).trigger('change');
     //     } else {
-    //         $('#status_open_appraisment').val(null).trigger('change');
-    //         $('#status_expired_appraisment').val(null).trigger('change');
+    //         $('#status_open_appraisement').val(null).trigger('change');
+    //         $('#status_expired_appraisement').val(null).trigger('change');
     //     }
     // });
     </script>
@@ -201,14 +201,14 @@
         var oldExpired = document.getElementById("oldStatusExpiredAppraisment").getAttribute("value");
 
         if (oldOpen && oldExpired) {
-            $('#status_open_appraisment').val(oldOpen).trigger('change');
-            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+            $('#status_open_appraisement').val(oldOpen).trigger('change');
+            $('#status_expired_appraisement').val(oldExpired).trigger('change');
         } else if (oldOpen || oldExpired) {
-            $('#status_open_appraisment').val(oldOpen).trigger('change');
-            $('#status_expired_appraisment').val(oldExpired).trigger('change');
+            $('#status_open_appraisement').val(oldOpen).trigger('change');
+            $('#status_expired_appraisement').val(oldExpired).trigger('change');
         } else {
-            $('#status_open_appraisment').val(null).trigger('change');
-            $('#status_expired_appraisment').val(null).trigger('change');
+            $('#status_open_appraisement').val(null).trigger('change');
+            $('#status_expired_appraisement').val(null).trigger('change');
         }
     }
     </script>
@@ -373,13 +373,13 @@
                                 >Representative Signature Countdown
                             </button>
                         @elseif ($timers->isNotEmpty())
-                            @if ($timers[0]->date_time_open_appraisment != null )
+                            @if ($timers[0]->date_time_open_appraisement != null )
                             <button class="nav-link text-center" id="pills-signature_role2-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
                                 >Representative Signature Countdown
                             </button>
-                            @elseif ($timers[0]->date_time_open_appraisment == null)
-                            <button class="nav-link {{ $timers[0]->date_time_open_appraisment == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
+                            @elseif ($timers[0]->date_time_open_appraisement == null)
+                            <button class="nav-link {{ $timers[0]->date_time_open_appraisement == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
@@ -497,29 +497,29 @@
                                 @endif
 
                                 <!-- Timer Countdown Open Form-->
-                                <div class="mb-3 row {{ $errors->has('date_time_open_countdown_teladan_appraisment') ? 'is-invalid' : '' }}">
-                                    <label for="date_time_open_countdown_teladan_appraisment" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Penilaian</label>
+                                <div class="mb-3 row {{ $errors->has('date_time_open_countdown_teladan_appraisement') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_open_countdown_teladan_appraisement" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Pembukaan Penilaian</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <span id="categories" class="input-group-text">
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
-                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_countdown_teladan_appraisment') ? 'is-invalid' : '' }}" id="date_time_open_countdown_teladan_appraisment"
-                                                name="date_time_open_countdown_teladan_appraisment" placeholder="*Select Date Time"
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_open_countdown_teladan_appraisement') ? 'is-invalid' : '' }}" id="date_time_open_countdown_teladan_appraisement"
+                                                name="date_time_open_countdown_teladan_appraisement" placeholder="*Select Date Time"
                                                 @if ($timer == null)
-                                                autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_appraisment') }}"
+                                                autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_appraisement') }}"
                                                 @else
-                                                autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_appraisment', $timer->date_time_open_appraisment) }}"
+                                                autofocus autocomplete required value="{{ old('date_time_open_countdown_teladan_appraisement', $timer->date_time_open_appraisement) }}"
                                                 @endif
                                                 min="{{ \Carbon\Carbon::tomorrow() }}"
-                                                aria-invalid="true" aria-describedby="date_time_open_countdown_teladan_appraisment" data-val="true">
+                                                aria-invalid="true" aria-describedby="date_time_open_countdown_teladan_appraisement" data-val="true">
                                         </div>
                                         <div id="date_time_open_countdown_teladan_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
                                         <div class="d-flex flex-column">
                                             <!-- Error Timer Countdown Open Form -->
-                                            @if ( $errors->has('date_time_open_countdown_teladan_appraisment') )
+                                            @if ( $errors->has('date_time_open_countdown_teladan_appraisement') )
                                                 <span class="help-block">
-                                                    <strong>{{ $errors->first('date_time_open_countdown_teladan_appraisment') }}</strong>
+                                                    <strong>{{ $errors->first('date_time_open_countdown_teladan_appraisement') }}</strong>
                                                 </span>
                                             @endif
                                             <!--/ Error Timer Countdown Open Form -->
@@ -529,37 +529,37 @@
                                 <!--/ Timer Countdown Open Form -->
 
                                 <!-- Status Open -->
-                                <div class="mb-3 row {{ $errors->has('status_open_appraisment') ? 'is-invalid' : '' }}">
-                                    <label for="status_open_appraisment" class="col-sm-3 col-form-label">Status Open</label>
+                                <div class="mb-3 row {{ $errors->has('status_open_appraisement') ? 'is-invalid' : '' }}">
+                                    <label for="status_open_appraisement" class="col-sm-3 col-form-label">Status Open</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <span class="input-group-text {{ $errors->has('status_open_appraisment') ? 'is-invalid' : '' }}">
+                                            <span class="input-group-text {{ $errors->has('status_open_appraisement') ? 'is-invalid' : '' }}">
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_open_appraisment') }}" id="oldOpenStatus" />
+                                            <input type="hidden" value="{{ old('status_open_appraisement') }}" id="oldOpenStatus" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_open_appraisment', $timer->status_open_appraisment) }}" id="oldStatusOpen" />
+                                            <input type="hidden" value="{{ old('status_open_appraisement', $timer->status_open_appraisement) }}" id="oldStatusOpen" />
                                             @endif
-                                            <select class="form-select {{ $errors->has('status_open_appraisment') ? 'is-invalid' : '' }}" id="status_open_appraisment"
-                                                name="status_open_appraisment" placeholder="--Pilih Status Open --"
+                                            <select class="form-select {{ $errors->has('status_open_appraisement') ? 'is-invalid' : '' }}" id="status_open_appraisement"
+                                                name="status_open_appraisement" placeholder="--Pilih Status Open --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_open_appraisment" data-val="true" aria-label="status_open_appraisment" data-placeholder="-- Pilih Status Open --">
+                                                aria-invalid="true" aria-describedby="status_open_appraisement" data-val="true" aria-label="status_open_appraisement" data-placeholder="-- Pilih Status Open --">
                                                 <option disabled selected>-- Pilih Status Open --</option>
                                                 @if ($timer == null)
-                                                <option value="0" @if(old('status_open_appraisment' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_open_appraisment' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" @if(old('status_open_appraisement' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_appraisement' ) == 1 ) selected="selected" @endif>Aktif</option>
                                                 @else
-                                                <option value="0" @if(old('status_open_appraisment', $timer->status_open_appraisment ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_open_appraisment', $timer->status_open_appraisment ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" @if(old('status_open_appraisement', $timer->status_open_appraisement ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_open_appraisement', $timer->status_open_appraisement ) == 1 ) selected="selected" @endif>Aktif</option>
                                                 @endif
                                             </select>
                                         </div>
                                         <div id="statusOpenHelp" class="form-text">Pilih Status Open</div>
                                         <!-- Error Status Open -->
-                                        @if ( $errors->has('status_open_appraisment') )
+                                        @if ( $errors->has('status_open_appraisement') )
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('status_open_appraisment') }}</strong>
+                                                <strong>{{ $errors->first('status_open_appraisement') }}</strong>
                                             </span>
                                         @endif
                                         <!--/ Error Status Open -->
@@ -568,36 +568,36 @@
                                 <!--/ Status Open -->
 
                                 <!-- Timer Countdown Expired Form -->
-                                <div class="mb-3 row {{ $errors->has('date_time_expired_countdown_teladan_appraisment') ? 'is-invalid' : '' }}">
-                                    <label for="date_time_expired_countdown_teladan_appraisment" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Penilaian</label>
+                                <div class="mb-3 row {{ $errors->has('date_time_expired_countdown_teladan_appraisement') ? 'is-invalid' : '' }}">
+                                    <label for="date_time_expired_countdown_teladan_appraisement" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Penilaian</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <span id="categories" class="input-group-text">
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
-                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_countdown_teladan_appraisment') ? 'is-invalid' : '' }}" id="date_time_expired_countdown_teladan_appraisment"
-                                                name="date_time_expired_countdown_teladan_appraisment" placeholder="*Select Date Time"
+                                            <input type="datetime-local" class="form-control px-lg-1 px-2 {{ $errors->has('date_time_expired_countdown_teladan_appraisement') ? 'is-invalid' : '' }}" id="date_time_expired_countdown_teladan_appraisement"
+                                                name="date_time_expired_countdown_teladan_appraisement" placeholder="*Select Date Time"
                                                 @if ($timer == null)
-                                                autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_appraisment') }}"
+                                                autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_appraisement') }}"
                                                 @else
-                                                autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_appraisment', $timer->date_time_expired_appraisment) }}"
+                                                autofocus autocomplete required value="{{ old('date_time_expired_countdown_teladan_appraisement', $timer->date_time_expired_appraisement) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_open_appraisment != null )
-                                                        min="{{ $timers[0]->date_time_open_appraisment }}"
+                                                    @if ($timers[0]->date_time_open_appraisement != null )
+                                                        min="{{ $timers[0]->date_time_open_appraisement }}"
                                                     @endif
                                                 @endif
                                                 @if ($timers->isEmpty())
                                                     min="{{ \Carbon\Carbon::tomorrow()->addDays(1)->toDateTimeString() }}"
                                                 @endif
-                                                aria-invalid="true" aria-describedby="date_time_expired_countdown_teladan_appraisment" data-val="true">
+                                                aria-invalid="true" aria-describedby="date_time_expired_countdown_teladan_appraisement" data-val="true">
                                         </div>
                                         <div id="date_time_expired_countdown_teladan_formHelp" class="form-text">Pilih Hari, Bulan, Tahun, Jam, dan Menit</div>
                                         <div class="d-flex flex-column">
                                             <!-- Error Timer Countdown Expired Form -->
-                                            @if ( $errors->has('date_time_expired_countdown_teladan_appraisment') )
+                                            @if ( $errors->has('date_time_expired_countdown_teladan_appraisement') )
                                                 <span class="help-block">
-                                                    <strong>{{ $errors->first('date_time_expired_countdown_teladan_appraisment') }}</strong>
+                                                    <strong>{{ $errors->first('date_time_expired_countdown_teladan_appraisement') }}</strong>
                                                 </span>
                                             @endif
                                             <!--/ Error Timer Countdown Expired Form -->
@@ -607,37 +607,37 @@
                                 <!--/ Timer Countdown Expired Form -->
 
                                  <!-- Status Close -->
-                                 <div class="mb-3 row {{ $errors->has('status_expired_appraisment') ? 'is-invalid' : '' }}">
-                                    <label for="status_expired_appraisment" class="col-sm-3 col-form-label">Status Close</label>
+                                 <div class="mb-3 row {{ $errors->has('status_expired_appraisement') ? 'is-invalid' : '' }}">
+                                    <label for="status_expired_appraisement" class="col-sm-3 col-form-label">Status Close</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <span class="input-group-text {{ $errors->has('status_expired_appraisment') ? 'is-invalid' : '' }}">
+                                            <span class="input-group-text {{ $errors->has('status_expired_appraisement') ? 'is-invalid' : '' }}">
                                                 <i class="fa-solid fa-calendar"></i>
                                             </span>
                                             @if ($timer == null)
-                                            <input type="hidden" value="{{ old('status_expired_appraisment') }}" id="oldExpiredStatus" />
+                                            <input type="hidden" value="{{ old('status_expired_appraisement') }}" id="oldExpiredStatus" />
                                             @else
-                                            <input type="hidden" value="{{ old('status_expired_appraisment', $timer->status_expired_appraisment) }}" id="oldStatusExpired" />
+                                            <input type="hidden" value="{{ old('status_expired_appraisement', $timer->status_expired_appraisement) }}" id="oldStatusExpired" />
                                             @endif
-                                            <select class="form-select {{ $errors->has('status_expired_appraisment') ? 'is-invalid' : '' }}" id="status_expired_appraisment"
-                                                name="status_expired_appraisment" placeholder="--Pilih Status Close --"
+                                            <select class="form-select {{ $errors->has('status_expired_appraisement') ? 'is-invalid' : '' }}" id="status_expired_appraisement"
+                                                name="status_expired_appraisement" placeholder="--Pilih Status Close --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_expired_appraisment" data-val="true" aria-label="status_expired_appraisment" data-placeholder="-- Pilih Status Close --">
+                                                aria-invalid="true" aria-describedby="status_expired_appraisement" data-val="true" aria-label="status_expired_appraisement" data-placeholder="-- Pilih Status Close --">
                                                 <option disabled selected>-- Pilih Status Close --</option>
                                                 @if ($timer == null)
-                                                <option value="0" @if(old('status_expired_appraisment' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_expired_appraisment' ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" @if(old('status_expired_appraisement' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_appraisement' ) == 1 ) selected="selected" @endif>Aktif</option>
                                                 @else
-                                                <option value="0" @if(old('status_expired_appraisment', $timer->status_expired_appraisment ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_expired_appraisment', $timer->status_expired_appraisment ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" @if(old('status_expired_appraisement', $timer->status_expired_appraisement ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired_appraisement', $timer->status_expired_appraisement ) == 1 ) selected="selected" @endif>Aktif</option>
                                                 @endif
                                             </select>
                                         </div>
                                         <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
                                         <!-- Error Status Close -->
-                                        @if ( $errors->has('status_expired_appraisment') )
+                                        @if ( $errors->has('status_expired_appraisement') )
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('status_expired_appraisment') }}</strong>
+                                                <strong>{{ $errors->first('status_expired_appraisement') }}</strong>
                                             </span>
                                         @endif
                                         <!--/ Error Status Close -->
@@ -726,8 +726,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_3', $timer->date_time_open_signature_human_resource_3) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_3" data-val="true">
@@ -802,8 +802,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_3', $timer->date_time_expired_signature_human_resource_3) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_3" data-val="true">
@@ -883,8 +883,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_2', $timer->date_time_open_signature_human_resource_2) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_2" data-val="true">
@@ -959,8 +959,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_2', $timer->date_time_expired_signature_human_resource_2) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_2" data-val="true">
@@ -1039,8 +1039,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_1', $timer->date_time_open_signature_human_resource_1) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_1" data-val="true">
@@ -1115,8 +1115,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_1', $timer->date_time_expired_signature_human_resource_1) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_1" data-val="true">

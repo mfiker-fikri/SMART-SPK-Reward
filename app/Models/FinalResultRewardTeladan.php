@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RewardTeladan extends Model
+class FinalResultRewardTeladan extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class RewardTeladan extends Model
      *
      * @var string
      */
-    protected $table = 'reward_teladan';
+    protected $table = 'final_result_reward_teladan';
 
     /**
      * The primary key associated with the table.
@@ -38,20 +38,24 @@ class RewardTeladan extends Model
     protected $fillable = [
         'id',
         //
-        // 'upload_file_short_description',
-        // 'upload_file_image_support',
-        // 'upload_file_video_support',
+        // 'employees_id',
         //
-        'employee_id',
+        'reward_teladan_id',
         //
-        'status_process',
+        'score_final_result',
+        'score_final_result_description',
         //
-        'score_valuation_1',
-        'score_valuation_2',
-        'score_valuation_3',
-        'score_valuation_4',
-        'score_valuation_5',
-        'score_valuation_6',
+        'signature_head_of_the_human_resources_bureau',
+        'name_head_of_the_human_resources_bureau',
+        'verify_head_of_the_human_resources_bureau',
+        //
+        'signature_head_of_disciplinary_awards_and_administration',
+        'name_head_of_disciplinary_awards_and_administration',
+        'verify_head_of_disciplinary_awards_and_administration',
+        //
+        'signature_head_of_rewards_discipline_and_pension_subdivision',
+        'name_head_of_rewards_discipline_and_pension_subdivision',
+        'verify_head_of_rewards_discipline_and_pension_subdivision',
         //
         'status_id'
     ];
@@ -67,27 +71,13 @@ class RewardTeladan extends Model
         'id' => 'string',
     ];
 
-    public function employees()
+    public function resultFinalRepresentatives()
     {
         return $this->belongsTo(
-            Pegawai::class,
-            'employee_id',
-            'id'
-        );
-    }
-
-    public function finalResultRepresentatives()
-    {
-        return $this->hasMany(
-            FinalResultRewardTeladan::class,
+            RewardTeladan::class,
             // 'final_result_reward_inovation',
-            // 'reward_inovation_id',
+            'reward_teladan_id',
+            'id',
         );
-        // return $this->belongsToMany(
-        //     Pegawai::class,
-        //     'final_result_reward_inovation',
-        //     'reward_inovation_id',
-        //     'employees_id'
-        // );
     }
 }

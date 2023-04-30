@@ -132,7 +132,7 @@ class ManageAdminController extends Controller
                 $status = '';
                 if (Cache::has('admin-is-online-' . $row->id)) {
                     $status = '<span class="text-success">Online</span>';
-                } elseif ($row->last_seen == null) {
+                } elseif ($row->status == null) {
                     $status = '<span class="text-secondary">Not Login</span>';
                 } else {
                     $status = '<span class="text-secondary">Offline</span>';
