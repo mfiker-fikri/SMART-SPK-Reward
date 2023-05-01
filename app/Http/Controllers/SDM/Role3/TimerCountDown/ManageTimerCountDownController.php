@@ -783,11 +783,12 @@ class ManageTimerCountDownController extends Controller
                     'status_expired_appraisement'                                =>  'required',
                 ],
                 [
-                    'date_time_open_countdown_teladan_appraisement.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'date_time_open_countdown_teladan_appraisement.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Wajib Diisi!',
                     'status_open_appraisement.required'                          =>  'Status Wajib Dipilih!',
-                    'date_time_expired_countdown_teladan_appraisement.required'  =>  'Hari, Tanggal, Tahun, Jam, dan Menit Wajib Diisi!',
+                    'date_time_expired_countdown_teladan_appraisement.required'  =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutup Penilaian Wajib Diisi!',
                     'status_expired_appraisement.required'                       =>  'Status Wajib Dipilih!',
 
+                    'date_time_expired_countdown_teladan_appraisement.after_or_equal' => 'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Setelah Pembukaan Penilaian Penilai',
                 ]
             );
 
