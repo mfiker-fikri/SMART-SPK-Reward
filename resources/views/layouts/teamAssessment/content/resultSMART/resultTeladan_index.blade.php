@@ -322,7 +322,7 @@
 
 <!-- Footer Js -->
 @section('js_footer')
-    <!-- Datatables Result Inovasi DSS -->
+    <!-- Datatables Result Teladan DSS -->
     <script type="text/javascript">
         $(document).ready(function () {
             var table = $('#data-table-result-process-DSS').DataTable({
@@ -356,7 +356,7 @@
             }
         });
     </script>
-    <!--/ Datatables Result Inovasi DSS -->
+    <!--/ Datatables Result Teladan DSS -->
 
     <!-- Timer Countdown -->
     <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
@@ -379,7 +379,7 @@
                     if( (event.offset.totalDays == 0 && flag2) ) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Dibuka Besok',
+                            title: 'Penilaian Teladan Dibuka Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -412,7 +412,7 @@
                     if( (event.offset.totalDays == 0 && flag2) ) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
+                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -445,7 +445,7 @@
                     if( event.offset.totalMinutes == 0 && flag2 ) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
+                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -478,7 +478,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Penilaian Inovasi Sudah Dibuka',
+                        title: 'Penilaian Teladan Sudah Dibuka',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -528,7 +528,7 @@
                     if( (event.offset.totalDays == 0 && flag2) ) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup Besok',
+                            title: 'Penilaian Teladan Ditutup Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -560,7 +560,7 @@
                     if( (event.offset.totalHours == 0 && flag2) ) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -592,7 +592,7 @@
                     if( event.offset.totalMinutes == 0 && flag2 ) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -625,7 +625,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Penilaian Inovasi Sudah Ditutup',
+                        title: 'Penilaian Teladan Sudah Ditutup',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -674,18 +674,18 @@
 
             <div class="card mx-3">
 
-                <!-- Form Hasil Penilaian Inovasi Title -->
+                <!-- Form Hasil Penilaian Teladan Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Hasil Penilaian Penghargaan Inovasi</h5>
+                    <h5 class="mb-0">Hasil Penilaian Penghargaan Teladan</h5>
                 </div>
-                <!--/ Form Hasil Penilaian Inovasi Title -->
+                <!--/ Form Hasil Penilaian Teladan Title -->
 
                 @if ($timer == null)
 
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Penilaian Inovasi Ditutup</span>
+                                <span>Penilaian Teladan Ditutup</span>
                             </h1>
                         </div>
                     </div>
@@ -704,7 +704,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Penilaian Inovasi</span>
+                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Penilaian Teladan</span>
                             </h1>
                         </div>
                     </div>
@@ -725,7 +725,7 @@
                     <div class="container-fluid ">
                         <div class="openTimerCountDown">
                             <div class="titleCountDown">
-                                <h1>Pembukaan Penilaian Inovasi</h1>
+                                <h1>Pembukaan Penilaian Teladan</h1>
                             </div>
                             <div class="dateCountDown">
                                 <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('dddd') }}</b></span>
@@ -780,11 +780,11 @@
                                 ||  ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
                             )
                                 <div class="mx-1 mx-1 mx-1">
-                                    <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Penilaian Inovasi</div>
+                                    <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Penilaian Teladan</div>
                                 </div>
                             @else
                                 <div class="mx-1 mx-1 mx-1">
-                                    <h3 class="text-center text-dark">Penutupan Penilaian Inovasi</h3>
+                                    <h3 class="text-center text-dark">Penutupan Penilaian Teladan</h3>
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisement)->toDateTimeString()  }}"></div>
@@ -799,7 +799,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Panjang</th>
-                                    <th scope="col">Hasil Penilaian Inovasi</th>
+                                    <th scope="col">Hasil Penilaian Teladan</th>
                                     <th scope="col">Keterangan</th>
                                 </tr>
                             </thead>
@@ -824,7 +824,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Penilaian Inovasi Telah Ditutup</span>
+                                <span>Penilaian Teladan Telah Ditutup</span>
                             </h1>
                         </div>
                     </div>

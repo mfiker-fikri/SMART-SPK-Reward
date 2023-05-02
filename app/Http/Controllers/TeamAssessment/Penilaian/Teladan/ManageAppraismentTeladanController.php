@@ -439,7 +439,7 @@ class ManageAppraismentTeladanController extends Controller
             // Pembagian Normalisasi
             $normalisasi = [];
             foreach ($criterias as $value) {
-                array_push($normalisasi, round( ($value->value_quality/$sumCriteria), 3));
+                array_push($normalisasi, round( ($value->value_quality/$sumCriteria), 2));
             }
 
             // ddd($normalisasi);
@@ -530,7 +530,7 @@ class ManageAppraismentTeladanController extends Controller
                 }
 
                 array_push($arrResultNilaiUtility, $arrNilaiUtility);
-
+                // ddd($arrResultNilaiUtility);
             }
             // ddd($arrNilaiUtility);
 
@@ -550,21 +550,23 @@ class ManageAppraismentTeladanController extends Controller
                 $resultDSSFinal = 0;
                 foreach ($result as $key => $valueEach) {
                     $resultDSSFinal += round($valueEach, 3);
-
                 }
 
                 array_push($ResultFinalDSS, $resultDSSFinal);
                 // ddd($resultDSSFinal);
+                // ddd($ResultFinalDSS);
 
                 if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.75) {
                     // echo 'Tidak Dapat Penghargaan';
                     array_push($ket, 'Tidak Dapat Penghargaan');
-                } elseif ($resultDSSFinal > 0.75 && $resultDSSFinal <= 1) {
+                } elseif ($resultDSSFinal > 0.75 && $resultDSSFinal <= 1.00) {
                     // echo 'Dapat Penghargaan';
                     array_push($ket, 'Dapat Penghargaan');
                 }
 
             }
+            // ddd($ResultFinalDSS);
+            // ddd($ket);
 
             $count             = RewardTeladan::
                                     where([
@@ -575,11 +577,13 @@ class ManageAppraismentTeladanController extends Controller
                                         ['status_process', '=', 1],
                                     ])->latest()->get()->count();
 
+            // ddd($count);
             for ($x = 0; $x < $count; $x++) {
+                // ddd($ResultFinalDSS[$x]);
 
                 FinalResultRewardTeladan::create([
                     'id'                                =>  Str::uuid(),
-                    'reward_inovation_id'               =>  $arrayId[$x],
+                    'reward_teladan_id'                 =>  $arrayId[$x],
                     'score_final_result'                =>  $ResultFinalDSS[$x],
                     'score_final_result_description'    =>  $ket[$x],
                 ]);
@@ -606,13 +610,13 @@ class ManageAppraismentTeladanController extends Controller
                                             ['created_at', '<=', $dateExpiredTime],
                                             ['updated_at', '>=', $dateOpenTime],
                                             ['updated_at', '<=', $dateExpiredTime],
-                                        ])->latest()->orderBy('score_final_result', 'DESC')->get();
+                                        ])->orderBy('score_final_result', 'DESC')->get();
 
 
             return DataTables::of($finalResult)
                     ->addIndexColumn()
                     ->addColumn('fullName', function ($row, RewardTeladan $RewardTeladan) {
-                        $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                        $full_name  =   '<span>' . $row->resultFinalRepresentatives->employees->full_name . '</span>';
                         return $full_name;
                     })
                     ->rawColumns(['fullName'])
