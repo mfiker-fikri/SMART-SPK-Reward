@@ -23,10 +23,16 @@ class CreateFinalResultRewardTeladanTable extends Migration
             $table->string('score_final_result_description');
             //
             $table->string('signature_head_of_the_human_resources_bureau')->nullable();
-            $table->string('verify_head_of_the_human_resources_bureau')->nullable();
+            $table->string('name_head_of_the_human_resources_bureau')->nullable();
+            $table->integer('verify_head_of_the_human_resources_bureau')->nullable()->default(1);
             //
             $table->string('signature_head_of_disciplinary_awards_and_administration')->nullable();
-            $table->string('verify_head_of_disciplinary_awards_and_administration')->nullable();
+            $table->string('name_head_of_disciplinary_awards_and_administration')->nullable();
+            $table->integer('verify_head_of_disciplinary_awards_and_administration')->nullable()->default(1);
+            //
+            $table->string('signature_head_of_rewards_discipline_and_pension_subdivision')->nullable();
+            $table->string('name_head_of_rewards_discipline_and_pension_subdivision')->nullable();
+            $table->integer('verify_head_of_rewards_discipline_and_pension_subdivision')->nullable()->default(1);
             //
             $table->integer('status_id')->default(1);
             //

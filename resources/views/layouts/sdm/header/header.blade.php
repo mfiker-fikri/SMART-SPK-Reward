@@ -229,6 +229,15 @@
                     <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
                 <!--/ Signature Inovation -->
 
+                <!-- Signature Teladan -->
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') )
+                    <!-- Read -->
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
+                <!--/ Signature Teladan -->
+
 
                 @endif
 

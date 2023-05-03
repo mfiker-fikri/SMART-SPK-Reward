@@ -86,6 +86,13 @@
                 </li>
                 <li class="breadcrumb-item fw-bold active">Hasil Penilaian Penghargaan Inovasi</li>
 
+            @elseif ( request()->is('penilai/appraisement/result/representative') )
+            <!-- Hasil Penilaian Teladan -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Hasil Penilaian Penghargaan Teladan</li>
+
             @endif
         </ol>
         <!--/ Breadcrumb -->

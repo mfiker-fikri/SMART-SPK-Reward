@@ -330,6 +330,14 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Update
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/{id}', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+
+        // Signature Teladan
+        // Read
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative', [App\Http\Controllers\SDM\Role3\Signature\SignatureTeladanController::class, 'getSignatureRepresentativeKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureRepresentative.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative/list', [App\Http\Controllers\SDM\Role3\Signature\SignatureTeladanController::class, 'getSignatureRepresentativeListKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureRepresentativeList.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        // Update
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative/{id}', [App\Http\Controllers\SDM\Role3\Signature\SignatureTeladanController::class, 'getSignatureRepresentativeIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureRepresentativeId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative/{id}/post', [App\Http\Controllers\SDM\Role3\Signature\SignatureTeladanController::class, 'postSignatureRepresentativeIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postSignatureRepresentativeId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
     });
 
 });

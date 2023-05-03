@@ -24,6 +24,7 @@ class CreateHumanResources extends Migration
             $table->integer('role');
             //
             $table->string('photo_profile', 255)->nullable();
+            $table->string('signature', 255)->nullable();
             //
             $table->timestamp('last_seen')->nullable();
             $table->rememberToken();

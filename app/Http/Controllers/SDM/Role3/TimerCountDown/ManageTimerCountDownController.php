@@ -783,12 +783,12 @@ class ManageTimerCountDownController extends Controller
                     'status_expired_appraisement'                                =>  'required',
                 ],
                 [
-                    'date_time_open_countdown_teladan_appraisement.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Wajib Diisi!',
+                    'date_time_open_countdown_teladan_appraisement.required'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Teladan Wajib Diisi!',
                     'status_open_appraisement.required'                          =>  'Status Wajib Dipilih!',
-                    'date_time_expired_countdown_teladan_appraisement.required'  =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutup Penilaian Wajib Diisi!',
+                    'date_time_expired_countdown_teladan_appraisement.required'  =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Teladan Wajib Diisi!',
                     'status_expired_appraisement.required'                       =>  'Status Wajib Dipilih!',
 
-                    'date_time_expired_countdown_teladan_appraisement.after_or_equal' => 'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Setelah Pembukaan Penilaian Penilai',
+                    'date_time_expired_countdown_teladan_appraisement.after_or_equal' => 'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Penilaian Teladan Minimal Harus 1 Hari Setelah Pembukaan Penilaian Teladan',
                 ]
             );
 
@@ -974,39 +974,39 @@ class ManageTimerCountDownController extends Controller
                     ],
                     [
                         'date_time_open_signature_human_resource_3.required'                    =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Wajib Diisi!',
-                        'date_time_open_signature_human_resource_3.after_or_equal'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Penutupan Penilaian Inovasi!',
-                        'date_time_open_signature_human_resource_3.before_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Sebelum Penutupan Verifikasi Tanda Tangan Inovasi!',
+                        'date_time_open_signature_human_resource_3.after_or_equal'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Penutupan Penilaian Teladan!',
+                        'date_time_open_signature_human_resource_3.before_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Sebelum Penutupan Verifikasi Tanda Tangan Teladan!',
                         //
                         'status_open_signature_human_resource_3.required'                       =>  'Status Pembukaan Wajib Dipilih!',
                         //
                         'date_time_expired_signature_human_resource_3.required'                 =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Verifikasi Tanda Tangan Wajib Diisi!',
-                        'date_time_expired_signature_human_resource_3.after_or_equal'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Pembukaan Verifikasi Tanda Tangan Inovasi!',
+                        'date_time_expired_signature_human_resource_3.after_or_equal'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Pembukaan Verifikasi Tanda Tangan Teladan!',
                         //
                         'status_expired_signature_human_resource_3.required'                    =>  'Status Penutupan Wajib Dipilih!',
 
                         //
                         //
                         'date_time_open_signature_human_resource_2.required'                    =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Wajib Diisi!',
-                        'date_time_open_signature_human_resource_2.after_or_equal'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Penutupan Penilaian Inovasi!',
-                        'date_time_open_signature_human_resource_2.before_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Sebelum Penutupan Verifikasi Tanda Tangan Inovasi!',
+                        'date_time_open_signature_human_resource_2.after_or_equal'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Penutupan Penilaian Teladan!',
+                        'date_time_open_signature_human_resource_2.before_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Sebelum Penutupan Verifikasi Tanda Tangan Teladan!',
                         //
                         'status_open_signature_human_resource_2.required'                       =>  'Status Pembukaan Wajib Dipilih!',
                         //
                         'date_time_expired_signature_human_resource_2.required'                 =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Verifikasi Tanda Tangan Wajib Diisi!',
-                        'date_time_expired_signature_human_resource_2.after_or_equal'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Pembukaan Verifikasi Tanda Tangan Inovasi!',
+                        'date_time_expired_signature_human_resource_2.after_or_equal'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Pembukaan Verifikasi Tanda Tangan Teladan!',
                         //
                         'status_expired_signature_human_resource_2.required'                    =>  'Status Penutupan Wajib Dipilih!',
 
                         //
                         //
                         'date_time_open_signature_human_resource_1.required'                    =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Wajib Diisi!',
-                        'date_time_open_signature_human_resource_1.after_or_equal'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Penutupan Penilaian Inovasi!',
-                        'date_time_open_signature_human_resource_1.before_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Sebelum Penutupan Verifikasi Tanda Tangan Inovasi!',
+                        'date_time_open_signature_human_resource_1.after_or_equal'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Penutupan Penilaian Teladan!',
+                        'date_time_open_signature_human_resource_1.before_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Sebelum Penutupan Verifikasi Tanda Tangan Teladan!',
                         //
                         'status_open_signature_human_resource_1.required'                       =>  'Status Pembukaan Wajib Dipilih!',
                         //
                         'date_time_expired_signature_human_resource_1.required'                 =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Verifikasi Tanda Tangan Wajib Diisi!',
-                        'date_time_expired_signature_human_resource_1.after_or_equal'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Pembukaan Verifikasi Tanda Tangan Inovasi!',
+                        'date_time_expired_signature_human_resource_1.after_or_equal'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Verifikasi Tanda Tangan Minimal Harus 1 Hari Setelah Pembukaan Verifikasi Tanda Tangan Teladan!',
                         //
                         'status_expired_signature_human_resource_1.required'                    =>  'Status Penutupan Wajib Dipilih!',
                     ]
@@ -1014,7 +1014,7 @@ class ManageTimerCountDownController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal !', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-create-error', 'Gagal')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-create-signature-error', 'Gagal')->withErrors($validate)->withInput($request->all());
                 }
             }
 
@@ -1066,7 +1066,7 @@ class ManageTimerCountDownController extends Controller
                     $id->save();
 
                     alert()->success('Berhasil Update Data Timer Verifikasi Tanda Tangan!')->autoclose(25000);
-                    return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Verifikasi Tanda Tangan!');
+                    return redirect()->back()->with('message-create-signature-success', 'Berhasil Update Data Timer Verifikasi Tanda Tangan!');
                 }
 
                 if(
@@ -1095,10 +1095,10 @@ class ManageTimerCountDownController extends Controller
                         $id->save();
 
                         alert()->success('Berhasil Update Data Timer Verifikasi Tanda Tangan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-success', 'Berhasil Update Data Timer Verifikasi Tanda Tangan!');
+                        return redirect()->back()->with('message-create-signature-success', 'Berhasil Update Data Timer Verifikasi Tanda Tangan!');
                     } else {
                         alert()->error('Gagal Update Data Timer Penilaian!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-create-signature-error', 'Gagal Update Data Timer Penilaian!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
@@ -1108,7 +1108,7 @@ class ManageTimerCountDownController extends Controller
                     (Carbon::now()->toDateString() === $dateOpen3 || Carbon::now()->toDateString() === $dateExpired3)
                 ) {
                     alert()->error('Gagal Update Data Timer Verifikasi Tanda Tangan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-create-signature-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if(
@@ -1117,10 +1117,10 @@ class ManageTimerCountDownController extends Controller
                     ($dateOpen3 == $dateExpired3)
                 ) {
                     alert()->error('Gagal Update Data Timer Verifikasi Tanda Tangan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
+                    return redirect()->back()->with('message-create-signature-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
                 }
                 alert()->error('Gagal Update Data Timer Verifikasi Tanda Tangan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-signature-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
             }
             // Create
             else {
@@ -1148,14 +1148,14 @@ class ManageTimerCountDownController extends Controller
                     ]);
                     if($timer) {
                         alert()->success('Berhasil Tambah Data Timer Verifikasi Tanda Tangan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Timer Verifikasi Tanda Tangan!');
+                        return redirect()->back()->with('message-create-signature-success', 'Berhasil Tambah Data Timer Verifikasi Tanda Tangan!');
                     } else {
                         alert()->error('Gagal Tambah Data Timer Verifikasi Tanda Tangan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
+                        return redirect()->back()->with('message-create-signature-error', 'Gagal Tambah Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
                 alert()->error('Gagal Update Data Timer Verifikasi Tanda Tangan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-signature-error', 'Gagal Update Data Timer Verifikasi Tanda Tangan!')->withErrors($validate)->withInput($request->all());
             }
 
 

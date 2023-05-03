@@ -54,6 +54,7 @@ class HumanResource extends Authenticatable
         'role',
         //
         'photo_profile',
+        'signature',
         //
         'last_seen',
         'status_active',

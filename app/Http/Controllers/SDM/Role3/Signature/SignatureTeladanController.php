@@ -3,34 +3,34 @@
 namespace App\Http\Controllers\SDM\Role3\Signature;
 
 use App\Http\Controllers\Controller;
-use App\Models\CountdownTimerFormInovation;
-use App\Models\FinalResultRewardInovation;
-use App\Models\RewardInovation;
+use App\Models\CountdownTimerFormTeladan;
+use App\Models\FinalResultRewardTeladan;
+use App\Models\RewardTeladan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
-class SignatureInovationController extends Controller
+class SignatureTeladanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSignatureInovationKepalaSubbagianPenghargaanDisiplindanPensiun()
+    public function getSignatureRepresentativeKepalaSubbagianPenghargaanDisiplindanPensiun()
     {
         try {
             // Get Timer Countdown
-            $timer                      =   CountdownTimerFormInovation::first();
+            $timer                      =   CountdownTimerFormTeladan::first();
 
             if ($timer != null) {
-                $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.signature.inovationSignature_index', compact('timer'));
+                $timer                  =   CountdownTimerFormTeladan::first();
+                return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.signature.representativeSignature_index', compact('timer'));
             } else {
-                $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.signature.inovationSignature_index', compact('timer'));
+                $timer                  =   CountdownTimerFormTeladan::first();
+                return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.signature.representativeSignature_index', compact('timer'));
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -42,23 +42,23 @@ class SignatureInovationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSignatureInovationListKepalaSubbagianPenghargaanDisiplindanPensiun()
+    public function getSignatureRepresentativeListKepalaSubbagianPenghargaanDisiplindanPensiun()
     {
         try {
             // Timer
-            $timer                  =   CountdownTimerFormInovation::first();
+            $timer                  =   CountdownTimerFormTeladan::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisment);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisment);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisement);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
-            $data = FinalResultRewardInovation::where([
+            $data = FinalResultRewardTeladan::where([
                                 ['created_at', '>=', $dateOpenTime],
                                 ['created_at', '<=', $dateExpiredTime],
                                 ['updated_at', '>=', $dateOpenTime],
@@ -73,8 +73,8 @@ class SignatureInovationController extends Controller
 
             return DataTables::of($data)
                         ->addIndexColumn()
-                        ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
-                            $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                        ->addColumn('fullName', function ($row, RewardTeladan $RewardTeladan) {
+                            $full_name  =   '<span>' . $row->resultFinalRepresentatives->employees->full_name . '</span>';
                             return $full_name;
                         })
                         ->addColumn('action', function ($row) {
@@ -101,7 +101,7 @@ class SignatureInovationController extends Controller
                         })
                         ->addColumn('description', function ($row) {
                             $desc = '';
-                            if ($row->score_final_result > 0.85 && $row->score_final_result <= 1) {
+                            if ($row->score_final_result > 0.85 && $row->score_final_result <= 1.00) {
                                 $desc = '<span>Terbaik</span>';
                             }
                             if ($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
@@ -116,6 +116,58 @@ class SignatureInovationController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postSignatureRepresentativeIdKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request, $id)
+    {
+        try {
+            $finalResult = FinalResultRewardTeladan::find($id);
+
+            // Get SDM Username
+            $sdm            =   Auth::guard('human_resources')->user()->username;
+            // Get Signature Auth SDM
+            $signature      =   Auth::guard('human_resources')->user()->signature;
+
+
+            File::copy(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature), public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature));
+
+            if($finalResult) {
+                $finalResult->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->finalResult;
+                $finalResult->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
+                $finalResult->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
+                $finalResult->save();
+            }
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -158,28 +210,9 @@ class SignatureInovationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        try {
-            $signature = FinalResultRewardInovation::find($id);
-
-            // Get SDM Username
-            $sdm            =   Auth::guard('human_resources')->user()->username;
-            // Get Signature Auth SDM
-            $signature      =   Auth::guard('human_resources')->user()->signature;
-
-            File::copy(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature), public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature));
-
-            if($signature) {
-                $signature->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->signature;
-                $signature->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
-                $signature->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
-                $signature->save();
-            }
-
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        //
     }
 
     /**
