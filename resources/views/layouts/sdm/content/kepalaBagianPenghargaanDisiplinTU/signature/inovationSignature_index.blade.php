@@ -436,19 +436,25 @@
 @stop
 <!--/ Header CSS -->
 
-
+<!-- Footer Js -->
 @section('js_footer')
-
-    <!-- Datatables Kategori -->
+    <!-- Datatables Team Assessment -->
     <script type="text/javascript">
     $(document).ready(function () {
         var table = $('#data-table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
-            // paging: false,
-            // searching: false,
-            ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/list') }}",
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            paging: false,
+            lengthMenu: [5, 10, 25, 50, 100, 200, 500],
+            dom: 'Bfrtip',
+            buttons: [
+                "pageLength",
+            ],
+            ajax: "{{ url('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/list') }}",
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {   data: 'fullName', name: 'fullName', orderable: false, searchable: false},
@@ -467,9 +473,10 @@
                 table.ajax.reload(null, false);
             }, 10000 );
         }
+
     });
     </script>
-    <!--/ Datatables Kategori -->
+    <!--/ Datatables Team Assessment -->
 
     <!-- Delete Form Inovation Id -->
     <script type="text/javascript">
@@ -500,7 +507,7 @@
                         Accept: "application/json"
                     },
                     method: 'post',
-                    url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation') }}" + '/' + id + '/post',
+                    url: "{{ url('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation') }}" + '/' + id + '/post',
                     data: {
                         id: id,
                         _token: '{{ csrf_token() }}'
@@ -857,9 +864,12 @@
     </script>
 
     <!--/ Timer Countdown -->
-@stop
+
+@endsection
+<!--/ Footer Js -->
 
 @section('content')
+
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <div class="row mt-3">
@@ -868,11 +878,11 @@
 
             <div class="card mx-4">
 
-                <!-- Form Kategori Title -->
+                <!-- Form Read Team Assesment Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">Tanda Tangan Penghargaan Inovasi</h5>
                 </div>
-                <!--/ Form Kategori Title -->
+                <!--/ Form Read Team Assesment Title -->
 
                 @if ($timer == null)
 
@@ -888,11 +898,11 @@
 
                     @if (
                         (
-                            ($timer->status_open_signature_human_resource_3 == 0 && $timer->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3 )
+                            ($timer->status_open_signature_human_resource_2 == 0 && $timer->date_time_open_signature_human_resource_2 >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2 )
                         )
                         ||
                         (
-                            ($timer->status_open_signature_human_resource_3 == 0 && $timer->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3 )
+                            ($timer->status_open_signature_human_resource_2 == 0 && $timer->date_time_open_signature_human_resource_2 >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2 )
                         )
                     )
                     <div class="container-fluid">
@@ -905,15 +915,15 @@
 
                     @elseif (
                         (
-                                    ($timer->status_open_signature_human_resource_3 == 1
-                                && ($timer->date_time_open_signature_human_resource_3 > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_signature_human_resource_3 == \Carbon\Carbon::now()->toDateTimeString() ))
-                            &&  ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3 )
+                                    ($timer->status_open_signature_human_resource_2 == 1
+                                && ($timer->date_time_open_signature_human_resource_2 > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_signature_human_resource_2 == \Carbon\Carbon::now()->toDateTimeString() ))
+                            &&  ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2 )
                         )
                         ||
                         (
-                                    ($timer->status_open_signature_human_resource_3 == 1
-                                && ($timer->date_time_open_signature_human_resource_3 > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_signature_human_resource_3 == \Carbon\Carbon::now()->toDateTimeString()) )
-                            &&  ($timer->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3 )
+                                    ($timer->status_open_signature_human_resource_2 == 1
+                                && ($timer->date_time_open_signature_human_resource_2 > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_signature_human_resource_2 == \Carbon\Carbon::now()->toDateTimeString()) )
+                            &&  ($timer->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2 )
                         )
                     )
                     <div class="container-fluid ">
@@ -922,20 +932,20 @@
                                 <h1>Pembukaan Tanda Tangan Inovasi</h1>
                             </div>
                             <div class="dateCountDown">
-                                <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('dddd') }}</b></span>
-                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('D') }}</b></span>
-                                <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('MMMM') }}</b></span>
-                                <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('Y') }}</b></span>
+                                <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('dddd') }}</b></span>
+                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('D') }}</b></span>
+                                <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('MMMM') }}</b></span>
+                                <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('Y') }}</b></span>
                             </div>
                             <div class="timeCountDown">
-                                <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('hh') }}</b></span>
-                                <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('mm') }}</b></span>
-                                <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_3)->isoFormat('a') }}</b></span>
+                                <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('hh') }}</b></span>
+                                <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('mm') }}</b></span>
+                                <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_signature_human_resource_2)->isoFormat('a') }}</b></span>
                             </div>
                             <div class="titleCountDown">
                                 <h1>Coming Soon</h1>
                             </div>
-                            <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_signature_human_resource_3)->toDateTimeString() }}">
+                            <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_signature_human_resource_2)->toDateTimeString() }}">
                             </div>
                         </div>
                     </div>
@@ -943,23 +953,23 @@
                     @elseif (
                         (
                                 (
-                                        ($timer->status_open_signature_human_resource_3 == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_3 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_3) )
-                                    &&  ($timer->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3 )
+                                        ($timer->status_open_signature_human_resource_2 == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_2 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_2) )
+                                    &&  ($timer->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2 )
                                 )
                             ||  (
-                                        ($timer->status_open_signature_human_resource_3 == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_3 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_3))
-                                    &&  ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3)
+                                        ($timer->status_open_signature_human_resource_2 == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_2 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_2))
+                                    &&  ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2)
                                 )
                         )
                         ||
                         (
                                 (
-                                        ($timer->status_open_signature_human_resource_3 == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_3 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_3))
-                                    &&  ($timer->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3)
+                                        ($timer->status_open_signature_human_resource_2 == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_2 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_2))
+                                    &&  ($timer->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2)
                                 )
                             || (
-                                        ($timer->status_open_signature_human_resource_3 == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_3 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_3))
-                                    &&  ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3)
+                                        ($timer->status_open_signature_human_resource_2 == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_signature_human_resource_2 || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_signature_human_resource_2))
+                                    &&  ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2)
                                 )
                         )
                     )
@@ -970,8 +980,8 @@
                         <div class="py-3 d-flex flex-column justify-content-start">
                             @if (
                                 (
-                                    ($timer->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_3) && ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3) )
-                                ||  ( ($timer->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_3) && ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_3) )
+                                    ($timer->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_2) && ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2) )
+                                ||  ( ($timer->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_2) && ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_signature_human_resource_2) )
                             )
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Tanda Tangan Inovasi</div>
@@ -982,22 +992,22 @@
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="dateCountDown1">
-                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('dddd') }}</b></span>
-                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('D') }}</b></span>
-                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('MMMM') }}</b></span>
-                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('Y') }}</b></span>
+                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('dddd') }}</b></span>
+                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('D') }}</b></span>
+                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('MMMM') }}</b></span>
+                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('Y') }}</b></span>
                                     </div>
                                     <div class="timeCountDown1">
-                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('hh') }}</b></span>
-                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('mm') }}</b></span>
-                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('a') }}</b></span>
+                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('hh') }}</b></span>
+                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('mm') }}</b></span>
+                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('a') }}</b></span>
                                     </div>
                                     <div class="titleCountDown">
                                         <h1>Closing Soon</h1>
                                     </div>
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
-                                    <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_signature_human_resource_3)->toDateTimeString()  }}"></div>
+                                    <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_signature_human_resource_2)->toDateTimeString()  }}"></div>
                                 </div>
                             @endif
 
@@ -1024,13 +1034,13 @@
 
                     @elseif (
                         (
-                                ( ($timer->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_3) && ($timer->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_3) )
-                            ||  ( ($timer->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_3) && ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_3) )
+                                ( ($timer->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_2) && ($timer->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_2) )
+                            ||  ( ($timer->status_open_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_2) && ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_2) )
                         )
                         ||
                         (
-                                ( ($timer->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_3) && ($timer->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_3) )
-                            || ( ($timer->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_3) && ($timer->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_3) )
+                                ( ($timer->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_2) && ($timer->status_expired_signature_human_resource_2 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_2) )
+                            || ( ($timer->status_open_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_signature_human_resource_2) && ($timer->status_expired_signature_human_resource_2 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_signature_human_resource_2) )
                         )
                     )
 
@@ -1051,4 +1061,5 @@
         </div>
     </div>
 </div>
+
 @endsection

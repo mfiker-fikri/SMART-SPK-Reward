@@ -3,32 +3,34 @@
 namespace App\Http\Controllers\SDM\Role2\Signature;
 
 use App\Http\Controllers\Controller;
-use App\Models\CountdownTimerFormInovation;
-use App\Models\FinalResultRewardInovation;
-use App\Models\RewardInovation;
+use App\Models\CountdownTimerFormTeladan;
+use App\Models\FinalResultRewardTeladan;
+use App\Models\RewardTeladan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\File;
+use Yajra\DataTables\DataTables;
 
-class SignatureInovationController extends Controller
+class SignatureRepresentativeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSignatureInovationKepalaBagianPenghargaanDisiplindanTataUsaha()
+    public function getSignatureRepresentativeKepalaBagianPenghargaanDisiplindanTataUsaha()
     {
         try {
-            $timer                      =   CountdownTimerFormInovation::first();
+            // Get Timer Countdown
+            $timer                      =   CountdownTimerFormTeladan::first();
 
             if ($timer != null) {
-                $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.signature.inovationSignature_index', compact('timer'));
+                $timer                  =   CountdownTimerFormTeladan::first();
+                return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.signature.representativeSignature_index', compact('timer'));
             } else {
-                $timer                  =   CountdownTimerFormInovation::first();
-                return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.signature.inovationSignature_index', compact('timer'));
+                $timer                  =   CountdownTimerFormTeladan::first();
+                return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.signature.representativeSignature_index', compact('timer'));
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -40,12 +42,12 @@ class SignatureInovationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSignatureInovationListKepalaBagianPenghargaanDisiplindanTataUsaha()
+    public function getSignatureRepresentativeListKepalaBagianPenghargaanDisiplindanTataUsaha()
     {
         try {
 
             //
-            $timer                  =   CountdownTimerFormInovation::first();
+            $timer                  =   CountdownTimerFormTeladan::first();
 
             $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
 
@@ -57,7 +59,7 @@ class SignatureInovationController extends Controller
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
-            $finalResult            =   FinalResultRewardInovation::
+            $finalResult            =   FinalResultRewardTeladan::
                                         where([
                                             ['created_at', '>=', $dateOpenTime],
                                             ['created_at', '<=', $dateExpiredTime],
@@ -73,22 +75,26 @@ class SignatureInovationController extends Controller
 
             return DataTables::of($finalResult)
                     ->addIndexColumn()
-                    ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
-                        $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                    ->addColumn('fullName', function ($row, RewardTeladan $RewardTeladan) {
+                        $full_name  =   '<span>' . $row->resultFinalRepresentatives->employees->full_name . '</span>';
                         return $full_name;
                     })
                     ->addColumn('action', function ($row) {
                         $actionBtn = '';
-                        if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
+                        if(Auth::guard('human_resources')->user()->signature == null) {
                             $actionBtn =
-                                '
-                                    <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
-                                        <i class="fas fa-file-signature"></i> Verification Signature
-                                    </a>
-                                ';
+                                '<span>Upload Tanda Tangan Terlebih Dahulu Di Profile</span>';
                         } else {
-                            $actionBtn =
-                                '<span>Tidak Mendapatkan Penghargaan</span>';
+                            if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
+                                $actionBtn =
+                                    '
+                                        <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
+                                            <i class="fas fa-file-signature"></i> Verification Signature
+                                        </a>
+                                    ';
+                            }
+                            // $actionBtn =
+                            //     '<span>Tidak Mendapatkan Penghargaan</span>';
                         }
 
                         return $actionBtn;
@@ -139,24 +145,37 @@ class SignatureInovationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request, $id)
+    public function postSignatureRepresentativeIdKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request, $id)
     {
         try {
-            $signature = FinalResultRewardInovation::find($id);
+            $finalResult = FinalResultRewardTeladan::find($id);
 
-            if($signature) {
-                $signature->signature_head_of_disciplinary_awards_and_administration    =   Auth::guard('human_resources')->user()->signature;
-                $signature->name_head_of_disciplinary_awards_and_administration         =   Auth::guard('human_resources')->user()->full_name;
-                $signature->verify_head_of_disciplinary_awards_and_administration       =   1;
-                $signature->save();
+            // Get Signature Auth SDM
+            $signature      =   Auth::guard('human_resources')->user()->signature;
+
+            File::copy(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/' . $signature), public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/' . $signature));
+
+            if($finalResult) {
+                $finalResult->signature_head_of_disciplinary_awards_and_administration    =   Auth::guard('human_resources')->user()->signature;
+                $finalResult->name_head_of_disciplinary_awards_and_administration         =   Auth::guard('human_resources')->user()->full_name;
+                $finalResult->verify_head_of_disciplinary_awards_and_administration       =   1;
+                $finalResult->timestamps                                                  =   false;
+                $finalResult->save();
             }
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -168,8 +187,27 @@ class SignatureInovationController extends Controller
         //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

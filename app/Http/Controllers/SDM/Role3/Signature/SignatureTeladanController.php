@@ -79,16 +79,20 @@ class SignatureTeladanController extends Controller
                         })
                         ->addColumn('action', function ($row) {
                             $actionBtn = '';
-                            if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
+                            if(Auth::guard('human_resources')->user()->signature == null) {
                                 $actionBtn =
-                                    '
-                                        <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
-                                            <i class="fas fa-file-signature"></i> Verification Signature
-                                        </a>
-                                    ';
+                                    '<span>Upload Tanda Tangan Terlebih Dahulu Di Profile</span>';
                             } else {
-                                $actionBtn =
-                                    '<span>Tidak Mendapatkan Penghargaan</span>';
+                                if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
+                                    $actionBtn =
+                                        '
+                                            <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
+                                                <i class="fas fa-file-signature"></i> Verification Signature
+                                            </a>
+                                        ';
+                                }
+                                // $actionBtn =
+                                //     '<span>Tidak Mendapatkan Penghargaan</span>';
                             }
 
                             return $actionBtn;
@@ -142,6 +146,7 @@ class SignatureTeladanController extends Controller
                 $finalResult->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->finalResult;
                 $finalResult->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
                 $finalResult->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
+                $finalResult->timestamps                                                      =   false;
                 $finalResult->save();
             }
 

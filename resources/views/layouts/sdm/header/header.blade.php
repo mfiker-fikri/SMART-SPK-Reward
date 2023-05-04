@@ -42,6 +42,21 @@
                     <li class="breadcrumb-item fw-bold active">Profile</li>
                 <!--/ Profile -->
 
+                <!-- Tanda Tangan -->
+                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
+                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
+                <!--/ Tanda Tangan -->
+
+
+
                 @endif
 
             <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->

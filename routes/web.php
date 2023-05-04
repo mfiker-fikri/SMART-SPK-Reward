@@ -155,6 +155,13 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::GET('/kepala-biro-SDM/signature/inovation/{id}', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBiroSDM'])->name('getSignatureInovationId.KepalaBiroSDM.SDM');
         Route::POST('/kepala-biro-SDM/signature/inovation/{id}/post', [\App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBiroSDM'])->name('postSignatureInovationId.KepalaBiroSDM.SDM');
 
+        // Signature Teladan
+        // Read
+        Route::GET('/kepala-biro-SDM/signature/representative', [App\Http\Controllers\SDM\Role1\Signature\SignatureRepresentativeController::class, 'getSignatureRepresentativeKepalaBiroSDM'])->name('getSignatureRepresentative.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/signature/representative/list', [App\Http\Controllers\SDM\Role1\Signature\SignatureRepresentativeController::class, 'getSignatureRepresentativeListKepalaBiroSDM'])->name('getSignatureRepresentativeList.KepalaBiroSDM.SDM');
+        // Update
+        Route::GET('/kepala-biro-SDM/signature/representative/{id}', [App\Http\Controllers\SDM\Role1\Signature\SignatureRepresentativeController::class, 'getSignatureRepresentativeIdKepalaBiroSDM'])->name('getSignatureRepresentativeId.KepalaBiroSDM.SDM');
+        Route::POST('/kepala-biro-SDM/signature/representative/{id}/post', [\App\Http\Controllers\SDM\Role1\Signature\SignatureRepresentativeController::class, 'postSignatureRepresentativeIdKepalaBiroSDM'])->name('postSignatureRepresentativeId.KepalaBiroSDM.SDM');
 
         // Final Inovation Reward
         // Read
@@ -188,6 +195,13 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
 
+        // Signature Teladan
+        // Read
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative', [App\Http\Controllers\SDM\Role2\Signature\SignatureRepresentativeController::class, 'getSignatureRepresentativeKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureRepresentative.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative/list', [App\Http\Controllers\SDM\Role2\Signature\SignatureRepresentativeController::class, 'getSignatureRepresentativeListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureRepresentativeList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        // Update
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative/{id}', [App\Http\Controllers\SDM\Role2\Signature\SignatureRepresentativeController::class, 'getSignatureRepresentativeIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureRepresentativeId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative/{id}/post', [App\Http\Controllers\SDM\Role2\Signature\SignatureRepresentativeController::class, 'postSignatureRepresentativeIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postSignatureRepresentativeId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
 
         // Final Inovation Reward
         // Read
