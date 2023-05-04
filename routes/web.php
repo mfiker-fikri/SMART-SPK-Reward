@@ -207,6 +207,11 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Read
         Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation/list', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+
+        // Final Inovation Reward
+        // Read
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative', [App\Http\Controllers\SDM\Role2\Reward\RewardRepresentativeController::class, 'getRewardRepresentativeKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardRepresentative.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative/list', [App\Http\Controllers\SDM\Role2\Reward\RewardRepresentativeController::class, 'getRewardRepresentativeListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardRepresentativeList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
     });
 
 

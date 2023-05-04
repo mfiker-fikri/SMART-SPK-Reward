@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\SDM\Role2\Reward;
 
 use App\Http\Controllers\Controller;
-use App\Models\FinalResultRewardInovation;
-use App\Models\RewardInovation;
+use App\Models\FinalResultRewardTeladan;
+use App\Models\RewardTeladan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
-class RewardInovationController extends Controller
+class RewardRepresentativeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha()
+    public function getRewardRepresentativeKepalaBagianPenghargaanDisiplindanTataUsaha()
     {
         try {
-            return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.reward.rewardInovation_index');
+            return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.reward.rewardRepresentative_index');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -30,10 +30,10 @@ class RewardInovationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha()
+    public function getRewardRepresentativeListKepalaBagianPenghargaanDisiplindanTataUsaha()
     {
         try {
-            $data   =   FinalResultRewardInovation::where([
+            $data   =   FinalResultRewardTeladan::where([
                                 //
                                 ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
                                 ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
@@ -53,8 +53,8 @@ class RewardInovationController extends Controller
                             $query->whereYear('created_at', request('created_at'));
                         }
                     }, true)
-                    ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
-                        $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
+                    ->addColumn('fullName', function ($row, RewardTeladan $rewardTeladan) {
+                        $full_name  =   '<span>' . $row->resultFinalRepresentatives->employees->full_name . '</span>';
                         return $full_name;
                     })
                     ->addColumn('year', function ($row) {
@@ -80,6 +80,26 @@ class RewardInovationController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**

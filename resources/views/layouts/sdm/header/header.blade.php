@@ -55,6 +55,19 @@
                     <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
                 <!--/ Tanda Tangan -->
 
+                <!-- Hasil Rekap -->
+                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Inovasi</li>
+                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Teladan</li>
+                <!--/ Hasil Rekap -->
+
 
 
                 @endif

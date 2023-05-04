@@ -197,7 +197,7 @@
 
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative*')) ? 'active' : '' }}">
-                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative') }}" class="menu-link" style="text-decoration: none !important;">
                             <div data-i18n="rekapRewardRepresentative">Rekap Reward Teladan</div>
                         </a>
                     </li>
