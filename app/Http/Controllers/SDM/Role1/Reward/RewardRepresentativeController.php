@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SDM\Role2\Reward;
+namespace App\Http\Controllers\SDM\Role1\Reward;
 
 use App\Http\Controllers\Controller;
 use App\Models\FinalResultRewardTeladan;
@@ -16,10 +16,10 @@ class RewardRepresentativeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getRewardRepresentativeKepalaBagianPenghargaanDisiplindanTataUsaha()
+    public function getRewardRepresentativeKepalaBiroSDM()
     {
         try {
-            return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.reward.rewardRepresentative_index');
+            return view('layouts.sdm.content.kepalaBiroSDM.reward.rewardRepresentative_index');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -30,7 +30,7 @@ class RewardRepresentativeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getRewardRepresentativeListKepalaBagianPenghargaanDisiplindanTataUsaha()
+    public function getRewardRepresentativeListKepalaBiroSDM()
     {
         try {
             $data   =   FinalResultRewardTeladan::where([

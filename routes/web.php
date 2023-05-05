@@ -167,6 +167,11 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Read
         Route::GET('/kepala-biro-SDM/reward/inovation', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationKepalaBiroSDM'])->name('getRewardInovation.KepalaBiroSDM.SDM');
         Route::GET('/kepala-biro-SDM/reward/inovation/list', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBiroSDM'])->name('getRewardInovationList.KepalaBiroSDM.SDM');
+
+        // Final Teladan Reward
+        // Read
+        Route::GET('/kepala-biro-SDM/reward/representative', [App\Http\Controllers\SDM\Role1\Reward\RewardRepresentativeController::class, 'getRewardRepresentativeKepalaBiroSDM'])->name('getRewardRepresentative.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/reward/representative/list', [App\Http\Controllers\SDM\Role1\Reward\RewardRepresentativeController::class, 'getRewardRepresentativeListKepalaBiroSDM'])->name('getRewardRepresentativeList.KepalaBiroSDM.SDM');
     });
 
     // Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha

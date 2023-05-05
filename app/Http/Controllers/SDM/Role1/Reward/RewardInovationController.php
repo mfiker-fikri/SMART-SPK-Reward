@@ -19,7 +19,7 @@ class RewardInovationController extends Controller
     public function getRewardInovationKepalaBiroSDM()
     {
         try {
-            return view('layouts.sdm.content.kepalaBiroSDM.reward_inovation.rewardInovation_index');
+            return view('layouts.sdm.content.kepalaBiroSDM.reward.rewardInovation_index');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -35,8 +35,8 @@ class RewardInovationController extends Controller
         try {
             $data   =   FinalResultRewardInovation::where([
                                 //
-                                ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
-                                ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                ['signature_head_of_the_human_resources_bureau', '!=', null],
+                                ['verify_head_of_the_human_resources_bureau', '!=', null],
                                 //
                                 ['score_final_result', '>', 0.75],
                             ])
