@@ -24,6 +24,32 @@
                     <li class="breadcrumb-item fw-bold active">Profile</li>
                 <!--/ Profile -->
 
+                <!-- Tanda Tangan -->
+                @elseif ( request()->is('sdm/kepala-biro-SDM/signature/inovation') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
+                @elseif ( request()->is('sdm/kepala-biro-SDM/signature/representative') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
+                <!--/ Tanda Tangan -->
+
+                <!-- Hasil Rekap -->
+                @elseif ( request()->is('sdm/kepala-biro-SDM/reward/inovation') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Inovasi</li>
+                @elseif ( request()->is('sdm/kepala-biro-SDM/reward/representative') )
+                    <li class="breadcrumb-item fw-light">
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Teladan</li>
+                <!--/ Hasil Rekap -->
+
                 @endif
 
             @elseif (Auth::guard('human_resources')->user()->role == 2)

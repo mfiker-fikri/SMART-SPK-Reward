@@ -21,7 +21,15 @@ class SignatureInovationController extends Controller
     public function getSignatureInovationKepalaBiroSDM()
     {
         try {
-            return view('layouts.sdm.content.kepalaBiroSDM.inovation_signature.inovationSignature_index');
+            $timer                      =   CountdownTimerFormInovation::first();
+
+            if ($timer != null) {
+                $timer                  =   CountdownTimerFormInovation::first();
+                return view('layouts.sdm.content.kepalaBiroSDM.signature.inovationSignature_index', compact('timer'));
+            } else {
+                $timer                  =   CountdownTimerFormInovation::first();
+                return view('layouts.sdm.content.kepalaBiroSDM.signature.inovationSignature_index', compact('timer'));
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -38,12 +46,12 @@ class SignatureInovationController extends Controller
             //
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisment);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisment);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisement);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
