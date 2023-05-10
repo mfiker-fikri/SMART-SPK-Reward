@@ -569,6 +569,8 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Read
     Route::GET('result-reward-representative', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativeRead'])->name('getResultRewardRepresentative.Read.Pegawai');
     Route::GET('result-reward-representative/data', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativeReadData'])->name('getResultRewardRepresentativeData.Read.Pegawai');
+    // Print
+    Route::GET('result-reward-representative/data/print/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativePrintIdData'])->name('getResultRewardRepresentativeData.PrintId.Pegawai');
 
 
 

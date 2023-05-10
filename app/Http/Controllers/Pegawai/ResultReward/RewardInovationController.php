@@ -59,12 +59,12 @@ class RewardInovationController extends Controller
             // Timer
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisment);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisment);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisement);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -173,7 +173,7 @@ class RewardInovationController extends Controller
     {
         try {
 
-            $id     =   FinalResultRewardInovation::find($id)
+            $id     =   FinalResultRewardInovation::where('final_result_reward_inovation.id', '=', $id)
                         ->leftJoin('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
                         ->select(
                             'final_result_reward_inovation.id',
@@ -219,7 +219,7 @@ class RewardInovationController extends Controller
 
             // ddd($data);
 
-            $pdf = PDF::loadView('myPDF', $id)->setPaper('f4', 'landscape')->setWarnings(false);
+            $pdf = PDF::loadView('layouts.pegawai.content.pdf.inovation.inovationPDF', $id)->setPaper('f4', 'landscape')->setWarnings(false);
             // ->save('myfile.pdf');
 
             // ddd($pdf);
