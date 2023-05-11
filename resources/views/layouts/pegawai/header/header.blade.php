@@ -76,6 +76,13 @@
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Inovasi</li>
+            <!-- Manage Result Reward Inovation -->
+            @elseif ( request()->is('result-reward-representative') )
+            <!-- Read -->
+            <li class="breadcrumb-item fw-light">
+                <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Teladan</li>
             @endif
 
         </ol>

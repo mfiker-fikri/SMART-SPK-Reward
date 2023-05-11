@@ -196,25 +196,6 @@
 
     </div>
 
-
-    <div class="row mx-1">
-
-        <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-            <div class="card">
-                <div class="row row-bordered g-0">
-                    <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Total Revenue</h5>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="myChart" width="400" height="400"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Total Revenue -->
-    </div>
-
 </div>
 
 @stop

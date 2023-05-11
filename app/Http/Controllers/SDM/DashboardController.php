@@ -58,7 +58,12 @@ class DashboardController extends Controller
     {
         try {
             // ddd('1');
-            return view('layouts.sdm.content.dashboard.dashboard_1');
+            //
+            $timerInovasi                  =   CountdownTimerFormInovation::first();
+            //
+            $timerTeladan                  =   CountdownTimerFormTeladan::first();
+            //
+            return view('layouts.sdm.content.dashboard.dashboard_1', compact('timerInovasi', 'timerTeladan'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -76,7 +81,12 @@ class DashboardController extends Controller
     {
         try {
             // ddd('2');
-            return view('layouts.sdm.content.dashboard.dashboard_2');
+            //
+            $timerInovasi                  =   CountdownTimerFormInovation::first();
+            //
+            $timerTeladan                  =   CountdownTimerFormTeladan::first();
+            //
+            return view('layouts.sdm.content.dashboard.dashboard_2', compact('timerInovasi', 'timerTeladan'));
         } catch (\Throwable $th) {
             throw $th;
         }

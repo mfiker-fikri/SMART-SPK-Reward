@@ -1403,7 +1403,7 @@
                     if(event.offset.totalDays == 1 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 2 + 'Hari',
+                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 2 + 'Hari',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1435,7 +1435,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Teladan Ditutup Besok',
+                            title: 'Penilaian Teladan Dibuka Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1467,7 +1467,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
+                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1499,7 +1499,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
+                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1532,7 +1532,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Penilaian Teladan Sudah Ditutup',
+                        title: 'Penilaian Teladan Sudah Dibuka',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
