@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\HWU;
 
 use App\Http\Controllers\Controller;
+use App\Models\CountdownTimerFormInovation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,9 +38,9 @@ class DashboardController extends Controller
     public function dashboard()
     {
         try {
-
+            $timerInovasi                  =   CountdownTimerFormInovation::first();
             // dd($admin);
-            return view('layouts.hwu.content.dashboard.dashboard');
+            return view('layouts.hwu.content.dashboard.dashboard', compact('timerInovasi'));
         } catch (\Exception $exception) {
             return $exception;
         }

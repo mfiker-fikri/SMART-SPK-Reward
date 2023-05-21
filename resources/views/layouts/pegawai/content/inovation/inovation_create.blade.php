@@ -370,7 +370,7 @@
             </div>
             @endif
 
-            <div class="card my-4">
+            <div class="card my-4 mx-4">
                 <!-- Create Form Inovation Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">Tambah Form Pendaftaran Penghargaan Inovasi</h5>

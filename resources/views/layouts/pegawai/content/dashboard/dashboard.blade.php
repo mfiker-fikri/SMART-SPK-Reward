@@ -988,7 +988,7 @@
             searching: false,
             ajax: "{{ url('dashboard/form-inovation/list/data') }}",
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {data: 'status', name: 'status', orderable: false, searchable: false},
             ]
         });
@@ -998,10 +998,10 @@
     </script>
     <!--/ Datatables Form Inovation -->
 
-    <!-- Datatables Form Teladan -->
+    <!-- Datatables Reward Teladan -->
     <script type="text/javascript">
     $(document).ready(function () {
-        var table = $('#data-table-representative').DataTable({
+        var table = $('#data-table-reward-inovation').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -1010,9 +1010,9 @@
             },
             paging: false,
             searching: false,
-            ajax: "{{ url('dashboard/form-representative/list/data') }}",
+            ajax: "{{ url('dashboard/reward-inovation/list/data') }}",
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {data: 'status', name: 'status', orderable: false, searchable: false},
             ]
         });
@@ -1020,7 +1020,31 @@
         new $.fn.dataTable.FixedHeader(table);
     });
     </script>
-    <!--/ Datatables Form Teladan -->
+    <!--/ Datatables Reward Teladan -->
+
+    <!-- Datatables Reward Teladan -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#data-table-reward-representative').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                paging: false,
+                searching: false,
+                ajax: "{{ url('dashboard/reward-representative/list/data') }}",
+                columns: [
+                    // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'status', name: 'status', orderable: false, searchable: false},
+                ]
+            });
+
+            new $.fn.dataTable.FixedHeader(table);
+        });
+        </script>
+        <!--/ Datatables Reward Teladan -->
 
     <!-- Timer Countdown -->
     <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
@@ -1217,7 +1241,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup Besok',
+                            title: 'Form Inovasi Inovasi Ditutup Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1249,7 +1273,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                            title: 'Form Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1281,7 +1305,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                            title: 'Form Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1314,7 +1338,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Penilaian Inovasi Sudah Ditutup',
+                        title: 'Form Inovasi Inovasi Sudah Ditutup',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -1756,9 +1780,9 @@
                                             <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_form_inovation)->toDateTimeString() }}">
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <!-- Table Form Inovation -->
-                                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                        {{-- <div class="swiper-slide"> --}}
+                                            {{-- <!-- Table Form Inovation --> --}}
+                                            {{-- <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">No</th>
@@ -1767,9 +1791,9 @@
                                                 </thead>
                                                 <tbody>
                                                 </tbody>
-                                            </table>
-                                            <!--/ Table Form Inovation -->
-                                        </div>
+                                            </table> --}}
+                                            {{-- <!--/ Table Form Inovation --> --}}
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
 
@@ -1799,7 +1823,27 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12">
+                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardRepresentative">
+                        <div class="d-flex justify-content-center align-self-center cardFormRepresentative">
+                            <!-- Table Form Inovation -->
+                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
+                                <thead>
+                                    <tr>
+                                        {{-- <th scope="col">No</th> --}}
+                                        <th scope="col">Status Process</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--/ Table Form Inovation -->
+                        </div>
+                    </div>
+                </div>
+
+                {{-- <div class="col-12">
                     <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardRepresentative">
                         <div class="d-flex justify-content-center align-self-center cardFormRepresentative">
                             @if ($timerTeladan == null)
@@ -1866,8 +1910,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- If we need pagination -->
-                                    {{-- <div class="swiper-pagination"></div> --}}
                                 </div>
 
                                 @elseif (
@@ -1932,7 +1974,7 @@
                             @endif
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
 
@@ -1947,19 +1989,54 @@
     <div class="row mx-1">
 
         <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="col-md-6 order-0">
+        {{-- <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4"> --}}
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Total Revenue</h5>
+                        <h5 class="m-0 me-2 pb-3">Hasil Penerimaan Penghargaan Inovasi</h5>
                     </div>
                     <div class="card-body">
-                        <canvas id="myChart" width="400" height="400"></canvas>
+                        {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
+                        <table class="table table-striped table-bordered" cellspacing="0" id="data-table-reward-inovation">
+                            <thead>
+                                <tr>
+                                    {{-- <th scope="col">No</th> --}}
+                                    <th scope="col">Hasil Akhir Penilaian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
         <!--/ Total Revenue -->
+
+        <div class="col-md-6 order-1">
+            {{-- <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4"> --}}
+                <div class="card">
+                    <div class="row row-bordered g-0">
+                        <div class="card-header">
+                            <h5 class="m-0 me-2 pb-3">Hasil Penerimaan Penghargaan Teladan</h5>
+                        </div>
+                        <div class="card-body">
+                            {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
+                            <table class="table table-striped table-bordered" cellspacing="0" id="data-table-reward-representative">
+                                <thead>
+                                    <tr>
+                                        {{-- <th scope="col">No</th> --}}
+                                        <th scope="col">Hasil Akhir Penilaian</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
 </div>

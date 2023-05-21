@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Pegawai;
 use App\Http\Controllers\Controller;
 use App\Models\CountdownTimerFormInovation;
 use App\Models\CountdownTimerFormTeladan;
+use App\Models\FinalResultRewardInovation;
+use App\Models\FinalResultRewardTeladan;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -240,4 +242,126 @@ class DashboardController extends Controller
             throw $th;
         }
     }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * waiting
+     */
+    public function getDashboardRewardInovationData()
+    {
+        try {
+            // Get id Employee
+            $id                     =   Auth::guard('employees')->user()->id;
+
+            //
+
+            $data = FinalResultRewardInovation::
+                leftJoin('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
+                ->select(
+                    'final_result_reward_inovation.id',
+                    'final_result_reward_inovation.score_final_result',
+                    'final_result_reward_inovation.score_final_result_description',
+                    'final_result_reward_inovation.created_at',
+                    'final_result_reward_inovation.updated_at',
+                    'final_result_reward_inovation.reward_inovation_id',
+                    //
+                    // 'reward_teladan.upload_file_short_description',
+                    // 'reward_teladan.upload_file_image_support',
+                    // 'reward_teladan.upload_file_video_support',
+                )
+                ->where([
+                    // ['created_at', '>=', $dateOpenTime],
+                    // ['created_at', '<=', $dateExpiredTime],
+                    // ['updated_at', '>=', $dateOpenTime],
+                    // ['updated_at', '<=', $dateExpiredTime],
+                    ['employee_id', '=', $id],
+                ])
+                ->latest()
+                ->get();
+
+
+            return DataTables::of($data)
+                // ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
+                        $status = '<span>Dapat Penghargaan (Baik)</span>';
+                    }
+                    if($row->score_final_result > 0.85 && $row->score_final_result <= 1.00) {
+                        $status = '<span>Dapat Penghargaan (Terbaik)</span>';
+                    }
+                    return $status;
+                })
+                ->rawColumns(['status'])
+                ->make(true);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * waiting
+     */
+    public function getDashboardRewardRepresentativeData()
+    {
+        try {
+            // Get id Employee
+            $id                     =   Auth::guard('employees')->user()->id;
+
+            //
+
+            $data = FinalResultRewardTeladan::
+                leftJoin('reward_teladan', 'final_result_reward_teladan.reward_teladan_id', '=', 'reward_teladan.id')
+                ->select(
+                    'final_result_reward_teladan.id',
+                    'final_result_reward_teladan.score_final_result',
+                    'final_result_reward_teladan.score_final_result_description',
+                    'final_result_reward_teladan.created_at',
+                    'final_result_reward_teladan.updated_at',
+                    'final_result_reward_teladan.reward_teladan_id',
+                    //
+                    // 'reward_teladan.upload_file_short_description',
+                    // 'reward_teladan.upload_file_image_support',
+                    // 'reward_teladan.upload_file_video_support',
+                )
+                ->where([
+                    // ['created_at', '>=', $dateOpenTime],
+                    // ['created_at', '<=', $dateExpiredTime],
+                    // ['updated_at', '>=', $dateOpenTime],
+                    // ['updated_at', '<=', $dateExpiredTime],
+                    ['reward_teladan.employee_id', '=', $id],
+                ])
+                ->latest()
+                ->get();
+
+
+            return DataTables::of($data)
+                // ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
+                        $status = '<span>Dapat Penghargaan (Baik)</span>';
+                    }
+                    if($row->score_final_result > 0.85 && $row->score_final_result <= 1.00) {
+                        $status = '<span>Dapat Penghargaan (Terbaik)</span>';
+                    }
+                    return $status;
+                })
+                ->rawColumns(['status'])
+                ->make(true);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
 }

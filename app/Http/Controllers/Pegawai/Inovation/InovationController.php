@@ -586,7 +586,7 @@ class InovationController extends Controller
         ) {
             // ddd('sukses');
             alert()->error('Gagal Upload Form Inovasi!', 'Lengkapi Data Profil Terlebih Dahulu!')->autoclose(25000);
-            return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi. Lengkapi Data Profil Terlebih Dahulu di "My Profile"!');
+            return redirect()->back()->with('message-failed-form-inovation', 'Gagal Update Form Inovasi. Lengkapi Data Profil Terlebih Dahulu di "My Profile"!');
         }
 
         // Get Timer
