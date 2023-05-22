@@ -1,5 +1,17 @@
 @extends('template.teamAssessment.template')
 
+@section('css_header')
+    <style>
+        .select2-container--bootstrap-5 .select2-selection {
+            max-width: 100px !important;
+            min-width: 100% !important;
+        }
+
+    </style>
+
+
+@endsection
+
 @section('js_footer')
     <!-- Select2 Kebaruan -->
     <script type="text/javascript">
@@ -77,7 +89,7 @@
 
                     <!-- Tabs Form Inovation Appraisment From Employees -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'true' : 'false' }}">Form Inovation Pegawai - {{ $reward->employees->full_name }}</button>
+                        <button class="nav-link {{ (request()->is('penilai/appraisement/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'true' : 'false' }}">Form Inovation Pegawai - {{ $reward->employees->full_name }}</button>
                     </li>
                     <!--/ Tabs Form Inovation Appraisment From Employees -->
 
@@ -95,7 +107,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
-                <div class="tab-pane fade show {{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
+                <div class="tab-pane fade show {{ (request()->is('penilai/appraisement/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
 
                     <div class="card">
 
@@ -401,7 +413,7 @@
                                         <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
                                     </div> --}}
                                     <div class="mx-1 mx-1 mx-1">
-                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('penilai/appraisment/inovation') }}" role="button">
+                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('penilai/appraisement/inovation') }}" role="button">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
                                     </div>

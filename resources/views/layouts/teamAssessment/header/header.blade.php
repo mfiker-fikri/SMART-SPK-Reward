@@ -27,6 +27,7 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
+                <li class="breadcrumb-item fw-light">Penilaian</li>
                 <li class="breadcrumb-item fw-bold active">Kategori</li>
 
             @elseif ( request()->is('penilai/criterias/list') )
@@ -50,13 +51,15 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item fw-light">Penilaian</li>
                 <li class="breadcrumb-item fw-bold active">Kelola Data Penilaian Penghargaan Inovasi</li>
 
             @elseif ( request()->is('penilai/appraisement/inovation/valuation*'))
             <!-- Penilaian Penghargaan Inovasi -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('/penilai/appraisement/inovation') }}" style="text-decoration: none !important;">Kelola Data Penilaian Penghargaan Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Penilaian Penghargaan Inovasi</li>
 

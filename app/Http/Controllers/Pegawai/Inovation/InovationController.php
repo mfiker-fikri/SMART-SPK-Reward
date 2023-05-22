@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pegawai\Inovation;
 
 use App\Http\Controllers\Controller;
 use App\Models\CountdownTimerFormInovation;
+use App\Models\HeadWorkUnit;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -391,6 +392,11 @@ class InovationController extends Controller
             ])
             ->latest()
             ->get();
+            // ddd($data);
+        // $id    =   Auth::guard('head_work_units')->user()->id;
+        // $cache =   Cache::has('head_work_units-is-online-' . $id);
+        // ddd($id);
+
 
         return Datatables::of($data)
             ->addIndexColumn()
@@ -406,8 +412,10 @@ class InovationController extends Controller
                 $actionBtn = '';
                 // 2=menunggu
                 if($row->status_process == 2) {
-                    if (Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id)) {
-                        $actionBtn = '<span class="text-success">Online</span>';
+                    if (Auth::guard('head_work_units')->check()) {
+                        if (Cache::has('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id)) {
+                            $actionBtn = '<span class="text-success">Online</span>';
+                        }
                     } else {
                         $actionBtn =
                         '
@@ -419,6 +427,16 @@ class InovationController extends Controller
                             </a>
                         ';
                     }
+
+                    // $actionBtn =
+                    // '
+                    //     <a href="' . route('pegawai.getInovationIdUpdate.Update.Pegawai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                    //         <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
+                    //     </a>
+                    //     <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteFormInovationId" data-id="' . $row->id . '">
+                    //         <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                    //     </a>
+                    // ';
                 }
                 // 3=diproses
                 elseif ($row->status_process == 3) {

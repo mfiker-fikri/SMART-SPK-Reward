@@ -993,11 +993,11 @@
 
                             @if (
                                 (
-                                    ($timer->status_open_appraisment == 0 && $timer->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                    ($timer->status_open_appraisement == 0 && $timer->date_time_open_appraisement >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                                 ||
                                 (
-                                    ($timer->status_open_appraisment == 0 && $timer->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                    ($timer->status_open_appraisement == 0 && $timer->date_time_open_appraisement >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                             )
                             <div class="container-fluid">
@@ -1010,15 +1010,15 @@
 
                             @elseif (
                                 (
-                                            ($timer->status_open_appraisment == 1
-                                        && ($timer->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString() ))
-                                    &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                            ($timer->status_open_appraisement == 1
+                                        && ($timer->date_time_open_appraisement > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisement == \Carbon\Carbon::now()->toDateTimeString() ))
+                                    &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                                 ||
                                 (
-                                            ($timer->status_open_appraisment == 1
-                                        && ($timer->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString()) )
-                                    &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                            ($timer->status_open_appraisement == 1
+                                        && ($timer->date_time_open_appraisement > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisement == \Carbon\Carbon::now()->toDateTimeString()) )
+                                    &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                             )
                             <div class="container-fluid ">
@@ -1027,20 +1027,20 @@
                                         <h1>Pembukaan Penilaian Inovasi</h1>
                                     </div>
                                     <div class="dateCountDown">
-                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('dddd') }}</b></span>
-                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('D') }}</b></span>
-                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('MMMM') }}</b></span>
-                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('Y') }}</b></span>
+                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('dddd') }}</b></span>
+                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('D') }}</b></span>
+                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('MMMM') }}</b></span>
+                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('Y') }}</b></span>
                                     </div>
                                     <div class="timeCountDown">
-                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('hh') }}</b></span>
-                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('mm') }}</b></span>
-                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('a') }}</b></span>
+                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('hh') }}</b></span>
+                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('mm') }}</b></span>
+                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('a') }}</b></span>
                                     </div>
                                     <div class="titleCountDown">
                                         <h1>Coming Soon</h1>
                                     </div>
-                                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_appraisment)->toDateTimeString() }}">
+                                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_appraisement)->toDateTimeString() }}">
                                     </div>
                                 </div>
                             </div>
@@ -1048,23 +1048,23 @@
                             @elseif (
                                 (
                                         (
-                                                ($timer->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment) )
-                                            &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                                ($timer->status_open_appraisement == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement) )
+                                            &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                         )
                                     ||  (
-                                                ($timer->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                 )
                                 ||
                                 (
                                         (
-                                                ($timer->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                     || (
-                                                ($timer->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                 )
                             )
@@ -1075,8 +1075,8 @@
                                 <div class="py-3 d-flex flex-column justify-content-start">
                                     @if (
                                         (
-                                            ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment) )
-                                        ||  ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment) )
+                                            ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
+                                        ||  ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
                                     )
                                         <div class="mx-1 mx-1 mx-1">
                                             <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Penilaian Inovasi</div>
@@ -1086,7 +1086,7 @@
                                             <h3 class="text-center text-dark">Penutupan Penilaian Inovasi</h3>
                                         </div>
                                         <div class="mx-1 mx-1 mx-1">
-                                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisment)->toDateTimeString()  }}"></div>
+                                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisement)->toDateTimeString()  }}"></div>
                                         </div>
                                     @endif
 
@@ -1109,13 +1109,13 @@
 
                             @elseif (
                                 (
-                                        ( ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
-                                    ||  ( ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
+                                        ( ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
+                                    ||  ( ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
                                 )
                                 ||
                                 (
-                                        ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
-                                    || ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
+                                        ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
+                                    || ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
                                 )
                             )
 
@@ -1160,11 +1160,11 @@
 
                             @if (
                                 (
-                                    ($timer->status_open_appraisment == 0 && $timer->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                    ($timer->status_open_appraisement == 0 && $timer->date_time_open_appraisement >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                                 ||
                                 (
-                                    ($timer->status_open_appraisment == 0 && $timer->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                    ($timer->status_open_appraisement == 0 && $timer->date_time_open_appraisement >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                             )
                             <div class="container-fluid">
@@ -1177,15 +1177,15 @@
 
                             @elseif (
                                 (
-                                            ($timer->status_open_appraisment == 1
-                                        && ($timer->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString() ))
-                                    &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                            ($timer->status_open_appraisement == 1
+                                        && ($timer->date_time_open_appraisement > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisement == \Carbon\Carbon::now()->toDateTimeString() ))
+                                    &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                                 ||
                                 (
-                                            ($timer->status_open_appraisment == 1
-                                        && ($timer->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString()) )
-                                    &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                            ($timer->status_open_appraisement == 1
+                                        && ($timer->date_time_open_appraisement > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisement == \Carbon\Carbon::now()->toDateTimeString()) )
+                                    &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                             )
                             <div class="container-fluid ">
@@ -1194,20 +1194,20 @@
                                         <h1>Pembukaan Penilaian Inovasi</h1>
                                     </div>
                                     <div class="dateCountDown">
-                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('dddd') }}</b></span>
-                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('D') }}</b></span>
-                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('MMMM') }}</b></span>
-                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('Y') }}</b></span>
+                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('dddd') }}</b></span>
+                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('D') }}</b></span>
+                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('MMMM') }}</b></span>
+                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('Y') }}</b></span>
                                     </div>
                                     <div class="timeCountDown">
-                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('hh') }}</b></span>
-                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('mm') }}</b></span>
-                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('a') }}</b></span>
+                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('hh') }}</b></span>
+                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('mm') }}</b></span>
+                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('a') }}</b></span>
                                     </div>
                                     <div class="titleCountDown">
                                         <h1>Coming Soon</h1>
                                     </div>
-                                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_appraisment)->toDateTimeString() }}">
+                                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_appraisement)->toDateTimeString() }}">
                                     </div>
                                 </div>
                             </div>
@@ -1215,23 +1215,23 @@
                             @elseif (
                                 (
                                         (
-                                                ($timer->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment) )
-                                            &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                                ($timer->status_open_appraisement == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement) )
+                                            &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                         )
                                     ||  (
-                                                ($timer->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                 )
                                 ||
                                 (
                                         (
-                                                ($timer->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                     || (
-                                                ($timer->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                 )
                             )
@@ -1242,8 +1242,8 @@
                                 <div class="py-3 d-flex flex-column justify-content-start">
                                     @if (
                                         (
-                                            ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment) )
-                                        ||  ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment) )
+                                            ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
+                                        ||  ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
                                     )
                                         <div class="mx-1 mx-1 mx-1">
                                             <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Penilaian Inovasi</div>
@@ -1253,7 +1253,7 @@
                                             <h3 class="text-center text-dark">Penutupan Penilaian Inovasi</h3>
                                         </div>
                                         <div class="mx-1 mx-1 mx-1">
-                                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisment)->toDateTimeString()  }}"></div>
+                                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisement)->toDateTimeString()  }}"></div>
                                         </div>
                                     @endif
 
@@ -1276,13 +1276,13 @@
 
                             @elseif (
                                 (
-                                        ( ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
-                                    ||  ( ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
+                                        ( ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
+                                    ||  ( ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
                                 )
                                 ||
                                 (
-                                        ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
-                                    || ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
+                                        ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
+                                    || ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
                                 )
                             )
 
@@ -1328,11 +1328,11 @@
 
                             @if (
                                 (
-                                    ($timer->status_open_appraisment == 0 && $timer->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                    ($timer->status_open_appraisement == 0 && $timer->date_time_open_appraisement >= \Carbon\Carbon::now()->toDateTimeString()  ) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                                 ||
                                 (
-                                    ($timer->status_open_appraisment == 0 && $timer->date_time_open_appraisment >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                    ($timer->status_open_appraisement == 0 && $timer->date_time_open_appraisement >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                             )
                             <div class="container-fluid">
@@ -1345,15 +1345,15 @@
 
                             @elseif (
                                 (
-                                            ($timer->status_open_appraisment == 1
-                                        && ($timer->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString() ))
-                                    &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                            ($timer->status_open_appraisement == 1
+                                        && ($timer->date_time_open_appraisement > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisement == \Carbon\Carbon::now()->toDateTimeString() ))
+                                    &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                                 ||
                                 (
-                                            ($timer->status_open_appraisment == 1
-                                        && ($timer->date_time_open_appraisment > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisment == \Carbon\Carbon::now()->toDateTimeString()) )
-                                    &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                            ($timer->status_open_appraisement == 1
+                                        && ($timer->date_time_open_appraisement > \Carbon\Carbon::now()->toDateTimeString()  || $timer->date_time_open_appraisement == \Carbon\Carbon::now()->toDateTimeString()) )
+                                    &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                 )
                             )
                             <div class="container-fluid ">
@@ -1362,20 +1362,20 @@
                                         <h1>Pembukaan Penilaian Inovasi</h1>
                                     </div>
                                     <div class="dateCountDown">
-                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('dddd') }}</b></span>
-                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('D') }}</b></span>
-                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('MMMM') }}</b></span>
-                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('Y') }}</b></span>
+                                        <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('dddd') }}</b></span>
+                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('D') }}</b></span>
+                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('MMMM') }}</b></span>
+                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('Y') }}</b></span>
                                     </div>
                                     <div class="timeCountDown">
-                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('hh') }}</b></span>
-                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('mm') }}</b></span>
-                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisment)->isoFormat('a') }}</b></span>
+                                        <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('hh') }}</b></span>
+                                        <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('mm') }}</b></span>
+                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_open_appraisement)->isoFormat('a') }}</b></span>
                                     </div>
                                     <div class="titleCountDown">
                                         <h1>Coming Soon</h1>
                                     </div>
-                                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_appraisment)->toDateTimeString() }}">
+                                    <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_appraisement)->toDateTimeString() }}">
                                     </div>
                                 </div>
                             </div>
@@ -1383,23 +1383,23 @@
                             @elseif (
                                 (
                                         (
-                                                ($timer->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment) )
-                                            &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment )
+                                                ($timer->status_open_appraisement == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement) )
+                                            &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement )
                                         )
                                     ||  (
-                                                ($timer->status_open_appraisment == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                 )
                                 ||
                                 (
                                         (
-                                                ($timer->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                     || (
-                                                ($timer->status_open_appraisment == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisment || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisment))
-                                            &&  ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment)
+                                                ($timer->status_open_appraisement == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_appraisement || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_appraisement))
+                                            &&  ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement)
                                         )
                                 )
                             )
@@ -1410,8 +1410,8 @@
                                 <div class="py-3 d-flex flex-column justify-content-start">
                                     @if (
                                         (
-                                            ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment) )
-                                        ||  ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisment) )
+                                            ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
+                                        ||  ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_appraisement) )
                                     )
                                         <div class="mx-1 mx-1 mx-1">
                                             <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Penilaian Inovasi</div>
@@ -1421,7 +1421,7 @@
                                             <h3 class="text-center text-dark">Penutupan Penilaian Inovasi</h3>
                                         </div>
                                         <div class="mx-1 mx-1 mx-1">
-                                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisment)->toDateTimeString()  }}"></div>
+                                            <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_appraisement)->toDateTimeString()  }}"></div>
                                         </div>
                                     @endif
 
@@ -1445,13 +1445,13 @@
 
                             @elseif (
                                 (
-                                        ( ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
-                                    ||  ( ($timer->status_open_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
+                                        ( ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
+                                    ||  ( ($timer->status_open_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
                                 )
                                 ||
                                 (
-                                        ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
-                                    || ( ($timer->status_open_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisment) && ($timer->status_expired_appraisment == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisment) )
+                                        ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
+                                    || ( ($timer->status_open_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_appraisement) && ($timer->status_expired_appraisement == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_appraisement) )
                                 )
                             )
 

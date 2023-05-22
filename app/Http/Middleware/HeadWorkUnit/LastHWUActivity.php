@@ -22,7 +22,7 @@ class LastHWUActivity
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('head_work_units')->check()) {
-            $expiresAt = CarbonCarbon::now()->addMinutes(1);
+            $expiresAt = Carbon::now()->addMinutes(1);
             Cache::put('head_work_units-is-online-' . Auth::guard('head_work_units')->user()->id, true, $expiresAt);
             //
             $employee = HeadWorkUnit::find(auth()->guard('head_work_units')->id());

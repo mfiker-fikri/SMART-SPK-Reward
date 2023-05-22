@@ -616,7 +616,7 @@ class ManageAppraismentInovationController extends Controller
                     $reward->save();
 
                     alert()->success('Gagal Menilai Data Form Inovasi')->autoclose(25000);
-                    return redirect('penilai/appraisment/inovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
+                    return redirect('penilai/appraisement/inovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
                 }
 
                 alert()->error('Gagal Menilai Data Form Inovasi')->autoclose(25000);
