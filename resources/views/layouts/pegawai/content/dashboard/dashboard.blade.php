@@ -152,12 +152,12 @@
         @media (min-width: 992px) {
             .cardInovation {
                 max-width: 740px;
-                min-height: 26.5vh;
+                min-height: 350px;
                 max-height: 25vh;
             }
             .cardRepresentative {
                 max-width: 740px;
-                min-height: 26.5vh;
+                min-height: 350px;
                 max-height: 25vh;
             }
         }
@@ -986,7 +986,7 @@
             },
             paging: false,
             searching: false,
-            ajax: "{{ url('dashboard/form-inovation/list/data') }}",
+            ajax: "{{ url('dashboard/form-innovation/list/data') }}",
             columns: [
                 // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {data: 'status', name: 'status', orderable: false, searchable: false},
@@ -994,6 +994,12 @@
         });
 
         new $.fn.dataTable.FixedHeader(table);
+
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Form Inovation -->
@@ -1010,7 +1016,7 @@
             },
             paging: false,
             searching: false,
-            ajax: "{{ url('dashboard/reward-inovation/list/data') }}",
+            ajax: "{{ url('dashboard/reward-innovation/list/data') }}",
             columns: [
                 // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {data: 'status', name: 'status', orderable: false, searchable: false},
@@ -1018,6 +1024,12 @@
         });
 
         new $.fn.dataTable.FixedHeader(table);
+
+        if (table) {
+            setInterval( function () {
+                table.ajax.reload(null, false);
+            }, 10000 );
+        }
     });
     </script>
     <!--/ Datatables Reward Teladan -->
@@ -1042,6 +1054,12 @@
             });
 
             new $.fn.dataTable.FixedHeader(table);
+
+            if (table) {
+                setInterval( function () {
+                    table.ajax.reload(null, false);
+                }, 10000 );
+            }
         });
         </script>
         <!--/ Datatables Reward Teladan -->
@@ -1653,339 +1671,194 @@
 
         <div class="col-md-6 col-md-5 order-1">
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardInovation">
-                        <div class="d-flex justify-content-center align-self-center cardFormInovation">
-                            @if ($timerInovasi == null)
-                            <div class="d-flex justify-content-center align-self-center">
-                                <span class="text-center">
-                                    <h3>Form Inovasi Ditutup</h3>
-                                </span>
+            <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardInovation">
+                <div class="d-flex justify-content-center align-self-center cardFormInovation">
+                    @if ($timerInovasi == null)
+                    <div class="d-flex justify-content-center align-self-center">
+                        <span class="text-center">
+                            <h3>Form Inovasi Ditutup</h3>
+                        </span>
+                    </div>
+                    @else
+                        @if (
+                            (
+                                ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                            )
+                            ||
+                            (
+                                ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                            )
+                        )
+                        <div class="container-fluid">
+                            <div class="titleCountDownNonActive">
+                                <h3>
+                                    <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Inovasi</span>
+                                </h3>
                             </div>
-                            @else
-                                @if (
-                                    (
-                                        ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
-                                    )
-                                    ||
-                                    (
-                                        ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
-                                    )
-                                )
-                                <div class="container-fluid">
-                                    <div class="titleCountDownNonActive">
-                                        <h3>
-                                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Inovasi</span>
-                                        </h3>
+                        </div>
+
+                        @elseif (
+                            (
+                                        ($timerInovasi->status_open == 1
+                                    && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString() ?? 'None'))
+                                &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                            )
+                            ||
+                            (
+                                        ($timerInovasi->status_open == 1
+                                    && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()) ?? 'None')
+                                &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
+                            )
+                        )
+                        <div class="container-fluid swiper1">
+                            <div class="openTimerCountDown swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="titleCountDown">
+                                        <h3>Pembukaan Form Inovasi</h3>
+                                    </div>
+                                    <div class="dateCountDown">
+                                        <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
+                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
+                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
+                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
+                                    </div>
+                                    <div class="timeCountDown">
+                                        <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
+                                        <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
+                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
                                     </div>
                                 </div>
+                                <div class="swiper-slide">
+                                    <div class="titleCountDown">
+                                        <h3>Coming Soon</h3>
+                                    </div>
+                                    <div class="wrap-countdown countdown-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_form_inovation)->toDateTimeString() }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- If we need pagination -->
+                            {{-- <div class="swiper-pagination"></div> --}}
 
-                                @elseif (
+                            <!-- If we need navigation buttons -->
+                            {{-- <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div> --}}
+
+                            <!-- If we need scrollbar -->
+                            {{-- <div class="swiper-scrollbar"></div> --}}
+                        </div>
+
+                        @elseif (
+                            (
                                     (
-                                                ($timerInovasi->status_open == 1
-                                            && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString() ?? 'None'))
-                                        &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
-                                    )
-                                    ||
-                                    (
-                                                ($timerInovasi->status_open == 1
-                                            && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()) ?? 'None')
+                                            ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation ?? 'None') )
                                         &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
                                     )
-                                )
-                                <div class="container-fluid swiper1">
-                                    <div class="openTimerCountDown swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="titleCountDown">
-                                                <h3>Pembukaan Form Inovasi</h3>
-                                            </div>
-                                            <div class="dateCountDown">
-                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
-                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
-                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
-                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
-                                            </div>
-                                            <div class="timeCountDown">
-                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
-                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
-                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="titleCountDown">
-                                                <h3>Coming Soon</h3>
-                                            </div>
-                                            <div class="wrap-countdown countdown-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_form_inovation)->toDateTimeString() }}">
-                                            </div>
-                                        </div>
+                                ||  (
+                                            ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                        &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    )
+                            )
+                            ||
+                            (
+                                    (
+                                            ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                        &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    )
+                                || (
+                                            ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                        &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    )
+                            )
+                        )
+
+                        <div class="container-fluid swiper1_1">
+                            <div class="openTimerCountDown swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="titleCountDown">
+                                        <h3>Penutupan Form Inovasi</h3>
                                     </div>
-                                    <!-- If we need pagination -->
-                                    {{-- <div class="swiper-pagination"></div> --}}
-
-                                    <!-- If we need navigation buttons -->
-                                    {{-- <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div> --}}
-
-                                    <!-- If we need scrollbar -->
-                                    {{-- <div class="swiper-scrollbar"></div> --}}
-                                </div>
-
-                                @elseif (
-                                    (
-                                            (
-                                                    ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation ?? 'None') )
-                                                &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation ?? 'None')
-                                            )
-                                        ||  (
-                                                    ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
-                                                &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
-                                            )
-                                    )
-                                    ||
-                                    (
-                                            (
-                                                    ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
-                                                &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
-                                            )
-                                        || (
-                                                    ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
-                                                &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
-                                            )
-                                    )
-                                )
-
-                                <div class="container-fluid swiper1_1">
-                                    <div class="openTimerCountDown swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="titleCountDown">
-                                                <h3>Penutupan Form Inovasi</h3>
-                                            </div>
-                                            <div class="dateCountDown">
-                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('dddd') }}</b></span>
-                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('D') }}</b></span>
-                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('MMMM') }}</b></span>
-                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('Y') }}</b></span>
-                                            </div>
-                                            <div class="timeCountDown">
-                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('hh') }}</b></span>
-                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('mm') }}</b></span>
-                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('a') }}</b></span>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="titleCountDown">
-                                                <h3>Closing Soon</h3>
-                                            </div>
-                                            <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_form_inovation)->toDateTimeString() }}">
-                                            </div>
-                                        </div>
-                                        {{-- <div class="swiper-slide"> --}}
-                                            {{-- <!-- Table Form Inovation --> --}}
-                                            {{-- <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Status Process</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                            </table> --}}
-                                            {{-- <!--/ Table Form Inovation --> --}}
-                                        {{-- </div> --}}
+                                    <div class="dateCountDown">
+                                        <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('dddd') }}</b></span>
+                                        <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('D') }}</b></span>
+                                        <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('MMMM') }}</b></span>
+                                        <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('Y') }}</b></span>
+                                    </div>
+                                    <div class="timeCountDown">
+                                        <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('hh') }}</b></span>
+                                        <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('mm') }}</b></span>
+                                        <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('a') }}</b></span>
                                     </div>
                                 </div>
-
-                                @elseif (
-                                    (
-                                            ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                        ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                    )
-                                    ||
-                                    (
-                                            ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                        || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                    )
-                                )
-
-                                <div class="container-fluid">
-                                    <div class="titleCountDownNonActive">
-                                        <h3>
-                                            <span>Form Inovasi Telah Ditutup</span>
-                                        </h3>
+                                <div class="swiper-slide">
+                                    <div class="titleCountDown">
+                                        <h3>Closing Soon</h3>
+                                    </div>
+                                    <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_form_inovation)->toDateTimeString() }}">
                                     </div>
                                 </div>
+                                {{-- <div class="swiper-slide">
 
-                                @endif
-
-                            @endif
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardRepresentative">
-                        <div class="d-flex justify-content-center align-self-center cardFormRepresentative">
-                            <!-- Table Form Inovation -->
-                            <table class="table table-striped table-bordered dt-responsive display responsive nowrap"  cellspacing="0" width="100%" id="data-table-inovation">
-                                <thead>
-                                    <tr>
-                                        {{-- <th scope="col">No</th> --}}
-                                        <th scope="col">Status Process</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            <!--/ Table Form Inovation -->
-                        </div>
-                    </div>
-                </div>
-
-                {{-- <div class="col-12">
-                    <div class="card mb-2 visible shadow-lg d-flex justify-content-center align-self-center cardRepresentative">
-                        <div class="d-flex justify-content-center align-self-center cardFormRepresentative">
-                            @if ($timerTeladan == null)
-
-                            <div class="d-flex justify-content-center align-self-center">
-                                <span class="text-center"><h3>Form Teladan Ditutup</h3></span>
+                                </div> --}}
                             </div>
-
-                            @else
-                                @if (
-                                    (
-                                        ($timerTeladan->status == 0 && $timerTeladan->date_time_open_form_teladan >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerTeladan->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                    )
-                                    ||
-                                    (
-                                        ($timerTeladan->status_open == 0 && $timerTeladan->date_time_open_form_teladan >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerTeladan->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                    )
-
-                                )
-                                <div class="container-fluid">
-                                    <div class="titleCountDownNonActive">
-                                        <h3>
-                                            <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Teladan</span>
-                                        </h3>
-                                    </div>
-                                </div>
-
-                                @elseif (
-                                    (
-                                                ($timerTeladan->status_open == 1
-                                            && ($timerTeladan->date_time_open_form_teladan > \Carbon\Carbon::now()->toDateTimeString() || $timerTeladan->date_time_open_form_teladan == \Carbon\Carbon::now()->toDateTimeString()))
-                                        &&  ($timerTeladan->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                    )
-                                    ||
-                                    (
-                                                ($timerTeladan->status_open == 1
-                                            && ($timerTeladan->date_time_open_form_teladan > \Carbon\Carbon::now()->toDateTimeString() || $timerTeladan->date_time_open_form_teladan == \Carbon\Carbon::now()->toDateTimeString()))
-                                        &&  ($timerTeladan->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                    )
-                                )
-                                <div class="container-fluid swiper1">
-                                    <div class="openTimerCountDown swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="titleCountDown">
-                                                <h3>Pembukaan Form Teladan</h3>
-                                            </div>
-                                            <div class="dateCountDown">
-                                                <span>Hari <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('dddd') }}</b></span>
-                                                <span>Tanggal <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('D') }}</b></span>
-                                                <span>Bulan <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('MMMM') }}</b></span>
-                                                <span>Tahun <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('Y') }}</b></span>
-                                            </div>
-                                            <div class="timeCountDown">
-                                                <span>Jam <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('hh') }}</b></span>
-                                                <span>Menit <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('mm') }}</b></span>
-                                                <span>Waktu <b>{{ \Carbon\Carbon::create($timerTeladan->date_time_open_form_teladan)->isoFormat('A') }}</b></span>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="titleCountDown">
-                                                <h3>Coming Soon</h3>
-                                            </div>
-                                            <div class="wrap-countdown countdown-representative" data-expire="{{ Carbon\Carbon::parse($timerTeladan->date_time_open_form_teladan)->toDateTimeString() }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                @elseif (
-                                    (
-                                            (
-                                                    ($timerTeladan->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan ?? 'None') )
-                                                &&  ($timerTeladan->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan ?? 'None')
-                                            )
-                                        ||  (
-                                                    ($timerTeladan->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan))
-                                                &&  ($timerTeladan->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                            )
-                                    )
-                                    ||
-                                    (
-                                            (
-                                                    ($timerTeladan->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan))
-                                                &&  ($timerTeladan->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                            )
-                                        || (
-                                                    ($timerTeladan->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerTeladan->date_time_open_form_teladan || \Carbon\Carbon::now()->toDateTimeString() == $timerTeladan->date_time_open_form_teladan))
-                                                &&  ($timerTeladan->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_form_teladan)
-                                            )
-                                    )
-                                )
-
-                                <div class="container-fluid">
-                                    <!-- Table Form Teladan -->
-                                    <table class="table table-striped table-bordered" cellspacing="0" id="data-table-representative">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Status Process</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                    <!--/ Table Form Teladan -->
-                                </div>
-
-                                @elseif (
-                                    (
-                                            ( ($timerTeladan->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
-                                        ||  ( ($timerTeladan->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
-                                    )
-                                    ||
-                                    (
-                                            ( ($timerTeladan->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
-                                        || ( ($timerTeladan->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_form_teladan) && ($timerTeladan->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_expired_form_teladan) )
-                                    )
-                                )
-                                <div class="container-fluid">
-                                    <div class="titleCountDownNonActive">
-                                        <h3>
-                                            <span>Form Teladan Telah Ditutup</span>
-                                        </h3>
-                                    </div>
-                                </div>
-                                @endif
-
-                            @endif
                         </div>
-                    </div>
-                </div> --}}
+
+                        @elseif (
+                            (
+                                    ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                            )
+                            ||
+                            (
+                                    ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                            )
+                        )
+
+                        <div class="container-fluid">
+                            <div class="titleCountDownNonActive">
+                                <h3>
+                                    <span>Form Inovasi Telah Ditutup</span>
+                                </h3>
+                            </div>
+                        </div>
+
+                        @endif
+
+                    @endif
+                </div>
             </div>
-
-
 
         </div>
 
     </div>
     <!--/ Row 1 -->
 
-
     <!-- Row 2 -->
+    <div class="row mx-1">
+        <div class="col-12">
+            {{-- <div class="d-flex justify-content-center align-self-center"> --}}
+                <div class="card mb-3 visible shadow-lg">
+                    <div class="card-header">
+                        <h5 class="m-0 me-2 pb-3">Proses Form Penghargaan Inovasi</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table-inovation">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Status Process</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {{-- </div> --}}
+        </div>
+    </div>
+    <!--/ Row 2 -->
+
+    <!-- Row 3 -->
     <div class="row mx-1">
 
         <!-- Total Revenue -->

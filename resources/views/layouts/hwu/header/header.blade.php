@@ -22,18 +22,18 @@
                 <li class="breadcrumb-item fw-bold active">Profile</li>
 
             <!-- Manage Inovation Employee -->
-            @elseif ( request()->is('headworkunit/form-inovation/list') )
+            @elseif ( request()->is('headworkunit/form-innovation/list') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</li>
 
-            @elseif ( request()->is('headworkunit/form-inovation/list/update*') )
+            @elseif ( request()->is('headworkunit/form-innovation/list/update*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/form-inovation/list') }}" style="text-decoration: none !important;">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
+                    <a href="{{ URL::to('/headworkunit/form-innovation/list') }}" style="text-decoration: none !important;">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $rewardInovation->full_name }} </li>
 

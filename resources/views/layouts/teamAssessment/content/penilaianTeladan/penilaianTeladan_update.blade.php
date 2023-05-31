@@ -72,6 +72,216 @@
     } );
     </script>
     <!-- Select2 Kerja Sama -->
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+    document.getElementById("reset").onclick = function() {
+        reset()
+    };
+
+    function reset() {
+        $('#pengetahuanKerja').val(null).trigger('change');
+        $('#analisisPemecahanMasalah').val(null).trigger('change');
+        $('#tanggungJawabPekerjaan').val(null).trigger('change');
+        $('#disiplin').val(null).trigger('change');
+        $('#komitmen').val(null).trigger('change');
+        $('#kerjaSama').val(null).trigger('change');
+
+        $('#pengetahuan_Kerja').children('strong').remove();
+        $('#analisis_PemecahanMasalah').children('strong').remove();
+        $('#tanggung_JawabPekerjaan').children('strong').remove();
+        $('#Disiplin').children('strong').remove();
+        $('#Komitmen').children('strong').remove();
+        $('#kerja_Sama').children('strong').remove();
+    }
+    </script>
+
+    <!-- Reject Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').on('click', function(e) {
+            e.preventDefault();
+
+            let id = $(this).attr('data-id');
+            let pengetahuanKerja = $("select#pengetahuanKerja").val();
+            let analisisPemecahanMasalah = $("select#analisisPemecahanMasalah").val();
+            let tanggungJawabPekerjaan = $("select#tanggungJawabPekerjaan").val();
+            let disiplin = $("select#disiplin").val();
+            let komitmen = $("select#komitmen").val();
+            let kerjaSama = $("select#kerjaSama").val();
+            // console.log(id);
+            // console.log(pengetahuanKerja);
+
+            Swal.fire({
+                title: 'Apakah kamu yakin dengan penilaian ini?',
+                icon: 'warning',
+                text: 'Data penilaian ini tidak bisa diubah kembali dan hanya cukup satu kali penilaian',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    // $('#formTeladanAppraisement').validate({
+                    //     highlight: function(element) {
+                    //         $(element).attr("select").addClass("was-validated").removeClass("was-validated");
+                    //     },
+                    //     unhighlight: function(element) {
+                    //         $(element).addClass("was-validated").removeClass("was-validated");
+                    //     },
+                    //     debug: false,
+                    //     errorElement: "strong",
+                    //     errorClass: 'text-danger',
+                    //     rules: {
+                    //         pengetahuanKerja: {
+                    //             required: true
+                    //         },
+                    //         analisisPemecahanMasalah: {
+                    //             required: true
+                    //         },
+                    //         tanggungJawabPekerjaan: {
+                    //             required: true
+                    //         },
+                    //         disiplin: {
+                    //             required: true
+                    //         },
+                    //         komitmen: {
+                    //             required: true
+                    //         },
+                    //         kerjaSama: {
+                    //             required: true
+                    //         }
+                    //     },
+                    //     messages:{
+                    //         pengetahuanKerja :
+                    //         {
+                    //             required: "Wajib Diisi"
+                    //         },
+                    //         analisisPemecahanMasalah: {
+                    //             required: "Wajib Diisi"
+                    //         },
+                    //         tanggungJawabPekerjaan: {
+                    //             required: "Wajib Diisi"
+                    //         },
+                    //         disiplin: {
+                    //             required: "Wajib Diisi"
+                    //         },
+                    //         komitmen: {
+                    //             required: "Wajib Diisi"
+                    //         },
+                    //         kerjaSama: {
+                    //             required: "Wajib Diisi"
+                    //         }
+                    //     },
+                    //     errorPlacement: function (error, element) {
+                    //         if ( (element.attr("name") == "pengetahuanKerja") ) {
+                    //             error.appendTo("#pengetahuan_Kerja").addClass("strong");
+                    //         }
+                    //         else if ( (element.attr("name") == "analisisPemecahanMasalah") ) {
+                    //             error.appendTo("#analisis_PemecahanMasalah").addClass("strong");
+                    //         }
+                    //         else if ( (element.attr("name") == "tanggungJawabPekerjaan") ) {
+                    //             error.appendTo("#tanggung_JawabPekerjaan").addClass("strong");
+                    //         }
+                    //         else if ( (element.attr("name") == "disiplin") ) {
+                    //             error.appendTo("#Disiplin").addClass("strong");
+                    //         }
+                    //         else if( (element.attr("name") == "komitmen") ) {
+                    //             error.appendTo("#Komitmen").addClass("strong");
+                    //         }
+                    //         else if( (element.attr("name") == "kerjaSama") ) {
+                    //             error.appendTo("#kerja_Sama").addClass("strong");
+                    //         }
+                    //         else {
+                    //             error.insertAfter(element);
+                    //         }
+                    //     },
+                    // });
+                    // if ($("#formTeladanAppraisement").valid()) {
+                        $.ajax({
+                            headers: {
+                                Accept: "application/json"
+                            },
+                            method: 'post',
+                            url: "{{ url('penilai/appraisement/representative/valuation') }}" + '/' + id + '/post',
+                            data: {
+                                employee_id: id,
+                                // score_valuation_1: pengetahuanKerja,
+                                // score_valuation_2: analisisPemecahanMasalah,
+                                // score_valuation_3: tanggungJawabPekerjaan,
+                                // score_valuation_4: disiplin,
+                                // score_valuation_5: komitmen,
+                                // score_valuation_6: kerjaSama,
+
+                                pengetahuanKerja: pengetahuanKerja,
+                                analisisPemecahanMasalah: analisisPemecahanMasalah,
+                                tanggungJawabPekerjaan: tanggungJawabPekerjaan,
+                                disiplin: disiplin,
+                                komitmen: komitmen,
+                                kerjaSama: kerjaSama,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: 'Berhasil',
+                                    icon: 'success',
+                                    confirmButtonText: 'Ok',
+                                    allowOutsideClick: false,
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location = "/penilai/appraisement/representative";
+                                    }
+                                })
+                            },
+                            error: function(event,xhr,options,exc){
+                                if (event.status == 401) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Your Authorized Failed!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }else if (event.status == 500) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something Went Wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something went wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }
+                            }
+                        });
+                    // }
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+            // }
+        });
+    });
+    </script>
+    <!--/ Reject Form Inovation Id -->
 @stop
 
 @section('content')
@@ -93,7 +303,7 @@
                 <!-- Form Inovation Appraisment Details -->
                 <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
-                    <form id="formTeladanAppraisment" class="mx-3 my-3" method="POST" action="{{ route('penilai.postManageAppraismentId.Representative.Update.Penilai', $reward->id) }}" enctype="multipart/form-data">
+                    <form id="formTeladanAppraisement" class="mx-3 my-3" method="POST" action="{{ route('penilai.postManageAppraismentId.Representative.Update.Penilai', $reward->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Full Name -->
@@ -129,9 +339,11 @@
                                 <span class="input-group-text">
                                     <i class="fa-solid fa-user-tie"></i>
                                 </span>
+                                <input type="hidden" value="{{ old('pengetahuanKerja') }}" id="oldPengetahuanKerja" />
                                 <select class="form-select" {{ $errors->has('pengetahuanKerja') ? 'is-invalid' : '' }}" id="pengetahuanKerja"
                                     name="pengetahuanKerja"
-                                    autofocus autocomplete required>
+                                    autofocus autocomplete required
+                                    data-placeholder="-- Pilih Pengetahuan Kerja --">
                                     <option selected disabled>-- Pilih Pengetahuan Kerja --</option>
                                     @foreach ( $selectOptionParameter1 as $sop1)
                                     <option value="{{ $sop1->grade }}" @if( old('pengetahuanKerja') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop1->parameter }} </option>
@@ -139,14 +351,14 @@
                                 </select>
                             </div>
 
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="pengetahuan_Kerja">
                                 <div class="form-text"></div>
 
                                 <!-- Error Pengetahuan Kerja -->
                                 @if ( $errors->has('pengetahuanKerja') )
                                 <div class="my-3">
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('pengetahuanKerja') }}</strong>
+                                        <strong class="pengetahuan_Kerja">{{ $errors->first('pengetahuanKerja') }}</strong>
                                     </span>
                                 </div>
                                 @endif
@@ -164,7 +376,8 @@
                                 </span>
                                 <select class="form-select" {{ $errors->has('analisisPemecahanMasalah') ? 'is-invalid' : '' }}" id="analisisPemecahanMasalah"
                                     name="analisisPemecahanMasalah"
-                                    autofocus autocomplete required>
+                                    autofocus autocomplete required
+                                    data-placeholder="-- Pilih Analisis Pemecahan Masalah --">
                                     <option selected disabled>-- Pilih Analisis Pemecahan Masalah --</option>
                                     @foreach ( $selectOptionParameter2 as $sop2)
                                     <option value="{{ $sop2->grade }}" @if( old('analisisPemecahanMasalah') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop2->parameter }} </option>
@@ -172,14 +385,14 @@
                                 </select>
                             </div>
 
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="analisis_PemecahanMasalah">
                                 <div class="form-text"></div>
 
                                 <!-- Error Analisis Pemecahan Masalah -->
                                 @if ( $errors->has('analisisPemecahanMasalah') )
                                 <div class="my-3">
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('analisisPemecahanMasalah') }}</strong>
+                                        <strong class="analisis_PemecahanMasalah">{{ $errors->first('analisisPemecahanMasalah') }}</strong>
                                     </span>
                                 </div>
                                 @endif
@@ -197,7 +410,8 @@
                                 </span>
                                 <select class="form-select" {{ $errors->has('tanggungJawabPekerjaan') ? 'is-invalid' : '' }}" id="tanggungJawabPekerjaan"
                                     name="tanggungJawabPekerjaan"
-                                    autofocus autocomplete required>
+                                    autofocus autocomplete required
+                                    data-placeholder="-- Pilih Tanggung Jawab Pekerjaan --">
                                     <option selected disabled>-- Pilih Tanggung Jawab Pekerjaan --</option>
                                     @foreach ( $selectOptionParameter3 as $sop3)
                                     <option value="{{ $sop3->grade }}" @if( old('tanggungJawabPekerjaan') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop3->parameter }} </option>
@@ -205,14 +419,14 @@
                                 </select>
                             </div>
 
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="tanggung_JawabPekerjaan">
                                 <div class="form-text"></div>
 
                                 <!-- Error Tanggung Jawab Pekerjaan -->
                                 @if ( $errors->has('tanggungJawabPekerjaan') )
                                 <div class="my-3">
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('tanggungJawabPekerjaan') }}</strong>
+                                        <strong class="tanggung_JawabPekerjaan">{{ $errors->first('tanggungJawabPekerjaan') }}</strong>
                                     </span>
                                 </div>
                                 @endif
@@ -230,7 +444,8 @@
                                 </span>
                                 <select class="form-select" {{ $errors->has('disiplin') ? 'is-invalid' : '' }}" id="disiplin"
                                     name="disiplin"
-                                    autofocus autocomplete required>
+                                    autofocus autocomplete required
+                                    data-placeholder="-- Pilih Disiplin --">
                                     <option selected disabled>-- Pilih Disiplin --</option>
                                     @foreach ( $selectOptionParameter4 as $sop4)
                                     <option value="{{ $sop4->grade }}" @if( old('disiplin') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop4->parameter }} </option>
@@ -238,14 +453,14 @@
                                 </select>
                             </div>
 
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="Disiplin">
                                 <div class="form-text"></div>
 
                                 <!-- Error Disiplin -->
                                 @if ( $errors->has('disiplin') )
                                 <div class="my-3">
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('disiplin') }}</strong>
+                                        <strong class="Disiplin">{{ $errors->first('disiplin') }}</strong>
                                     </span>
                                 </div>
                                 @endif
@@ -263,7 +478,8 @@
                                 </span>
                                 <select class="form-select" {{ $errors->has('komitmen') ? 'is-invalid' : '' }}" id="komitmen"
                                     name="komitmen"
-                                    autofocus autocomplete required>
+                                    autofocus autocomplete required
+                                    data-placeholder="-- Pilih Komitmen --">
                                     <option selected disabled>-- Pilih Komitmen --</option>
                                     @foreach ( $selectOptionParameter5 as $sop5)
                                     <option value="{{ $sop5->grade }}" @if( old('komitmen') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop5->parameter }} </option>
@@ -271,14 +487,14 @@
                                 </select>
                             </div>
 
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="Komitmen">
                                 <div class="form-text"></div>
 
                                 <!-- Error Komitmen -->
                                 @if ( $errors->has('komitmen') )
                                 <div class="my-3">
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('komitmen') }}</strong>
+                                        <strong class="Komitmen">{{ $errors->first('komitmen') }}</strong>
                                     </span>
                                 </div>
                                 @endif
@@ -296,7 +512,8 @@
                                 </span>
                                 <select class="form-select" {{ $errors->has('kerjaSama') ? 'is-invalid' : '' }}" id="kerjaSama"
                                     name="kerjaSama"
-                                    autofocus autocomplete required>
+                                    autofocus autocomplete required
+                                    data-placeholder="-- Pilih Kerja Sama --">
                                     <option selected disabled>-- Pilih Kerja Sama --</option>
                                     @foreach ( $selectOptionParameter6 as $sop6)
                                     <option value="{{ $sop6->grade }}" @if( old('kerjaSama') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop6->parameter }} </option>
@@ -304,14 +521,14 @@
                                 </select>
                             </div>
 
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="kerja_Sama">
                                 <div class="form-text"></div>
 
                                 <!-- Error Kerja Sama -->
                                 @if ( $errors->has('kerjaSama') )
                                 <div class="my-3">
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('kerjaSama') }}</strong>
+                                        <strong class="kerja_Sama">{{ $errors->first('kerjaSama') }}</strong>
                                     </span>
                                 </div>
                                 @endif
@@ -336,12 +553,12 @@
                                 </a>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <button type="reset" class="btn btn-warning btn-lg">
+                                <button type="reset" class="btn btn-warning btn-lg" id="reset">
                                     <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                 </button>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
+                                <button type="button" class="btn btn-primary btn-lg" style="color: black" id="submit" data-id="{{ $reward->id }}">
                                     <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Nilai
                                 </button>
                             </div>

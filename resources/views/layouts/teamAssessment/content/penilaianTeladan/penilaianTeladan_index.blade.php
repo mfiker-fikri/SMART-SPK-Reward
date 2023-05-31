@@ -1045,7 +1045,7 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama Panjang</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1212,7 +1212,7 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama Panjang</th>
-                                            <th scope="col">Hasil Parameter Penilaian</th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

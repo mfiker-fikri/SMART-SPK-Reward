@@ -100,36 +100,87 @@ class ManageAppraismentTeladanController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $data = Pegawai::
-                // DB::table('reward_inovation')
                 leftjoin('reward_teladan', 'reward_teladan.employee_id', '=', 'employees.id')
-                ->select('employees.id', 'employees.full_name', 'reward_teladan.created_at', 'reward_teladan.updated_at', 'reward_teladan.status_process')
-                ->where([
+                ->latest()
+                ->select('employees.id',
+                        'reward_teladan.employee_id as REI',
+                        'employees.full_name',
+                        'employees.created_at', 'employees.updated_at',
+                        'reward_teladan.created_at as teladan_created', 'reward_teladan.updated_at as teladan_updated',
+                        'reward_teladan.status_process')
+                // ->whereNull('reward_teladan.status_process')
+                // ->where([
+                    // ['reward_teladan.employee_id', '=', 'employees.id']
                     // ['reward_teladan.created_at', '>=', $dateOpenTime],
                     // ['reward_teladan.created_at', '<=', $dateExpiredTime],
                     // ['reward_teladan.updated_at', '>=', $dateOpenTime],
                     // ['reward_teladan.updated_at', '<=', $dateExpiredTime],
-                    ['reward_teladan.status_process', '=', null],
-                    // ['reward_teladan.score_valuation_1', '=' , null],
-                    // ['reward_teladan.score_valuation_2', '=' , null],
-                    // ['reward_teladan.score_valuation_3', '=' , null],
-                    // ['reward_teladan.score_valuation_4', '=' , null],
-                    // ['reward_teladan.score_valuation_5', '=' , null],
-                    // ['reward_teladan.score_valuation_6', '=' , null],
-                ])
-                ->latest()
-                ->get();
+                    // ['reward_teladan.status_process', '=', null],
+                // ])
+                // ->max('reward_teladan.updated_at')
+                ->orderBy('teladan_updated', 'DESC')
+                // ->groupBy('REI')
+                // ->having('reward_teladan.created_at', '>=', $dateOpenTime)
+                ->get()
+                ->unique('REI')
+                ;
+                // ->toArray();
+
+            // $data = RewardTeladan::
+            //     with('employees')
+            //     ->whereHas('employees', function($q) use ($dateOpenTime){
+            //         $q->where([
+            //             ['reward_teladan.created_at', '>=', $dateOpenTime]
+            //         ]);
+            //     })
+                // ->latest()
+                // ->get();
+                // ->toArray();
             // ddd($data);
             // return json_encode($data);
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn =
-                        '
-                            <a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                    $timer                  =   CountdownTimerFormTeladan::first();
+
+                    $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
+
+                    $dateOpen               =   $dateTimeOpen->toDateString();
+                    $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisement);
+
+                    $dateExpired            =   $dateTimeExpired->toDateString();
+                    $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+                    $actionBtn = '';
+
+                    if ( ($row->teladan_created >= $dateOpenTime && $row->teladan_created <= $dateExpiredTime) ||
+                         ($row->teladan_updated >= $dateOpenTime && $row->teladan_updated <= $dateExpiredTime)
+                    ) {
+
+                        if ($row->status_process != null) {
+                            $actionBtn =
+                                '
+                                Sudah Dinilai
+                                ';
+                        } else {
+                            $actionBtn =
+                            '<a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
-                            </a>
-                        ';
+                            </a>';
+                        }
+
+                    } else {
+                        $actionBtn =
+                                '
+                                    <a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                                    <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
+                                    </a>
+                                ';
+                    }
+
 
                     return $actionBtn;
                 })
@@ -208,7 +259,7 @@ class ManageAppraismentTeladanController extends Controller
                             data-5="'.$row->score_valuation_5.'"
                             data-6="'.$row->score_valuation_6.'"
                             >
-                                <i class="fa-solid fa-eye mx-auto me-1"></i> Hasil Penilaian
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> Hasil Parameter Penilaian
                             </a>
                         ';
 

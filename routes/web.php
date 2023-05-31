@@ -149,11 +149,11 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Signature Inovation
         // Read
-        Route::GET('/kepala-biro-SDM/signature/inovation', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaBiroSDM'])->name('getSignatureInovation.KepalaBiroSDM.SDM');
-        Route::GET('/kepala-biro-SDM/signature/inovation/list', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaBiroSDM'])->name('getSignatureInovationList.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/signature/innovation', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaBiroSDM'])->name('getSignatureInovation.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/signature/innovation/list', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaBiroSDM'])->name('getSignatureInovationList.KepalaBiroSDM.SDM');
         // Update
-        Route::GET('/kepala-biro-SDM/signature/inovation/{id}', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBiroSDM'])->name('getSignatureInovationId.KepalaBiroSDM.SDM');
-        Route::POST('/kepala-biro-SDM/signature/inovation/{id}/post', [\App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBiroSDM'])->name('postSignatureInovationId.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/signature/innovation/{id}', [App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBiroSDM'])->name('getSignatureInovationId.KepalaBiroSDM.SDM');
+        Route::POST('/kepala-biro-SDM/signature/innovation/{id}/post', [\App\Http\Controllers\SDM\Role1\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBiroSDM'])->name('postSignatureInovationId.KepalaBiroSDM.SDM');
 
         // Signature Teladan
         // Read
@@ -165,8 +165,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Final Inovation Reward
         // Read
-        Route::GET('/kepala-biro-SDM/reward/inovation', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationKepalaBiroSDM'])->name('getRewardInovation.KepalaBiroSDM.SDM');
-        Route::GET('/kepala-biro-SDM/reward/inovation/list', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBiroSDM'])->name('getRewardInovationList.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/reward/innovation', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationKepalaBiroSDM'])->name('getRewardInovation.KepalaBiroSDM.SDM');
+        Route::GET('/kepala-biro-SDM/reward/innovation/list', [App\Http\Controllers\SDM\Role1\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBiroSDM'])->name('getRewardInovationList.KepalaBiroSDM.SDM');
 
         // Final Teladan Reward
         // Read
@@ -194,11 +194,11 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Signature Inovation
         // Read
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/list', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation/list', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
         // Update
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
-        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation/{id}', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::POST('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation/{id}/post', [App\Http\Controllers\SDM\Role2\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('postSignatureInovationId.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
 
         // Signature Teladan
         // Read
@@ -210,8 +210,8 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
 
         // Final Inovation Reward
         // Read
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
-        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation/list', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovation.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
+        Route::GET('/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation/list', [App\Http\Controllers\SDM\Role2\Reward\RewardInovationController::class, 'getRewardInovationListKepalaBagianPenghargaanDisiplindanTataUsaha'])->name('getRewardInovationList.KepalaBagianPenghargaanDisiplindanTataUsaha.SDM');
 
         // Final Inovation Reward
         // Read
@@ -316,10 +316,10 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Manage Time CountDown
         // Form Inovation
         // Create or Update
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormInovation'])->name('getTimerCountDownFormInovation.Index.Create.SDM');
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormInovation'])->name('postTimerCountDownFormInovation.Index.Create.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownFormInovation'])->name('getTimerCountDownFormInovation.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation/post', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'postTimerCountDownFormInovation'])->name('postTimerCountDownFormInovation.Index.Create.SDM');
         // Delete
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormInovation'])->name('deleteTimerCountDownFormInovation.Index.Create.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation/delete/{id}', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'deleteTimerCountDownFormInovation'])->name('deleteTimerCountDownFormInovation.Index.Create.SDM');
         // Appraisment Inovation
         // Create or Update
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/appraisement', [App\Http\Controllers\SDM\Role3\TimerCountDown\ManageTimerCountDownController::class, 'getTimerCountDownAppraisment'])->name('getTimerCountDownAppraisment.Index.Create.SDM');
@@ -349,11 +349,11 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         // Signature
         // Signature Inovation
         // Read
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovation.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/list', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationList.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovation.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation/list', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationListKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationList.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
         // Update
-        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/{id}', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
-        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/{id}/post', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation/{id}', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'getSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
+        Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation/{id}/post', [App\Http\Controllers\SDM\Role3\Signature\SignatureInovationController::class, 'postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postSignatureInovationId.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
 
         // Signature Teladan
         // Read
@@ -409,13 +409,13 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
 
     // Penilaian Inovasi
     // Read
-    Route::GET('/appraisement/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraisment'])->name('getManageAppraisment.Read.Penilai');
-    Route::GET('/appraisement/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentList'])->name('getManageAppraismentList.Read.Penilai');
-    Route::GET('/appraisement/inovation/list/DSS', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSS'])->name('getManageAppraismentListDSS.Read.Penilai');
-    // Route::GET('/appraisement/inovation/list/DSS/result', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSSResult'])->name('getManageAppraismentListDSSResult.Read.Penilai');
+    Route::GET('/appraisement/innovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraisment'])->name('getManageAppraisment.Read.Penilai');
+    Route::GET('/appraisement/innovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentList'])->name('getManageAppraismentList.Read.Penilai');
+    Route::GET('/appraisement/innovation/list/DSS', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSS'])->name('getManageAppraismentListDSS.Read.Penilai');
+    // Route::GET('/appraisement/innovation/list/DSS/result', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentListDSSResult'])->name('getManageAppraismentListDSSResult.Read.Penilai');
     // Update
-    Route::GET('/appraisement/inovation/valuation/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentIdUpdate'])->name('getManageAppraismentId.Update.Penilai');
-    Route::POST('/appraisement/inovation/valuation/{id}/post', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'postAppraismentIdUpdate'])->name('postManageAppraismentId.Update.Penilai');
+    Route::GET('/appraisement/innovation/valuation/{id}' , [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getAppraismentIdUpdate'])->name('getManageAppraismentId.Update.Penilai');
+    Route::POST('/appraisement/innovation/valuation/{id}/post', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'postAppraismentIdUpdate'])->name('postManageAppraismentId.Update.Penilai');
 
     // Penilaian Teladan
     // Read
@@ -429,8 +429,8 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
 
     // Hasil Penilaian Inovasi
     // Read
-    Route::GET('/appraisement/result/inovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraisment'])->name('getManageAppraismentResult.Read.Penilai');
-    Route::GET('/appraisement/result/inovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraismentList'])->name('getManageAppraismentResultList.Read.Penilai');
+    Route::GET('/appraisement/result/innovation', [App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraisment'])->name('getManageAppraismentResult.Read.Penilai');
+    Route::GET('/appraisement/result/innovation/list', [\App\Http\Controllers\TeamAssessment\Penilaian\Inovasi\ManageAppraismentInovationController::class, 'getResultAppraismentList'])->name('getManageAppraismentResultList.Read.Penilai');
 
     // Hasil Penilaian Teladan
     // Read
@@ -457,7 +457,7 @@ Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu
         //
         // Dashboard
         Route::GET('/dashboard', [App\Http\Controllers\HWU\DashboardController::class, 'dashboard'])->name('getDashboard.HWU');
-        Route::GET('/dashboard/form-inovation/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.HWU');
+        Route::GET('/dashboard/form-innovation/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.HWU');
         Route::GET('/dashboard/form-representative/list/data', [App\Http\Controllers\HWU\DashboardController::class, 'getTeladanFormData'])->name('getDashboard.getTeladanFormData.Read.HWU');
 
         // Profile
@@ -471,17 +471,17 @@ Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu
 
         // Manage Inovation Employee
         // Read
-        Route::GET('form-inovation/list', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.HWU');
+        Route::GET('form-innovation/list', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.HWU');
         // 2=menunggu
-        Route::GET('form-inovation/list/data', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.HWU');
+        Route::GET('form-innovation/list/data', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.HWU');
         // Update
-        Route::GET('form-inovation/list/update/{id}', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.HWU');
+        Route::GET('form-innovation/list/update/{id}', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.HWU');
         // 0=ditolak
-        Route::POST('form-inovation/list/update/{id}/reject', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataReject'])->name('postInovationFormData.Read.Reject.HWU');
+        Route::POST('form-innovation/list/update/{id}/reject', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataReject'])->name('postInovationFormData.Read.Reject.HWU');
         // 1=dikembalikan
-        Route::POST('form-inovation/list/update/{id}/back', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataBack'])->name('postInovationFormData.Read.Back.HWU');
+        Route::POST('form-innovation/list/update/{id}/back', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataBack'])->name('postInovationFormData.Read.Back.HWU');
         // 3=diproses
-        Route::POST('form-inovation/list/update/{id}/process', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataProcess'])->name('postInovationFormData.Read.Process.HWU');
+        Route::POST('form-innovation/list/update/{id}/process', [App\Http\Controllers\HWU\Pegawai\InovationController::class, 'postInovationFormDataProcess'])->name('postInovationFormData.Read.Process.HWU');
     });
 
 });
@@ -504,10 +504,10 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     //
     // Dashboard
     Route::GET('dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'dashboard'])->name('getDashboard.Pegawai');
-    Route::GET('dashboard/form-inovation/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.Pegawai');
+    Route::GET('dashboard/form-innovation/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getInovationFormData'])->name('getDashboard.getInovationFormData.Read.Pegawai');
     Route::GET('dashboard/form-representative/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getTeladanFormData'])->name('getDashboard.getTeladanFormData.Read.Pegawai');
 
-    Route::GET('dashboard/reward-inovation/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getDashboardRewardInovationData'])->name('getDashboard.getRewardInovationData.Read.Pegawai');
+    Route::GET('dashboard/reward-innovation/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getDashboardRewardInovationData'])->name('getDashboard.getRewardInovationData.Read.Pegawai');
     Route::GET('dashboard/reward-representative/list/data', [App\Http\Controllers\Pegawai\DashboardController::class, 'getDashboardRewardRepresentativeData'])->name('getDashboard.getRewardRepresentativeData.Read.Pegawai');
 
     // Profile
@@ -522,23 +522,23 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Manage Form Inovation and Teladan
     // Manage Inovation
     // Create
-    Route::GET('form-inovation/create', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormCreate'])->name('getInovationFormCreate.Create.Pegawai');
-    Route::Post('form-inovation/create/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationFormCreate'])->name('postInovationFormCreate.Create.Pegawai');
+    Route::GET('form-innovation/create', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormCreate'])->name('getInovationFormCreate.Create.Pegawai');
+    Route::Post('form-innovation/create/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationFormCreate'])->name('postInovationFormCreate.Create.Pegawai');
     // Read
-    Route::GET('form-inovation/list', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.Pegawai');
+    Route::GET('form-innovation/list', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormList'])->name('getInovationFormList.Read.Pegawai');
     // 0=ditolak
-    Route::GET('form-inovation/list/data/reject', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataReject'])->name('getInovationFormData.Read.Reject.Pegawai');
+    Route::GET('form-innovation/list/data/reject', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataReject'])->name('getInovationFormData.Read.Reject.Pegawai');
     // 1=dikembalikan
-    Route::GET('form-inovation/list/data/back', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataBack'])->name('getInovationFormData.Read.Back.Pegawai');
+    Route::GET('form-innovation/list/data/back', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataBack'])->name('getInovationFormData.Read.Back.Pegawai');
     // 2=menunggu
-    Route::GET('form-inovation/list/data', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.Pegawai');
+    Route::GET('form-innovation/list/data', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.Pegawai');
     // 3=diproses
-    Route::GET('form-inovation/list/data/process', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataProcess'])->name('getInovationFormData.Read.Process.Pegawai');
+    Route::GET('form-innovation/list/data/process', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataProcess'])->name('getInovationFormData.Read.Process.Pegawai');
     // Update
-    Route::GET('form-inovation/update/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
-    Route::POST('form-inovation/update/{id}/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');
+    Route::GET('form-innovation/update/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
+    Route::POST('form-innovation/update/{id}/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');
     // Delete
-    Route::POST('form-inovation/delete/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdDelete'])->name('postInovationIdDelete.Delete.Pegawai');
+    Route::POST('form-innovation/delete/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdDelete'])->name('postInovationIdDelete.Delete.Pegawai');
 
     // Manage Teladan
     // Create
@@ -563,10 +563,10 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     // Result Reward
     // Reward Inovation
     // Read
-    Route::GET('result-reward-inovation', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationRead'])->name('getResultRewardInovation.Read.Pegawai');
-    Route::GET('result-reward-inovation/data', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationReadData'])->name('getResultRewardInovationData.Read.Pegawai');
+    Route::GET('result-reward-innovation', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationRead'])->name('getResultRewardInovation.Read.Pegawai');
+    Route::GET('result-reward-innovation/data', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationReadData'])->name('getResultRewardInovationData.Read.Pegawai');
     // Print
-    Route::GET('result-reward-inovation/data/print/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationPrintIdData'])->name('getResultRewardInovationData.PrintId.Pegawai');
+    Route::GET('result-reward-innovation/data/print/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationPrintIdData'])->name('getResultRewardInovationData.PrintId.Pegawai');
 
     // Reward Teladan
     // Read

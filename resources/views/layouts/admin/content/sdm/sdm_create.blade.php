@@ -274,7 +274,7 @@
                                     <select class="form-select {{ $errors->has('role') ? 'is-invalid' : '' }}" id="role"
                                         name="role" placeholder="--Pilih Peran SDM --"
                                         autofocus autocomplete required
-                                        aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Peran --">
+                                        aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Peran SDM --">
                                         <option disabled selected>-- Pilih Peran SDM --</option>
                                         <option value="1" @if(old('role') == 1 ) selected="selected" @endif>Kepala Biro Sumber Daya Manusia</option>
                                         <option value="2" @if(old('role') == 2 ) selected="selected" @endif>Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha</option>

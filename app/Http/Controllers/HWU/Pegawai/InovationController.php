@@ -211,7 +211,7 @@ class InovationController extends Controller
                     $rewardInovation->status_process                    =   '0';
                     $rewardInovation->save();
                     alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
             }
 
@@ -255,7 +255,7 @@ class InovationController extends Controller
                     $rewardInovation->status_process                    =   '1';
                     $rewardInovation->save();
                     alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                    return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                 }
             }
 
@@ -300,13 +300,13 @@ class InovationController extends Controller
                         $rewardInovation->status_process                    =   '3';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                        return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     } else {
                         $rewardInovation->description_back                  =   $request['description_back'];
                         $rewardInovation->status_process                    =   '3';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                        return redirect('form-inovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                        return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     }
                 }
             }

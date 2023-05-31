@@ -224,7 +224,7 @@ class ManageAppraismentInovationController extends Controller
                             data-5="'.$row->score_valuation_5.'"
                             data-6="'.$row->score_valuation_6.'"
                             >
-                                <i class="fa-solid fa-eye mx-auto me-1"></i> Hasil Penilaian
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> Hasil Parameter Penilaian
                             </a>
                         ';
 
@@ -616,7 +616,7 @@ class ManageAppraismentInovationController extends Controller
                     $reward->save();
 
                     alert()->success('Gagal Menilai Data Form Inovasi')->autoclose(25000);
-                    return redirect('penilai/appraisement/inovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
+                    return redirect('penilai/appraisement/innovation')->with('message-update-success', 'Berhasil Menilai Data Form Inovasi');
                 }
 
                 alert()->error('Gagal Menilai Data Form Inovasi')->autoclose(25000);

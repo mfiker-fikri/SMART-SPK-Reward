@@ -15,6 +15,7 @@ use App\Models\Pegawai;
 use App\Models\RewardInovation;
 use App\Models\RewardTeladan;
 use Carbon\Carbon;
+use Illuminate\Support\Carbon as SupportCarbon;
 use Yajra\DataTables\DataTables;
 
 class DashboardController extends Controller
@@ -147,26 +148,54 @@ class DashboardController extends Controller
                     ['created_at', '<=', $dateExpiredTime],
                     ['updated_at', '>=', $dateOpenTime],
                     ['updated_at', '<=', $dateExpiredTime],
-                    ['employee_id', '=' ,Auth::guard('employees')->user()->id],
+                    ['employee_id', '=', Auth::guard('employees')->user()->id],
                 ])
                 ->latest()
                 ->get();
+
+                // ddd($data);
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('status', function ($row) {
                     $status = '';
+
+                    $timer                  =   CountdownTimerFormInovation::first();
+
+                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+
+                    $dateOpen               =   $dateTimeOpen->toDateString();
+                    $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+
+                    $dateExpired            =   $dateTimeExpired->toDateString();
+                    $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
                     // 0=ditolak
-                    if($row->status_process == 0) {
-                        $status = '<span>Ditolak</span>';
+                    if (
+                        ($row->created_at >= $dateOpenTime && $row->created_at <= $dateExpiredTime) ||
+                        ($row->updated_at >= $dateOpenTime && $row->updated_at <= $dateExpiredTime)
+                        ) {
+                        if($row->status_process == 0) {
+                            $status = '<span>Ditolak</span>';
+                        }
+                        // 0=dikembalikan
+                        if($row->status_process == 1) {
+                            $status = '<span>Dikembalikan</span>';
+                        }
+                        // 2=menunggu
+                        if($row->status_process == 2) {
+                            $status = '<span>Sedang Tahap Menunggu</span>';
+                        }
+                        if($row->status_process == 3) {
+                            $status = '<span>Diterima</span>';
+                        }
                     }
-                    // 0=dikembalikan
-                    if($row->status_process == 1) {
-                        $status = '<span>Dikembalikan</span>';
-                    }
-                    // 2=menunggu
-                    if($row->status_process == 2) {
-                        $status = '<span>Sedang Tahap Menunggu</span>';
+                    if (
+                        (Carbon::now()->toDateTimeString() > $dateExpiredTime)
+                        ) {
+                        $status = 'Tunggu Waktu Pembukaan';
                     }
                     return $status;
                 })
@@ -221,17 +250,42 @@ class DashboardController extends Controller
                 ->addIndexColumn()
                 ->addColumn('status', function ($row) {
                     $status = '';
-                    // 0=ditolak
-                    if($row->status_process == 0) {
-                        $status = '<span>Ditolak</span>';
+
+                    $timer                  =   CountdownTimerFormInovation::first();
+
+                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+
+                    $dateOpen               =   $dateTimeOpen->toDateString();
+                    $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+
+                    $dateExpired            =   $dateTimeExpired->toDateString();
+                    $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+                    if (
+                        ($row->created_at >= $dateOpenTime && $row->created_at <= $dateExpiredTime) ||
+                        ($row->updated_at >= $dateOpenTime && $row->updated_at <= $dateExpiredTime)
+                        )
+                        {
+                            // 0=ditolak
+                            if($row->status_process == 0) {
+                                $status = '<span>Ditolak</span>';
+                            }
+                            // 0=dikembalikan
+                            if($row->status_process == 1) {
+                                $status = '<span>Dikembalikan</span>';
+                            }
+                            // 2=menunggu
+                            if($row->status_process == 2) {
+                                $status = '<span>Sedang Tahap Menunggu</span>';
+                            }
+
                     }
-                    // 0=dikembalikan
-                    if($row->status_process == 1) {
-                        $status = '<span>Dikembalikan</span>';
-                    }
-                    // 2=menunggu
-                    if($row->status_process == 2) {
-                        $status = '<span>Sedang Tahap Menunggu</span>';
+                    if (
+                        (Carbon::now()->toDateTimeString() > $dateExpiredTime)
+                        ) {
+                        $status = 'Tunggu Waktu Pembukaan';
                     }
                     return $status;
                 })
@@ -257,6 +311,18 @@ class DashboardController extends Controller
             $id                     =   Auth::guard('employees')->user()->id;
 
             //
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_signature_human_resource_1);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_signature_human_resource_1);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
 
             $data = FinalResultRewardInovation::
                 leftJoin('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
@@ -267,6 +333,7 @@ class DashboardController extends Controller
                     'final_result_reward_inovation.created_at',
                     'final_result_reward_inovation.updated_at',
                     'final_result_reward_inovation.reward_inovation_id',
+                    'final_result_reward_inovation.verify_head_of_the_human_resources_bureau'
                     //
                     // 'reward_teladan.upload_file_short_description',
                     // 'reward_teladan.upload_file_image_support',
@@ -277,7 +344,10 @@ class DashboardController extends Controller
                     // ['created_at', '<=', $dateExpiredTime],
                     // ['updated_at', '>=', $dateOpenTime],
                     // ['updated_at', '<=', $dateExpiredTime],
-                    ['employee_id', '=', $id],
+                    ['final_result_reward_inovation.created_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_inovation.updated_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_inovation.verify_head_of_the_human_resources_bureau', '!=', null],
+                    ['reward_inovation.employee_id', '=', $id],
                 ])
                 ->latest()
                 ->get();
@@ -287,11 +357,31 @@ class DashboardController extends Controller
                 // ->addIndexColumn()
                 ->addColumn('status', function ($row) {
                     $status = '';
-                    if($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
-                        $status = '<span>Dapat Penghargaan (Baik)</span>';
+
+                    $timer                  =   CountdownTimerFormInovation::first();
+
+                    $dateTimeOpen           =   new Carbon($timer->date_time_open_signature_human_resource_1);
+
+                    $dateOpen               =   $dateTimeOpen->toDateString();
+                    $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_signature_human_resource_1);
+
+                    $dateExpired            =   $dateTimeExpired->toDateString();
+                    $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+                    if ($dateOpenTime != null && $dateExpiredTime != null) {
+                        if (Carbon::now()->toDateTimeString() > $dateExpiredTime) {
+                            if($row->score_final_result > 0.75 && $row->score_final_result <= 0.85) {
+                                $status = '<span>Dapat Penghargaan (Baik)</span>';
+                            }
+                            if($row->score_final_result > 0.85 && $row->score_final_result <= 1.00) {
+                                $status = '<span>Dapat Penghargaan (Terbaik)</span>';
+                            }
+                        }
                     }
-                    if($row->score_final_result > 0.85 && $row->score_final_result <= 1.00) {
-                        $status = '<span>Dapat Penghargaan (Terbaik)</span>';
+                    if ($dateOpenTime == null && $dateExpiredTime == null) {
+                        $status = '<span>Tunggu Jadwal Waktu Pemberian Tanda Tangan SDM</span>';
                     }
                     return $status;
                 })
@@ -317,6 +407,17 @@ class DashboardController extends Controller
             $id                     =   Auth::guard('employees')->user()->id;
 
             //
+            $timer                  =   CountdownTimerFormTeladan::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_signature_human_resource_1);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_signature_human_resource_1);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $data = FinalResultRewardTeladan::
                 leftJoin('reward_teladan', 'final_result_reward_teladan.reward_teladan_id', '=', 'reward_teladan.id')
@@ -327,16 +428,16 @@ class DashboardController extends Controller
                     'final_result_reward_teladan.created_at',
                     'final_result_reward_teladan.updated_at',
                     'final_result_reward_teladan.reward_teladan_id',
+                    'final_result_reward_teladan.verify_head_of_the_human_resources_bureau'
                     //
                     // 'reward_teladan.upload_file_short_description',
                     // 'reward_teladan.upload_file_image_support',
                     // 'reward_teladan.upload_file_video_support',
                 )
                 ->where([
-                    // ['created_at', '>=', $dateOpenTime],
-                    // ['created_at', '<=', $dateExpiredTime],
-                    // ['updated_at', '>=', $dateOpenTime],
-                    // ['updated_at', '<=', $dateExpiredTime],
+                    ['final_result_reward_teladan.created_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_teladan.updated_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_teladan.verify_head_of_the_human_resources_bureau', '!=', null],
                     ['reward_teladan.employee_id', '=', $id],
                 ])
                 ->latest()

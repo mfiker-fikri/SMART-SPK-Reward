@@ -25,7 +25,7 @@
                 <!--/ Profile -->
 
                 <!-- Tanda Tangan -->
-                @elseif ( request()->is('sdm/kepala-biro-SDM/signature/inovation') )
+                @elseif ( request()->is('sdm/kepala-biro-SDM/signature/innovation') )
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
@@ -38,7 +38,7 @@
                 <!--/ Tanda Tangan -->
 
                 <!-- Hasil Rekap -->
-                @elseif ( request()->is('sdm/kepala-biro-SDM/reward/inovation') )
+                @elseif ( request()->is('sdm/kepala-biro-SDM/reward/innovation') )
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
@@ -69,7 +69,7 @@
                 <!--/ Profile -->
 
                 <!-- Tanda Tangan -->
-                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/inovation') )
+                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation') )
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
@@ -82,7 +82,7 @@
                 <!--/ Tanda Tangan -->
 
                 <!-- Hasil Rekap -->
-                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/inovation') )
+                @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation') )
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
@@ -260,7 +260,7 @@
                 <!--/ Manage Team Assessment -->
 
                 <!-- Manage Timer CountDown -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation') )
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') )
                     <!-- Create Or Update -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
@@ -275,7 +275,7 @@
                 <!--/ Manage Timer CountDown -->
 
                 <!-- Signature Inovation -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation') )
+                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>

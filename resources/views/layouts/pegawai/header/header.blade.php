@@ -20,28 +20,28 @@
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
             <!-- Manage Inovation -->
-            @elseif ( request()->is('form-inovation/create') )
+            @elseif ( request()->is('form-innovation/create') )
                 <!-- Create -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
+                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Tambah Form Pendaftaran Penghargaan Inovasi</li>
-            @elseif ( request()->is('form-inovation/list') )
+            @elseif ( request()->is('form-innovation/list') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">List Form Pendaftaran Penghargaan Inovasi</li>
-            @elseif ( request()->is('form-inovation/update*') )
+            @elseif ( request()->is('form-innovation/update*') )
                 <!-- Edit -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-inovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
+                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Inovasi</li>
             <!-- Manage Teladan -->
@@ -70,7 +70,7 @@
                 </li>
                 <li class="breadcrumb-item fw-bold active">Update Form Pendaftaran Penghargaan Teladan</li>
             <!-- Manage Result Reward Inovation -->
-            @elseif ( request()->is('result-reward-inovation') )
+            @elseif ( request()->is('result-reward-innovation') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
