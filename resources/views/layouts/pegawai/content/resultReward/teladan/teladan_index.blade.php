@@ -13,7 +13,16 @@
                     selector: 'td:nth-child(2)'
                 },
                 paging: false,
-                ajax: "{{ url('result-reward-representative/data') }}",
+                ajax:
+                {
+                    url: "{{ url('result-reward-representative/data') }}",
+                    // dataSrc: function (json) {
+                    // if (!json.data) {
+                    //     return [];
+                    // } else {
+                    //     return json.data;
+                    // }
+                },
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'fullName', name: 'fullName', orderable: false, searchable: false},

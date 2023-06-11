@@ -79,18 +79,18 @@ class InovationController extends Controller
             // If Timer Not Null
             if ($timer != null) {
                 // ddd($timer);
-                // ddd($timer->date_time_open_form_inovation);
+                // ddd($timer->date_time_open_form_innovation);
 
                 // Get Timer Countdown
                 $timer                  =   CountdownTimerFormInovation::first();
 
-                $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+                $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
                 // ddd($dateTimeOpen);
                 $dateOpen               =   $dateTimeOpen->toDateString();
                 $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
                 // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-                $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+                $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
                 // ddd($dateTimeExpired);
                 $dateExpired            =   $dateTimeExpired->toDateString();
                 $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -221,15 +221,15 @@ class InovationController extends Controller
 
         //
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -283,15 +283,15 @@ class InovationController extends Controller
 
         //
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -351,15 +351,15 @@ class InovationController extends Controller
         //
         //
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -466,15 +466,15 @@ class InovationController extends Controller
 
         //
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -550,21 +550,21 @@ class InovationController extends Controller
         try {
             //
             $timer                  =   CountdownTimerFormInovation::first();
-            // ddd($timer->date_time_open_form_inovation);
+            // ddd($timer->date_time_open_form_innovation);
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
             // ddd($dateTimeOpen);
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
             // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
             // ddd($dateTimeExpired);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
             // ddd(Carbon::now()->toDateTimeString() <= $dateExpiredTime);
 
-            // ddd($timer->date_time_open_form_inovation >= Carbon::now() && Carbon::now() <= $timer->date_time_expired_form_inovation);
+            // ddd($timer->date_time_open_form_innovation >= Carbon::now() && Carbon::now() <= $timer->date_time_expired_form_innovation);
 
             // return view('layouts.pegawai.content.inovation.inovation_create');
             if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
@@ -609,15 +609,15 @@ class InovationController extends Controller
 
         // Get Timer
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -862,15 +862,15 @@ class InovationController extends Controller
         try {
             //
             $timer                  =   CountdownTimerFormInovation::first();
-            // ddd($timer->date_time_open_form_inovation);
+            // ddd($timer->date_time_open_form_innovation);
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
             // ddd($dateTimeOpen);
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
             // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
             // ddd($dateTimeExpired);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -915,15 +915,15 @@ class InovationController extends Controller
     {
         //
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();

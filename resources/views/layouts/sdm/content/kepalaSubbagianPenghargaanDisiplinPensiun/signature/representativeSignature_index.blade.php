@@ -753,7 +753,7 @@
 
                 <!-- Form Kategori Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tanda Tangan Penghargaan Teladan</h5>
+                    <h5 class="mb-0">Representative Award Signature</h5>
                 </div>
                 <!--/ Form Kategori Title -->
 

@@ -16,7 +16,7 @@ class CountdownTimerFormInovation extends Model
      *
      * @var string
      */
-    protected $table = 'countdown_timer_inovation';
+    protected $table = 'countdown_timer_innovation';
 
     /**
      * The primary key associated with the table.
@@ -39,8 +39,8 @@ class CountdownTimerFormInovation extends Model
      */
     protected $fillable = [
         'id',
-        'date_time_open_form_inovation',
-        'date_time_expired_form_inovation',
+        'date_time_open_form_innovation',
+        'date_time_expired_form_innovation',
         'status_open',
         'status_expired',
         //

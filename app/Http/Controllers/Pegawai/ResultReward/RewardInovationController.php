@@ -131,7 +131,10 @@ class RewardInovationController extends Controller
                     ->addColumn('year', function ($row) {
                         $year = '';
                         $year = '<span>'.\Carbon\Carbon::parse($row->created_at)->format('Y').'</span>';
-
+                        return $year;
+                    })
+                    ->editColumn('year', function ($row) {
+                        $year = !empty($row->created_at) ? '<span>'.\Carbon\Carbon::parse($row->created_at)->format('Y').'</span>' : 'Kosong';
                         return $year;
                     })
                     ->rawColumns(['fullName', 'action', 'year'])

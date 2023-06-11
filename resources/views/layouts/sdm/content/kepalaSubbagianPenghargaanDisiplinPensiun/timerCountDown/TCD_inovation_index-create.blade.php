@@ -644,7 +644,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation/delete') }}" + '/' + id,
+                        url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation/delete') }}" + '/' + id,
                         data: {
                             id: id,
                             _token: '{{ csrf_token() }}'
@@ -886,25 +886,25 @@
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}"
+                      <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation')) ? 'active' : '' }}"
                         id="pills-time-tab"
                         data-bs-toggle="pill" data-bs-target="#pills-time" type="button" role="tab"
                         aria-controls="pills-time"
-                        aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'true' : 'false' }}">Inovation Form Countdown</button>
+                        aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation')) ? 'true' : 'false' }}">Innovation Form Countdown</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
                         @if ($timer != null)
                         <button class="nav-link text-center" id="pills-appraisement-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-appraisement" type="button" role="tab" aria-controls="pills-appraisement" aria-selected="false"
-                            >Inovation Appraisement Countdown
+                            >Innovation Appraisement Countdown
                         </button>
                         @elseif ($timer == null)
                         <button class="nav-link {{ $timer == null ? 'disabled' : '' }} text-center" id="pills-appraisement-tab"
                             disabled data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="This top tooltip is themed via CSS variables."
-                            >Inovation Appraisement Countdown
+                            >Innovation Appraisement Countdown
                         </button>
                         @endif
                     </li>
@@ -915,20 +915,20 @@
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
-                                >Inovation Signature Countdown
+                                >Innovation Signature Countdown
                             </button>
                         @elseif ($timers->isNotEmpty())
-                            @if ($timers[0]->date_time_open_appraisment != null )
+                            @if ($timers[0]->date_time_open_appraisement != null )
                             <button class="nav-link text-center" id="pills-signature_role2-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
-                                >Inovation Signature Countdown
+                                >Innovation Signature Countdown
                             </button>
-                            @elseif ($timers[0]->date_time_open_appraisment == null)
-                            <button class="nav-link {{ $timers[0]->date_time_open_appraisment == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
+                            @elseif ($timers[0]->date_time_open_appraisement == null)
+                            <button class="nav-link {{ $timers[0]->date_time_open_appraisement == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
-                                >Inovation Signature Countdown
+                                >Innovation Signature Countdown
                             </button>
                             @endif
                         @endif
@@ -941,7 +941,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
 
-                <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-inovation')) ? 'active' : '' }}" id="pills-time" role="tabpanel" aria-labelledby="pills-time-tab" >
+                <div class="tab-pane fade show {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation')) ? 'active' : '' }}" id="pills-time" role="tabpanel" aria-labelledby="pills-time-tab" >
 
                     @if(session('message-update-form-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
@@ -1027,7 +1027,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Inovation Form Countdown</h5>
+                            <h5 class="mb-0">Innovation Form Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -1335,7 +1335,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Inovation Appraisement Countdown</h5>
+                            <h5 class="mb-0">Innovation Appraisement Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -1628,7 +1628,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Inovation Signature Countdown</h5>
+                            <h5 class="mb-0">Innovation Signature Countdown</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -1664,8 +1664,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_3', $timer->date_time_open_signature_human_resource_3) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(1)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(1)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_3" data-val="true">
@@ -1740,8 +1740,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_3', $timer->date_time_expired_signature_human_resource_3) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(2)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(2)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_3" data-val="true">
@@ -1821,8 +1821,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_2', $timer->date_time_open_signature_human_resource_2) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(3)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(3)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_2" data-val="true">
@@ -1897,8 +1897,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_2', $timer->date_time_expired_signature_human_resource_2) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(4)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(4)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_2" data-val="true">
@@ -1977,8 +1977,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_open_signature_human_resource_1', $timer->date_time_open_signature_human_resource_1) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(5)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(5)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_open_signature_human_resource_1" data-val="true">
@@ -2053,8 +2053,8 @@
                                                 autofocus autocomplete required value="{{ old('date_time_expired_signature_human_resource_1', $timer->date_time_expired_signature_human_resource_1) }}"
                                                 @endif
                                                 @if ($timers->isNotEmpty())
-                                                    @if ($timers[0]->date_time_expired_appraisment != null )
-                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisment)->addDays(6)->toDateTimeString() }}"
+                                                    @if ($timers[0]->date_time_expired_appraisement != null )
+                                                        min="{{ \Carbon\Carbon::parse($timers[0]->date_time_expired_appraisement)->addDays(6)->toDateTimeString() }}"
                                                     @endif
                                                 @endif
                                                 aria-invalid="true" aria-describedby="date_time_expired_signature_human_resource_1" data-val="true">

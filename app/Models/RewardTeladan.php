@@ -14,7 +14,7 @@ class RewardTeladan extends Model
      *
      * @var string
      */
-    protected $table = 'reward_teladan';
+    protected $table = 'reward_representative';
 
     /**
      * The primary key associated with the table.

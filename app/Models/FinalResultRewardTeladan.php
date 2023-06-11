@@ -14,7 +14,7 @@ class FinalResultRewardTeladan extends Model
      *
      * @var string
      */
-    protected $table = 'final_result_reward_teladan';
+    protected $table = 'final_result_reward_representative';
 
     /**
      * The primary key associated with the table.

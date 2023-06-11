@@ -338,9 +338,9 @@
             buttons: [
                 "pageLength",
             ],
-            ajax: "{{ url('penilai/appraisement/inovation/list') }}",
+            ajax: "{{ url('penilai/appraisement/innovation/list') }}",
             // {
-            //     url: "{{ url('penilai/appraisement/inovation/list') }}",
+            //     url: "{{ url('penilai/appraisement/innovation/list') }}",
             //     // headers: {
             //     //     'Authorization':'Basic xxxxxxxxxxxxx',
             //     //     'X-CSRF-TOKEN':'xxxxxxxxxxxxxxxxxxxx',
@@ -384,7 +384,7 @@
                 buttons: [
                     "pageLength",
                 ],
-                ajax: "{{ url('penilai/appraisement/inovation/list/DSS') }}",
+                ajax: "{{ url('penilai/appraisement/innovation/list/DSS') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'fullName', name: 'fullName'},
@@ -426,7 +426,7 @@
             //     buttons: [
             //         "pageLength",
             //     ],
-            //     ajax: "{{ url('penilai/appraisement/inovation/list/DSS/result') }}",
+            //     ajax: "{{ url('penilai/appraisement/innovation/list/DSS/result') }}",
             //     columns: [
             //         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
             //         {data: 'fullName', name: 'fullName', orderable: false, searchable: false},
@@ -459,7 +459,7 @@
             let value5 = $(this).attr('data-5');
             let value6 = $(this).attr('data-6');
             Swal.fire({
-                title: 'Hasil Penilaian Form Inovation' + ' ' + '-' + ' ' + fullName,
+                title: 'Hasil Penilaian Form Inovasi' + ' ' + '-' + ' ' + fullName,
                 // icon: 'warning',
                 width: 750,
                 padding: '-3em',
@@ -946,7 +946,7 @@
 
                     <!-- Tabs Form Inovation Appraisment From Employees -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('penilai/appraisement/inovation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisement/inovation*')) ? 'true' : 'false' }}">Kelola Data Penilaian Inovasi</button>
+                        <button class="nav-link {{ (request()->is('penilai/appraisement/innovation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisement/innovation*')) ? 'true' : 'false' }}">Kelola Data Penilaian Inovasi</button>
                     </li>
                     <!--/ Tabs Form Inovation Appraisment From Employees -->
 
@@ -970,7 +970,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
-                <div class="tab-pane fade show {{ (request()->is('penilai/appraisement/inovation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
+                <div class="tab-pane fade show {{ (request()->is('penilai/appraisement/innovation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
                     <div class="card">
 
                         <!-- Form Penilaian Inovasi Title -->

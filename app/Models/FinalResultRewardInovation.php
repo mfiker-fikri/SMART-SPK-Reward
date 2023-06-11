@@ -14,7 +14,7 @@ class FinalResultRewardInovation extends Model
      *
      * @var string
      */
-    protected $table = 'final_result_reward_inovation';
+    protected $table = 'final_result_reward_innovation';
 
     /**
      * The primary key associated with the table.

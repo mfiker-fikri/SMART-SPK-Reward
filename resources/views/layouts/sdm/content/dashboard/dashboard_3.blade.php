@@ -363,7 +363,35 @@
             }
 
 
-            .countdown-signature-inovation {
+            .countdown-signature1-inovation {
+                padding: 3em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation {
+                padding: 3em 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation {
                 padding: 3em 0;
                 margin: auto;
                 display: flex;
@@ -470,7 +498,33 @@
             }
 
 
-            .countdown-signature-inovation span {
+            .countdown-signature1-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -787,7 +841,35 @@
             }
 
 
-            .countdown-signature-inovation {
+            .countdown-signature1-inovation {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation {
+                padding: 5vh 0;
+                margin: 0.5em auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation {
                 padding: 5vh 0;
                 margin: 0.5em auto;
                 display: flex;
@@ -894,7 +976,33 @@
             }
 
 
-            .countdown-signature-inovation span {
+            .countdown-signature1-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -1211,7 +1319,35 @@
             }
 
 
-            .countdown-signature-inovation {
+            .countdown-signature1-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation {
                 padding: 5vh 0;
                 margin: auto;
                 display: flex;
@@ -1319,7 +1455,33 @@
             }
 
 
-            .countdown-signature-inovation span {
+            .countdown-signature1-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -1635,7 +1797,35 @@
             }
 
 
-            .countdown-signature-inovation {
+            .countdown-signature1-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation {
+                padding: 5vh 0;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                color: #333;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation {
                 padding: 5vh 0;
                 margin: auto;
                 display: flex;
@@ -1717,7 +1907,33 @@
             }
 
 
-            .countdown-signature-inovation span {
+            .countdown-signature1-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature2-inovation span {
+                padding: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                line-height: 100%;
+                text-align: center;
+            }
+
+            .countdown-signature3-inovation span {
                 padding: 0;
                 margin: auto;
                 display: flex;
@@ -2004,70 +2220,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Form Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Form Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2097,7 +2257,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2117,70 +2277,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Form Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Form Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2210,7 +2314,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2230,70 +2334,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2323,7 +2371,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2343,70 +2391,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2436,7 +2428,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2447,7 +2439,7 @@
 
     <script>
         $(document).ready(function () {
-            $(".countdown-signature-inovation").each( function(){
+            $(".countdown-signature1-inovation").each( function(){
                 var _this = $(this),
                 _expire = _this.data('expire');
                 flag2 = true;
@@ -2456,70 +2448,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2549,7 +2485,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2558,6 +2494,119 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            $(".countdown-signature2-inovation").each( function(){
+                var _this = $(this),
+                _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Tanda Tangan Inovasi Sudah Dibuka',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                });
+
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".countdown-signature3-inovation").each( function(){
+                var _this = $(this),
+                _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Tanda Tangan Inovasi Sudah Dibuka',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                    });
+                });
+
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -2570,70 +2619,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2663,7 +2656,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2684,70 +2677,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Teladan Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2777,7 +2714,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2796,70 +2733,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -2889,7 +2770,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -2908,70 +2789,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Teladan Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Teladan Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -3001,7 +2826,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -3020,70 +2845,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Teladan Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Teladan Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -3113,7 +2882,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -3132,70 +2901,14 @@
                     precision:  1000,
                 })
                 .on('update.countdown', function(event) {
-                    if(event.offset.totalHours == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Teladan Dibuka dalam' + ' ' + 1 + 'Jam',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
-                    if(event.offset.totalMinutes == 0 && flag2) {
-                        flag2 = false;
-                        Swal.fire({
-                            title: 'Tanda Tangan Teladan Dibuka dalam' + ' ' + 1 + 'Menit',
-                            icon: 'success',
-                            html: 'Pop up will close in <b></b> milliseconds.',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
-                            },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            },
-                            timer: 10000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 300)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
-                        });
-                    }
+                    // if(event.offset.totalHours == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
+                    // if(event.offset.totalMinutes == 0 && flag2) {
+                    //     flag2 = false;
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                    // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
                 .on('finish.countdown', function(){
@@ -3225,7 +2938,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -3246,67 +2959,11 @@
                 .on('update.countdown', function(event) {
                     // if(event.offset.totalHours == 0 && flag2) {
                     //     flag2 = false;
-                    //     Swal.fire({
-                    //         title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
-                    //         icon: 'success',
-                    //         html: 'Pop up will close in <b></b> milliseconds.',
-                    //         allowOutsideClick: false,
-                    //         allowEscapeKey: false,
-                    //         allowEnterKey: false,
-                    //         showClass: {
-                    //             popup: 'animate__animated animate__fadeInDown'
-                    //         },
-                    //         hideClass: {
-                    //             popup: 'animate__animated animate__fadeOutUp'
-                    //         },
-                    //         timer: 10000,
-                    //         timerProgressBar: true,
-                    //         didOpen: () => {
-                    //             Swal.showLoading()
-                    //             const b = Swal.getHtmlContainer().querySelector('b')
-                    //             timerInterval = setInterval(() => {
-                    //                 b.textContent = Swal.getTimerLeft()
-                    //             }, 300)
-                    //         },
-                    //         willClose: () => {
-                    //             clearInterval(timerInterval)
-                    //         },
-                    //         didClose: () => {
-                    //             clearInterval(timerInterval)
-                    //         },
-                    //     });
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                     // }
                     // if(event.offset.totalMinutes == 0 && flag2) {
                     //     flag2 = false;
-                    //     Swal.fire({
-                    //         title: 'Penilaian Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
-                    //         icon: 'success',
-                    //         html: 'Pop up will close in <b></b> milliseconds.',
-                    //         allowOutsideClick: false,
-                    //         allowEscapeKey: false,
-                    //         allowEnterKey: false,
-                    //         showClass: {
-                    //             popup: 'animate__animated animate__fadeInDown'
-                    //         },
-                    //         hideClass: {
-                    //             popup: 'animate__animated animate__fadeOutUp'
-                    //         },
-                    //         timer: 10000,
-                    //         timerProgressBar: true,
-                    //         didOpen: () => {
-                    //             Swal.showLoading()
-                    //             const b = Swal.getHtmlContainer().querySelector('b')
-                    //             timerInterval = setInterval(() => {
-                    //                 b.textContent = Swal.getTimerLeft()
-                    //             }, 300)
-                    //         },
-                    //         willClose: () => {
-                    //             clearInterval(timerInterval)
-                    //         },
-                    //         didClose: () => {
-                    //             clearInterval(timerInterval)
-                    //         },
-                    //     });
+                    //     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                     // }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
                 })
@@ -3337,7 +2994,7 @@
                             clearInterval(timerInterval)
                         },
                         didClose: () => {
-                            window.location.reload(true);
+                            clearInterval(timerInterval)
                         },
                     });
                 });
@@ -3548,11 +3205,11 @@
                         @else
                             @if (
                                 (
-                                    ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                 )
                                 ||
                                 (
-                                    ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_inovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                 )
                             )
                             <div class="container-fluid">
@@ -3566,13 +3223,13 @@
                             @elseif (
                                 (
                                             ($timerInovasi->status_open == 1
-                                        && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()))
+                                        && ($timerInovasi->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() || $timerInovasi->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString()))
                                     &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                 )
                                 ||
                                 (
                                             ($timerInovasi->status_open == 1
-                                        && ($timerInovasi->date_time_open_form_inovation > \Carbon\Carbon::now()->toDateTimeString() || $timerInovasi->date_time_open_form_inovation == \Carbon\Carbon::now()->toDateTimeString()))
+                                        && ($timerInovasi->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() || $timerInovasi->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString()))
                                     &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                 )
                             )
@@ -3583,22 +3240,22 @@
                                             <h3>Pembukaan Form Inovasi</h3>
                                         </div>
                                         <div class="dateCountDown">
-                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('dddd') }}</b></span>
-                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('D') }}</b></span>
-                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('MMMM') }}</b></span>
-                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('Y') }}</b></span>
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('Y') }}</b></span>
                                         </div>
                                         <div class="timeCountDown">
-                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('hh') }}</b></span>
-                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('mm') }}</b></span>
-                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_inovation)->isoFormat('a') }}</b></span>
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('a') }}</b></span>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
                                             <h3>Coming Soon</h3>
                                         </div>
-                                        <div class="wrap-countdown countdown-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_form_inovation)->toDateTimeString() }}">
+                                        <div class="wrap-countdown countdown-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_form_innovation)->toDateTimeString() }}">
                                         </div>
                                     </div>
                                 </div>
@@ -3607,22 +3264,22 @@
                             @elseif (
                                 (
                                         (
-                                                ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation) )
+                                                ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation) )
                                             &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                         )
                                     ||  (
-                                                ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                                ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
                                             &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                         )
                                 )
                                 ||
                                 (
                                         (
-                                                ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                                ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
                                             &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                         )
                                     || (
-                                                ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_inovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_inovation))
+                                                ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
                                             &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
                                         )
                                 )
@@ -3658,13 +3315,13 @@
 
                             @elseif (
                                 (
-                                        ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                    ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                        ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                    ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
                                 )
                                 ||
                                 (
-                                        ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                    || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_inovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                        ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                    || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
                                 )
                             )
 
@@ -4168,6 +3825,19 @@
                                         </div>
                                     </div>
 
+                                    @if (
+                                            (
+                                                (
+                                                        ($timerTeladan->status_open_signature_human_resource_3 == 1 && $timerTeladan->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                                    &&  ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                                )
+                                                ||
+                                                (
+                                                        ($timerTeladan->status_open_signature_human_resource_3 == 1 && $timerTeladan->date_time_open_signature_human_resource_3 >= \Carbon\Carbon::now()->toDateTimeString() )
+                                                    &&  ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                                )
+                                            )
+                                    )
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
                                             <h3>Pembukaan Tanda Tangan Teladan</h3>
@@ -4194,6 +3864,32 @@
                                         <div class="wrap-countdown countdown-signature3-representative" data-expire="{{ \Carbon\Carbon::parse($timerTeladan->date_time_open_signature_human_resource_3)->toDateTimeString() }}">
                                         </div>
                                     </div>
+                                    @elseif (
+                                        (
+                                            (
+                                                    (
+                                                            ($timerTeladan->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                        &&  ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                                    )
+                                                ||  (
+                                                            ($timerTeladan->status_open_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                        &&  ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                                    )
+                                            )
+                                                ||
+                                            (
+                                                    (
+                                                            ($timerTeladan->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                        &&  ($timerTeladan->status_expired_signature_human_resource_3 == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                                    )
+                                                || (
+                                                            ($timerTeladan->status_open_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerTeladan->date_time_open_signature_human_resource_3)
+                                                        &&  ($timerTeladan->status_expired_signature_human_resource_3 == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerTeladan->date_time_expired_signature_human_resource_3)
+                                                    )
+                                            )
+                                        )
+                                    )
+                                    @endif
                                 </div>
                             </div>
 
@@ -4561,7 +4257,7 @@
                                         <div class="titleCountDown">
                                             <h3>Coming Soon</h3>
                                         </div>
-                                        <div class="wrap-countdown countdown-signature-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_signature_human_resource_1)->toDateTimeString() }}">
+                                        <div class="wrap-countdown countdown-signature1-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_signature_human_resource_1)->toDateTimeString() }}">
                                         </div>
                                     </div>
 
@@ -4599,7 +4295,7 @@
                                         <div class="titleCountDown">
                                             <h3>Coming Soon</h3>
                                         </div>
-                                        <div class="wrap-countdown countdown-signature-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_signature_human_resource_2)->toDateTimeString() }}">
+                                        <div class="wrap-countdown countdown-signature2-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_signature_human_resource_2)->toDateTimeString() }}">
                                         </div>
                                     </div>
 
@@ -4637,7 +4333,7 @@
                                         <div class="titleCountDown">
                                             <h3>Coming Soon</h3>
                                         </div>
-                                        <div class="wrap-countdown countdown-signature-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_signature_human_resource_3)->toDateTimeString() }}">
+                                        <div class="wrap-countdown countdown-signature3-inovation" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_open_signature_human_resource_3)->toDateTimeString() }}">
                                         </div>
                                     </div>
                                 </div>

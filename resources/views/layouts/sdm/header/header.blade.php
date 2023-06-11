@@ -265,23 +265,23 @@
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Timer Countdown Inovation</li>
+                    <li class="breadcrumb-item fw-bold active">Innovation Countdown Timer  </li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
                     <!-- Create Or Update -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Timer Countdown Representative</li>
+                    <li class="breadcrumb-item fw-bold active">Representative Countdown Timer </li>
                 <!--/ Manage Timer CountDown -->
 
-                <!-- Signature Inovation -->
+                <!-- Signature Innovation -->
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
-                <!--/ Signature Inovation -->
+                    <li class="breadcrumb-item fw-bold active">Innovation Award Signature</li>
+                <!--/ Signature Innovation -->
 
                 <!-- Signature Teladan -->
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') )
@@ -289,7 +289,7 @@
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
+                    <li class="breadcrumb-item fw-bold active">Representative Award Signature</li>
                 <!--/ Signature Teladan -->
 
 

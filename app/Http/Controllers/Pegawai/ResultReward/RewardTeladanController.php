@@ -62,21 +62,21 @@ class RewardTeladanController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $finalResult            =   FinalResultRewardTeladan::
-                                    leftJoin('reward_teladan', 'final_result_reward_teladan.reward_teladan_id', '=', 'reward_teladan.id')
+                                    leftJoin('reward_representative', 'final_result_reward_representative.reward_teladan_id', '=', 'reward_representative.id')
                                     ->select(
-                                        'final_result_reward_teladan.id',
-                                        'final_result_reward_teladan.score_final_result',
-                                        'final_result_reward_teladan.score_final_result_description',
-                                        'final_result_reward_teladan.created_at',
-                                        'final_result_reward_teladan.updated_at',
-                                        'final_result_reward_teladan.reward_teladan_id',
+                                        'final_result_reward_representative.id',
+                                        'final_result_reward_representative.score_final_result',
+                                        'final_result_reward_representative.score_final_result_description',
+                                        'final_result_reward_representative.created_at',
+                                        'final_result_reward_representative.updated_at',
+                                        'final_result_reward_representative.reward_teladan_id',
                                         //
-                                        // 'reward_teladan.upload_file_short_description',
-                                        // 'reward_teladan.upload_file_image_support',
-                                        // 'reward_teladan.upload_file_video_support',
+                                        // 'reward_representative.upload_file_short_description',
+                                        // 'reward_representative.upload_file_image_support',
+                                        // 'reward_representative.upload_file_video_support',
                                     )
                                     ->where([
-                                        ['reward_teladan.employee_id', '=', Auth::guard('employees')->user()->id],
+                                        ['reward_representative.employee_id', '=', Auth::guard('employees')->user()->id],
                                         //
                                         ['signature_head_of_the_human_resources_bureau', '!=', null],
                                         ['verify_head_of_the_human_resources_bureau', '!=', null],
@@ -86,13 +86,13 @@ class RewardTeladanController extends Controller
                                         //
                                         ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
                                         ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
-                                        // ['final_result_reward_teladan.score_final_result', '>', 0.75],
-                                        // ['final_result_reward_teladan.created_at', '>=', $dateOpenTime],
-                                        // ['final_result_reward_teladan.created_at', '<=', $dateExpiredTime],
-                                        // ['final_result_reward_teladan.updated_at', '>=', $dateOpenTime],
-                                        // ['final_result_reward_teladan.updated_at', '<=', $dateExpiredTime],
+                                        // ['final_result_reward_representative.score_final_result', '>', 0.75],
+                                        // ['final_result_reward_representative.created_at', '>=', $dateOpenTime],
+                                        // ['final_result_reward_representative.created_at', '<=', $dateExpiredTime],
+                                        // ['final_result_reward_representative.updated_at', '>=', $dateOpenTime],
+                                        // ['final_result_reward_representative.updated_at', '<=', $dateExpiredTime],
                                     ])
-                                    // ->latest('final_result_reward_teladan.created_at')->get();
+                                    // ->latest('final_result_reward_representative.created_at')->get();
                                     ->get();
                                     // ->latest()->get();
 
@@ -126,6 +126,10 @@ class RewardTeladanController extends Controller
 
                         return $year;
                     })
+                    ->editColumn('fname', function ($row) {  //this example  for edit your columns if colums is empty
+                        $fname = !empty($row->name) ? $row->name : 'empty';
+                        return $fname;
+                    })
                     ->rawColumns(['fullName', 'action', 'year'])
                     ->make(true);
 
@@ -144,37 +148,37 @@ class RewardTeladanController extends Controller
     {
         try {
 
-            $id     =   FinalResultRewardTeladan::where('final_result_reward_teladan.id', '=', $id)
-                        ->leftJoin('reward_teladan', 'final_result_reward_teladan.reward_teladan_id', '=', 'reward_teladan.id')
+            $id     =   FinalResultRewardTeladan::where('final_result_reward_representative.id', '=', $id)
+                        ->leftJoin('reward_representative', 'final_result_reward_representative.reward_teladan_id', '=', 'reward_representative.id')
                         ->select(
-                            'final_result_reward_teladan.id',
-                            'final_result_reward_teladan.score_final_result',
-                            'final_result_reward_teladan.score_final_result_description',
-                            'final_result_reward_teladan.created_at',
-                            'final_result_reward_teladan.updated_at',
-                            'final_result_reward_teladan.reward_teladan_id',
+                            'final_result_reward_representative.id',
+                            'final_result_reward_representative.score_final_result',
+                            'final_result_reward_representative.score_final_result_description',
+                            'final_result_reward_representative.created_at',
+                            'final_result_reward_representative.updated_at',
+                            'final_result_reward_representative.reward_teladan_id',
                             //
-                            'final_result_reward_teladan.signature_head_of_the_human_resources_bureau',
-                            'final_result_reward_teladan.name_head_of_the_human_resources_bureau',
+                            'final_result_reward_representative.signature_head_of_the_human_resources_bureau',
+                            'final_result_reward_representative.name_head_of_the_human_resources_bureau',
                             //
-                            'final_result_reward_teladan.signature_head_of_disciplinary_awards_and_administration',
-                            'final_result_reward_teladan.name_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_representative.signature_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_representative.name_head_of_disciplinary_awards_and_administration',
                             //
-                            'final_result_reward_teladan.signature_head_of_rewards_discipline_and_pension_subdivision',
-                            'final_result_reward_teladan.name_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_representative.signature_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_representative.name_head_of_rewards_discipline_and_pension_subdivision',
                             //
                             //
-                            // 'reward_teladan.upload_file_short_description',
-                            // 'reward_teladan.upload_file_image_support',
-                            // 'reward_teladan.upload_file_video_support',
+                            // 'reward_representative.upload_file_short_description',
+                            // 'reward_representative.upload_file_image_support',
+                            // 'reward_representative.upload_file_video_support',
                         )->first()->toArray();
 
             $created_at     =   FinalResultRewardTeladan::find($id)
-                                ->join('reward_teladan', 'final_result_reward_teladan.reward_teladan_id', '=', 'reward_teladan.id')
+                                ->join('reward_representative', 'final_result_reward_representative.reward_teladan_id', '=', 'reward_representative.id')
                                 ->select(
-                                    'final_result_reward_teladan.created_at',
-                                    // 'final_result_reward_teladan.updated_at',
-                                    // 'final_result_reward_teladan.reward_teladan_id',
+                                    'final_result_reward_representative.created_at',
+                                    // 'final_result_reward_representative.updated_at',
+                                    // 'final_result_reward_representative.reward_teladan_id',
                                 )->first();
 
 

@@ -14,7 +14,7 @@ class RewardInovation extends Model
      *
      * @var string
      */
-    protected $table = 'reward_inovation';
+    protected $table = 'reward_innovation';
 
     /**
      * The primary key associated with the table.
