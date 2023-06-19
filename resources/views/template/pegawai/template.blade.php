@@ -23,30 +23,30 @@
             <meta name="title" content="{{ Auth::guard('employees')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="{{ Auth::guard('employees')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('form-inovation/create'))
+        @elseif ( request()->is('form-innovation/create'))
             <!-- Form Inovation -->
             <!-- Create -->
             <meta name="title" content="Tambah Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Tambah Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('form-inovation/list'))
+        @elseif ( request()->is('form-innovation/list'))
             <!-- Form Inovation -->
             <!-- Read -->
             <meta name="title" content="List Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="List Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('form-inovation/view*'))
+        @elseif ( request()->is('form-innovation/view*'))
             <!-- Form Inovation -->
             <!-- View -->
             <meta name="title" content="Tambah Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Tambah Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('form-inovation/update*'))
+        @elseif ( request()->is('form-innovation/update*'))
             <!-- Form Inovation -->
             <!-- Edit -->
             <meta name="title" content="Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-        @elseif ( request()->is('result-reward-inovation') )
+        @elseif ( request()->is('result-reward-innovation') )
             <!-- Manage Result Reward Inovation -->
             <meta name="title" content="Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
@@ -62,26 +62,26 @@
             <!-- Profile -->
             <title>{{ Auth::guard('employees')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
-        @elseif ( request()->is('form-inovation/create'))
+        @elseif ( request()->is('form-innovation/create'))
             <!-- Form Inovation -->
             <!-- Create -->
             <title>Tambah Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        @elseif ( request()->is('form-inovation/list'))
+        @elseif ( request()->is('form-innovation/list'))
             <!-- Form Inovation -->
             <!-- Read -->
             <title>List Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
-        @elseif ( request()->is('form-inovation/view*'))
+        @elseif ( request()->is('form-innovation/view*'))
             <!-- Form Inovation -->
             <!-- View -->
             <title>Tambah Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
-        @elseif ( request()->is('form-inovation/update*'))
+        @elseif ( request()->is('form-innovation/update*'))
             <!-- Form Inovation -->
             <!-- Edit -->
             <title>Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
-        @elseif ( request()->is('result-reward-inovation') )
+        @elseif ( request()->is('result-reward-innovation') )
             <!-- Manage Result Reward Inovation -->
             <title>Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
         @endif

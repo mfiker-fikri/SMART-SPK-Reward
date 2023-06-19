@@ -469,7 +469,7 @@ class ManageAppraismentInovationController extends Controller
 
                 FinalResultRewardInovation::create([
                     'id'                                =>  Str::uuid(),
-                    'reward_inovation_id'               =>  $arrayId[$x],
+                    'reward_innovation_id'              =>  $arrayId[$x],
                     'score_final_result'                =>  $ResultFinalDSS[$x],
                     'score_final_result_description'    =>  $ket[$x],
                 ]);
@@ -897,7 +897,7 @@ class ManageAppraismentInovationController extends Controller
 
                 FinalResultRewardInovation::create([
                     'id'                                =>  Str::uuid(),
-                    'reward_inovation_id'               =>  $arrayId[$x],
+                    'reward_innovation_id'               =>  $arrayId[$x],
                     'score_final_result'                =>  $ResultFinalDSS[$x],
                     'score_final_result_description'    =>  $ket[$x],
                 ]);

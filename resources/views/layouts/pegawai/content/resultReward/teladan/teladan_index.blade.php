@@ -52,7 +52,7 @@
 
         <div class="col-xxl">
 
-            <div class="card mx-4">
+            <div class="card mx-3">
 
                 <!-- Form Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">

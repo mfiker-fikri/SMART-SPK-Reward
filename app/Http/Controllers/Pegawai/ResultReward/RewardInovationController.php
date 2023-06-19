@@ -41,7 +41,49 @@ class RewardInovationController extends Controller
     public function getResultRewardInovationRead()
     {
         try {
-            return view('layouts.pegawai.content.resultReward.inovation.inovation_index');
+            // Timer
+            $timer                  =   CountdownTimerFormInovation::first();
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
+
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisement);
+
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+
+            $finalResult            =   FinalResultRewardInovation::
+                                    leftJoin('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
+                                    ->select(
+                                        'final_result_reward_innovation.id',
+                                        'final_result_reward_innovation.score_final_result',
+                                        'final_result_reward_innovation.score_final_result_description',
+                                        'final_result_reward_innovation.created_at',
+                                        'final_result_reward_innovation.updated_at',
+                                        'final_result_reward_innovation.reward_innovation_id',
+                                        //
+                                        'reward_innovation.upload_file_short_description',
+                                        'reward_innovation.upload_file_image_support',
+                                        'reward_innovation.upload_file_video_support',
+                                    )
+                                    ->where([
+                                        ['reward_innovation.employee_id', '=', Auth::guard('employees')->user()->id],
+                                        //
+                                        ['signature_head_of_the_human_resources_bureau', '!=', null],
+                                        ['verify_head_of_the_human_resources_bureau', '!=', null],
+                                        //
+                                        ['signature_head_of_disciplinary_awards_and_administration', '!=', null],
+                                        ['verify_head_of_disciplinary_awards_and_administration', '!=', null],
+                                        //
+                                        ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                        ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                    ])
+                                    ->get();
+
+
+            return view('layouts.pegawai.content.resultReward.inovation.inovation_index', compact('finalResult'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -70,21 +112,21 @@ class RewardInovationController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $finalResult            =   FinalResultRewardInovation::
-                                    leftJoin('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
+                                    leftJoin('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
                                     ->select(
-                                        'final_result_reward_inovation.id',
-                                        'final_result_reward_inovation.score_final_result',
-                                        'final_result_reward_inovation.score_final_result_description',
-                                        'final_result_reward_inovation.created_at',
-                                        'final_result_reward_inovation.updated_at',
-                                        'final_result_reward_inovation.reward_inovation_id',
+                                        'final_result_reward_innovation.id',
+                                        'final_result_reward_innovation.score_final_result',
+                                        'final_result_reward_innovation.score_final_result_description',
+                                        'final_result_reward_innovation.created_at',
+                                        'final_result_reward_innovation.updated_at',
+                                        'final_result_reward_innovation.reward_innovation_id',
                                         //
-                                        'reward_inovation.upload_file_short_description',
-                                        'reward_inovation.upload_file_image_support',
-                                        'reward_inovation.upload_file_video_support',
+                                        'reward_innovation.upload_file_short_description',
+                                        'reward_innovation.upload_file_image_support',
+                                        'reward_innovation.upload_file_video_support',
                                     )
                                     ->where([
-                                        ['reward_inovation.employee_id', '=', Auth::guard('employees')->user()->id],
+                                        ['reward_innovation.employee_id', '=', Auth::guard('employees')->user()->id],
                                         //
                                         ['signature_head_of_the_human_resources_bureau', '!=', null],
                                         ['verify_head_of_the_human_resources_bureau', '!=', null],
@@ -94,24 +136,34 @@ class RewardInovationController extends Controller
                                         //
                                         ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
                                         ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
-                                        // ['final_result_reward_inovation.score_final_result', '>', 0.75],
-                                        // ['final_result_reward_inovation.created_at', '>=', $dateOpenTime],
-                                        // ['final_result_reward_inovation.created_at', '<=', $dateExpiredTime],
-                                        // ['final_result_reward_inovation.updated_at', '>=', $dateOpenTime],
-                                        // ['final_result_reward_inovation.updated_at', '<=', $dateExpiredTime],
+                                        // ['final_result_reward_innovation.score_final_result', '>', 0.75],
+                                        // ['final_result_reward_innovation.created_at', '>=', $dateOpenTime],
+                                        // ['final_result_reward_innovation.created_at', '<=', $dateExpiredTime],
+                                        // ['final_result_reward_innovation.updated_at', '>=', $dateOpenTime],
+                                        // ['final_result_reward_innovation.updated_at', '<=', $dateExpiredTime],
                                     ])
-                                    // ->latest('final_result_reward_inovation.created_at')->get();
+                                    // ->latest('final_result_reward_innovation.created_at')->get();
                                     ->get();
                                     // ->latest()->get();
 
+            // $data = [];
+            // if ($finalResult->isEmpty()) {
+            //     return 'Tidak Ada';
+            // }
+
+            // if (empty($finalResult)) {
+            //     return 'Tidak Ada';
+            // }
+
             // ddd($finalResult);
+            // ddd($data);
             return DataTables::of($finalResult)
                     ->addIndexColumn()
-                    ->addColumn('fullName', function ($row, RewardInovation $RewardInovation) {
+                    ->editColumn('fullName', function ($row, RewardInovation $RewardInovation) {
                         $full_name  =   '<span>' . $row->resultFinalInovations->employees->full_name . '</span>';
                         return $full_name;
                     })
-                    ->addColumn('action', function ($row) {
+                    ->editColumn('action', function ($row) {
                         $actionBtn = '';
                         if ($row->score_final_result > 0.75 && $row->score_final_result <= 1) {
                             $actionBtn =
@@ -139,6 +191,7 @@ class RewardInovationController extends Controller
                     })
                     ->rawColumns(['fullName', 'action', 'year'])
                     ->make(true);
+                    // ->toJson();
 
         } catch (\Throwable $th) {
             throw $th;
@@ -176,37 +229,37 @@ class RewardInovationController extends Controller
     {
         try {
 
-            $id     =   FinalResultRewardInovation::where('final_result_reward_inovation.id', '=', $id)
-                        ->leftJoin('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
+            $id     =   FinalResultRewardInovation::where('final_result_reward_innovation.id', '=', $id)
+                        ->leftJoin('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
                         ->select(
-                            'final_result_reward_inovation.id',
-                            'final_result_reward_inovation.score_final_result',
-                            'final_result_reward_inovation.score_final_result_description',
-                            'final_result_reward_inovation.created_at',
-                            'final_result_reward_inovation.updated_at',
-                            'final_result_reward_inovation.reward_inovation_id',
+                            'final_result_reward_innovation.id',
+                            'final_result_reward_innovation.score_final_result',
+                            'final_result_reward_innovation.score_final_result_description',
+                            'final_result_reward_innovation.created_at',
+                            'final_result_reward_innovation.updated_at',
+                            'final_result_reward_innovation.reward_innovation_id',
                             //
-                            'final_result_reward_inovation.signature_head_of_the_human_resources_bureau',
-                            'final_result_reward_inovation.name_head_of_the_human_resources_bureau',
+                            'final_result_reward_innovation.signature_head_of_the_human_resources_bureau',
+                            'final_result_reward_innovation.name_head_of_the_human_resources_bureau',
                             //
-                            'final_result_reward_inovation.signature_head_of_disciplinary_awards_and_administration',
-                            'final_result_reward_inovation.name_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_innovation.signature_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_innovation.name_head_of_disciplinary_awards_and_administration',
                             //
-                            'final_result_reward_inovation.signature_head_of_rewards_discipline_and_pension_subdivision',
-                            'final_result_reward_inovation.name_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_innovation.signature_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_innovation.name_head_of_rewards_discipline_and_pension_subdivision',
                             //
                             //
-                            'reward_inovation.upload_file_short_description',
-                            'reward_inovation.upload_file_image_support',
-                            'reward_inovation.upload_file_video_support',
+                            'reward_innovation.upload_file_short_description',
+                            'reward_innovation.upload_file_image_support',
+                            'reward_innovation.upload_file_video_support',
                         )->first()->toArray();
 
             $created_at     =   FinalResultRewardInovation::find($id)
-                                ->join('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
+                                ->join('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
                                 ->select(
-                                    'final_result_reward_inovation.created_at',
-                                    // 'final_result_reward_inovation.updated_at',
-                                    // 'final_result_reward_inovation.reward_inovation_id',
+                                    'final_result_reward_innovation.created_at',
+                                    // 'final_result_reward_innovation.updated_at',
+                                    // 'final_result_reward_innovation.reward_innovation_id',
                                 )->first();
 
 

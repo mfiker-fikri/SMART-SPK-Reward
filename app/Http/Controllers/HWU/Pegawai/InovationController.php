@@ -27,13 +27,13 @@ class InovationController extends Controller
                 return view('layouts.hwu.content.penghargaan.inovation_index', compact('timer'));
             }
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
             // ddd($dateTimeOpen);
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
             // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
             // ddd($dateTimeExpired);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -63,15 +63,15 @@ class InovationController extends Controller
     {
         //
         $timer                  =   CountdownTimerFormInovation::first();
-        // ddd($timer->date_time_open_form_inovation);
+        // ddd($timer->date_time_open_form_innovation);
 
-        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+        $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
         // ddd($dateTimeOpen);
         $dateOpen               =   $dateTimeOpen->toDateString();
         $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
         // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+        $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
         // ddd($dateTimeExpired);
         $dateExpired            =   $dateTimeExpired->toDateString();
         $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -133,15 +133,15 @@ class InovationController extends Controller
         try {
             //
             $timer                  =   CountdownTimerFormInovation::first();
-            // ddd($timer->date_time_open_form_inovation);
+            // ddd($timer->date_time_open_form_innovation);
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
             // ddd($dateTimeOpen);
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
             // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
             // ddd($dateTimeExpired);
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -151,21 +151,21 @@ class InovationController extends Controller
                 // Find id Reward
                 // $id_employee        =    Auth::guard('employees')->user()->id;
                 $rewardInovation    =    RewardInovation::
-                    join('employees','reward_inovation.employee_id','=','employees.id')
+                    join('employees','reward_innovation.employee_id','=','employees.id')
                     ->select(
-                        'reward_inovation.id',
-                        'reward_inovation.upload_file_short_description',
-                        'reward_inovation.upload_file_image_support',
-                        'reward_inovation.upload_file_video_support',
-                        'reward_inovation.upload_file_video_support',
-                        'reward_inovation.status_process',
-                        'reward_inovation.description_back',
+                        'reward_innovation.id',
+                        'reward_innovation.upload_file_short_description',
+                        'reward_innovation.upload_file_image_support',
+                        'reward_innovation.upload_file_video_support',
+                        'reward_innovation.upload_file_video_support',
+                        'reward_innovation.status_process',
+                        'reward_innovation.description_back',
                         //
                         'employees.full_name',
                         'employees.username',
                     )
                     ->where([
-                        'reward_inovation.id' => $id,
+                        'reward_innovation.id' => $id,
                     // 'employee_id' => $id_employee
                     ])->first();
                 // ddd($rewardInovation);
@@ -190,12 +190,12 @@ class InovationController extends Controller
             //
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -234,12 +234,12 @@ class InovationController extends Controller
             //
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -279,12 +279,12 @@ class InovationController extends Controller
             //
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();

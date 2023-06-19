@@ -19,6 +19,7 @@
         theme: "bootstrap-5",
         width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
         placeholder: $( this ).data( 'placeholder' ),
+        allowClear: true,
     } );
     </script>
     <!-- Select2 Kebaruan -->
@@ -72,6 +73,236 @@
     } );
     </script>
     <!-- Select2 Kesinambungan Konsistensi Kerja -->
+
+    <script type="text/javascript">
+    $(document).on('click', '#resetSelect', function(e) {
+        // if (
+        //     ($('#kebaruan').val() == null) ||
+        //     ($('#kemanfaatan').val() == null) ||
+        //     ($('#peranSerta').val() == null) ||
+        //     ($('#transferReplikasi').val() == null) ||
+        //     ($('#nyataNilaiTambah').val() == null) ||
+        //     ($('#kesinambunganKonsistensiKerja').val() == null) ||
+        // ) {
+        //     $('#kebaruan').val(null).trigger('change');
+        //     $('#kemanfaatan').val(null).trigger('change');
+        //     $('#peranSerta').val(null).trigger('change');
+        //     $('#transferReplikasi').val(null).trigger('change');
+        //     $('#nyataNilaiTambah').val(null).trigger('change');
+        //     $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
+        // } else {
+            $('#kebaruan').val(null).trigger('change');
+            $('#kemanfaatan').val(null).trigger('change');
+            $('#peranSerta').val(null).trigger('change');
+            $('#transferReplikasi').val(null).trigger('change');
+            $('#nyataNilaiTambah').val(null).trigger('change');
+            $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
+
+            // $('#errorKebaruan').children('strong').remove();
+            // $('#errorKemanfaatan').children('strong').remove();
+            // $('#errorPeranSerta').children('strong').remove();
+            // $('#errorNyataNilaiTambah').children('strong').remove();
+            // $('#errorKesinambunganKonsistensiKerja').children('strong').remove();
+        // }
+
+    });
+    </script>
+
+    {{-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Form Inovation Id -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').on('click', function(e) {
+            e.preventDefault();
+
+            let id = $(this).attr('data-id');
+            let kebaruan = $("select#kebaruan").val();
+            let kemanfaatan = $("select#kemanfaatan").val();
+            let peranSerta = $("select#peranSerta").val();
+            let transferReplikasi = $("select#transferReplikasi").val();
+            let nyataNilaiTambah = $("select#nyataNilaiTambah").val();
+            let kesinambunganKonsistensiKerja = $("select#kesinambunganKonsistensiKerja").val();
+
+
+            Swal.fire({
+                title: 'Apakah kamu yakin dengan penilaian ini?',
+                icon: 'warning',
+                text: 'Data penilaian ini tidak bisa diubah kembali dan hanya cukup satu kali penilaian',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $('#formInovationAppraisement').validate({
+                        highlight: function(element, errorClass, validClass) {
+                            $(element).addClass("is-invalid").removeClass("is-valid");
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                            $(element).addClass("is-valid").removeClass("is-invalid");
+                        },
+                        debug: false,
+                        errorElement: "strong",
+                        errorClass: 'text-danger',
+                        rules: {
+                            kebaruan: {
+                                required: true
+                            },
+                            kemanfaatan: {
+                                required: true
+                            },
+                            peranSerta: {
+                                required: true
+                            },
+                            transferReplikasi: {
+                                required: true
+                            },
+                            nyataNilaiTambah: {
+                                required: true
+                            },
+                            kesinambunganKonsistensiKerja: {
+                                required: true
+                            }
+                        },
+                        messages:{
+                            kebaruan :
+                            {
+                                required: "Wajib Diisi"
+                            },
+                            kemanfaatan: {
+                                required: "Wajib Diisi"
+                            },
+                            peranSerta: {
+                                required: "Wajib Diisi"
+                            },
+                            transferReplikasi: {
+                                required: "Wajib Diisi"
+                            },
+                            nyataNilaiTambah: {
+                                required: "Wajib Diisi"
+                            },
+                            kesinambunganKonsistensiKerja: {
+                                required: "Wajib Diisi"
+                            }
+                        },
+                        errorPlacement: function (error, element) {
+                            if ( (element.attr("name") == "kebaruan") ) {
+                                error.appendTo("#errorKebaruan").addClass("strong");
+                            }
+                            else if ( (element.attr("name") == "kemanfaatan") ) {
+                                error.appendTo("#errorKemanfaatan").addClass("strong");
+                            }
+                            else if ( (element.attr("name") == "peranSerta") ) {
+                                error.appendTo("#errorPeranSerta").addClass("strong");
+                            }
+                            else if ( (element.attr("name") == "transferReplikasi") ) {
+                                error.appendTo("#errorTransferReplikasi").addClass("strong");
+                            }
+                            else if( (element.attr("name") == "nyataNilaiTambah") ) {
+                                error.appendTo("#errorNyataNilaiTambah").addClass("strong");
+                            }
+                            else if( (element.attr("name") == "kesinambunganKonsistensiKerja") ) {
+                                error.appendTo("#errorKesinambunganKonsistensiKerja").addClass("strong");
+                            }
+                            else {
+                                error.insertAfter(element);
+                            }
+                        },
+                    });
+                    if ($("#formInovationAppraisement").valid()) {
+                        $.ajax({
+                            headers: {
+                                Accept: "application/json"
+                            },
+                            method: 'post',
+                            url: "{{ url('penilai/appraisement/innovation/valuation') }}" + '/' + id + '/post',
+                            data: {
+                                employee_id: id,
+                                kebaruan: kebaruan,
+                                kemanfaatan: kemanfaatan,
+                                peranSerta: peranSerta,
+                                transferReplikasi: transferReplikasi,
+                                nyataNilaiTambah: nyataNilaiTambah,
+                                kesinambunganKonsistensiKerja: kesinambunganKonsistensiKerja,
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: 'Berhasil',
+                                    icon: 'success',
+                                    confirmButtonText: 'Ok',
+                                    allowOutsideClick: false,
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location = "/penilai/appraisement/innovation";
+                                    }
+                                })
+                            },
+                            error: function(event,xhr,options,exc){
+                                if (event.status == 401) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Your Authorized Failed!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }else if (event.status == 500) {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something Went Wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: xhr,
+                                        title: event.status + ' ' +event.statusText,
+                                        text: 'Oops! 😖 Something went wrong!',
+                                        confirmButtonText: 'Ok',
+                                    })
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Gagal ',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    })
+                }
+            });
+            // }
+        });
+    });
+    </script>
+    <!--/ Form Inovation Id -->
+
+    <script>
+    $(document).ready(function () {
+        $('select[name="kebaruan"]').change(function(){
+            if ($('select[name="kebaruan"]').length > 0) {
+                $('#errorKebaruan').children('strong').remove();
+                $('select[name="kebaruan"]').removeClass("is-invalid");
+                $('select[name="kebaruan"]').addClass("is-valid")
+            } else {
+                $('select[name="kebaruan"]').removeClass("is-valid");
+                $('select[name="kebaruan"]').addClass("is-invalid")
+            }
+        })
+    });
+    </script>
 @stop
 
 @section('content')
@@ -89,7 +320,7 @@
 
                     <!-- Tabs Form Inovation Appraisment From Employees -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('penilai/appraisement/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/inovation/valuation*')) ? 'true' : 'false' }}">Form Inovation Pegawai - {{ $reward->employees->full_name }}</button>
+                        <button class="nav-link {{ (request()->is('penilai/appraisement/innovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/innovation/valuation*')) ? 'true' : 'false' }}">Form Inovation Pegawai - {{ $reward->employees->full_name }}</button>
                     </li>
                     <!--/ Tabs Form Inovation Appraisment From Employees -->
 
@@ -107,7 +338,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Form Inovation Appraisment From Employees -->
-                <div class="tab-pane fade show {{ (request()->is('penilai/appraisement/inovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
+                <div class="tab-pane fade show {{ (request()->is('penilai/appraisement/innovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees" role="tabpanel" aria-labelledby="pills-FormInovationEmployees-tab">
 
                     <div class="card">
 
@@ -120,7 +351,7 @@
                         <!-- Form Inovation Appraisment Details -->
                         <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
-                            <form id="formInovationAppraisment" class="mx-3 my-3" method="POST" action="#" enctype="multipart/form-data">
+                            <form id="formInovation" class="mx-3 my-3" method="POST" action="#" enctype="multipart/form-data">
                                 <!-- Upload Short Description -->
                                 <div class="row my-3 {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
                                     <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Upload Short Description</label>
@@ -206,7 +437,7 @@
                         <!-- Form Inovation Appraisment Details -->
                         <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
-                            <form id="formInovationAppraisment" class="mx-3 my-3" method="POST" action="{{ route('penilai.postManageAppraismentId.Update.Penilai', $reward->id) }}" enctype="multipart/form-data">
+                            <form id="formInovationAppraisement" class="mx-3 my-3" method="POST" action="{{ route('penilai.postManageAppraismentId.Update.Penilai', $reward->id) }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <!-- Kebaruan -->
@@ -217,8 +448,9 @@
                                             <i class="fa-solid fa-user-tie"></i>
                                         </span>
                                         <select class="form-select" {{ $errors->has('kebaruan') ? 'is-invalid' : '' }}" id="kebaruan"
-                                            name="kebaruan"
-                                            autofocus autocomplete required>
+                                            name="kebaruan" placeholder="-- Pilih Kebaruan --"
+                                            autofocus autocomplete required
+                                            aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Kebaruan --">
                                             <option selected disabled>-- Pilih Kebaruan --</option>
                                             @foreach ( $selectOptionParameter1 as $sop1)
                                             <option value="{{ $sop1->grade }}" @if( old('kebaruan') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop1->parameter }} </option>
@@ -226,14 +458,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column" id="errorKebaruan">
                                         <div class="form-text"></div>
 
                                         <!-- Error Kebaruan -->
                                         @if ( $errors->has('kebaruan') )
                                         <div class="my-3">
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('kebaruan') }}</strong>
+                                                <strong class="errorKebaruan">{{ $errors->first('kebaruan') }}</strong>
                                             </span>
                                         </div>
                                         @endif
@@ -250,8 +482,9 @@
                                             <i class="fa-solid fa-user-tie"></i>
                                         </span>
                                         <select class="form-select" {{ $errors->has('kemanfaatan') ? 'is-invalid' : '' }}" id="kemanfaatan"
-                                            name="kemanfaatan"
-                                            autofocus autocomplete required>
+                                            name="kemanfaatan" placeholder="-- Pilih Kemanfaatan --"
+                                            autofocus autocomplete required
+                                            aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Kemanfaatan --">
                                             <option selected disabled>-- Pilih Kemanfaatan --</option>
                                             @foreach ( $selectOptionParameter2 as $sop2)
                                             <option value="{{ $sop2->grade }}" @if( old('kemanfaatan') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop2->parameter }} </option>
@@ -259,14 +492,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column" id="errorKemanfaatan">
                                         <div class="form-text"></div>
 
                                         <!-- Error Kemanfaatan -->
                                         @if ( $errors->has('kemanfaatan') )
                                         <div class="my-3">
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('kemanfaatan') }}</strong>
+                                                <strong class="errorKemanfaatan">{{ $errors->first('kemanfaatan') }}</strong>
                                             </span>
                                         </div>
                                         @endif
@@ -283,8 +516,9 @@
                                             <i class="fa-solid fa-user-tie"></i>
                                         </span>
                                         <select class="form-select" {{ $errors->has('peranSerta') ? 'is-invalid' : '' }}" id="peranSerta"
-                                            name="peranSerta"
-                                            autofocus autocomplete required>
+                                            name="peranSerta" placeholder="-- Pilih Peran Serta --"
+                                            autofocus autocomplete required
+                                            aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Peran Serta --">
                                             <option selected disabled>-- Pilih Peran Serta --</option>
                                             @foreach ( $selectOptionParameter3 as $sop3)
                                             <option value="{{ $sop3->grade }}" @if( old('peranSerta') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop3->parameter }} </option>
@@ -292,14 +526,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column" id="errorPeranSerta">
                                         <div class="form-text"></div>
 
                                         <!-- Error Peran Serta -->
                                         @if ( $errors->has('peranSerta') )
                                         <div class="my-3">
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('peranSerta') }}</strong>
+                                                <strong class="errorPeranSerta">{{ $errors->first('peranSerta') }}</strong>
                                             </span>
                                         </div>
                                         @endif
@@ -316,8 +550,9 @@
                                             <i class="fa-solid fa-user-tie"></i>
                                         </span>
                                         <select class="form-select" {{ $errors->has('transferReplikasi') ? 'is-invalid' : '' }}" id="transferReplikasi"
-                                            name="transferReplikasi"
-                                            autofocus autocomplete required>
+                                            name="transferReplikasi" placeholder="-- Pilih Dapat Ditransfer / Replikasi --"
+                                            autofocus autocomplete required
+                                            aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Dapat Ditransfer / Replikasi --">
                                             <option selected disabled>-- Pilih Dapat Ditransfer / Replikasi --</option>
                                             @foreach ( $selectOptionParameter4 as $sop4)
                                             <option value="{{ $sop4->grade }}" @if( old('transferReplikasi') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop4->parameter }} </option>
@@ -325,14 +560,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column" id="errorTransferReplikasi">
                                         <div class="form-text"></div>
 
                                         <!-- Error Dapat Ditransfer / Replikasi -->
                                         @if ( $errors->has('transferReplikasi') )
                                         <div class="my-3">
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('transferReplikasi') }}</strong>
+                                                <strong class="errorTransferReplikasi">{{ $errors->first('transferReplikasi') }}</strong>
                                             </span>
                                         </div>
                                         @endif
@@ -349,8 +584,9 @@
                                             <i class="fa-solid fa-user-tie"></i>
                                         </span>
                                         <select class="form-select" {{ $errors->has('nyataNilaiTambah') ? 'is-invalid' : '' }}" id="nyataNilaiTambah"
-                                            name="nyataNilaiTambah"
-                                            autofocus autocomplete required>
+                                            name="nyataNilaiTambah" placeholder="-- Pilih Karya Nyata dan Penciptaan Nilai Tambah --"
+                                            autofocus autocomplete required
+                                            aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Karya Nyata dan Penciptaan Nilai Tambah --">
                                             <option selected disabled>-- Pilih Karya Nyata dan Penciptaan Nilai Tambah --</option>
                                             @foreach ( $selectOptionParameter5 as $sop5)
                                             <option value="{{ $sop5->grade }}" @if( old('nyataNilaiTambah') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop5->parameter }} </option>
@@ -358,14 +594,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column" id="errorNyataNilaiTambah">
                                         <div class="form-text"></div>
 
                                         <!-- Error Karya Nyata dan Penciptaan Nilai Tambah -->
                                         @if ( $errors->has('nyataNilaiTambah') )
                                         <div class="my-3">
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('nyataNilaiTambah') }}</strong>
+                                                <strong class="errorNyataNilaiTambah">{{ $errors->first('nyataNilaiTambah') }}</strong>
                                             </span>
                                         </div>
                                         @endif
@@ -382,8 +618,9 @@
                                             <i class="fa-solid fa-user-tie"></i>
                                         </span>
                                         <select class="form-select" {{ $errors->has('kesinambunganKonsistensiKerja') ? 'is-invalid' : '' }}" id="kesinambunganKonsistensiKerja"
-                                            name="kesinambunganKonsistensiKerja"
-                                            autofocus autocomplete required>
+                                            name="kesinambunganKonsistensiKerja" placeholder="-- Pilih Kesinambungan dan Konsistensi Prestasi Kerja --"
+                                            autofocus autocomplete required
+                                            aria-invalid="true" aria-describedby="role" data-val="true" aria-label="role" data-placeholder="-- Pilih Kesinambungan dan Konsistensi Prestasi Kerja --">
                                             <option selected disabled>-- Pilih Kesinambungan dan Konsistensi Prestasi Kerja --</option>
                                             @foreach ( $selectOptionParameter6 as $sop6)
                                             <option value="{{ $sop6->grade }}" @if( old('kesinambunganKonsistensiKerja') ) selected="selected" @endif>{{ $loop->iteration }} - {{ $sop6->parameter }} </option>
@@ -391,14 +628,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column" id="errorKesinambunganKonsistensiKerja">
                                         <div class="form-text"></div>
 
                                         <!-- Error Kesinambungan dan Konsistensi Prestasi Kerja -->
                                         @if ( $errors->has('kesinambunganKonsistensiKerja') )
                                         <div class="my-3">
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('kesinambunganKonsistensiKerja') }}</strong>
+                                                <strong class="errorKesinambunganKonsistensiKerja">{{ $errors->first('kesinambunganKonsistensiKerja') }}</strong>
                                             </span>
                                         </div>
                                         @endif
@@ -413,7 +650,7 @@
                                         <a class="btn btn-default" href="{{ request()->fullUrl() }}" role="button">Check again!</a>
                                     </div> --}}
                                     <div class="mx-1 mx-1 mx-1">
-                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('penilai/appraisement/inovation') }}" role="button">
+                                        <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('penilai/appraisement/innovation') }}" role="button">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
                                     </div>
@@ -423,12 +660,12 @@
                                         </a>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
-                                        <button type="reset" class="btn btn-warning btn-lg">
+                                        <button type="reset" class="btn btn-warning btn-lg" id="resetSelect">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                         </button>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
-                                        <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
+                                        <button type="button" class="btn btn-primary btn-lg"  style="color: black" id="submit" data-id="{{ $reward->id }}">
                                             <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Nilai
                                         </button>
                                     </div>

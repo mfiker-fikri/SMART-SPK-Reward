@@ -132,6 +132,20 @@ class HWUController extends Controller
                     return redirect('headworkunit/profile')->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
+                // if ($request['username']) {
+                //     // Get Id Auth HeadWorkUnit
+                //     $id = Auth::guard('head_work_units')->user()->id;
+
+                //     $headworkunit->full_name   = $request['full_name'];
+                //     $headworkunit->username    = $request['username'];
+                //     $headworkunit->email       = $request['email'];
+
+                //     // Photo Name
+                //     $headworkunit->photo_profile = $id . '_' . $request['username'] . '_' . date('d-m-Y') . 'jpg';
+
+                //     $headworkunit->save();
+                // }
+
                 $headworkunit->full_name   = $request['full_name'];
                 $headworkunit->username    = $request['username'];
                 $headworkunit->email       = $request['email'];
@@ -351,7 +365,7 @@ class HWUController extends Controller
                 'password.max'                          =>      'Password Baru Maksimal 100 Karakter!',
                 'password_confirmation.max'             =>      'Konfirmasi Password Baru Maksimal 100 Karakter!',
                 //
-                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Password Konfirmasi!',
+                'password.confirmed'                    =>      'Password Baru Tidak Sama Dengan Konfirmasi Password Baru!',
                 //
                 'password_confirmation.same'            =>      'Konfirmasi Password Baru Harus Sama Dengan Password Baru!',
                 //

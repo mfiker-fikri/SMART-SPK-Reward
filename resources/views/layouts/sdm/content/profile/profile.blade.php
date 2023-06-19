@@ -641,7 +641,7 @@
 
         <div class="col-xxl">
 
-            <div class="card mx-4">
+            <div class="card mx-3">
 
                 <!-- Tabs -->
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
@@ -1124,7 +1124,9 @@
                                             <!-- Error Username -->
                                             @if ( $errors->has('username') )
                                                 <div class="my-3 ">
-                                                    <strong>{{ $errors->first('username') }}</strong>
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('username') }}</strong>
+                                                    </span>
                                                 </span>
                                             @endif
                                             <!--/ Error Username -->

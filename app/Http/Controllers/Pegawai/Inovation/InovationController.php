@@ -149,6 +149,7 @@ class InovationController extends Controller
                     ])
                     ->orWhere(['status_process' => 1])
                     ->orWhere(['status_process' => 2])
+                    ->orWhere(['status_process' => 3])
                     ->latest()
                     // ->first();
                     ->get();
@@ -172,6 +173,19 @@ class InovationController extends Controller
                     ->get();
                 // ddd($rewardInovationCreateReject);
 
+                // Button Accept
+                $rewardInovationAccept = RewardInovation::
+                    where([
+                        ['created_at', '>=', $dateOpenTime],
+                        ['created_at', '<=', $dateExpiredTime],
+                        ['updated_at', '>=', $dateOpenTime],
+                        ['updated_at', '<=', $dateExpiredTime],
+                        ['employee_id', '==', Auth::guard('employees')->user()->id],
+                    ])
+                    ->orWhere(['status_process' => 3])
+                    ->latest()
+                    ->get();
+
                 // Button Create Null
                 $rewardInovationCreateNull = RewardInovation::
                     where([
@@ -191,7 +205,7 @@ class InovationController extends Controller
 
                     // ddd($rewardInovationCreateNull);
 
-                    return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreateReject', 'rewardInovationCreate', 'rewardInovationCreateNull'));
+                    return view('layouts.pegawai.content.inovation.inovation_index', compact('timer', 'rewardInovation', 'rewardInovationReject', 'rewardInovationBack', 'rewardInovationProcess', 'rewardInovationCreateReject', 'rewardInovationCreate', 'rewardInovationCreateNull', 'rewardInovationAccept'));
 
             } elseif($timer == null) {
                 // Get Timer Countdown
@@ -314,6 +328,9 @@ class InovationController extends Controller
                 if($row->status_process == 1) {
                     $status = '<span>Dikembalikan</span>';
                 }
+                if($row->status_process == 3) {
+                    $status = '<span>Disetujui</span>';
+                }
                 return $status;
             })
             ->addColumn('action', function ($row) {
@@ -405,6 +422,9 @@ class InovationController extends Controller
                 // 2=menunggu
                 if($row->status_process == 2) {
                     $status = '<span>Sedang Tahap Menunggu</span>';
+                }
+                if($row->status_process == 3) {
+                    $status = '<span>Disetujui</span>';
                 }
                 return $status;
             })
@@ -498,6 +518,9 @@ class InovationController extends Controller
                 // =menunggu
                 if($row->status_process == 2) {
                     $status = '<span>Sedang Tahap Menunggu</span>';
+                }
+                if($row->status_process == 3) {
+                    $status = '<span>Disetujui</span>';
                 }
                 return $status;
             })
@@ -1381,7 +1404,7 @@ class InovationController extends Controller
                     // return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
 
                     alert()->error('Gagal Update Form Inovasi!', 'File harus diganti')->autoclose(25000);
-                    return redirect()->back()->with('message-form-inovation-error', 'File harus diganti')->withInput($request->all());
+                    return redirect()->back()->with('message-failed-form-inovation', 'File harus diganti')->withInput($request->all());
 
                 } elseif ($request['status_process'] === '2') {
 
@@ -1762,10 +1785,11 @@ class InovationController extends Controller
                 // 'upload_file_image_support'     =>  $photoName,
                 // 'upload_file_video_support'     =>  $videoName,
 
-                alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
-                return redirect()->back()->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
+                // alert()->error('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
+                // return redirect()->back()->with('message-failed-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
 
-
+                alert()->error('Gagal Update Form Inovasi!', 'File harus diganti')->autoclose(25000);
+                return redirect()->back()->with('message-failed-form-inovation', 'File harus diganti')->withInput($request->all());
                 // return redirect('form-inovation/list');
                 // ->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
             }
@@ -1773,7 +1797,7 @@ class InovationController extends Controller
         }
 
         alert()->error('Gagal Update Form Inovasi!', 'Form Sudah Ditutup')->autoclose(25000);
-        return redirect()->back()->with('message-form-inovation-error', 'Form Sudah Ditutup')->withInput($request->all());
+        return redirect()->back()->with('message-failed-form-inovation', 'Form Sudah Ditutup')->withInput($request->all());
 
     }
 

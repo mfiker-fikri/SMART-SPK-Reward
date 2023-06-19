@@ -23,6 +23,10 @@ class RedirectIfNotHeadWorkUnit
                 return $next($request);
             }
             return redirect('/headworkunit/dashboard');
+        } catch (\Exception $exception) {
+            return $exception;
+        } catch (\Error $error) {
+            return $error;
         } catch (\Throwable $th) {
             throw $th;
         }

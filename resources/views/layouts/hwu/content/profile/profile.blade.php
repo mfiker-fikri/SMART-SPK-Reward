@@ -194,20 +194,20 @@
 
         <div class="col-xxl">
 
-            <div class="card mx-4">
+            <div class="card mx-3">
 
                 <!-- Tabs -->
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
 
                     <!-- Tabs Profile Details -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('headworkunit/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('headworkunit/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('headworkunit/profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('headworkunit/profile')) ? 'true' : 'false' }}">Detail Profile</button>
                     </li>
                     <!--/ Tabs Profile Details -->
 
                     <!-- Tabs Change Password -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-center" id="pills-changePassword-tab" data-bs-toggle="pill" data-bs-target="#pills-changePassword" type="button" role="tab" aria-controls="pills-changePassword" aria-selected="false">Ganti Password</button>
+                        <button class="nav-link" id="pills-changePassword-tab" data-bs-toggle="pill" data-bs-target="#pills-changePassword" type="button" role="tab" aria-controls="pills-changePassword" aria-selected="false">Ganti Password</button>
                     </li>
                     <!--/ Tabs Change Password -->
 
@@ -219,7 +219,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Profile Details -->
-                <div class="tab-pane fade show {{ (request()->is('headworkunit/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane fade {{ (request()->is('headworkunit/profile')) ? 'show' : '' }} {{ (request()->is('headworkunit/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
                     @if(session('message-update-profile-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
@@ -441,7 +441,7 @@
                                 <div class="row my-3 {{ $errors->has('username') ? 'is-invalid' : '' }}">
                                     <label for="username" class="col-sm-3 col-form-label">Username</label>
                                     <div class="col-sm-9">
-                                        <div class="input-group input-group-merge {{ $errors->has('username') ? 'is-invalid' : '' }}">
+                                        <div class="input-group input-group-merge {{ $errors->has('full_name') ? 'is-invalid' : '' }}">
                                             <span id="username" class="input-group-text">
                                                 <i class="fa-solid fa-at"></i>
                                             </span>
@@ -455,9 +455,11 @@
 
                                             <!-- Error Username -->
                                             @if ( $errors->has('username') )
-                                                <div class="my-3 ">
+                                            <div class="my-3">
+                                                <span class="help-block">
                                                     <strong>{{ $errors->first('username') }}</strong>
                                                 </span>
+                                            </div>
                                             @endif
                                             <!--/ Error Username -->
                                         </div>
@@ -529,7 +531,7 @@
 
 
                 <!-- Tabs Change Password -->
-                <div class="tab-pane fade" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
+                <div class="tab-pane fade {{ (request()->is('headworkunit/profile')) ? '' : 'show' }} {{ (request()->is('headworkunit/profile')) ? '' : 'active' }}" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
 
                     @if(session('message-update-password-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">

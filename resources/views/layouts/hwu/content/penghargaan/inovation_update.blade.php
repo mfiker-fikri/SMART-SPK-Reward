@@ -222,7 +222,7 @@
                                 Accept: "application/json"
                             },
                             method: 'post',
-                            url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/reject',
+                            url: "{{ url('headworkunit/form-innovation/list/update') }}" + '/' + id + '/reject',
                             data: {
                                 id: id,
                                 description_back: description_back,
@@ -236,7 +236,7 @@
                                     allowOutsideClick: false,
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        window.location = "/headworkunit/form-inovation/list";
+                                        window.location = "/headworkunit/form-innovation/list";
                                     }
                                 })
                             },
@@ -344,7 +344,7 @@
                                 Accept: "application/json"
                             },
                             method: 'post',
-                            url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/back',
+                            url: "{{ url('headworkunit/form-innovation/list/update') }}" + '/' + id + '/back',
                             data: {
                                 id: id,
                                 description_back: description_back,
@@ -358,7 +358,7 @@
                                     allowOutsideClick: false,
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        window.location = "/headworkunit/form-inovation/list";
+                                        window.location = "/headworkunit/form-innovation/list";
                                     }
                                 })
                             },
@@ -436,7 +436,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('headworkunit/form-inovation/list/update') }}" + '/' + id + '/process',
+                        url: "{{ url('headworkunit/form-innovation/list/update') }}" + '/' + id + '/process',
                         data: {
                             id: id,
                             description_back: description_back,
@@ -450,7 +450,7 @@
                                 allowOutsideClick: false,
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location = "/headworkunit/form-inovation/list";
+                                    window.location = "/headworkunit/form-innovation/list";
                                 }
                             })
                         },
@@ -575,9 +575,9 @@
             var routeForm               =   $('#formInovationUpdate').attr("action");
 
             // URL
-            var urlReject                   =   "{{ url('headworkunit/form-inovation/list/update') }}"+ '/' + formId + '/reject';
-            var urlBack                     =   "{{ url('headworkunit/form-inovation/list/update') }}"+ '/' + formId + '/back';
-            var urlProcess                  =   "{{ url('headworkunit/form-inovation/list/update') }}"+ '/' + formId + '/process';
+            var urlReject                   =   "{{ url('headworkunit/form-innovation/list/update') }}"+ '/' + formId + '/reject';
+            var urlBack                     =   "{{ url('headworkunit/form-innovation/list/update') }}"+ '/' + formId + '/back';
+            var urlProcess                  =   "{{ url('headworkunit/form-innovation/list/update') }}"+ '/' + formId + '/process';
             // console.log(form.attr("action", url));
             // Switch
 
@@ -948,7 +948,7 @@
                         clearInterval(timerInterval)
                     },
                     didClose: () => {
-                        window.location = "{{ url('form-inovation/list') }}";
+                        window.location = "{{ url('form-innovation/list') }}";
                     },
                 });
             });
@@ -979,7 +979,7 @@
 
         <div class="col-xxl">
 
-            <div class="card my-4">
+            <div class="card my-4 mx-lg-3">
 
                 <!-- Form Inovation Update Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
@@ -993,8 +993,8 @@
                     <div class="py-3 d-flex flex-column justify-content-start">
                         @if (
                             (
-                                ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
-                            ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_inovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_inovation) )
+                                ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
+                            ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
                         )
                             <div class="mx-1 mx-1 mx-1">
                                 <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
@@ -1004,7 +1004,7 @@
                                 <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_inovation)->toDateTimeString()  }}"></div>
+                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->toDateTimeString()  }}"></div>
                             </div>
                         @endif
                     </div>
@@ -1232,7 +1232,7 @@
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/headworkunit/form-inovation/list') }}" role="button">
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/headworkunit/form-innovation/list') }}" role="button">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>

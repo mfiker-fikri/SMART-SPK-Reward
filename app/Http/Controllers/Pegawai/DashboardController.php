@@ -60,12 +60,12 @@ class DashboardController extends Controller
                 return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
             }
             elseif ($timerInovasi != null && $timerTeladan == null) {
-                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
+                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_innovation);
 
                 $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
                 $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
 
-                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
+                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_innovation);
 
                 $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
                 $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
@@ -86,12 +86,12 @@ class DashboardController extends Controller
                 return view('layouts.pegawai.content.dashboard.dashboard', compact('pegawai', 'timerInovasi', 'timerTeladan'));
             }
             elseif ($timerInovasi != null && $timerTeladan != null) {
-                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
+                $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_innovation);
 
                 $dateOpenInovasi                      =   $dateTimeOpenInovasi->toDateString();
                 $dateOpenTimeInovasi                  =   $dateTimeOpenInovasi->toDateTimeString();
 
-                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_inovation);
+                $dateTimeExpiredInovasi        =   new Carbon($timerInovasi->date_time_expired_form_innovation);
 
                 $dateExpiredInovasi                   =   $dateTimeExpiredInovasi->toDateString();
                 $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
@@ -132,12 +132,12 @@ class DashboardController extends Controller
             //
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -162,12 +162,12 @@ class DashboardController extends Controller
 
                     $timer                  =   CountdownTimerFormInovation::first();
 
-                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
 
                     $dateOpen               =   $dateTimeOpen->toDateString();
                     $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
 
                     $dateExpired            =   $dateTimeExpired->toDateString();
                     $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -253,12 +253,12 @@ class DashboardController extends Controller
 
                     $timer                  =   CountdownTimerFormInovation::first();
 
-                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_inovation);
+                    $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
 
                     $dateOpen               =   $dateTimeOpen->toDateString();
                     $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_inovation);
+                    $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
 
                     $dateExpired            =   $dateTimeExpired->toDateString();
                     $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -325,29 +325,29 @@ class DashboardController extends Controller
 
 
             $data = FinalResultRewardInovation::
-                leftJoin('reward_inovation', 'final_result_reward_inovation.reward_inovation_id', '=', 'reward_inovation.id')
+                leftJoin('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
                 ->select(
-                    'final_result_reward_inovation.id',
-                    'final_result_reward_inovation.score_final_result',
-                    'final_result_reward_inovation.score_final_result_description',
-                    'final_result_reward_inovation.created_at',
-                    'final_result_reward_inovation.updated_at',
-                    'final_result_reward_inovation.reward_inovation_id',
-                    'final_result_reward_inovation.verify_head_of_the_human_resources_bureau'
+                    'final_result_reward_innovation.id',
+                    'final_result_reward_innovation.score_final_result',
+                    'final_result_reward_innovation.score_final_result_description',
+                    'final_result_reward_innovation.created_at',
+                    'final_result_reward_innovation.updated_at',
+                    'final_result_reward_innovation.reward_innovation_id',
+                    'final_result_reward_innovation.verify_head_of_the_human_resources_bureau'
                     //
-                    // 'reward_teladan.upload_file_short_description',
-                    // 'reward_teladan.upload_file_image_support',
-                    // 'reward_teladan.upload_file_video_support',
+                    // 'reward_representative.upload_file_short_description',
+                    // 'reward_representative.upload_file_image_support',
+                    // 'reward_representative.upload_file_video_support',
                 )
                 ->where([
                     // ['created_at', '>=', $dateOpenTime],
                     // ['created_at', '<=', $dateExpiredTime],
                     // ['updated_at', '>=', $dateOpenTime],
                     // ['updated_at', '<=', $dateExpiredTime],
-                    ['final_result_reward_inovation.created_at', '>=', $dateExpiredTime],
-                    ['final_result_reward_inovation.updated_at', '>=', $dateExpiredTime],
-                    ['final_result_reward_inovation.verify_head_of_the_human_resources_bureau', '!=', null],
-                    ['reward_inovation.employee_id', '=', $id],
+                    ['final_result_reward_innovation.created_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_innovation.updated_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_innovation.verify_head_of_the_human_resources_bureau', '!=', null],
+                    ['reward_innovation.employee_id', '=', $id],
                 ])
                 ->latest()
                 ->get();
@@ -420,25 +420,25 @@ class DashboardController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $data = FinalResultRewardTeladan::
-                leftJoin('reward_teladan', 'final_result_reward_teladan.reward_teladan_id', '=', 'reward_teladan.id')
+                leftJoin('reward_representative', 'final_result_reward_representative.reward_representative_id', '=', 'reward_representative.id')
                 ->select(
-                    'final_result_reward_teladan.id',
-                    'final_result_reward_teladan.score_final_result',
-                    'final_result_reward_teladan.score_final_result_description',
-                    'final_result_reward_teladan.created_at',
-                    'final_result_reward_teladan.updated_at',
-                    'final_result_reward_teladan.reward_teladan_id',
-                    'final_result_reward_teladan.verify_head_of_the_human_resources_bureau'
+                    'final_result_reward_representative.id',
+                    'final_result_reward_representative.score_final_result',
+                    'final_result_reward_representative.score_final_result_description',
+                    'final_result_reward_representative.created_at',
+                    'final_result_reward_representative.updated_at',
+                    'final_result_reward_representative.reward_representative_id',
+                    'final_result_reward_representative.verify_head_of_the_human_resources_bureau'
                     //
-                    // 'reward_teladan.upload_file_short_description',
-                    // 'reward_teladan.upload_file_image_support',
-                    // 'reward_teladan.upload_file_video_support',
+                    // 'reward_representative.upload_file_short_description',
+                    // 'reward_representative.upload_file_image_support',
+                    // 'reward_representative.upload_file_video_support',
                 )
                 ->where([
-                    ['final_result_reward_teladan.created_at', '>=', $dateExpiredTime],
-                    ['final_result_reward_teladan.updated_at', '>=', $dateExpiredTime],
-                    ['final_result_reward_teladan.verify_head_of_the_human_resources_bureau', '!=', null],
-                    ['reward_teladan.employee_id', '=', $id],
+                    ['final_result_reward_representative.created_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_representative.updated_at', '>=', $dateExpiredTime],
+                    ['final_result_reward_representative.verify_head_of_the_human_resources_bureau', '!=', null],
+                    ['reward_representative.employee_id', '=', $id],
                 ])
                 ->latest()
                 ->get();

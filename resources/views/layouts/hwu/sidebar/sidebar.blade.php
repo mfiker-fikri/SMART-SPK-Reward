@@ -52,8 +52,8 @@
             <span class="menu-header-text">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('headworkunit/form-inovation/list*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/headworkunit/form-inovation/list') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('headworkunit/form-innovation/list*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/headworkunit/form-innovation/list') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                 <div data-i18n="Analytics">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
             </a>

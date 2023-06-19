@@ -414,6 +414,7 @@
         theme: "bootstrap-5",
         width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
         placeholder: $( this ).data( 'placeholder' ),
+        allowClear: true,
     } );
     </script>
     <!-- Select2 Pendidikan Terakhir -->
@@ -425,7 +426,7 @@
         if (old) {
             $('#pendidikan_terakhir').val(old).trigger('change');
         } else {
-            $('#pendidikan_terakhir').val(null).trigger('change');
+            $('#pendidikan_terakhir')..val('').trigger('change');
         }
     });
     </script>
@@ -488,7 +489,7 @@
 
         <div class="col-xxl">
 
-            <div class="card mx-4">
+            <div class="card mx-3">
 
                 <!-- Tabs -->
                 <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
@@ -1023,11 +1024,13 @@
                                 </div>
                                 <!--/ Unit Kerja -->
 
-
-
-
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex flex-row justify-content-end">
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
+                                        </a>
+                                    </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg" id="resetPendidikanTerakhir">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
@@ -1208,6 +1211,11 @@
 
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex flex-row justify-content-end">
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
+                                        </a>
+                                    </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset"  class="btn btn-warning btn-lg">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset

@@ -40,7 +40,7 @@ class FinalResultRewardTeladan extends Model
         //
         // 'employees_id',
         //
-        'reward_teladan_id',
+        'reward_representative_id',
         //
         'score_final_result',
         'score_final_result_description',

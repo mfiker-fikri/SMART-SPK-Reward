@@ -100,37 +100,36 @@ class ManageAppraismentTeladanController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $data = Pegawai::
-                leftjoin('reward_teladan', 'reward_teladan.employee_id', '=', 'employees.id')
+                leftjoin('reward_representative', 'reward_representative.employee_id', '=', 'employees.id')
                 ->latest()
                 ->select('employees.id',
-                        'reward_teladan.employee_id as REI',
+                        'reward_representative.employee_id as REI',
                         'employees.full_name',
                         'employees.created_at', 'employees.updated_at',
-                        'reward_teladan.created_at as teladan_created', 'reward_teladan.updated_at as teladan_updated',
-                        'reward_teladan.status_process')
-                // ->whereNull('reward_teladan.status_process')
+                        'reward_representative.created_at as teladan_created', 'reward_representative.updated_at as teladan_updated',
+                        'reward_representative.status_process')
+                // ->whereNull('reward_representative.status_process')
                 // ->where([
-                    // ['reward_teladan.employee_id', '=', 'employees.id']
-                    // ['reward_teladan.created_at', '>=', $dateOpenTime],
-                    // ['reward_teladan.created_at', '<=', $dateExpiredTime],
-                    // ['reward_teladan.updated_at', '>=', $dateOpenTime],
-                    // ['reward_teladan.updated_at', '<=', $dateExpiredTime],
-                    // ['reward_teladan.status_process', '=', null],
+                    // ['reward_representative.employee_id', '=', 'employees.id']
+                    // ['reward_representative.created_at', '>=', $dateOpenTime],
+                    // ['reward_representative.created_at', '<=', $dateExpiredTime],
+                    // ['reward_representative.updated_at', '>=', $dateOpenTime],
+                    // ['reward_representative.updated_at', '<=', $dateExpiredTime],
+                    // ['reward_representative.status_process', '=', null],
                 // ])
-                // ->max('reward_teladan.updated_at')
+                // ->max('reward_representative.updated_at')
                 ->orderBy('teladan_updated', 'DESC')
                 // ->groupBy('REI')
-                // ->having('reward_teladan.created_at', '>=', $dateOpenTime)
+                // ->having('reward_representative.created_at', '>=', $dateOpenTime)
                 ->get()
-                ->unique('REI')
-                ;
+                ->unique('REI');
                 // ->toArray();
 
             // $data = RewardTeladan::
             //     with('employees')
             //     ->whereHas('employees', function($q) use ($dateOpenTime){
             //         $q->where([
-            //             ['reward_teladan.created_at', '>=', $dateOpenTime]
+            //             ['reward_representative.created_at', '>=', $dateOpenTime]
             //         ]);
             //     })
                 // ->latest()
@@ -637,7 +636,7 @@ class ManageAppraismentTeladanController extends Controller
 
                 FinalResultRewardTeladan::create([
                     'id'                                =>  Str::uuid(),
-                    'reward_teladan_id'                 =>  $arrayId[$x],
+                    'reward_representative_id'          =>  $arrayId[$x],
                     'score_final_result'                =>  $ResultFinalDSS[$x],
                     'score_final_result_description'    =>  $ket[$x],
                 ]);

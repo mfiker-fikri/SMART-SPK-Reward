@@ -40,7 +40,7 @@ class FinalResultRewardInovation extends Model
         //
         // 'employees_id',
         //
-        'reward_inovation_id',
+        'reward_innovation_id',
         //
         'score_final_result',
         'score_final_result_description',
