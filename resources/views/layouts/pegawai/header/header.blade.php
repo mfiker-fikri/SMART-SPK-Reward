@@ -11,19 +11,19 @@
             <!-- Dashboard -->
             @if ( request()->is('dashboard') )
                 <li class="breadcrumb-item fw-bold active">
-                    Dashboard
+                    Beranda
                 </li>
             <!-- Profile -->
             @elseif ( request()->is('profile') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Profile</li>
+                <li class="breadcrumb-item fw-bold active">Data Diri</li>
             <!-- Manage Inovation -->
             @elseif ( request()->is('form-innovation/create') )
                 <!-- Create -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
@@ -32,13 +32,13 @@
             @elseif ( request()->is('form-innovation/list') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">List Form Pendaftaran Penghargaan Inovasi</li>
             @elseif ( request()->is('form-innovation/update*') )
                 <!-- Edit -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Inovasi</a>
@@ -48,7 +48,7 @@
             @elseif ( request()->is('form-representative/create') )
                 <!-- Create -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('form-representative/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Teladan</a>
@@ -57,13 +57,13 @@
             @elseif ( request()->is('form-representative/list') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">List Form Pendaftaran Penghargaan Teladan</li>
             @elseif ( request()->is('form-representative/update*') )
                 <!-- Edit -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('form-representative/list') }}" style="text-decoration: none !important;">List Form Pendaftaran Penghargaan Teladan</a>
@@ -73,14 +73,14 @@
             @elseif ( request()->is('result-reward-innovation') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Inovasi</li>
             <!-- Manage Result Reward Inovation -->
             @elseif ( request()->is('result-reward-representative') )
             <!-- Read -->
             <li class="breadcrumb-item fw-light">
-                <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
             </li>
             <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Teladan</li>
             @endif
@@ -178,7 +178,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('profile')) ? 'active' : '' }}" href="{{ URL::to('/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Data Diri</span>
                         </a>
                     </li>
                     <!--/ My Profile -->
@@ -198,7 +198,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item" id="logout" style="cursor: pointer;">
                             <i class="fa-solid fa-person-running" style="margin: 0 0.9rem 0 0;font-size: 1.6em;"></i>
-                            <span class="align-middle">Log Out</span>
+                            <span class="align-middle">Keluar</span>
                         </a>
                     </li>
                     <!--/ Logout -->

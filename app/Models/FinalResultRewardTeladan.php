@@ -76,7 +76,7 @@ class FinalResultRewardTeladan extends Model
         return $this->belongsTo(
             RewardTeladan::class,
             // 'final_result_reward_inovation',
-            'reward_teladan_id',
+            'reward_representative_id',
             'id',
         );
     }

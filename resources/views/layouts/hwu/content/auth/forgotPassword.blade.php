@@ -12,7 +12,7 @@
 
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="{{ URL::to('/headworkunit/forgot-password') }}" class="app-brand-link gap-2">
+                        <a href="{{ URL::to('/ksk/forgot-password') }}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="logo" width="100" height="100" />
                             </span>
@@ -36,7 +36,7 @@
                         <div class="mb-3 {{ $errors->has('email') ? 'is-invalid' : '' }} ">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }} " id="email"
-                                name="email" placeholder="Enter your email"
+                                name="email" placeholder="Masukkan email"
                                 autofocus autocomplete required  />
 
                             <!-- Error Email -->
@@ -88,7 +88,7 @@
                                         <i class="fa-regular fa-envelope fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        Send Reset Link
+                                        Kirim Link Reset Password
                                     </div>
                                 </div>
                             </button>
@@ -100,13 +100,13 @@
 
                     <!-- Back To Login -->
                     <div class="mb-3 text-center">
-                        <a class="btn btn-primary shadow-none d-grid w-15 h-15 d-inline-flex align-items-center justify-content-center" href="{{ URL::to('/headworkunit') }}" role="button" style="background-color: transparent !important; border-color: transparent !important">
+                        <a class="btn btn-primary shadow-none d-grid w-15 h-15 d-inline-flex align-items-center justify-content-center" href="{{ URL::to('/ksk') }}" role="button" style="background-color: transparent !important; border-color: transparent !important">
                             <div class="d-inline-flex flex-row align-items-center justify-content-center">
                                 <div class="d-flex align-items-center mx-2">
                                     <i class="fa-solid fa-arrow-left fa-lg" style="color: black;"></i>
                                 </div>
                                 <div class="d-flex align-items-center" style="color: black;">
-                                    Return To Login
+                                    Kembali Ke Halaman Login
                                 </div>
                             </div>
                         </a>

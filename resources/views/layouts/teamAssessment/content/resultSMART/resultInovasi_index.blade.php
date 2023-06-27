@@ -338,7 +338,7 @@
                 buttons: [
                     "pageLength",
                 ],
-                ajax: "{{ url('penilai/appraisement/result/inovation/list') }}",
+                ajax: "{{ url('penilai/appraisement/result/innovation/list') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'fullName', name: 'fullName', orderable: false, searchable: false},

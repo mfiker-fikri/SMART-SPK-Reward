@@ -27,26 +27,32 @@
                         <table align="center" width="670" height="400" cellpadding="0" cellspacing="0" style="background-color: white;margin: 25px 0;">
                             <tr>
                                 <td align="center" width="100%" cellpadding="0" cellspacing="0">
-                                    <h2 class="text-center text-uppercase"><strong> Forgot Your Password? </strong></h2>
+                                    <h2 class="text-center text-uppercase"><strong> Lupa Password? </strong></h2>
 
                                     <table align="center" width="80%" cellpadding="0" cellspacing="0" style="margin-bottom: 2em;">
                                         <tr>
                                             <td align="center" width="100%" cellpadding="0" cellspacing="0">
                                                 <p style="font-size: 14px;">{{ $greetings }}, {{ $nameSDM->full_name }}</p>
                                                 <p style="font-size: 14px;">
-                                                    There was a request to change your password!
+                                                    {{-- There was a request to change your password!
 
                                                     If you did not make this request then please ignore this email.
 
-                                                    Otherwise,<b> please click the button </b> below to change your password: </p>
+                                                    Otherwise,<b> please click the button </b> below to change your password:  --}}
+                                                    Ada permintaan untuk mengubah password Anda!
+                                                    Jika Anda tidak membuat permintaan ini, harap abaikan email ini.
+                                                    Jika tidak, <b> silakan klik tombol </b> di bawah ini untuk mengubah password Anda:
+                                                </p>
 
                                                 <div class="my-5 my-3 my-3 d-flex flex-row justify-content-center" style="margin: 2em 0;">
-                                                    <a class="button-primary" target="_blank" href="{{ URL::to('sdm/reset-password/'.$token) }}">Reset My Password</a>
+                                                    <a class="button-primary" target="_blank" href="{{ URL::to('sdm/reset-password/'.$token) }}">Reset Password Saya</a>
                                                 </div>
 
                                                 <p style="font-size: 14px;">
-                                                    Please note that this link will expire within 1 hours. After 1 hours,
-                                                    you must submit a new password reset request.
+                                                    {{-- Please note that this link will expire within 1 hours. After 1 hours,
+                                                    you must submit a new password reset request. --}}
+                                                    Harap perhatikan bahwa tautan ini akan kedaluwarsa dalam 5 menit.
+                                                    Setelah 5 menit, Anda harus mengirimkan permintaan pengaturan ulang password baru.
                                                 </p>
                                             </td>
                                         </tr>

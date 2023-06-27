@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirect = 'headworkunit/dashboard';
+    // protected $redirect = 'ksk/dashboard';
 
     /**
      * Get the login username to be used by the controller.
@@ -102,7 +102,7 @@ class LoginController extends Controller
             // FacadesRateLimiter::clear('hwu.' . $request->ip());
             session(['berhasil_login' => true]);
             alert()->success('Berhasil Masuk')->autoclose(25000);
-            return redirect('/headworkunit/dashboard')->with('message-succes-login', 'Selamat Datang');
+            return redirect('/ksk/dashboard')->with('message-succes-login', 'Selamat Datang');
         } else {
             alert()->error('Gagal Masuk!')->autoclose(25000);
             return redirect()->back()->withErrors($attempt)->withInput($request->all())->with('message-failed-login', 'Gagal Masuk!');
@@ -126,7 +126,7 @@ class LoginController extends Controller
             $request->session()->flush();
             Auth::logout();
             alert()->success('Kamu Telah Keluar Dari Akun Pegawai', 'Terima Kasih')->autoclose(50000);
-            return redirect('/headworkunit')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Pegawai, Terima Kasih');
+            return redirect('/ksk')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Pegawai, Terima Kasih');
         } catch (\Throwable $th) {
             throw $th;
         }

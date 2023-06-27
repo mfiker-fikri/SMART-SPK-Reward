@@ -5,7 +5,6 @@
         $(document).on('click', '#passwordEye', function(e) {
             event.preventDefault();
             var show = document.getElementById("password").getAttribute("type");
-            // console.log(show);
             if(show == "password"){
                 document.getElementById("password").setAttribute("type", "text");
                 document.getElementById("eyePassword").removeAttribute("class", "fa-solid fa-eye-slash");
@@ -34,13 +33,99 @@
         });
     </script>
     <!--/ Show Hide Password -->
+
+    <!-- Timer Countdown -->
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".expiredDate").each( function(){
+                var _this = $(this),
+                _expire = _this.val();
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if( event.offset.totalMinutes == 0 && flag2 ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Reset Password Ditutup Dalam' + ' ' + 1 + 'Menit',
+                            icon: 'warning',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Reset Password Ditutup',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location = "/penilai/forgot-password";
+                        },
+                    });
+                });
+
+            });
+
+        });
+    </script>
 @stop
 
 @section('content')
 
 <div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/KLN.png') }}); background-blend-mode: darken; background-repeat: space; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; filter: blur(2px);"></div>
 <div class="container-xxl">
-    <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 100vh; max-height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 130vh; max-height: 130vh;">
         <div class="authentication-inner">
 
             <!-- Reset Password -->
@@ -59,10 +144,10 @@
 
                     <!-- Title -->
                     <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>
-                    <span class="mb-4 text-center">
+                    <span class="text-center">
                         <h5>Reset Password</h5>
                     </span>
-                    <p class="mx-4 mb-4 text-center">Masukkan email beserta password baru anda.</p>
+                    <p class="text-center">Masukkan email beserta password baru anda.</p>
                     <!--/ Title -->
 
                     <!-- Reset Password -->
@@ -70,6 +155,7 @@
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
+                        <input type="hidden" class="expiredDate" value="{{ \Carbon\Carbon::parse($check->created_at)->addMinutes(5)->toDateTimeString()  }}">
 
                         <!-- Email -->
                         <div class="mb-3 {{ $errors->has('email') ? 'is-invalid' : '' }} ">
@@ -79,7 +165,7 @@
                                     <i class="fa-regular fa-envelope fa-lg"></i>
                                 </span>
                                 <input type="email" class="form-control px-lg-1 px-2 {{ $errors->has('email') ? 'is-invalid' : '' }} " id="email"
-                                    name="email" placeholder="Enter Your Email" value="{{ old('email', $updatePassword->email) }}"
+                                    name="email" placeholder="Masukkan Email Anda" value="{{ old('email', $check->email) }}"
                                     autofocus autocomplete required  />
                             </div>
 
@@ -96,13 +182,13 @@
 
                         <!-- New Password -->
                         <div class="mb-3 {{ $errors->has('password') ? 'is-invalid' : '' }} ">
-                            <label for="password" class="form-label">New Password</label>
+                            <label for="password" class="form-label">Password Baru</label>
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }} ">
                                 <span class="input-group-text">
                                     <i class="fas fa-key"></i>
                                 </span>
                                 <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
-                                    name="password" placeholder="Enter Your New Password"
+                                    name="password" placeholder="Masukkan Password Baru Anda"
                                     autofocus autocomplete required />
                                 <span class="input-group-text" id="passwordEye" style="cursor: pointer;">
                                     <i class="fa-solid fa-eye-slash" id="eyePassword"></i>
@@ -127,7 +213,7 @@
 
                         <!-- Password Confirm -->
                         <div class="mb-3 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                            <label for="password_confirmation" class="form-label">Confirmation New Password</label>
+                            <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
                             <div class="input-group input-group-merge {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                 <span class="input-group-text">
                                     <i class="fas fa-key"></i>

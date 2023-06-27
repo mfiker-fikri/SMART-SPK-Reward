@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Routing\RouteGroup;
+// use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+// use RealRashid\SweetAlert\Facades\Alert;
+// use Illuminate\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,19 +85,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     // Manage Head Work Unit
     // Create
-    Route::GET('manage/headworkunit/create', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUCreate'])->name('getManageHWU.Create.Admin');
-    Route::POST('manage/headworkunit/create/post', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUCreate'])->name('postManageHWU.Create.Admin');
+    Route::GET('manage/ksk/create', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUCreate'])->name('getManageHWU.Create.Admin');
+    Route::POST('manage/ksk/create/post', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUCreate'])->name('postManageHWU.Create.Admin');
     // Read
-    Route::GET('manage/headworkunit', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWU'])->name('getManageHWU.Read.Admin');
-    Route::GET('manage/headworkunit/list', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUList'])->name('getManageHWUList.Read.Admin');
+    Route::GET('manage/ksk', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWU'])->name('getManageHWU.Read.Admin');
+    Route::GET('manage/ksk/list', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUList'])->name('getManageHWUList.Read.Admin');
     // View
-    Route::GET('manage/headworkunit/view/{id}', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUIdView'])->name('getManageHWUId.View.Admin');
+    Route::GET('manage/ksk/view/{id}', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUIdView'])->name('getManageHWUId.View.Admin');
     // Update
-    Route::GET('manage/headworkunit/edit/{id}', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUIdUpdate'])->name('getManageHWUId.Update.Admin');
-    Route::POST('manage/headworkunit/edit/{id}/post', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUIdUpdate'])->name('postManageHWUId.Update.Admin');
-    Route::POST('manage/headworkunit/edit/{id}/post/change-password', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUIdUpdateChangePassword'])->name('postManageHWUId.UpdateChangePassword.Admin');
+    Route::GET('manage/ksk/edit/{id}', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'getHWUIdUpdate'])->name('getManageHWUId.Update.Admin');
+    Route::POST('manage/ksk/edit/{id}/post', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUIdUpdate'])->name('postManageHWUId.Update.Admin');
+    Route::POST('manage/ksk/edit/{id}/post/change-password', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUIdUpdateChangePassword'])->name('postManageHWUId.UpdateChangePassword.Admin');
     // Delete
-    Route::POST('manage/headworkunit/delete/{id}', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUIdDelete'])->name('postManageHWUId.Delete.Admin');
+    Route::POST('manage/ksk/delete/{id}', [App\Http\Controllers\Admin\HWU\ManageHWUController::class, 'postHWUIdDelete'])->name('postManageHWUId.Delete.Admin');
 
     // Manage Pegawai
     // Create
@@ -450,7 +455,7 @@ Route::group(['name' => 'penilai', 'prefix' => 'penilai', 'as' => 'penilai.'], f
 });
 
 // Kepala Satuan Kerja
-Route::group(['name' => 'headworkunit', 'prefix' => 'headworkunit', 'as' => 'hwu.'], function () {
+Route::group(['name' => 'ksk', 'prefix' => 'ksk', 'as' => 'hwu.'], function () {
     // Login, Reset Password, dan Logout
     Route::GET('/', [App\Http\Controllers\HWU\Auth\LoginController::class, 'getLoginForm'])->name('getLogin.HWU');
     Route::POST('/', [App\Http\Controllers\HWU\Auth\LoginController::class, 'postLoginForm'])->name('postLogin.HWU');
@@ -605,9 +610,21 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     //
 });
 
+Route::fallback(function () {
+    // alert()->error('link tidak ditemukan')->autoclose(25000);
+    // Alert::error('this is error alert');
+    return view('errors.404');
+});
+
+// Route::GET('/debug', function() {
+//     $debug = App::hasDebugModeEnabled();
+
+//     return new Response($debug ? 'Enabled' : 'Disabled');
+// });
+
 // Error
 Route::GET('/error', function () {
-    return view('errors.503');
+    return view('errors.401');
 });
 
 

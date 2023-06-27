@@ -23,26 +23,26 @@
 
         <!-- Dashboard -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Dashboard</span>
+            <span class="menu-header-text">Beranda</span>
         </li>
 
         <li class="menu-item {{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
             <a href="{{ URL::to('/admin/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Beranda">Beranda</div>
             </a>
         </li>
         <!--/ Dashboard -->
 
         <!-- My Profile -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">My Profile</span>
+            <span class="menu-header-text">Data Diri</span>
         </li>
 
         <li class="menu-item {{ (request()->is('admin/profile*')) ? 'active' : '' }}">
             <a href="{{ URL::to('/admin/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                <div data-i18n="Analytics">My Profile</div>
+                <div data-i18n="Analytics">Data Diri</div>
             </a>
         </li>
         <!--/ My Profile -->

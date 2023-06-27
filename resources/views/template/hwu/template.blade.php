@@ -14,22 +14,22 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <meta name="referrer" content="strict-origin" />
-        @if ( request()->is('headworkunit/dashboard') )
+        @if ( request()->is('ksk/dashboard') )
             <!-- Dashboard -->
             <meta name="title" content="{{ Auth::guard('head_work_units')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="{{ Auth::guard('head_work_units')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
-        @elseif ( request()->is('headworkunit/profile') )
+        @elseif ( request()->is('ksk/profile') )
             <!-- Profile -->
             <meta name="title" content="{{ Auth::guard('head_work_units')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="{{ Auth::guard('head_work_units')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
-        @elseif ( request()->is('headworkunit/form-innovation/list') )
+        @elseif ( request()->is('ksk/form-innovation/list') )
             <!-- List -->
             <meta name="title" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
-        @elseif ( request()->is('headworkunit/form-innovation/list/update*') )
+        @elseif ( request()->is('ksk/form-innovation/list/update*') )
             <!-- List -->
             <meta name="title" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
@@ -37,19 +37,19 @@
         <!--/ Meta Tag -->
 
         <!-- Title -->
-        @if ( request()->is('headworkunit/dashboard*') )
+        @if ( request()->is('ksk/dashboard*') )
             <!-- Dashboard -->
             <title> {{ Auth::guard('head_work_units')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('headworkunit/profile') )
+        @elseif ( request()->is('ksk/profile') )
             <!-- Profile -->
             <title> {{ Auth::guard('head_work_units')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('headworkunit/form-innovation/list') )
+        @elseif ( request()->is('ksk/form-innovation/list') )
             <!-- List -->
             <title> Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('headworkunit/form-innovation/list/update*') )
+        @elseif ( request()->is('ksk/form-innovation/list/update*') )
             <!-- List -->
             <title> Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
         @endif
@@ -333,14 +333,14 @@
             //
             let greeting;
             //
-            if (hr >= 5 && hr < 11) {
-                greeting = "Good Morning!";
-            } else if (hr >= 11 && hr < 18) {
-                greeting = "Good Afternoon!"
-            } else if (hr >= 18 && hr < 23) {
-                greeting = "Good Evening!"
+            if (hr >= 4 && hr < 10) {
+                greeting = "Selamat Pagi!";
+            } else if (hr >= 10 && hr < 15) {
+                greeting = "Selamat Siang!"
+            } else if (hr >= 15 && hr < 18) {
+                greeting = "Selamat Sore!"
             } else {
-                greeting = "Good Night!"
+                greeting = "Selamat Malam!"
             }
             document.getElementById("greeting").innerHTML = greeting;
         </script>
@@ -401,7 +401,7 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location = "/headworkunit/logout";
+                        window.location = "/ksk/logout";
                     }
                 })
             }

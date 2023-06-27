@@ -36,7 +36,7 @@
                         <div class="mb-3 {{ $errors->has('email') ? 'is-invalid' : '' }} ">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }} " id="email"
-                                name="email" placeholder="Enter your email"
+                                name="email" placeholder="Masukkan email"
                                 autofocus autocomplete required  />
 
                             <!-- Error Email -->
@@ -88,7 +88,7 @@
                                         <i class="fa-regular fa-envelope fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        Send Reset Link
+                                        Kirim Link Reset Password
                                     </div>
                                 </div>
                             </button>
@@ -106,7 +106,7 @@
                                     <i class="fa-solid fa-arrow-left fa-lg" style="color: black;"></i>
                                 </div>
                                 <div class="d-flex align-items-center" style="color: black;">
-                                    Return To Login
+                                    Kembali Ke Halaman Login
                                 </div>
                             </div>
                         </a>

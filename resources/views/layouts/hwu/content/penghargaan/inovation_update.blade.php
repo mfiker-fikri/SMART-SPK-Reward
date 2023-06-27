@@ -222,7 +222,7 @@
                                 Accept: "application/json"
                             },
                             method: 'post',
-                            url: "{{ url('headworkunit/form-innovation/list/update') }}" + '/' + id + '/reject',
+                            url: "{{ url('ksk/form-innovation/list/update') }}" + '/' + id + '/reject',
                             data: {
                                 id: id,
                                 description_back: description_back,
@@ -236,7 +236,7 @@
                                     allowOutsideClick: false,
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        window.location = "/headworkunit/form-innovation/list";
+                                        window.location = "/ksk/form-innovation/list";
                                     }
                                 })
                             },
@@ -344,7 +344,7 @@
                                 Accept: "application/json"
                             },
                             method: 'post',
-                            url: "{{ url('headworkunit/form-innovation/list/update') }}" + '/' + id + '/back',
+                            url: "{{ url('ksk/form-innovation/list/update') }}" + '/' + id + '/back',
                             data: {
                                 id: id,
                                 description_back: description_back,
@@ -358,7 +358,7 @@
                                     allowOutsideClick: false,
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        window.location = "/headworkunit/form-innovation/list";
+                                        window.location = "/ksk/form-innovation/list";
                                     }
                                 })
                             },
@@ -436,7 +436,7 @@
                             Accept: "application/json"
                         },
                         method: 'post',
-                        url: "{{ url('headworkunit/form-innovation/list/update') }}" + '/' + id + '/process',
+                        url: "{{ url('ksk/form-innovation/list/update') }}" + '/' + id + '/process',
                         data: {
                             id: id,
                             description_back: description_back,
@@ -450,7 +450,7 @@
                                 allowOutsideClick: false,
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location = "/headworkunit/form-innovation/list";
+                                    window.location = "/ksk/form-innovation/list";
                                 }
                             })
                         },
@@ -575,9 +575,9 @@
             var routeForm               =   $('#formInovationUpdate').attr("action");
 
             // URL
-            var urlReject                   =   "{{ url('headworkunit/form-innovation/list/update') }}"+ '/' + formId + '/reject';
-            var urlBack                     =   "{{ url('headworkunit/form-innovation/list/update') }}"+ '/' + formId + '/back';
-            var urlProcess                  =   "{{ url('headworkunit/form-innovation/list/update') }}"+ '/' + formId + '/process';
+            var urlReject                   =   "{{ url('ksk/form-innovation/list/update') }}"+ '/' + formId + '/reject';
+            var urlBack                     =   "{{ url('ksk/form-innovation/list/update') }}"+ '/' + formId + '/back';
+            var urlProcess                  =   "{{ url('ksk/form-innovation/list/update') }}"+ '/' + formId + '/process';
             // console.log(form.attr("action", url));
             // Switch
 
@@ -1232,7 +1232,7 @@
                         <!-- Action Button -->
                         <div class="my-md-4 d-flex flex-row justify-content-end">
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/headworkunit/form-innovation/list') }}" role="button">
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('/ksk/form-innovation/list') }}" role="button">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>

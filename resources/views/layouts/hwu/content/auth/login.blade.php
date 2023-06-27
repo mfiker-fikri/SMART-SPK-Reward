@@ -12,7 +12,7 @@
 
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="{{ URL::to('/headworkunit') }}" class="app-brand-link gap-2">
+                        <a href="{{ URL::to('/ksk') }}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
                                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="logo" width="100" height="100" />
                             </span>
@@ -35,7 +35,7 @@
                         <div class="mb-3 {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }} ">
                             <label for="username" class="form-label">Username atau Email</label>
                             <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}" id="username"
-                                name="username" placeholder="Enter your username or email"
+                                name="username" placeholder="Masukkan username/email"
                                 autofocus autocomplete required size="100" />
 
                             <!-- Error Username / Email -->
@@ -53,14 +53,14 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Password</label>
-                                <a href="{{ URL::to('/headworkunit/forgot-password') }}">
-                                    <small>Forgot Password?</small>
+                                <a href="{{ URL::to('/ksk/forgot-password') }}">
+                                    <small>Lupa Password?</small>
                                 </a>
                             </div>
 
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }}">
                                 <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
-                                    name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                    name="password" placeholder="Masukkan password"
                                     autofocus autocomplete required aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer">
                                     <i class="bx bx-hide"></i>
@@ -82,7 +82,7 @@
                         <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }} />
-                                <label class="form-check-label" for="remember-me"> Remember Me </label>
+                                <label class="form-check-label" for="remember-me"> Ingat Saya </label>
                             </div>
                         </div>
                         <!--/ Remember Me -->
@@ -133,7 +133,7 @@
                                         <i class="fa-solid fa-right-to-bracket fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        Sign in
+                                        Masuk
                                     </div>
                                 </div>
                             </button>

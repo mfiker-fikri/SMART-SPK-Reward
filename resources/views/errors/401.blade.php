@@ -8,7 +8,7 @@
     <h2 class="mb-2 mx-2">401 - Unauthorized</h2>
     <p class="mx-2">Oops! 😖 Your Authorized Failed.</p>
     <p class="mb-4 mx-2">Please Try Refreshing The Page and Fill In The Correct Login Details.</p>
-    <a href="{{ URL::previous() }}" class="btn btn-primary">Go Back</a>
+    <a onclick="window.location.reload();" class="btn btn-primary">Refresh Page</a>
     <div class="mt-3">
       <img
         src="{{ asset('css/error/int_css/img/illustrations/401.jpg') }}"

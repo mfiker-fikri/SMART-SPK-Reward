@@ -24,7 +24,7 @@ class RedirectIfHeadWorkUnit
                     return $next($request);
                 }
             }
-            return redirect('/headworkunit');
+            return redirect('/ksk');
         } catch (\Throwable $th) {
             throw $th;
         }

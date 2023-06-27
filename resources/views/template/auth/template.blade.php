@@ -52,15 +52,15 @@
             <meta name="title" content="Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( (request()->is('headworkunit')) ? 'active' : '' )
+        @elseif ( (request()->is('ksk')) ? 'active' : '' )
             <!-- HWU -->
             <meta name="title" content="Kepala Satuan Kerja - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Kepala Satuan Kerja - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-        @elseif ( (request()->is('headworkunit/forgot-password')) ? 'active' : '' )
+        @elseif ( (request()->is('ksk/forgot-password')) ? 'active' : '' )
             <!-- HWU -->
             <meta name="title" content="Kepala Satuan Kerja - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Kepala Satuan Kerja - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-        @elseif ( (request()->is('headworkunit/reset-password*')) ? 'active' : '' )
+        @elseif ( (request()->is('ksk/reset-password*')) ? 'active' : '' )
             <!-- HWU -->
             <meta name="title" content="Kepala Satuan Kerja - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Kepala Satuan Kerja - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
@@ -112,13 +112,13 @@
             <!-- Team Assessment -->
             <title> Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        @elseif ( request()->is('headworkunit') )
+        @elseif ( request()->is('ksk') )
             <!-- HWU -->
             <title> Kepala Satuan Kerja - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('headworkunit/forgot-password') )
+        @elseif ( request()->is('ksk/forgot-password') )
             <!-- HWU -->
             <title> Kepala Satuan Kerja - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('headworkunit/reset-password*') )
+        @elseif ( request()->is('ksk/reset-password*') )
             <!-- HWU -->
             <title> Kepala Satuan Kerja - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
@@ -205,6 +205,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v5-font-face.min.css" rel="stylesheet" crossorigin="anonymous">
 
         <!-- Sweet Alert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="sweetalert2.all.min.js"></script>
 
@@ -215,7 +217,7 @@
 
         <!-- Google Recaptcha-->
         {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
-        <script type="text/javascript">
+        {{-- <script type="text/javascript">
             function callbackThen(response){
                 // read HTTP status
                 console.log(response.status);
@@ -236,7 +238,7 @@
             function callbackCatch(error){
                 console.error('Error:', error)
             }
-        </script>
+        </script> --}}
         {!! htmlScriptTagJsApi([
             // 'action' => 'homepage',
             // 'callback_then' => 'callbackThen',
@@ -350,30 +352,6 @@
         <!--/ Loader -->
 
         <!-- Login Admin -->
-        <script>
-            // document.getElementById("logout").onclick = function() {
-            //     logoutAdmin()
-            // };
-
-            // function logoutAdmin() {
-            //     swal({
-            //         title: "Apakah kamu ingin keluar?",
-            //         icon: "warning",
-            //         buttons: {
-            //             cancel: "Tidak",
-            //             logout: {
-            //                 text: "Ya",
-            //                 value: "logout",
-            //             }
-            //         },
-            //         dangerMode: true,
-            //     }).then((logout) => {
-            //         if (logout) {
-            //             window.location = "/admin/logout";
-            //         }
-            //     })
-            // }
-        </script>
         <!--/ Login Admin -->
 
         <!-- -->

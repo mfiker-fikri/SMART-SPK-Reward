@@ -19,7 +19,7 @@
         theme: "bootstrap-5",
         width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
         placeholder: $( this ).data( 'placeholder' ),
-        allowClear: true,
+        // allowClear: true,
     } );
     </script>
     <!-- Select2 Kebaruan -->
@@ -91,12 +91,15 @@
         //     $('#nyataNilaiTambah').val(null).trigger('change');
         //     $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
         // } else {
-            $('#kebaruan').val(null).trigger('change');
-            $('#kemanfaatan').val(null).trigger('change');
-            $('#peranSerta').val(null).trigger('change');
-            $('#transferReplikasi').val(null).trigger('change');
-            $('#nyataNilaiTambah').val(null).trigger('change');
-            $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
+
+
+
+            // $('#kebaruan').val(null).trigger('change');
+            // $('#kemanfaatan').val(null).trigger('change');
+            // $('#peranSerta').val(null).trigger('change');
+            // $('#transferReplikasi').val(null).trigger('change');
+            // $('#nyataNilaiTambah').val(null).trigger('change');
+            // $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
 
             // $('#errorKebaruan').children('strong').remove();
             // $('#errorKemanfaatan').children('strong').remove();
@@ -296,9 +299,64 @@
                 $('#errorKebaruan').children('strong').remove();
                 $('select[name="kebaruan"]').removeClass("is-invalid");
                 $('select[name="kebaruan"]').addClass("is-valid")
-            } else {
+            } else if ($('select[name="kebaruan"]').length == 0) {
                 $('select[name="kebaruan"]').removeClass("is-valid");
                 $('select[name="kebaruan"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="kemanfaatan"]').change(function(){
+            if ($('select[name="kemanfaatan"]').length > 0) {
+                $('#errorKemanfaatan').children('strong').remove();
+                $('select[name="kemanfaatan"]').removeClass("is-invalid");
+                $('select[name="kemanfaatan"]').addClass("is-valid")
+            } else if ($('select[name="kemanfaatan"]').length == 0) {
+                $('select[name="kemanfaatan"]').removeClass("is-valid");
+                $('select[name="kemanfaatan"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="peranSerta"]').change(function(){
+            if ($('select[name="peranSerta"]').length > 0) {
+                $('#errorPeranSerta').children('strong').remove();
+                $('select[name="peranSerta"]').removeClass("is-invalid");
+                $('select[name="peranSerta"]').addClass("is-valid")
+            } else if ($('select[name="peranSerta"]').length == 0) {
+                $('select[name="peranSerta"]').removeClass("is-valid");
+                $('select[name="peranSerta"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="transferReplikasi"]').change(function(){
+            if ($('select[name="transferReplikasi"]').length > 0) {
+                $('#errorTransferReplikasi').children('strong').remove();
+                $('select[name="transferReplikasi"]').removeClass("is-invalid");
+                $('select[name="transferReplikasi"]').addClass("is-valid")
+            } else if ($('select[name="transferReplikasi"]').length == 0) {
+                $('select[name="transferReplikasi"]').removeClass("is-valid");
+                $('select[name="transferReplikasi"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="nyataNilaiTambah"]').change(function(){
+            if ($('select[name="nyataNilaiTambah"]').length > 0) {
+                $('#errorNyataNilaiTambah').children('strong').remove();
+                $('select[name="nyataNilaiTambah"]').removeClass("is-invalid");
+                $('select[name="nyataNilaiTambah"]').addClass("is-valid")
+            } else if ($('select[name="nyataNilaiTambah"]').length == 0) {
+                $('select[name="nyataNilaiTambah"]').removeClass("is-valid");
+                $('select[name="nyataNilaiTambah"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="kesinambunganKonsistensiKerja"]').change(function(){
+            if ($('select[name="kesinambunganKonsistensiKerja"]').length > 0) {
+                $('#errorKesinambunganKonsistensiKerja').children('strong').remove();
+                $('select[name="kesinambunganKonsistensiKerja"]').removeClass("is-invalid");
+                $('select[name="kesinambunganKonsistensiKerja"]').addClass("is-valid")
+            } else if ($('select[name="kesinambunganKonsistensiKerja"]').length == 0) {
+                $('select[name="kesinambunganKonsistensiKerja"]').removeClass("is-valid");
+                $('select[name="kesinambunganKonsistensiKerja"]').addClass("is-invalid")
             }
         })
     });

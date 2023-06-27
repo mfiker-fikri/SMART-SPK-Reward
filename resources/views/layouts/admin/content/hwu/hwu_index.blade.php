@@ -70,7 +70,7 @@
                         Accept: "application/json"
                     },
                     method: 'post',
-                    url: "{{ url('admin/manage/headworkunit/delete') }}" + '/' + id,
+                    url: "{{ url('admin/manage/ksk/delete') }}" + '/' + id,
                     data: {
                         id: id,
                         _token: '{{ csrf_token() }}'
@@ -226,7 +226,7 @@
                     <!-- Button Create Admin -->
                     <div class="py-3 d-flex flex-row justify-content-start">
                         <div class="mx-1 mx-1 mx-1">
-                            <a class="btn btn-primary btn-lg" href="{{ URL::to('admin/manage/headworkunit/create') }}" role="button" style="color: black">
+                            <a class="btn btn-primary btn-lg" href="{{ URL::to('admin/manage/ksk/create') }}" role="button" style="color: black">
                                 <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Akun Kepala Satuan Kerja Baru
                             </a>
                         </div>

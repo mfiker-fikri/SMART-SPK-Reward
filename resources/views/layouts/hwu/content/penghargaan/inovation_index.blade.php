@@ -328,7 +328,7 @@
                 selector: 'td:nth-child(2)'
             },
             paging: false,
-            ajax: "{{ url('/headworkunit/form-innovation/list/data') }}",
+            ajax: "{{ url('/ksk/form-innovation/list/data') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'nama_full', name: 'nama_full'},

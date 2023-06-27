@@ -9,31 +9,31 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb breadcrumb-style1 my-lg-3 my-3">
             <!-- Dashboard -->
-            @if ( request()->is('headworkunit/dashboard') )
+            @if ( request()->is('ksk/dashboard') )
                 <li class="breadcrumb-item fw-bold active">
-                    Dashboard
+                    Beranda
                 </li>
 
             <!-- Profile -->
-            @elseif ( request()->is('headworkunit/profile') )
+            @elseif ( request()->is('ksk/profile') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/ksk/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Profile</li>
 
             <!-- Manage Inovation Employee -->
-            @elseif ( request()->is('headworkunit/form-innovation/list') )
+            @elseif ( request()->is('ksk/form-innovation/list') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/ksk/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</li>
 
-            @elseif ( request()->is('headworkunit/form-innovation/list/update*') )
+            @elseif ( request()->is('ksk/form-innovation/list/update*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/ksk/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/headworkunit/form-innovation/list') }}" style="text-decoration: none !important;">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
+                    <a href="{{ URL::to('/ksk/form-innovation/list') }}" style="text-decoration: none !important;">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $rewardInovation->full_name }} </li>
 
@@ -141,9 +141,9 @@
 
                     <!-- My Profile -->
                     <li>
-                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('headworkunit/profile*')) ? 'active' : '' }}" href="{{ URL::to('/headworkunit/profile') }}">
+                        <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('ksk/profile*')) ? 'active' : '' }}" href="{{ URL::to('/headworkunit/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Profil Saya</span>
                         </a>
                     </li>
                     <!--/ My Profile -->
@@ -152,7 +152,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
 
-                    <!-- Logout {{URL::to('/headworkunit/logout')}} -->
+                    <!-- Logout {{URL::to('/ksk/logout')}} -->
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item" id="logout" style="cursor: pointer;">
                             <i class="fa-solid fa-person-running" style="margin: 0 0.9rem 0 0;font-size: 1.6em;"></i>

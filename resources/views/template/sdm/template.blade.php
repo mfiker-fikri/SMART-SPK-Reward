@@ -648,14 +648,14 @@
             //
             let greeting;
             //
-            if (hr >= 5 && hr < 11) {
-                greeting = "Good Morning!";
-            } else if (hr >= 11 && hr < 18) {
-                greeting = "Good Afternoon!"
-            } else if (hr >= 18 && hr < 23) {
-                greeting = "Good Evening!"
+            if (hr >= 4 && hr < 10) {
+                greeting = "Selamat Pagi!";
+            } else if (hr >= 10 && hr < 15) {
+                greeting = "Selamat Siang!"
+            } else if (hr >= 15 && hr < 18) {
+                greeting = "Selamat Sore!"
             } else {
-                greeting = "Good Night!"
+                greeting = "Selamat Malam!"
             }
             document.getElementById("greeting").innerHTML = greeting;
         </script>

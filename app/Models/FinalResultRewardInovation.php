@@ -85,7 +85,7 @@ class FinalResultRewardInovation extends Model
         return $this->belongsTo(
             RewardInovation::class,
             // 'final_result_reward_inovation',
-            'reward_inovation_id',
+            'reward_innovation_id',
             'id',
         );
     }

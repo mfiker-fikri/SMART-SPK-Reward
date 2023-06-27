@@ -1077,7 +1077,10 @@
                 columns: [
                     // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'status', name: 'status', orderable: false, searchable: false},
-                ]
+                ],
+                initComplete: function() {
+                    $('#data-table-reward-representative_processing').css('display', 'none');
+                },
             });
 
             new $.fn.dataTable.FixedHeader(table);
@@ -1087,6 +1090,9 @@
                     table.ajax.reload(null, false);
                 }, 10000 );
             }
+
+            // $("#data-table-inovation_processing").css('display', 'none');
+            // table.columns.adjust().draw();
         });
         </script>
         <!--/ Datatables Reward Teladan -->

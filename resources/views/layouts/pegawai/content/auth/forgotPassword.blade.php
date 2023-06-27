@@ -9,7 +9,7 @@
             <!-- Forgot Password -->
             <div class="card">
                 <div class="card-body">
-                    
+
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="{{ URL::to('/forgot-password') }}" class="app-brand-link gap-2">
@@ -21,7 +21,7 @@
                     <!--/ Logo -->
 
                     <!-- Title -->
-                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>                    
+                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>
                     <span class="mb-4 text-center">
                         <h5>Lupa Password</h5>
                     </span>
@@ -31,12 +31,12 @@
                     <!-- Form Forgot Password -->
                     <form id="formEmployeeForgotPassword" class="mb-3 mx-3" method="POST" action="{{ route('pegawai.postForgetPassword.Pegawai') }}">
                         {{ csrf_field() }}
-                        
+
                         <!-- Email -->
                         <div class="mb-3 {{ $errors->has('email') ? ' has-error' : '' }} ">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control {{ $errors->has('email') ? ' has-error' : '' }} " id="email" 
-                                name="email" placeholder="Enter your email" 
+                            <input type="email" class="form-control {{ $errors->has('email') ? ' has-error' : '' }} " id="email"
+                                name="email" placeholder="Masukkan email"
                                 autofocus autocomplete required  />
 
                             <!-- Error Email -->
@@ -58,7 +58,7 @@
                             </svg>
                             <div class="d-flex flex-md-row">
                                 <p>
-                                    <strong><b>   {{ session('message-success-reset') }} </b></strong>     
+                                    <strong><b>   {{ session('message-success-reset') }} </b></strong>
                                 </p>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
@@ -72,7 +72,7 @@
                             <div class="d-flex flex-md-row">
                                 <p>
                                     <strong><b>   {{ session('message-failed-reset') }}  </b></strong>
-                                </p> 
+                                </p>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 </button>
                             </div>
@@ -88,7 +88,7 @@
                                         <i class="fa-regular fa-envelope fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        Send Reset Link
+                                        Kirim Link Reset Password
                                     </div>
                                 </div>
                             </button>
@@ -106,7 +106,7 @@
                                     <i class="fa-solid fa-arrow-left fa-lg" style="color: black;"></i>
                                 </div>
                                 <div class="d-flex align-items-center" style="color: black;">
-                                    Return To Login
+                                    Kembali Ke Halaman Login
                                 </div>
                             </div>
                         </a>

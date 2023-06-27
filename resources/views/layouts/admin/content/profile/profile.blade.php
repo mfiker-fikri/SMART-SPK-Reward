@@ -489,6 +489,11 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex flex-row justify-content-end">
                                     <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
+                                        </a>
+                                    </div>
+                                    <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg" >
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                         </button>
@@ -635,6 +640,11 @@
 
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex flex-row justify-content-end">
+                                    <div class="mx-1 mx-1 mx-1">
+                                        <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
+                                        </a>
+                                    </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg">
                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset

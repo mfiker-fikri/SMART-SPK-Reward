@@ -43,7 +43,7 @@
     </script>
     <!--/ Photo Preview -->
 
-    <!-- Reset Photo Preview -->
+    <!-- Pasang Kembali Photo Preview -->
     <script type="text/javascript">
         document.getElementById("resetImage").onclick = function() {
             reset_previewImage()
@@ -58,7 +58,7 @@
             }
         }
     </script>
-    <!--/ Reset Photo Preview -->
+    <!--/ Pasang Kembali Photo Preview -->
 
     <!-- Delete Photo -->
     <script type="text/javascript">
@@ -201,7 +201,7 @@
 
                     <!-- Tabs Profile Details -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('headworkunit/profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('headworkunit/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('ksk/profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('ksk/profile')) ? 'true' : 'false' }}">Informasi Akun</button>
                     </li>
                     <!--/ Tabs Profile Details -->
 
@@ -219,7 +219,7 @@
             <!-- Tabs -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- Tabs Profile Details -->
-                <div class="tab-pane fade {{ (request()->is('headworkunit/profile')) ? 'show' : '' }} {{ (request()->is('headworkunit/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane fade {{ (request()->is('ksk/profile')) ? 'show' : '' }} {{ (request()->is('ksk/profile')) ? 'active' : '' }}" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
                     @if(session('message-update-profile-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
@@ -280,7 +280,7 @@
 
                         <!-- Form Profile Details Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Detail Profile</h5>
+                            <h5 class="mb-0">Informasi Akun</h5>
                         </div>
                         <!--/ Form Profile Details Title -->
 
@@ -307,9 +307,9 @@
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#changePhoto">
                                             @if (Auth::guard('head_work_units')->user()->photo_profile)
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Change Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Ganti Foto
                                             @else
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Upload Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Unggah Foto
                                             @endif
                                         </button>
                                     </div>
@@ -320,13 +320,13 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <!-- Form Change Photo -->
-                                                <form id="formPhotoUpdate" class="mb-3" method="POST" action="{{ URL::to('headworkunit/image/upload') }}" enctype="multipart/form-data">
+                                                <form id="formPhotoUpdate" class="mb-3" method="POST" action="{{ URL::to('ksk/image/upload') }}" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="modal-header">
                                                         @if (Auth::guard('head_work_units')->user()->photo_profile)
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Change Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti Foto</h5>
                                                         @else
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Upload Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Unggah Foto</h5>
                                                         @endif
                                                     </div>
 
@@ -345,7 +345,7 @@
                                                             <input type="file" class="form-control {{ $errors->has('photo_profile') ? ' has-error' : '' }}" id="photo_profile"
                                                                 name="photo_profile" placeholder="*Nama Lengkap"
                                                                 required accept=".png, .jpg, .jpeg" onchange="preview_image(event)" />
-                                                            <label class="input-group-text" for="photo_profile">Upload Photo</label>
+                                                            <label class="input-group-text" for="photo_profile">Unggah Foto</label>
                                                         </div>
 
                                                         <!-- Error Photo Profile -->
@@ -363,16 +363,16 @@
                                                     <!-- Action Button -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" style="color: black" data-bs-dismiss="modal">
-                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Close
+                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Tutup
                                                         </button>
                                                         <button type="reset" class="btn btn-warning" id="resetImage">
-                                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
+                                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Pasang Kembali
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">
                                                             @if (Auth::guard('head_work_units')->user()->photo_profile)
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Change Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Foto
                                                             @else
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Upload Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Unggah Foto
                                                             @endif
                                                         </button>
                                                     </div>
@@ -391,7 +391,7 @@
                                             {{-- @csrf --}}
                                             {{-- <input type="hidden" name="oldImage" value="{{ Auth::guard('head_work_units')->user()->photo_profile }}" /> --}}
                                             <button type="submit" class="btn btn-danger" style="color: black" id="deletePhoto">
-                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Delete Photo
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus Foto
                                             </button>
                                         {{-- </form> --}}
                                     </div>
@@ -404,7 +404,7 @@
 
                             <hr>
 
-                            <form id="formProfileUpdate" class="mx-3 my-3" method="POST" action="{{ URL::to('headworkunit/profile/update') }}">
+                            <form id="formProfileUpdate" class="mx-3 my-3" method="POST" action="{{ URL::to('ksk/profile/update') }}">
                                 @csrf
                                 <!-- Full Name -->
                                 <div class="row my-3 {{ $errors->has('full_name') ? 'is-invalid' : '' }}">
@@ -504,12 +504,12 @@
                                 <div class="mt-4 d-flex flex-row justify-content-end">
                                     <div class="mx-1 mx-1 mx-1">
                                         <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
-                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Muat Ulang
                                         </a>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg" >
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Pasang Kembali
                                         </button>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
@@ -531,7 +531,7 @@
 
 
                 <!-- Tabs Change Password -->
-                <div class="tab-pane fade {{ (request()->is('headworkunit/profile')) ? '' : 'show' }} {{ (request()->is('headworkunit/profile')) ? '' : 'active' }}" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
+                <div class="tab-pane fade {{ (request()->is('ksk/profile')) ? '' : 'show' }} {{ (request()->is('ksk/profile')) ? '' : 'active' }}" id="pills-changePassword" role="tabpanel" aria-labelledby="pills-changePassword-tab">
 
                     @if(session('message-update-password-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
@@ -684,12 +684,12 @@
                                 <div class="mt-4 d-flex flex-row justify-content-end">
                                     <div class="mx-1 mx-1 mx-1">
                                         <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
-                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Muat Ulang
                                         </a>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Pasang Kembali
                                         </button>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">

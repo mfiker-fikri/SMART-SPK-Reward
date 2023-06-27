@@ -414,7 +414,7 @@
         theme: "bootstrap-5",
         width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
         placeholder: $( this ).data( 'placeholder' ),
-        allowClear: true,
+        // allowClear: true,
     } );
     </script>
     <!-- Select2 Pendidikan Terakhir -->
@@ -426,7 +426,7 @@
         if (old) {
             $('#pendidikan_terakhir').val(old).trigger('change');
         } else {
-            $('#pendidikan_terakhir')..val('').trigger('change');
+            $('#pendidikan_terakhir').val('').trigger('change');
         }
     });
     </script>
@@ -496,7 +496,7 @@
 
                     <!-- Tabs Profile Details -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('profile')) ? 'true' : 'false' }}">Identitas Pegawai</button>
                     </li>
                     <!--/ Tabs Profile Details -->
 
@@ -549,7 +549,7 @@
 
                         <!-- Form Profile Details Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Detail Profile</h5>
+                            <h5 class="mb-0">Identitas Pegawai</h5>
                         </div>
                         <!--/ Form Profile Details Title -->
 
@@ -576,9 +576,9 @@
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#changePhoto">
                                             @if (Auth::guard('employees')->user()->photo_profile)
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Change Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Ganti Photo
                                             @else
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Upload Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Unggah Photo
                                             @endif
                                         </button>
                                     </div>
@@ -593,9 +593,9 @@
                                                     @csrf
                                                     <div class="modal-header">
                                                         @if (Auth::guard('employees')->user()->photo_profile)
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Change Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti Photo</h5>
                                                         @else
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Upload Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Unggah Photo</h5>
                                                         @endif
                                                     </div>
 
@@ -616,7 +616,7 @@
                                                             <input type="file" class="form-control {{ $errors->has('photo_profile') ? ' has-error' : '' }}" id="photo_profile"
                                                                 name="photo_profile" placeholder="*Nama Lengkap"
                                                                 required accept=".png, .jpg, .jpeg" onchange="preview_image(event)" />
-                                                            <label class="input-group-text" for="photo_profile">Upload Photo</label>
+                                                            <label class="input-group-text" for="photo_profile">Unggah Photo</label>
                                                         </div>
 
                                                         <!-- Error Photo Profile -->
@@ -627,21 +627,21 @@
                                                         @endif
                                                         <!--/ Error Photo Profile -->
 
-                                                        <p class="text-muted text-md-center mb-0">Allowed JPG, JPEG or PNG. Max size of 2MB (2048 Kb)</p>
+                                                        <p class="text-muted text-md-center mb-0">Diizinkan JPG, JPEG, atau PNG. Ukuran maksimal 2 MB (2048 Kb)</p>
 
                                                     </div>
 
                                                     <!-- Action Button -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" style="color: black" data-bs-dismiss="modal">
-                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Close
+                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Tutup
                                                         </button>
                                                         <button type="reset" class="btn btn-warning" id="resetImage">
                                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">
                                                             @if (Auth::guard('employees')->user()->photo_profile)
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Change Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Photo
                                                             @else
                                                             <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Upload Photo
                                                             @endif
@@ -663,7 +663,7 @@
                                             @csrf
                                             <input type="hidden" name="oldImage" value="{{ Auth::guard('employees')->user()->photo_profile }}" />
                                             <button type="submit" class="btn btn-danger" style="color: black">
-                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Delete
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus
                                             </button>
                                         </form>
                                     </div>

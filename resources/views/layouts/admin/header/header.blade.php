@@ -11,22 +11,22 @@
             <!-- Dashboard -->
             @if ( request()->is('admin/dashboard') )
                 <li class="breadcrumb-item fw-bold active">
-                    Dashboard
+                    Beranda
                 </li>
             <!--/ Dashboard -->
 
             <!-- Profile -->
             @elseif ( request()->is('admin/profile') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Profile</li>
+                <li class="breadcrumb-item fw-bold active">Data Diri</li>
             <!--/ Profile -->
 
             <!-- Manage Admins -->
             @elseif ( request()->is('admin/manage/admins/create') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
@@ -35,13 +35,13 @@
 
             @elseif ( request()->is('admin/manage/admins') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Admin</li>
 
             @elseif ( request()->is('admin/manage/admins/view*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
@@ -50,7 +50,7 @@
 
             @elseif ( request()->is('admin/manage/admins/edit*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
@@ -61,7 +61,7 @@
             <!-- Manage Human Resources -->
             @elseif ( request()->is('admin/manage/sdm/create') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
@@ -70,13 +70,13 @@
 
             @elseif ( request()->is('admin/manage/sdm') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Divisi Sumber Daya Manusia</li>
 
             @elseif ( request()->is('admin/manage/sdm/view*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
@@ -85,7 +85,7 @@
 
             @elseif ( request()->is('admin/manage/sdm/edit*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/sdm') }}" style="text-decoration: none !important;">Data Divisi Sumber Daya Manusia</a>
@@ -96,7 +96,7 @@
             <!-- Manage Kepala Satuan Kerja -->
             @elseif ( request()->is('admin/manage/headworkunit/create') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
@@ -105,13 +105,13 @@
 
             @elseif ( request()->is('admin/manage/headworkunit') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Kepala Satuan Kerja</li>
 
             @elseif ( request()->is('admin/manage/headworkunit/view*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
@@ -120,7 +120,7 @@
 
             @elseif ( request()->is('admin/manage/headworkunit/edit*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
@@ -131,7 +131,7 @@
             <!-- Manage Employees -->
             @elseif ( request()->is('admin/manage/employees/create') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
@@ -140,13 +140,13 @@
 
             @elseif ( request()->is('admin/manage/employees') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Pegawai</li>
 
             @elseif ( request()->is('admin/manage/employees/view*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
@@ -155,7 +155,7 @@
 
             @elseif ( request()->is('admin/manage/employees/edit*') )
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/employees') }}" style="text-decoration: none !important;">Data Pegawai</a>
@@ -268,7 +268,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('admin/profile*')) ? 'active' : '' }}" href="{{ URL::to('/admin/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Data Diri</span>
                         </a>
                     </li>
                     <!--/ My Profile -->
@@ -281,7 +281,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item" id="logout" style="cursor: pointer;">
                             <i class="fa-solid fa-person-running" style="margin: 0 0.9rem 0 0;font-size: 1.6em;"></i>
-                            <span class="align-middle">Log Out</span>
+                            <span class="align-middle">Keluar</span>
                         </a>
                     </li>
                     <!--/ Logout -->

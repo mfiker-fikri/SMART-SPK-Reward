@@ -23,46 +23,46 @@
 
         <!-- Dashboard -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Dashboard</span>
+            <span class="menu-header-text">Beranda</span>
         </li>
 
         <li class="menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
             <a href="{{ URL::to('/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                <div data-i18n="Dashboard">Dashboard</div>
+                <div data-i18n="Beranda">Beranda</div>
             </a>
         </li>
         <!--/ Dashboard -->
 
         <!-- My Profile -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">My Profile</span>
+            <span class="menu-header-text">Data Diri</span>
         </li>
 
         <li class="menu-item {{ (request()->is('profile')) ? 'active' : '' }}">
             <a href="{{ URL::to('/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                <div data-i18n="My Profile">My Profile</div>
+                <div data-i18n="DataDiri">Data Diri</div>
             </a>
         </li>
         <!--/ My Profile -->
 
         <!-- Form Inovation dan teladan -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Form Penghargaan Berprestasi</span>
+            <span class="menu-header-text">Formulir Penghargaan Berprestasi</span>
         </li>
 
         <li class="menu-item {{ (request()->is('form-innovation*')) || (request()->is('form-representative*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                <div data-i18n="Timer Countdown">Form Penghargaan Berprestasi</div>
+                <div data-i18n="FormAward">Formulir Penghargaan Berprestasi</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item {{ (request()->is('form-innovation*')) ? 'active' : '' }}">
                     <a href="{{ URL::to('form-innovation/list') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                        <div data-i18n="Form Inovation">Form Inovasi</div>
+                        <div data-i18n="FormInovation">Formulir Inovasi</div>
                     </a>
                 </li>
                 {{-- <li class="menu-item {{ (request()->is('form-representative*')) ? 'active' : '' }}">
@@ -83,20 +83,20 @@
         <li class="menu-item {{ (request()->is('result-reward-innovation*')) || (request()->is('result-reward-representative*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                <div data-i18n="Timer Countdown">Hasil Penerimaan Penghargaan</div>
+                <div data-i18n="resultAward">Hasil Penerimaan Penghargaan</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item {{ (request()->is('result-reward-innovation*')) ? 'active' : '' }}">
                     <a href="{{ URL::to('result-reward-innovation') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                        <div data-i18n="Form Inovation">Penghargaan Inovasi</div>
+                        <div data-i18n="resultInovation">Penghargaan Inovasi</div>
                     </a>
                 </li>
                 <li class="menu-item {{ (request()->is('result-reward-representative*')) ? 'active' : '' }}">
                     <a href="{{ URL::to('result-reward-representative') }}" class="menu-link" style="text-decoration: none !important;">
                         <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                        <div data-i18n="Form Teladan">Penghargaan Teladan</div>
+                        <div data-i18n="resultTeladan">Penghargaan Teladan</div>
                     </a>
                 </li>
             </ul>

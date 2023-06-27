@@ -33,7 +33,7 @@
                         <div class="mb-3 {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }} ">
                             <label for="username" class="form-label">Username atau Email</label>
                             <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }}" id="username"
-                                name="username" placeholder="Enter your username or email"
+                                name="username" placeholder="Masukkan username/email"
                                 autofocus autocomplete required size="100" />
 
                             <!-- Error Username -->
@@ -52,13 +52,13 @@
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Password</label>
                                 <a href="{{ URL::to('/forgot-password') }}">
-                                    <small>Forgot Password?</small>
+                                    <small>Lupa Password?</small>
                                 </a>
                             </div>
 
                             <div class="input-group input-group-merge {{ $errors->has('password') ? ' has-error' : '' }}">
                                 <input type="password" class="form-control {{ $errors->has('password') ? ' has-error' : '' }}" id="password"
-                                    name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                    name="password" placeholder="Masukkan password"
                                     autofocus autocomplete required aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer">
                                     <i class="bx bx-hide"></i>
@@ -80,7 +80,7 @@
                         <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }} />
-                                <label class="form-check-label" for="remember-me"> Remember Me </label>
+                                <label class="form-check-label" for="remember-me"> Ingat Saya </label>
                             </div>
                         </div>
                         <!--/ Remember Me -->
@@ -131,7 +131,7 @@
                                         <i class="fa-solid fa-right-to-bracket fa-lg"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        Sign in
+                                        Masuk
                                     </div>
                                 </div>
                             </button>

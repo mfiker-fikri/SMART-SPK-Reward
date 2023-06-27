@@ -62,14 +62,14 @@ class RewardTeladanController extends Controller
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
 
             $finalResult            =   FinalResultRewardTeladan::
-                                    leftJoin('reward_representative', 'final_result_reward_representative.reward_teladan_id', '=', 'reward_representative.id')
+                                    leftJoin('reward_representative', 'final_result_reward_representative.reward_representative_id', '=', 'reward_representative.id')
                                     ->select(
                                         'final_result_reward_representative.id',
                                         'final_result_reward_representative.score_final_result',
                                         'final_result_reward_representative.score_final_result_description',
                                         'final_result_reward_representative.created_at',
                                         'final_result_reward_representative.updated_at',
-                                        'final_result_reward_representative.reward_teladan_id',
+                                        'final_result_reward_representative.reward_representative_id',
                                         //
                                         // 'reward_representative.upload_file_short_description',
                                         // 'reward_representative.upload_file_image_support',
@@ -126,10 +126,10 @@ class RewardTeladanController extends Controller
 
                         return $year;
                     })
-                    ->editColumn('fname', function ($row) {  //this example  for edit your columns if colums is empty
-                        $fname = !empty($row->name) ? $row->name : 'empty';
-                        return $fname;
-                    })
+                    // ->editColumn('fname', function ($row) {  //this example  for edit your columns if colums is empty
+                    //     $fname = !empty($row->name) ? $row->name : 'empty';
+                    //     return $fname;
+                    // })
                     ->rawColumns(['fullName', 'action', 'year'])
                     ->make(true);
 
@@ -149,14 +149,14 @@ class RewardTeladanController extends Controller
         try {
 
             $id     =   FinalResultRewardTeladan::where('final_result_reward_representative.id', '=', $id)
-                        ->leftJoin('reward_representative', 'final_result_reward_representative.reward_teladan_id', '=', 'reward_representative.id')
+                        ->leftJoin('reward_representative', 'final_result_reward_representative.reward_representative_id', '=', 'reward_representative.id')
                         ->select(
                             'final_result_reward_representative.id',
                             'final_result_reward_representative.score_final_result',
                             'final_result_reward_representative.score_final_result_description',
                             'final_result_reward_representative.created_at',
                             'final_result_reward_representative.updated_at',
-                            'final_result_reward_representative.reward_teladan_id',
+                            'final_result_reward_representative.reward_representative_id',
                             //
                             'final_result_reward_representative.signature_head_of_the_human_resources_bureau',
                             'final_result_reward_representative.name_head_of_the_human_resources_bureau',
@@ -174,11 +174,11 @@ class RewardTeladanController extends Controller
                         )->first()->toArray();
 
             $created_at     =   FinalResultRewardTeladan::find($id)
-                                ->join('reward_representative', 'final_result_reward_representative.reward_teladan_id', '=', 'reward_representative.id')
+                                ->join('reward_representative', 'final_result_reward_representative.reward_representative_id', '=', 'reward_representative.id')
                                 ->select(
                                     'final_result_reward_representative.created_at',
                                     // 'final_result_reward_representative.updated_at',
-                                    // 'final_result_reward_representative.reward_teladan_id',
+                                    // 'final_result_reward_representative.reward_representative_id',
                                 )->first();
 
 

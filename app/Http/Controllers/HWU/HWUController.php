@@ -129,7 +129,7 @@ class HWUController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect('headworkunit/profile')->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                    return redirect('ksk/profile')->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
                 // if ($request['username']) {
@@ -155,10 +155,10 @@ class HWUController extends Controller
                 alert()->success('Berhasil Update Profile')->autoclose(25000);
                 // $request->session()->flash('success', 'Update Sukses');
                 // ddd('sukses');
-                return redirect('headworkunit/profile')->with('message-update-profile-success', 'Berhasil Update Profile');
+                return redirect('ksk/profile')->with('message-update-profile-success', 'Berhasil Update Profile');
             } else {
                 alert()->error('Gagal Update Profile!')->autoclose(25000);
-                return redirect('headworkunit/profile')->with('message-update-profile-error', 'Gagal Update Profile');
+                return redirect('ksk/profile')->with('message-update-profile-error', 'Gagal Update Profile');
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -191,7 +191,7 @@ class HWUController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Update Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-                return redirect('headworkunit/profile')->with('message-update-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
+                return redirect('ksk/profile')->with('message-update-photo-error', 'Gagal Update Foto Profile')->withErrors($validate)->withInput($request->all());
             }
 
             // ddd($request);
@@ -252,7 +252,7 @@ class HWUController extends Controller
                     $headworkunit->save();
                     // dd('berhasil');
                     alert()->success('Berhasil Update Foto')->autoclose(25000);
-                    return redirect('headworkunit/profile')->with('message-update-photo-success', 'Berhasil Update Foto Profile');
+                    return redirect('ksk/profile')->with('message-update-photo-success', 'Berhasil Update Foto Profile');
                 }
 
                 // Get File Image
@@ -294,11 +294,11 @@ class HWUController extends Controller
                 $headworkunit->save();
                 // dd('berhasil');
                 alert()->success('Update Foto Berhasil')->autoclose(50000);
-                return redirect('headworkunit/profile')->with('message-update-photo-success', 'You have successfully upload image.')->with('image');
+                return redirect('ksk/profile')->with('message-update-photo-success', 'You have successfully upload image.')->with('image');
             }
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-            return redirect('headworkunit/profile')->with('message-update-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
+            return redirect('ksk/profile')->with('message-update-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
 
         } catch (\Exception $exception) {
             return $exception;
@@ -325,11 +325,12 @@ class HWUController extends Controller
                 }
                 DB::table('head_of_work_units')->where('id', $id)->update(['photo_profile' => null]);
                 alert()->success('Berhasil Hapus Foto')->autoclose(25000);
-                return redirect('headworkunit/profile')->with('message-update-photo-success', 'Berhasil Hapus Foto Profile');
+                return redirect('ksk/profile')->with('message-update-photo-success', 'Berhasil Hapus Foto Profile');
             }
 
             alert()->error('Gagal Hapus Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-            return redirect('headworkunit/profile')->with('message-update-photo-error', 'Gagal Hapus Foto Profile');
+            $request->session()->flash('status', 'Task was successful!');
+            return redirect('ksk/profile')->with('message-update-photo-error', 'Gagal Hapus Foto Profile');
             //
         } catch (\Exception $exception) {
             return $exception;
@@ -379,7 +380,7 @@ class HWUController extends Controller
 
         if ($validate->fails()) {
             alert()->error('Gagal Update Password!', 'Validasi Gagal')->autoclose(25000);
-            return redirect('headworkunit/profile')->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
+            return redirect('ksk/profile')->with('message-error-password', 'Gagal Update Password')->withErrors($validate)->withInput($request->all());
         }
 
         $currentPassword        =       Auth::guard('head_work_units')->user()->password;
@@ -390,13 +391,13 @@ class HWUController extends Controller
                 'password' => Hash::make($request['password'])
             ]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect('headworkunit/profile')->with('message-update-password-success', 'Berhasil Update Password');
+            return redirect('ksk/profile')->with('message-update-password-success', 'Berhasil Update Password');
         }
 
         alert()->error('Gagal Update Password!', 'Password Tidak Sesuai')->autoclose(25000);
-        return redirect('headworkunit/profile')->with('message-update-password-error', 'Gagal Update Password, Password Tidak Sesuai');
+        return redirect('ksk/profile')->with('message-update-password-error', 'Gagal Update Password, Password Tidak Sesuai');
         // Auth::guard('useres')->user()->update(['password' => bcrypt(request('password'))]);
-        // return redirect('headworkunit/profile')->with('message', 'Berhasil Update Password')->with('message-success-password', 'Berhasil Update Password')->with('success', 'Berhasil Update Password');
+        // return redirect('ksk/profile')->with('message', 'Berhasil Update Password')->with('message-success-password', 'Berhasil Update Password')->with('success', 'Berhasil Update Password');
     }
 
 }

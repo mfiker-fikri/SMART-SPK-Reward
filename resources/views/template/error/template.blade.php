@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, 
+        <meta name="viewport" content="width=device-width,
             initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
         <meta name="title" content="" />
         <meta name="description" content="" />
@@ -87,20 +87,58 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v5-font-face.min.css" rel="stylesheet" crossorigin="anonymous">
 
         <!-- Sweet Alert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="sweetalert2.all.min.js"></script>
 
         <!-- Sweet Alert -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
+
+        <!-- Ajax Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
         <!-- 419 -->
         <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+
+        <style>
+            .preloader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background-color: #fff;
+            }
+            .preloader .loading {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                font: 14px arial;
+            }
+
+            input::-ms-reveal,
+            input::-ms-clear {
+                display: none;
+            }
+        </style>
         <!--/ Add Ext Plugin -->
     </head>
 
-    <body>
+    <body >
+    {{-- onload="startTime()">
+        <div class="preloader">
+            <div class="loading">
+                <img src="{{ asset('css/pegawai/ext_css/GIF/Hourglass.gif') }}" width="80">
+                <p>Harap Tunggu</p>
+            </div>
+        </div> --}}
         <!-- Content -->
-        
+
             <!-- Error -->
             @yield('content')
             <!-- /Error -->
@@ -137,7 +175,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> --}}
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
-        
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
         <!--
@@ -151,13 +189,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/fontawesome.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/regular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/solid.min.js"></script> --}}
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/brands.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/fontawesome.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/regular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/solid.min.js"></script>
         <!--/ Icon Font Awesome -->
+
+        <!-- Loader -->
+        {{-- <script>
+            $(document).ready(function(){
+                $(".preloader").delay(5000).fadeOut();
+            })
+        </script> --}}
+        <!--/ Loader -->
+
+        <!-- -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Disable cut copy paste
+                $(document).bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+
+                //Disable mouse right click
+                // $(document).on("contextmenu",function(e){
+                //     return false;
+                // });
+            });
+        </script>
+        <!--/ -->
 
     </body>
 </html>

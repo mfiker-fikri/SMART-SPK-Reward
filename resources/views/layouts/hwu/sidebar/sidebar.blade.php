@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <!-- Logo -->
     <div class="app-brand demo" style="max-height: 10rem; min-height: 10rem; margin-bottom: 10px">
-        <a href="{{ URL::to('/headworkunit/dashboard') }}" class="app-brand-link d-flex flex-column justify-content-center" style="text-decoration: none !important;">
+        <a href="{{ URL::to('/ksk/dashboard') }}" class="app-brand-link d-flex flex-column justify-content-center" style="text-decoration: none !important;">
             <span class="app-brand-logo demo text-center">
                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="Icon" width="50" height="50" />
             </span>
@@ -23,26 +23,26 @@
 
         <!-- Dashboard -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Dashboard</span>
+            <span class="menu-header-text">Beranda</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('headworkunit/dashboard*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/headworkunit/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('ksk/dashboard*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/ksk/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">Beranda</div>
             </a>
         </li>
         <!--/ Dashboard -->
 
         <!-- My Profile -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">My Profile</span>
+            <span class="menu-header-text">Informasi Akun</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('headworkunit/profile*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/headworkunit/profile') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('ksk/profile*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/ksk/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                <div data-i18n="Analytics">My Profile</div>
+                <div data-i18n="Analytics">Informasi Akun</div>
             </a>
         </li>
         <!--/ My Profile -->
@@ -52,8 +52,8 @@
             <span class="menu-header-text">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
         </li>
 
-        <li class="menu-item {{ (request()->is('headworkunit/form-innovation/list*')) ? 'active' : '' }}">
-            <a href="{{ URL::to('/headworkunit/form-innovation/list') }}" class="menu-link" style="text-decoration: none !important;">
+        <li class="menu-item {{ (request()->is('ksk/form-innovation/list*')) ? 'active' : '' }}">
+            <a href="{{ URL::to('/ksk/form-innovation/list') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
                 <div data-i18n="Analytics">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
             </a>

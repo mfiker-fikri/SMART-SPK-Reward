@@ -29,7 +29,7 @@
         <li class="menu-item {{ (request()->is('penilai/dashboard')) ? 'active' : '' }}">
             <a href="{{ URL::to('/penilai/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                <div data-i18n="Dashboard">Dashboard</div>
+                <div data-i18n="Beranda">Beranda</div>
             </a>
         </li>
         <!--/ Dashboard -->
