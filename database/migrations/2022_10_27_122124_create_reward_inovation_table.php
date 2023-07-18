@@ -13,7 +13,7 @@ class CreateRewardInovationTable extends Migration
      */
     public function up()
     {
-        Schema::create('reward_inovation', function (Blueprint $table) {
+        Schema::create('reward_innovation', function (Blueprint $table) {
             $table->uuid('id')->primary();
             //
             $table->string('upload_file_short_description', 250);
@@ -25,7 +25,7 @@ class CreateRewardInovationTable extends Migration
             //
             // 0 = ditolak, 1=dikembalikan , 2=menunggu, 3=Masuk ke Tahap Penilaian, 4=Selesai Di Nilai
             $table->integer('status_process')->default(2);
-            $table->string('description_back', 250)->nullable();
+            $table->string('description_back', 255)->nullable();
             //
             $table->integer('score_valuation_1')->nullable();
             $table->integer('score_valuation_2')->nullable();

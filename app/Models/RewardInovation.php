@@ -66,6 +66,7 @@ class RewardInovation extends Model
      */
     protected $casts = [
         'id' => 'string',
+        'employee_id' => 'string'
     ];
 
     public function employees()

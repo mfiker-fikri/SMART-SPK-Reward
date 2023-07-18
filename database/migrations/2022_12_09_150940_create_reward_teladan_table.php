@@ -13,7 +13,7 @@ class CreateRewardTeladanTable extends Migration
      */
     public function up()
     {
-        Schema::create('reward_teladan', function (Blueprint $table) {
+        Schema::create('reward_representative', function (Blueprint $table) {
             $table->uuid('id')->primary();
             //
             // $table->string('upload_file_short_description');

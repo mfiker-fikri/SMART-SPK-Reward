@@ -42,7 +42,7 @@
         <li class="menu-item {{ (request()->is('admin/profile*')) ? 'active' : '' }}">
             <a href="{{ URL::to('/admin/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                <div data-i18n="Analytics">Data Diri</div>
+                <div data-i18n="DataDiri">Data Diri</div>
             </a>
         </li>
         <!--/ My Profile -->

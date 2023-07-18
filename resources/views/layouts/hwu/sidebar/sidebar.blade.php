@@ -29,20 +29,20 @@
         <li class="menu-item {{ (request()->is('ksk/dashboard*')) ? 'active' : '' }}">
             <a href="{{ URL::to('/ksk/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                <div data-i18n="Analytics">Beranda</div>
+                <div data-i18n="Beranda">Beranda</div>
             </a>
         </li>
         <!--/ Dashboard -->
 
         <!-- My Profile -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Informasi Akun</span>
+            <span class="menu-header-text">Data Diri</span>
         </li>
 
         <li class="menu-item {{ (request()->is('ksk/profile*')) ? 'active' : '' }}">
             <a href="{{ URL::to('/ksk/profile') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                <div data-i18n="Analytics">Informasi Akun</div>
+                <div data-i18n="DataDiri">Data Diri</div>
             </a>
         </li>
         <!--/ My Profile -->

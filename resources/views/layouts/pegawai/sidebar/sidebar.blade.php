@@ -77,13 +77,13 @@
 
         <!-- Hasil Penghargaan Inovation dan Teladan -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Hasil Penerimaan Penghargaan</span>
+            <span class="menu-header-text">Hasil Penghargaan</span>
         </li>
 
         <li class="menu-item {{ (request()->is('result-reward-innovation*')) || (request()->is('result-reward-representative*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-regular fa-file-lines"></i>
-                <div data-i18n="resultAward">Hasil Penerimaan Penghargaan</div>
+                <div data-i18n="resultAward">Hasil Penghargaan</div>
             </a>
 
             <ul class="menu-sub">

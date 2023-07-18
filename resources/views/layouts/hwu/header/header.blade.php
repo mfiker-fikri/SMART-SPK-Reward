@@ -19,7 +19,7 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/ksk/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Profile</li>
+                <li class="breadcrumb-item fw-bold active">Data Diri</li>
 
             <!-- Manage Inovation Employee -->
             @elseif ( request()->is('ksk/form-innovation/list') )
@@ -143,7 +143,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('ksk/profile*')) ? 'active' : '' }}" href="{{ URL::to('/headworkunit/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
-                            <span class="align-middle">Profil Saya</span>
+                            <span class="align-middle">Data Diri</span>
                         </a>
                     </li>
                     <!--/ My Profile -->

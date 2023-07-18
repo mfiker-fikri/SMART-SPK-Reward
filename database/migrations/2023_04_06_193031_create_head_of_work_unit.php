@@ -16,9 +16,9 @@ class CreateHeadOfWorkUnit extends Migration
         Schema::create('head_of_work_units', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('full_name', 255);
-            $table->string('email', 100)->unique()->index();
+            $table->string('email', 255)->unique()->index();
             // $table->timestamp('email_verified_at')->nullable();
-            $table->string('username', 100)->unique()->index();
+            $table->string('username', 255)->unique()->index();
             $table->string('password', 255);
             //
             // $table->string('slug')->nullable();

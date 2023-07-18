@@ -48,8 +48,14 @@
             <meta name="description" content="Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
         @elseif ( request()->is('result-reward-innovation') )
             <!-- Manage Result Reward Inovation -->
-            <meta name="title" content="Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+        @elseif ( request()->is('result-reward-representative') )
+            <!-- Manage Result Reward Inovation -->
+            <meta name="title" content="Hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
+
         @endif
         <!--/ Meta Tag -->
 
@@ -83,7 +89,11 @@
             <title>Update Form Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
         @elseif ( request()->is('result-reward-innovation') )
             <!-- Manage Result Reward Inovation -->
-            <title>Hasil Penerimaan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+            <title>Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+        @elseif ( request()->is('result-reward-representative') )
+            <!-- Manage Result Reward Teladan -->
+            <title>Hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+
         @endif
         <!-- /Title -->
 

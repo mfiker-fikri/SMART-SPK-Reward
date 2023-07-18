@@ -14,8 +14,8 @@ class CreateTeamAssessmentsPasswordResets extends Migration
     public function up()
     {
         Schema::create('team_assessments_password_resets', function (Blueprint $table) {
-            $table->string('email', 100)->index();
-            $table->string('token');
+            $table->string('email', 255)->index();
+            $table->string('token', 255);
             $table->timestamp('created_at')->nullable();
         });
     }

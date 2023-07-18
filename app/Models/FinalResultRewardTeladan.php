@@ -69,6 +69,7 @@ class FinalResultRewardTeladan extends Model
      */
     protected $casts = [
         'id' => 'string',
+        'reward_representative_id' => 'string'
     ];
 
     public function resultFinalRepresentatives()

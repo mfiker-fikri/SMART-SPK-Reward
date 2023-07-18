@@ -15,16 +15,16 @@ class CreateParametersTable extends Migration
     {
         Schema::create('parameters', function (Blueprint $table) {
             $table->id();
-            $table->text('parameter');
-            $table->string('grade');
-            // 
+            $table->string('parameter', 255);
+            $table->string('grade', 255);
+            //
             $table->unsignedBigInteger('criteria_id');
             $table->foreign('criteria_id')->references('id')->on('criterias');
             // $table->foreignId('kriteria_id')
             //     ->constrained()
             //     ->onUpdate('cascade')
             //     ->onDelete('cascade');
-            // 
+            //
             $table->integer('status_active')->default(1);
             $table->integer('status_id')->default(1);
             // $table->timestamps();
@@ -42,14 +42,14 @@ class CreateParametersTable extends Migration
             $table->id();
             $table->text('parameter');
             $table->string('grade');
-            // 
+            //
             $table->unsignedBigInteger('criteria_id');
             $table->foreign('criteria_id')->references('id')->on('criterias');
             // $table->foreignId('kriteria_id')
             //     ->constrained()
             //     ->onUpdate('cascade')
             //     ->onDelete('cascade');
-            // 
+            //
             $table->integer('status_active')->default(1);
             $table->integer('status_id')->default(1);
             // $table->timestamps();

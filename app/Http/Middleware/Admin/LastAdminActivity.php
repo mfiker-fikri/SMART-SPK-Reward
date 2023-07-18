@@ -36,7 +36,7 @@ class LastAdminActivity
             // Admin::where('id', (string)Auth::guard('admins')->id())->update(array('last_seen' => Carbon::now()));
             Admin::where('id', (string)Auth::guard('admins')->user()->id)->update([
                 'last_seen' => (new \DateTime())->format("Y-m-d H:i:s"),
-                'last_status' => carbon::now()->format('Y-m-d'),
+                // 'last_status' => carbon::now()->format('Y-m-d'),
             ]);
 
         }

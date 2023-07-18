@@ -16,9 +16,9 @@ class CreateTeamAssessmentsTable extends Migration
         Schema::create('team_assessments', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('full_name', 255);
-            $table->string('email', 100)->unique()->index();
+            $table->string('email', 255)->unique()->index();
             // $table->timestamp('email_verified_at')->nullable();
-            $table->string('username', 100)->unique()->index();
+            $table->string('username', 255)->unique()->index();
             $table->string('password', 255);
             //
             $table->string('photo_profile', 255)->nullable();

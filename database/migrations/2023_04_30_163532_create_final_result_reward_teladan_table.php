@@ -13,25 +13,25 @@ class CreateFinalResultRewardTeladanTable extends Migration
      */
     public function up()
     {
-        Schema::create('final_result_reward_teladan', function (Blueprint $table) {
+        Schema::create('final_result_reward_representative', function (Blueprint $table) {
             $table->uuid('id')->primary();
             //
-            $table->uuid('reward_teladan_id');
-            $table->foreign('reward_teladan_id')->references('id')->on('reward_teladan')->onDelete('cascade');
+            $table->uuid('reward_representative_id');
+            $table->foreign('reward_representative_id')->references('id')->on('reward_representative')->onDelete('cascade');
             //
-            $table->string('score_final_result');
-            $table->string('score_final_result_description');
+            $table->string('score_final_result', 255);
+            $table->string('score_final_result_description', 255);
             //
-            $table->string('signature_head_of_the_human_resources_bureau')->nullable();
-            $table->string('name_head_of_the_human_resources_bureau')->nullable();
+            $table->string('signature_head_of_the_human_resources_bureau', 255)->nullable();
+            $table->string('name_head_of_the_human_resources_bureau', 255)->nullable();
             $table->integer('verify_head_of_the_human_resources_bureau')->nullable()->default(1);
             //
-            $table->string('signature_head_of_disciplinary_awards_and_administration')->nullable();
-            $table->string('name_head_of_disciplinary_awards_and_administration')->nullable();
+            $table->string('signature_head_of_disciplinary_awards_and_administration', 255)->nullable();
+            $table->string('name_head_of_disciplinary_awards_and_administration', 255)->nullable();
             $table->integer('verify_head_of_disciplinary_awards_and_administration')->nullable()->default(1);
             //
-            $table->string('signature_head_of_rewards_discipline_and_pension_subdivision')->nullable();
-            $table->string('name_head_of_rewards_discipline_and_pension_subdivision')->nullable();
+            $table->string('signature_head_of_rewards_discipline_and_pension_subdivision', 255)->nullable();
+            $table->string('name_head_of_rewards_discipline_and_pension_subdivision', 255)->nullable();
             $table->integer('verify_head_of_rewards_discipline_and_pension_subdivision')->nullable()->default(1);
             //
             $table->integer('status_id')->default(1);

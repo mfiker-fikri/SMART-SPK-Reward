@@ -324,7 +324,7 @@ class AdminController extends Controller
                 $admin->save();
                 // dd('berhasil');
                 alert()->success('Update Foto Berhasil')->autoclose(50000);
-                return back()->with('success', 'You have successfully upload image.')->with('image');
+                return redirect()->back()->with('success', 'You have successfully upload image.')->with('image');
             }
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);

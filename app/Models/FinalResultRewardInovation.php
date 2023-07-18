@@ -69,6 +69,7 @@ class FinalResultRewardInovation extends Model
      */
     protected $casts = [
         'id' => 'string',
+        'reward_innovation_id' => 'string'
     ];
 
     // public function employees()

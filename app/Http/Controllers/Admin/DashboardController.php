@@ -71,11 +71,14 @@ class DashboardController extends Controller
     {
 
         try {
-            $date = Carbon::now()->format('Y-m-d');
+            $date = Carbon::now();
+            // ->format('Y-m-d');
+            // ddd($date);
             // $date = Carbon::now();
             $data = Admin::where([
                     // 'last_seen'     =>  date("Y-m-d"),
-                    'last_status'     =>  $date,
+                    // 'last_status'     =>  $date,
+                    'last_seen'     =>  $date,
                     // 'last_seen'     =>  date_format(from_unixtime($date),),
                     'status_id'     =>  1,
                 ])

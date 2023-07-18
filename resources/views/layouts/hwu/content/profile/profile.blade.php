@@ -356,7 +356,7 @@
                                                         @endif
                                                         <!--/ Error Photo Profile -->
 
-                                                        <p class="text-muted text-md-center mb-0">Allowed JPG, JPEG or PNG. Max size of 2MB (2048 Kb)</p>
+                                                        <p class="text-muted text-md-center mb-0">Diizinkan JPG, JPEG, atau PNG. Ukuran maksimal 2 MB (2048 Kb)</p>
 
                                                     </div>
 
@@ -366,7 +366,7 @@
                                                             <i class="fa-solid fa-xmark mx-auto me-2"></i>Tutup
                                                         </button>
                                                         <button type="reset" class="btn btn-warning" id="resetImage">
-                                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Pasang Kembali
+                                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">
                                                             @if (Auth::guard('head_work_units')->user()->photo_profile)
@@ -504,12 +504,12 @@
                                 <div class="mt-4 d-flex flex-row justify-content-end">
                                     <div class="mx-1 mx-1 mx-1">
                                         <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
-                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Muat Ulang
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
                                         </a>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg" >
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Pasang Kembali
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                         </button>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
@@ -684,12 +684,12 @@
                                 <div class="mt-4 d-flex flex-row justify-content-end">
                                     <div class="mx-1 mx-1 mx-1">
                                         <a class="btn btn-warning btn-lg" style="color: black" onclick="window.location.reload();" role="button">
-                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Muat Ulang
+                                            <i class="fa-solid fa-rotate mx-auto me-1"></i>Reload
                                         </a>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="reset" class="btn btn-warning btn-lg">
-                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Pasang Kembali
+                                            <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i>Reset
                                         </button>
                                     </div>
                                     <div class="mx-1 mx-1 mx-1">

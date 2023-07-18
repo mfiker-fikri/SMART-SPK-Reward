@@ -650,13 +650,13 @@
                     <li class="nav-item" role="presentation">
                         @if (Auth::guard('human_resources')->user()->role == 1)
                         <!-- Role 1 -->
-                        <button class="nav-link {{ (request()->is('sdm/kepala-biro-SDM/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-biro-SDM/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('sdm/kepala-biro-SDM/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-biro-SDM/profile')) ? 'true' : 'false' }}">Informasi Akun</button>
                         @elseif (Auth::guard('human_resources')->user()->role == 2)
                         <!-- Role 2 -->
-                        <button class="nav-link {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile')) ? 'true' : 'false' }}">Informasi Akun</button>
                         @elseif (Auth::guard('human_resources')->user()->role == 3)
                         <!-- Role 3 -->
-                        <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'true' : 'false' }}">Informasi Akun</button>
                         @endif
                     </li>
                     <!--/ Tabs Profile Details -->
@@ -746,7 +746,7 @@
 
                         <!-- Form Profile Details Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Detail Profile</h5>
+                            <h5 class="mb-0">Informasi Akun</h5>
                         </div>
                         <!--/ Form Profile Details Title -->
 
@@ -787,9 +787,9 @@
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#changePhoto">
                                             @if (Auth::guard('human_resources')->user()->photo_profile)
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Change Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Ganti Foto
                                             @else
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Upload Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Unggah Foto
                                             @endif
                                         </button>
                                     </div>
@@ -813,9 +813,9 @@
                                                     @csrf
                                                     <div class="modal-header">
                                                         @if (Auth::guard('human_resources')->user()->photo_profile)
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Change Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti Foto</h5>
                                                         @else
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Upload Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Unggah Foto</h5>
                                                         @endif
                                                     </div>
 
@@ -857,7 +857,7 @@
                                                             <input type="file" class="form-control {{ $errors->has('photo_profile') ? ' has-error' : '' }}" id="photo_profile"
                                                                 name="photo_profile" placeholder="*Nama Lengkap"
                                                                 required accept=".png, .jpg, .jpeg" onchange="preview_image(event)" />
-                                                            <label class="input-group-text" for="photo_profile">Upload Photo</label>
+                                                            <label class="input-group-text" for="photo_profile">Unggah Foto</label>
                                                         </div>
 
                                                         <!-- Error Photo Profile -->
@@ -868,23 +868,23 @@
                                                         @endif
                                                         <!--/ Error Photo Profile -->
 
-                                                        <p class="text-muted text-md-center mb-0">Allowed JPG, JPEG or PNG. Max size of 2MB (2048 Kb)</p>
+                                                        <p class="text-muted text-md-center mb-0">Diizinkan JPG, JPEG, atau PNG. Ukuran maksimal 2 MB (2048 Kb)</p>
 
                                                     </div>
 
                                                     <!-- Action Button -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" style="color: black" data-bs-dismiss="modal">
-                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Close
+                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Tutup
                                                         </button>
                                                         <button type="reset" class="btn btn-warning" id="resetImage">
                                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">
                                                             @if (Auth::guard('human_resources')->user()->photo_profile)
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Change Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Foto
                                                             @else
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Upload Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Unggah Foto
                                                             @endif
                                                         </button>
                                                     </div>
@@ -901,9 +901,9 @@
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#signaturePhoto">
                                             @if (Auth::guard('human_resources')->user()->signature)
-                                            <i class="fa-solid fa-signature mx-auto me-2"></i>Change Signature
+                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Tanda Tangan
                                             @else
-                                            <i class="fa-solid fa-signature mx-auto me-2"></i>Upload signature
+                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Unggah Tanda Tangan
                                             @endif
                                         </button>
                                     </div>
@@ -927,9 +927,9 @@
                                                     @csrf
                                                     <div class="modal-header">
                                                         @if (Auth::guard('human_resources')->user()->signature)
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Change Signature</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti Tanda Tangan</h5>
                                                         @else
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Upload Signature</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Unggah Tanda Tangan</h5>
                                                         @endif
                                                     </div>
 
@@ -968,7 +968,7 @@
                                                             <input type="file" class="form-control {{ $errors->has('signature') ? ' has-error' : '' }}" id="signature"
                                                                 name="signature" placeholder="*Nama Lengkap"
                                                                 required accept=".png, .jpg, .jpeg" onchange="preview_signature(event)" />
-                                                            <label class="input-group-text" for="signature">Upload Signature</label>
+                                                            <label class="input-group-text" for="signature">Unggah Tanda Tangan</label>
                                                         </div>
 
                                                         <!-- Error Photo Profile -->
@@ -979,23 +979,23 @@
                                                         @endif
                                                         <!--/ Error Photo Profile -->
 
-                                                        <p class="text-muted text-md-center mb-0">Allowed JPG, JPEG or PNG. Max size of 2MB (2048 Kb)</p>
+                                                        <p class="text-muted text-md-center mb-0">Diizinkan JPG, JPEG, atau PNG. Ukuran maksimal 2 MB (2048 Kb)</p>
 
                                                     </div>
 
                                                     <!-- Action Button -->
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" style="color: black" data-bs-dismiss="modal">
-                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Close
+                                                            <i class="fa-solid fa-xmark mx-auto me-2"></i>Tutup
                                                         </button>
                                                         <button type="reset" class="btn btn-warning" id="resetSignature">
                                                             <i class="fa-solid fa-arrow-rotate-left mx-auto me-2"></i> Reset
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">
                                                             @if (Auth::guard('human_resources')->user()->signature)
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Change Signature
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Tanda Tangan
                                                             @else
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Upload Signature
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Unggah Tanda Tangan
                                                             @endif
                                                         </button>
                                                     </div>
@@ -1022,7 +1022,7 @@
                                             <!-- Role 3 -->
                                             <button type="submit" class="btn btn-danger" style="color: black" id="deletePhoto3">
                                             @endif
-                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Delete Photo
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus Foto
                                             </button>
                                         {{-- </form> --}}
                                     </div>
@@ -1043,7 +1043,7 @@
                                             <!-- Role 3 -->
                                             <button type="submit" class="btn btn-danger" style="color: black" id="deleteSignature3">
                                             @endif
-                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Delete Signature
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus Tanda Tangan
                                             </button>
                                         {{-- </form> --}}
                                     </div>

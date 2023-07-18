@@ -15,10 +15,10 @@ class CreateCriteriasTable extends Migration
     {
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
-            $table->string('criteria');
-            $table->string('value_quality');
+            $table->string('criteria', 255);
+            $table->string('value_quality', 255);
             $table->string('normalization')->nullable();
-            // 
+            //
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories');
             // $table->foreignId('categorie_id')
@@ -34,7 +34,7 @@ class CreateCriteriasTable extends Migration
             // $table->foreign('category_id')
             //     ->references('id')
             //     ->on('categories');
-            // 
+            //
             $table->integer('status_active')->default(1);
             $table->integer('status_id')->default(1);
             // $table->timestamps();
@@ -53,7 +53,7 @@ class CreateCriteriasTable extends Migration
             $table->string('criteria');
             $table->string('value_quality');
             $table->string('normalization')->nullable();
-            // 
+            //
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories');
             // $table->foreignId('categorie_id')
@@ -69,7 +69,7 @@ class CreateCriteriasTable extends Migration
             // $table->foreign('category_id')
             //     ->references('id')
             //     ->on('categories');
-            // 
+            //
             $table->integer('status_active')->default(1);
             $table->integer('status_id')->default(1);
             // $table->timestamps();

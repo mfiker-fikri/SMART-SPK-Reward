@@ -12,6 +12,11 @@ class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function getIncrementing()
+    {
+        return false;
+    }
+
     /**
      * The table associated with the model.
      *
