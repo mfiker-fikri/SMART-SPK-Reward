@@ -75,7 +75,7 @@
 
                 <!-- Form Create Add Team Assessment New Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Data Tim Penilai Baru</h5>
+                    <h5 class="mb-0">Tambah Akun Penilai Baru</h5>
                 </div>
                 <!--/ Form Create Add Team Assessment New Title -->
 

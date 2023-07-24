@@ -14,7 +14,7 @@
 
                 <!-- Form View Tim Penilai Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Lihat Data Tim Penilai</h5>
+                    <h5 class="mb-0">Lihat Data Penilai</h5>
                 </div>
                 <!--/ Form View Tim Penilai Title -->
 

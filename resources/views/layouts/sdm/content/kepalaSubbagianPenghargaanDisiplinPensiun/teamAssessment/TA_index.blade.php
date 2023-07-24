@@ -305,7 +305,7 @@
 
                 <!-- Form Read Team Assesment Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Data Tim Penilai</h5>
+                    <h5 class="mb-0">Akun Data Penilai</h5>
                 </div>
                 <!--/ Form Read Team Assesment Title -->
 
@@ -315,7 +315,7 @@
                     <div class="py-3 d-flex flex-row justify-content-start">
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') }}" role="button">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Data Tim Penilai Baru
+                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Akun Penilai Baru
                             </a>
                         </div>
                     </div>
@@ -328,8 +328,8 @@
                                 <th scope="col">Nama Panjang</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Last Seen</th>
-                                <th scope="col">Status Active Team Assessment</th>
+                                <th scope="col">Terakhir Online</th>
+                                <th scope="col">Status Aktif Penilai</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

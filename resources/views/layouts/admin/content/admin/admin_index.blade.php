@@ -459,8 +459,8 @@
                                 <th scope="col">Nama Panjang</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Last Seen</th>
-                                <th scope="col">Status Active Admin</th>
+                                <th scope="col">Terakhir Online</th>
+                                <th scope="col">Status Aktif Admin</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

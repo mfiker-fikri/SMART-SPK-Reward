@@ -54,7 +54,7 @@
 
                     <!-- Tabs Edit Profile Details Team Assessment -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'active' : '' }}" id="pills-editTA-tab" data-bs-toggle="pill" data-bs-target="#pills-editTA" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'true' : 'false' }}">Edit Data Tim Penilai</button>
+                        <button class="nav-link {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'active' : '' }}" id="pills-editTA-tab" data-bs-toggle="pill" data-bs-target="#pills-editTA" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*')) ? 'true' : 'false' }}">Edit Data Penilai</button>
                     </li>
                     <!--/ Tabs Edit Profile Details Team Assessment -->
 
@@ -109,7 +109,7 @@
 
                         <!-- Form Edit Profile Details Team Assessment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Edit Data Tim Penilai</h5>
+                            <h5 class="mb-0">Edit Data Penilai</h5>
                         </div>
                         <!--/ Form Edit Profile Details Team Assessment Title -->
 

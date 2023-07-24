@@ -193,7 +193,7 @@ class ManageTeamAssessmentController extends Controller
 
             if ($ta) {
                 alert()->success('Berhasil Tambah Data Tim Penilai Baru!')->autoclose(25000);
-                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Tim Penilai Baru!');
+                return redirect('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment')->with('message-create-success', 'Berhasil Tambah Data Tim Penilai Baru!');
             } else {
                 alert()->error('Gagal Tambah Data Tim Penilai Baru!', 'Validasi Gagal')->autoclose(25000);
                 return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Tim Penilai Baru!')->withErrors($validate)->withInput($request->all());
