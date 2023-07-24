@@ -64,7 +64,7 @@
                             hideClass: {
                                 popup: 'animate__animated animate__fadeOutUp'
                             },
-                            timer: 10000,
+                            timer: 5500,
                             timerProgressBar: true,
                             didOpen: () => {
                                 Swal.showLoading()

@@ -901,9 +901,9 @@
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#signaturePhoto">
                                             @if (Auth::guard('human_resources')->user()->signature)
-                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Tanda Tangan
+                                            <i class="fa-solid fa-signature mx-auto me-2" style="color: #000000;"></i>Ganti Tanda Tangan
                                             @else
-                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Unggah Tanda Tangan
+                                            <i class="fa-solid fa-signature mx-auto me-2" style="color: #000000;"></i>Unggah Tanda Tangan
                                             @endif
                                         </button>
                                     </div>

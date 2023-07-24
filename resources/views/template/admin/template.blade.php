@@ -16,13 +16,13 @@
         <meta name="referrer" content="strict-origin" />
         @if ( request()->is('admin/dashboard') )
             <!-- Dashboard -->
-            <meta name="title" content="{{ Auth::guard('admins')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="{{ Auth::guard('admins')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="{{ Auth::guard('admins')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="{{ Auth::guard('admins')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('admin/profile') )
             <!-- Profile -->
-            <meta name="title" content="{{ Auth::guard('admins')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="{{ Auth::guard('admins')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="{{ Auth::guard('admins')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="{{ Auth::guard('admins')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('admin/manage/admins/create') )
             <!-- Manage Admin -->
@@ -37,13 +37,13 @@
         @elseif ( request()->is('admin/manage/admins/view/{id}') )
             <!-- Manage Admin -->
             <!-- View -->
-            <meta name="title" content="Lihat Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Lihat Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Lihat Data Admin - {{ old('username',$admin->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Lihat Data Admin - {{ old('username',$admin->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         @elseif ( request()->is('admin/manage/admins/edit/{id}') )
             <!-- Manage Admin -->
             <!-- Edit -->
-            <meta name="title" content="Edit Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Edit Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Edit Data Admin - {{ old('username',$admin->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Edit Data Admin - {{ old('username',$admin->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
 
         @elseif ( request()->is('admin/manage/sdm/create') )
@@ -59,34 +59,34 @@
         @elseif ( request()->is('admin/manage/sdm/view*') )
             <!-- Manage Human Resources -->
             <!-- View -->
-            <meta name="title" content="Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         @elseif ( request()->is('admin/manage/sdm/edit*') )
             <!-- Manage Human Resources -->
             <!-- Edit -->
-            <meta name="title" content="Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
-        @elseif ( request()->is('admin/manage/headworkunit/create') )
+        @elseif ( request()->is('admin/manage/ksk/create') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- Create -->
             <meta name="title" content="Tambah Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="Tambah Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-        @elseif ( request()->is('admin/manage/headworkunit') )
+        @elseif ( request()->is('admin/manage/ksk') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- Read -->
             <meta name="title" content="List Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
             <meta name="description" content="List Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-        @elseif ( request()->is('admin/manage/headworkunit/view*') )
+        @elseif ( request()->is('admin/manage/ksk/view*') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- View -->
-            <meta name="title" content="Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-        @elseif ( request()->is('admin/manage/headworkunit/edit*') )
+            <meta name="title" content="Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+        @elseif ( request()->is('admin/manage/ksk/edit*') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- Edit -->
-            <meta name="title" content="Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('admin/manage/employees/create') )
             <!-- Manage Pegawai -->
@@ -101,24 +101,24 @@
         @elseif ( request()->is('admin/manage/employees/view/{id}') )
             <!-- Manage Pegawai -->
             <!-- View -->
-            <meta name="title" content="Lihat Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Lihat Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Lihat Data Pegawai - {{ old('username',$employee->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Lihat Data Pegawai - {{ old('username',$employee->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         @elseif ( request()->is('admin/manage/employees/edit/{id}') )
             <!-- Manage Pegawai -->
             <!-- Edit -->
-            <meta name="title" content="Edit Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Edit Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Edit Data Pegawai - {{ old('username',$employee->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Edit Data Pegawai - {{ old('username',$employee->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         @endif
         <!--/ Meta Tag -->
 
         <!-- Title -->
         @if ( request()->is('admin/dashboard*') )
             <!-- Dashboard -->
-            <title> {{ Auth::guard('admins')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> {{ Auth::guard('admins')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('admin/profile') )
             <!-- Profile -->
-            <title> {{ Auth::guard('admins')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> {{ Auth::guard('admins')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('admin/manage/admins/create') )
             <!-- Manage Admin -->
@@ -130,15 +130,15 @@
             <!-- Read -->
             <title> List Data Admin | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/admins/view/{id}') )
+        @elseif ( request()->is('admin/manage/admins/view*') )
             <!-- Manage Admin -->
             <!-- View -->
-            <title> Lihat Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Lihat Data Admin - {{ old('username',$admin->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/admins/edit/{id}') )
+        @elseif ( request()->is('admin/manage/admins/edit*') )
             <!-- Manage Admin -->
             <!-- Edit -->
-            <title> Edit Data Admin - {{ old('username',$admin->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Edit Data Admin - {{ old('username',$admin->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
 
         @elseif ( request()->is('admin/manage/sdm/create') )
@@ -154,32 +154,32 @@
         @elseif ( request()->is('admin/manage/sdm/view*') )
             <!-- Manage Human Resources -->
             <!-- View -->
-            <title> Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Lihat Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('admin/manage/sdm/edit*') )
             <!-- Manage Human Resources -->
             <!-- Edit -->
-            <title> Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Edit Data Divisi Sumber Daya Manusia - {{ old('username',$humanResource->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/headworkunit/create') )
+        @elseif ( request()->is('admin/manage/ksk/create') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- Create -->
             <title> Tambah Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/headworkunit') )
+        @elseif ( request()->is('admin/manage/ksk') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- Read -->
             <title> List Data Kepala Satuan Kerja | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/headworkunit/view*') )
+        @elseif ( request()->is('admin/manage/ksk/view*') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- View -->
-            <title> Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Lihat Data Kepala Satuan Kerja - {{ old('username', $hwu->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
-        @elseif ( request()->is('admin/manage/headworkunit/edit*') )
+        @elseif ( request()->is('admin/manage/ksk/edit*') )
             <!-- Manage Kepala Satuan Kerja -->
             <!-- Edit -->
-            <title> Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Edit Data Kepala Satuan Kerja - {{ old('username', $hwu->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('admin/manage/employees/create') )
             <!-- Manage Pegawai -->
@@ -194,12 +194,12 @@
         @elseif ( request()->is('admin/manage/employees/view*') )
             <!-- Manage Pegawai -->
             <!-- View -->
-            <title> Lihat Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Lihat Data Pegawai - {{ old('username',$employee->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('admin/manage/employees/edit*') )
             <!-- Manage Pegawai -->
             <!-- Edit -->
-            <title> Edit Data Pegawai - {{ old('username',$employee->username) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Edit Data Pegawai - {{ old('username',$employee->full_name) }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @endif
         <!-- /Title -->

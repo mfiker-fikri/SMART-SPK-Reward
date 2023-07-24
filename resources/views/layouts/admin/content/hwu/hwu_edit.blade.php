@@ -70,7 +70,7 @@
 
                     <!-- Tabs Edit Profile Details Admin -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('admin/manage/headworkunit/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/headworkunit/edit*')) ? 'true' : 'false' }}">Edit Data Admin</button>
+                        <button class="nav-link {{ (request()->is('admin/manage/ksk/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/ksk/edit*')) ? 'true' : 'false' }}">Edit Data Kepala Satuan Kerja</button>
                     </li>
                     <!--/ Tabs Edit Profile Details Admin -->
 
@@ -90,7 +90,7 @@
             <div class="tab-content" id="pills-tabContent">
 
                 <!-- Tabs Edit Profile Details Admin -->
-                <div class="tab-pane fade show {{ (request()->is('admin/manage/headworkunit/edit*')) ? 'active' : '' }}" id="pills-editAdmin" role="tabpanel" aria-labelledby="pills-editAdmin-tab">
+                <div class="tab-pane fade show {{ (request()->is('admin/manage/ksk/edit*')) ? 'active' : '' }}" id="pills-editAdmin" role="tabpanel" aria-labelledby="pills-editAdmin-tab">
 
                     @if(session('message-update-success'))
                     <div class="card d-flex flex-row alert alert-success alert-dismissible fade show" role="alert">
@@ -218,7 +218,7 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        <a href="{{ URL::to('admin/manage/headworkunit') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
+                                        <a href="{{ URL::to('admin/manage/ksk') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
                                         <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
@@ -357,7 +357,7 @@
                                 <!-- Action Button -->
                                 <div class="mt-4 d-flex justify-content-end">
                                     <div class="justify-content-between">
-                                        <a href="{{ URL::to('admin/manage/headworkunit') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
+                                        <a href="{{ URL::to('admin/manage/ksk') }}" class="btn btn-secondary btn-lg" role="button" style="color: black">
                                             <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                         </a>
                                         <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">

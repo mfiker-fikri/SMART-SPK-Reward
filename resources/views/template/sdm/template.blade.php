@@ -14,284 +14,301 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Meta Tag -->
-        <!-- Kepala Biro SDM -->
-        @if ( request()->is('sdm/kepala-biro-SDM/dashboard*') )
-            <!-- Dashboard -->
-            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <!-- Role 1 -->
+                <!-- Kepala Biro SDM -->
+                    @if ( request()->is('sdm/kepala-biro-SDM/dashboard*') )
+                    <!-- Dashboard -->
+                    <meta name="title" content="{{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="{{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('sdm/kepala-biro-SDM/profile*') )
-            <!-- Profile -->
-            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-        <!--/ Kepala Biro SDM -->
+                    @elseif ( request()->is('sdm/kepala-biro-SDM/profile*') )
+                    <!-- Profile -->
+                    <meta name="title" content="{{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="{{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        <!-- Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*') )
-            <!-- Dashboard -->
-            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    @elseif ( request()->is('sdm/kepala-biro-SDM/signature/innovation*') )
+                    <!-- Signature Innovation -->
+                    <meta name="title" content="Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*') )
-            <!-- Profile -->
-            <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    @elseif ( request()->is('sdm/kepala-biro-SDM/signature/representative*') )
+                    <!-- Signature Representative -->
+                    <meta name="title" content="Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                <!--/ Kepala Biro SDM -->
+            <!--/ Role 1 -->
 
-        <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+            <!-- Role 2 -->
+                <!-- Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*') )
+                    <!-- Dashboard -->
+                    <meta name="title" content="{{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="{{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*') )
+                    <!-- Profile -->
+                    <meta name="title" content="{{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="{{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-            <!-- Kepala Biro SDM -->
-            @elseif ( request()->is('sdm/kepala-biro-SDM/signature/innovation*') )
-                <!-- Signature Innovation -->
-                <meta name="title" content="Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+            <!--/ Role 2 -->
 
-            @elseif ( request()->is('sdm/kepala-biro-SDM/signature/representative*') )
-                <!-- Signature Representative -->
-                <meta name="title" content="Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <!--/ Kepala Biro SDM -->
+            <!-- Role 3 -->
+                <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
+                    <!-- Dashboard -->
+                    <meta name="title" content="{{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="{{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-            <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
-                <!-- Dashboard -->
-                <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') )
+                    <!-- Profile -->
+                    <meta name="title" content="{{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <meta name="description" content="{{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') )
-                <!-- Profile -->
-                <meta name="title" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="{{ Auth::guard('human_resources')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <!-- Manage Categories -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') )
+                        <!-- Create -->
+                        <meta name="title" content="Tambah Data Kategori Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Tambah Data Kategori Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
+                        <!-- Read -->
+                        <meta name="title" content="Kelola Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Kelola Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view*') )
+                        <!-- View -->
+                        <meta name="title" content="Lihat Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Lihat Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit*') )
+                        <!-- Edit -->
+                        <meta name="title" content="Edit Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Edit Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <!--/ Manage Categories -->
 
-            <!-- Manage Categories -->
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') )
-                <!-- Create -->
-                <meta name="title" content="Tambah Data Kategori Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Tambah Data Kategori Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
-                <!-- Read -->
-                <meta name="title" content="Kelola Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Kelola Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view*') )
-                <!-- View -->
-                <meta name="title" content="Lihat Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Lihat Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit*') )
-                <!-- Edit -->
-                <meta name="title" content="Edit Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Edit Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <!--/ Manage Categories -->
+                    <!-- Manage Criteria -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create') )
+                        <!-- Create -->
+                        <meta name="title" content="Tambah Data Kriteria Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Tambah Data Kriteria Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                        <!-- Read -->
+                        <meta name="title" content="Kelola Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Kelola Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view*') )
+                        <!-- View -->
+                        <meta name="title" content="Lihat Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Lihat Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit*') )
+                        <!-- Edit -->
+                        <meta name="title" content="Edit Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Edit Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <!--/ Manage Criteria -->
 
-            <!-- Manage Criteria -->
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create') )
-                <!-- Create -->
-                <meta name="title" content="Tambah Data Kriteria Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Tambah Data Kriteria Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
-                <!-- Read -->
-                <meta name="title" content="Kelola Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Kelola Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view*') )
-                <!-- View -->
-                <meta name="title" content="Lihat Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Lihat Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit*') )
-                <!-- Edit -->
-                <meta name="title" content="Edit Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Edit Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <!--/ Manage Criteria -->
+                    <!-- Manage Parameters -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create') )
+                        <!-- Create -->
+                        <meta name="title" content="Tambah Data Parameter Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Tambah Data Parameter Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') )
+                        <!-- Read -->
+                        <meta name="title" content="Kelola Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Kelola Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view*') )
+                        <!-- View -->
+                        <meta name="title" content="Lihat Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Lihat Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit*') )
+                        <!-- Edit -->
+                        <meta name="title" content="Edit Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Edit Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <!--/ Manage Parameters -->
 
-            <!-- Manage Parameters -->
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create') )
-                <!-- Create -->
-                <meta name="title" content="Tambah Data Parameter Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Tambah Data Parameter Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') )
-                <!-- Read -->
-                <meta name="title" content="Kelola Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Kelola Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view*') )
-                <!-- View -->
-                <meta name="title" content="Lihat Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Lihat Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit*') )
-                <!-- Edit -->
-                <meta name="title" content="Edit Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Edit Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <!--/ Manage Parameters -->
+                    <!-- Manage Team Assessment -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
+                        <!-- Create -->
+                        <meta name="title" content="Tambah Data Penilai Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Tambah Data Penilai Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
+                        <!-- Read -->
+                        <meta name="title" content="Kelola Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Kelola Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view*') )
+                        <!-- View -->
+                        <meta name="title" content="Lihat Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Lihat Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*') )
+                        <!-- Edit -->
+                        <meta name="title" content="Edit Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Edit Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <!--/ Manage Team Assessment -->
 
-            <!-- Manage Team Assessment -->
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
-                <!-- Create -->
-                <meta name="title" content="Tambah Data Tim Penilai Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Tambah Data Tim Penilai Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
-                <!-- Read -->
-                <meta name="title" content="Kelola Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Kelola Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view*') )
-                <!-- View -->
-                <meta name="title" content="Lihat Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Lihat Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*') )
-                <!-- Edit -->
-                <meta name="title" content="Edit Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Edit Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <!--/ Manage Team Assessment -->
-
-            <!-- Manage Timer CountDown -->
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') )
-                <!-- Create Or Update -->
-                <meta name="title" content="Timer Countdown Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Timer Countdown Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
-                <!-- Create Or Update -->
-                <meta name="title" content="Timer Countdown Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-                <meta name="description" content="Timer Countdown Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <!--/ Manage Timer CountDown -->
-
+                    <!-- Manage Timer CountDown -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') )
+                        <!-- Create Or Update -->
+                        <meta name="title" content="Timer Countdown Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Timer Countdown Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
+                        <!-- Create Or Update -->
+                        <meta name="title" content="Timer Countdown Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                        <meta name="description" content="Timer Countdown Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+                    <!--/ Manage Timer CountDown -->
+                <!--/ Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
+            <!--/ Role 3 -->
             @endif
-            <!--/ Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
         <!--/ Meta Tag -->
 
 
         <!-- Title -->
-        <!-- Kepala Biro SDM -->
-        @if ( request()->is('sdm/kepala-biro-SDM/dashboard*') )
-            <!-- Dashboard -->
-            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+            <!-- Role 1 -->
+                <!-- Kepala Biro SDM -->
+                @if ( request()->is('sdm/kepala-biro-SDM/dashboard*') )
+                <!-- Dashboard -->
+                <title> {{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        @elseif ( request()->is('sdm/kepala-biro-SDM/profile*') )
-            <!-- Profile -->
-            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-biro-SDM/signature/innovation*') )
-            <!-- Signature Innovation -->
-            <title> Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-biro-SDM/signature/representative*') )
-            <!-- Signature Representative -->
-            <title> Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-biro-SDM/reward/innovation*') )
-            <!-- Reward Innovation -->
-            <title> Reward Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-biro-SDM/reward/representative*') )
-            <!-- Reward Representative -->
-            <title> Reward Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        <!--/ Kepala Biro SDM -->
+                @elseif ( request()->is('sdm/kepala-biro-SDM/profile*') )
+                <!-- Profile -->
+                <title> {{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        <!-- Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*') )
-            <!-- Dashboard -->
-            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                @elseif ( request()->is('sdm/kepala-biro-SDM/signature/innovation*') )
+                <!-- Signature Innovation -->
+                <title> Tanda Tangan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                @elseif ( request()->is('sdm/kepala-biro-SDM/signature/representative*') )
+                <!-- Signature Representative -->
+                <title> Tanda Tangan Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*') )
-            <!-- Profile -->
-            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                @elseif ( request()->is('sdm/kepala-biro-SDM/reward/innovation*') )
+                <!-- Reward Innovation -->
+                <title> Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                @elseif ( request()->is('sdm/kepala-biro-SDM/reward/representative*') )
+                <!-- Reward Representative -->
+                <title> Hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                <!--/ Kepala Biro SDM -->
+            <!--/ Role 1 -->
 
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation*') )
-            <!-- Signature Innovation -->
-            <title> Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*') )
-            <!-- Signature Representative -->
-            <title> Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation*') )
-            <!-- Reward Innovation -->
-            <title> Reward Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative*') )
-            <!-- Reward Representative -->
-            <title> Reward Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+            <!-- Role 2 -->
+                <!-- Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*') )
+                    <!-- Dashboard -->
+                    <title> {{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*') )
+                    <!-- Profile -->
+                    <title> {{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
-            <!-- Dashboard -->
-            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation*') )
+                    <!-- Signature Innovation -->
+                    <title> Tanda Tangan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*') )
+                    <!-- Signature Representative -->
+                    <title> Tanda Tangan Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile*') )
-            <!-- Profile -->
-            <title> {{ Auth::guard('human_resources')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation*') )
+                    <!-- Reward Innovation -->
+                    <title> Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative*') )
+                    <!-- Reward Representative -->
+                    <title> hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        <!-- Manage Kategori -->
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') )
-            <!-- Create -->
-            <title> Tambah Data Kategori Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
-            <!-- Read -->
-            <title> Kelola Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view*') )
-            <!-- View -->
-            <title> Lihat Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit*') )
-            <!-- Edit -->
-            <title> Edit Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        <!--/ Manage Kategori -->
+                <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
+            <!--/ Role 2 -->
 
-        <!-- Manage Kriteria -->
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create') )
-            <!-- Create -->
-            <title> Tambah Data Kriteria Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
-            <!-- Read -->
-            <title> Kelola Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view*') )
-            <!-- View -->
-            <title> Lihat Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit*') )
-            <!-- Edit -->
-            <title> Edit Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        <!--/ Manage Criterias -->
+            <!-- Role 3 -->
+                <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*') )
+                    <!-- Dashboard -->
+                    <title> {{ Auth::guard('human_resources')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        <!-- Manage Parameters -->
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create') )
-            <!-- Create -->
-            <title> Tambah Data Parameter Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') )
-            <!-- Read -->
-            <title> Kelola Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view*') )
-            <!-- View -->
-            <title> Lihat Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit*') )
-            <!-- Edit -->
-            <title> Edit Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        <!--/ Manage Parameters -->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile*') )
+                    <!-- Profile -->
+                    <title> {{ Auth::guard('human_resources')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
-        <!-- Manage Team Assessment -->
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
-            <!-- Create -->
-            <title> Tambah Data Tim Penilai Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
-            <!-- Read -->
-            <title> Kelola Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view*') )
-            <!-- View -->
-            <title> Lihat Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*') )
-            <!-- Edit -->
-            <title> Edit Data Tim Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        <!-- Manage Team Assessment -->
-        <!-- Manage Timer CountDown -->
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') )
-            <!-- Create Or Update -->
-            <title> Timer Countdown Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
-            <!-- Create Or Update -->
-            <title> Timer Countdown Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        <!--/ Manage Timer CountDown -->
+                    <!-- Manage Kategori -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') )
+                        <!-- Create -->
+                        <title> Tambah Data Kategori Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
+                        <!-- Read -->
+                        <title> Kelola Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view*') )
+                        <!-- View -->
+                        <title> Lihat Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit*') )
+                        <!-- Edit -->
+                        <title> Edit Data Kategori | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!--/ Manage Kategori -->
 
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation*') )
-            <!-- Signature Innovation -->
-            <title> Signature Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative*') )
-            <!-- Signature Representative -->
-            <title> Signature Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation*') )
-            <!-- Reward Innovation -->
-            <title> Reward Innovation | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
-        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative*') )
-            <!-- Reward Representative -->
-            <title> Reward Representative | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!-- Manage Kriteria -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create') )
+                        <!-- Create -->
+                        <title> Tambah Data Kriteria Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
+                        <!-- Read -->
+                        <title> Kelola Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view*') )
+                        <!-- View -->
+                        <title> Lihat Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit*') )
+                        <!-- Edit -->
+                        <title> Edit Data Kriteria | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!--/ Manage Criterias -->
 
+                    <!-- Manage Parameters -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create') )
+                        <!-- Create -->
+                        <title> Tambah Data Parameter Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') )
+                        <!-- Read -->
+                        <title> Kelola Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view*') )
+                        <!-- View -->
+                        <title> Lihat Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit*') )
+                        <!-- Edit -->
+                        <title> Edit Data Parameter | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!--/ Manage Parameters -->
+
+                    <!-- Manage Team Assessment -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
+                        <!-- Create -->
+                        <title> Tambah Data Penilai Baru | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
+                        <!-- Read -->
+                        <title> Kelola Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view*') )
+                        <!-- View -->
+                        <title> Lihat Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*') )
+                        <!-- Edit -->
+                        <title> Edit Data Penilai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!-- Manage Team Assessment -->
+
+                    <!-- Manage Timer CountDown -->
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') )
+                        <!-- Create Or Update -->
+                        <title> Penghitung Waktu Mundur Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                        @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
+                        <!-- Create Or Update -->
+                        <title> Penghitung Waktu Mundur Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!--/ Manage Timer CountDown -->
+
+                    <!-- Manage Signature -->
+                            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation*') )
+                            <!-- Signature Innovation -->
+                            <title> Tanda Tangan Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative*') )
+                            <!-- Signature Representative -->
+                            <title> Tanda Tangan Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!--/ Manage Signature -->
+
+                    <!-- Manage Recap -->
+                            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation*') )
+                            <!-- Reward Innovation -->
+                            <title> Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                            @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative*') )
+                            <!-- Reward Representative -->
+                            <title> Hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <!--/ Manage Recap -->
+                <!-- Kepala Subbagian Penghargaan, Disiplin, dan Pensiun -->
+            <!--/ Role 3 -->
         @endif
         <!-- /Title -->
 

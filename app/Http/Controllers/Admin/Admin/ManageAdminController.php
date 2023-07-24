@@ -273,7 +273,7 @@ class ManageAdminController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Tambah Data Admin Baru!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin Baru!, Validasi Gagal')->withErrors($validate)->withInput($request->all());
+                return back()->with('message-create-error', 'Gagal Tambah Admin Baru!, Validasi Gagal')->withErrors($validate)->withInput($request->all());
             }
 
             // Create Admin New
@@ -287,15 +287,15 @@ class ManageAdminController extends Controller
 
             // if ($admin->exits()) {
             //     alert()->error('Gagal Tambah Data Admin!', 'Data Sudah Terdaftar')->autoclose(25000);
-            //     return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin Baru! , Data Sudah Terdaftar');
+            //     return back()->with('message-create-error', 'Gagal Tambah Admin Baru! , Data Sudah Terdaftar');
             // }
 
             if ($admin) {
                 alert()->success('Berhasil Tambah Data Admin Baru!')->autoclose(25000);
-                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Admin Baru!');
+                return back()->with('message-create-success', 'Berhasil Tambah Data Admin Baru!');
             } else {
                 alert()->error('Gagal Tambah Data Admin Baru!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Admin Baru!')->withErrors($validate)->withInput($request->all());
+                return back()->with('message-create-error', 'Gagal Tambah Data Admin Baru!')->withErrors($validate)->withInput($request->all());
             }
             //
         } catch (\Exception $exception) {

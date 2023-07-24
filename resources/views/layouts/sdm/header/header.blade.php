@@ -12,27 +12,27 @@
                 <!-- Dashboard -->
                 @if ( request()->is('sdm/kepala-biro-SDM/dashboard') )
                     <li class="breadcrumb-item fw-bold active">
-                        Dashboard
+                        Beranda
                     </li>
                 <!--/ Dashboard -->
 
                 <!-- Profile -->
                 @elseif ( request()->is('sdm/kepala-biro-SDM/profile') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Profile</li>
+                    <li class="breadcrumb-item fw-bold active">Data Diri</li>
                 <!--/ Profile -->
 
                 <!-- Tanda Tangan -->
                 @elseif ( request()->is('sdm/kepala-biro-SDM/signature/innovation') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
                 @elseif ( request()->is('sdm/kepala-biro-SDM/signature/representative') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
                 <!--/ Tanda Tangan -->
@@ -40,12 +40,12 @@
                 <!-- Hasil Rekap -->
                 @elseif ( request()->is('sdm/kepala-biro-SDM/reward/innovation') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Inovasi</li>
                 @elseif ( request()->is('sdm/kepala-biro-SDM/reward/representative') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-biro-SDM/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Teladan</li>
                 <!--/ Hasil Rekap -->
@@ -56,27 +56,27 @@
                 <!-- Dashboard -->
                 @if ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') )
                 <li class="breadcrumb-item fw-bold active">
-                    Dashboard
+                    Beranda
                 </li>
                 <!--/ Dashboard -->
 
                 <!-- Profile -->
                 @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Profile</li>
+                    <li class="breadcrumb-item fw-bold active">Data Diri</li>
                 <!--/ Profile -->
 
                 <!-- Tanda Tangan -->
                 @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
                 @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
                 <!--/ Tanda Tangan -->
@@ -84,12 +84,12 @@
                 <!-- Hasil Rekap -->
                 @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Inovasi</li>
                 @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Teladan</li>
                 <!--/ Hasil Rekap -->
@@ -103,23 +103,23 @@
                 <!-- Dashboard -->
                 @if ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') )
                 <li class="breadcrumb-item fw-bold active">
-                    Dashboard
+                    Beranda
                 </li>
                 <!--/ Dashboard -->
 
                 <!-- Profile -->
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') )
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Profile</li>
+                    <li class="breadcrumb-item fw-bold active">Data Diri</li>
                 <!--/ Profile -->
 
                 <!-- Manage Categories -->
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/create') )
                     <!-- Create -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" style="text-decoration: none !important;">Kelola Data Kategori</a>
@@ -128,13 +128,13 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Kelola Data Kategori</li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/view*') )
                     <!-- View -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" style="text-decoration: none !important;">Kelola Data Kategori</a>
@@ -143,7 +143,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories/edit*') )
                     <!-- Edit -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" style="text-decoration: none !important;">Kelola Data Kategori</a>
@@ -155,7 +155,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/create') )
                     <!-- Create -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" style="text-decoration: none !important;">Kelola Data Kriteria</a>
@@ -164,13 +164,13 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Kelola Data Kriteria</li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/view*') )
                     <!-- View -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" style="text-decoration: none !important;">Kelola Data Kriteria</a>
@@ -179,7 +179,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias/edit*') )
                     <!-- Edit -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" style="text-decoration: none !important;">Kelola Data Kriteria</a>
@@ -191,7 +191,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/create') )
                     <!-- Create -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" style="text-decoration: none !important;">Kelola Data Parameter</a>
@@ -200,13 +200,13 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Kelola Data Parameter</li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/view*') )
                     <!-- View -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" style="text-decoration: none !important;">Kelola Data Parameter</a>
@@ -215,7 +215,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters/edit*') )
                     <!-- Edit -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" style="text-decoration: none !important;">Kelola Data Parameter</a>
@@ -227,7 +227,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/create') )
                     <!-- Create -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Data Tim Penilai</a>
@@ -236,13 +236,13 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Kelola Data Tim Penilai</li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/view*') )
                     <!-- View -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Data Tim Penilai</a>
@@ -251,7 +251,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment/edit*') )
                     <!-- Edit -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" style="text-decoration: none !important;">Kelola Data Tim Penilai</a>
@@ -263,13 +263,13 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') )
                     <!-- Create Or Update -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Innovation Countdown Timer  </li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
                     <!-- Create Or Update -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Representative Countdown Timer </li>
                 <!--/ Manage Timer CountDown -->
@@ -278,7 +278,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Innovation Award Signature</li>
                 <!--/ Signature Innovation -->
@@ -287,7 +287,7 @@
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') )
                     <!-- Read -->
                     <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
                     <li class="breadcrumb-item fw-bold active">Representative Award Signature</li>
                 <!--/ Signature Teladan -->
@@ -433,7 +433,7 @@
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile')) ? 'active' : '' }}" href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') }}">
                         @endif
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Data Diri</span>
                         </a>
                     </li>
                     <!--/ My Profile -->
@@ -446,7 +446,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item" id="logout" style="cursor: pointer;">
                             <i class="fa-solid fa-person-running" style="margin: 0 0.9rem 0 0;font-size: 1.6em;"></i>
-                            <span class="align-middle">Log Out</span>
+                            <span class="align-middle">Keluar</span>
                         </a>
                     </li>
                     <!--/ Logout -->

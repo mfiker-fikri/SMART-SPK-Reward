@@ -247,7 +247,7 @@
                         <!-- Action Button -->
                         <div class="mt-4 d-flex justify-content-end">
                             <div class="justify-content-between">
-                                <a class="btn btn-secondary btn-lg" href="{{ URL::to('admin/manage/headworkunit') }}" role="button" style="color: black">
+                                <a class="btn btn-secondary btn-lg" href="{{ URL::to('admin/manage/ksk') }}" role="button" style="color: black">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                                 <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">

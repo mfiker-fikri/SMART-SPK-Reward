@@ -282,7 +282,7 @@ class AdminController extends Controller
                     $admin->save();
                     // dd('berhasil');
                     alert()->success('Berhasil Update Foto')->autoclose(25000);
-                    return redirect()->back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                    return back()->with('message-photo-success', 'Berhasil Update Foto Profile');
                 }
 
                 // Get File Image
@@ -324,11 +324,11 @@ class AdminController extends Controller
                 $admin->save();
                 // dd('berhasil');
                 alert()->success('Update Foto Berhasil')->autoclose(50000);
-                return redirect()->back()->with('success', 'You have successfully upload image.')->with('image');
+                return back()->with('success', 'You have successfully upload image.')->with('image');
             }
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-            return redirect()->back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
+            return back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
             //
 
             // $photoProfile = $request['photo_profile'];

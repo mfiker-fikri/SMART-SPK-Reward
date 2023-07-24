@@ -149,7 +149,7 @@
                         <!-- Action Button -->
                         <div class="d-flex justify-content-end">
                             <div class="justify-content-between">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('admin/manage/headworkunit') }}" role="button">
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('admin/manage/ksk') }}" role="button">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>

@@ -94,36 +94,36 @@
             <!--/ Manage Human Resources -->
 
             <!-- Manage Kepala Satuan Kerja -->
-            @elseif ( request()->is('admin/manage/headworkunit/create') )
+            @elseif ( request()->is('admin/manage/ksk/create') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
+                    <a href="{{ URL::to('/admin/manage/ksk') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Tambah Data Kepala Satuan Kerja Baru</li>
 
-            @elseif ( request()->is('admin/manage/headworkunit') )
+            @elseif ( request()->is('admin/manage/ksk') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Data Kepala Satuan Kerja</li>
 
-            @elseif ( request()->is('admin/manage/headworkunit/view*') )
+            @elseif ( request()->is('admin/manage/ksk/view*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
+                    <a href="{{ URL::to('/admin/manage/ksk') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $hwu->full_name }} </li>
 
-            @elseif ( request()->is('admin/manage/headworkunit/edit*') )
+            @elseif ( request()->is('admin/manage/ksk/edit*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/admin/manage/headworkunit') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
+                    <a href="{{ URL::to('/admin/manage/ksk') }}" style="text-decoration: none !important;">Data Kepala Satuan Kerja</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $hwu->full_name }} </li>
             <!--/ Manage Kepala Satuan Kerja -->

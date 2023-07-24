@@ -64,7 +64,7 @@
                             hideClass: {
                                 popup: 'animate__animated animate__fadeOutUp'
                             },
-                            timer: 10000,
+                            timer: 5500,
                             timerProgressBar: true,
                             didOpen: () => {
                                 Swal.showLoading()
@@ -76,9 +76,9 @@
                             willClose: () => {
                                 clearInterval(timerInterval)
                             },
-                            didClose: () => {
-                                clearInterval(timerInterval)
-                            },
+                            // didClose: () => {
+                            //     clearInterval(timerInterval)
+                            // },
                         });
                     }
                     $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));

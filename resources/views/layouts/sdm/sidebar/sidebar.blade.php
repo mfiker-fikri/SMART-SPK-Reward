@@ -32,7 +32,7 @@
         @if (Auth::guard('human_resources')->user()->role == 1)
             <!-- Dashboard -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Dashboard</span>
+                <span class="menu-header-text">Beranda</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/dashboard*')) ? 'active' : '' }}">
@@ -45,20 +45,20 @@
 
             <!-- My Profile -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">My Profile</span>
+                <span class="menu-header-text">Data Diri</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/profile*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-biro-SDM/profile') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                    <div data-i18n="My Profile">My Profile</div>
+                    <div data-i18n="MyProfile">Data Diri</div>
                 </a>
             </li>
             <!--/ My Profile -->
 
             <!-- Tanda Tangan -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Tanda Tangan</span>
+                <span class="menu-header-text">Kelola Tanda Tangan</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/signature/innovation*')) || (request()->is('sdm/kepala-biro-SDM/signature/representative*')) ? 'active' : '' }}">
@@ -89,19 +89,19 @@
 
             <!-- Report Reward -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Hasil Rekap Reward</span>
+                <span class="menu-header-text">Hasil Rekap Penghargaan</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/innovation*')) || (request()->is('sdm/kepala-biro-SDM/reward/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-file"></i>
-                    <div data-i18n="rekapReward">Hasil Rekap Reward</div>
+                    <div data-i18n="rekapReward">Hasil Rekap Penghargaan</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-biro-SDM/reward/innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardInovation">Rekap Reward Inovasi</div>
+                            <div data-i18n="rekapRewardInovation">Rekap Penghargaan Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
@@ -109,7 +109,7 @@
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-biro-SDM/reward/representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-biro-SDM/reward/representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardRepresentative">Rekap Reward Teladan</div>
+                            <div data-i18n="rekapRewardRepresentative">Rekap Penghargaan Teladan</div>
                         </a>
                     </li>
                     <!--/ Signature Representative -->
@@ -121,45 +121,45 @@
         @elseif (Auth::guard('human_resources')->user()->role == 2)
             <!-- Dashboard -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Dashboard</span>
+                <span class="menu-header-text">Beranda</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                    <div data-i18n="Dashboard">Dashboard</div>
+                    <div data-i18n="Dashboard">Beranda</div>
                 </a>
             </li>
             <!--/ Dashboard -->
 
             <!-- My Profile -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">My Profile</span>
+                <span class="menu-header-text">Data Diri</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/profile') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                    <div data-i18n="My Profile">My Profile</div>
+                    <div data-i18n="MyProfile">Data Diri</div>
                 </a>
             </li>
             <!--/ My Profile -->
 
             <!-- Tanda Tangan -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Manage Signature</span>
+                <span class="menu-header-text">Kelola Tanda Tangan</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation*')) || (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fas fa-file-signature"></i>
-                    <div data-i18n="signature">Manage Signature</div>
+                    <div data-i18n="signature">Tanda Tangan</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="signatureInovation">Innovation</div>
+                            <div data-i18n="signatureInovation">Penghargaan Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
@@ -167,7 +167,7 @@
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="signatureRepresentative">Representative</div>
+                            <div data-i18n="signatureRepresentative">Penghargaan Teladan</div>
                         </a>
                     </li>
                     <!--/ Signature Representative -->
@@ -178,19 +178,19 @@
 
             <!-- Report Reward -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Hasil Rekap Reward</span>
+                <span class="menu-header-text">Kelola Hasil Rekap Penghargaan</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation*')) || (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-file"></i>
-                    <div data-i18n="rekapReward">Hasil Rekap Reward</div>
+                    <div data-i18n="rekapReward">Hasil Rekap Penghargaan</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardInovation">Rekap Reward Inovasi</div>
+                            <div data-i18n="rekapRewardInovation">Rekap Penghargaan Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
@@ -198,7 +198,7 @@
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardRepresentative">Rekap Reward Teladan</div>
+                            <div data-i18n="rekapRewardRepresentative">Rekap Penghargaan Teladan</div>
                         </a>
                     </li>
                     <!--/ Signature Representative -->
@@ -210,45 +210,45 @@
         @elseif (Auth::guard('human_resources')->user()->role == 3)
             <!-- Dashboard -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Dashboard</span>
+                <span class="menu-header-text">Beranda</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-gauge"></i>
-                    <div data-i18n="Dashboard">Dashboard</div>
+                    <div data-i18n="Dashboard">Beranda</div>
                 </a>
             </li>
             <!--/ Dashboard -->
 
             <!-- My Profile -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">My Profile</span>
+                <span class="menu-header-text">Data Diri</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile') }}" class="menu-link" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                    <div data-i18n="My Profile">My Profile</div>
+                    <div data-i18n="MyProfile">Data Diri</div>
                 </a>
             </li>
             <!--/ My Profile -->
 
             <!-- Kelola SMART Kategori  -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Manage SMART</span>
+                <span class="menu-header-text">Kelola SMART</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-list"></i>
-                    <div data-i18n="Kelola SMART">Manage SMART</div>
+                    <div data-i18n="Kelola SMART">Kelola SMART</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Manage Categories -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Kelola Kategori">Manage Categories</div>
+                            <div data-i18n="Kelola Kategori">Kelola Ketegori</div>
                         </a>
                     </li>
                     <!--/ Manage Categories -->
@@ -256,7 +256,7 @@
                     <!-- Manage Criterias -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Kelola Kriteria">Manage Criterias</div>
+                            <div data-i18n="Kelola Kriteria">Kelola Kriteria</div>
                         </a>
                     </li>
                     <!--/ Manage Criterias -->
@@ -264,7 +264,7 @@
                     <!-- Manage Parameters -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Kelola Parameter">Manage Parameters</div>
+                            <div data-i18n="Kelola Parameter">Kelola Parameter</div>
                         </a>
                     </li>
                     <!--/ Manage Parameters -->
@@ -313,38 +313,38 @@
 
             <!-- Manage Team Assessment -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Manage Appraisement Team</span>
+                <span class="menu-header-text">Kelola Akun Penilai</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment*')) ? 'active' : '' }}">
                 <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/team-assessment') }}" class="menu-link" style="text-decoration: none !important;">
                     {{-- <i class="menu-icon tf-icons fa-solid fa-user-large"></i> --}}
                     <i class="menu-icon tf-icons fa-solid fa-users"></i>
-                    <div data-i18n="Kelola Tim Penilai">Manage Appraisement Team</div>
+                    <div data-i18n="Kelola Tim Penilai">Akun Data Penilai</div>
                 </a>
             </li>
             <!--/ Manage Team Assessment -->
 
             <!-- Countdown Timer Form -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Timer Countdown</span>
+                <span class="menu-header-text">Kelola Penghitung Waktu Mundur</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class='menu-icon tf-icons bx bxs-hourglass-bottom'></i>
-                    <div data-i18n="Timer Countdown">Manage Countdown Timer</div>
+                    <div data-i18n="Timer Countdown">Penghitung Waktu Mundur</div>
                 </a>
 
                 <ul class="menu-sub">
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/form-innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Form Inovation">Innovation</div>
+                            <div data-i18n="Form Inovation">Inovasi</div>
                         </a>
                     </li>
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Form Inovation">Representative</div>
+                            <div data-i18n="Form Inovation">Teladan</div>
                         </a>
                     </li>
                 </ul>
@@ -353,19 +353,19 @@
 
             <!-- Tanda Tangan -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Manage Signature</span>
+                <span class="menu-header-text">Kelola Tanda Tangan</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fas fa-file-signature"></i>
-                    <div data-i18n="signature">Manage Signature</div>
+                    <div data-i18n="signature">Tanda Tangan</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="signatureInovation">Innovation</div>
+                            <div data-i18n="signatureInovation">Penghargaan Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
@@ -373,7 +373,7 @@
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="signatureRepresentative">Representative</div>
+                            <div data-i18n="signatureRepresentative">Penghargaan Teladan</div>
                         </a>
                     </li>
                     <!--/ Signature Representative -->
@@ -385,19 +385,19 @@
 
             <!-- Report Reward -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Manage Award Recap Results</span>
+                <span class="menu-header-text">Kelola Hasil Rekap Penghargaan</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-file"></i>
-                    <div data-i18n="rekapReward">Manage Award Recap Results</div>
+                    <div data-i18n="rekapReward">Hasil Rekap Penghargaan</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardInovation">Innovation</div>
+                            <div data-i18n="rekapRewardInovation">Rekap Penghargaan Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
@@ -405,7 +405,7 @@
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardRepresentative">Representative</div>
+                            <div data-i18n="rekapRewardRepresentative">Rekap Penghargaan Teladan</div>
                         </a>
                     </li>
                     <!--/ Signature Representative -->
