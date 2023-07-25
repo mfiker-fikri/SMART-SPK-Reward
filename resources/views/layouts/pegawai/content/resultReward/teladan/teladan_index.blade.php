@@ -9,20 +9,27 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
+                // paging: false,
+                // searching: false,
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
-                paging: false,
                 ajax:
                 {
                     url: "{{ url('result-reward-representative/data') }}",
-                    // dataSrc: function (json) {
-                    // if (!json.data) {
-                    //     return [];
-                    // } else {
-                    //     return json.data;
-                    // }
+                    dataSrc: function (json) {
+                        if (!json.data) {
+                            return [];
+                        } else {
+                            return json.data;
+                        }
+                    }
                 },
+                columnDefs: [{
+                    searchable: false,
+                    orderable: false,
+                    targets: 0
+                }],
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'fullName', name: 'fullName', orderable: false, searchable: false},

@@ -265,32 +265,53 @@
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Innovation Countdown Timer  </li>
+                    <li class="breadcrumb-item fw-bold active">Penghitung Waktu Mundur Inovasi</li>
                 @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement') )
                     <!-- Create Or Update -->
                     <li class="breadcrumb-item fw-light">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                     </li>
-                    <li class="breadcrumb-item fw-bold active">Representative Countdown Timer </li>
+                    <li class="breadcrumb-item fw-bold active">Penghitung Waktu Mundur Teladan</li>
                 <!--/ Manage Timer CountDown -->
 
-                <!-- Signature Innovation -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') )
-                    <!-- Read -->
-                    <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
-                    </li>
-                    <li class="breadcrumb-item fw-bold active">Innovation Award Signature</li>
-                <!--/ Signature Innovation -->
+                <!-- Manage Signature -->
+                    <!-- Signature Innovation -->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') )
+                        <!-- Read -->
+                        <li class="breadcrumb-item fw-light">
+                            <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
+                        </li>
+                        <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Inovasi</li>
+                    <!--/ Signature Innovation -->
 
-                <!-- Signature Teladan -->
-                @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') )
-                    <!-- Read -->
-                    <li class="breadcrumb-item fw-light">
-                        <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
-                    </li>
-                    <li class="breadcrumb-item fw-bold active">Representative Award Signature</li>
-                <!--/ Signature Teladan -->
+                    <!-- Signature Teladan -->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/representative') )
+                        <!-- Read -->
+                        <li class="breadcrumb-item fw-light">
+                            <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
+                        </li>
+                        <li class="breadcrumb-item fw-bold active">Tanda Tangan Penghargaan Teladan</li>
+                    <!--/ Signature Teladan -->
+                <!--/ Manage Signature -->
+
+                <!-- Manage Recap -->
+                    <!-- Recap Innovation-->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation') )
+                        <li class="breadcrumb-item fw-light">
+                            <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
+                        </li>
+                        <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Inovasi</li>
+                    <!--/ Recap Innovation -->
+
+                    <!-- Recap Representative-->
+                    @elseif ( request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative') )
+                        <li class="breadcrumb-item fw-light">
+                            <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
+                        </li>
+                        <li class="breadcrumb-item fw-bold active">Hasil Rekap Penghargaan Teladan</li>
+                    <!--/ Recap Representative-->
+                <!--/ Manage Recap -->
+
 
 
                 @endif

@@ -41,8 +41,8 @@ class CountdownTimerFormInovation extends Model
         'id',
         'date_time_open_form_innovation',
         'date_time_expired_form_innovation',
-        'status_open',
-        'status_expired',
+        'status_open_form_innovation',
+        'status_expired_form_innovation',
         //
         'date_time_open_appraisement',
         'date_time_expired_appraisement',

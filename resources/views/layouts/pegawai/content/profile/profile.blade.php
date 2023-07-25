@@ -549,7 +549,7 @@
 
                         <!-- Form Profile Details Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Identitas Pegawai</h5>
+                            <h5 class="mb-0">Informasi Akun</h5>
                         </div>
                         <!--/ Form Profile Details Title -->
 
@@ -576,9 +576,9 @@
                                     <div class="mx-1 mx-1 mx-1">
                                         <button type="button" class="btn btn-primary" style="color: black" data-bs-toggle="modal" data-bs-target="#changePhoto">
                                             @if (Auth::guard('employees')->user()->photo_profile)
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Ganti Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Ganti Foto
                                             @else
-                                            <i class="fa-solid fa-image mx-auto me-2"></i>Unggah Photo
+                                            <i class="fa-solid fa-image mx-auto me-2"></i>Unggah Foto
                                             @endif
                                         </button>
                                     </div>
@@ -593,9 +593,9 @@
                                                     @csrf
                                                     <div class="modal-header">
                                                         @if (Auth::guard('employees')->user()->photo_profile)
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ganti Foto</h5>
                                                         @else
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Unggah Photo</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Unggah Foto</h5>
                                                         @endif
                                                     </div>
 
@@ -616,7 +616,7 @@
                                                             <input type="file" class="form-control {{ $errors->has('photo_profile') ? ' has-error' : '' }}" id="photo_profile"
                                                                 name="photo_profile" placeholder="*Nama Lengkap"
                                                                 required accept=".png, .jpg, .jpeg" onchange="preview_image(event)" />
-                                                            <label class="input-group-text" for="photo_profile">Unggah Photo</label>
+                                                            <label class="input-group-text" for="photo_profile">Unggah Foto</label>
                                                         </div>
 
                                                         <!-- Error Photo Profile -->
@@ -641,9 +641,9 @@
                                                         </button>
                                                         <button type="submit" class="btn btn-primary" style="color: black">
                                                             @if (Auth::guard('employees')->user()->photo_profile)
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Ganti Foto
                                                             @else
-                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Upload Photo
+                                                            <i class="fa-solid fa-paper-plane mx-auto me-2"></i> Unggah Foto
                                                             @endif
                                                         </button>
                                                     </div>
@@ -663,7 +663,7 @@
                                             @csrf
                                             <input type="hidden" name="oldImage" value="{{ Auth::guard('employees')->user()->photo_profile }}" />
                                             <button type="submit" class="btn btn-danger" style="color: black">
-                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus Foto
                                             </button>
                                         </form>
                                     </div>

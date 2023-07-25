@@ -361,7 +361,7 @@
                         data-bs-toggle="pill" data-bs-target="#pills-appraisement"
                         type="button" role="tab" aria-controls="pills-appraisement"
                         aria-selected="{{ (request()->is('penilai/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/timer-countdown/representative-appraisement')) ? 'true' : 'false' }}"
-                        >Representative Appraisement Countdown</button>
+                        >Penilaian Teladan</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
@@ -370,20 +370,20 @@
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
-                                >Representative Signature Countdown
+                                >Tanda Tangan Teladan
                             </button>
                         @elseif ($timers->isNotEmpty())
                             @if ($timers[0]->date_time_open_appraisement != null )
                             <button class="nav-link text-center" id="pills-signature_role2-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-signature_role2" type="button" role="tab" aria-controls="pills-signature_role2" aria-selected="false"
-                                >Representative Signature Countdown
+                                >Tanda Tangan Teladan
                             </button>
                             @elseif ($timers[0]->date_time_open_appraisement == null)
                             <button class="nav-link {{ $timers[0]->date_time_open_appraisement == null ? 'disabled' : '' }} text-center" id="pills-signature_role2-tab"
                                 disabled data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="This top tooltip is themed via CSS variables."
-                                >Representative Signature Countdown
+                                >Tanda Tangan Teladan
                             </button>
                             @endif
                         @endif
@@ -482,7 +482,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Representative Appraisement Countdown</h5>
+                            <h5 class="mb-0">Penilaian Teladan</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -530,7 +530,7 @@
 
                                 <!-- Status Open -->
                                 <div class="mb-3 row {{ $errors->has('status_open_appraisement') ? 'is-invalid' : '' }}">
-                                    <label for="status_open_appraisement" class="col-sm-3 col-form-label">Status Open</label>
+                                    <label for="status_open_appraisement" class="col-sm-3 col-form-label">Status Pembukaan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_open_appraisement') ? 'is-invalid' : '' }}">
@@ -542,10 +542,10 @@
                                             <input type="hidden" value="{{ old('status_open_appraisement', $timer->status_open_appraisement) }}" id="oldStatusOpen" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_appraisement') ? 'is-invalid' : '' }}" id="status_open_appraisement"
-                                                name="status_open_appraisement" placeholder="--Pilih Status Open --"
+                                                name="status_open_appraisement" placeholder="--Pilih Status Pembukaan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_open_appraisement" data-val="true" aria-label="status_open_appraisement" data-placeholder="-- Pilih Status Open --">
-                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                aria-invalid="true" aria-describedby="status_open_appraisement" data-val="true" aria-label="status_open_appraisement" data-placeholder="-- Pilih Status Pembukaan --">
+                                                <option disabled selected>-- Pilih Status Pembukaan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_open_appraisement' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open_appraisement' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -555,7 +555,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusOpenHelp" class="form-text">Pilih Status Open</div>
+                                        <div id="statusOpenHelp" class="form-text">Pilih Status Pembukaan</div>
                                         <!-- Error Status Open -->
                                         @if ( $errors->has('status_open_appraisement') )
                                             <span class="help-block">
@@ -608,7 +608,7 @@
 
                                  <!-- Status Close -->
                                  <div class="mb-3 row {{ $errors->has('status_expired_appraisement') ? 'is-invalid' : '' }}">
-                                    <label for="status_expired_appraisement" class="col-sm-3 col-form-label">Status Close</label>
+                                    <label for="status_expired_appraisement" class="col-sm-3 col-form-label">Status Penutupan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_expired_appraisement') ? 'is-invalid' : '' }}">
@@ -620,10 +620,10 @@
                                             <input type="hidden" value="{{ old('status_expired_appraisement', $timer->status_expired_appraisement) }}" id="oldStatusExpired" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_appraisement') ? 'is-invalid' : '' }}" id="status_expired_appraisement"
-                                                name="status_expired_appraisement" placeholder="--Pilih Status Close --"
+                                                name="status_expired_appraisement" placeholder="--Pilih Status Penutupan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_expired_appraisement" data-val="true" aria-label="status_expired_appraisement" data-placeholder="-- Pilih Status Close --">
-                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                aria-invalid="true" aria-describedby="status_expired_appraisement" data-val="true" aria-label="status_expired_appraisement" data-placeholder="-- Pilih Status Penutupan --">
+                                                <option disabled selected>-- Pilih Status Penutupan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_expired_appraisement' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_expired_appraisement' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -633,7 +633,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Penutupan</div>
                                         <!-- Error Status Close -->
                                         @if ( $errors->has('status_expired_appraisement') )
                                             <span class="help-block">
@@ -650,7 +650,7 @@
                                     <div class="justify-content-between">
                                         @if ($timer != null)
                                         <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatus" data-val="{{ $timer->id }}">
-                                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Hapus
                                         </button>
                                         @endif
                                         <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
@@ -667,7 +667,7 @@
                                         @endif
                                         <button type="submit" class="btn btn-primary btn-lg" style="color: black">
                                             @if ($timer == null)
-                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
+                                            <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Simpan
                                             @else
                                             <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
                                             @endif
@@ -770,7 +770,7 @@
 
                         <!-- Form Timer Countdown Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Representative Signature Countdown</h5>
+                            <h5 class="mb-0">Tanda Tangan Teladan</h5>
                         </div>
                         <!--/ Form Timer Countdown Title -->
 
@@ -828,7 +828,7 @@
 
                                 <!-- Status Open -->
                                 <div class="mb-3 row {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}">
-                                    <label for="status_open_signature_human_resource_3" class="col-sm-3 col-form-label">Status Open</label>
+                                    <label for="status_open_signature_human_resource_3" class="col-sm-3 col-form-label">Status Pembukaan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}">
@@ -840,10 +840,10 @@
                                             <input type="hidden" value="{{ old('status_open_signature_human_resource_3', $timer->status_open_signature_human_resource_3) }}" id="oldStatusOpenAppraisment3" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_signature_human_resource_3') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_3"
-                                                name="status_open_signature_human_resource_3" placeholder="--Pilih Status Open --"
+                                                name="status_open_signature_human_resource_3" placeholder="--Pilih Status Pembukaan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_3" data-val="true" aria-label="status_open_signature_human_resource_3" data-placeholder="-- Pilih Status Open --">
-                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_3" data-val="true" aria-label="status_open_signature_human_resource_3" data-placeholder="-- Pilih Status Pembukaan --">
+                                                <option disabled selected>-- Pilih Status Pembukaan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_open_signature_human_resource_3' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open_signature_human_resource_3' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -853,7 +853,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Open</div>
+                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Pembukaan</div>
                                         <!-- Error Status Open -->
                                         @if ( $errors->has('status_open_signature_human_resource_3') )
                                             <span class="help-block">
@@ -904,7 +904,7 @@
 
                                 <!-- Status Close -->
                                 <div class="mb-3 row {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}">
-                                    <label for="status_expired_signature_human_resource_3" class="col-sm-3 col-form-label">Status Close</label>
+                                    <label for="status_expired_signature_human_resource_3" class="col-sm-3 col-form-label">Status Penutupan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}">
@@ -916,10 +916,10 @@
                                             <input type="hidden" value="{{ old('status_expired_signature_human_resource_3', $timer->status_expired_signature_human_resource_3) }}" id="oldStatusExpiredAppraisment3" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_signature_human_resource_3') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_3"
-                                                name="status_expired_signature_human_resource_3" placeholder="--Pilih Status Close --"
+                                                name="status_expired_signature_human_resource_3" placeholder="--Pilih Status Penutupan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_3" data-val="true" aria-label="status_expired_signature_human_resource_3" data-placeholder="-- Pilih Status Close --">
-                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_3" data-val="true" aria-label="status_expired_signature_human_resource_3" data-placeholder="-- Pilih Status Penutupan --">
+                                                <option disabled selected>-- Pilih Status Penutupan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_expired_signature_human_resource_3' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_expired_signature_human_resource_3' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -929,7 +929,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Penutupan</div>
                                         <!-- Error Status Close -->
                                         @if ( $errors->has('status_expired_signature_human_resource_3') )
                                             <span class="help-block">
@@ -985,7 +985,7 @@
 
                                 <!-- Status Open -->
                                 <div class="mb-3 row {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}">
-                                    <label for="status_open_signature_human_resource_2" class="col-sm-3 col-form-label">Status Open</label>
+                                    <label for="status_open_signature_human_resource_2" class="col-sm-3 col-form-label">Status Pembukaan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}">
@@ -997,10 +997,10 @@
                                             <input type="hidden" value="{{ old('status_open_signature_human_resource_2', $timer->status_open_signature_human_resource_2) }}" id="oldStatusOpenAppraisment2" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_signature_human_resource_2') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_2"
-                                                name="status_open_signature_human_resource_2" placeholder="--Pilih Status Open --"
+                                                name="status_open_signature_human_resource_2" placeholder="--Pilih Status Pembukaan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_2" data-val="true" aria-label="status_open_signature_human_resource_2" data-placeholder="-- Pilih Status Open --">
-                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_2" data-val="true" aria-label="status_open_signature_human_resource_2" data-placeholder="-- Pilih Status Pembukaan --">
+                                                <option disabled selected>-- Pilih Status Pembukaan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_open_signature_human_resource_2' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open_signature_human_resource_2' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -1010,7 +1010,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Open</div>
+                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Pembukaan</div>
                                         <!-- Error Status Open -->
                                         @if ( $errors->has('status_open_signature_human_resource_2') )
                                             <span class="help-block">
@@ -1025,7 +1025,7 @@
 
                                 <!-- Timer Countdown Expired Form -->
                                 <div class="mb-3 row {{ $errors->has('date_time_expired_signature_human_resource_2') ? 'is-invalid' : '' }}">
-                                    <label for="date_time_expired_signature_human_resource_2" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Tanda Tangan Kepala Biro Sumber Daya Manusia</label>
+                                    <label for="date_time_expired_signature_human_resource_2" class="text-wrap col-sm-3 col-form-label">Tanggal dan Jam Penutupan Tanda Tangan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
                                             <span id="categories" class="input-group-text">
@@ -1061,7 +1061,7 @@
 
                                 <!-- Status Close -->
                                 <div class="mb-3 row {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}">
-                                    <label for="status_expired_signature_human_resource_2" class="col-sm-3 col-form-label">Status Close</label>
+                                    <label for="status_expired_signature_human_resource_2" class="col-sm-3 col-form-label">Status Penutupan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}">
@@ -1073,10 +1073,10 @@
                                             <input type="hidden" value="{{ old('status_expired_signature_human_resource_2', $timer->status_expired_signature_human_resource_2) }}" id="oldStatusExpiredAppraisment2" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_signature_human_resource_2') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_2"
-                                                name="status_expired_signature_human_resource_2" placeholder="--Pilih Status Close --"
+                                                name="status_expired_signature_human_resource_2" placeholder="--Pilih Status Penutupan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_2" data-val="true" aria-label="status_expired_signature_human_resource_2" data-placeholder="-- Pilih Status Close --">
-                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_2" data-val="true" aria-label="status_expired_signature_human_resource_2" data-placeholder="-- Pilih Status Penutupan --">
+                                                <option disabled selected>-- Pilih Status Penutupan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_expired_signature_human_resource_2' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_expired_signature_human_resource_2' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -1086,7 +1086,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Penutupan</div>
                                         <!-- Error Status Close -->
                                         @if ( $errors->has('status_expired_signature_human_resource_2') )
                                             <span class="help-block">
@@ -1141,7 +1141,7 @@
 
                                 <!-- Status Open -->
                                 <div class="mb-3 row {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}">
-                                    <label for="status_open_signature_human_resource_1" class="col-sm-3 col-form-label">Status Open</label>
+                                    <label for="status_open_signature_human_resource_1" class="col-sm-3 col-form-label">Status Pembukaan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}">
@@ -1153,10 +1153,10 @@
                                             <input type="hidden" value="{{ old('status_open_signature_human_resource_1', $timer->status_open_signature_human_resource_1) }}" id="oldStatusOpenAppraisment1" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_open_signature_human_resource_1') ? 'is-invalid' : '' }}" id="status_open_signature_human_resource_1"
-                                                name="status_open_signature_human_resource_1" placeholder="--Pilih Status Open --"
+                                                name="status_open_signature_human_resource_1" placeholder="--Pilih Status Pembukaan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_1" data-val="true" aria-label="status_open_signature_human_resource_1" data-placeholder="-- Pilih Status Open --">
-                                                <option disabled selected>-- Pilih Status Open --</option>
+                                                aria-invalid="true" aria-describedby="status_open_signature_human_resource_1" data-val="true" aria-label="status_open_signature_human_resource_1" data-placeholder="-- Pilih Status Pembukaan --">
+                                                <option disabled selected>-- Pilih Status Pembukaan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_open_signature_human_resource_1' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open_signature_human_resource_1' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -1166,7 +1166,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Open</div>
+                                        <div id="statusOpenAppraismentHelp" class="form-text">Pilih Status Pembukaan</div>
                                         <!-- Error Status Open -->
                                         @if ( $errors->has('status_open_signature_human_resource_1') )
                                             <span class="help-block">
@@ -1217,7 +1217,7 @@
 
                                 <!-- Status Close -->
                                 <div class="mb-3 row {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}">
-                                    <label for="status_expired_signature_human_resource_1" class="col-sm-3 col-form-label">Status Close</label>
+                                    <label for="status_expired_signature_human_resource_1" class="col-sm-3 col-form-label">Status Penutupan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <span class="input-group-text {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}">
@@ -1229,10 +1229,10 @@
                                             <input type="hidden" value="{{ old('status_expired_signature_human_resource_1', $timer->status_expired_signature_human_resource_1) }}" id="oldStatusExpiredAppraisment1" />
                                             @endif
                                             <select class="form-select {{ $errors->has('status_expired_signature_human_resource_1') ? 'is-invalid' : '' }}" id="status_expired_signature_human_resource_1"
-                                                name="status_expired_signature_human_resource_1" placeholder="--Pilih Status Close --"
+                                                name="status_expired_signature_human_resource_1" placeholder="--Pilih Status Penutupan --"
                                                 autofocus autocomplete required
-                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_1" data-val="true" aria-label="status_expired_signature_human_resource_1" data-placeholder="-- Pilih Status Close --">
-                                                <option disabled selected>-- Pilih Status Close --</option>
+                                                aria-invalid="true" aria-describedby="status_expired_signature_human_resource_1" data-val="true" aria-label="status_expired_signature_human_resource_1" data-placeholder="-- Pilih Status Penutupan --">
+                                                <option disabled selected>-- Pilih Status Penutupan --</option>
                                                 @if ($timer == null)
                                                 <option value="0" @if(old('status_expired_signature_human_resource_1' ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_expired_signature_human_resource_1' ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -1242,7 +1242,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div id="statusClosenHelp" class="form-text">Pilih Status Close</div>
+                                        <div id="statusClosenHelp" class="form-text">Pilih Status Penutupan</div>
                                         <!-- Error Status Close -->
                                         @if ( $errors->has('status_expired_signature_human_resource_1') )
                                             <span class="help-block">
@@ -1261,7 +1261,7 @@
                                         @if ($timers->isNotEmpty())
                                             @if ($timers[0]->date_time_open_signature_human_resource_3 != null)
                                             <button type="button" class="btn btn-danger btn-lg" style="color: black" id="deleteStatusIDSignature" data-val="{{ $timer->id }}">
-                                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Hapus
                                             </button>
                                             @endif
                                             <a class="btn btn-warning btn-lg" style="color: black" href="{{ request()->fullUrl() }}" role="button">
@@ -1278,7 +1278,7 @@
                                             @endif
                                             <button type="submit" class="btn btn-primary btn-lg" style="color: black">
                                                 @if ($timers[0]->date_time_open_signature_human_resource_3 == null)
-                                                <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Save
+                                                <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Simpan
                                                 @else
                                                 <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Update
                                                 @endif

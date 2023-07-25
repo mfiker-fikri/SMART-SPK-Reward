@@ -15,9 +15,15 @@
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
+            language: {
+                searchPanes: {
+                    emptyPanes: 'There are no panes to display. :/'
+                }
+            },
             lengthMenu: [5, 10, 20, 50, 100, 200, 500],
             dom: 'Bfrtip',
             buttons: [
+                "reload",
                 "pageLength",
                 // Colvis
                 {
@@ -36,12 +42,12 @@
                 // Excel
                 {
                     extend: 'excelHtml5',
-                    title: 'Hasil Rekap Penghargaan Teladan',
+                    title: 'Hasil Rekap Reward Teladan',
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4, 5, ':visible' ]
                     },
                     autoFilter: true,
-                    sheetName: 'Hasil Rekap Penghargaan Teladan',
+                    sheetName: 'Hasil Rekap Reward Teladan',
                     customize: function(xlsx) {
                         var sheet = xlsx.xl.worksheets['sheet1.xml'];
                         // jQuery selector to add a border
@@ -102,11 +108,11 @@
                     // orientation: 'landscape',
                     pageSize: 'A4',
                     // text: 'Data Admin',
-                    title: 'Hasil Rekap Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
+                    title: 'Hasil Rekap Reward Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
                     exportOptions: {
                         columns: ':visible'
                     },
-                    filename: 'Hasil Rekap Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
+                    filename: 'Hasil Rekap Reward Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
                     download: 'open',
                     // exportOptions: {
                     //     columns: [1,2,4,5,6,7,8]
@@ -158,7 +164,7 @@
             } ],
             ajax:
             {
-                url: "{{ url('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative/list') }}",
+                url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative/list') }}",
                 dataSrc: function(data){
                     if(data.data == null){
                         return [];

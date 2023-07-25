@@ -12,6 +12,14 @@
             serverSide: true,
             // paging: false,
             // searching: false,
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            language: {
+                searchPanes: {
+                    emptyPanes: 'There are no panes to display. :/'
+                }
+            },
             lengthMenu: [5, 10, 20, 50, 100, 200, 500],
             dom: 'Bfrtip',
             buttons: [
@@ -33,12 +41,12 @@
                 // Excel
                 {
                     extend: 'excelHtml5',
-                    title: 'Hasil Rekap Reward Inovasi',
+                    title: 'Hasil Rekap Penghargaan Inovasi',
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4, 5, ':visible' ]
                     },
                     autoFilter: true,
-                    sheetName: 'Hasil Rekap Reward Inovasi',
+                    sheetName: 'Hasil Rekap Penghargaan Inovasi',
                     customize: function(xlsx) {
                         var sheet = xlsx.xl.worksheets['sheet1.xml'];
                         // jQuery selector to add a border
@@ -50,7 +58,7 @@
                 // Print
                 {
                     extend: 'print',
-                    title: 'Hasil Rekap Reward Inovasi',
+                    title: 'Hasil Rekap Penghargaan Inovasi',
                     messageTop: 'Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
                     // header: false,
                     exportOptions: {
@@ -84,11 +92,11 @@
                     // orientation: 'landscape',
                     pageSize: 'A4',
                     // text: 'Data Admin',
-                    title: 'Hasil Rekap Reward Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
+                    title: 'Hasil Rekap Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
                     exportOptions: {
                         columns: ':visible'
                     },
-                    filename: 'Hasil Rekap Reward Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
+                    filename: 'Hasil Rekap Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia',
                     download: 'Open',
                     // exportOptions: {
                     //     columns: [1,2,4,5,6,7,8]
@@ -138,7 +146,22 @@
                 targets: -1,
                 visible: false
             } ],
-            ajax: "{{ url('sdm/kepala-biro-SDM/reward/inovation/list') }}",
+            ajax:
+            {
+                url: "{{ url('sdm/kepala-biro-SDM/reward/innovation/list') }}",
+                dataSrc: function(data){
+                    if(data.data == null){
+                        return [];
+                    } else {
+                        return data.data;
+                    }
+                }
+            },
+            columnDefs: [{
+                searchable: false,
+                orderable: false,
+                targets: 0
+            }],
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false, width: 20 },
                 {   data: 'fullName', name: 'fullName', orderable: false, width: 120},
@@ -174,7 +197,7 @@
 
                 <!-- Form Inovation Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Hasil Rekap Reward Inovasi</h5>
+                    <h5 class="mb-0">Hasil Rekap Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Form Inovation Title -->
 

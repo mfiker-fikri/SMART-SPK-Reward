@@ -9,10 +9,11 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
+                // paging: false,
+                // searching: false,
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
-                paging: false,
                 // dom: 'Plfrtip',
                 language: {
                     searchPanes: {

@@ -19,7 +19,7 @@ class RewardRepresentativeController extends Controller
     public function getRewardRepresentativeKepalaSubbagianPenghargaanDisiplindanPensiun()
     {
         try {
-            return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.reward.rewardRepresentative_index');
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.reward.rewardRepresentative_index');
         } catch (\Throwable $th) {
             throw $th;
         }

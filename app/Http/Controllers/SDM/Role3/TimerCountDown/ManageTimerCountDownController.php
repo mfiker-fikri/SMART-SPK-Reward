@@ -58,6 +58,10 @@ class ManageTimerCountDownController extends Controller
                 $dateOpen1               =   $dateTimeOpen1->toDateString();
                 $dateOpenTime1           =   $dateTimeOpen1->toDateTimeString();
 
+                $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_inovation_form']);
+                $dateOpen               =   $dateTimeOpen->toDateString();
+                $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+
                 if ($dateOpenTime1 == '') {
                     // validasi
                     $validate = Validator::make(
@@ -65,18 +69,18 @@ class ManageTimerCountDownController extends Controller
                         [
                             'date_time_open_countdown_inovation_form'            =>  'required|date|before_or_equal:date_time_expired_countdown_inovation_form|before_or_equal:'.$dateOpenTime1.'',
                             'status_open'                                        =>  'required',
-                            'date_time_expired_countdown_inovation_form'         =>  'required|date|after_or_equal:date_time_open_countdown_inovation_form|before_or_equal:'.$dateOpenTime1.'',
+                            'date_time_expired_countdown_inovation_form'         =>  'required|date|after_or_equal:'.$dateTimeOpen.'|before_or_equal:'.$dateOpenTime1.'',
                             'status_expired'                                     =>  'required',
                         ],
                         [
-                            'date_time_open_countdown_inovation_form.required'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Form Inovasi Wajib Diisi!',
-                            'date_time_open_countdown_inovation_form.before_or_equal'       =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Form Inovasi Dipilih Sebelum Penutupan Form dan Sebelum Pembukaan Penilaian!',
+                            'date_time_open_countdown_inovation_form.required'              =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Berkas Inovasi Wajib Diisi!',
+                            'date_time_open_countdown_inovation_form.before_or_equal'       =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Berkas Inovasi Dipilih Sebelum Penutupan Berkas dan Sebelum Pembukaan Penilaian!',
                             //
                             'status_open.required'                                          =>  'Status Pembukaan Wajib Dipilih!',
                             //
-                            'date_time_expired_countdown_inovation_form.required'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Form Inovasi Wajib Diisi!',
-                            'date_time_expired_countdown_inovation_form.after_or_equal'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Form Inovasi Wajib Dipilih Sesudah Pembukaan Form!',
-                            'date_time_expired_countdown_inovation_form.before_or_equal'    =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Form Inovasi Wajib Dipilih Sebelum Pembukaan Penilaian!',
+                            'date_time_expired_countdown_inovation_form.required'           =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Berkas Inovasi Wajib Diisi!',
+                            'date_time_expired_countdown_inovation_form.after_or_equal'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Berkas Inovasi Wajib Dipilih Sesudah Pembukaan Berkas!',
+                            'date_time_expired_countdown_inovation_form.before_or_equal'    =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Berkas Inovasi Wajib Dipilih Sebelum Pembukaan Penilaian!',
                             //
                             'status_expired.required'                                       =>  'Status Penutupan Wajib Dipilih!',
 
@@ -92,23 +96,27 @@ class ManageTimerCountDownController extends Controller
 
             if ($timer == null) {
                 // if ($dateOpenTime1 != '') {
+
+                    $dateTimeOpen           =   new Carbon($request['date_time_open_countdown_inovation_form']);
+                    $dateOpen               =   $dateTimeOpen->toDateString();
+                    $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
                     // validasi
                     $validate = Validator::make(
                         $request->all(),
                         [
                             'date_time_open_countdown_inovation_form'            =>  'required|date|before_or_equal:date_time_expired_countdown_inovation_form',
                             'status_open'                                        =>  'required',
-                            'date_time_expired_countdown_inovation_form'         =>  'required|date|after_or_equal:date_time_open_countdown_inovation_form',
+                            'date_time_expired_countdown_inovation_form'         =>  'required|date|after_or_equal:'.$dateTimeOpen.'',
                             'status_expired'                                     =>  'required',
                         ],
                         [
-                            'date_time_open_countdown_inovation_form.required'                      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Form Inovasi Wajib Diisi!',
-                            'date_time_open_countdown_inovation_form.before_or_equal'               =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Form Inovasi Dipilih Sebelum Penutupan Form!',
+                            'date_time_open_countdown_inovation_form.required'                      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Berkas Inovasi Wajib Diisi!',
+                            'date_time_open_countdown_inovation_form.before_or_equal'               =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Berkas Inovasi Dipilih Sebelum Penutupan Berkas!',
                             //
                             'status_open.required'                                                  =>  'Status Pembukaan Wajib Dipilih!',
                             //
-                            'date_time_expired_countdown_inovation_form.required'                   =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Form Inovasi Wajib Diisi!',
-                            'date_time_expired_countdown_inovation_form.after_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Form Inovasi Wajib Dipilih Sesudah Pembukaan Form!',
+                            'date_time_expired_countdown_inovation_form.required'                   =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Berkas Inovasi Wajib Diisi!',
+                            'date_time_expired_countdown_inovation_form.after_or_equal'             =>  'Hari, Tanggal, Tahun, Jam, dan Menit Penutupan Berkas Inovasi Wajib Dipilih Sesudah Pembukaan Berkas!',
                             //
                             'status_expired.required'                                               =>  'Status Penutupan Wajib Dipilih!',
 
@@ -140,30 +148,30 @@ class ManageTimerCountDownController extends Controller
             if($request['id'] != null) {
                 $id  =  CountdownTimerFormInovation::find($request['id']);
 
-                if ($dateOpenTime === $id->date_time_open_form_inovation && $dateExpiredTime === $id->date_time_expired_form_inovation) {
+                if ($dateOpenTime === $id->date_time_open_form_innovation && $dateExpiredTime === $id->date_time_expired_form_innovation) {
                     $id->status_open                                    =  $request['status_open'];
                     $id->status_expired                                 =  $request['status_expired'];
                     $id->save();
 
-                    alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
-                    return redirect()->back()->with('message-create-form-success', 'Berhasil Update Data Timer Form Inovation!');
+                    alert()->success('Berhasil Update Data Timer Berkas Inovasi!')->autoclose(25000);
+                    return redirect()->back()->with('message-create-form-success', 'Berhasil Update Data Timer Berkas Inovasi!');
                 }
 
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     $id  =  CountdownTimerFormInovation::find($request['id']);
 
                     if($id) {
-                        $id->date_time_open_form_inovation                  =  $request['date_time_open_countdown_inovation_form'];
+                        $id->date_time_open_form_innovation                  =  $request['date_time_open_countdown_inovation_form'];
                         $id->status_open                                    =  $request['status_open'];
-                        $id->date_time_expired_form_inovation               =  $request['date_time_expired_countdown_inovation_form'];
+                        $id->date_time_expired_form_innovation               =  $request['date_time_expired_countdown_inovation_form'];
                         $id->status_expired                                 =  $request['status_expired'];
                         $id->save();
 
-                        alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-form-success', 'Berhasil Update Data Timer Form Inovation!');
+                        alert()->success('Berhasil Update Data Timer Berkas Inovasi!')->autoclose(25000);
+                        return redirect()->back()->with('message-create-form-success', 'Berhasil Update Data Timer Berkas Inovasi!');
                     } else {
-                        alert()->error('Gagal Update Data Timer Form Inovation!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                        alert()->error('Gagal Update Data Timer Berkas Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Berkas Inovasi!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
@@ -172,13 +180,15 @@ class ManageTimerCountDownController extends Controller
                 // }
 
                 if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
-                    alert()->error('Gagal Update Data Timer Form Inovation!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                    return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Data Timer Berkas Inovasi!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                    return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Berkas Inovasi!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if($dateOpen == $dateExpired) {
-                    alert()->error('Gagal Update Data Timer Form Inovation!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Data Timer Berkas Inovasi!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
+                    return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Berkas Inovasi!')
+                    // ->withErrors($validate)
+                    ->withInput($request->all());
                 }
 
             }
@@ -187,21 +197,21 @@ class ManageTimerCountDownController extends Controller
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
                     // Create New Timer
                     $timer = CountdownTimerFormInovation::create([
-                        'date_time_open_form_inovation'                 =>  $request['date_time_open_countdown_inovation_form'],
+                        'date_time_open_form_innovation'                 =>  $request['date_time_open_countdown_inovation_form'],
                         'status_open'                                   =>  $request['status_open'],
-                        'date_time_expired_form_inovation'              =>  $request['date_time_expired_countdown_inovation_form'],
+                        'date_time_expired_form_innovation'              =>  $request['date_time_expired_countdown_inovation_form'],
                         'status_expired'                                =>  $request['status_expired'],
                     ]);
                     if($timer) {
-                        alert()->success('Berhasil Tambah Data Timer Form Inovation!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-form-success', 'Berhasil Tambah Data Timer Form Inovation!');
+                        alert()->success('Berhasil Tambah Data Timer Berkas Inovasi!')->autoclose(25000);
+                        return redirect()->back()->with('message-create-form-success', 'Berhasil Tambah Data Timer Berkas Inovasi!');
                     } else {
-                        alert()->error('Gagal Tambah Data Timer Form Inovation!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-form-error', 'Gagal Tambah Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                        alert()->error('Gagal Tambah Data Timer Berkas Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-create-form-error', 'Gagal Tambah Data Timer Berkas Inovasi!')->withErrors($validate)->withInput($request->all());
                     }
                 }
-                alert()->error('Gagal Update Data Timer Form Inovation!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Form Inovation!')->withErrors($validate)->withInput($request->all());
+                alert()->error('Gagal Update Data Timer Berkas Inovasi!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                return redirect()->back()->with('message-create-form-error', 'Gagal Update Data Timer Berkas Inovasi!')->withErrors($validate)->withInput($request->all());
             }
 
 
@@ -267,7 +277,7 @@ class ManageTimerCountDownController extends Controller
             $timer = CountdownTimerFormInovation::find($id);
             if($timer) {
                 $timer->delete();
-                return redirect()->back()->with('message-delete-form-success', 'Berhasil Hapus Data Timer Form!');
+                return redirect()->back()->with('message-delete-form-success', 'Berhasil Hapus Data Timer Berkas!');
                 // $teetime = CountdownTimerFormInovation::where('id', '=', $id)->firstOrFail();
                 // $teetime->destroy();
                 // $timer->destroy();
@@ -309,12 +319,12 @@ class ManageTimerCountDownController extends Controller
 
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen1           =   new Carbon($timer->date_time_open_form_inovation);
+            $dateTimeOpen1           =   new Carbon($timer->date_time_open_form_innovation);
 
             $dateOpen1               =   $dateTimeOpen1->toDateString();
             $dateOpenTime1           =   $dateTimeOpen1->toDateTimeString();
 
-            $dateTimeOpen2           =   new Carbon($timer->date_time_expired_form_inovation);
+            $dateTimeOpen2           =   new Carbon($timer->date_time_expired_form_innovation);
 
             $dateOpen2               =   $dateTimeOpen2->toDateString();
             $dateOpenTime2           =   $dateTimeOpen2->toDateTimeString();
@@ -330,7 +340,7 @@ class ManageTimerCountDownController extends Controller
                     ],
                     [
                         'date_time_open_countdown_inovation_appraisement.required'            =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Wajib Diisi!',
-                        'date_time_open_countdown_inovation_appraisement.after_or_equal'      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Setelah Penutupan Form Inovasi!',
+                        'date_time_open_countdown_inovation_appraisement.after_or_equal'      =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Setelah Penutupan Berkas Inovasi!',
                         'date_time_open_countdown_inovation_appraisement.before_or_equal'     =>  'Hari, Tanggal, Tahun, Jam, dan Menit Pembukaan Penilaian Minimal Harus 1 Hari Sebelum Penutupan Penilaian Inovasi!',
                         //
                         'status_open_appraisement.required'                                   =>  'Status Pembukaan Wajib Dipilih!',
@@ -814,8 +824,8 @@ class ManageTimerCountDownController extends Controller
                     $id->status_expired_appraisement                     =  $request['status_expired_appraisement'];
                     $id->save();
 
-                    alert()->success('Berhasil Update Data Timer Form Inovation!')->autoclose(25000);
-                    return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Form Inovation!');
+                    alert()->success('Berhasil Update Data Timer Penilaian Teladan!')->autoclose(25000);
+                    return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Penilaian Teladan!');
                 }
 
                 if($dateOpen != $dateExpired && ( Carbon::now()->toDateString() != $dateOpen && Carbon::now()->toDateString() != $dateExpired ) ) {
@@ -828,11 +838,11 @@ class ManageTimerCountDownController extends Controller
                         $id->status_expired_appraisement            =  $request['status_expired_appraisement'];
                         $id->save();
 
-                        alert()->success('Berhasil Update Data Timer Form Teladan!')->autoclose(25000);
-                        return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Form Teladan!');
+                        alert()->success('Berhasil Update Data Timer Penilaian Teladan!')->autoclose(25000);
+                        return redirect()->back()->with('message-update-appraisement-success', 'Berhasil Update Data Timer Penilaian Teladan!');
                     } else {
-                        alert()->error('Gagal Update Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                        alert()->error('Gagal Update Data Timer Penilaian Teladan!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-update-appraisement-error', 'Gagal Update Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
@@ -841,17 +851,17 @@ class ManageTimerCountDownController extends Controller
                 // }
 
                 if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
-                    alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Data Timer Penilaian Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if($dateOpen == $dateExpired) {
-                    alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Data Timer Penilaian Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
+                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
-                // alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                // return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                // alert()->error('Gagal Update Data Timer Berkas Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                // return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Berkas Teladan!')->withErrors($validate)->withInput($request->all());
             }
             // Create
             else {
@@ -864,11 +874,11 @@ class ManageTimerCountDownController extends Controller
                         'status_expired_appraisement'         =>  $request['status_expired_appraisement'],
                     ]);
                     if($timer) {
-                        alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Form Teladan!');
+                        alert()->success('Berhasil Tambah Data Timer Penilaian Teladan!')->autoclose(25000);
+                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Penilaian Teladan!');
                     } else {
-                        alert()->error('Gagal Tambah Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                        alert()->error('Gagal Tambah Data Timer Penilaian Teladan!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
@@ -881,26 +891,26 @@ class ManageTimerCountDownController extends Controller
                         'status_expired_appraisement'         =>  $request['status_expired_appraisement'],
                     ]);
                     if($timer) {
-                        alert()->success('Berhasil Tambah Data Timer Form Teladan!')->autoclose(25000);
-                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Form Teladan!');
+                        alert()->success('Berhasil Tambah Data Timer Penilaian Teladan!')->autoclose(25000);
+                        return redirect()->back()->with('message-create-appraisement-success', 'Berhasil Tambah Data Timer Penilaian Teladan!');
                     } else {
-                        alert()->error('Gagal Tambah Data Timer Form Teladan!', 'Validasi Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                        alert()->error('Gagal Tambah Data Timer Penilaian Teladan!', 'Validasi Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-create-appraisement-error', 'Gagal Tambah Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                     }
                 }
 
                 if( Carbon::now()->toDateString() === $dateOpen || Carbon::now()->toDateString() === $dateExpired ) {
-                    alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Data Timer Penilaian Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
                 if($dateOpen == $dateExpired) {
-                    alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
-                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Data Timer Penilaian Teladan!', 'Tidak Boleh Tanggal Sama')->autoclose(25000);
+                    return redirect()->back()->with('message-create-appraisement-error', 'Gagal Update Data Timer Penilaian Teladan!')->withErrors($validate)->withInput($request->all());
                 }
 
-                // alert()->error('Gagal Update Data Timer Form Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
-                // return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Form Teladan!')->withErrors($validate)->withInput($request->all());
+                // alert()->error('Gagal Update Data Timer Berkas Teladan!', 'Tidak Boleh Tanggal Sekarang')->autoclose(25000);
+                // return redirect()->back()->with('message-create-error', 'Gagal Update Data Timer Berkas Teladan!')->withErrors($validate)->withInput($request->all());
             }
 
 

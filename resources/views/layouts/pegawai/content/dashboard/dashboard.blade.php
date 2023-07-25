@@ -989,12 +989,13 @@
             ajax:
             {
                 url: "{{ url('dashboard/form-innovation/list/data') }}",
-                // dataSrc: function (json) {
-                // if (!json.data) {
-                //     return [];
-                // } else {
-                //     return json.data;
-                // }
+                dataSrc: function (json) {
+                    if (!json.data) {
+                        return [];
+                    } else {
+                        return json.data;
+                    }
+                }
             },
             columns: [
                 // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
@@ -1028,12 +1029,13 @@
             ajax:
             {
                 url: "{{ url('dashboard/reward-innovation/list/data') }}",
-                // dataSrc: function (json) {
-                // if (!json.data) {
-                //     return [];
-                // } else {
-                //     return json.data;
-                // }
+                dataSrc: function (json) {
+                    if (!json.data) {
+                        return [];
+                    } else {
+                        return json.data;
+                    }
+                }
             },
             columns: [
                 // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
@@ -1067,12 +1069,13 @@
                 ajax:
                 {
                     url: "{{ url('dashboard/reward-representative/list/data') }}",
-                    // dataSrc: function (json) {
-                    // if (!json.data) {
-                    //     return [];
-                    // } else {
-                    //     return json.data;
-                    // }
+                    dataSrc: function (json) {
+                        if (!json.data) {
+                            return [];
+                        } else {
+                            return json.data;
+                        }
+                    }
                 },
                 columns: [
                     // {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
@@ -1715,11 +1718,11 @@
                     @else
                         @if (
                             (
-                                ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
+                                ($timerInovasi->status_open_form_innovation == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None' ) && ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
                             )
                             ||
                             (
-                                ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
+                                ($timerInovasi->status_open_form_innovation == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ?? 'None') && ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
                             )
                         )
                         <div class="container-fluid">
@@ -1732,15 +1735,15 @@
 
                         @elseif (
                             (
-                                        ($timerInovasi->status_open == 1
+                                        ($timerInovasi->status_open_form_innovation == 1
                                     && ($timerInovasi->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString() ?? 'None'))
-                                &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
+                                &&  ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
                             )
                             ||
                             (
-                                        ($timerInovasi->status_open == 1
+                                        ($timerInovasi->status_open_form_innovation == 1
                                     && ($timerInovasi->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timerInovasi->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString()) ?? 'None')
-                                &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
+                                &&  ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
                             )
                         )
                         <div class="container-fluid swiper1">
@@ -1783,23 +1786,23 @@
                         @elseif (
                             (
                                     (
-                                            ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation ?? 'None') )
-                                        &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
+                                            ($timerInovasi->status_open_form_innovation == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation ?? 'None') )
+                                        &&  ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation ?? 'None')
                                     )
                                 ||  (
-                                            ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
-                                        &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
+                                            ($timerInovasi->status_open_form_innovation == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
+                                        &&  ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                     )
                             )
                             ||
                             (
                                     (
-                                            ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
-                                        &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
+                                            ($timerInovasi->status_open_form_innovation == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
+                                        &&  ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                     )
                                 || (
-                                            ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
-                                        &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
+                                            ($timerInovasi->status_open_form_innovation == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
+                                        &&  ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                     )
                             )
                         )
@@ -1837,13 +1840,13 @@
 
                         @elseif (
                             (
-                                    ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
-                                ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
+                                    ( ($timerInovasi->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
+                                ||  ( ($timerInovasi->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
                             )
                             ||
                             (
-                                    ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
-                                || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
+                                    ( ($timerInovasi->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
+                                || ( ($timerInovasi->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
                             )
                         )
 

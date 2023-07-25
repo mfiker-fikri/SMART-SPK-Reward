@@ -19,7 +19,7 @@ class RewardInovationController extends Controller
     public function getRewardInovationKepalaSubbagianPenghargaanDisiplindanPensiun()
     {
         try {
-            return view('layouts.sdm.content.kepalaBagianPenghargaanDisiplinTU.reward.rewardInovation_index');
+            return view('layouts.sdm.content.kepalaSubbagianPenghargaanDisiplinPensiun.reward.rewardInovation_index');
         } catch (\Throwable $th) {
             throw $th;
         }

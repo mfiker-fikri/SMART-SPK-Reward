@@ -385,19 +385,19 @@
 
             <!-- Report Reward -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Kelola Hasil Rekap Penghargaan</span>
+                <span class="menu-header-text">Kelola Hasil Rekap</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-file"></i>
-                    <div data-i18n="rekapReward">Hasil Rekap Penghargaan</div>
+                    <div data-i18n="rekapReward">Hasil Rekap</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Signature Inovation -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/innovation') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardInovation">Rekap Penghargaan Inovasi</div>
+                            <div data-i18n="rekapRewardInovation">Penghargaan Inovasi</div>
                         </a>
                     </li>
                     <!--/ Signature Inovation -->
@@ -405,7 +405,7 @@
                     <!-- Signature Representative -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/reward/representative') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="rekapRewardRepresentative">Rekap Penghargaan Teladan</div>
+                            <div data-i18n="rekapRewardRepresentative">Penghargaan Teladan</div>
                         </a>
                     </li>
                     <!--/ Signature Representative -->

@@ -369,7 +369,7 @@
                                             {{-- @csrf --}}
                                             {{-- <input type="hidden" name="oldImage" value="{{ Auth::guard('admins')->user()->photo_profile }}" /> --}}
                                             <button type="submit" class="btn btn-danger" style="color: black" id="deletePhoto">
-                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus Photo
+                                                <i class="fa-solid fa-trash mx-auto me-2"></i>Hapus Foto
                                             </button>
                                         {{-- </form> --}}
                                     </div>
