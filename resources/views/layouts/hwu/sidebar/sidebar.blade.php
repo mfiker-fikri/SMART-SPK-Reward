@@ -49,13 +49,13 @@
 
         <!-- My Profile -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
+            <span class="menu-header-text">Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
         </li>
 
         <li class="menu-item {{ (request()->is('ksk/form-innovation/list*')) ? 'active' : '' }}">
             <a href="{{ URL::to('/ksk/form-innovation/list') }}" class="menu-link" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-user-large"></i>
-                <div data-i18n="Analytics">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
+                <div data-i18n="Analytics">Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
             </a>
         </li>
         <!--/ My Profile -->

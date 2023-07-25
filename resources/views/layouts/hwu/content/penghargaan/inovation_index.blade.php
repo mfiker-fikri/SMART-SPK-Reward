@@ -317,7 +317,7 @@
 
 <!-- Footer Js -->
 @section('js_footer')
-    <!-- Datatables Form Inovation -->
+    <!-- Datatables Formulir Inovation -->
     <script type="text/javascript">
     $(document).ready(function () {
         var table = $('#data-table').DataTable({
@@ -328,7 +328,17 @@
                 selector: 'td:nth-child(2)'
             },
             paging: false,
-            ajax: "{{ url('/ksk/form-innovation/list/data') }}",
+            ajax:
+            {
+                url: "{{ url('/ksk/form-innovation/list/data') }}",
+                dataSrc: function(data){
+                    if(data.data == null){
+                        return [];
+                    } else {
+                        return data.data;
+                    }
+                }
+            },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'nama_full', name: 'nama_full'},
@@ -345,7 +355,7 @@
         }
     });
     </script>
-    <!--/ Datatables Form Inovation -->
+    <!--/ Datatables Formulir Inovation -->
 
 
 
@@ -384,7 +394,7 @@
                     if(event.offset.totalDays == 1 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 2 + 'Hari',
+                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 2 + 'Hari',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -416,7 +426,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka Besok',
+                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -448,7 +458,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Jam',
+                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -480,7 +490,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Menit',
+                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -513,7 +523,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Sudah Dibuka',
+                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Sudah Dibuka',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -568,7 +578,7 @@
                 if(event.offset.totalDays == 1 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 2 + 'Hari',
+                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 2 + 'Hari',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -600,7 +610,7 @@
                 if(event.offset.totalDays == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup Besok',
+                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup Besok',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -632,7 +642,7 @@
                 if(event.offset.totalHours == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Jam',
+                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Jam',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -664,7 +674,7 @@
                 if(event.offset.totalMinutes == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Menit',
+                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Menit',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -697,7 +707,7 @@
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Sudah Ditutup',
+                    title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Sudah Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,
@@ -788,26 +798,26 @@
 
             <div class="card mx-3">
 
-                <!-- Form Read Inovation List Title -->
+                <!-- Formulir Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h5>
+                    <h5 class="mb-0">Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h5>
                 </div>
-                <!--/ Form Read Inovation List Title -->
+                <!--/ Formulir Read Inovation List Title -->
 
                 @if ($timer == null)
 
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup</span>
+                                <span>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup</span>
                             </h1>
                         </div>
                     </div>
 
                 @elseif ($timer != null)
 
-                    {{-- @if ( ($timer->status_open == null && $timer->date_time_open_form_innovation == null) && ($timer->status_expired == null && $timer->date_time_expired_form_innovation == null) ) --}}
-                    {{-- @elseif ($timer->status_open == null && $timer->date_time_open_form_innovation == null) --}}
+                    {{-- @if ( ($timer->status_open_form_innovation == null && $timer->date_time_open_form_innovation == null) && ($timer->status_expired_form_innovation == null && $timer->date_time_expired_form_innovation == null) ) --}}
+                    {{-- @elseif ($timer->status_open_form_innovation == null && $timer->date_time_open_form_innovation == null) --}}
                     {{-- <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
@@ -818,11 +828,11 @@
 
                     @if (
                         (
-                            ($timer->status_open == 0 && $timer->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation )
+                            ($timer->status_open_form_innovation == 0 && $timer->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation )
                         )
                         ||
                         (
-                            ($timer->status_open == 0 && $timer->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation )
+                            ($timer->status_open_form_innovation == 0 && $timer->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timer->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation )
                         )
                     )
                     <div class="container-fluid">
@@ -835,15 +845,15 @@
 
                     @elseif (
                         (
-                                    ($timer->status_open == 1
+                                    ($timer->status_open_form_innovation == 1
                                 && ($timer->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timer->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString() ?? 'None'))
-                            &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation ?? 'None')
+                            &&  ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation ?? 'None')
                         )
                         ||
                         (
-                                    ($timer->status_open == 1
+                                    ($timer->status_open_form_innovation == 1
                                 && ($timer->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() ?? 'None' || $timer->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString()) ?? 'None')
-                            &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation ?? 'None')
+                            &&  ($timer->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation ?? 'None')
                         )
                     )
                     <div class="container-fluid ">
@@ -877,35 +887,35 @@
                     @elseif (
                         (
                                 (
-                                        ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation ?? 'None') )
-                                    &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation ?? 'None')
+                                        ($timer->status_open_form_innovation == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation ?? 'None' || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation ?? 'None') )
+                                    &&  ($timer->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation ?? 'None')
                                 )
                             ||  (
-                                        ($timer->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation))
-                                    &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation)
+                                        ($timer->status_open_form_innovation == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation))
+                                    &&  ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation)
                                 )
                         )
                         ||
                         (
                                 (
-                                        ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation))
-                                    &&  ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation)
+                                        ($timer->status_open_form_innovation == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation))
+                                    &&  ($timer->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation)
                                 )
                             || (
-                                        ($timer->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation))
-                                    &&  ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation)
+                                        ($timer->status_open_form_innovation == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timer->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timer->date_time_open_form_innovation))
+                                    &&  ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation)
                                 )
                         )
                     )
 
                     <div class="closeTimerCountDown">
 
-                        <!-- Button Create Form Inovation List -->
+                        <!-- Button Create Formulir Inovation List -->
                         <div class="py-3 d-flex flex-column justify-content-start">
                             @if (
                                 (
-                                    ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
-                                ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
+                                    ($timer->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
+                                ||  ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
                             )
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
@@ -922,7 +932,7 @@
                             @endif
 
                         </div>
-                        <!--/ Button Create Form Inovation List -->
+                        <!--/ Button Create Formulir Inovation List -->
 
                         <div class="container-fluid">
 
@@ -945,20 +955,20 @@
 
                     @elseif (
                         (
-                                ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
-                            ||  ( ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
+                                ( ($timer->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
+                            ||  ( ($timer->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
                         )
                         ||
                         (
-                                ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
-                            || ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
+                                ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
+                            || ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_expired_form_innovation) )
                         )
                     )
 
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Telah Ditutup</span>
+                                <span>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Telah Ditutup</span>
                             </h1>
                         </div>
                     </div>

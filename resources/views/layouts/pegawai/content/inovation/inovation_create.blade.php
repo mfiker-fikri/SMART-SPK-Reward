@@ -169,7 +169,7 @@
                 if(event.offset.totalDays == 1 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
+                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -201,7 +201,7 @@
                 if(event.offset.totalDays == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup Besok',
+                        title: 'Formulir Inovasi Ditutup Besok',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -233,7 +233,7 @@
                 if(event.offset.totalHours == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -265,7 +265,7 @@
                 if(event.offset.totalMinutes == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -298,7 +298,7 @@
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Form Inovasi Sudah Ditutup',
+                    title: 'Formulir Inovasi Sudah Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,
@@ -370,14 +370,14 @@
             </div>
             @endif
 
-            <div class="card my-4 mx-3">
-                <!-- Create Form Inovation Title -->
+            <div class="card mx-3">
+                <!-- Create Formulir Inovation Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Form Pendaftaran Penghargaan Inovasi</h5>
+                    <h5 class="mb-0">Tambah Formulir Pendaftaran Penghargaan Inovasi</h5>
                 </div>
-                <!--/ Create Form Inovation Title -->
+                <!--/ Create Formulir Inovation Title -->
 
-                <!-- Create Form Inovation Details -->
+                <!-- Create Formulir Inovation Details -->
                 <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
                     <div class="py-3 d-flex flex-column justify-content-start">
@@ -387,11 +387,11 @@
                             ||  ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
                         )
                             <div class="mx-1 mx-1 mx-1">
-                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
+                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Formulir Inovasi</div>
                             </div>
                         @else
                             <div class="mx-1 mx-1 mx-1">
-                                <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
+                                <h3 class="text-center text-dark">Penutupan Formulir Inovasi</h3>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->toDateTimeString()  }}"></div>
@@ -403,7 +403,7 @@
                         @csrf
                         <!-- Upload Short Description -->
                         <div class="row my-3 {{ $errors->has('uploadFile') ? 'is-invalid' : '' }}">
-                            <label for="uploadFile" class="col-xl-3 col-form-label">Upload Short Description</label>
+                            <label for="uploadFile" class="col-xl-3 col-form-label">Unggah Deskripsi Singkat</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadFile') ? 'is-invalid' : '' }}">
                                     {{-- <input type="text" name="oldFile" value="" /> --}}
@@ -417,7 +417,7 @@
 
                                 <div class="d-flex flex-column">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 3Mb (3072 Kb)</small>
+                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Unggah File 3Mb (3072 Kb)</small>
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Short Description -->
@@ -442,7 +442,7 @@
 
                         <!-- Upload Photo -->
                         <div class="row my-3 {{ $errors->has('uploadPhoto') ? 'is-invalid' : '' }}">
-                            <label for="uploadPhoto" class="col-xl-3 col-form-label">Upload Photo</label>
+                            <label for="uploadPhoto" class="col-xl-3 col-form-label">Unggah Foto</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadPhoto') ? 'is-invalid' : '' }}">
                                     {{-- <input type="text" name="oldPhoto" value="" /> --}}
@@ -454,7 +454,7 @@
 
                                 <div class="d-flex flex-column">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload Foto 5Mb (5120 Kb)</small>
+                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Unggah Foto 5Mb (5120 Kb)</small>
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Photo -->
@@ -477,7 +477,7 @@
 
                         <!-- Upload Video -->
                         <div class="row my-3 {{ $errors->has('uploadVideo') ? 'is-invalid' : '' }}">
-                            <label for="uploadVideo" class="col-xl-3 col-form-label">Upload Video</label>
+                            <label for="uploadVideo" class="col-xl-3 col-form-label">Unggah Video</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadVideo') ? 'is-invalid' : '' }}">
                                     {{-- <input type="text" name="oldVideo" value="" /> --}}
@@ -489,7 +489,7 @@
 
                                 <div class="d-flex flex-column">
                                     <!-- Text Small -->
-                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Upload File 1Gb (1024000 Kb)</small>
+                                    <small class="form-text text-muted text-break text-monospace text-sm-left">Maksimal Unggah Video 1Gb (1024000 Kb)</small>
                                     <!--/ Text Small -->
 
                                     <!-- Error Upload Video -->
@@ -531,7 +531,7 @@
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
-                                    <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Upload
+                                    <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Unggah
                                 </button>
                             </div>
                         </div>
@@ -540,7 +540,7 @@
                     </form>
 
                 </div>
-                <!--/ Form Inovation Details -->
+                <!--/ Formulir Inovation Details -->
 
             </div>
 

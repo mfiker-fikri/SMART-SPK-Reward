@@ -496,7 +496,7 @@
 
                     <!-- Tabs Profile Details -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('profile')) ? 'true' : 'false' }}">Identitas Pegawai</button>
+                        <button class="nav-link {{ (request()->is('profile')) ? 'active' : '' }}" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('profile')) ? 'true' : 'false' }}">Informasi Akun</button>
                     </li>
                     <!--/ Tabs Profile Details -->
 

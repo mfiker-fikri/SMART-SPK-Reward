@@ -15,43 +15,43 @@
 
         <meta name="referrer" content="strict-origin" />
         @if ( request()->is('ksk/dashboard') )
-            <!-- Dashboard -->
-            <meta name="title" content="{{ Auth::guard('head_work_units')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="{{ Auth::guard('head_work_units')->user()->username }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <!-- Beranda -->
+            <meta name="title" content="{{ Auth::guard('head_work_units')->user()->username }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="{{ Auth::guard('head_work_units')->user()->username }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('ksk/profile') )
-            <!-- Profile -->
-            <meta name="title" content="{{ Auth::guard('head_work_units')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="{{ Auth::guard('head_work_units')->user()->username }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <!-- Data Diri -->
+            <meta name="title" content="{{ Auth::guard('head_work_units')->user()->username }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="{{ Auth::guard('head_work_units')->user()->username }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('ksk/form-innovation/list') )
             <!-- List -->
-            <meta name="title" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('ksk/form-innovation/list/update*') )
             <!-- List -->
-            <meta name="title" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         @endif
         <!--/ Meta Tag -->
 
         <!-- Title -->
         @if ( request()->is('ksk/dashboard*') )
-            <!-- Dashboard -->
-            <title> {{ Auth::guard('head_work_units')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <!-- Beranda -->
+            <title> {{ Auth::guard('head_work_units')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('ksk/profile') )
-            <!-- Profile -->
-            <title> {{ Auth::guard('head_work_units')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <!-- Data Diri -->
+            <title> {{ Auth::guard('head_work_units')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('ksk/form-innovation/list') )
             <!-- List -->
-            <title> Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('ksk/form-innovation/list/update*') )
             <!-- List -->
-            <title> Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
         @endif
         <!-- /Title -->
 

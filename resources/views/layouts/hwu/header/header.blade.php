@@ -26,14 +26,14 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/ksk/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</li>
+                <li class="breadcrumb-item fw-bold active">Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</li>
 
             @elseif ( request()->is('ksk/form-innovation/list/update*') )
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/ksk/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/ksk/form-innovation/list') }}" style="text-decoration: none !important;">Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
+                    <a href="{{ URL::to('/ksk/form-innovation/list') }}" style="text-decoration: none !important;">Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active"> {{ $rewardInovation->full_name }} </li>
 

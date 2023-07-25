@@ -157,7 +157,7 @@
 
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
-    <!-- Reject Form Inovation Id -->
+    <!-- Reject Formulir Inovation Id -->
     <script type="text/javascript">
     $(document).ready(function () {
         $('#reject_inovation').on('click', function(e) {
@@ -169,9 +169,9 @@
             // console.log(description_back);
 
             Swal.fire({
-                title: 'Apakah kamu ingin menolak form ini?',
+                title: 'Apakah kamu ingin menolak formulir ini?',
                 icon: 'warning',
-                text: 'Data form ini akan ditolak dan dikembalikan ke pegawai',
+                text: 'Data formulir ini akan ditolak dan dikembalikan ke pegawai',
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 allowEnterKey: false,
@@ -278,9 +278,9 @@
         });
     });
     </script>
-    <!--/ Reject Form Inovation Id -->
+    <!--/ Reject Formulir Inovation Id -->
 
-    <!-- Back Form Inovation Id -->
+    <!-- Back Formulir Inovation Id -->
     <script type="text/javascript">
     $(document).ready(function () {
         $('#sendback_inovation').on('click', function(e) {
@@ -291,9 +291,9 @@
             // console.log(id);
 
             Swal.fire({
-                title: 'Apakah kamu ingin mengembalikan form ini?',
+                title: 'Apakah kamu ingin mengembalikan formulir ini?',
                 icon: 'warning',
-                text: 'Data form ini akan dikembalikan ke pegawai dan diubah kembali oleh pegawai',
+                text: 'Data formulir ini akan dikembalikan ke pegawai dan diubah kembali oleh pegawai',
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 allowEnterKey: false,
@@ -399,9 +399,9 @@
         });
     });
     </script>
-    <!--/ Back Form Inovation Id -->
+    <!--/ Back Formulir Inovation Id -->
 
-    <!-- Back Form Inovation Id -->
+    <!-- Back Formulir Inovation Id -->
     <script type="text/javascript">
     $(document).ready(function () {
         $('#submit_inovation').on('click', function(e) {
@@ -412,9 +412,9 @@
             // console.log(id);
 
             Swal.fire({
-                title: 'Apakah kamu ingin menyetujui form ini?',
+                title: 'Apakah kamu ingin menyetujui formulir ini?',
                 icon: 'warning',
-                text: 'Data form ini akan dikirim ke penilai',
+                text: 'Data formulir ini akan dikirim ke penilai',
                 allowOutsideClick: false,
                 allowEscapeKey: false,
                 allowEnterKey: false,
@@ -491,7 +491,7 @@
         });
     });
     </script>
-    <!--/ Back Form Inovation Id -->
+    <!--/ Back Formulir Inovation Id -->
 
     <script>
         $(document).ready(function () {
@@ -570,7 +570,7 @@
             // Text
             var textdescription_back    = $('#description_back').attr("disabled", "disabled");
 
-            // Form
+            // Formulir
             var formId                  =   $('#formInovationUpdate').attr("data-id");
             var routeForm               =   $('#formInovationUpdate').attr("action");
 
@@ -794,7 +794,7 @@
                 if(event.offset.totalDays == 1 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
+                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -826,7 +826,7 @@
                 if(event.offset.totalDays == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup Besok',
+                        title: 'Formulir Inovasi Ditutup Besok',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -858,7 +858,7 @@
                 if(event.offset.totalHours == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -890,7 +890,7 @@
                 if(event.offset.totalMinutes == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Form Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -923,7 +923,7 @@
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Form Inovasi Ditutup',
+                    title: 'Formulir Inovasi Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,
@@ -979,29 +979,29 @@
 
         <div class="col-xxl">
 
-            <div class="card my-4 mx-lg-3">
+            <div class="card mx-3">
 
-                <!-- Form Inovation Update Title -->
+                <!-- Formulir Inovation Update Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">List Form Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }}</h5>
+                    <h5 class="mb-0">List Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }}</h5>
                 </div>
-                <!--/ Form Inovation Update Title -->
+                <!--/ Formulir Inovation Update Title -->
 
-                <!-- Form Inovation Update Details -->
+                <!-- Formulir Inovation Update Details -->
                 <div class="card-body py-md-4 py-4 mx-4 mx-4">
 
                     <div class="py-3 d-flex flex-column justify-content-start">
                         @if (
                             (
-                                ($timer->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
-                            ||  ( ($timer->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
+                                ($timer->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
+                            ||  ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
                         )
                             <div class="mx-1 mx-1 mx-1">
-                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Form Inovasi</div>
+                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Formulir Inovasi</div>
                             </div>
                         @else
                             <div class="mx-1 mx-1 mx-1">
-                                <h3 class="text-center text-dark">Penutupan Form Inovasi</h3>
+                                <h3 class="text-center text-dark">Penutupan Formulir Inovasi</h3>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->toDateTimeString()  }}"></div>
@@ -1044,7 +1044,7 @@
 
                         <!-- Upload Short Description -->
                         <div class="row my-3 {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Short Description</label>
+                            <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Deskripsi Singkat</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
                                     {{-- <input disabled type="hidden" name="oldFile" value="{{ old('oldFile', $rewardInovation->upload_file_short_description) }}" />
@@ -1079,7 +1079,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center py-sm-3">
-                                    <iframe class="d-block rounded" width="600" height="350" id="output_pdf" src="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_short_description) }}"></iframe>
+                                    <iframe class="d-block rounded" width="600" height="350" id="output_pdf" allow="fullscreen" loading="lazy" src="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $rewardInovation->username. '/' . $rewardInovation->upload_file_short_description) }}"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -1087,7 +1087,7 @@
 
                         <!-- Upload Photo -->
                         <div class="row my-3 {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
-                            <label for="uploadPhoto" class="col-xl-3 col-form-label">Photo</label>
+                            <label for="uploadPhoto" class="col-xl-3 col-form-label">Foto</label>
                             <div class="col-md-9 col-xl-9">
                                 <div class="input-group {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
                                     {{-- <input disabled type="hidden" name="oldPhoto" value="{{ old('oldPhoto',$rewardInovation->upload_file_image_support) }}" />
@@ -1248,13 +1248,13 @@
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="reject_inovation" data-id="{{ $rewardInovation->id }}">
-                                    <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Send Reject File
+                                    <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Kirim Penolakan File
                                 </button>
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
-                                    <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Send Back File
+                                    <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Kirim Pengembalian File
                                 </button>
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
-                                    <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Send Approve File
+                                    <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Kirim Persetujuan File
                                 </button>
                             </div>
                         </div>
@@ -1263,7 +1263,7 @@
                     </form>
 
                 </div>
-                <!--/ Form Inovation Update Details -->
+                <!--/ Formulir Inovation Update Details -->
 
             </div>
 
