@@ -41,16 +41,16 @@
 
         @elseif ( (request()->is('penilai')) ? 'active' : '' )
             <!-- Team Assessment -->
-            <meta name="title" content="Tim Penilai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="Tim Penilai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Penilai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Penilai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
         @elseif ( (request()->is('penilai/forgot-password')) ? 'active' : '' )
             <!-- Team Assessment -->
-            <meta name="title" content="Tim Penilai - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="Tim Penilai - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Penilai - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Penilai - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
         @elseif ( (request()->is('penilai/reset-password*')) ? 'active' : '' )
             <!-- Team Assessment -->
-            <meta name="title" content="Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @elseif ( (request()->is('ksk')) ? 'active' : '' )
             <!-- HWU -->
@@ -104,13 +104,13 @@
 
         @elseif ( request()->is('penilai') )
             <!-- Team Assessment -->
-            <title> Tim Penilai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+            <title> Penilai - Login | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
         @elseif ( request()->is('penilai/forgot-password') )
             <!-- Team Assessment -->
-            <title> Tim Penilai - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+            <title> Penilai - Forgot Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
         @elseif ( request()->is('penilai/reset-password*') )
             <!-- Team Assessment -->
-            <title> Tim Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+            <title> Penilai - Reset Password | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
         @elseif ( request()->is('ksk') )
             <!-- HWU -->

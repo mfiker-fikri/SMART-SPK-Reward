@@ -81,19 +81,19 @@
     };
 
     function reset() {
-        $('#pengetahuanKerja').val(null).trigger('change');
-        $('#analisisPemecahanMasalah').val(null).trigger('change');
-        $('#tanggungJawabPekerjaan').val(null).trigger('change');
-        $('#disiplin').val(null).trigger('change');
-        $('#komitmen').val(null).trigger('change');
-        $('#kerjaSama').val(null).trigger('change');
+        $('#pengetahuanKerja').val(null).trigger('change').removeClass("is-valid");
+        $('#analisisPemecahanMasalah').val(null).trigger('change').removeClass("is-valid");
+        $('#tanggungJawabPekerjaan').val(null).trigger('change').removeClass("is-valid");
+        $('#disiplin').val(null).trigger('change').removeClass("is-valid");
+        $('#komitmen').val(null).trigger('change').removeClass("is-valid");
+        $('#kerjaSama').val(null).trigger('change').removeClass("is-valid");
 
-        $('#pengetahuan_Kerja').children('strong').remove();
-        $('#analisis_PemecahanMasalah').children('strong').remove();
-        $('#tanggung_JawabPekerjaan').children('strong').remove();
-        $('#Disiplin').children('strong').remove();
-        $('#Komitmen').children('strong').remove();
-        $('#kerja_Sama').children('strong').remove();
+        // $('#pengetahuan_Kerja').children('strong').remove();
+        // $('#analisis_PemecahanMasalah').children('strong').remove();
+        // $('#tanggung_JawabPekerjaan').children('strong').remove();
+        // $('#Disiplin').children('strong').remove();
+        // $('#Komitmen').children('strong').remove();
+        // $('#kerja_Sama').children('strong').remove();
     }
     </script>
 
@@ -132,82 +132,82 @@
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    // $('#formTeladanAppraisement').validate({
-                    //     highlight: function(element) {
-                    //         $(element).attr("select").addClass("was-validated").removeClass("was-validated");
-                    //     },
-                    //     unhighlight: function(element) {
-                    //         $(element).addClass("was-validated").removeClass("was-validated");
-                    //     },
-                    //     debug: false,
-                    //     errorElement: "strong",
-                    //     errorClass: 'text-danger',
-                    //     rules: {
-                    //         pengetahuanKerja: {
-                    //             required: true
-                    //         },
-                    //         analisisPemecahanMasalah: {
-                    //             required: true
-                    //         },
-                    //         tanggungJawabPekerjaan: {
-                    //             required: true
-                    //         },
-                    //         disiplin: {
-                    //             required: true
-                    //         },
-                    //         komitmen: {
-                    //             required: true
-                    //         },
-                    //         kerjaSama: {
-                    //             required: true
-                    //         }
-                    //     },
-                    //     messages:{
-                    //         pengetahuanKerja :
-                    //         {
-                    //             required: "Wajib Diisi"
-                    //         },
-                    //         analisisPemecahanMasalah: {
-                    //             required: "Wajib Diisi"
-                    //         },
-                    //         tanggungJawabPekerjaan: {
-                    //             required: "Wajib Diisi"
-                    //         },
-                    //         disiplin: {
-                    //             required: "Wajib Diisi"
-                    //         },
-                    //         komitmen: {
-                    //             required: "Wajib Diisi"
-                    //         },
-                    //         kerjaSama: {
-                    //             required: "Wajib Diisi"
-                    //         }
-                    //     },
-                    //     errorPlacement: function (error, element) {
-                    //         if ( (element.attr("name") == "pengetahuanKerja") ) {
-                    //             error.appendTo("#pengetahuan_Kerja").addClass("strong");
-                    //         }
-                    //         else if ( (element.attr("name") == "analisisPemecahanMasalah") ) {
-                    //             error.appendTo("#analisis_PemecahanMasalah").addClass("strong");
-                    //         }
-                    //         else if ( (element.attr("name") == "tanggungJawabPekerjaan") ) {
-                    //             error.appendTo("#tanggung_JawabPekerjaan").addClass("strong");
-                    //         }
-                    //         else if ( (element.attr("name") == "disiplin") ) {
-                    //             error.appendTo("#Disiplin").addClass("strong");
-                    //         }
-                    //         else if( (element.attr("name") == "komitmen") ) {
-                    //             error.appendTo("#Komitmen").addClass("strong");
-                    //         }
-                    //         else if( (element.attr("name") == "kerjaSama") ) {
-                    //             error.appendTo("#kerja_Sama").addClass("strong");
-                    //         }
-                    //         else {
-                    //             error.insertAfter(element);
-                    //         }
-                    //     },
-                    // });
-                    // if ($("#formTeladanAppraisement").valid()) {
+                    $('#formTeladanAppraisement').validate({
+                        highlight: function(element, errorClass, validClass) {
+                            $(element).addClass("is-invalid").removeClass("is-valid");
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                            $(element).addClass("is-valid").removeClass("is-invalid");
+                        },
+                        debug: false,
+                        errorElement: "strong",
+                        errorClass: 'text-danger',
+                        rules: {
+                            pengetahuanKerja: {
+                                required: true
+                            },
+                            analisisPemecahanMasalah: {
+                                required: true
+                            },
+                            tanggungJawabPekerjaan: {
+                                required: true
+                            },
+                            disiplin: {
+                                required: true
+                            },
+                            komitmen: {
+                                required: true
+                            },
+                            kerjaSama: {
+                                required: true
+                            }
+                        },
+                        messages:{
+                            pengetahuanKerja :
+                            {
+                                required: "Wajib Diisi"
+                            },
+                            analisisPemecahanMasalah: {
+                                required: "Wajib Diisi"
+                            },
+                            tanggungJawabPekerjaan: {
+                                required: "Wajib Diisi"
+                            },
+                            disiplin: {
+                                required: "Wajib Diisi"
+                            },
+                            komitmen: {
+                                required: "Wajib Diisi"
+                            },
+                            kerjaSama: {
+                                required: "Wajib Diisi"
+                            }
+                        },
+                        errorPlacement: function (error, element) {
+                            if ( (element.attr("name") == "pengetahuanKerja") ) {
+                                error.appendTo("#pengetahuan_Kerja").addClass("strong");
+                            }
+                            else if ( (element.attr("name") == "analisisPemecahanMasalah") ) {
+                                error.appendTo("#analisis_PemecahanMasalah").addClass("strong");
+                            }
+                            else if ( (element.attr("name") == "tanggungJawabPekerjaan") ) {
+                                error.appendTo("#tanggung_JawabPekerjaan").addClass("strong");
+                            }
+                            else if ( (element.attr("name") == "disiplin") ) {
+                                error.appendTo("#Disiplin").addClass("strong");
+                            }
+                            else if( (element.attr("name") == "komitmen") ) {
+                                error.appendTo("#Komitmen").addClass("strong");
+                            }
+                            else if( (element.attr("name") == "kerjaSama") ) {
+                                error.appendTo("#kerja_Sama").addClass("strong");
+                            }
+                            else {
+                                error.insertAfter(element);
+                            }
+                        },
+                    });
+                    if ($("#formTeladanAppraisement").valid()) {
                         $.ajax({
                             headers: {
                                 Accept: "application/json"
@@ -268,7 +268,7 @@
                                 }
                             }
                         });
-                    // }
+                    }
                 } else {
                     Swal.fire({
                         title: 'Gagal ',
@@ -282,6 +282,76 @@
     });
     </script>
     <!--/ Reject Form Inovation Id -->
+
+    <script>
+    $(document).ready(function () {
+        $('select[name="pengetahuanKerja"]').change(function(){
+            if ($('select[name="pengetahuanKerja"]').length > 0) {
+                $('#pengetahuan_Kerja').children('strong').remove();
+                $('select[name="pengetahuanKerja"]').removeClass("is-invalid");
+                $('select[name="pengetahuanKerja"]').addClass("is-valid")
+            } else if ($('select[name="pengetahuanKerja"]').length == 0) {
+                $('select[name="pengetahuanKerja"]').removeClass("is-valid");
+                $('select[name="pengetahuanKerja"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="analisisPemecahanMasalah"]').change(function(){
+            if ($('select[name="analisisPemecahanMasalah"]').length > 0) {
+                $('#analisis_PemecahanMasalah').children('strong').remove();
+                $('select[name="analisisPemecahanMasalah"]').removeClass("is-invalid");
+                $('select[name="analisisPemecahanMasalah"]').addClass("is-valid")
+            } else if ($('select[name="analisisPemecahanMasalah"]').length == 0) {
+                $('select[name="analisisPemecahanMasalah"]').removeClass("is-valid");
+                $('select[name="analisisPemecahanMasalah"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="tanggungJawabPekerjaan"]').change(function(){
+            if ($('select[name="tanggungJawabPekerjaan"]').length > 0) {
+                $('#tanggung_JawabPekerjaan').children('strong').remove();
+                $('select[name="tanggungJawabPekerjaan"]').removeClass("is-invalid");
+                $('select[name="tanggungJawabPekerjaan"]').addClass("is-valid")
+            } else if ($('select[name="tanggungJawabPekerjaan"]').length == 0) {
+                $('select[name="tanggungJawabPekerjaan"]').removeClass("is-valid");
+                $('select[name="tanggungJawabPekerjaan"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="disiplin"]').change(function(){
+            if ($('select[name="disiplin"]').length > 0) {
+                $('#Disiplin').children('strong').remove();
+                $('select[name="disiplin"]').removeClass("is-invalid");
+                $('select[name="disiplin"]').addClass("is-valid")
+            } else if ($('select[name="disiplin"]').length == 0) {
+                $('select[name="disiplin"]').removeClass("is-valid");
+                $('select[name="disiplin"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="komitmen"]').change(function(){
+            if ($('select[name="komitmen"]').length > 0) {
+                $('#Komitmen').children('strong').remove();
+                $('select[name="komitmen"]').removeClass("is-invalid");
+                $('select[name="komitmen"]').addClass("is-valid")
+            } else if ($('select[name="komitmen"]').length == 0) {
+                $('select[name="komitmen"]').removeClass("is-valid");
+                $('select[name="komitmen"]').addClass("is-invalid")
+            }
+        })
+
+        $('select[name="kerjaSama"]').change(function(){
+            if ($('select[name="kerjaSama"]').length > 0) {
+                $('#kerja_Sama').children('strong').remove();
+                $('select[name="kerjaSama"]').removeClass("is-invalid");
+                $('select[name="kerjaSama"]').addClass("is-valid")
+            } else if ($('select[name="kerjaSama"]').length == 0) {
+                $('select[name="kerjaSama"]').removeClass("is-valid");
+                $('select[name="kerjaSama"]').addClass("is-invalid")
+            }
+        })
+    });
+    </script>
 @stop
 
 @section('content')

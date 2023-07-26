@@ -459,9 +459,9 @@
             let value5 = $(this).attr('data-5');
             let value6 = $(this).attr('data-6');
             Swal.fire({
-                title: 'Hasil Penilaian Form Inovasi' + ' ' + '-' + ' ' + fullName,
+                title: 'Hasil Penilaian Formulir Inovasi' + ' ' + '-' + ' ' + fullName,
                 // icon: 'warning',
-                width: 750,
+                width: 900,
                 padding: '-3em',
                 scrollbarPadding: false,
                 allowOutsideClick: false,

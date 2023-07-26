@@ -76,37 +76,51 @@
 
     <script type="text/javascript">
     $(document).on('click', '#resetSelect', function(e) {
-        // if (
-        //     ($('#kebaruan').val() == null) ||
-        //     ($('#kemanfaatan').val() == null) ||
-        //     ($('#peranSerta').val() == null) ||
-        //     ($('#transferReplikasi').val() == null) ||
-        //     ($('#nyataNilaiTambah').val() == null) ||
-        //     ($('#kesinambunganKonsistensiKerja').val() == null) ||
-        // ) {
-        //     $('#kebaruan').val(null).trigger('change');
-        //     $('#kemanfaatan').val(null).trigger('change');
-        //     $('#peranSerta').val(null).trigger('change');
-        //     $('#transferReplikasi').val(null).trigger('change');
-        //     $('#nyataNilaiTambah').val(null).trigger('change');
-        //     $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
-        // } else {
-
-
-
-            // $('#kebaruan').val(null).trigger('change');
-            // $('#kemanfaatan').val(null).trigger('change');
-            // $('#peranSerta').val(null).trigger('change');
-            // $('#transferReplikasi').val(null).trigger('change');
-            // $('#nyataNilaiTambah').val(null).trigger('change');
-            // $('#kesinambunganKonsistensiKerja').val(null).trigger('change');
+        // console.log(
+        //     $('#kebaruan').val() != null &&
+        //     $('#kemanfaatan').val() != null
+        // );
+        if (
+            $('#kebaruan').val() != null ||
+            $('#kemanfaatan').val() != null ||
+            $('#peranSerta').val() != null ||
+            $('#transferReplikasi').val() != null ||
+            $('#nyataNilaiTambah').val() != null ||
+            $('#kesinambunganKonsistensiKerja').val() != null
+        )
+        {
+            // console.log('sukses');
+            $('#kebaruan').val(null).trigger('change').removeClass("is-valid");
+            $('#kemanfaatan').val(null).trigger('change').removeClass("is-valid");
+            $('#peranSerta').val(null).trigger('change').removeClass("is-valid");
+            $('#transferReplikasi').val(null).trigger('change').removeClass("is-valid");
+            $('#nyataNilaiTambah').val(null).trigger('change').removeClass("is-valid");
+            $('#kesinambunganKonsistensiKerja').val(null).trigger('change').removeClass("is-valid");
+        }
+        // else if(
+        //     $('#kebaruan').val() == null ||
+        //     $('#kemanfaatan').val() == null ||
+        //     $('#peranSerta').val() == null ||
+        //     $('#transferReplikasi').val() == null ||
+        //     $('#nyataNilaiTambah').val() == null ||
+        //     $('#kesinambunganKonsistensiKerja').val() == null
+        // )
+        else
+        {
+            // console.log('yup');
+            $( '#kebaruan' ).val(null).trigger('change').removeClass("is-valid");
+            $('#kemanfaatan').val(null).trigger('change').removeClass("is-valid");
+            $('#peranSerta').val(null).trigger('change').removeClass("is-valid");
+            $('#transferReplikasi').val(null).trigger('change').removeClass("is-valid");
+            $('#nyataNilaiTambah').val(null).trigger('change').removeClass("is-valid");
+            $('#kesinambunganKonsistensiKerja').val(null).trigger('change').removeClass("is-valid");
 
             // $('#errorKebaruan').children('strong').remove();
             // $('#errorKemanfaatan').children('strong').remove();
             // $('#errorPeranSerta').children('strong').remove();
             // $('#errorNyataNilaiTambah').children('strong').remove();
             // $('#errorKesinambunganKonsistensiKerja').children('strong').remove();
-        // }
+        }
 
     });
     </script>
@@ -378,13 +392,13 @@
 
                     <!-- Tabs Form Inovation Appraisment From Employees -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('penilai/appraisement/innovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/innovation/valuation*')) ? 'true' : 'false' }}">Form Inovation Pegawai - {{ $reward->employees->full_name }}</button>
+                        <button class="nav-link {{ (request()->is('penilai/appraisement/innovation/valuation*')) ? 'active' : '' }}" id="pills-FormInovationEmployees-tab" data-bs-toggle="pill" data-bs-target="#pills-FormInovationEmployees" type="button" role="tab" aria-controls="pills-FormInovationEmployees" aria-selected="{{ (request()->is('penilai/appraisment/innovation/valuation*')) ? 'true' : 'false' }}">Formulir Pendaftaran Penghargaan Inovasi</button>
                     </li>
                     <!--/ Tabs Form Inovation Appraisment From Employees -->
 
                     <!-- Tabs Form Inovation Appraisment -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-AppraismentTeamAssessment-tab" data-bs-toggle="pill" data-bs-target="#pills-AppraismentTeamAssessment" type="button" role="tab" aria-controls="pills-AppraismentTeamAssessment" aria-selected="false">Penilaian dari Tim Penilai</button>
+                        <button class="nav-link" id="pills-AppraismentTeamAssessment-tab" data-bs-toggle="pill" data-bs-target="#pills-AppraismentTeamAssessment" type="button" role="tab" aria-controls="pills-AppraismentTeamAssessment" aria-selected="false">Penilaian Formulir</button>
                     </li>
                     <!--/ Tabs Form Inovation Appraisment -->
 
@@ -402,7 +416,7 @@
 
                         <!-- Form Inovation Appraisment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Penilaian Form Pendaftaran Penghargaan Inovasi</h5>
+                            <h5 class="mb-0">Formulir Pendaftaran Penghargaan Inovasi - {{ $reward->employees->full_name }}</h5>
                         </div>
                         <!--/ Form Inovation Appraisment Title -->
 
@@ -412,7 +426,7 @@
                             <form id="formInovation" class="mx-3 my-3" method="POST" action="#" enctype="multipart/form-data">
                                 <!-- Upload Short Description -->
                                 <div class="row my-3 {{ $errors->has('uploadFile') || $errors->has('uploadFileUpdate') ? 'is-invalid' : '' }}">
-                                    <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Upload Short Description</label>
+                                    <label for="uploadFileUpdate" class="col-xl-3 col-form-label">Deskripsi Singkat</label>
                                     <div class="col-md-9 col-xl-9">
                                         <div class="d-flex justify-content-center py-sm-3">
                                             <iframe class="d-block rounded" width="600" height="350" id="output_pdf" src="{{ asset('storage/employees/documents/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_short_description) }}"></iframe>
@@ -423,7 +437,7 @@
 
                                 <!-- Upload Photo -->
                                 <div class="row my-3 {{ $errors->has('uploadPhoto') || $errors->has('uploadPhotoUpdate') ? 'is-invalid' : '' }}">
-                                    <label for="uploadPhoto" class="col-xl-3 col-form-label">Upload Photo</label>
+                                    <label for="uploadPhoto" class="col-xl-3 col-form-label">Foto</label>
                                     <div class="col-md-9 col-xl-9">
                                         <div class="d-flex justify-content-center py-sm-3">
                                             <img class="d-block rounded" width="450" height="350" id="output_image" src="{{ asset('storage/employees/images/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_image_support) }}">
@@ -434,7 +448,7 @@
 
                                 <!-- Upload Video -->
                                 <div class="row my-3 {{ $errors->has('uploadVideo') || $errors->has('uploadVideoUpdate') ? 'is-invalid' : '' }}">
-                                    <label for="uploadVideo" class="col-xl-3 col-form-label">Upload Video</label>
+                                    <label for="uploadVideo" class="col-xl-3 col-form-label">Video</label>
                                     <div class="col-md-9 col-xl-9">
                                         <div class="d-flex justify-content-center py-sm-3">
                                             <video class="d-block rounded" style="max-width: 650px; min-width: 450px; max-height: 450px; min-height: 350px" controls id="video_here" src="{{ asset('storage/employees/videos/requirementsEmployeesRewardInovations/'. $reward->employees->username. '/' . $reward->upload_file_video_support) }}"></video>
@@ -488,7 +502,7 @@
 
                         <!-- Form Inovation Appraisment Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Penilaian Penghargaan Inovasi</h5>
+                            <h5 class="mb-0">Penilaian Formulir - {{ $reward->employees->full_name }} </h5>
                         </div>
                         <!--/ Form Inovation Appraisment Title -->
 

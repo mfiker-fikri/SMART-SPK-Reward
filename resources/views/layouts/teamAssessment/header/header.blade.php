@@ -9,23 +9,23 @@
         <!-- Breadcrumb "-->
         <ol class="breadcrumb breadcrumb-style1 my-lg-3 my-3">
             @if ( request()->is('penilai/dashboard') )
-            <!-- Dashboard -->
+            <!-- Beranda -->
                 <li class="breadcrumb-item fw-bold active">
-                    Dashboard
+                    Beranda
                 </li>
             @elseif ( request()->is('penilai/profile') )
             <!-- Profile -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Profile</li>
+                <li class="breadcrumb-item fw-bold active">Data Diri</li>
 
 
 
             @elseif ( request()->is('penilai/categories/list') )
             <!-- Kategori -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">Penilaian</li>
                 <li class="breadcrumb-item fw-bold active">Kategori</li>
@@ -33,7 +33,7 @@
             @elseif ( request()->is('penilai/criterias/list') )
             <!-- Kriteria -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">Penilaian</li>
                 <li class="breadcrumb-item fw-bold active">Kriteria</li>
@@ -41,32 +41,32 @@
             @elseif ( request()->is('penilai/parameters/list') )
             <!-- Parameter -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">Penilaian</li>
                 <li class="breadcrumb-item fw-bold active">Parameter</li>
 
             @elseif ( request()->is('penilai/appraisement/innovation'))
-            <!-- Kelola Data Penilaian Penghargaan Inovasi -->
+            <!-- Penilaian Penghargaan Berprestasi Inovasi -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Kelola Data Penilaian Penghargaan Inovasi</li>
+                <li class="breadcrumb-item fw-bold active">Penilaian Penghargaan Berprestasi Inovasi</li>
 
             @elseif ( request()->is('penilai/appraisement/innovation/valuation*'))
             <!-- Penilaian Penghargaan Inovasi -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/appraisement/innovation') }}" style="text-decoration: none !important;">Kelola Data Penilaian Penghargaan Inovasi</a>
+                    <a href="{{ URL::to('/penilai/appraisement/innovation') }}" style="text-decoration: none !important;">Penilaian Penghargaan Berprestasi Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Penilaian Penghargaan Inovasi</li>
 
             @elseif ( request()->is('penilai/appraisement/representative'))
             <!-- Kelola Data Penilaian Penghargaan Teladan -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">Penilaian</li>
                 <li class="breadcrumb-item fw-bold active">Kelola Data Penilaian Penghargaan Teladan</li>
@@ -74,7 +74,7 @@
             @elseif ( request()->is('penilai/appraisement/representative/valuation*'))
             <!-- Penilaian Penghargaan Teladan -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/penilai/appraisement/representative') }}" style="text-decoration: none !important;">Kelola Data Penilaian Penghargaan Teladan</a>
@@ -85,14 +85,14 @@
             @elseif ( request()->is('penilai/appraisement/result/innovation') )
             <!-- Hasil Penilaian Inovasi -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Hasil Penilaian Penghargaan Inovasi</li>
 
             @elseif ( request()->is('penilai/appraisement/result/representative') )
             <!-- Hasil Penilaian Teladan -->
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Dashboard</a>
+                    <a href="{{ URL::to('/penilai/dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Hasil Penilaian Penghargaan Teladan</li>
 
@@ -147,7 +147,7 @@
                             </div>
                             <div class="flex-grow-1">
                                 <span class="fw-semibold d-block">{{ Auth::guard('team_assessments')->user()->full_name }}</span>
-                                <small class="text-muted">Tim Penilai</small>
+                                <small class="text-muted">Penilai</small>
                             </div>
                         </div>
                     </li>
@@ -190,7 +190,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item {{ (request()->is('penilai/profile')) ? 'active' : '' }}" href="{{ URL::to('/penilai/profile') }}">
                             <i class="fa-solid fa-user-large fa-lg me-3"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Data Diri</span>
                         </a>
                     </li>
                     <!--/ My Profile -->
@@ -203,7 +203,7 @@
                     <li>
                         <a class="d-flex flex-row justify-content-start align-middle dropdown-item" id="logout" style="cursor: pointer;">
                             <i class="fa-solid fa-person-running" style="margin: 0 0.9rem 0 0;font-size: 1.6em;"></i>
-                            <span class="align-middle">Log Out</span>
+                            <span class="align-middle">Keluar</span>
                         </a>
                     </li>
                     <!--/ Logout -->

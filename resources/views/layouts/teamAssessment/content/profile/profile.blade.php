@@ -222,7 +222,7 @@
 
                     <!-- Tabs Profile Details -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('penilai/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('penilai/profile')) ? 'true' : 'false' }}">Detail Profile</button>
+                        <button class="nav-link {{ (request()->is('penilai/profile')) ? 'active' : '' }} text-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="{{ (request()->is('penilai/profile')) ? 'true' : 'false' }}">Informasi Akun</button>
                     </li>
                     <!--/ Tabs Profile Details -->
 
@@ -275,7 +275,7 @@
 
                         <!-- Form Profile Details Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Detail Profile</h5>
+                            <h5 class="mb-0">Informasi Akun</h5>
                         </div>
                         <!--/ Form Profile Details Title -->
 

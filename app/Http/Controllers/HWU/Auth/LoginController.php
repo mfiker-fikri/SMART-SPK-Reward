@@ -125,8 +125,8 @@ class LoginController extends Controller
             $this->guard('head_work_units')->logout();
             $request->session()->flush();
             Auth::logout();
-            alert()->success('Kamu Telah Keluar Dari Akun Pegawai', 'Terima Kasih')->autoclose(50000);
-            return redirect('/ksk')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Pegawai, Terima Kasih');
+            alert()->success('Kamu Telah Keluar Dari Akun Kepala Satuan Kerja', 'Terima Kasih')->autoclose(50000);
+            return redirect('/ksk')->with('message-success-logout', 'Kamu Telah Keluar Dari Akun Kepala Satuan Kerja, Terima Kasih');
         } catch (\Throwable $th) {
             throw $th;
         }

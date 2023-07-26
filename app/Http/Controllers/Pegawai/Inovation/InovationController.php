@@ -61,7 +61,8 @@ class InovationController extends Controller
     {
         //
         try {
-
+            $id = Auth::guard('employees')->user()->id;
+            // ddd($id);
             // Search id
             // $rewardInovation            =       RewardInovation::
             // where([
@@ -136,20 +137,24 @@ class InovationController extends Controller
 
                 // Button Create
                 $rewardInovationCreate = RewardInovation::
-
                     where([
                         ['created_at', '>=', $dateOpenTime],
                         ['created_at', '<=', $dateExpiredTime],
                         ['updated_at', '>=', $dateOpenTime],
                         ['updated_at', '<=', $dateExpiredTime],
-                        ['employee_id', '==', Auth::guard('employees')->user()->id],
+                        ['employee_id', '=', Auth::guard('employees')->user()->id],
                         // ['status_process', '!=', 0],
                         // ['status_process', '=', 1],
                         // ['status_process', '=', 2],
                     ])
-                    ->orWhere(['status_process' => 1])
-                    ->orWhere(['status_process' => 2])
-                    ->orWhere(['status_process' => 3])
+                    // ->orWhere(['status_process' => 1])
+                    // ->orWhere(['status_process' => 2])
+                    // ->orWhere(['status_process' => 3])
+                    ->where(function ($query) {
+                        $query->where('status_process', 'LIKE', 1)
+                            ->orWhere('status_process', 'LIKE', 2)
+                            ->orWhere('status_process', 'LIKE', 3);
+                    })
                     ->latest()
                     // ->first();
                     ->get();
@@ -162,12 +167,15 @@ class InovationController extends Controller
                         ['created_at', '<=', $dateExpiredTime],
                         ['updated_at', '>=', $dateOpenTime],
                         ['updated_at', '<=', $dateExpiredTime],
-                        ['employee_id', '==', Auth::guard('employees')->user()->id],
+                        ['employee_id', '=', Auth::guard('employees')->user()->id],
                         // ['status_process', '=', 0],
                         // ['status_process', '!=', 1],
                         // ['status_process', '!=', 2],
                     ])
-                    ->orWhere(['status_process' => 0])
+                    // ->orWhere(['status_process' => 0])
+                    ->where(function ($query) {
+                        $query->where('status_process', 'LIKE', 0);
+                    })
                     ->latest()
                     // ->first();
                     ->get();
@@ -626,8 +634,8 @@ class InovationController extends Controller
             Auth::guard('employees')->user()->unit_kerja === null
         ) {
             // ddd('sukses');
-            alert()->error('Gagal Upload Form Inovasi!', 'Lengkapi Data Profil Terlebih Dahulu!')->autoclose(25000);
-            return redirect()->back()->with('message-failed-form-inovation', 'Gagal Update Form Inovasi. Lengkapi Data Profil Terlebih Dahulu di "My Profile"!');
+            alert()->error('Gagal Upload Berkas Inovasi!', 'Lengkapi Data Akun Terlebih Dahulu di Halaman "Data Diri"!')->autoclose(25000);
+            return redirect()->back()->with('message-failed-form-inovation', 'Gagal Update Berkas Inovasi. Lengkapi Data Akun Terlebih Dahulu di Halaman "Data Diri"!');
         }
 
         // Get Timer
@@ -676,8 +684,8 @@ class InovationController extends Controller
 
             // Check Validation Failed
             if ($validate->fails()) {
-                alert()->error('Gagal Upload Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
-                return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
+                alert()->error('Gagal Upload Berkas Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Berkas Inovasi')->withErrors($validate)->withInput($request->all());
             }
 
             // $id                         =       Auth::guard('employees')->user()->id;
@@ -687,7 +695,7 @@ class InovationController extends Controller
             //     $employee->nip == null && $employee->pendidikan == null && $employee->pangkat == null &&
             //     $employee->gol == null && $employee->gol == null
             // ) {
-            //     alert()->error('Gagal Upload Form Inovasi!', 'Harap Isi Biodata Secara Lengkap Di Menu Profile')->autoclose(25000);
+            //     alert()->error('Gagal Upload Berkas Inovasi!', 'Harap Isi Biodata Secara Lengkap Di Menu Profile')->autoclose(25000);
             //     return redirect()->back();
             // }
 
@@ -775,11 +783,11 @@ class InovationController extends Controller
                     ]);
 
                     if ($rewardInovation) {
-                        alert()->success('Berhasil Upload Form Penghargaan Inovasi')->autoclose(25000);
-                        return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Upload Form Penghargaan Inovasi');
+                        alert()->success('Berhasil Upload Berkas Penghargaan Inovasi')->autoclose(25000);
+                        return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Upload Berkas Penghargaan Inovasi');
                     } else {
-                        alert()->error('Gagal Upload Form Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
-                        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Penghargaan Inovasi');
+                        alert()->error('Gagal Upload Berkas Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
+                        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Berkas Penghargaan Inovasi');
                     }
                 }
 
@@ -838,17 +846,17 @@ class InovationController extends Controller
                 // ddd($rewardInovation);
 
                 if ($rewardInovation) {
-                    alert()->success('Berhasil Upload Form Penghargaan Inovasi')->autoclose(25000);
-                    return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Upload Form Penghargaan Inovasi');
+                    alert()->success('Berhasil Upload Berkas Penghargaan Inovasi')->autoclose(25000);
+                    return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Upload Berkas Penghargaan Inovasi');
                 } else {
-                    alert()->error('Gagal Upload Form Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Penghargaan Inovasi');
+                    alert()->error('Gagal Upload Berkas Penghargaan Inovasi!', 'Upload Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Berkas Penghargaan Inovasi');
                 }
             }
         }
 
-        alert()->error('Gagal Upload Form Inovasi!', 'Formulir Inovasi Sudah Ditutup')->autoclose(25000);
-        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Form Inovasi')->withErrors($validate)->withInput($request->all());
+        alert()->error('Gagal Upload Berkas Inovasi!', 'Formulir Inovasi Sudah Ditutup')->autoclose(25000);
+        return redirect()->back()->with('message-failed-form-inovation', 'Gagal Upload Berkas Inovasi')->withErrors($validate)->withInput($request->all());
 
     }
 
@@ -1021,8 +1029,8 @@ class InovationController extends Controller
 
                 //
                 if ($validate->fails()) {
-                    alert()->error('Gagal Update Form Inovasi!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Form Inovasi')->withErrors($validate)->withInput($request->all());
+                    alert()->error('Gagal Update Berkas Inovasi!', 'Validasi Gagal')->autoclose(25000);
+                    return redirect()->back()->with('message-form-inovation-error', 'Gagal Update Berkas Inovasi')->withErrors($validate)->withInput($request->all());
                 }
 
                 if ($request['status_process'] === '1') {
@@ -1403,7 +1411,7 @@ class InovationController extends Controller
                     // alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                     // return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
 
-                    alert()->error('Gagal Update Form Inovasi!', 'File harus diganti')->autoclose(25000);
+                    alert()->error('Gagal Update Berkas Inovasi!', 'File harus diganti')->autoclose(25000);
                     return redirect()->back()->with('message-failed-form-inovation', 'File harus diganti')->withInput($request->all());
 
                 } elseif ($request['status_process'] === '2') {
@@ -1788,7 +1796,7 @@ class InovationController extends Controller
                 // alert()->error('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                 // return redirect()->back()->with('message-failed-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
 
-                alert()->error('Gagal Update Form Inovasi!', 'File harus diganti')->autoclose(25000);
+                alert()->error('Gagal Update Berkas Inovasi!', 'File harus diganti')->autoclose(25000);
                 return redirect()->back()->with('message-failed-form-inovation', 'File harus diganti')->withInput($request->all());
                 // return redirect('form-inovation/list');
                 // ->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
@@ -1796,8 +1804,8 @@ class InovationController extends Controller
 
         }
 
-        alert()->error('Gagal Update Form Inovasi!', 'Form Sudah Ditutup')->autoclose(25000);
-        return redirect()->back()->with('message-failed-form-inovation', 'Form Sudah Ditutup')->withInput($request->all());
+        alert()->error('Gagal Update Berkas Inovasi!', 'Berkas Sudah Ditutup')->autoclose(25000);
+        return redirect()->back()->with('message-failed-form-inovation', 'Berkas Sudah Ditutup')->withInput($request->all());
 
     }
 
@@ -1856,8 +1864,8 @@ class InovationController extends Controller
             // }
 
             $rewardInovation->delete();
-            alert()->success('Berhasil Hapus Form Inovation')->autoclose(25000);
-            return redirect()->back()->with('message-failed-form-inovation', 'Berhasil Hapus Form Inovation');
+            alert()->success('Berhasil Hapus Berkas Inovation')->autoclose(25000);
+            return redirect()->back()->with('message-failed-form-inovation', 'Berhasil Hapus Berkas Inovation');
         }
         alert()->error('Gagal!')->autoclose(25000);
         return redirect()->back();

@@ -14,14 +14,14 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @if ( request()->is('penilai/dashboard') )
-            <!-- Dashboard -->
-            <meta name="title" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <!-- Beranda -->
+            <meta name="title" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @elseif ( request()->is('penilai/profile') )
-            <!-- Profile -->
-            <meta name="title" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <!-- Data Diri -->
+            <meta name="title" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="{{ Auth::guard('team_assessments')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
 
         @elseif ( request()->is('penilai/categories/list') )
@@ -46,8 +46,8 @@
         @elseif ( request()->is('penilai/appraisement/innovation'))
             <!-- Form Penilaian Inovation -->
             <!-- Read -->
-            <meta name="title" content="Kelola Data Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="Kelola Data Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Penilaian Penghargaan Berprestasi Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Penilaian Penghargaan Berprestasi Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @elseif ( request()->is('penilai/appraisement/innovation/valuation*'))
             <!-- Form Penilaian Inovation -->
@@ -67,12 +67,12 @@
 
         <!-- Title -->
         @if ( request()->is('penilai/dashboard') )
-            <!-- Dashboard -->
-            <title>{{ Auth::guard('team_assessments')->user()->full_name }} - Dashboard | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+            <!-- Beranda -->
+            <title>{{ Auth::guard('team_assessments')->user()->full_name }} - Beranda | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
         @elseif ( request()->is('penilai/profile') )
-            <!-- Profile -->
-            <title>{{ Auth::guard('team_assessments')->user()->full_name }} - Profile | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+            <!-- Data Diri -->
+            <title>{{ Auth::guard('team_assessments')->user()->full_name }} - Data Diri | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
 
         @elseif ( request()->is('penilai/categories/list') )
@@ -95,7 +95,7 @@
         @elseif ( request()->is('penilai/appraisement/innovation'))
             <!-- Form Penilaian Inovation -->
             <!-- Read -->
-            <title>Kelola Data Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+            <title>Penilaian Penghargaan Berprestasi Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
         @elseif ( request()->is('penilai/appraisement/innovation/valuation*'))
             <!-- Form Penilaian Inovation -->

@@ -219,7 +219,7 @@
                                     <i class="fas fa-key"></i>
                                 </span>
                                 <input type="password" class="form-control px-lg-1 px-2 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation"
-                                    name="password_confirmation" placeholder="Enter Your Confirmation New Password"
+                                    name="password_confirmation" placeholder="Masukkan Konfirmasi Password Baru Anda"
                                     autofocus autocomplete required aria-invalid="true" aria-describedby="confirmasi new password" data-val="true"
                                     value=""/>
                                 <span class="input-group-text" id="passwordConfirmationEye" style="cursor: pointer;">
