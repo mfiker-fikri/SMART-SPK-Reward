@@ -231,6 +231,9 @@ Route::group(['name' => 'sdm', 'prefix' => 'sdm', 'as' => 'sdm.'], function () {
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getDashboard.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard/statusOnlineOfflineTA', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiunStatusOnlineOfflineTA'])->name('getDashboard.KepalaSubbagianPenghargaanDisiplindanPensiun.StatusOnlineOfflineTA.SDM');
 
+        // Chart
+        Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/dashboard/innovation', [\App\Http\Controllers\SDM\DashboardController::class,'dashboardKepalaSubbagianPenghargaanDisiplindanPensiunChartInnovation']);
+
         // Profile
         Route::GET('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile', [App\Http\Controllers\SDM\SDMController::class, 'getProfileKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('getProfile.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');
         Route::POST('/kepala-subbagian-penghargaan-disiplin-dan-pensiun/profile/update', [App\Http\Controllers\SDM\SDMController::class, 'postProfileKepalaSubbagianPenghargaanDisiplindanPensiun'])->name('postProfile.Update.KepalaSubbagianPenghargaanDisiplindanPensiun.SDM');

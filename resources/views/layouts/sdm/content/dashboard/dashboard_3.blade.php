@@ -1,6 +1,9 @@
 @extends('template.sdm.template')
 
 @section('css_header')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 
     <style>
@@ -3048,11 +3051,170 @@
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+
+    {{-- <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        var userData = {{ Js::from($datas2) }};
+        Highcharts.chart('myChart', {
+            title: {
+                text: 'New User Growth, 2020'
+            },
+            subtitle: {
+                text: 'Source: positronx.io'
+            },
+            xAxis: {
+                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                    'October', 'November', 'December'
+                ]
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of New Users'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'New Users',
+                data: userData
+            }],
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+        });
+    </script> --}}
+
+    <script>
+
+        var labels =  {{ Js::from($labels1) }};
+
+        var representative1 =  {{ Js::from($datas1) }};
+        var representative2 =  {{ Js::from($datas2) }};
+        // console.log(representative);
+
+            var data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Jumlah Pendaftaran Pegawai',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: representative1,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                    },
+                    {
+                        label: 'Jumlah Diterima',
+                        backgroundColor: 'rgb(2, 245, 67)',
+                        borderColor: 'rgb(2, 245, 67)',
+                        data: representative2,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                    },
+                    {
+                        label: 'Jumlah Tidak Diterima',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: representative2,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                    }
+                ]
+            };
+
+            const options = {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Chart.js Line Chart',
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Month',
+                                color: '#911',
+                                font: {
+                                    family: 'Comic Sans MS',
+                                    size: 20,
+                                    weight: 'bold',
+                                    lineHeight: 1.2,
+                                },
+                                padding: {top: 20, left: 0, right: 0, bottom: 0}
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Value',
+                                color: '#191',
+                                font: {
+                                    family: 'Times',
+                                    size: 20,
+                                    style: 'normal',
+                                    lineHeight: 1.2
+                                },
+                                padding: {top: 30, left: 0, right: 0, bottom: 0}
+                            }
+                        }
+                    }
+                }
+            };
+
+            var myChart = document.getElementById('myChart').getContext('2d')
+
+            new Chart(
+                myChart,
+                options
+            );
 
 
+    </script>
 
 
+@stop
+
+@section('js_header')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @stop
 
 @section('content')
@@ -3205,11 +3367,11 @@
                         @else
                             @if (
                                 (
-                                    ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    ($timerInovasi->status_open_form_innovation == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString() ) && ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                 )
                                 ||
                                 (
-                                    ($timerInovasi->status_open == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    ($timerInovasi->status_open_form_innovation == 0 && $timerInovasi->date_time_open_form_innovation >= \Carbon\Carbon::now()->toDateTimeString()) && ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                 )
                             )
                             <div class="container-fluid">
@@ -3222,15 +3384,15 @@
 
                             @elseif (
                                 (
-                                            ($timerInovasi->status_open == 1
+                                            ($timerInovasi->status_open_form_innovation == 1
                                         && ($timerInovasi->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() || $timerInovasi->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString()))
-                                    &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    &&  ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                 )
                                 ||
                                 (
-                                            ($timerInovasi->status_open == 1
+                                            ($timerInovasi->status_open_form_innovation == 1
                                         && ($timerInovasi->date_time_open_form_innovation > \Carbon\Carbon::now()->toDateTimeString() || $timerInovasi->date_time_open_form_innovation == \Carbon\Carbon::now()->toDateTimeString()))
-                                    &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                    &&  ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                 )
                             )
                             <div class="container-fluid swiper1">
@@ -3264,23 +3426,23 @@
                             @elseif (
                                 (
                                         (
-                                                ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation) )
-                                            &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                                ($timerInovasi->status_open_form_innovation == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation) )
+                                            &&  ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                         )
                                     ||  (
-                                                ($timerInovasi->status_open == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
-                                            &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                                ($timerInovasi->status_open_form_innovation == 1 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
+                                            &&  ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                         )
                                 )
                                 ||
                                 (
                                         (
-                                                ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
-                                            &&  ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                                ($timerInovasi->status_open_form_innovation == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
+                                            &&  ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                         )
                                     || (
-                                                ($timerInovasi->status_open == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
-                                            &&  ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_inovation)
+                                                ($timerInovasi->status_open_form_innovation == 0 && (\Carbon\Carbon::now()->toDateTimeString() > $timerInovasi->date_time_open_form_innovation || \Carbon\Carbon::now()->toDateTimeString() == $timerInovasi->date_time_open_form_innovation))
+                                            &&  ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timerInovasi->date_time_expired_form_innovation)
                                         )
                                 )
                             )
@@ -3292,22 +3454,22 @@
                                             <h3>Penutupan Form Inovasi</h3>
                                         </div>
                                         <div class="dateCountDown">
-                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('dddd') }}</b></span>
-                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('D') }}</b></span>
-                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('MMMM') }}</b></span>
-                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('Y') }}</b></span>
+                                            <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('dddd') }}</b></span>
+                                            <span>Tanggal <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('D') }}</b></span>
+                                            <span>Bulan <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('MMMM') }}</b></span>
+                                            <span>Tahun <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('Y') }}</b></span>
                                         </div>
                                         <div class="timeCountDown">
-                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('hh') }}</b></span>
-                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('mm') }}</b></span>
-                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_inovation)->isoFormat('a') }}</b></span>
+                                            <span>Jam <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('hh') }}</b></span>
+                                            <span>Menit <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('mm') }}</b></span>
+                                            <span>Waktu <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('a') }}</b></span>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
                                             <h3>Closing Soon</h3>
                                         </div>
-                                        <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_form_inovation)->toDateTimeString() }}">
+                                        <div class="wrap-countdown countdown-inovation-closed" data-expire="{{ \Carbon\Carbon::parse($timerInovasi->date_time_expired_form_innovation)->toDateTimeString() }}">
                                         </div>
                                     </div>
                                 </div>
@@ -3315,13 +3477,13 @@
 
                             @elseif (
                                 (
-                                        ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                    ||  ( ($timerInovasi->status_open == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                        ( ($timerInovasi->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
+                                    ||  ( ($timerInovasi->status_open_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
                                 )
                                 ||
                                 (
-                                        ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
-                                    || ( ($timerInovasi->status_open == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_inovation) )
+                                        ( ($timerInovasi->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 1 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
+                                    || ( ($timerInovasi->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_open_form_innovation) && ($timerInovasi->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timerInovasi->date_time_expired_form_innovation) )
                                 )
                             )
 
@@ -4638,12 +4800,37 @@
 
         <div class="col-md-6 col-md-5 order-1">
 
+            {{-- <div class="card mb-3">
+                <div class="row row-bordered g-0">
+                    <div class="card-header">
+                        <h5 class="m-0 me-2 pb-3">Tim Penilai</h5>
+                    </div>
+                    <div class="card-body mx-3 my-3">
+                        <div style="height:250px ;margin: auto;">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
 
 
         </div>
 
     </div>
     <!--/ Signature -->
+
+    <div class="card mb-3">
+        <div class="row row-bordered g-0">
+            <div class="card-header">
+                <h5 class="m-0 me-2 pb-3">Tim Penilai</h5>
+            </div>
+            <div class="card-body mx-3 my-3">
+                <div class="d-flex" style="margin: auto;">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </div>

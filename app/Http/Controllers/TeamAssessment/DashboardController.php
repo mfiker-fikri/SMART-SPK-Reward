@@ -5,6 +5,7 @@ namespace App\Http\Controllers\TeamAssessment;
 use App\Http\Controllers\Controller;
 use App\Models\CountdownTimerFormInovation;
 use App\Models\CountdownTimerFormTeladan;
+use App\Models\FinalResultRewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -87,9 +88,13 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function hallo()
     {
-        //
+        // try {
+
+        // } catch (\Throwable $th) {
+        //     throw $th;
+        // }
     }
 
     /**

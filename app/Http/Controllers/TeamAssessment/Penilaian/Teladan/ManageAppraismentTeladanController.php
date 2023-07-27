@@ -101,13 +101,16 @@ class ManageAppraismentTeladanController extends Controller
 
             $data = Pegawai::
                 leftjoin('reward_representative', 'reward_representative.employee_id', '=', 'employees.id')
-                ->latest()
-                ->select('employees.id',
+                // ->latest()
+                ->orderBy('employees.created_at', 'ASC')
+                ->orderBy('reward_representative.created_at', 'DESC')
+                ->select(['employees.id as id',
                         'reward_representative.employee_id as REI',
                         'employees.full_name',
                         'employees.created_at', 'employees.updated_at',
                         'reward_representative.created_at as teladan_created', 'reward_representative.updated_at as teladan_updated',
-                        'reward_representative.status_process')
+                        'reward_representative.status_process'
+                    ])
                 // ->whereNull('reward_representative.status_process')
                 // ->where([
                     // ['reward_representative.employee_id', '=', 'employees.id']
@@ -118,11 +121,17 @@ class ManageAppraismentTeladanController extends Controller
                     // ['reward_representative.status_process', '=', null],
                 // ])
                 // ->max('reward_representative.updated_at')
-                ->orderBy('teladan_updated', 'DESC')
-                // ->groupBy('REI')
                 // ->having('reward_representative.created_at', '>=', $dateOpenTime)
+                // ->distinct()
+                // ->groupBy(['REI'])
+                // ->groupBy(['id'])
+                // ->groupBy(['reward_representative.created_at'])
+                // ->groupBy(['full_name'])
+                // ->orderBy('employees.created_at', 'ASC')
+                // ->orderBy('reward_representative.created_at', 'DESC')
+                // ->latest()
                 ->get()
-                ->unique('REI');
+                ->unique('id');
                 // ->toArray();
 
             // $data = RewardTeladan::
@@ -155,31 +164,48 @@ class ManageAppraismentTeladanController extends Controller
 
                     $actionBtn = '';
 
-                    if ( ($row->teladan_created >= $dateOpenTime && $row->teladan_created <= $dateExpiredTime) ||
-                         ($row->teladan_updated >= $dateOpenTime && $row->teladan_updated <= $dateExpiredTime)
-                    ) {
+                    if (
+                        ($row->teladan_created != null) &&
+                        ($row->teladan_updated != null) &&
+                        ($row->status_process != null)
+                    ){
+                        if ( (
+                            ($row->teladan_created >= $dateOpenTime && $row->teladan_created <= $dateExpiredTime) && $row->status_process != null
+                            ) ||
+                             (
+                            ($row->teladan_updated >= $dateOpenTime && $row->teladan_updated <= $dateExpiredTime) && $row->status_process != null
+                            )
+                        ) {
+                            // if ($row->status_process != null) {
+                                $actionBtn =
+                                    '
+                                    Sudah Dinilai
+                                    ';
+                            // }
+                            // else {
+                            //     $actionBtn =
+                            //     '<a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                            //     <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
+                            //     </a>';
+                            // }
 
-                        if ($row->status_process != null) {
+                        }
+                        else {
                             $actionBtn =
-                                '
-                                Sudah Dinilai
-                                ';
-                        } else {
-                            $actionBtn =
+                                    '
+                                        <a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
+                                        <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
+                                        </a>
+                                    ';
+                        }
+                    }
+
+                    else {
+                        $actionBtn =
                             '<a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
                             </a>';
-                        }
-
-                    } else {
-                        $actionBtn =
-                                '
-                                    <a href="' . route('penilai.getManageAppraismentId.Representative.Update.Penilai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
-                                    <i class="fa-solid fa-pencil mx-auto me-1"></i> Penilaian
-                                    </a>
-                                ';
                     }
-
 
                     return $actionBtn;
                 })
@@ -218,7 +244,9 @@ class ManageAppraismentTeladanController extends Controller
 
             $data = RewardTeladan::
                 // DB::table('reward_inovation')
-                where([
+                orderBy('created_at', 'DESC')
+
+                ->where([
                     ['created_at', '>=', $dateOpenTime],
                     ['created_at', '<=', $dateExpiredTime],
                     ['updated_at', '>=', $dateOpenTime],
@@ -237,8 +265,11 @@ class ManageAppraismentTeladanController extends Controller
                 // ->orWhereNotNull('score_valuation_4')
                 // ->orWhereNotNull('score_valuation_5')
                 // ->orWhereNotNull('score_valuation_6')
-                ->latest()
-                ->get();
+                ->distinct()
+                ->groupBy(['created_at'])
+                ->get()
+                ->unique('employee_id');
+                // ddd($data);
 
             $criterias = Criteria::with('categories')->where([
                 ['categorie_id', '=', 2],

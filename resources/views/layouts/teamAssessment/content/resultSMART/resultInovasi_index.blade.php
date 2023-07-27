@@ -338,7 +338,17 @@
                 buttons: [
                     "pageLength",
                 ],
-                ajax: "{{ url('penilai/appraisement/result/innovation/list') }}",
+                ajax:
+                {
+                    url: "{{ url('penilai/appraisement/result/innovation/list') }}",
+                    dataSrc: function (json) {
+                        if (!json.data) {
+                            return [];
+                        } else {
+                            return json.data;
+                        }
+                    }
+                },
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'fullName', name: 'fullName', orderable: false, searchable: false},

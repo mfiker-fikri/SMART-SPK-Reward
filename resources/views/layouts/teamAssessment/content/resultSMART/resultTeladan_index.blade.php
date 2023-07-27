@@ -338,7 +338,17 @@
                 buttons: [
                     "pageLength",
                 ],
-                ajax: "{{ url('penilai/appraisement/result/representative/list') }}",
+                ajax:
+                {
+                    url: "{{ url('penilai/appraisement/result/representative/list') }}",
+                    dataSrc: function (json) {
+                        if (!json.data) {
+                            return [];
+                        } else {
+                            return json.data;
+                        }
+                    }
+                },
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: true, searchable: false},
                     {data: 'fullName', name: 'fullName', orderable: false, searchable: false},

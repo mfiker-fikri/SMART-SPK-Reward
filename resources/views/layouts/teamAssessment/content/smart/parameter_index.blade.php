@@ -95,7 +95,7 @@
 
         <div class="col-xxl">
 
-            <div class="card mx-4 my-3">
+            <div class="card mx-4">
 
                 <!-- Form Kategori Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">

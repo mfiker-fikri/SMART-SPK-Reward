@@ -55,12 +55,29 @@
             <meta name="title" content="Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
+        @elseif ( request()->is('penilai/appraisement/representative'))
+            <!-- Form Penilaian Teladan -->
+            <!-- Read -->
+            <meta name="title" content="Penilaian Penghargaan Berprestasi Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Penilaian Penghargaan Berprestasi Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
+        @elseif ( request()->is('penilai/appraisement/representative/valuation*'))
+            <!-- Form Penilaian Teladan -->
+            <!-- Edit -->
+            <meta name="title" content="Penilaian Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Penilaian Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @elseif ( request()->is('penilai/appraisement/result/innovation') )
             <!-- Hasil Penilaian Inovasi -->
             <!-- Read -->
             <meta name="title" content="Hasil Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
             <meta name="description" content="Hasil Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+
+        @elseif ( request()->is('penilai/appraisement/result/representative') )
+            <!-- Hasil Penilaian Teladan -->
+            <!-- Read -->
+            <meta name="title" content="Hasil Penilaian Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Hasil Penilaian Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @endif
         <!--/ Meta Tag -->
@@ -102,12 +119,27 @@
             <!-- Edit -->
             <title>Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
+        @elseif ( request()->is('penilai/appraisement/representative'))
+            <!-- Form Penilaian Teladan -->
+            <!-- Read -->
+            <title>Penilaian Penghargaan Berprestasi Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+
+    @elseif ( request()->is('penilai/appraisement/representative/valuation*'))
+            <!-- Form Penilaian Teladan -->
+            <!-- Edit -->
+            <title>Penilaian Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+
 
 
         @elseif ( request()->is('penilai/appraisement/result/innovation') )
             <!-- Hasil Penilaian Inovasi -->
             <!-- Read -->
             <title>Hasil Penilaian Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+
+        @elseif ( request()->is('penilai/appraisement/result/representative') )
+            <!-- Hasil Penilaian Teladan -->
+            <!-- Read -->
+            <title>Hasil Penilaian Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
         @endif
         <!-- /Title -->
