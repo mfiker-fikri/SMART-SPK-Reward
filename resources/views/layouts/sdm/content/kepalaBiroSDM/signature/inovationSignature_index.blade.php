@@ -447,7 +447,7 @@
             serverSide: true,
             // paging: false,
             // searching: false,
-            ajax: "{{ url('sdm/kepala-biro-SDM/signature/inovation/list') }}",
+            ajax: "{{ url('sdm/kepala-biro-SDM/signature/innovation/list') }}",
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {   data: 'fullName', name: 'fullName', orderable: false, searchable: false},
@@ -477,7 +477,7 @@
         let id = $(this).attr('data-id');
         // console.log(id);
         Swal.fire({
-            title: 'Apakah kamu ingin memverifikasi penghargaan ini?',
+            title: 'Apakah kamu ingin tanda tangan penghargaan ini?',
             icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
@@ -499,14 +499,14 @@
                         Accept: "application/json"
                     },
                     method: 'post',
-                    url: "{{ url('sdm/kepala-biro-SDM/signature/inovation') }}" + '/' + id + '/post',
+                    url: "{{ url('sdm/kepala-biro-SDM/signature/innovation') }}" + '/' + id + '/post',
                     data: {
                         id: id,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
                         Swal.fire({
-                            title: 'Verifikasi Tanda Tangan Berhasil!',
+                            title: 'Tanda Tangan Berhasil!',
                             icon: 'success',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,

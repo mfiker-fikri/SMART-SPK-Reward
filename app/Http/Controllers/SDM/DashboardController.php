@@ -170,10 +170,28 @@ class DashboardController extends Controller
                                             with('resultFinalRepresentatives')
                                             ->where([
                                                 //
-                                                ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
-                                                ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                                // ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                                // ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
                                                 //
                                                 ['score_final_result', '>', 0.75],
+                                            ])
+                                            ->select(DB::raw("COUNT(*) as count"), DB::raw("DATE_FORMAT(created_at, '%Y') as year"))
+                                            ->latest()
+                                            ->orderBy('score_final_result', 'DESC')
+                                            ->orderBy(DB::raw("DATE_FORMAT(created_at, '%Y')"), 'DESC')
+                                            ->orderBy(DB::raw("DATE_FORMAT(updated_at, '%Y')"), 'DESC')
+                                            // ->get();
+                                            ->distinct()
+                                            ->pluck('count', 'year');
+
+            $sumBasedYearTeladan3         =   FinalResultRewardTeladan::
+                                            with('resultFinalRepresentatives')
+                                            ->where([
+                                                //
+                                                // ['signature_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                                // ['verify_head_of_rewards_discipline_and_pension_subdivision', '!=', null],
+                                                //
+                                                ['score_final_result', '<', 0.75],
                                             ])
                                             ->select(DB::raw("COUNT(*) as count"), DB::raw("DATE_FORMAT(created_at, '%Y') as year"))
                                             ->latest()
@@ -189,11 +207,14 @@ class DashboardController extends Controller
 
             $labels2  = $sumBasedYearTeladan2->keys();
             $datas2   = $sumBasedYearTeladan2->values();
-            ddd($sumBasedYearTeladan1);
+
+            $labels3  = $sumBasedYearTeladan2->keys();
+            $datas3   = $sumBasedYearTeladan3->values();
+            // ddd($sumBasedYearTeladan3);
 
             if ($timerInovasi == null && $timerTeladan == null) {
                 return view('layouts.sdm.content.dashboard.dashboard_3',
-                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2'));
+                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2', 'sumBasedYearTeladan3', 'labels3', 'datas3'));
             }
             elseif ($timerInovasi != null && $timerTeladan == null) {
                 $dateTimeOpenInovasi           =   new Carbon($timerInovasi->date_time_open_form_inovation);
@@ -207,7 +228,7 @@ class DashboardController extends Controller
                 $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
 
                 return view('layouts.sdm.content.dashboard.dashboard_3',
-                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2'));
+                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2', 'sumBasedYearTeladan3', 'labels3', 'datas3'));
             }
             elseif ($timerInovasi == null && $timerTeladan != null) {
                 $dateTimeOpenTeladan           =   new Carbon($timerTeladan->date_time_open_form_teladan);
@@ -221,7 +242,7 @@ class DashboardController extends Controller
                 $dateExpiredTimeTeladan        =   $dateTimeExpiredTeladan->toDateTimeString();
 
                 return view('layouts.sdm.content.dashboard.dashboard_3',
-                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2'));
+                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2', 'sumBasedYearTeladan3', 'labels3', 'datas3'));
             }
             elseif ($timerInovasi != null && $timerTeladan != null) {
                 $dateTimeOpenInovasi                  =   new Carbon($timerInovasi->date_time_open_form_inovation);
@@ -235,7 +256,7 @@ class DashboardController extends Controller
                 $dateExpiredTimeInovasi               =   $dateTimeExpiredInovasi->toDateTimeString();
 
                 return view('layouts.sdm.content.dashboard.dashboard_3',
-                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2'));
+                compact('categories', 'criterias', 'parameters', 'timerInovasi', 'timerTeladan', 'sumBasedYearInovation', 'labels1', 'datas1', 'sumBasedYearTeladan1', 'labels1', 'datas1', 'sumBasedYearTeladan2', 'labels2', 'datas2', 'sumBasedYearTeladan3', 'labels3', 'datas3'));
             }
         } catch (\Throwable $th) {
             throw $th;

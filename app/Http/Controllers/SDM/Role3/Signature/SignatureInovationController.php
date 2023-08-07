@@ -48,12 +48,12 @@ class SignatureInovationController extends Controller
             // Timer
             $timer                  =   CountdownTimerFormInovation::first();
 
-            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisment);
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_appraisement);
 
             $dateOpen               =   $dateTimeOpen->toDateString();
             $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
 
-            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisment);
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_appraisement);
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
@@ -83,7 +83,7 @@ class SignatureInovationController extends Controller
                                 $actionBtn =
                                     '
                                         <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
-                                            <i class="fas fa-file-signature"></i> Verification Signature
+                                            <i class="fas fa-file-signature"></i> Tanda Tangan
                                         </a>
                                     ';
                             } else {
@@ -161,7 +161,7 @@ class SignatureInovationController extends Controller
     public function postSignatureInovationIdKepalaSubbagianPenghargaanDisiplindanPensiun(Request $request, $id)
     {
         try {
-            $signature = FinalResultRewardInovation::find($id);
+            $finalResult = FinalResultRewardInovation::find($id);
 
             // Get SDM Username
             $sdm            =   Auth::guard('human_resources')->user()->username;
@@ -170,11 +170,11 @@ class SignatureInovationController extends Controller
 
             File::copy(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature), public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature));
 
-            if($signature) {
-                $signature->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->signature;
-                $signature->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
-                $signature->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
-                $signature->save();
+            if($finalResult) {
+                $finalResult->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->signature;
+                $finalResult->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
+                $finalResult->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
+                $finalResult->save();
             }
 
         } catch (\Throwable $th) {

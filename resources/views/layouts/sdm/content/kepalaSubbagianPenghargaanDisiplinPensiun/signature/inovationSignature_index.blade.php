@@ -448,7 +448,7 @@
             serverSide: true,
             // paging: false,
             // searching: false,
-            ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation/list') }}",
+            ajax: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation/list') }}",
             columns: [
                 {   data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {   data: 'fullName', name: 'fullName', orderable: false, searchable: false},
@@ -478,7 +478,7 @@
         let id = $(this).attr('data-id');
         // console.log(id);
         Swal.fire({
-            title: 'Apakah kamu ingin memverifikasi penghargaan ini?',
+            title: 'Apakah kamu ingin tanda tangan penghargaan ini?',
             icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
@@ -500,14 +500,14 @@
                         Accept: "application/json"
                     },
                     method: 'post',
-                    url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/inovation') }}" + '/' + id + '/post',
+                    url: "{{ url('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/signature/innovation') }}" + '/' + id + '/post',
                     data: {
                         id: id,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
                         Swal.fire({
-                            title: 'Verifikasi Tanda Tangan Berhasil!',
+                            title: 'Tanda Tangan Berhasil!',
                             icon: 'success',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
@@ -981,7 +981,7 @@
                                     <h3 class="text-center text-dark">Penutupan Tanda Tangan Inovasi</h3>
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
-                                    <div class="dateCountDown1">
+                                    {{-- <div class="dateCountDown1">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('dddd') }}</b></span>
                                         <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('D') }}</b></span>
                                         <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('MMMM') }}</b></span>
@@ -991,7 +991,7 @@
                                         <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('hh') }}</b></span>
                                         <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('mm') }}</b></span>
                                         <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('a') }}</b></span>
-                                    </div>
+                                    </div> --}}
                                     <div class="titleCountDown">
                                         <h1>Closing Soon</h1>
                                     </div>

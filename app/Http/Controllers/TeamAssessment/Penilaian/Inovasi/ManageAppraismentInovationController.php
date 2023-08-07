@@ -449,9 +449,12 @@ class ManageAppraismentInovationController extends Controller
                 if ($resultDSSFinal >= 0 && $resultDSSFinal <= 0.75) {
                     // echo 'Tidak Dapat Penghargaan';
                     array_push($ket, 'Tidak Dapat Penghargaan');
-                } elseif ($resultDSSFinal > 0.75 && $resultDSSFinal <= 1) {
+                } elseif ($resultDSSFinal > 0.75 && $resultDSSFinal <= 0.85) {
                     // echo 'Dapat Penghargaan';
-                    array_push($ket, 'Dapat Penghargaan');
+                    array_push($ket, 'Dapat Penghargaan (Baik)');
+                } elseif ($resultDSSFinal > 0.85 && $resultDSSFinal <= 1.00) {
+                    // echo 'Dapat Penghargaan';
+                    array_push($ket, 'Dapat Penghargaan (Terbaik)');
                 }
 
             }

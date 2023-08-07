@@ -3113,6 +3113,7 @@
 
         var representative1 =  {{ Js::from($datas1) }};
         var representative2 =  {{ Js::from($datas2) }};
+        var representative3 =  {{ Js::from($datas3) }};
         // console.log(representative);
 
             var data = {
@@ -3138,9 +3139,9 @@
                     },
                     {
                         label: 'Jumlah Tidak Diterima',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: representative2,
+                        backgroundColor: 'rgb(196, 59, 25)',
+                        borderColor: 'rgb(196, 59, 25)',
+                        data: representative3,
                         pointStyle: 'circle',
                         pointRadius: 5,
                         pointHoverRadius: 8,
@@ -3154,16 +3155,28 @@
                 options: {
                     responsive: true,
                     plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        },
                         title: {
                             display: true,
                             text: 'Chart.js Line Chart',
-                        }
+                        },
+                        legend: {
+                            position: 'top',
+                        },
                     },
                     interaction: {
                         mode: 'index',
                         intersect: false
                     },
+                    hover: {
+                        mode: 'index',
+                        intersec: false
+                    },
                     scales: {
+                        beginAtZero: true,
                         x: {
                             display: true,
                             title: {
@@ -3191,7 +3204,21 @@
                                     style: 'normal',
                                     lineHeight: 1.2
                                 },
-                                padding: {top: 30, left: 0, right: 0, bottom: 0}
+                                padding: {top: 30, left: 0, right: 0, bottom: 0},
+                            },
+                            min: 0,
+                            max: 10,
+                            suggestedMin: 0,
+                            ticks: {
+                                min: 0,
+                                stepSize: 1.5,
+                                precision: 0,
+                                beginAtZero: true,
+                                callback: function(value, index, values) {
+                                    if (Math.floor(value) === value) {
+                                        return value;
+                                    }
+                                }
                             }
                         }
                     }
@@ -4819,18 +4846,27 @@
     </div>
     <!--/ Signature -->
 
-    <div class="card mb-3">
-        <div class="row row-bordered g-0">
-            <div class="card-header">
-                <h5 class="m-0 me-2 pb-3">Tim Penilai</h5>
-            </div>
-            <div class="card-body mx-3 my-3">
-                <div class="d-flex" style="margin: auto;">
-                    <canvas id="myChart"></canvas>
+    <div class="row mx-1">
+
+        <div class="col-6 col-6 order-0">
+
+            <div class="card mb-3">
+                <div class="row row-bordered g-0">
+                    <div class="card-header">
+                        <h5 class="m-0 me-2 pb-3">Statistik Penghargaan Teladan</h5>
+                    </div>
+                    <div class="card-body mx-3 my-3">
+                        <div class="d-flex">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+
     </div>
+
 
 
 </div>

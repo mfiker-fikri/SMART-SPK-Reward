@@ -485,7 +485,7 @@
         let id = $(this).attr('data-id');
         // console.log(id);
         Swal.fire({
-            title: 'Apakah kamu ingin memverifikasi penghargaan ini?',
+            title: 'Apakah kamu ingin tanda tangan penghargaan ini?',
             icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
@@ -514,7 +514,7 @@
                     },
                     success: function(response) {
                         Swal.fire({
-                            title: 'Verifikasi Tanda Tangan Berhasil!',
+                            title: 'Tanda Tangan Berhasil!',
                             icon: 'success',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
