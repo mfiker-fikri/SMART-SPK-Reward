@@ -88,7 +88,7 @@ class SignatureRepresentativeController extends Controller
                                 $actionBtn =
                                     '
                                         <a href="#" class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="verifySignatureRewardInovationId" data-id="' . $row->id . '">
-                                            <i class="fas fa-file-signature"></i> Verification Signature
+                                            <i class="fas fa-file-signature"></i> Tanda Tangan
                                         </a>
                                     ';
                             }

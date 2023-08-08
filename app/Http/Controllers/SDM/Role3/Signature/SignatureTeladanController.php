@@ -143,7 +143,7 @@ class SignatureTeladanController extends Controller
             File::copy(public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature), public_path('storage/sdm/headOfRewardsDisciplineAndPensionSubdivision/signature/' . $signature));
 
             if($finalResult) {
-                $finalResult->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->finalResult;
+                $finalResult->signature_head_of_rewards_discipline_and_pension_subdivision    =   Auth::guard('human_resources')->user()->signature;
                 $finalResult->name_head_of_rewards_discipline_and_pension_subdivision         =   Auth::guard('human_resources')->user()->full_name;
                 $finalResult->verify_head_of_rewards_discipline_and_pension_subdivision       =   1;
                 $finalResult->timestamps                                                      =   false;

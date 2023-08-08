@@ -586,6 +586,8 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     Route::GET('result-reward-innovation/data', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationReadData'])->name('getResultRewardInovationData.Read.Pegawai');
     // Print
     Route::GET('result-reward-innovation/data/print/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationPrintIdData'])->name('getResultRewardInovationData.PrintId.Pegawai');
+    // Download
+    Route::GET('result-reward-innovation/data/download/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardInovationController::class, 'getResultRewardInovationDownloadIdData'])->name('getResultRewardInovationData.DownloadId.Pegawai');
 
     // Reward Teladan
     // Read
@@ -593,6 +595,8 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     Route::GET('result-reward-representative/data', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativeReadData'])->name('getResultRewardRepresentativeData.Read.Pegawai');
     // Print
     Route::GET('result-reward-representative/data/print/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativePrintIdData'])->name('getResultRewardRepresentativeData.PrintId.Pegawai');
+    // Download
+    Route::GET('result-reward-representative/data/download/{id}', [App\Http\Controllers\Pegawai\ResultReward\RewardTeladanController::class, 'getResultRewardRepresentativeDownloadIdData'])->name('getResultRewardRepresentativeData.DownloadId.Pegawai');
 
 
 

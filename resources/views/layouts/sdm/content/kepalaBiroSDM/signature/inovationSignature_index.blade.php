@@ -552,6 +552,310 @@
     });
     </script>
     <!--/ Delete Form Inovation Id -->
+
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.js')}}"></script>
+    <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
+
+    <script>
+        // Goood
+        $(document).ready(function () {
+
+            $(".mercado-countdown").each( function(){
+                var _this = $(this),
+                _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    // if( (event.offset.totalDays == 0 && flag2) || ( (event.offset.totalHours > 0 && flag2) && (event.offset.totalMinutes > 0 && flag2) ) ) {
+                    if( (event.offset.totalDays == 0 && flag2) ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Dibuka Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    // if( ( (event.offset.totalDays == 0 && flag2) && (event.offset.totalHours == 0 && flag2) ) || (event.offset.totalMinutes > 0 && flag2) ) {
+                    if( (event.offset.totalDays == 0 && flag2) ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    // if( (event.offset.totalDays == 0 && flag2) && (event.offset.totalHours == 0 && flag2) && (event.offset.totalMinutes == 0 && flag2) ) {
+                    if( event.offset.totalMinutes == 0 && flag2 ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Penilaian Inovasi Sudah Dibuka',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".mercadoCountdown1").each( function(){
+                var _this = $(this);
+                var _expire = _this.data('expire');
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if( (event.offset.totalDays == 0 && flag2) ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup Besok',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if( (event.offset.totalHours == 0 && flag2) ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    if( event.offset.totalMinutes == 0 && flag2 ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Penilaian Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                            icon: 'success',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 10000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Penilaian Inovasi Sudah Ditutup',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location.reload(true);
+                        },
+                    });
+                });
+            });
+
+        });
+
+
+    </script>
+
+    <!--/ Timer Countdown -->
 @stop
 
 @section('content')
@@ -676,7 +980,7 @@
                                     <h3 class="text-center text-dark">Penutupan Tanda Tangan Inovasi</h3>
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
-                                    <div class="dateCountDown1">
+                                    {{-- <div class="dateCountDown1">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_1)->isoFormat('dddd') }}</b></span>
                                         <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_1)->isoFormat('D') }}</b></span>
                                         <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_1)->isoFormat('MMMM') }}</b></span>
@@ -686,10 +990,10 @@
                                         <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_1)->isoFormat('hh') }}</b></span>
                                         <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_1)->isoFormat('mm') }}</b></span>
                                         <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_1)->isoFormat('a') }}</b></span>
-                                    </div>
-                                    <div class="titleCountDown">
+                                    </div> --}}
+                                    {{-- <div class="titleCountDown">
                                         <h1>Closing Soon</h1>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_signature_human_resource_1)->toDateTimeString()  }}"></div>

@@ -23,9 +23,65 @@
             }
         }
     </style>
+
+    {{-- <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css"> --}}
+
+    <style>
+        .kbw-signature { width: 100%; height: 200px;}
+        #signaturePad canvas{
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
 @endprepend
 
+@section('js_header')
+    {{-- <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script> --}}
+
+    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+    {{-- <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/4.1.6/signature_pad.js" integrity="sha512-kEyFFfnOsZfLxo41+4pDl4U2dcnCuIhyTgwOOtza0GYFhgDzji6OiGOLZZDWbAfL4qbVH36vuDu/P+1kit3RJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/4.1.6/signature_pad.min.js" integrity="sha512-LbFQ3aDc3mXpURoITEWtnuAycdfrlvZ1RrSNau4BrSAs7i/W4IXsyrt8Xkul4kKZE7nuHh44+m6/aXq6WtHKbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.js" integrity="sha512-qt5oshES6FrwBMHdJM+LVTexla6KJUcRA7T1EeR+5eDd74FPZBIxCnN6mD7md7VBjoyOhmfA7fG1jvoSbREZdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+@endsection
+
 @section('js_footer')
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.js" integrity="sha512-qt5oshES6FrwBMHdJM+LVTexla6KJUcRA7T1EeR+5eDd74FPZBIxCnN6mD7md7VBjoyOhmfA7fG1jvoSbREZdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/4.1.6/signature_pad.js" integrity="sha512-kEyFFfnOsZfLxo41+4pDl4U2dcnCuIhyTgwOOtza0GYFhgDzji6OiGOLZZDWbAfL4qbVH36vuDu/P+1kit3RJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/4.1.6/signature_pad.min.js" integrity="sha512-LbFQ3aDc3mXpURoITEWtnuAycdfrlvZ1RrSNau4BrSAs7i/W4IXsyrt8Xkul4kKZE7nuHh44+m6/aXq6WtHKbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+
+    {{-- <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css"> --}}
+
+    <script>
+        var canvas = document.getElementById("signature-pad");
+        function resizeCanvas() {
+            var ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+        var signaturePad = new SignaturePad(canvas, {
+        backgroundColor: 'rgb(250,250,250)'
+        });
+        document.getElementById("clear").addEventListener('click', function(){
+        signaturePad.clear();
+        })
+
+        // const signaturePad = document.getElementById('signaturePad');
+        // var x = signaturePad.SignaturePad({syncField: '#signature64', syncFormat: 'PNG'});
+        // const x = signaturePad.getContext('2d');
+        // console.log(x);
+        // $('#clear').click(function(e) {
+        //     e.preventDefault();
+        //     signaturePad.signature('clear');
+        //     $("#signature64").val('');
+        // });
+    </script>
+
     <!-- Photo Preview -->
     <script type='text/javascript'>
     function preview_image(event)
@@ -630,6 +686,10 @@
     </script>
     <!--/ Show Hide Password -->
 
+    <script>
+
+    </script>
+
 
 @stop
 
@@ -1062,6 +1122,24 @@
                             </div>
 
                             <hr>
+
+
+                            {{-- <div class="d-flex justify-content-center py-sm-3"> --}}
+                                {{-- <div id="sig" ></div>
+                                <textarea id="signature64" name="signed" height="200" width="300" style="display: none"></textarea> --}}
+                                {{-- <canvas id="signaturePad" class="kbw-signature"></canvas>
+                                <br/>
+                                <button id="clear" class="btn btn-danger btn-sm">Clear Signature</button>
+                                <textarea id="signature64" name="signed" style="display: none"></textarea> --}}
+                                {{-- <div class="wrapper">
+                                    <canvas id="signature-pad" width="400" height="200"></canvas>
+                                </div>
+                                <div class="clear-btn">
+                                    <button id="clear"><span> Clear </span></button>
+                                </div> --}}
+                            {{-- </div> --}}
+
+                            {{-- <hr> --}}
 
                             @if (Auth::guard('human_resources')->user()->role == 1)
                             <!-- Role 1 -->

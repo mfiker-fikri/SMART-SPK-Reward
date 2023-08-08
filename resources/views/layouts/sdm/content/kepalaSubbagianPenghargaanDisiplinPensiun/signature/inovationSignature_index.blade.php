@@ -992,9 +992,9 @@
                                         <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('mm') }}</b></span>
                                         <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_3)->isoFormat('a') }}</b></span>
                                     </div> --}}
-                                    <div class="titleCountDown">
+                                    {{-- <div class="titleCountDown">
                                         <h1>Closing Soon</h1>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_signature_human_resource_3)->toDateTimeString()  }}"></div>

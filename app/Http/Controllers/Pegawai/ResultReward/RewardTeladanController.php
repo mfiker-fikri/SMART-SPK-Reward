@@ -112,6 +112,10 @@ class RewardTeladanController extends Controller
                                     class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="printResultRewardRepresentativeId">
                                         <i class="fa-solid fa-print mx-auto me-1"></i> Print
                                     </a>
+                                    <a href="' . route('pegawai.getResultRewardRepresentativeData.DownloadId.Pegawai', $row->id) . '"
+                                    class="btn btn-light mx-1 mx-1 mx-1" style="background-color:rgb(255, 99, 71); border:2px solid Tomato; color: black" id="downloadResultRewardInovationId">
+                                        <i class="fa-solid fa-download mx-auto me-1" style="color: #000000;"></i> Unduh
+                                    </a>
                                 ';
                         } else {
                             $actionBtn =
@@ -246,9 +250,70 @@ class RewardTeladanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getResultRewardRepresentativeDownloadIdData($id)
     {
-        //
+        try {
+
+            $id     =   FinalResultRewardTeladan::where('final_result_reward_representative.id', '=', $id)
+                        ->leftJoin('reward_representative', 'final_result_reward_representative.reward_representative_id', '=', 'reward_representative.id')
+                        ->select(
+                            'final_result_reward_representative.id',
+                            'final_result_reward_representative.score_final_result',
+                            'final_result_reward_representative.score_final_result_description',
+                            'final_result_reward_representative.created_at',
+                            'final_result_reward_representative.updated_at',
+                            'final_result_reward_representative.reward_representative_id',
+                            //
+                            'final_result_reward_representative.signature_head_of_the_human_resources_bureau',
+                            'final_result_reward_representative.name_head_of_the_human_resources_bureau',
+                            //
+                            'final_result_reward_representative.signature_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_representative.name_head_of_disciplinary_awards_and_administration',
+                            //
+                            'final_result_reward_representative.signature_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_representative.name_head_of_rewards_discipline_and_pension_subdivision',
+                            //
+                            //
+                            // 'reward_representative.upload_file_short_description',
+                            // 'reward_representative.upload_file_image_support',
+                            // 'reward_representative.upload_file_video_support',
+                        )->first()->toArray();
+
+            $created_at     =   FinalResultRewardTeladan::find($id)
+                                ->join('reward_representative', 'final_result_reward_representative.reward_representative_id', '=', 'reward_representative.id')
+                                ->select(
+                                    'final_result_reward_representative.created_at',
+                                    // 'final_result_reward_representative.updated_at',
+                                    // 'final_result_reward_representative.reward_representative_id',
+                                )->first();
+
+
+            // where([
+            //     'id' => $id,
+            // ]);
+            // ddd($created_at);
+            // $data = [
+            //     'title' => 'Welcome to CodeSolutionStuff.com',
+            //     'date' =>   date('m/d/Y'),
+            //     'nama'  =>  Auth::guard('employees')->user()->full_name,
+            // ];
+
+            // ddd($id);
+
+            $pdf = Pdf::loadView('layouts.pegawai.content.pdf.teladan.teladanPDF', $id)->setPaper('f4', 'landscape')->setWarnings(false);
+            // ->save('myfile.pdf');
+            // return view()
+            return $pdf->download("Penerimaan Penghargaan Teladan - ".Auth::guard('employees')->user()->full_name." - ".\Carbon\Carbon::parse($created_at[0])->format('Y').".pdf");
+
+            // ddd($pdf);
+            // return $pdf->stream("Penerimaan Penghargaan Teladan - ".Auth::guard('employees')->user()->full_name." - ".\Carbon\Carbon::parse($created_at[0])->format('Y').".pdf");
+            // ->download('codesolutionstuff.pdf');
+            // $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
+            // exit(0);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

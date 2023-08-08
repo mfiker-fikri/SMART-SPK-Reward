@@ -170,7 +170,11 @@ class RewardInovationController extends Controller
                                 '
                                     <a href="' . route('pegawai.getResultRewardInovationData.PrintId.Pegawai', $row->id) . '"
                                     class="edit btn btn-info mx-1 mx-1 mx-1" style="color: black" id="printResultRewardInovationId">
-                                        <i class="fa-solid fa-print mx-auto me-1"></i> Print
+                                        <i class="fa-solid fa-print mx-auto me-1"></i> Cetak
+                                    </a>
+                                    <a href="' . route('pegawai.getResultRewardInovationData.DownloadId.Pegawai', $row->id) . '"
+                                    class="btn btn-light mx-1 mx-1 mx-1" style="background-color:rgb(255, 99, 71); border:2px solid Tomato; color: black" id="downloadResultRewardInovationId">
+                                        <i class="fa-solid fa-download mx-auto me-1" style="color: #000000;"></i> Unduh
                                     </a>
                                 ';
                         } else {
@@ -295,9 +299,70 @@ class RewardInovationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getResultRewardInovationDownloadIdData($id)
     {
-        //
+        try {
+
+            $id     =   FinalResultRewardInovation::where('final_result_reward_innovation.id', '=', $id)
+                        ->leftJoin('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
+                        ->select(
+                            'final_result_reward_innovation.id',
+                            'final_result_reward_innovation.score_final_result',
+                            'final_result_reward_innovation.score_final_result_description',
+                            'final_result_reward_innovation.created_at',
+                            'final_result_reward_innovation.updated_at',
+                            'final_result_reward_innovation.reward_innovation_id',
+                            //
+                            'final_result_reward_innovation.signature_head_of_the_human_resources_bureau',
+                            'final_result_reward_innovation.name_head_of_the_human_resources_bureau',
+                            //
+                            'final_result_reward_innovation.signature_head_of_disciplinary_awards_and_administration',
+                            'final_result_reward_innovation.name_head_of_disciplinary_awards_and_administration',
+                            //
+                            'final_result_reward_innovation.signature_head_of_rewards_discipline_and_pension_subdivision',
+                            'final_result_reward_innovation.name_head_of_rewards_discipline_and_pension_subdivision',
+                            //
+                            //
+                            'reward_innovation.upload_file_short_description',
+                            'reward_innovation.upload_file_image_support',
+                            'reward_innovation.upload_file_video_support',
+                        )->first()->toArray();
+
+            $created_at     =   FinalResultRewardInovation::find($id)
+                                ->join('reward_innovation', 'final_result_reward_innovation.reward_innovation_id', '=', 'reward_innovation.id')
+                                ->select(
+                                    'final_result_reward_innovation.created_at',
+                                    // 'final_result_reward_innovation.updated_at',
+                                    // 'final_result_reward_innovation.reward_innovation_id',
+                                )->first();
+
+
+            // where([
+            //     'id' => $id,
+            // ]);
+            // ddd($created_at);
+            // $data = [
+            //     'title' => 'Welcome to CodeSolutionStuff.com',
+            //     'date' =>   date('m/d/Y'),
+            //     'nama'  =>  Auth::guard('employees')->user()->full_name,
+            // ];
+
+            // ddd($data);
+
+            $pdf = PDF::loadView('layouts.pegawai.content.pdf.inovation.inovationPDF', $id)->setPaper('f4', 'landscape')->setWarnings(false);
+            // ->save('myfile.pdf');
+            return $pdf->download("Penerimaan Penghargaan Inovasi - ".Auth::guard('employees')->user()->full_name." - ".\Carbon\Carbon::parse($created_at[0])->format('Y').".pdf");
+            // $content = $pdf->download()->getOriginalContent();
+
+            // ddd($pdf);
+            // return $pdf->stream("Penerimaan Penghargaan Inovasi - ".Auth::guard('employees')->user()->full_name." - ".\Carbon\Carbon::parse($created_at[0])->format('Y').".pdf");
+            // ->download('codesolutionstuff.pdf');
+            // $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
+            // exit(0);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

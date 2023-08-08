@@ -991,7 +991,7 @@
                                     <h3 class="text-center text-dark">Penutupan Tanda Tangan Teladan</h3>
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
-                                    <div class="dateCountDown1">
+                                    {{-- <div class="dateCountDown1">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('dddd') }}</b></span>
                                         <span>Tanggal <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('D') }}</b></span>
                                         <span>Bulan <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('MMMM') }}</b></span>
@@ -1001,10 +1001,10 @@
                                         <span>Jam <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('hh') }}</b></span>
                                         <span>Menit <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('mm') }}</b></span>
                                         <span>Waktu <b>{{ \Carbon\Carbon::create($timer->date_time_expired_signature_human_resource_2)->isoFormat('a') }}</b></span>
-                                    </div>
-                                    <div class="titleCountDown">
+                                    </div> --}}
+                                    {{-- <div class="titleCountDown">
                                         <h1>Closing Soon</h1>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
                                     <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_signature_human_resource_2)->toDateTimeString()  }}"></div>

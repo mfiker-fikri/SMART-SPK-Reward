@@ -9,6 +9,7 @@ use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
 
 class SignatureInovationController extends Controller
@@ -68,6 +69,7 @@ class SignatureInovationController extends Controller
                                                     //
                                                     ['score_final_result', '>', 0.75],
                                                 ])->latest()->orderBy('score_final_result', 'DESC')->get();
+                                                // ddd($data);
 
 
             return DataTables::of($data)
@@ -171,14 +173,23 @@ class SignatureInovationController extends Controller
     public function postSignatureInovationIdKepalaBiroSDM(Request $request, $id)
     {
         try {
-            $signature = FinalResultRewardInovation::find($id);
+            $finalResult = FinalResultRewardInovation::find($id);
 
-            if($signature) {
-                $signature->signature_head_of_the_human_resources_bureau    =   Auth::guard('human_resources')->user()->signature;
+            // Get SDM Username
+            $sdm            =   Auth::guard('human_resources')->user()->username;
+            // Get Signature Auth SDM
+            $signature      =   Auth::guard('human_resources')->user()->signature;
+
+
+            File::copy(public_path('storage/sdm/headOfHumanResources/signature/' . $signature), public_path('storage/sdm/headOfHumanResources/signature/' . $signature));
+
+            if($finalResult) {
+                $finalResult->signature_head_of_the_human_resources_bureau    =   Auth::guard('human_resources')->user()->signature;
                 // ''.Auth::guard('human_resources')->user()->full_name.'/KLN.png';
-                $signature->name_head_of_the_human_resources_bureau         =   Auth::guard('human_resources')->user()->full_name;
-                $signature->verify_head_of_the_human_resources_bureau       =   1;
-                $signature->save();
+                $finalResult->name_head_of_the_human_resources_bureau         =   Auth::guard('human_resources')->user()->full_name;
+                $finalResult->verify_head_of_the_human_resources_bureau       =   1;
+                $finalResult->timestamps                                      =   false;
+                $finalResult->save();
             }
         } catch (\Throwable $th) {
             throw $th;

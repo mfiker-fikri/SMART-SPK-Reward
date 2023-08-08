@@ -9,6 +9,7 @@ use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
 
 class SignatureInovationController extends Controller
@@ -142,13 +143,22 @@ class SignatureInovationController extends Controller
     public function postSignatureInovationIdKepalaBagianPenghargaanDisiplindanTataUsaha(Request $request, $id)
     {
         try {
-            $signature = FinalResultRewardInovation::find($id);
+            $finalResult = FinalResultRewardInovation::find($id);
 
-            if($signature) {
-                $signature->signature_head_of_disciplinary_awards_and_administration    =   Auth::guard('human_resources')->user()->signature;
-                $signature->name_head_of_disciplinary_awards_and_administration         =   Auth::guard('human_resources')->user()->full_name;
-                $signature->verify_head_of_disciplinary_awards_and_administration       =   1;
-                $signature->save();
+            // Get SDM Username
+            $sdm            =   Auth::guard('human_resources')->user()->username;
+            // Get Signature Auth SDM
+            $signature      =   Auth::guard('human_resources')->user()->signature;
+
+
+            File::copy(public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/' . $signature), public_path('storage/sdm/headOfDisciplinaryAwardsAndAdministration/signature/' . $signature));
+
+            if($finalResult) {
+                $finalResult->signature_head_of_disciplinary_awards_and_administration    =   Auth::guard('human_resources')->user()->signature;
+                $finalResult->name_head_of_disciplinary_awards_and_administration         =   Auth::guard('human_resources')->user()->full_name;
+                $finalResult->verify_head_of_disciplinary_awards_and_administration       =   1;
+                $finalResult->timestamps                                                  =   false;
+                $finalResult->save();
             }
         } catch (\Throwable $th) {
             throw $th;
