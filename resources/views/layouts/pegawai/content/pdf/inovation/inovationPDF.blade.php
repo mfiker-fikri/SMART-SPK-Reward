@@ -403,15 +403,15 @@
                             <div class="row">
                                 <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
                                 <div class="pm-earned col-xs-8 text-center">
-                                    <span class="pm-earned-text padding-0 block cursive" style="width: 500px;left: 50%; margin: 0 230px 0.5rem;">Sebagai Pegawai Inovasi di Kementerian Luar Negeri Republik Indonesia Pada Tahun {{ \Carbon\Carbon::parse($created_at)->format('Y') }} dengan Predikat Skor</span>
+                                    <span class="pm-earned-text padding-0 block cursive" style="width: 500px;left: 50%; margin: 0 230px 0.5rem;">Sebagai Pegawai Inovasi di Kementerian Luar Negeri Republik Indonesia Pada Tahun {{ \Carbon\Carbon::parse($created_at)->format('Y') }} dengan Predikat</span>
                                     {{-- <span class="pm-earned-text padding-0 block cursive">dengan Predikat Skor</span> --}}
-                                    <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">
+                                    {{-- <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">
                                         <h1 style="font-size: 32px"> {{ $score_final_result }} </h1>
-                                    </span>
+                                    </span> --}}
                                     @if ($score_final_result > 0.85 && $score_final_result <= 1)
-                                        <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">Terbaik</span>
+                                        <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;font-size: 32px">Terbaik</span>
                                     @elseif (($score_final_result > 0.75 && $score_final_result <= 0.85))
-                                        <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;">Baik</span>
+                                        <span class="pm-credits-text block bold sans" style="width: 500px;left: 20%; margin: 0 225px 0;font-size: 32px">Baik</span>
                                     @endif
                                 </div>
                                 <div class="pm-earned col-xs-8 text-center">
