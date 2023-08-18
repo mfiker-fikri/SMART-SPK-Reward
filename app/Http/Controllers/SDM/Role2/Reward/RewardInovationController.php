@@ -45,6 +45,7 @@ class RewardInovationController extends Controller
                             ->orderBy(DB::raw("DATE_FORMAT(created_at, '%Y')"), 'DESC')
                             ->orderBy(DB::raw("DATE_FORMAT(updated_at, '%Y')"), 'DESC')
                             ->get();
+                            // ddd($data);
 
             return DataTables::of($data)
                     ->addIndexColumn()
