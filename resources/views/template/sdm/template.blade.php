@@ -206,7 +206,7 @@
                     <title> Hasil Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
                     @elseif ( request()->is('sdm/kepala-bagian-penghargaan-disiplin-dan-tata-usaha/reward/representative*') )
                     <!-- Reward Representative -->
-                    <title> hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
+                    <title> Hasil Penghargaan Teladan | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia </title>
 
                 <!--/ Kepala Bagian Penghargaan, Disiplin, dan Tata Usaha -->
             <!--/ Role 2 -->
