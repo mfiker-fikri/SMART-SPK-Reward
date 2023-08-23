@@ -23,6 +23,7 @@ class TeamAssessmentFactory extends Factory
             'username' => 'muhammad',
             'password' => Hash::make('Admin12'),
             //
+            'hr_id' => 'd51389c9-103e-309f-a339-d380fe72efb2',
             // 'photo' => $this->faker->image(null, 360, 360, 'animals', true, true, 'cats', true),
             // 'place_birth' => $this->faker->city(),
             // 'date_birth' => '2022-06-25',

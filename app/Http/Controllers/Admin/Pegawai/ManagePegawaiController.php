@@ -223,7 +223,8 @@ class ManagePegawaiController extends Controller
                 'full_name'     =>      $request['full_name'],
                 'username'      =>      $request['username'],
                 'email'         =>      $request['email'],
-                'password'      =>      Hash::make($request['password'])
+                'password'      =>      Hash::make($request['password']),
+                'admin_id'      =>      Auth::guard('admins')->user()->id,
             ]);
 
             if ($employee) {

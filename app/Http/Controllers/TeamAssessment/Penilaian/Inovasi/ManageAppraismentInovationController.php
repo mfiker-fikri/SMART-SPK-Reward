@@ -13,6 +13,7 @@ use App\Models\RewardInovation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
@@ -615,6 +616,7 @@ class ManageAppraismentInovationController extends Controller
                     $reward->score_valuation_5  =   $request['nyataNilaiTambah'];
                     $reward->score_valuation_6  =   $request['kesinambunganKonsistensiKerja'];
                     $reward->status_process     =   '4';
+                    $reward->at_id              =   Auth::guard('team_assessments')->user()->id;
                     $reward->timestamps         =   false;
                     $reward->save();
 

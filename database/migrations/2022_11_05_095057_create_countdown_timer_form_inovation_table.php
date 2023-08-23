@@ -13,7 +13,7 @@ class CreateCountdownTimerFormInovationTable extends Migration
      */
     public function up()
     {
-        Schema::create('countdown_timer_inovation', function (Blueprint $table) {
+        Schema::create('countdown_timer_innovation', function (Blueprint $table) {
             $table->id();
             //
             $table->uuid('hr_id');

@@ -30,6 +30,7 @@ class HeadWorkUnitFactory extends Factory
             // 'username' => 'mahmud',
             'password' => Hash::make('Admin12'),
             //
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ];
     }
 }

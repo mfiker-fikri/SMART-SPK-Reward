@@ -13,7 +13,7 @@ class CreateCountdownTimerFormTeladanTable extends Migration
      */
     public function up()
     {
-        Schema::create('countdown_timer_teladan', function (Blueprint $table) {
+        Schema::create('countdown_timer_representative', function (Blueprint $table) {
             $table->id();
             // $table->dateTime('date_time_open_form_teladan')->nullable();
             // $table->dateTime('date_time_expired_form_teladan')->nullable();

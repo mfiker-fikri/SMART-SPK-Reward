@@ -228,6 +228,7 @@ class ManageSDMController extends Controller
                 'email'         =>      $request['email'],
                 'password'      =>      Hash::make($request['password']),
                 'role'          =>      $request['role'],
+                'admin_id'      =>      Auth::guard('admins')->user()->id,
             ]);
 
             if($human_resources) {

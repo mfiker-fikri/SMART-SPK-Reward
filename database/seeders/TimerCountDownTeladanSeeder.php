@@ -17,10 +17,11 @@ class TimerCountDownTeladanSeeder extends Seeder
         //
         \App\Models\CountdownTimerFormTeladan::insert([
             'id' => 1,
-            'date_time_open_form_teladan' => Carbon::now(),
-            'status_open' => 1,
-            'date_time_expired_form_teladan' => Carbon::tomorrow(),
-            'status_expired' => 1,
+            'hr_id' => 'd51389c9-103e-309f-a339-d380fe72efb2',
+            'date_time_open_appraisement' => Carbon::now(),
+            'status_open_appraisement' => 1,
+            'date_time_open_appraisement' => Carbon::tomorrow(),
+            'status_expired_appraisement' => 1,
         ]);
     }
 }

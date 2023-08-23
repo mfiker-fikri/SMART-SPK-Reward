@@ -13,6 +13,7 @@ use App\Models\RewardInovation;
 use App\Models\RewardTeladan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Str;
@@ -396,6 +397,7 @@ class ManageAppraismentTeladanController extends Controller
                     $teladan->score_valuation_6  =   $request['kerjaSama'];
                     $teladan->status_process     =   '1';
                     $teladan->employee_id        =   $reward->id;
+                    $teladan->at_id              =   Auth::guard('team_assessments')->user()->id;
                     // $teladan->timestamps         =   false;
                     $teladan->save();
 

@@ -44,7 +44,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
         // 2
         \App\Models\Pegawai::insert([
@@ -65,7 +65,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
         // 3
         \App\Models\Pegawai::insert([
@@ -86,7 +86,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
         // 4
         \App\Models\Pegawai::insert([
@@ -107,7 +107,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
         // 5
         \App\Models\Pegawai::insert([
@@ -128,7 +128,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
 
         // 6
@@ -150,7 +150,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
 
         // 7
@@ -172,7 +172,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
 
         // 8
@@ -194,7 +194,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
 
         // 9
@@ -216,7 +216,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
 
         // 10
@@ -238,7 +238,7 @@ class PegawaiSeeder extends Seeder
             'jabatan_terakhir' => 'Pegawai ASN',
             'unit_kerja' => 'Subbagian Tata Usaha dan Kerumahtanggan Biro',
             //
-            'admin_id' => '0d91e241-e559-32cd-a9bd-18e464bcc5bb',
+            'admin_id' => 'cb4f06ce-bf7f-3ec0-8a25-404acf96d3ce',
         ]);
     }
 }
