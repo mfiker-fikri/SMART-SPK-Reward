@@ -25,7 +25,7 @@ class CreateAdminsTable extends Migration
             $table->string('photo_profile', 255)->nullable();
             //
             $table->timestamp('last_seen')->nullable();
-            $table->date('last_status')->nullable();
+            // $table->date('last_status')->nullable();
             $table->rememberToken();
             $table->integer('status_active')->default(1);
             $table->integer('status_id')->default(1);

@@ -15,12 +15,13 @@ class CreateCriteriasTable extends Migration
     {
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
-            $table->string('criteria', 255);
-            $table->string('value_quality', 255);
-            $table->string('normalization')->nullable();
             //
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories');
+            //
+            $table->string('criteria', 255);
+            $table->string('value_quality', 255);
+            // $table->string('normalization')->nullable();
             // $table->foreignId('categorie_id')
             //     ->constrained();
             // $table->foreignId('kategori_id')

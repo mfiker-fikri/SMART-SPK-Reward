@@ -22,6 +22,13 @@ class CreateRewardInovationTable extends Migration
             //
             $table->uuid('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
+            $table->uuid('how_id');
+            $table->foreign('how_id')->references('id')->on('head_of_work_units');
+            $table->uuid('at_id');
+            $table->foreign('at_id')->references('id')->on('team_assessments');
+            //
+            $table->unsignedBigInteger('categoryOption_id');
+            $table->foreign('categoryOption_id')->references('id')->on('categories');
             //
             // 0 = ditolak, 1=dikembalikan , 2=menunggu, 3=Masuk ke Tahap Penilaian, 4=Selesai Di Nilai
             $table->integer('status_process')->default(2);
@@ -46,6 +53,6 @@ class CreateRewardInovationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reward_inovation');
+        Schema::dropIfExists('reward_innovation');
     }
 }

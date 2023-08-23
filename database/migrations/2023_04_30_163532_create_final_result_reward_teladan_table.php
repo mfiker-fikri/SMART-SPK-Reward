@@ -17,7 +17,7 @@ class CreateFinalResultRewardTeladanTable extends Migration
             $table->uuid('id')->primary();
             //
             $table->uuid('reward_representative_id');
-            $table->foreign('reward_representative_id')->references('id')->on('reward_representative')->onDelete('cascade');
+            $table->foreign('reward_representative_id', 'rr_id')->references('id')->on('reward_representative')->onDelete('cascade');
             //
             $table->string('score_final_result', 255);
             $table->string('score_final_result_description', 255);

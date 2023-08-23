@@ -23,6 +23,9 @@ class CreateTeamAssessmentsTable extends Migration
             //
             $table->string('photo_profile', 255)->nullable();
             //
+            $table->uuid('hr_id');
+            $table->foreign('hr_id')->references('id')->on('human_resources');
+            //
             $table->timestamp('last_seen')->nullable();
             $table->rememberToken();
             $table->integer('status_active')->default(1);

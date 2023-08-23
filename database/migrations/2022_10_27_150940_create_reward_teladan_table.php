@@ -22,6 +22,11 @@ class CreateRewardTeladanTable extends Migration
             //
             $table->uuid('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
+            $table->uuid('at_id');
+            $table->foreign('at_id')->references('id')->on('team_assessments');
+            //
+            $table->unsignedBigInteger('categoryOption_id');
+            $table->foreign('categoryOption_id')->references('id')->on('categories');
             //
             // 0 = ditolak, 1=dikembalikan , 2=menunggu, 3=diproses, 4=berhasil
             $table->integer('status_process');

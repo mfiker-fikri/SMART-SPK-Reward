@@ -16,6 +16,10 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             // $table->bigIncrements('id');
             $table->id();
+            //
+            // $table->uuid('hr_id');
+            // $table->foreign('hr_id')->references('id')->on('human_resources');
+            //
             $table->string('category', 255);
             //
             $table->integer('status_active')->default(1);
