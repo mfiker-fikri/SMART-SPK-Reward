@@ -26,6 +26,9 @@ class CreateHumanResources extends Migration
             $table->string('photo_profile', 255)->nullable();
             $table->string('signature', 255)->nullable();
             //
+            $table->uuid('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admins');
+            //
             $table->timestamp('last_seen')->nullable();
             $table->rememberToken();
             $table->integer('status_active')->default(1);

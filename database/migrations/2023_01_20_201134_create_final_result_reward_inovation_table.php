@@ -47,6 +47,6 @@ class CreateFinalResultRewardInovationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('final_result_reward_inovation');
+        Schema::dropIfExists('final_result_reward_innovation');
     }
 }

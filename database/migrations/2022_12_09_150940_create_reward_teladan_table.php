@@ -45,6 +45,6 @@ class CreateRewardTeladanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reward_teladan');
+        Schema::dropIfExists('reward_representative');
     }
 }

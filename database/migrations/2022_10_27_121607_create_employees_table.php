@@ -33,6 +33,9 @@ class CreateEmployeesTable extends Migration
             $table->string('jabatan_terakhir', 255)->nullable();
             $table->string('unit_kerja', 255)->nullable();
             //
+            $table->uuid('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admins');
+            //
             $table->timestamp('last_seen')->nullable();
             $table->rememberToken();
             $table->integer('status_active')->default(1);

@@ -47,6 +47,6 @@ class CreateFinalResultRewardTeladanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('final_result_reward_teladan');
+        Schema::dropIfExists('final_result_reward_representative');
     }
 }

@@ -24,6 +24,9 @@ class CreateHeadOfWorkUnit extends Migration
             // $table->string('slug')->nullable();
             $table->string('photo_profile', 255)->nullable();
             //
+            $table->uuid('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admins');
+            //
             $table->timestamp('last_seen')->nullable();
             $table->date('last_status')->nullable();
             $table->rememberToken();
