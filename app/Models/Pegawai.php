@@ -58,6 +58,8 @@ class Pegawai extends Authenticatable
         'jabatan',
         'unit_kerja',
         //
+        'admin_id',
+        //
         'last_seen',
         'status_active',
         'status_id'

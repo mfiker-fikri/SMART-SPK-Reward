@@ -57,6 +57,8 @@ class TeamAssessment extends Authenticatable
         'jabatan',
         'unit_kerja',
         //
+        'hr_id',
+        //
         'last_seen',
         'status_active',
         'status_id'

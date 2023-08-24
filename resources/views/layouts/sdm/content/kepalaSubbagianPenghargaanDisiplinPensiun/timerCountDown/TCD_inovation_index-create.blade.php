@@ -1095,8 +1095,8 @@
                                                     <option value="0" {{ old('status_open') == 0 ? 'selected' : '' }}>Tidak Aktif</option>
                                                     <option value="1" {{ old('status_open') == 1 ? 'selected' : '' }}>Aktif</option>
                                                 @else
-                                                <option value="0" @if(old('status_open', $timer->status_open ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_open', $timer->status_open ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" {{ old('status_open', $timer->status_open_form_innovation) == 0 ? 'selected' : '' }} >Tidak Aktif</option>
+                                                <option value="1" {{ old('status_open', $timer->status_open_form_innovation) == 1 ? 'selected' : '' }}>Aktif</option>
                                                 {{-- @elseif ($timer->status_open == 0)
                                                 <option value="0" @if(old('status_open', $timer->status_open ) == 0 ) selected="selected" @endif disabled>Tidak Aktif</option>
                                                 <option value="1" @if(old('status_open', $timer->status_open ) == 1 ) selected="selected" @endif>Aktif</option>
@@ -1192,8 +1192,8 @@
                                                 {{-- <option value="0">Tidak Aktif</option>
                                                 <option value="1">Aktif</option> --}}
                                                 @else
-                                                <option value="0" @if(old('status_expired', $timer->status_expired ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
-                                                <option value="1" @if(old('status_expired', $timer->status_expired ) == 1 ) selected="selected" @endif>Aktif</option>
+                                                <option value="0" @if(old('status_expired', $timer->status_expired_form_innovation ) == 0 ) selected="selected" @endif>Tidak Aktif</option>
+                                                <option value="1" @if(old('status_expired', $timer->status_expired_form_innovation ) == 1 ) selected="selected" @endif>Aktif</option>
                                                 @endif
                                             </select>
                                         </div>

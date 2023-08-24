@@ -56,6 +56,8 @@ class HumanResource extends Authenticatable
         'photo_profile',
         'signature',
         //
+        'admin_id',
+        //
         'last_seen',
         'status_active',
         'status_id'

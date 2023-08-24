@@ -214,7 +214,7 @@ class ManageHWUController extends Controller
 
             if ($hwu) {
                 alert()->success('Berhasil Tambah Data Kepala Satuan Kerja Baru!')->autoclose(25000);
-                return redirect()->back()->with('message-create-success', 'Berhasil Tambah Data Kepala Satuan Kerja Baru!');
+                return redirect('admin/manage/ksk')->with('message-create-success', 'Berhasil Tambah Data Kepala Satuan Kerja Baru!');
             } else {
                 alert()->error('Gagal Tambah Data Kepala Satuan Kerja Baru!', 'Validasi Gagal')->autoclose(25000);
                 return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Kepala Satuan Kerja Baru!')->withErrors($validate)->withInput($request->all());

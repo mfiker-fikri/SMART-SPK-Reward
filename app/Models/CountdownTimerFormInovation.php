@@ -39,6 +39,9 @@ class CountdownTimerFormInovation extends Model
      */
     protected $fillable = [
         'id',
+        //
+        'hr_id',
+        //
         'date_time_open_form_innovation',
         'date_time_expired_form_innovation',
         'status_open_form_innovation',

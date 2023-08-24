@@ -34,7 +34,7 @@ class ManageSDMController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('human_resources');
+        return Auth::guard('admins');
     }
 
     /**
@@ -220,6 +220,7 @@ class ManageSDMController extends Controller
                 return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Akun Divisi Sumber Daya Manusia Baru!')->withErrors($validate)->withInput($request->all());
             }
 
+            // ddd(Auth::guard('admins')->user()->id);
             // Create Human Resources
             $human_resources    =   HumanResource::create([
                 'id'            =>      Str::uuid(),
@@ -395,7 +396,7 @@ class ManageSDMController extends Controller
                 $sdm->save();
 
                 alert()->success('Berhasil Update Data Akun Divisi Sumber Daya Manusia!')->autoclose(25000);
-                return redirect()->back()->with('message-update-success', 'Berhasil Update Data Akun Divisi Sumber Daya Manusia!');
+                return redirect()->route('admin.getManageHumanResourcesId.Update.Admin', $id)->with('message-update-success', 'Berhasil Update Data Akun Divisi Sumber Daya Manusia!');
 
             } else {
                 alert()->error('Gagal!')->autoclose(25000);
@@ -452,7 +453,7 @@ class ManageSDMController extends Controller
                 //
                 DB::table('human_resources')->where('id', $sdm)->update(['password' => Hash::make($request['password'])]);
                 alert()->success('Berhasil Update Password!')->autoclose(25000);
-                return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
+                return redirect()->route('admin.getManageHumanResourcesId.Update.Admin', $id)->with('message-success-password', 'Berhasil Update Password!');
                 //
             }
             alert()->error('Gagal!')->autoclose(25000);

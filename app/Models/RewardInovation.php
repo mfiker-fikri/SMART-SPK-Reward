@@ -43,6 +43,8 @@ class RewardInovation extends Model
         'upload_file_video_support',
         //
         'employee_id',
+        'how_id',
+        'at_id',
         //
         'status_process',
         'description_back',

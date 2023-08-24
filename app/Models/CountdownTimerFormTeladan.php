@@ -38,6 +38,8 @@ class CountdownTimerFormTeladan extends Model
     protected $fillable = [
         'id',
         //
+        'hr_id',
+        //
         'date_time_open_appraisement',
         'date_time_expired_appraisement',
         'status_open_appraisement',

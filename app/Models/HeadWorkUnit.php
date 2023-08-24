@@ -48,6 +48,8 @@ class HeadWorkUnit extends Authenticatable
         //
         'photo_profile',
         //
+        'admin_id',
+        //
         'last_seen',
         'status_active',
         'status_id'

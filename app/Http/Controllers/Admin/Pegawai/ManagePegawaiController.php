@@ -387,7 +387,7 @@ class ManagePegawaiController extends Controller
             $employee->save();
 
             alert()->success('Berhasil Update Data Pegawai!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Data Pegawai!');
+            return redirect()->route('admin.getManageEmployeesId.Update.Admin', [$employee])->with('message-update-success', 'Berhasil Update Data Pegawai!');
             //
         } else {
             alert()->error('Gagal Update Data Pegawai!', 'Validasi Gagal')->autoclose(25000);
@@ -440,7 +440,7 @@ class ManagePegawaiController extends Controller
             // DB::table('employees')->where('id', '=', $employee)
             $employee->update(['password' => Hash::make($request['password'])]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Password!');
+            return redirect()->route('admin.getManageEmployeesId.Update.Admin', [$employee])->with('message-success-password', 'Berhasil Update Password!');
             //
         }
     }

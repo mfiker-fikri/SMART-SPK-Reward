@@ -236,19 +236,19 @@
 
             <!-- Kelola SMART Kategori  -->
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Kelola SMART</span>
+                <span class="menu-header-text">SPK SMART</span>
             </li>
 
             <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias*')) || (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                     <i class="menu-icon tf-icons fa-solid fa-list"></i>
-                    <div data-i18n="Kelola SMART">Kelola SMART</div>
+                    <div data-i18n="Kelola SMART">SPK SMART</div>
                 </a>
                 <ul class="menu-sub">
                     <!-- Manage Categories -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/categories') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Kelola Kategori">Kelola Ketegori</div>
+                            <div data-i18n="Kelola Kategori">Kategori</div>
                         </a>
                     </li>
                     <!--/ Manage Categories -->
@@ -256,7 +256,7 @@
                     <!-- Manage Criterias -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/criterias') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Kelola Kriteria">Kelola Kriteria</div>
+                            <div data-i18n="Kelola Kriteria">Kriteria</div>
                         </a>
                     </li>
                     <!--/ Manage Criterias -->
@@ -264,7 +264,7 @@
                     <!-- Manage Parameters -->
                     <li class="menu-item {{ (request()->is('sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters*')) ? 'active' : '' }}">
                         <a href="{{ URL::to('/sdm/kepala-subbagian-penghargaan-disiplin-dan-pensiun/manage/parameters') }}" class="menu-link" style="text-decoration: none !important;">
-                            <div data-i18n="Kelola Parameter">Kelola Parameter</div>
+                            <div data-i18n="Kelola Parameter">Parameter</div>
                         </a>
                     </li>
                     <!--/ Manage Parameters -->

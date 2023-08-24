@@ -273,7 +273,7 @@ class ManageAdminController extends Controller
 
             if ($validate->fails()) {
                 alert()->error('Gagal Tambah Data Admin Baru!', 'Validasi Gagal')->autoclose(25000);
-                return back()->with('message-create-error', 'Gagal Tambah Admin Baru!, Validasi Gagal')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-error', 'Gagal Tambah Admin Baru!, Validasi Gagal')->withErrors($validate)->withInput($request->all());
             }
 
             // Create Admin New
@@ -292,10 +292,10 @@ class ManageAdminController extends Controller
 
             if ($admin) {
                 alert()->success('Berhasil Tambah Data Admin Baru!')->autoclose(25000);
-                return back()->with('message-create-success', 'Berhasil Tambah Data Admin Baru!');
+                return redirect('admin/manage/admins')->with('message-create-success', 'Berhasil Tambah Data Admin Baru!');
             } else {
                 alert()->error('Gagal Tambah Data Admin Baru!', 'Validasi Gagal')->autoclose(25000);
-                return back()->with('message-create-error', 'Gagal Tambah Data Admin Baru!')->withErrors($validate)->withInput($request->all());
+                return redirect()->back()->with('message-create-error', 'Gagal Tambah Data Admin Baru!')->withErrors($validate)->withInput($request->all());
             }
             //
         } catch (\Exception $exception) {
@@ -414,7 +414,7 @@ class ManageAdminController extends Controller
             $admin->save();
 
             alert()->success('Berhasil Update Data Admin!')->autoclose(25000);
-            return redirect()->back()->with('message-update-success', 'Berhasil Update Data Admin!');
+            return redirect()->route('admin.getManageAdminsId.Update.Admin', $id)->with('message-update-success', 'Berhasil Update Data Admin!');
             //
         } else {
             alert()->error('Gagal!')->autoclose(25000);
@@ -467,7 +467,7 @@ class ManageAdminController extends Controller
             //
             DB::table('admins')->where('id', $admin)->update(['password' => Hash::make($request['password'])]);
             alert()->success('Berhasil Update Password!')->autoclose(25000);
-            return redirect()->back()->with('message-success-password', 'Berhasil Update Password!');
+            return redirect()->route('admin.getManageAdminsId.Update.Admin', $id)->with('message-success-password', 'Berhasil Update Password!');
             //
         }
         alert()->error('Gagal!')->autoclose(25000);
@@ -514,11 +514,11 @@ class ManageAdminController extends Controller
         $admin = Admin::find($id);
 
         if ($admin) {
-            $admin->update([
-                'status_active' =>  0,
-                'status_id'     =>  0,
-            ]);
-            // $admin->delete();
+            // $admin->update([
+            //     'status_active' =>  0,
+            //     'status_id'     =>  0,
+            // ]);
+            $admin->delete();
             alert()->success('Berhasil Hapus Admin!', $admin->username)->autoclose(25000);
             return redirect()->back()->with('message-delete-success', 'Berhasil Hapus Admin!' . $admin->username);
             // ->with(['success' => 'Post has been deleted successfully']);
