@@ -309,7 +309,7 @@
                                     <i class="fa-solid fa-arrow-rotate-left mx-auto me-1"></i> Reset
                                 </button>
                                 <button type="submit" class="btn btn-primary btn-lg" style="color: black">
-                                    <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Submit
+                                    <i class="fa-solid fa-paper-plane mx-auto me-1"></i> Tambah
                                 </button>
                             </div>
                         </div>

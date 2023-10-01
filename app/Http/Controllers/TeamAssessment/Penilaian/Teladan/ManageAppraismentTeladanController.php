@@ -356,7 +356,7 @@ class ManageAppraismentTeladanController extends Controller
             // Find id Reward Inovation
             $reward     =   Pegawai::find($id);
 
-            // ddd($reward->status_process);
+            $selectOptionCategory = Category::where('id', '=', 2)->get();
 
             if ($reward) {
                 // Validasi
@@ -398,6 +398,7 @@ class ManageAppraismentTeladanController extends Controller
                     $teladan->status_process     =   '1';
                     $teladan->employee_id        =   $reward->id;
                     $teladan->at_id              =   Auth::guard('team_assessments')->user()->id;
+                    $teladan->categoryOption_id  =   $selectOptionCategory[0]->id;
                     // $teladan->timestamps         =   false;
                     $teladan->save();
 

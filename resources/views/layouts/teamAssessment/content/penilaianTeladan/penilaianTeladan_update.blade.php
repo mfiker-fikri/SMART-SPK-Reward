@@ -239,7 +239,7 @@
                                     allowOutsideClick: false,
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-                                        window.location = "/penilai/appraisement/representative";
+                                        window.location = "/penilai/appraisement/result/representative";
                                     }
                                 })
                             },

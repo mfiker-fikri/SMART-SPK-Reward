@@ -578,7 +578,7 @@ class ManageAppraismentInovationController extends Controller
             // Find id Reward Inovation
             $reward     =   RewardInovation::find($id);
 
-            // ddd($reward->status_process);
+            $selectOptionCategory = Category::where('id', '=', 1)->get();
 
             if ($reward) {
                 // Validasi
@@ -617,6 +617,7 @@ class ManageAppraismentInovationController extends Controller
                     $reward->score_valuation_6  =   $request['kesinambunganKonsistensiKerja'];
                     $reward->status_process     =   '4';
                     $reward->at_id              =   Auth::guard('team_assessments')->user()->id;
+                    $reward->categoryOption_id  =   $selectOptionCategory[0]->id;
                     $reward->timestamps         =   false;
                     $reward->save();
 

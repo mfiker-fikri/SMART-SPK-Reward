@@ -67,13 +67,13 @@ class ManageHWUController extends Controller
                     $actionBtn =
                         '
                     <a href="' . route('admin.getManageHWUId.View.Admin', $row->id) . '" class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
-                        <i class="fa-solid fa-eye mx-auto me-1"></i> View
+                        <i class="fa-solid fa-eye mx-auto me-1"></i> Lihat
                     </a>
                     <a href="' . route('admin.getManageHWUId.Update.Admin', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                         <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                     </a>
                     <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteHWUsId" data-id="' . $row->id . '" data-username="' . $row->username . '">
-                        <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                        <i class="fa-solid fa-trash-can mx-auto me-1"></i> Hapus
                     </a>
                     ';
                 }
