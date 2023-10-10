@@ -133,7 +133,7 @@ class ManageAdminController extends Controller
                 if (Cache::has('admin-is-online-' . $row->id)) {
                     $status = '<span class="text-success">Online</span>';
                 } elseif ($row->status == null) {
-                    $status = '<span class="text-secondary">Not Login</span>';
+                    $status = '<span class="text-secondary">Belum login</span>';
                 } else {
                     $status = '<span class="text-secondary">Offline</span>';
                 }
@@ -149,7 +149,7 @@ class ManageAdminController extends Controller
                 if (Cache::has('admin-is-online-' . $row->id)) {
                     $last_seen = '<span class="text-success">Online</span>';
                 } elseif ($row->last_seen == null) {
-                    $last_seen = '<span class="text-secondary">Not Login</span>';
+                    $last_seen = '<span class="text-secondary">Belum login</span>';
                 } else {
                     $last_seen = '<span class="text-secondary">' . \Carbon\Carbon::parse($row->last_seen)->diffForHumans() . '</span>';
                 }

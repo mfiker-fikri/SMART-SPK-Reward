@@ -31,7 +31,7 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('/admin/manage/admins') }}" style="text-decoration: none !important;">Data Admin</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Tambah Data Admin Baru</li>
+                <li class="breadcrumb-item fw-bold active">Tambah Data Akun Admin Baru</li>
 
             @elseif ( request()->is('admin/manage/admins') )
                 <li class="breadcrumb-item fw-light">

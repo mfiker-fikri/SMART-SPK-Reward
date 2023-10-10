@@ -9,7 +9,7 @@
 @extends('template.admin.template')
 
 @prepend('js_header')
-    
+
 @endprepend
 
 <!-- Header Js -->
@@ -43,7 +43,7 @@
 <!-- Footer Js -->
 @section('js_footer')
     <script type='text/javascript'>
-    function preview_image(event) 
+    function preview_image(event)
     {
         var reader = new FileReader();
         reader.onload = function()
@@ -62,7 +62,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <div class="row mt-3">
-        
+
         <div class="col-xxl">
 
             <!-- Card View Admin -->
@@ -70,7 +70,7 @@
 
                 <!-- Form View Admin Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Lihat Data Admin</h5>
+                    <h5 class="mb-0">Lihat Data Akun Admin</h5>
                 </div>
                 <!--/ Form View Admin Title -->
 

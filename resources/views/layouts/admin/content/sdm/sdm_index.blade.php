@@ -8,6 +8,14 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            language: {
+                emptyTable:     "Kosong",
+                infoEmpty: "Tidak ada data tersedia",
+                loadingRecords: "Loading...",
+                processing:     "",
+                search:         "Pencarian:",
+                zeroRecords:    "Data yang Anda cari tidak ketemu",
+            },
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
@@ -175,7 +183,7 @@
                     <div class="py-3 d-flex flex-row justify-content-start">
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('admin/manage/sdm/create') }}" role="button" style="color: black">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Akun Divisi Sumber Daya Manusia Baru
+                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Data Akun Divisi Sumber Daya Manusia Baru
                             </a>
                         </div>
                     </div>

@@ -13,12 +13,11 @@
                 // searching: false,
                 language: {
                     emptyTable:     "Kosong",
-                    // infoEmpty: "My Custom Message On Empty Table",
+                    infoEmpty: "Tidak ada data tersedia",
                     loadingRecords: "Loading...",
                     processing:     "",
-                    processing:     "",
-                    search:         "Search:",
-                    zeroRecords:    "No matching records found",
+                    search:         "Pencarian:",
+                    zeroRecords:    "Data yang Anda cari tidak ketemu",
                 },
                 rowReorder: {
                     selector: 'td:nth-child(2)'

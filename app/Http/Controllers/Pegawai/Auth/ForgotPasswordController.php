@@ -100,6 +100,7 @@ class ForgotPasswordController extends Controller
 
             DB::table('employees_password_resets')->insert(
                 [
+                    'id'    => Str::uuid(),
                     'email' => $request->email,
                     'token' => $token,
                     'created_at' => Carbon::now()

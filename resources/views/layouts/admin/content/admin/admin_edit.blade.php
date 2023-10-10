@@ -70,7 +70,7 @@
 
                     <!-- Tabs Edit Profile Details Admin -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('admin/manage/admins/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/admins/edit*')) ? 'true' : 'false' }}">Edit Data Admin</button>
+                        <button class="nav-link {{ (request()->is('admin/manage/admins/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/admins/edit*')) ? 'true' : 'false' }}">Edit Data Akun Admin</button>
                     </li>
                     <!--/ Tabs Edit Profile Details Admin -->
 
@@ -125,7 +125,7 @@
 
                         <!-- Form Edit Profile Details Admin Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Edit Data Admin</h5>
+                            <h5 class="mb-0">Edit Data Akun Admin</h5>
                         </div>
                         <!--/ Form Edit Profile Details Admin Title -->
 

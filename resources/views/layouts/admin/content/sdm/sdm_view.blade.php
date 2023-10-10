@@ -25,7 +25,7 @@
 
                 <!-- Form View Human Resources Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Lihat Data Pegawai</h5>
+                    <h5 class="mb-0">Lihat Data Akun Pegawai</h5>
                 </div>
                 <!--/ Form View Human Resources Title -->
 

@@ -2235,7 +2235,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Form Inovasi Sudah Dibuka',
+                        title: 'Berkas Formulir Inovasi Sudah Dibuka',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -2292,7 +2292,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Form Inovasi Inovasi Sudah Ditutup',
+                        title: 'Berkas Formulir Inovasi Inovasi Sudah Ditutup',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -3378,7 +3378,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Form Countdown</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Penghitung Waktu Mundur Berkas Formulir Inovasi</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)
@@ -3386,7 +3386,7 @@
                             <div class="titleCountDownNonActive">
                                 <div class="d-flex justify-content-center align-self-center">
                                     <span class="text-center">
-                                        <h3>Form Inovasi Ditutup</h3>
+                                        <h3>Berkas Formulir Inovasi Ditutup</h3>
                                     </span>
                                 </div>
                             </div>
@@ -3404,7 +3404,7 @@
                             <div class="container-fluid">
                                 <div class="titleCountDownNonActive">
                                     <h3>
-                                        <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Inovasi</span>
+                                        <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Berkas Formulir Inovasi</span>
                                     </h3>
                                 </div>
                             </div>
@@ -3426,7 +3426,7 @@
                                 <div class="openTimerCountDown swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Pembukaan Form Inovasi</h3>
+                                            <h3>Pembukaan Berkas Formulir Inovasi</h3>
                                         </div>
                                         <div class="dateCountDown">
                                             <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('dddd') }}</b></span>
@@ -3478,7 +3478,7 @@
                                 <div class="openTimerCountDown swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="titleCountDown">
-                                            <h3>Penutupan Form Inovasi</h3>
+                                            <h3>Penutupan Berkas Formulir Inovasi</h3>
                                         </div>
                                         <div class="dateCountDown">
                                             <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('dddd') }}</b></span>
@@ -3517,7 +3517,7 @@
                             <div class="container-fluid">
                                 <div class="titleCountDownNonActive">
                                     <h3>
-                                        <span>Form Inovasi Telah Ditutup</span>
+                                        <span>Berkas Formulir Inovasi Telah Ditutup</span>
                                     </h3>
                                 </div>
                             </div>
@@ -3538,7 +3538,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Representative Appraisement Countdown </h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Penghitung Waktu Mundur Penilaian Teladan</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerTeladan == null)
@@ -3701,7 +3701,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Appraisement Countdown</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Penghitung Waktu Mundur Penilaian Inovasi</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)
@@ -3861,7 +3861,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Representative Signature Countdown</h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Penghitung Waktu Mundur Tanda Tangan Teladan</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerTeladan == null)
@@ -4313,7 +4313,7 @@
             <div class="card mb-3">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3 text-center">Inovation Signature Countdown </h5>
+                        <h5 class="m-0 me-2 pb-3 text-center">Penghitung Waktu Mundur Penilaian Inovasi</h5>
                     </div>
                     <div class="card-body">
                         @if ($timerInovasi == null)

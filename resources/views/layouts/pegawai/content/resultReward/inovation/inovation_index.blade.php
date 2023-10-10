@@ -11,18 +11,18 @@
                 serverSide: true,
                 // paging: false,
                 // searching: false,
+                language: {
+                    emptyTable:     "Kosong",
+                    infoEmpty: "Tidak ada data tersedia",
+                    loadingRecords: "Loading...",
+                    processing:     "",
+                    search:         "Pencarian:",
+                    zeroRecords:    "Data yang Anda cari tidak ketemu",
+                },
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
                 // dom: 'Plfrtip',
-                language: {
-                    searchPanes: {
-                        emptyPanes: 'There are no panes to display. :/'
-                    }
-                },
-                // oLanguage: {
-                //     sEmptyTable:     "My Custom Message On Empty Table"
-                // },
                 ajax:
                 {
                     url: "{{ url('result-reward-innovation/data') }}",
