@@ -553,6 +553,8 @@ Route::group(['name' => 'pegawai', 'as' => 'pegawai.'], function () {
     Route::GET('form-innovation/list/data', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormData'])->name('getInovationFormData.Read.Pegawai');
     // 3=diproses
     Route::GET('form-innovation/list/data/process', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationFormDataProcess'])->name('getInovationFormData.Read.Process.Pegawai');
+    // View
+    Route::GET('form-innovation/view/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationIdView'])->name('getInovationIdView.View.Pegawai');
     // Update
     Route::GET('form-innovation/update/{id}', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'getInovationIdUpdate'])->name('getInovationIdUpdate.Update.Pegawai');
     Route::POST('form-innovation/update/{id}/post', [App\Http\Controllers\Pegawai\Inovation\InovationController::class, 'postInovationIdUpdate'])->name('postInovationIdUpdate.Update.Pegawai');

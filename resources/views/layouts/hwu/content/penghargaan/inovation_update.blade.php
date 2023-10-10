@@ -794,7 +794,7 @@
                 if(event.offset.totalDays == 1 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 2 + 'Hari',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 2 + 'Hari',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -826,7 +826,7 @@
                 if(event.offset.totalDays == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Inovasi Ditutup Besok',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup Besok',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -858,7 +858,7 @@
                 if(event.offset.totalHours == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Jam',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -890,7 +890,7 @@
                 if(event.offset.totalMinutes == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Menit',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -923,7 +923,7 @@
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Formulir Inovasi Ditutup',
+                    title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,
@@ -983,7 +983,7 @@
 
                 <!-- Formulir Inovation Update Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">List Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }}</h5>
+                    <h5 class="mb-0">Verifikasi Formulir Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }}</h5>
                 </div>
                 <!--/ Formulir Inovation Update Title -->
 
@@ -997,14 +997,14 @@
                             ||  ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
                         )
                             <div class="mx-1 mx-1 mx-1">
-                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Formulir Inovasi</div>
+                                <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Verifikasi Formulir Penghargaan Inovasi Pegawai</div>
                             </div>
                         @else
                             <div class="mx-1 mx-1 mx-1">
-                                <h3 class="text-center text-dark">Penutupan Formulir Inovasi</h3>
+                                <h3 class="text-center text-dark">Penutupan Verifikasi Formulir Penghargaan Inovasi Pegawai</h3>
                             </div>
                             <div class="mx-1 mx-1 mx-1">
-                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->toDateTimeString()  }}"></div>
+                                <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->addDays(1)->toDateTimeString()  }}"></div>
                             </div>
                         @endif
                     </div>

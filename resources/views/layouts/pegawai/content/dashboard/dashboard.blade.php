@@ -974,13 +974,19 @@
 
 <!-- Footer Js -->
 @section('js_footer')
-    <!-- Datatables Form Inovation -->
+    <!-- Datatables Formulir Inovation -->
     <script type="text/javascript">
     $(document).ready(function () {
         var table = $('#data-table-inovation').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
+            language: {
+                emptyTable:     "Kosong",
+                // infoEmpty: "My Custom Message On Empty Table",
+                loadingRecords: "Loading...",
+                processing:     "",
+            },
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
@@ -1012,7 +1018,7 @@
         }
     });
     </script>
-    <!--/ Datatables Form Inovation -->
+    <!--/ Datatables Formulir Inovation -->
 
     <!-- Datatables Reward Teladan -->
     <script type="text/javascript">
@@ -1021,6 +1027,14 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            language: {
+                emptyTable:     "Kosong",
+                infoEmpty: "Tidak ada data tersedia",
+                loadingRecords: "Loading...",
+                processing:     "",
+                search:         "Pencarian:",
+                zeroRecords:    "Data yang Anda cari tidak ketemu",
+            },
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
@@ -1061,6 +1075,14 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
+                language: {
+                    emptyTable:     "Kosong",
+                    infoEmpty: "Tidak ada data tersedia",
+                    loadingRecords: "Loading...",
+                    processing:     "",
+                    search:         "Pencarian:",
+                    zeroRecords:    "Data yang Anda cari tidak ketemu",
+                },
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
@@ -1118,7 +1140,7 @@
                     if(event.offset.totalDays == 1 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Dibuka dalam' + ' ' + 2 + 'Hari',
+                            title: 'Formulir Inovasi Dibuka dalam' + ' ' + 2 + 'Hari',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1150,7 +1172,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Dibuka Besok',
+                            title: 'Formulir Inovasi Dibuka Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1182,7 +1204,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
+                            title: 'Formulir Inovasi Dibuka dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1214,7 +1236,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
+                            title: 'Formulir Inovasi Dibuka dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1247,7 +1269,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Form Inovasi Sudah Dibuka',
+                        title: 'Formulir Inovasi Sudah Dibuka',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -1295,7 +1317,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Inovasi Ditutup Besok',
+                            title: 'Formulir Inovasi Inovasi Ditutup Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1327,7 +1349,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
+                            title: 'Formulir Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1359,7 +1381,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
+                            title: 'Formulir Inovasi Inovasi Ditutup dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1392,7 +1414,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Form Inovasi Inovasi Sudah Ditutup',
+                        title: 'Formulir Inovasi Inovasi Sudah Ditutup',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -1440,7 +1462,7 @@
                     if(event.offset.totalDays == 1 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Teladan Ditutup dalam' + ' ' + 2 + 'Hari',
+                            title: 'Formulir Teladan Ditutup dalam' + ' ' + 2 + 'Hari',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1472,7 +1494,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Teladan Ditutup Besok',
+                            title: 'Formulir Teladan Ditutup Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1504,7 +1526,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
+                            title: 'Formulir Teladan Ditutup dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1536,7 +1558,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Form Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
+                            title: 'Formulir Teladan Ditutup dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -1569,7 +1591,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Form Teladan Sudah Ditutup',
+                        title: 'Formulir Teladan Sudah Ditutup',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -1712,7 +1734,7 @@
                     @if ($timerInovasi == null)
                     <div class="d-flex justify-content-center align-self-center">
                         <span class="text-center">
-                            <h3>Form Inovasi Ditutup</h3>
+                            <h3>Formulir Inovasi Ditutup</h3>
                         </span>
                     </div>
                     @else
@@ -1728,7 +1750,7 @@
                         <div class="container-fluid">
                             <div class="titleCountDownNonActive">
                                 <h3>
-                                    <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Form Inovasi</span>
+                                    <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Formulir Inovasi</span>
                                 </h3>
                             </div>
                         </div>
@@ -1750,7 +1772,7 @@
                             <div class="openTimerCountDown swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="titleCountDown">
-                                        <h3>Pembukaan Form Inovasi</h3>
+                                        <h3>Pembukaan Formulir Inovasi</h3>
                                     </div>
                                     <div class="dateCountDown">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('dddd') }}</b></span>
@@ -1811,7 +1833,7 @@
                             <div class="openTimerCountDown swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="titleCountDown">
-                                        <h3>Penutupan Form Inovasi</h3>
+                                        <h3>Penutupan Formulir Inovasi</h3>
                                     </div>
                                     <div class="dateCountDown">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('dddd') }}</b></span>
@@ -1853,7 +1875,7 @@
                         <div class="container-fluid">
                             <div class="titleCountDownNonActive">
                                 <h3>
-                                    <span>Form Inovasi Telah Ditutup</span>
+                                    <span>Formulir Inovasi Telah Ditutup</span>
                                 </h3>
                             </div>
                         </div>
@@ -1875,13 +1897,13 @@
             {{-- <div class="d-flex justify-content-center align-self-center"> --}}
                 <div class="card mb-3 visible shadow-lg">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Proses Form Penghargaan Inovasi</h5>
+                        <h5 class="m-0 me-2 pb-3">Proses Formulir Penghargaan Inovasi</h5>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped table-bordered dt-responsive display responsive nowrap" cellspacing="0" width="100%" id="data-table-inovation">
                             <thead>
                                 <tr>
-                                    <th scope="col">Status Process</th>
+                                    <th scope="col">Status Proses</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1903,7 +1925,7 @@
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="card-header">
-                        <h5 class="m-0 me-2 pb-3">Hasil Penerimaan Penghargaan Inovasi</h5>
+                        <h5 class="m-0 me-2 pb-3">Hasil Penghargaan Inovasi</h5>
                     </div>
                     <div class="card-body">
                         {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
@@ -1911,7 +1933,7 @@
                             <thead>
                                 <tr>
                                     {{-- <th scope="col">No</th> --}}
-                                    <th scope="col">Hasil Akhir Penilaian</th>
+                                    <th scope="col">Hasil Penghargaan Inovasi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1928,7 +1950,7 @@
                 <div class="card">
                     <div class="row row-bordered g-0">
                         <div class="card-header">
-                            <h5 class="m-0 me-2 pb-3">Hasil Penerimaan Penghargaan Teladan</h5>
+                            <h5 class="m-0 me-2 pb-3">Hasil Penghargaan Teladan</h5>
                         </div>
                         <div class="card-body">
                             {{-- <canvas id="myChart" width="400" height="400"></canvas> --}}
@@ -1936,7 +1958,7 @@
                                 <thead>
                                     <tr>
                                         {{-- <th scope="col">No</th> --}}
-                                        <th scope="col">Hasil Akhir Penilaian</th>
+                                        <th scope="col">Hasil Penghargaan Teladan</th>
                                     </tr>
                                 </thead>
                                 <tbody>

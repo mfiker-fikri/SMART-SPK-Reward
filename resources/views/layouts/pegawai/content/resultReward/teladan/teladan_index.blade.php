@@ -11,6 +11,15 @@
                 serverSide: true,
                 // paging: false,
                 // searching: false,
+                language: {
+                    emptyTable:     "Kosong",
+                    // infoEmpty: "My Custom Message On Empty Table",
+                    loadingRecords: "Loading...",
+                    processing:     "",
+                    processing:     "",
+                    search:         "Search:",
+                    zeroRecords:    "No matching records found",
+                },
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
@@ -63,7 +72,7 @@
 
                 <!-- Form Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Hasil Penerimaan Penghargaan Teladan</h5>
+                    <h5 class="mb-0">Hasil Penghargaan Teladan</h5>
                 </div>
                 <!--/ Form Read Inovation List Title -->
 

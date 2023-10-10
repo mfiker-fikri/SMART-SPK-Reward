@@ -26,13 +26,13 @@
 
         @elseif ( request()->is('ksk/form-innovation/list') )
             <!-- List -->
-            <meta name="title" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Verifikasi Formulir Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Verifikasi Formulir Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
 
         @elseif ( request()->is('ksk/form-innovation/list/update*') )
             <!-- List -->
-            <meta name="title" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
-            <meta name="description" content="Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="title" content="Verifikasi Formulir Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
+            <meta name="description" content="Verifikasi Formulir Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri">
         @endif
         <!--/ Meta Tag -->
 
@@ -47,11 +47,11 @@
 
         @elseif ( request()->is('ksk/form-innovation/list') )
             <!-- List -->
-            <title> Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Verifikasi Formulir Penghargaan Inovasi Pegawai | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
 
         @elseif ( request()->is('ksk/form-innovation/list/update*') )
             <!-- List -->
-            <title> Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
+            <title> Verifikasi Formulir Penghargaan Inovasi Pegawai - {{ $rewardInovation->full_name }} | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri </title>
         @endif
         <!-- /Title -->
 

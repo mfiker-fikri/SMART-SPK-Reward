@@ -324,6 +324,14 @@
             responsive: true,
             processing: true,
             serverSide: true,
+            language: {
+                emptyTable:     "Kosong",
+                infoEmpty: "Tidak ada data tersedia",
+                loadingRecords: "Loading...",
+                processing:     "",
+                search:         "Pencarian:",
+                zeroRecords:    "Data yang Anda cari tidak ketemu",
+            },
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
@@ -394,7 +402,7 @@
                     if(event.offset.totalDays == 1 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 2 + 'Hari',
+                            title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 2 + 'Hari',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -426,7 +434,7 @@
                     if(event.offset.totalDays == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka Besok',
+                            title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Dibuka Besok',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -458,7 +466,7 @@
                     if(event.offset.totalHours == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Jam',
+                            title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Jam',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -490,7 +498,7 @@
                     if(event.offset.totalMinutes == 0 && flag2) {
                         flag2 = false;
                         Swal.fire({
-                            title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Menit',
+                            title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Dibuka dalam' + ' ' + 1 + 'Menit',
                             icon: 'success',
                             html: 'Pop up will close in <b></b> milliseconds.',
                             allowOutsideClick: false,
@@ -523,7 +531,7 @@
                 })
                 .on('finish.countdown', function(){
                     Swal.fire({
-                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Sudah Dibuka',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Sudah Dibuka',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -578,7 +586,7 @@
                 if(event.offset.totalDays == 1 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 2 + 'Hari',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 2 + 'Hari',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -610,7 +618,7 @@
                 if(event.offset.totalDays == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup Besok',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup Besok',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -642,7 +650,7 @@
                 if(event.offset.totalHours == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Jam',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Jam',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -674,7 +682,7 @@
                 if(event.offset.totalMinutes == 0 && flag2) {
                     flag2 = false;
                     Swal.fire({
-                        title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Menit',
+                        title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup dalam' + ' ' + 1 + 'Menit',
                         icon: 'success',
                         html: 'Pop up will close in <b></b> milliseconds.',
                         allowOutsideClick: false,
@@ -707,7 +715,7 @@
             })
             .on('finish.countdown', function(){
                 Swal.fire({
-                    title: 'Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Sudah Ditutup',
+                    title: 'Verifikasi Formulir Penghargaan Inovasi Pegawai Sudah Ditutup',
                     icon: 'success',
                     html: 'Pop up will close in <b></b> milliseconds.',
                     allowOutsideClick: false,
@@ -800,7 +808,7 @@
 
                 <!-- Formulir Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h5>
+                    <h5 class="mb-0">Verifikasi Formulir Penghargaan Inovasi Pegawai</h5>
                 </div>
                 <!--/ Formulir Read Inovation List Title -->
 
@@ -809,7 +817,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup</span>
+                                <span>Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup</span>
                             </h1>
                         </div>
                     </div>
@@ -838,7 +846,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
+                                <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Verifikasi Formulir Penghargaan Inovasi Pegawai</span>
                             </h1>
                         </div>
                     </div>
@@ -859,7 +867,7 @@
                     <div class="container-fluid ">
                         <div class="openTimerCountDown">
                             <div class="titleCountDown">
-                                <h1>Pembukaan Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h1>
+                                <h1>Pembukaan Verifikasi Formulir Penghargaan Inovasi Pegawai</h1>
                             </div>
                             <div class="dateCountDown">
                                 {{-- d-m-Y --}}
@@ -877,7 +885,7 @@
                             <div class="titleCountDown">
                                 <h1>Coming Soon</h1>
                             </div>
-                            <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_innovation)->toDateTimeString() }}">
+                            <div class="wrap-countdown mercado-countdown" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_open_form_innovation)->addDays(1)->toDateTimeString() }}">
                             {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->formatLocalized('Y/m/d h:i:s') }}"> --}}
                             {{-- <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($timer->date_time_form_inovation)->isoFormat('Y/MMMM/D hh:mm:ss') }}"> --}}
                             </div>
@@ -918,15 +926,15 @@
                                 ||  ( ($timer->status_open_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() >= $timer->date_time_open_form_innovation) && ($timer->status_expired_form_innovation == 0 && \Carbon\Carbon::now()->toDateTimeString() <= $timer->date_time_expired_form_innovation) )
                             )
                                 <div class="mx-1 mx-1 mx-1">
-                                    <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</div>
+                                    <div class="titleCountDownExpiredNonActive">Harap Tunggu Pemberitahuan Waktu Penutupan Verifikasi Formulir Penghargaan Inovasi Pegawai</div>
                                 </div>
                             @else
                                 <div class="mx-1 mx-1 mx-1">
-                                    <h3 class="text-center text-dark">Penutupan Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h3>
+                                    <h3 class="text-center text-dark">Penutupan Verifikasi Formulir Penghargaan Inovasi Pegawai</h3>
                                 </div>
                                 <div class="mx-1 mx-1 mx-1">
                                     {{-- <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->format('Y/m/d h:i:s') }}"></div> --}}
-                                    <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->toDateTimeString()  }}"></div>
+                                    <div class="wrap-countdown mercadoCountdown1" data-expire="{{ \Carbon\Carbon::parse($timer->date_time_expired_form_innovation)->addDays(1)->toDateTimeString()  }}"></div>
                                     {{-- 2022-12-27 23:59:00"></div> --}}
                                 </div>
                             @endif
@@ -968,7 +976,7 @@
                     <div class="container-fluid">
                         <div class="titleCountDownNonActive">
                             <h1>
-                                <span>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Telah Ditutup</span>
+                                <span>Verifikasi Formulir Penghargaan Inovasi Pegawai Telah Ditutup</span>
                             </h1>
                         </div>
                     </div>

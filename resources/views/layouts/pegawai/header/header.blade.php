@@ -26,7 +26,7 @@
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">List Formulir Pendaftaran Penghargaan Inovasi</a>
+                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">Formulir Pendaftaran Penghargaan Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Tambah Formulir Pendaftaran Penghargaan Inovasi</li>
             @elseif ( request()->is('form-innovation/list') )
@@ -34,17 +34,26 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">List Formulir Pendaftaran Penghargaan Inovasi</li>
+                <li class="breadcrumb-item fw-bold active">Formulir Pendaftaran Penghargaan Inovasi</li>
+            @elseif ( request()->is('form-innovation/view*') )
+                <!-- View -->
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
+                </li>
+                <li class="breadcrumb-item fw-light">
+                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">Formulir Pendaftaran Penghargaan Inovasi</a>
+                </li>
+                <li class="breadcrumb-item fw-bold active">Lihat Formulir Pendaftaran Penghargaan Inovasi</li>
             @elseif ( request()->is('form-innovation/update*') )
                 <!-- Edit -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
                 <li class="breadcrumb-item fw-light">
-                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">List Formulir Pendaftaran Penghargaan Inovasi</a>
+                    <a href="{{ URL::to('form-innovation/list') }}" style="text-decoration: none !important;">Formulir Pendaftaran Penghargaan Inovasi</a>
                 </li>
                 <li class="breadcrumb-item fw-bold active">Update Formulir Pendaftaran Penghargaan Inovasi</li>
-            <!-- Manage Teladan -->
+            {{-- <!-- Manage Teladan -->
             @elseif ( request()->is('form-representative/create') )
                 <!-- Create -->
                 <li class="breadcrumb-item fw-light">
@@ -68,21 +77,21 @@
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('form-representative/list') }}" style="text-decoration: none !important;">List Formulir Pendaftaran Penghargaan Teladan</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Update Formulir Pendaftaran Penghargaan Teladan</li>
+                <li class="breadcrumb-item fw-bold active">Update Formulir Pendaftaran Penghargaan Teladan</li> --}}
             <!-- Manage Result Reward Inovation -->
             @elseif ( request()->is('result-reward-innovation') )
                 <!-- Read -->
                 <li class="breadcrumb-item fw-light">
                     <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
                 </li>
-                <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Inovasi</li>
+                <li class="breadcrumb-item fw-bold active">Hasil Penghargaan Inovasi</li>
             <!-- Manage Result Reward Inovation -->
             @elseif ( request()->is('result-reward-representative') )
             <!-- Read -->
             <li class="breadcrumb-item fw-light">
                 <a href="{{ URL::to('dashboard') }}" style="text-decoration: none !important;">Beranda</a>
             </li>
-            <li class="breadcrumb-item fw-bold active">Hasil Penerimaan Penghargaan Teladan</li>
+            <li class="breadcrumb-item fw-bold active">Hasil Penghargaan Teladan</li>
             @endif
 
         </ol>

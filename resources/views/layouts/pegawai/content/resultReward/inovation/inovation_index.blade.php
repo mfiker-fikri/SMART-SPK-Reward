@@ -88,7 +88,7 @@
 
                 <!-- Form Read Inovation List Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Hasil Penerimaan Penghargaan Inovasi</h5>
+                    <h5 class="mb-0">Hasil Penghargaan Inovasi</h5>
                 </div>
                 <!--/ Form Read Inovation List Title -->
 

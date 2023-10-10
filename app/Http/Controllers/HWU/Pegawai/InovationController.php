@@ -208,7 +208,7 @@ class InovationController extends Controller
                 if($rewardInovation) {
                     // Update Database File
                     $rewardInovation->description_back                  =   $request['description_back'];
-                    $rewardInovation->how_id                            =   Auth::guard('head_work_units')->user()->id;
+                    $rewardInovation->howu_id                            =   Auth::guard('head_work_units')->user()->id;
                     $rewardInovation->status_process                    =   '0';
                     $rewardInovation->save();
                     alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
@@ -253,7 +253,7 @@ class InovationController extends Controller
                 if($rewardInovation) {
                     // Update Database File
                     $rewardInovation->description_back                  =   $request['description_back'];
-                    $rewardInovation->how_id                            =   Auth::guard('head_work_units')->user()->id;
+                    $rewardInovation->howu_id                            =   Auth::guard('head_work_units')->user()->id;
                     $rewardInovation->status_process                    =   '1';
                     $rewardInovation->save();
                     alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
@@ -299,13 +299,15 @@ class InovationController extends Controller
                 if($rewardInovation) {
                     // Update Database File
                     if ($request['description_back'] == null) {
+                        $rewardInovation->description_back                  =   null;
+                        $rewardInovation->howu_id                            =   Auth::guard('head_work_units')->user()->id;
                         $rewardInovation->status_process                    =   '3';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);
                         return redirect('form-innovation/list')->with('message-success-form-inovation', 'Berhasil Update Persyaratan Penghargaan Inovasi');
                     } else {
                         $rewardInovation->description_back                  =   $request['description_back'];
-                        $rewardInovation->how_id                            =   Auth::guard('head_work_units')->user()->id;
+                        $rewardInovation->howu_id                            =   Auth::guard('head_work_units')->user()->id;
                         $rewardInovation->status_process                    =   '3';
                         $rewardInovation->save();
                         alert()->success('Berhasil Update Persyaratan Penghargaan Inovasi')->autoclose(25000);

@@ -163,12 +163,12 @@ class ManageAdminController extends Controller
                     if ($row->status_active == 1) {
                         $status_active =
                             '<a href="#" class="edit btn btn-success mx-1 mx-1 mx-1" style="color: black" id="statusActiveIdAdmin" data-id="' . $row->id . '" data-username="' . $row->username . '">
-                                <i class="fa-solid fa-user-large"></i> Active
+                                <i class="fa-solid fa-user-large"></i> Aktif
                             </a> ';
                     } else {
                         $status_active =
                             '<a href="#" class="edit btn btn-danger mx-1 mx-1 mx-1" style="color: black" id="statusNonActiveIdAdmin" data-id="' . $row->id . '" data-username="' . $row->username . '">
-                                <i class="fa-solid fa-user-large-slash"></i> Non Active
+                                <i class="fa-solid fa-user-large-slash"></i> Tidak Aktif
                             </a> ';
                     }
 

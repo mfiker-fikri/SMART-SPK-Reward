@@ -347,6 +347,9 @@ class InovationController extends Controller
                 if ($row->status_process == 1) {
                     $actionBtn =
                     '
+                        <a href="' . route('pegawai.getInovationIdView.View.Pegawai', $row->id) . '"  class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
+                            <i class="fa-solid fa-eye mx-auto me-1"></i> Lihat
+                        </a>
                         <a href="' . route('pegawai.getInovationIdUpdate.Update.Pegawai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                         </a>
@@ -447,11 +450,14 @@ class InovationController extends Controller
                     } else {
                         $actionBtn =
                         '
+                            <a href="' . route('pegawai.getInovationIdView.View.Pegawai', $row->id) . '"  class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> Lihat
+                            </a>
                             <a href="' . route('pegawai.getInovationIdUpdate.Update.Pegawai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                                 <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                             </a>
                             <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteFormInovationId" data-id="' . $row->id . '">
-                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                                <i class="fa-solid fa-trash-can mx-auto me-1"></i> Hapus
                             </a>
                         ';
                     }
@@ -538,11 +544,14 @@ class InovationController extends Controller
                 if($row->status_process == 2) {
                     $actionBtn =
                     '
+                        <a href="' . route('pegawai.getInovationIdView.View.Pegawai', $row->id) . '"  class="view btn btn-info mx-1 mx-1 mx-1" style="color: black">
+                                <i class="fa-solid fa-eye mx-auto me-1"></i> Lihat
+                            </a>
                         <a href="' . route('pegawai.getInovationIdUpdate.Update.Pegawai', $row->id) . '" class="edit btn btn-warning mx-1 mx-1 mx-1" style="color: black">
                             <i class="fa-solid fa-pencil mx-auto me-1"></i> Edit
                         </a>
                         <a href="#" class="delete btn btn-danger mx-1 mx-1 mx-1" style="color: black; cursor: pointer;" id="deleteFormInovationId" data-id="' . $row->id . '">
-                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Delete
+                            <i class="fa-solid fa-trash-can mx-auto me-1"></i> Hapus
                         </a>
                     ';
                 }
@@ -877,9 +886,39 @@ class InovationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getInovationIdView($id)
     {
-        //
+        try {
+            //
+            $timer                  =   CountdownTimerFormInovation::first();
+            // ddd($timer->date_time_open_form_innovation);
+
+            $dateTimeOpen           =   new Carbon($timer->date_time_open_form_innovation);
+            // ddd($dateTimeOpen);
+            $dateOpen               =   $dateTimeOpen->toDateString();
+            $dateOpenTime           =   $dateTimeOpen->toDateTimeString();
+            // ddd($dateOpenTime >= Carbon::now()->toDateTimeString());
+
+            $dateTimeExpired        =   new Carbon($timer->date_time_expired_form_innovation);
+            // ddd($dateTimeExpired);
+            $dateExpired            =   $dateTimeExpired->toDateString();
+            $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+            // ddd(Carbon::now()->toDateTimeString() <= $dateExpiredTime);
+
+            if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
+                // Find id Reward
+                $id_employee        =    Auth::guard('employees')->user()->id;
+                $rewardInovation    =    RewardInovation::where([
+                    'id' => $id,
+                    'employee_id' => $id_employee
+                    ])->first();
+                // ddd($rewardInovation);
+                return view('layouts.pegawai.content.inovation.inovation_view',compact('rewardInovation', 'timer'));
+            }
+            return back();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

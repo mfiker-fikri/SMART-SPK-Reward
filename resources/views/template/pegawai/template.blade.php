@@ -32,14 +32,14 @@
         @elseif ( request()->is('form-innovation/list'))
             <!-- Formulir Inovation -->
             <!-- Read -->
-            <meta name="title" content="List Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="List Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @elseif ( request()->is('form-innovation/view*'))
             <!-- Formulir Inovation -->
             <!-- View -->
-            <meta name="title" content="Tambah Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
-            <meta name="description" content="Tambah Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="title" content="Lihat Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
+            <meta name="description" content="Lihat Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia">
 
         @elseif ( request()->is('form-innovation/update*'))
             <!-- Formulir Inovation -->
@@ -76,12 +76,12 @@
         @elseif ( request()->is('form-innovation/list'))
             <!-- Formulir Inovation -->
             <!-- Read -->
-            <title>List Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+            <title>Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
         @elseif ( request()->is('form-innovation/view*'))
             <!-- Formulir Inovation -->
             <!-- View -->
-            <title>Tambah Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
+            <title>Lihat Formulir Pendaftaran Penghargaan Inovasi | Sistem Pendukung Keputusan (SPK) Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi | Kementerian Luar Negeri Republik Indonesia</title>
 
         @elseif ( request()->is('form-innovation/update*'))
             <!-- Formulir Inovation -->
