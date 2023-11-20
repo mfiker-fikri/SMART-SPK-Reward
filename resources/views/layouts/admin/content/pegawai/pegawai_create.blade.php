@@ -75,7 +75,7 @@
 
                 <!-- Form Create Add Employee New Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Data Pegawai Baru</h5>
+                    <h5 class="mb-0">Tambah Data Akun Pegawai Baru</h5>
                 </div>
                 <!--/ Form Create Add Employee New Title -->
 

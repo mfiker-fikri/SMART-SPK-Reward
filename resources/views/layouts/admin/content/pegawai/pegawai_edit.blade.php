@@ -78,7 +78,7 @@
 
                     <!-- Tabs Edit Profile Details Employee -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('admin/manage/employees/edit*')) ? 'active' : '' }}" id="pills-editEmployee-tab" data-bs-toggle="pill" data-bs-target="#pills-editEmployee" type="button" role="tab" aria-controls="pills-editEmployee" aria-selected="{{ (request()->is('admin/manage/employees/edit*')) ? 'true' : 'false' }}">Edit Data Pegawai</button>
+                        <button class="nav-link {{ (request()->is('admin/manage/employees/edit*')) ? 'active' : '' }}" id="pills-editEmployee-tab" data-bs-toggle="pill" data-bs-target="#pills-editEmployee" type="button" role="tab" aria-controls="pills-editEmployee" aria-selected="{{ (request()->is('admin/manage/employees/edit*')) ? 'true' : 'false' }}">Edit Data Akun Pegawai</button>
                     </li>
                     <!--/ Tabs Edit Profile Details Employee  -->
 
@@ -133,7 +133,7 @@
 
                         <!-- Form Edit Profile Details Employee Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Edit Data Pegawai</h5>
+                            <h5 class="mb-0">Edit Data Akun Pegawai</h5>
                         </div>
                         <!--/ Form Edit Profile Details Employee Title -->
 

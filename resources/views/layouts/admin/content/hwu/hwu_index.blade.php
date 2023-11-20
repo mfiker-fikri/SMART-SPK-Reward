@@ -227,7 +227,7 @@
                     <div class="py-3 d-flex flex-row justify-content-start">
                         <div class="mx-1 mx-1 mx-1">
                             <a class="btn btn-primary btn-lg" href="{{ URL::to('admin/manage/ksk/create') }}" role="button" style="color: black">
-                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Akun Kepala Satuan Kerja Baru
+                                <i class="fa-solid fa-plus mx-auto me-1"></i> Tambah Data Akun Kepala Satuan Kerja Baru
                             </a>
                         </div>
                     </div>

@@ -104,7 +104,7 @@
 
                 <!-- Form Create Add Admin New Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Data Kepala Satuan Kerja Baru</h5>
+                    <h5 class="mb-0">Tambah Data Akun Kepala Satuan Kerja Baru</h5>
                 </div>
                 <!--/ Form Create Add Admin New Title -->
 

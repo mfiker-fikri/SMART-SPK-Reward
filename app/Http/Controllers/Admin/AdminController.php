@@ -176,7 +176,7 @@ class AdminController extends Controller
 
                 if ($validate->fails()) {
                     alert()->error('Gagal Update Profile!', 'Validasi Gagal')->autoclose(25000);
-                    return redirect()->back()->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
+                    return redirect('/admin/profile')->with('message-update-profile-error', 'Gagal Update Profile')->withErrors($validate)->withInput($request->all());
                 }
 
                 $admin->full_name   = $request['full_name'];
@@ -187,7 +187,7 @@ class AdminController extends Controller
 
                 alert()->success('Berhasil Update Profile')->autoclose(25000);
                 // $request->session()->flash('success', 'Update Sukses');
-                return redirect()->back()->with('message-update-profile-success', 'Berhasil Update Profile');
+                return redirect('/admin/profile')->with('message-update-profile-success', 'Berhasil Update Profile');
             } else {
                 alert()->error('Gagal Update Profile!')->autoclose(25000);
             }
@@ -282,7 +282,7 @@ class AdminController extends Controller
                     $admin->save();
                     // dd('berhasil');
                     alert()->success('Berhasil Update Foto')->autoclose(25000);
-                    return back()->with('message-photo-success', 'Berhasil Update Foto Profile');
+                    return redirect('/admin/profile')->with('message-photo-success', 'Berhasil Update Foto Profile');
                 }
 
                 // Get File Image
@@ -324,11 +324,11 @@ class AdminController extends Controller
                 $admin->save();
                 // dd('berhasil');
                 alert()->success('Update Foto Berhasil')->autoclose(50000);
-                return back()->with('success', 'You have successfully upload image.')->with('image');
+                return redirect('/admin/profile')->with('success', 'You have successfully upload image.')->with('image');
             }
 
             alert()->error('Gagal Tambah Foto Profile!', 'Validasi Gagal')->autoclose(25000);
-            return back()->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
+            return redirect('/admin/profile')->with('message-photo-error', 'Gagal Tambah Foto Profile')->withErrors($validate)->withInput($request->all());
             //
 
             // $photoProfile = $request['photo_profile'];

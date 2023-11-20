@@ -62,7 +62,7 @@
 
                 <!-- Form View Admin Title -->
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Lihat Data Kepala Satuan Kerja</h5>
+                    <h5 class="mb-0">Lihat Data Akun Kepala Satuan Kerja</h5>
                 </div>
                 <!--/ Form View Admin Title -->
 

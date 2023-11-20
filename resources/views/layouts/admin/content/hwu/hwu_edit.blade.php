@@ -70,7 +70,7 @@
 
                     <!-- Tabs Edit Profile Details Admin -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {{ (request()->is('admin/manage/ksk/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/ksk/edit*')) ? 'true' : 'false' }}">Edit Data Kepala Satuan Kerja</button>
+                        <button class="nav-link {{ (request()->is('admin/manage/ksk/edit*')) ? 'active' : '' }}" id="pills-editAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-editAdmin" type="button" role="tab" aria-controls="pills-editAdmin" aria-selected="{{ (request()->is('admin/manage/ksk/edit*')) ? 'true' : 'false' }}">Edit Data Akun Kepala Satuan Kerja</button>
                     </li>
                     <!--/ Tabs Edit Profile Details Admin -->
 
@@ -125,7 +125,7 @@
 
                         <!-- Form Edit Profile Details Admin Title -->
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Edit Data Kepala Satuan Kerja</h5>
+                            <h5 class="mb-0">Edit Data Akun Kepala Satuan Kerja</h5>
                         </div>
                         <!--/ Form Edit Profile Details Admin Title -->
 
