@@ -271,6 +271,10 @@
             }
         </style>
 
+        <!-- -->
+        @stack('css_header')
+        @yield('css_header')
+
         <!--/ Add Ext Plugin -->
     </head>
 

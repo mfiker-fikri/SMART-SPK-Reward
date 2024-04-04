@@ -1,18 +1,13 @@
 @extends('template.auth.template')
 @section('content')
 
-<div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/auth.png') }}); background-blend-mode: darken; background-repeat: no-repeat; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; background-size: 100%;"></div>
+<div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/KLN.png') }}); background-blend-mode: darken; background-repeat: space; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; filter: blur(2px);"></div>
 <div class="container-xxl">
     <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 100vh; max-height: 100vh;">
         <div class="authentication-inner">
 
             <!-- Login -->
-            <div class="card" style="
-            background: rgba(255, 255, 255, 0.22);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(14.5px);
-            -webkit-backdrop-filter: blur(14.5px);">
+            <div class="card">
                 <div class="card-body">
 
                     <!-- Logo -->
@@ -26,9 +21,8 @@
                     <!-- /Logo -->
 
                     <!-- Title -->
-                    <h4 class="my-2 py-3 text-center" style="color: black !important">Kementerian Luar Negeri Republik Indonesia Pegawai Aparatur Sipil Negara (ASN)</h4>
-                    {{-- <h4 class="text-center" style="color: black !important">Pegawai Aparatur Sipil Negara</h4> --}}
-                    <span class="mb-4 text-center"><h5 style="color: black !important">Login</h5></span>
+                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>
+                    <span class="mb-4 text-center"><h5>Login</h5></span>
                     <!--/ Title -->
 
                     <!-- Form Login -->
@@ -37,14 +31,14 @@
 
                         <!-- Username -->
                         <div class="mb-3 {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }} ">
-                            <label for="username" class="form-label" style="color: black !important">Username atau Email</label>
+                            <label for="username" class="form-label">Username atau Email</label>
                             <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' has-error' : '' }}" id="username"
                                 name="username" placeholder="Masukkan username/email"
                                 autofocus autocomplete required size="100" />
 
                             <!-- Error Username -->
                             @if ($errors->has('username') || $errors->has('email'))
-                                <span class="help-block" style="color: black !important">
+                                <span class="help-block">
                                     <strong>{{ $errors->first('username') ?: $errors->first('email') }}</strong>
                                 </span>
                             @endif
@@ -56,8 +50,8 @@
                         <!-- Password -->
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
-                                <label class="form-label" for="password" style="color: black !important">Password</label>
-                                <a href="{{ URL::to('/forgot-password') }}" style="color: black !important">
+                                <label class="form-label" for="password">Password</label>
+                                <a href="{{ URL::to('/forgot-password') }}">
                                     <small>Lupa Password?</small>
                                 </a>
                             </div>
@@ -86,7 +80,7 @@
                         <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }} />
-                                <label class="form-check-label" for="remember-me" style="color: black !important"> Ingat Saya </label>
+                                <label class="form-check-label" for="remember-me"> Ingat Saya </label>
                             </div>
                         </div>
                         <!--/ Remember Me -->

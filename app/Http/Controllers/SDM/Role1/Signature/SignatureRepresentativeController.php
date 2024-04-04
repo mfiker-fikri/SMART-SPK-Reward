@@ -60,10 +60,10 @@ class SignatureRepresentativeController extends Controller
 
             $data                           =   FinalResultRewardTeladan::
                                                 where([
-                                                    ['created_at', '>=', $dateOpenTime],
-                                                    ['created_at', '<=', $dateExpiredTime],
-                                                    ['updated_at', '>=', $dateOpenTime],
-                                                    ['updated_at', '<=', $dateExpiredTime],
+                                                    // ['created_at', '>=', $dateOpenTime],
+                                                    // ['created_at', '<=', $dateExpiredTime],
+                                                    // ['updated_at', '>=', $dateOpenTime],
+                                                    // ['updated_at', '<=', $dateExpiredTime],
                                                     //
                                                     ['signature_head_of_the_human_resources_bureau', '=', null],
                                                     ['verify_head_of_the_human_resources_bureau', '=', null],

@@ -515,7 +515,7 @@
                         <!-- Action Button -->
                         <div class="mt-4 d-flex flex-row justify-content-end">
                             <div class="mx-1 mx-1 mx-1">
-                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-inovation/list') }}" role="button">
+                                <a class="btn btn-secondary btn-lg" style="color: black" href="{{ URL::to('form-innovation/list') }}" role="button">
                                     <i class="fa-solid fa-arrow-left mx-auto me-1"></i> Kembali
                                 </a>
                             </div>
@@ -531,7 +531,7 @@
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <button type="submit" class="btn btn-primary btn-lg"  style="color: black">
-                                    <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Unggah
+                                    <i class="fa-solid fa-paper-plane mx-auto me-2"></i>Submit
                                 </button>
                             </div>
                         </div>

@@ -57,18 +57,24 @@ class SignatureTeladanController extends Controller
 
             $dateExpired            =   $dateTimeExpired->toDateString();
             $dateExpiredTime        =   $dateTimeExpired->toDateTimeString();
+            // dd($dateExpiredTime);
 
-            $data = FinalResultRewardTeladan::where([
-                                ['created_at', '>=', $dateOpenTime],
-                                ['created_at', '<=', $dateExpiredTime],
-                                ['updated_at', '>=', $dateOpenTime],
-                                ['updated_at', '<=', $dateExpiredTime],
+            $data = FinalResultRewardTeladan::
+                            where([
+                                // ['created_at', '>=', $dateOpenTime],
+                                // ['created_at', '<=', $dateExpiredTime],
+                                // ['updated_at', '>=', $dateOpenTime],
+                                // ['updated_at', '<=', $dateExpiredTime],
                                 //
                                 ['signature_head_of_rewards_discipline_and_pension_subdivision', '=', null],
                                 ['verify_head_of_rewards_discipline_and_pension_subdivision', '=', null],
                                 //
                                 ['score_final_result', '>', 0.75],
-                            ])->latest()->orderBy('score_final_result', 'DESC')->get();
+                            ])
+                            ->latest()
+                            ->orderBy('score_final_result', 'DESC')
+                            ->get();
+                            // dd($data);
 
 
             return DataTables::of($data)

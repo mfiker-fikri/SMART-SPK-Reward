@@ -1817,7 +1817,7 @@
                     @if ($timerInovasi == null)
                     <div class="d-flex justify-content-center align-self-center">
                         <span class="text-center">
-                            <h3>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Ditutup</h3>
+                            <h3>Verifikasi Formulir Penghargaan Inovasi Pegawai Ditutup</h3>
                         </span>
                     </div>
                     @else
@@ -1833,7 +1833,7 @@
                         <div class="container-fluid">
                             <div class="titleCountDownNonActive">
                                 <h3>
-                                    <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</span>
+                                    <span>Harap Tunggu Pemberitahuan Waktu Pembukaan Verifikasi Formulir Penghargaan Inovasi Pegawai</span>
                                 </h3>
                             </div>
                         </div>
@@ -1855,7 +1855,7 @@
                             <div class="openTimerCountDown swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="titleCountDown">
-                                        <h3>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai </h3>
+                                        <h3>Verifikasi Formulir Penghargaan Inovasi Pegawai </h3>
                                     </div>
                                     <div class="dateCountDown">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_open_form_innovation)->isoFormat('dddd') }}</b></span>
@@ -1921,7 +1921,7 @@
                             <div class="openTimerCountDown swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="titleCountDown">
-                                        <h3>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai</h3>
+                                        <h3>Verifikasi Formulir Penghargaan Inovasi Pegawai</h3>
                                     </div>
                                     <div class="dateCountDown">
                                         <span>Hari <b>{{ \Carbon\Carbon::create($timerInovasi->date_time_expired_form_innovation)->isoFormat('dddd') }}</b></span>
@@ -1961,7 +1961,7 @@
                         <div class="container-fluid">
                             <div class="titleCountDownNonActive">
                                 <h3>
-                                    <span>Formulir Persetujuan Pendaftaran Penghargaan Inovasi Pegawai Telah Ditutup</span>
+                                    <span>Verifikasi Formulir Penghargaan Inovasi Pegawai Telah Ditutup</span>
                                 </h3>
                             </div>
                         </div>

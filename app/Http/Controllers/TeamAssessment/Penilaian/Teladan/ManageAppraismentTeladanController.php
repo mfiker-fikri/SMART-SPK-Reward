@@ -673,6 +673,9 @@ class ManageAppraismentTeladanController extends Controller
                     'reward_representative_id'          =>  $arrayId[$x],
                     'score_final_result'                =>  $ResultFinalDSS[$x],
                     'score_final_result_description'    =>  $ket[$x],
+                    'verify_head_of_the_human_resources_bureau' => null,
+                    'verify_head_of_disciplinary_awards_and_administration' => null,
+                    'verify_head_of_rewards_discipline_and_pension_subdivision' => null,
                 ]);
 
             }

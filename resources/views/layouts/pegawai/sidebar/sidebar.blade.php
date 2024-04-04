@@ -6,7 +6,10 @@
                 <img src="{{ asset('assets/icon/KLN.png') }}" alt="Icon" width="50" height="50" />
             </span>
             <span class="app-brand-text demo menu-text fw-bolder mx-auto text-uppercase text-center text-wrap" style="font-size: 22px">
-                <b>SPK Pemberian Penghargaan Pegawai ASN Berprestasi</b>
+                <b>
+                    {{-- SPK Pemberian Penghargaan Pegawai ASN Berprestasi --}}
+                    Kementerian Luar Negeri Republik Indonesia Pegawai ASN
+                </b>
             </span>
         </a>
 

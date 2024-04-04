@@ -1248,13 +1248,16 @@
                             </div>
                             <div class="mx-1 mx-1 mx-1">
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="reject_inovation" data-id="{{ $rewardInovation->id }}">
-                                    <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Kirim Penolakan File
+                                    <i class="fa-solid fa-file-circle-xmark mx-auto me-2" style="color: #000000;"></i>Tolak File
+                                    {{-- Kirim Penolakan File --}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="sendback_inovation" data-id="{{ $rewardInovation->id }}">
-                                    <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Kirim Pengembalian File
+                                    <i class="fa-solid fa-file-circle-minus mx-auto me-2" style="color: #000000;"></i>Kembalikan File
+                                    {{-- Kirim Pengembalian File --}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-lg" style="color: black" id="submit_inovation" data-id="{{ $rewardInovation->id }}">
-                                    <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Kirim Persetujuan File
+                                    <i class="fa-solid fa-file-circle-check mx-auto me-2" style="color: #000000;"></i>Setujui File
+                                    {{-- Kirim Persetujuan File --}}
                                 </button>
                             </div>
                         </div>

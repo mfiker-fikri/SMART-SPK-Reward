@@ -606,11 +606,57 @@ class InovationController extends Controller
 
             // ddd($timer->date_time_open_form_innovation >= Carbon::now() && Carbon::now() <= $timer->date_time_expired_form_innovation);
 
+            // Button Create Reject
+            $rewardInovationCreateReject = RewardInovation::
+            where([
+                ['created_at', '>=', $dateOpenTime],
+                ['created_at', '<=', $dateExpiredTime],
+                ['updated_at', '>=', $dateOpenTime],
+                ['updated_at', '<=', $dateExpiredTime],
+                ['employee_id', '=', Auth::guard('employees')->user()->id],
+                // ['status_process', '=', 0],
+                // ['status_process', '!=', 1],
+                // ['status_process', '!=', 2],
+            ])
+            // ->orWhere(['status_process' => 0])
+            ->where(function ($query) {
+                $query->where('status_process', 'LIKE', 0);
+            })
+            ->latest()
+            // ->first();
+            ->get();
+
+            // Button Create
+            $rewardInovationCreate = RewardInovation::
+            where([
+                ['created_at', '>=', $dateOpenTime],
+                ['created_at', '<=', $dateExpiredTime],
+                ['updated_at', '>=', $dateOpenTime],
+                ['updated_at', '<=', $dateExpiredTime],
+                ['employee_id', '=', Auth::guard('employees')->user()->id],
+                // ['status_process', '!=', 0],
+                // ['status_process', '=', 1],
+                // ['status_process', '=', 2],
+            ])
+            // ->orWhere(['status_process' => 1])
+            // ->orWhere(['status_process' => 2])
+            // ->orWhere(['status_process' => 3])
+            ->where(function ($query) {
+                $query->where('status_process', 'LIKE', 1)
+                    ->orWhere('status_process', 'LIKE', 2)
+                    ->orWhere('status_process', 'LIKE', 3);
+            })
+            ->latest()
+            // ->first();
+            ->get();
+
             // return view('layouts.pegawai.content.inovation.inovation_create');
             if (Carbon::now()->toDateTimeString() >= $dateOpenTime && Carbon::now()->toDateTimeString() <= $dateExpiredTime) {
-                return view('layouts.pegawai.content.inovation.inovation_create', compact('timer'));
+                if ($rewardInovationCreateReject->isNotEmpty() || $rewardInovationCreate->isEmpty()) {
+                    return view('layouts.pegawai.content.inovation.inovation_create', compact('timer'));
+                }
             }
-            return back();
+            return redirect()->back();
 
         } catch (\Throwable $th) {
             throw $th;

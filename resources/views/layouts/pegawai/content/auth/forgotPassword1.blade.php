@@ -1,18 +1,13 @@
 @extends('template.auth.template')
 @section('content')
 
-<div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/auth.png') }}); background-blend-mode: darken; background-repeat: no-repeat; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; background-size: 100%;"></div>
+<div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/KLN.png') }}); background-blend-mode: darken; background-repeat: space; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; filter: blur(2px);"></div>
 <div class="container-xxl">
     <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 100vh; max-height: 100vh;">
         <div class="authentication-inner">
 
             <!-- Forgot Password -->
-            <div class="card" style="
-            background: rgba(255, 255, 255, 0.22);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(14.5px);
-            -webkit-backdrop-filter: blur(14.5px);">
+            <div class="card">
                 <div class="card-body">
 
                     <!-- Logo -->
@@ -26,11 +21,11 @@
                     <!--/ Logo -->
 
                     <!-- Title -->
-                    <h4 class="my-2 py-3 text-center" style="color: black !important">Kementerian Luar Negeri Republik Indonesia Pegawai Aparatur Sipil Negara (ASN)</h4>
+                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>
                     <span class="mb-4 text-center">
-                        <h5 style="color: black !important">Lupa Password</h5>
+                        <h5>Lupa Password</h5>
                     </span>
-                    <p class="mx-4 mb-4 text-center" style="color: black !important">Masukkan email anda dan kami akan mengirimkan intruksi untuk me-reset password anda.</p>
+                    <p class="mx-4 mb-4 text-center">Masukkan email anda dan kami akan mengirimkan intruksi untuk me-reset password anda.</p>
                     <!--/ Title -->
 
                     <!-- Form Forgot Password -->
@@ -39,7 +34,7 @@
 
                         <!-- Email -->
                         <div class="mb-3 {{ $errors->has('email') ? ' has-error' : '' }} ">
-                            <label for="email" class="form-label" style="color: black !important">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control {{ $errors->has('email') ? ' has-error' : '' }} " id="email"
                                 name="email" placeholder="Masukkan email"
                                 autofocus autocomplete required  />

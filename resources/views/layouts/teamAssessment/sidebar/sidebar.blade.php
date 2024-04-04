@@ -49,13 +49,13 @@
 
         <!-- Kelola SMART Kategori  -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Penilaian Metode SMART</span>
+            <span class="menu-header-text">SPK SMART</span>
         </li>
 
         <li class="menu-item {{ (request()->is('penilai/categories/list*')) || (request()->is('penilai/criterias/list*')) || (request()->is('penilai/parameters/list*')) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle" style="text-decoration: none !important;">
                 <i class="menu-icon tf-icons fa-solid fa-list"></i>
-                <div data-i18n="Kelola SMART">Penilaian Metode SMART</div>
+                <div data-i18n="Kelola SMART">SPK SMART</div>
             </a>
             <ul class="menu-sub">
                 <!-- Manage Categories -->
@@ -87,7 +87,7 @@
 
         <!-- Appraisment Form Inovation and  -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Kelola Penilaian Penghargaan</span>
+            <span class="menu-header-text">Penilaian Penghargaan</span>
         </li>
 
         <li class="menu-item {{ (request()->is('penilai/appraisement/innovation*')) || (request()->is('penilai/appraisement/representative*')) ? 'active' : '' }}">
@@ -115,7 +115,7 @@
 
         <!-- Appraisment Form Inovation and  -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Kelola Hasil Penilaian Penghargaan</span>
+            <span class="menu-header-text">Hasil Penilaian Penghargaan</span>
         </li>
 
         <li class="menu-item {{ (request()->is('penilai/appraisement/result/innovation*')) || (request()->is('penilai/appraisement/result/representative*')) ? 'active' : '' }}">

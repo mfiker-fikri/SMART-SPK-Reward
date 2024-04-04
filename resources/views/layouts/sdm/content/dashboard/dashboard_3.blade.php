@@ -4846,7 +4846,7 @@
     </div>
     <!--/ Signature -->
 
-    <div class="row mx-1">
+    {{-- <div class="row mx-1">
 
         <div class="col-6 col-6 order-0">
 
@@ -4865,7 +4865,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
 
 

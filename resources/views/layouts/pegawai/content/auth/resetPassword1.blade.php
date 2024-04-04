@@ -39,102 +39,97 @@
     <script src="{{asset('js/sdm/role3/ext_js/jquery.countdown.min.js')}}"></script>
 
     <script>
-        // $(document).ready(function () {
-        //     $(".expiredDate").each( function(){
-        //         var _this = $(this),
-        //         _expire = _this.val();
-        //         flag2 = true;
-        //         _this.countdown(_expire,{
-        //             elapse:     false,
-        //             precision:  1000,
-        //         })
-        //         .on('update.countdown', function(event) {
-        //             if( event.offset.totalMinutes == 0 && flag2 ) {
-        //                 flag2 = false;
-        //                 Swal.fire({
-        //                     title: 'Reset Password Ditutup Dalam' + ' ' + 1 + 'Menit',
-        //                     icon: 'warning',
-        //                     html: 'Pop up will close in <b></b> milliseconds.',
-        //                     allowOutsideClick: false,
-        //                     allowEscapeKey: false,
-        //                     allowEnterKey: false,
-        //                     showClass: {
-        //                         popup: 'animate__animated animate__fadeInDown'
-        //                     },
-        //                     hideClass: {
-        //                         popup: 'animate__animated animate__fadeOutUp'
-        //                     },
-        //                     timer: 5500,
-        //                     timerProgressBar: true,
-        //                     didOpen: () => {
-        //                         Swal.showLoading()
-        //                         const b = Swal.getHtmlContainer().querySelector('b')
-        //                         timerInterval = setInterval(() => {
-        //                             b.textContent = Swal.getTimerLeft()
-        //                         }, 300)
-        //                     },
-        //                     willClose: () => {
-        //                         clearInterval(timerInterval)
-        //                     },
-        //                     didClose: () => {
-        //                         clearInterval(timerInterval)
-        //                     },
-        //                 });
-        //             }
-        //             $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
-        //         })
-        //         .on('finish.countdown', function(){
-        //             Swal.fire({
-        //                 title: 'Reset Password Ditutup',
-        //                 icon: 'success',
-        //                 html: 'Pop up will close in <b></b> milliseconds.',
-        //                 allowOutsideClick: false,
-        //                 allowEscapeKey: false,
-        //                 allowEnterKey: false,
-        //                 showClass: {
-        //                     popup: 'animate__animated animate__fadeInDown'
-        //                 },
-        //                 hideClass: {
-        //                     popup: 'animate__animated animate__fadeOutUp'
-        //                 },
-        //                 timer: 8000,
-        //                 timerProgressBar: true,
-        //                 didOpen: () => {
-        //                     Swal.showLoading()
-        //                     const b = Swal.getHtmlContainer().querySelector('b')
-        //                     timerInterval = setInterval(() => {
-        //                         b.textContent = Swal.getTimerLeft()
-        //                     }, 300)
-        //                 },
-        //                 willClose: () => {
-        //                     clearInterval(timerInterval)
-        //                 },
-        //                 didClose: () => {
-        //                     window.location = "/forgot-password";
-        //                 },
-        //             });
-        //         });
+        $(document).ready(function () {
+            $(".expiredDate").each( function(){
+                var _this = $(this),
+                _expire = _this.val();
+                flag2 = true;
+                _this.countdown(_expire,{
+                    elapse:     false,
+                    precision:  1000,
+                })
+                .on('update.countdown', function(event) {
+                    if( event.offset.totalMinutes == 0 && flag2 ) {
+                        flag2 = false;
+                        Swal.fire({
+                            title: 'Reset Password Ditutup Dalam' + ' ' + 1 + 'Menit',
+                            icon: 'warning',
+                            html: 'Pop up will close in <b></b> milliseconds.',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            timer: 5500,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 300)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                            didClose: () => {
+                                clearInterval(timerInterval)
+                            },
+                        });
+                    }
+                    $(this).html( event.strftime('<span><b>%D</b> Hari</span> <span><b>%-H</b> Jam</span> <span><b>%M</b> Menit</span> <span><b>%S</b> Detik</span>'));
+                })
+                .on('finish.countdown', function(){
+                    Swal.fire({
+                        title: 'Reset Password Ditutup',
+                        icon: 'success',
+                        html: 'Pop up will close in <b></b> milliseconds.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        timer: 8000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                            }, 300)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        },
+                        didClose: () => {
+                            window.location = "/forgot-password";
+                        },
+                    });
+                });
 
-        //     });
+            });
 
-        // });
+        });
     </script>
 @stop
 
 @section('content')
 
-<div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/auth.png') }}); background-blend-mode: darken; background-repeat: no-repeat; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; background-size: 100%;"></div>
+<div style="width: 1500px; height: 800px; position: fixed; left: 0; right: 0; background-image: url({{ asset('assets/icon/KLN.png') }}); background-blend-mode: darken; background-repeat: space; background-clip: content-box ; background-position: center; background-attachment: fixed; background-size: auto; background; z-index: -1; display: block; filter: blur(2px);"></div>
 <div class="container-xxl">
-    <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 100vh; max-height: 100vh;">
+    <div class="d-flex justify-content-center align-items-center container-fluid" style="max-width: 500px; min-width: 200px; min-height: 130vh; max-height: 130vh;">
         <div class="authentication-inner">
 
             <!-- Reset Password -->
-            <div class="card" style="
-            background: rgba(255, 255, 255, 0.22);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(14.5px);
-            -webkit-backdrop-filter: blur(14.5px);">
+            <div class="card">
                 <div class="card-body">
 
                     <!-- Logo -->
@@ -148,9 +143,9 @@
                     <!--/ Logo -->
 
                     <!-- Title -->
-                    <h4 class="my-2 py-3 text-center" style="color: black !important">Kementerian Luar Negeri Republik Indonesia Pegawai Aparatur Sipil Negara (ASN)</h4>
+                    <h4 class="my-2 py-3 text-center">Sistem Pendukung Keputusan Pemberian Penghargaan Pegawai Aparatur Sipil Negara (ASN) Berprestasi</h4>
                     <span class=text-center">
-                        <h5 style="color: black !important; text-align: center;">Reset Password</h5>
+                        <h5>Reset Password</h5>
                     </span>
                     <p class="text-center">Masukkan email beserta password baru anda.</p>
                     <!--/ Title -->
@@ -164,7 +159,7 @@
 
                         <!-- Email -->
                         <div class="mb-3 {{ $errors->has('email') ? 'is-invalid' : '' }} ">
-                            <label for="email" class="form-label" style="color: black !important">Email</label>
+                            <label for="email" class="form-label">Email</label>
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }} ">
                                 <span id="email" class="input-group-text">
                                     <i class="fa-regular fa-envelope fa-lg"></i>
@@ -187,7 +182,7 @@
 
                         <!-- New Password -->
                         <div class="mb-3 {{ $errors->has('password') ? 'is-invalid' : '' }} ">
-                            <label for="password" class="form-label" style="color: black !important">Password Baru</label>
+                            <label for="password" class="form-label">Password Baru</label>
                             <div class="input-group input-group-merge {{ $errors->has('password') ? 'is-invalid' : '' }} ">
                                 <span class="input-group-text">
                                     <i class="fas fa-key"></i>
@@ -202,7 +197,7 @@
 
                             <div class="d-flex flex-column">
                                 <!-- Text Small -->
-                                <small class="form-text text-muted text-break text-monospace text-sm-left" style="color: black !important">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
+                                <small class="form-text text-muted text-break text-monospace text-sm-left">Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
                                 <!--/ Text Small -->
 
                                 <!-- Error New Password -->
@@ -218,7 +213,7 @@
 
                         <!-- Password Confirm -->
                         <div class="mb-3 {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                            <label for="password_confirmation" class="form-label" style="color: black !important">Konfirmasi Password Baru</label>
+                            <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
                             <div class="input-group input-group-merge {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
                                 <span class="input-group-text">
                                     <i class="fas fa-key"></i>
@@ -233,7 +228,7 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <!-- Text Small -->
-                                <small class="form-text text-muted text-break text-monospace text-sm-left" style="color: black !important">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
+                                <small class="form-text text-muted text-break text-monospace text-sm-left">Konfirmasi Password Baru Berisi Kombinasi Yang Terdiri Dari 1 Huruf Besar, 1 Huruf Kecil, 1 Numerik</small>
                                 <!--/ Text Small -->
 
                                 <!-- Error Password Confirm -->
